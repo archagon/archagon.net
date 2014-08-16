@@ -1,0 +1,5 @@
+.DS_Store
+.ruby-version
+_site
+.sass-cache
+.travis.yml
