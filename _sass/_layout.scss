@@ -234,3 +234,76 @@
         }
     }
 }
+
+
+/**
+ * Archive
+ */
+// .post_blurb {
+//     background-color: lightblue;
+// }
+// .year_list {
+//     display: inline-block;
+// }
+// .month_list {
+//     display: inline-block;
+// }
+// .archive_list_title {
+//     display: inline-block;
+// }
+// .archive_list_element {
+//     display: inline-block;
+// }
+
+.archive_list {
+    list-style: none;
+}
+
+// .archive_header {
+//     width: 100px;
+//     float: left;
+// }
+
+.higher_year_list > li {
+    background-color: lightblue;
+}
+
+.year_list > li {
+    background-color: pink;
+    // display: inline-block;
+}
+
+.month_list > li {
+    background-color: lightgreen;
+    // width: 200px;
+    // float: right;
+    // display: inline-block;
+}
+
+.left-floater {
+    float: left;
+    width: 15%;
+}
+
+.right-floater {
+    float: right;
+    width: 85%;
+}
+
+.left-year-floater {
+    float: left;
+    width: 7%;
+}
+
+.right-year-floater {
+    float: right;
+    width: 93%;
+}
+
+.clearfix { 
+    @extend %clearfix;
+}
+
+.clear {
+    clear: both;
+}
