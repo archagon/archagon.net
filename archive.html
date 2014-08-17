@@ -17,16 +17,16 @@ layout: default
       {% endfor %}
     </ul>
 
-    <ul class="higher_year_list archive_list">
+    <ul class="archive_year_list archive_list">
       {% for year_check in site.posts %}
         {% capture year_check_year %}{{ year_check.date | date: "%Y" }}{% endcapture %}
 
         {% if year_check_year != year %}
           {% capture year %}{{ year_check_year }}{% endcapture %}
 
-          <li class="clearfix">
-            <span class="left-year-floater"><h2 class="archive_list_title archive_header">{{ year }}</h2></span>
-            <span class="right-year-floater"><ul class="year_list archive_list">
+          <li class="archive_year_element">
+            <h2 class="archive_year">{{ year }}</h2>
+            <ul class="archive_month_list archive_list">
               {% for month_check in site.posts %}
                 {% capture month_check_year %}{{ month_check.date | date: "%Y" }}{% endcapture %}
                 {% capture month_check_month %}{{ month_check.date | date: "%B" }}{% endcapture %}
@@ -35,9 +35,9 @@ layout: default
                   {% if month_check_month != month %}
                     {% capture month %}{{ month_check_month }}{% endcapture %}
 
-                    <li class="clearfix">
-                      <span class="left-floater"><h3 class="archive_list_title archive_header">{{ month }}</h3></span>
-                      <span class="right-floater"><ul class="month_list archive_list">
+                    <li class="archive_month_element">
+                      <h3 class="archive_month">{{ month }}</h3>
+                      <ul class="archive_post_list archive_list">
                         {%for post in site.posts %}
                           {% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
                           {% capture post_month %}{{ post.date | date: "%B" }}{% endcapture %}
@@ -45,12 +45,12 @@ layout: default
                           {% if year == post_year %}
                             {% if month == post_month %}
 
-                              <li>
+                              <li class="archive_post_element">
                                 <!-- capture the name of the expected category color selector -->
                                 {% if post.categories != empty %}
-                                  {% capture category_selector_name %}category-{{ post.categories[0] }}-color{% endcapture %}
+                                  {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}
                                 {% else %}
-                                  {% capture category_selector_name %}category-default-color{% endcapture %}
+                                  {% capture category_color_name %}category-default-color{% endcapture %}
                                 {% endif %}
 
                                 <!-- capture the selector-ified post id -->
@@ -60,9 +60,14 @@ layout: default
                                 <!-- create the sass to color the banner -->
                                 {% capture to_scssify %}
                                   {% include categories.scss %}
-                                  @if variable-exists({{ category_selector_name }}) {
+                                  @if variable-exists({{ category_color_name }}) {
                                     #{{ post_id }} {
-                                      background-color: ${{ category_selector_name }};
+                                      background-color: ${{ category_color_name }};
+                                    }
+                                  }
+                                  @else {
+                                    #{{ post_id }} {
+                                      background-color: $category-default-color;
                                     }
                                   }
                                 {% endcapture %}
@@ -73,7 +78,16 @@ layout: default
                                 </style>
 
                                 <!-- the banner itself -->
-                                <span id="{{ post_id }}" class="post_blurb {{ category_selector_name }}"><a href="{{ post.url }}">{{ post.title }}</a>{% if post.categories != empty %} ({{ post.categories }}){% endif %}</span> — <small>{{ post.excerpt | strip_html | truncatewords: 10 }}</small>
+                                <a href="{{ post.url }}">
+                                  <div class="archive_post">
+                                    <div>
+                                      <img class="archive_post_image" src="http://www.iconsdb.com/icons/download/royal-blue/right-circular-512.png"></img>
+                                    </div>
+                                    <div>
+                                      <span class="archive_post_blurb {{ category_selector_name }}">{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</span> — <small>{{ post.excerpt | strip_html | truncatewords: 50 }}</small>
+                                    </div>
+                                  </div>
+                                </a>
                               </li>
 
                             {% endif %}

@@ -239,71 +239,65 @@
 /**
  * Archive
  */
-// .post_blurb {
-//     background-color: lightblue;
-// }
-// .year_list {
-//     display: inline-block;
-// }
-// .month_list {
-//     display: inline-block;
-// }
-// .archive_list_title {
-//     display: inline-block;
-// }
-// .archive_list_element {
-//     display: inline-block;
-// }
 
 .archive_list {
     list-style: none;
+
+    // border: 2px;
+    // border-style: solid;
+    // margin: 2px;
 }
 
-// .archive_header {
-//     width: 100px;
-//     float: left;
-// }
+.archive_year_list {
+    @include flexbox();
+    @include flex-flow(column nowrap);
+    @include justify-content(space-around);
+}
+.archive_year_element {
+    @include flexbox();
+    @include flex-flow(row nowrap);
+    @include justify-content(space-around);
+}
+.archive_year {
+    @include flex(1);
+}
+.archive_month_list {
+    @include flex(4);
 
-.higher_year_list > li {
-    background-color: lightblue;
+    @include flexbox();
+    @include flex-flow(column nowrap);
+    @include justify-content(space-around);
+}
+.archive_month_element {
+    @include flexbox();
+    @include flex-flow(row nowrap);
+    @include justify-content(space-around);
+}
+.archive_month {
+    @include flex(1);
+}
+.archive_post_list {
+    @include flex(4);
+
+    @include flexbox();
+    @include flex-flow(column nowrap);
+    @include justify-content(space-around);
+}
+.archive_post {
+    @include flexbox();
+    @include flex-flow(row nowrap);
+    @include justify-content(space-around);
+
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    margin: 10px 0 10px 0;
+    height: 80px;
 }
 
-.year_list > li {
-    background-color: pink;
-    // display: inline-block;
+.archive_post_image {
+    width: 100px;
 }
 
-.month_list > li {
-    background-color: lightgreen;
-    // width: 200px;
-    // float: right;
-    // display: inline-block;
-}
-
-.left-floater {
-    float: left;
-    width: 15%;
-}
-
-.right-floater {
-    float: right;
-    width: 85%;
-}
-
-.left-year-floater {
-    float: left;
-    width: 7%;
-}
-
-.right-year-floater {
-    float: right;
-    width: 93%;
-}
-
-.clearfix { 
-    @extend %clearfix;
-}
-
-.clear {
-    clear: both;
+.archive_post_blurb {
+    // width: 100%;
 }
