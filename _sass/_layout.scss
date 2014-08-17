@@ -240,6 +240,12 @@
  * Archive
  */
 
+.archive {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .archive_list {
     list-style: none;
 
@@ -253,51 +259,125 @@
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
 }
+
 .archive_year_element {
     @include flexbox();
     @include flex-flow(row nowrap);
     @include justify-content(space-around);
+
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
+
 .archive_year {
-    @include flex(1);
+    // @include flex(1);
+    -webkit-flex-shrink: 0;
+    -webkit-flex-grow: 0;
+    -webkit-flex-basis: 50px;
+
+    text-align: right;
 }
+
 .archive_month_list {
-    @include flex(4);
+    @include flex(8);
 
     @include flexbox();
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
 }
+
 .archive_month_element {
     @include flexbox();
     @include flex-flow(row nowrap);
     @include justify-content(space-around);
 }
+
 .archive_month {
-    @include flex(1);
+    // @include flex(1);
+    -webkit-flex-shrink: 0;
+    -webkit-flex-grow: 0;
+    -webkit-flex-basis: 100px;
+
+    text-align: right;
+    color: darkblue;
 }
+
 .archive_post_list {
-    @include flex(4);
+    @include flex(5);
 
     @include flexbox();
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
 }
+
 .archive_post {
     @include flexbox();
     @include flex-flow(row nowrap);
     @include justify-content(space-around);
 
+    // border-style: solid;
+    // border-width: 2px;
     border-radius: 15px;
-    padding: 5px 10px 5px 10px;
-    margin: 10px 0 10px 0;
-    height: 80px;
+    border-style: solid;
+    border-width: 3px;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+    height: 70px;
+    overflow: hidden;
 }
 
+.archive_blurb_test_container h3 {
+    margin: 0;
+    word-wrap: none;
+    margin-top: auto;
+    margin-bottom: auto;
+    white-space: nowrap;
+
+    // TODO: not working
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+}
+
+.archive_blurb_test_container p {
+    font-size: 85%;
+    line-height: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+// .archive_post_list:first-child {
+//     width: 15px;
+// }
+
 .archive_post_image {
-    width: 100px;
+    // @include flex-flow(0 0);
+
+    -webkit-flex-shrink: 0;
+    -webkit-flex-grow: 0;
+    -webkit-flex-basis: 50px;
+    -moz-flex-basis: 50px;
+    flex-basis: 50px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
 }
 
 .archive_post_blurb {
-    // width: 100%;
+    @include flexbox();
+    @include flex-flow(column nowrap);
+    @include justify-content(space-around);
+
+    width: 100%;
+    padding: 5px;
+
+    border-radius: 10px;
+
+    margin: 0;
+
+    overflow: hidden;
+}
+
+.archive_blurb_test_container {
+    overflow: hidden;
 }

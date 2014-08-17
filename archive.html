@@ -5,7 +5,7 @@ layout: default
 <div class="home">
   <h1 class="page-heading">Archive</h1>
 
-  <p>
+  <div class="archive">
     <!-- This is a little bonkers, coming in at O(N^3), but it's simple and more understandable
     than the alternatives. If performance becomes an issue I will revisit. -->
 
@@ -23,6 +23,7 @@ layout: default
 
         {% if year_check_year != year %}
           {% capture year %}{{ year_check_year }}{% endcapture %}
+          {% assign month = false %}
 
           <li class="archive_year_element">
             <h2 class="archive_year">{{ year }}</h2>
@@ -36,7 +37,7 @@ layout: default
                     {% capture month %}{{ month_check_month }}{% endcapture %}
 
                     <li class="archive_month_element">
-                      <h3 class="archive_month">{{ month }}</h3>
+                      <h2 class="archive_month">{{ month }}</h2>
                       <ul class="archive_post_list archive_list">
                         {%for post in site.posts %}
                           {% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
@@ -60,14 +61,24 @@ layout: default
                                 <!-- create the sass to color the banner -->
                                 {% capture to_scssify %}
                                   {% include categories.scss %}
+
                                   @if variable-exists({{ category_color_name }}) {
                                     #{{ post_id }} {
                                       background-color: ${{ category_color_name }};
+                                    }
+                                    #{{ post_id }}-inner {
+                                      background-color: lighten(${{ category_color_name }}, 10%);
+                                    }
+                                    #{{ post_id }} {
+                                      border-color: darken(${{ category_color_name }}, 5%);
                                     }
                                   }
                                   @else {
                                     #{{ post_id }} {
                                       background-color: $category-default-color;
+                                    }
+                                    #{{ post_id }}-inner {
+                                      background-color: lighten($category-default-color, 10%);
                                     }
                                   }
                                 {% endcapture %}
@@ -79,12 +90,13 @@ layout: default
 
                                 <!-- the banner itself -->
                                 <a href="{{ post.url }}">
-                                  <div class="archive_post">
-                                    <div>
-                                      <img class="archive_post_image" src="http://www.iconsdb.com/icons/download/royal-blue/right-circular-512.png"></img>
-                                    </div>
-                                    <div>
-                                      <span class="archive_post_blurb {{ category_selector_name }}">{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</span> — <small>{{ post.excerpt | strip_html | truncatewords: 50 }}</small>
+                                  <div id="{{ post_id }}" class="archive_post">
+                                    <div class="archive_post_image"><img src="http://www.iconsdb.com/icons/download/royal-blue/right-circular-512.png"></img></div>
+                                    <div id="{{ post_id }}-inner" class="archive_post_blurb">
+                                      <div class="archive_blurb_test_container">
+                                        <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>
+                                        <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 50 }}{% endif %}</p>
+                                      </div>
                                     </div>
                                   </div>
                                 </a>
@@ -105,7 +117,8 @@ layout: default
         {% endif %}
       {% endfor %}
     </ul>
-  </p>
+
+  </div>
 
 <!--   <ul class="post-list">
     {% for post in site.posts %}
