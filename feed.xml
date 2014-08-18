@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archagon Was Here (Jekyll Test)</title>
+    <description>Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+</description>
+    <link>http://www.archagon.net/</link>
+    <atom:link href="http://www.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 18 Aug 2014 12:07:00 +0100</pubDate>
+    <lastBuildDate>Mon, 18 Aug 2014 12:07:00 +0100</lastBuildDate>
+    <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Second Post</title>
+        <description>&lt;p&gt;This is the second Jekyll post. The intent here is to test all the power features I intend to use in my blog, among them header images, category highlighting, code, article layout, and more.&lt;/p&gt;
+
+&lt;p&gt;For the first paragraph, let’s test some images.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/SxSKhhK.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, let’s test this code snippet. Below is an example of some pretty terrible code in a language I just made up.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;varbal b set 20
+for varbal c in b [
+    b plag 5
+    b plag plag
+    if b egwal 5 [
+        retarn
+    ]
+]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 16 Aug 2014 13:03:39 +0100</pubDate>
+        <link>http://www.archagon.net/programming/2014/08/16/second-post.html</link>
+        <guid isPermaLink="true">http://www.archagon.net/programming/2014/08/16/second-post.html</guid>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve --watch&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 16 Aug 2014 10:03:39 +0100</pubDate>
+        <link>http://www.archagon.net/jekyll/update/2014/08/16/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://www.archagon.net/jekyll/update/2014/08/16/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+        <category>update</category>
+        
+      </item>
+    
+      <item>
+        <title>Gathering the Goods, Part 2</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/Cruise Balconies.jpeg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2013/8/28/gathering-the-goods&quot;&gt;My first run at a packing list&lt;/a&gt; was suprisingly solid: everything worked pretty much as intended and there wasn’t anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I very rarely used my Silver Streak bag as a backpack, and when I did, it was just too heavy for prolonged use. (The total weight of all my equipment was almost 50 pounds.) As a result, I mostly ended up detatching the backpack and carrying the main bag on a shoulder strap, which was very uncomfortable.&lt;/li&gt;
+  &lt;li&gt;All my important equipment rarely left my backpack. I hardly ever used the expanded compartment in the main bag for anything other than a few spare parts, souvenirs, and my Wacom tablet.&lt;/li&gt;
+  &lt;li&gt;I gathered a lot of food ingredients during my travels, and to avoid a mess, I carried them in a separate cloth bag. There was never any need to store perishables in the main bag.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As a result, I have replaced my Silver Streak with an &lt;a href=&quot;http://www.amazon.com/dp/B00BYFABC2/?tag=arcwasher-20&quot;&gt;Eagle Creek Switchback 22&lt;/a&gt; (on sale). The Switchback does almost everything the Silver Streak does, but adds one vital feature for city use: wheels! Contrary to most of the advice I found on travel blogs, I desparately wished for wheels many times during my trip. (Maybe this would be different if I were spending long miles walking on unpaved roads, but the fact is that most of my traveling happens in modern cities and not the countryside.) The backpack half of the bag now serves as the store for all my tech equipment, while the main bag keeps all my clothes and accessories. Among other things, this consolidation means that I no longer have to move things from bag to bag when I’m leaving the main bag in a locker or on a bus/train/plane. Space is more tight than in the Silver Streak, but everything still fits. (At the moment, I’ve decided to roll up my jacket and clip it onto the handle, since cramming it in takes a bit too much effort.) The Switchback offers great flexibility in regards to transport: backpack zipped onto the main bag, backpack threaded onto the carrying handle, or backpack and main bag separate. (So far, I’ve found the most convenient option to be zipping the backpack onto the main bag and using the wheels. You can walk many miles like this without a problem.) There are many other details that make the Switchback feel like a high quality product, from the multipurpose outside straps to the secondary handle position all the way down to the stitching. It’s clear that a lot of thought was put into the design. One minor annoynace is that the backpack straps have to be taken off the backpack to be used with the main bag, but since I’m mostly set on using the wheels, this isn’t a big deal for me. Before I settled on the Switchback, I also tried the &lt;a href=&quot;http://www.amazon.com/dp/B006P65P1W/?tag=arcwasher-20&quot;&gt;Osprey Meridian&lt;/a&gt;, but I was simply not able cram all my stuff in!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Cruise Desk.jpg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I also made a few other changes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An &lt;a href=&quot;http://www.backcountry.com/eider-roc-de-chere-jacket-mens&quot;&gt;Eider Roc de Chere&lt;/a&gt; jacket in blue (also on sale). I made a bad call on my previous jacket: it was cold, scratchy, and most definitely not waterproof. I briefly considered applying more wax, which is what you’re supposed to do to make a waxed cotton jacket more water resistant, but I decided it wasn’t worth my time. Instead, I set out to find a no-compromise jacket this time around: waterproof, warm, comfortable, usable in all cold weather conditions, featuring a detatchable hood, and not horrendously ugly. (Most of the widely-recommended technical jackets and rain shells fell into that category for me.) I tried on a large number of different jackets from REI, Nau, Carhartt, Patagonia, Marmot, Eider, and Helly Hahn. Close contenders were the &lt;a href=&quot;http://www.rei.com/product/833085/rei-montour-travel-jacket-mens&quot;&gt;REI Montour&lt;/a&gt; (green is not my favorite color), the &lt;a href=&quot;http://www.amazon.com/dp/B007MKTRVY/?tag=arcwasher-20&quot;&gt;Carhartt Grayling&lt;/a&gt; (fit perfectly, but material felt plasticky), and the &lt;a href=&quot;http://www.nau.com/mens/categories/jackets/temp-jacket-plaid-050m01.html&quot;&gt;Nau Temp&lt;/a&gt; (super comfy, but too warm and the fit wasn’t right around the waist). The Roc de Chere’s material is light enough for use even in warm-ish weather, and the color and material are fairly unique. Still, I wish it had buttons down the front! Is jacket envy a thing?&lt;/li&gt;
+  &lt;li&gt;A pair of &lt;a href=&quot;http://www.amazon.com/dp/B002F00D9G/?tag=arcwasher-20&quot;&gt;Adidas Duramo&lt;/a&gt; slides. The Nike Benassis I had earlier were very comfortable, but the mesh lining took &lt;em&gt;forever&lt;/em&gt; to dry out, to the point where, one, I simply couldn’t shower in them if I had to leave the next day, and two, they actually had a propensity to mold! Their everlasting wetness also ensured that they could never double as slippers. Despite being made of a plastic-like material, my new Duramos are shockingly comfortable and dry out pretty much immediately. Somebody on the internet described them as “prison sandals”, but no worries: all you have to do is lower your standards and you’ll be going out in public in no time!&lt;/li&gt;
+  &lt;li&gt;Two cloth bags: one for food (as mentioned earlier) and one for carrying dirty laundry around. They barely take up any space.&lt;/li&gt;
+  &lt;li&gt;A very small tea cup from DAVID’s Tea. I keep it in the same bag as my socks and glasses. Purchased in Toronto!&lt;/li&gt;
+  &lt;li&gt;An &lt;a href=&quot;http://www.amazon.com/dp/B00D5T3QK4/?tag=arcwasher-20&quot;&gt;Anker Astro E5&lt;/a&gt; battery charger. Way too often, I would leave my house without having charged my phone and then end up desparately looking for a power outlet by the end of the day. With this device, I always have some extra charge on me. (Quite a bit of extra charge, actually.) It’s also useful for charging all my small electronics when I’m too far from an outlet, or when I want to keep my belongings close to me in a hostel. An essential gadget.&lt;/li&gt;
+  &lt;li&gt;A &lt;a href=&quot;http://www.amazon.com/dp/B00E9B8V5M/?tag=arcwasher-20&quot;&gt;tiny Lightning cable&lt;/a&gt; for my keychain. It bends in a way that allows me to hook up my iPhone to the aformentioned battery charger in my jacket pocket without having to deal with cable spaghetti.&lt;/li&gt;
+  &lt;li&gt;A &lt;a href=&quot;http://www.amazon.com/dp/B000056VTW/?tag=arcwasher-20&quot;&gt;small multitool&lt;/a&gt;, consisting mostly of pliers and screwdrivers. No knives, so it’s (nominally) TSA-safe.&lt;/li&gt;
+  &lt;li&gt;A &lt;a href=&quot;http://www.amazon.com/dp/B0056B9U0Y/?tag=arcwasher-20&quot;&gt;ShedRain Windjammer&lt;/a&gt; umbrella, based on last year’s recommendation on &lt;a href=&quot;http://thewirecutter.com/reviews/best-umbrella/&quot;&gt;The Wirecutter&lt;/a&gt;. London Fog’s umbrella was awful and broke after about a week of use.&lt;/li&gt;
+  &lt;li&gt;A long &lt;a href=&quot;http://www.amazon.com/dp/B000BU7U0W/?tag=arcwasher-20&quot;&gt;stainless steel mesh tea infuser&lt;/a&gt;. Aside from a little metal tag which I bent out of the way, this thing fits perfectly into my Klean Kanteen and allows me to brew loose-leaf tea with plenty of room for leaf expansion. It’s the only one of its kind that I was able to find! Every other teaball is either tiny or doesn’t fit into the Kleen Kanteen.&lt;/li&gt;
+  &lt;li&gt;A &lt;a href=&quot;http://www.amazon.com/dp/B00E4MQODC/?tag=arcwasher-20&quot;&gt;Logitech G602 wireless mouse&lt;/a&gt;. It works well enough and eliminates an annoying stretch of cable. Sensitivity, tracking, and latency are great for gaming use. (In fact, I saw some measurements that put the latency on par with wired mice!) Battery lasts a month. Range is really iffy, but I’m only planning to use it next to my computer, so that’s not really an issue.&lt;/li&gt;
+  &lt;li&gt;A set of &lt;a href=&quot;http://www.amazon.com/dp/B00AWD9LY6/?tag=arcwasher-20&quot;&gt;collapsible compact chopsticks&lt;/a&gt;. I occasionally find myself in situations where I could really use some sort of utensil, and these chopsticks get the job done in most situations. (Plus, they’re great for munching on small, greasy foods like popcorn or chips!)&lt;/li&gt;
+  &lt;li&gt;A &lt;a href=&quot;http://www.amazon.com/dp/B009M3PIHQ/?tag=arcwasher-20&quot;&gt;Pilot Metropolitan fountain pen&lt;/a&gt; — just because it’s sweet. &lt;code&gt;:)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Already, HoboPack Mark II feels so much more useful and refined. Onward to more adventures!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 Aug 2013 00:00:00 +0100</pubDate>
+        <link>http://www.archagon.net/travel/2013/08/28/gathering-the-goods-part-2.html</link>
+        <guid isPermaLink="true">http://www.archagon.net/travel/2013/08/28/gathering-the-goods-part-2.html</guid>
+        
+        
+        <category>travel</category>
+        
+      </item>
+    
+      <item>
+        <title>Older Post</title>
+        <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 12 Dec 2012 00:00:00 +0000</pubDate>
+        <link>http://www.archagon.net/jekyll/2012/12/12/older-post.html</link>
+        <guid isPermaLink="true">http://www.archagon.net/jekyll/2012/12/12/older-post.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Older Post 2</title>
+        <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 11 Dec 2012 00:00:00 +0000</pubDate>
+        <link>http://www.archagon.net/2012/12/11/older-categoryless-post.html</link>
+        <guid isPermaLink="true">http://www.archagon.net/2012/12/11/older-categoryless-post.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Other Older Post</title>
+        <description>&lt;p&gt;This is another intentionally older post to test the archive page.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
+        <link>http://www.archagon.net/jekyll/2012/01/01/older-post2.html</link>
+        <guid isPermaLink="true">http://www.archagon.net/jekyll/2012/01/01/older-post2.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+  </channel>
+</rss>
