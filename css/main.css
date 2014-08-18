@@ -355,6 +355,9 @@ pre {
   -webkit-flex-shrink: 0;
   -webkit-flex-grow: 0;
   -webkit-flex-basis: 50px;
+  -moz-flex-shrink: 0;
+  -moz-flex-grow: 0;
+  -moz-flex-basis: 50px;
   text-align: right; }
 
 .archive_month_list {
@@ -396,6 +399,9 @@ pre {
   -webkit-flex-shrink: 0;
   -webkit-flex-grow: 0;
   -webkit-flex-basis: 100px;
+  -moz-flex-shrink: 0;
+  -moz-flex-grow: 0;
+  -moz-flex-basis: 100px;
   text-align: right;
   color: darkblue; }
 
@@ -456,6 +462,8 @@ pre {
   -webkit-flex-shrink: 0;
   -webkit-flex-grow: 0;
   -webkit-flex-basis: 70px;
+  -moz-flex-shrink: 0;
+  -moz-flex-grow: 0;
   -moz-flex-basis: 70px;
   flex-basis: 70px;
   margin-top: auto;
