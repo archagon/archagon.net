@@ -358,6 +358,7 @@ pre {
   -moz-flex-shrink: 0;
   -moz-flex-grow: 0;
   -moz-flex-basis: 50px;
+  flex-basis: 50px;
   text-align: right; }
 
 .archive_month_list {
@@ -402,6 +403,7 @@ pre {
   -moz-flex-shrink: 0;
   -moz-flex-grow: 0;
   -moz-flex-basis: 100px;
+  flex-basis: 100px;
   text-align: right;
   color: darkblue; }
 
