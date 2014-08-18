@@ -1,0 +1,64 @@
+// this file contains the markup to dynamically add the pictures and colors to each archive post
+
+{% include categories.scss %}
+
+// capture the name of the expected category color selector
+{% if post.categories != empty %}
+  {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}
+{% else %}
+  {% capture category_color_name %}category-default-color{% endcapture %}
+{% endif %}
+
+// hide the default icon if there's an image
+{% if post.using_default_icon == false %}
+  #{{ post.selector_id }} .archive_post_image {
+      visibility: hidden;
+  }
+{% endif %}
+
+$archive_post_inner_color_alpha: 0.95;
+$archive_post_inner_color_lightness: 8%;
+$archive_post_border_color_darkness: 5%;
+
+// TODO: mixin?
+// set the colors for all the post elements
+@if variable-exists({{ category_color_name }}) {
+  #{{ post.selector_id }} {
+    background-color: ${{ category_color_name }};
+    border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);
+  }
+  #{{ post.selector_id }}-inner {
+    {% if post.using_default_icon == false %}
+      background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);
+    {% else %}
+      background-color: lighten(${{ category_color_name }}, $archive_post_inner_color_lightness);
+    {% endif %}
+  }
+}
+@else {
+  #{{ post.selector_id }} {
+    background-color: $category-default-color;
+    border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);
+  }
+  #{{ post.selector_id }}-inner {
+    {% if post.using_default_icon == false %}
+      background-color: rgba($category-default-color, $archive_post_inner_color_alpha);
+    {% else %}
+      background-color: lighten($category-default-color, $archive_post_inner_color_lightness);
+    {% endif %}
+  }
+}
+
+// set the post background image, if appropriate
+{% if post.using_default_icon == false %}
+  #{{ post.selector_id }} {
+    $standard_width: 800px;
+    $expected_scale: 0.65;
+    $scale: $expected_scale * $standard_width / {{ post.icon_width }}px;
+    background-image: url('{{ post.icon_url }}');
+    background-size: {{ post.icon_width }}px * $scale {{ post.icon_height }}px * $scale;
+    {% if post.icon-center-x && post.icon-center-y %}
+      background-position: top -{{ post.icon-center-y }} * {{ post.icon_height }}px * $scale + 40px left -{{ post.icon-center-x }} * {{ post.icon_width }}px * $scale + 40px;
+    {% endif %}
+  }
+{% endif %}

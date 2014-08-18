@@ -5,8 +5,8 @@ date:   2014-08-16 12:03:39
 description: "A test post containing test cases for certain power features."
 categories: programming
 icon: "/images/SxSKhhK.jpg"
-icon-center-x: 48%
-icon-center-y: 42%
+icon-center-x: 0.48
+icon-center-y: 0.42
 ---
 This is the second Jekyll post. The intent here is to test all the power features I intend to use in my blog, among them header images, category highlighting, code, article layout, and more.
 

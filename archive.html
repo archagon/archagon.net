@@ -39,74 +39,26 @@ layout: default
                     <li class="archive_month_element">
                       <h2 class="archive_month">{{ month }}</h2>
                       <ul class="archive_post_list archive_list">
-                        {%for post in site.posts %}
+                        {% for post in site.posts %}
                           {% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
                           {% capture post_month %}{{ post.date | date: "%B" }}{% endcapture %}
 
                           {% if year == post_year %}
                             {% if month == post_month %}
 
-                              <li class="archive_post_element">
-                                <!-- capture the name of the expected category color selector -->
-                                {% if post.categories != empty %}
-                                  {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}
-                                {% else %}
-                                  {% capture category_color_name %}category-default-color{% endcapture %}
-                                {% endif %}
-
-                                <!-- capture the selector-ified post id -->
-                                <!-- TODO: add as variable, maybe? -->
-                                {% capture post_id %}{{ post.id | cgi_escape | replace: "%", "_" }}{% endcapture %}
-
-                                <!-- background-position: left {{ post.icon-center-x }} top {{ post.icon-center-y }}; -->
-                                <!-- create the sass to color the banner -->
-                                {% capture to_scssify %}
-                                  {% include categories.scss %}
-
-                                  {% if post.using_default_icon == false %}
-                                    #{{ post_id }} .archive_post_image {
-                                        visibility: hidden;
-                                    }
-                                  {% endif %}
-
-                                  @if variable-exists({{ category_color_name }}) {
-                                    #{{ post_id }} {
-                                      background-color: ${{ category_color_name }};
-                                      {% if post.using_default_icon == false %}
-                                        background-image: url('{{ post.icon_url }}');
-                                        background-size: 800px auto;
-                                        {% if post.icon-center-x && post.icon-center-y %}
-                                          background-position: left 100px top 100px;
-                                        {% endif %}
-                                      {% endif %}
-                                    }
-                                    #{{ post_id }}-inner {
-                                      background-color: rgba(${{ category_color_name }}, 0.9);
-                                    }
-                                    #{{ post_id }} {
-                                      border-color: darken(${{ category_color_name }}, 5%);
-                                    }
-                                  }
-                                  @else {
-                                    #{{ post_id }} {
-                                      background-color: $category-default-color;
-                                    }
-                                    #{{ post_id }}-inner {
-                                      background-color: lighten($category-default-color, 10%);
-                                    }
-                                  }
+                              <!-- we need this here because this CSS is dependant on the post metadata -->
+                              <style>
+                                {% capture archive_post_to_scss %}
+                                  {% include archive_post.scss %}
                                 {% endcapture %}
+                                {{ archive_post_to_scss | scssify }}
+                              </style>
 
-                                <!-- apply the generated color style -->
-                                <style>
-                                  {{ to_scssify | scssify }}
-                                </style>
-
-                                <!-- the banner itself -->
+                              <li class="archive_post_element">
                                 <a href="{{ post.url }}">
-                                  <div id="{{ post_id }}" class="archive_post">
+                                  <div id="{{ post.selector_id }}" class="archive_post">
                                     <div class="archive_post_image"><img src="{{ post.icon_url }}"></img></div>
-                                    <div id="{{ post_id }}-inner" class="archive_post_blurb">
+                                    <div id="{{ post.selector_id }}-inner" class="archive_post_blurb">
                                       <div class="archive_blurb_test_container">
                                         <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>
                                         <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 50 }}{% endif %}</p>
