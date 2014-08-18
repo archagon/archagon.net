@@ -5,6 +5,8 @@ date:   2013-8-28
 description: "The second revision of my globetrotting packing list."
 categories: travel
 icon: "/images/Cruise Balconies.jpeg"
+icon-center-x: 26.5%
+icon-center-y: 32.5%
 ---
 ![Caption goes here.](/images/Cruise Balconies.jpeg)
 

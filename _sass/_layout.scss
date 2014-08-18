@@ -354,9 +354,9 @@
 
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
-    -webkit-flex-basis: 50px;
-    -moz-flex-basis: 50px;
-    flex-basis: 50px;
+    -webkit-flex-basis: 70px;
+    -moz-flex-basis: 70px;
+    flex-basis: 70px;
 
     margin-top: auto;
     margin-bottom: auto;
@@ -376,6 +376,8 @@
     margin: 0;
 
     overflow: hidden;
+
+    color: black;
 }
 
 .archive_blurb_test_container {

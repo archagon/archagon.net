@@ -58,16 +58,30 @@ layout: default
                                 <!-- TODO: add as variable, maybe? -->
                                 {% capture post_id %}{{ post.id | cgi_escape | replace: "%", "_" }}{% endcapture %}
 
+                                <!-- background-position: left {{ post.icon-center-x }} top {{ post.icon-center-y }}; -->
                                 <!-- create the sass to color the banner -->
                                 {% capture to_scssify %}
                                   {% include categories.scss %}
 
+                                  {% if post.using_default_icon == false %}
+                                    #{{ post_id }} .archive_post_image {
+                                        visibility: hidden;
+                                    }
+                                  {% endif %}
+
                                   @if variable-exists({{ category_color_name }}) {
                                     #{{ post_id }} {
                                       background-color: ${{ category_color_name }};
+                                      {% if post.using_default_icon == false %}
+                                        background-image: url('{{ post.icon_url }}');
+                                        background-size: 800px auto;
+                                        {% if post.icon-center-x && post.icon-center-y %}
+                                          background-position: left 100px top 100px;
+                                        {% endif %}
+                                      {% endif %}
                                     }
                                     #{{ post_id }}-inner {
-                                      background-color: lighten(${{ category_color_name }}, 10%);
+                                      background-color: rgba(${{ category_color_name }}, 0.9);
                                     }
                                     #{{ post_id }} {
                                       border-color: darken(${{ category_color_name }}, 5%);

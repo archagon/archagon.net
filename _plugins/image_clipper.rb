@@ -5,6 +5,7 @@ class Generator < Jekyll::Generator
         for post in site.posts
             if site.config['default_icon']
                 post.data['icon_url'] = File.join("/", image_dir, site.config['default_icon'])
+                post.data['using_default_icon'] = true
             end
 
             if post.data['icon']
@@ -19,10 +20,9 @@ class Generator < Jekyll::Generator
                 
                     FileUtils::copy(icon_url, file)
                     post.data['icon_url'] = File.join("/", file)
+                    post.data['using_default_icon'] = false
                 end
             end
-
-            puts "url is #{post.data['icon_url']}"
         end
     end
 end
