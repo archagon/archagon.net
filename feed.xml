@@ -4,10 +4,10 @@
     <title>Archagon Was Here (Jekyll Test)</title>
     <description>Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
 </description>
-    <link>http://www.archagon.net/</link>
-    <atom:link href="http://www.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 18 Aug 2014 12:07:00 +0100</pubDate>
-    <lastBuildDate>Mon, 18 Aug 2014 12:07:00 +0100</lastBuildDate>
+    <link>http://archagon.github.io/archagon.net/</link>
+    <atom:link href="http://archagon.github.io/archagon.net/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 18 Aug 2014 13:41:29 +0100</pubDate>
+    <lastBuildDate>Mon, 18 Aug 2014 13:41:29 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -31,8 +31,8 @@ for varbal c in b [
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Sat, 16 Aug 2014 13:03:39 +0100</pubDate>
-        <link>http://www.archagon.net/programming/2014/08/16/second-post.html</link>
-        <guid isPermaLink="true">http://www.archagon.net/programming/2014/08/16/second-post.html</guid>
+        <link>http://archagon.github.io/archagon.net/programming/2014/08/16/second-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net/programming/2014/08/16/second-post.html</guid>
         
         
         <category>programming</category>
@@ -57,8 +57,8 @@ for varbal c in b [
 
 </description>
         <pubDate>Sat, 16 Aug 2014 10:03:39 +0100</pubDate>
-        <link>http://www.archagon.net/jekyll/update/2014/08/16/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://www.archagon.net/jekyll/update/2014/08/16/welcome-to-jekyll.html</guid>
+        <link>http://archagon.github.io/archagon.net/jekyll/update/2014/08/16/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net/jekyll/update/2014/08/16/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
@@ -103,8 +103,8 @@ for varbal c in b [
 &lt;p&gt;Already, HoboPack Mark II feels so much more useful and refined. Onward to more adventures!&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Aug 2013 00:00:00 +0100</pubDate>
-        <link>http://www.archagon.net/travel/2013/08/28/gathering-the-goods-part-2.html</link>
-        <guid isPermaLink="true">http://www.archagon.net/travel/2013/08/28/gathering-the-goods-part-2.html</guid>
+        <link>http://archagon.github.io/archagon.net/travel/2013/08/28/gathering-the-goods-part-2.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net/travel/2013/08/28/gathering-the-goods-part-2.html</guid>
         
         
         <category>travel</category>
@@ -116,8 +116,8 @@ for varbal c in b [
         <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
 </description>
         <pubDate>Wed, 12 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://www.archagon.net/jekyll/2012/12/12/older-post.html</link>
-        <guid isPermaLink="true">http://www.archagon.net/jekyll/2012/12/12/older-post.html</guid>
+        <link>http://archagon.github.io/archagon.net/jekyll/2012/12/12/older-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net/jekyll/2012/12/12/older-post.html</guid>
         
         
         <category>jekyll</category>
@@ -129,8 +129,8 @@ for varbal c in b [
         <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
 </description>
         <pubDate>Tue, 11 Dec 2012 00:00:00 +0000</pubDate>
-        <link>http://www.archagon.net/2012/12/11/older-categoryless-post.html</link>
-        <guid isPermaLink="true">http://www.archagon.net/2012/12/11/older-categoryless-post.html</guid>
+        <link>http://archagon.github.io/archagon.net/2012/12/11/older-categoryless-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net/2012/12/11/older-categoryless-post.html</guid>
         
         
       </item>
@@ -140,8 +140,8 @@ for varbal c in b [
         <description>&lt;p&gt;This is another intentionally older post to test the archive page.&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jan 2012 00:00:00 +0000</pubDate>
-        <link>http://www.archagon.net/jekyll/2012/01/01/older-post2.html</link>
-        <guid isPermaLink="true">http://www.archagon.net/jekyll/2012/01/01/older-post2.html</guid>
+        <link>http://archagon.github.io/archagon.net/jekyll/2012/01/01/older-post2.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net/jekyll/2012/01/01/older-post2.html</guid>
         
         
         <category>jekyll</category>
