@@ -12,3 +12,9 @@ github_username:  archagon
 
 # Build settings
 markdown: kramdown
+
+# Extra directories
+image_dir: images
+
+# Extra files
+default_icon: icon_default.png

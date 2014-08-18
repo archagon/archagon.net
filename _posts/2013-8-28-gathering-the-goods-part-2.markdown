@@ -4,6 +4,7 @@ title:  "Gathering the Goods, Part 2"
 date:   2013-8-28
 description: "The second revision of my globetrotting packing list."
 categories: travel
+icon: "/images/Cruise Balconies.jpeg"
 ---
 ![Caption goes here.](/images/Cruise Balconies.jpeg)
 

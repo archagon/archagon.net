@@ -91,7 +91,7 @@ layout: default
                                 <!-- the banner itself -->
                                 <a href="{{ post.url }}">
                                   <div id="{{ post_id }}" class="archive_post">
-                                    <div class="archive_post_image"><img src="http://www.iconsdb.com/icons/download/royal-blue/right-circular-512.png"></img></div>
+                                    <div class="archive_post_image"><img src="{{ post.icon_url }}"></img></div>
                                     <div id="{{ post_id }}-inner" class="archive_post_blurb">
                                       <div class="archive_blurb_test_container">
                                         <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>
