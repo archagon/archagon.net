@@ -274,6 +274,10 @@
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
     -webkit-flex-basis: 50px;
+    -moz-flex-shrink: 0;
+    -moz-flex-grow: 0;
+    -moz-flex-basis: 50px;
+    flex-basis: 50px;
 
     text-align: right;
 }
@@ -297,6 +301,10 @@
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
     -webkit-flex-basis: 100px;
+    -moz-flex-shrink: 0;
+    -moz-flex-grow: 0;
+    -moz-flex-basis: 100px;
+    flex-basis: 100px;
 
     text-align: right;
     color: darkblue;
@@ -354,6 +362,8 @@
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
     -webkit-flex-basis: 70px;
+    -moz-flex-shrink: 0;
+    -moz-flex-grow: 0;
     -moz-flex-basis: 70px;
     flex-basis: 70px;
 
