@@ -2,6 +2,16 @@
 layout: default
 ---
 
+<!-- we need this here because this CSS is dependant on the post metadata -->
+<style>
+    {% for post in site.posts %}
+        {% capture archive_post_to_scss %}
+          {% include archive_post.scss %}
+        {% endcapture %}
+        {{ archive_post_to_scss | scssify }}
+    {% endfor %}
+</style>
+
 <div class="home">
   <h1 class="page-heading">Archive</h1>
 
@@ -11,11 +21,11 @@ layout: default
 
     <!-- TODO: JS filtering for categories and stuff. -->
 
-    <ul>
+    <!-- <ul>
       {% assign posts = (site.posts | where: "layout" , "java-tutorials") %}
       {% for page in tutorials %}
       {% endfor %}
-    </ul>
+    </ul> -->
 
     <ul class="archive_year_list archive_list">
       {% for year_check in site.posts %}
@@ -46,16 +56,8 @@ layout: default
                           {% if year == post_year %}
                             {% if month == post_month %}
 
-                              <!-- we need this here because this CSS is dependant on the post metadata -->
-                              <style>
-                                {% capture archive_post_to_scss %}
-                                  {% include archive_post.scss %}
-                                {% endcapture %}
-                                {{ archive_post_to_scss | scssify }}
-                              </style>
-
                               <li class="archive_post_element">
-                                <a href="{{ post.url }}">
+                                <a href="{{ post.url | prepend: site.baseurl }}">
                                   <div id="{{ post.selector_id }}" class="archive_post">
                                     <div class="archive_post_image"><img src="{{ post.icon_url }}"></img></div>
                                     <div id="{{ post.selector_id }}-inner" class="archive_post_blurb">
