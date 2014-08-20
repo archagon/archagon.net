@@ -16,53 +16,86 @@ require 'nokogiri'
 
 module Jekyll
     module Convertible
+        alias_method :old_read_yaml, :read_yaml
+        def read_yaml(base, name, opts = {})
+            old_read_yaml(base, name, opts)
+            if self.data['title']
+                self.data['title'] = 'replaced'
+            end
+        end
+
         # alias_method :old_transform, :transform
         # def transform
         #     old_transform_output = old_transform
         #     return old_transform_output
         # end
 
+        alias_method :old_do_layout, :do_layout
+        def do_layout(payload, layouts)
+            old_do_layout(payload, layouts)
+            if !place_in_layout?
+                puts "no place in layout for #{self.name}, #{self.class.name}"
+                do_html_preprocessing
+            end
+        end
+
         alias_method :old_render_all_layouts, :render_all_layouts
         def render_all_layouts(layouts, payload, info)
-            HTMLProcessor.analyze_pre_render(self)
+            do_html_preprocessing # place_in_layout? == true
             old_render_all_layouts_output = old_render_all_layouts(layouts, payload, info)
-            HTMLProcessor.analyze_post_render(self)
             return old_render_all_layouts_output
+        end
+
+        # this has to be called before layouts are rendered
+        def do_html_preprocessing
+            TitleFinder.analyze_pre_render(self)
+            ImageCaptionAdder.analyze_pre_render(self)
         end
     end
 end
 
 module Jekyll
-    module HTMLProcessor
+    class HTMLProcessor
         def self.is_valid_to_analyze?(post)
-            # no Excerpt, because it's only used for includes
-            return post.is_a?(Post) || (post.is_a?(Page) && post.ext != ".xml")
+            # no Excerpt, because it's only used for includes TODO: why?
+            for converter in post.converters
+                if converter.output_ext(nil) == ".html"
+                    return true
+                end
+            end
+            return false
         end
 
         def self.analyze_pre_render(post)
             self.analyze(post, true)
         end
 
-        def self.analyze_post_render(post)
-            self.analyze(post, false)
-        end
-
         def self.analyze(post, pre)
             if self.is_valid_to_analyze?(post)
                 nokogiri_html = Nokogiri::HTML(post.output)
-
-                if pre
-                    self.pre_render_callback(post, nokogiri_html)
-                else
-                    self.post_render_callback(post, nokogiri_html)
-                end
-
+                self.pre_render_callback(post, nokogiri_html)
                 post.output = nokogiri_html.to_html
             end
         end
 
         def self.pre_render_callback(post, nokogiri_html)
-            # puts "analyzing pre for #{post.name}.#{post.ext}"
+        end
+    end
+end
+
+module Jekyll
+    class TitleFinder < HTMLProcessor
+        def self.pre_render_callback(post, nokogiri_html)
+            nokogiri_html.xpath("//h1").each do |img|
+                # post.data['title'] = "replaced"
+            end
+        end
+    end
+end
+
+module Jekyll
+    class ImageCaptionAdder < HTMLProcessor
+        def self.pre_render_callback(post, nokogiri_html)
             nokogiri_html.xpath("//img").each do |img|
                 css = "<style>.border
                         {
@@ -79,93 +112,5 @@ module Jekyll
                 img.replace "#{css}#{div}"
             end
         end
-
-        def self.post_render_callback(post, nokogiri_html)
-        end
     end
 end
-
-# # any issues with steps after transform?
-# module Jekyll
-#     module Converters
-#         class HTMLPostProcessor < Converter
-#             # ensures we get the output HTML
-#             priority :lowest
-
-#             def matches(ext)
-#                 # borrowed from Markdown converter
-#                 markdown_rgx = '^\.(' + @config['markdown_ext'].gsub(',','|') +')$'
-#                 markdown_check = (ext =~ Regexp.new(markdown_rgx, Regexp::IGNORECASE))
-#                 html_check = (ext == ".html")
-#                 return (markdown_check) || (html_check)
-#             end
-
-#             def output_ext(ext)
-#                 ".html"
-#             end
-
-#             def post_process(nokogiri_html)
-#                 nokogiri_html.xpath("//img").each do |img|
-#                     # img.replace("<p>NOT AN IMAGE!</p>")
-#                     img.replace "<style>.border{background-color:red;}</style><div class='border'>#{img}test</div>"
-#                 end
-#             end
-
-#             def convert(content)
-#                 html = Nokogiri::HTML(content)
-#                 post_process(html)
-#                 content = html.to_html
-#             end
-#         end
-#     end
-# end
-
-# module Jekyll
-#     class Excerpt
-#         alias_method :old_output_ext, :output_ext
-#         def output_ext
-#             rval = old_output_ext
-#             puts "old excerpt output ext: #{rval}"
-#             return rval
-#         end
-#     end
-# end
-
-# module Jekyll
-#     class Converter
-        
-#         alias_method :old_output_ext, :output_ext
-#         def output_ext(ext)
-#             old_output = old_output_ext(ext)
-#             if old_output == ".html"
-#                 puts "post-processing!"
-#             end
-#             return old_output
-#         end
-
-        # def post_process(nokogiri_html)
-        #     nokogiri_html.xpath("//img").each do |img|
-        #         # img.replace("<p>NOT AN IMAGE!</p>")
-        #         img.replace "<style>.border{background-color:red;}</style><div class='border'>#{img}test</div>"
-        #     end
-        # end
-
-        # def convert(content)
-        #     html = Nokogiri::HTML(content)
-        #     post_process(html)
-        #     content = html.to_html
-        # end
-#     end
-# end
-
-# module Jekyll
-#     module Converters
-#         class ImageCaptionAdder < HTMLPostProcessor
-#             def post_process(nokogiri_html)
-#                 nokogiri_html.xpath("//img").each do |img|
-#                     img.replace("<p>NOT AN IMAGE!</p>")
-#                 end
-#             end
-#         end
-#     end
-# end
