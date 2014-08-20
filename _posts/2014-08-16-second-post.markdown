@@ -4,7 +4,7 @@ title:  "Second Post"
 date:   2014-08-16 12:03:39
 description: "A test post containing test cases for certain power features."
 categories: programming
-icon: "/images/SxSKhhK.jpg"
+icon: "SxSKhhK.jpg"
 icon-center-x: 0.48
 icon-center-y: 0.42
 ---
@@ -12,7 +12,7 @@ This is the second Jekyll post. The intent here is to test all the power feature
 
 For the first paragraph, let's test some images.
 
-![](/images/SxSKhhK.jpg)
+![]({{ site.baseurl }}/images/SxSKhhK.jpg)
 
 Now, let's test this code snippet. Below is an example of some pretty terrible code in a language I just made up.
 

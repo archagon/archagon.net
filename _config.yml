@@ -5,8 +5,8 @@ description: > # this means to ignore newlines until "baseurl:"
   Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal
   blog webspacehomepage, featuring writing on software development, travel, photography,
   and more.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.archagon.net" # the base hostname & protocol for your site
+baseurl: "/archagon.net/" # the subpath of your site, e.g. /blog/ TODO: double slash
+url: "http://archagon.github.io" # the base hostname & protocol for your site
 twitter_username: archagon
 github_username:  archagon
 

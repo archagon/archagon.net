@@ -4,13 +4,13 @@ title:  "Gathering the Goods, Part 2"
 date:   2013-8-28
 description: "The second revision of my globetrotting packing list."
 categories: travel
-icon: "/images/Cruise Balconies.jpeg"
+icon: "Cruise Balconies.jpeg"
 icon-center-x: 0.265
 icon-center-y: 0.325
 ---
-![Caption goes here.](/images/Cruise Balconies.jpeg)
+![Caption goes here.]({{ site.baseurl }}/images/Cruise Balconies.jpeg)
 
-[My first run at a packing list](/2013/8/28/gathering-the-goods) was suprisingly solid: everything worked pretty much as intended and there wasn't anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:
+[My first run at a packing list]({{ site.baseurl }}/2013/8/28/gathering-the-goods) was suprisingly solid: everything worked pretty much as intended and there wasn't anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:
 
 * I very rarely used my Silver Streak bag as a backpack, and when I did, it was just too heavy for prolonged use. (The total weight of all my equipment was almost 50 pounds.) As a result, I mostly ended up detatching the backpack and carrying the main bag on a shoulder strap, which was very uncomfortable.
 * All my important equipment rarely left my backpack. I hardly ever used the expanded compartment in the main bag for anything other than a few spare parts, souvenirs, and my Wacom tablet.
@@ -18,7 +18,7 @@ icon-center-y: 0.325
 
 As a result, I have replaced my Silver Streak with an [Eagle Creek Switchback 22](http://www.amazon.com/dp/B00BYFABC2/?tag=arcwasher-20) (on sale). The Switchback does almost everything the Silver Streak does, but adds one vital feature for city use: wheels! Contrary to most of the advice I found on travel blogs, I desparately wished for wheels many times during my trip. (Maybe this would be different if I were spending long miles walking on unpaved roads, but the fact is that most of my traveling happens in modern cities and not the countryside.) The backpack half of the bag now serves as the store for all my tech equipment, while the main bag keeps all my clothes and accessories. Among other things, this consolidation means that I no longer have to move things from bag to bag when I'm leaving the main bag in a locker or on a bus/train/plane. Space is more tight than in the Silver Streak, but everything still fits. (At the moment, I've decided to roll up my jacket and clip it onto the handle, since cramming it in takes a bit too much effort.) The Switchback offers great flexibility in regards to transport: backpack zipped onto the main bag, backpack threaded onto the carrying handle, or backpack and main bag separate. (So far, I've found the most convenient option to be zipping the backpack onto the main bag and using the wheels. You can walk many miles like this without a problem.) There are many other details that make the Switchback feel like a high quality product, from the multipurpose outside straps to the secondary handle position all the way down to the stitching. It's clear that a lot of thought was put into the design. One minor annoynace is that the backpack straps have to be taken off the backpack to be used with the main bag, but since I'm mostly set on using the wheels, this isn't a big deal for me. Before I settled on the Switchback, I also tried the [Osprey Meridian](http://www.amazon.com/dp/B006P65P1W/?tag=arcwasher-20), but I was simply not able cram all my stuff in!
 
-![Caption goes here.](/images/Cruise Desk.jpg)
+![Caption goes here.]({{ site.baseurl }}/images/Cruise Desk.jpg)
 
 I also made a few other changes:
 
