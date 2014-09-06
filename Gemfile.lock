@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    imgkit (1.4.1)
     mini_portile (0.6.0)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
@@ -11,6 +12,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  imgkit
   nokogiri
   rmagick
   stringex
