@@ -1,0 +1,74 @@
+{% filterize compress %}
+{% comment %} <!--Assign "trip" to a member of site.data.trips before using this template.--> {% endcomment %}
+{% comment %} <!--unique identifier for each city: id/normalize(name)--> {% endcomment %}
+<article class="timeline">
+    {% for trip in timeline-template-trips %}
+    <section>
+        <h2>{{ trip.name }}</h2>
+        <ul>
+            {% for place in trip.places %}
+
+            {% comment %} <!--For querying prev/next objects in the loop iteration.--> {% endcomment %}
+            {% assign next_i = forloop.index0 | plus: 1 %}
+            {% assign prev_i = forloop.index0 | minus: 1 %}
+
+            {% comment %} <!--Country processing: country codes, country class.--> {% endcomment %}
+            {% assign country = site.data.country-codes[place.country] %}
+            {% if country %}
+                {% assign country_class = country | downcase | replace: ' ', '-' %}
+            {% else %}
+                {% assign country_class = null %}
+            {% endif %}
+
+            {% comment %} <!--Date processing: days between dates.--> {% endcomment %}
+            {% if place.date-start and place.date-end %}
+                {% assign standard_date_start = place.date-start | date_to_xmlschema %}
+                {% assign standard_date_end = place.date-end | date_to_xmlschema %}
+                {% capture days %}{% date_calculator sub standard_date_end standard_date_start %}{% endcapture %}
+            {% else %}
+                {% assign days = null %}
+            {% endif %}
+
+            {% comment %} <!--Transport. No inner list.--> {% endcomment %}
+            {% if place.type != null and place.type != "city" %}
+
+            <li>
+                <span class="category-transport {{ place.type }}">
+                    {{ place.name }}
+                    {% if days %}
+                    &nbsp;<span class="days">{{ days }}</span>
+                    {% endif %}
+                </span>
+            </li>
+
+            {% comment %} <!--City. Part of country list.--> {% endcomment %}
+            {% else %}
+
+            {% if forloop.first or place.country != trip.places[prev_i].country %}
+            <li class="sub-list {{ country_class }}">
+                {% if country %}<h3>{{ country }}</h3>{% endif %}
+                <ul>
+            {% endif %}
+
+                    <li>
+                        <span>
+                            {{ place.name }}
+                            {% if days %}
+                            &nbsp;<span class="days">{{ days }}</span>
+                            {% endif %}
+                        </span>
+                    </li>
+
+            {% if forloop.last or place.country != trip.places[next_i].country %}
+                </ul>
+            </li>
+            {% endif %}
+
+            {% endif %}
+
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+</article>
+{% endfilterize %}
