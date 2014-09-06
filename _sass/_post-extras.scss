@@ -1,0 +1,52 @@
+.new_jekyll_assets {
+    padding: 15px;
+    margin: 30px 20px 30px 20px;
+    border: dashed;
+    border-width: 5px;
+    border-color: red;
+    background-color: yellow;
+    font-size: 95%;
+    border-radius: 10px;
+    
+    code {
+        background-color: pink;
+    }
+    
+    h1 {
+        font-size: 125%;
+        font-weight: bold;
+    }
+    
+    .asset-name {
+        font-weight: bold;
+    }
+}
+
+.code-source {
+    $color: mix(orange, white, 40%);
+    $symbol-color: red;
+
+    // position: relative;
+    // left: -25px;
+
+    background-color: $color;
+    color: darken($color, 50%);
+    padding: 5px 10px 5px 10px;
+    margin: 5px auto 5px auto;
+    font-size: 105%;
+    font-weight: 500;
+    display: inline-block;
+    border-radius: 5px;
+
+    &::before {
+        font-size: 120%;
+        margin-right: 2px;
+        padding: 2px;
+        color: $symbol-color;
+        content: "☎";
+    }
+    
+    p {
+        display: inline;
+    }
+}

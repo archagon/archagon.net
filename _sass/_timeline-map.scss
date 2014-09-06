@@ -1,0 +1,376 @@
+// TODO: top/bottom margin for list
+// TODO: em re: font-size calculations
+// TODO: middle align parentless cells
+// TODO: special cells
+
+
+///////////
+// KNOBS //
+///////////
+
+
+// colors
+$background-color: #E3E2F0;
+$section-color: lighten(#E3E2F0, 8%);
+
+// cell stuff
+$cell-alignment: left;
+$cell-height: 28px;
+$cell-padding: 10px;
+$cell-border-radius: 4px;
+$cell-font-size: $cell-height * 0.5;
+
+// sublist stuff
+$sublist-border-radius: 5px;
+$sublist-border-extrusion: 4px;
+$sublist-country-name-font-size: $cell-font-size * 0.75;
+$sublist-country-name-width: $cell-font-size;
+$sublist-country-name-line-height: $cell-font-size * 0.75;
+
+// spacing
+$line-spacing: 4px;
+$cell-spacing: 9px;
+$sublist-cell-spacing: 6px;
+
+
+////////////////////////////
+// GENERAL-PURPOSE MIXINS //
+////////////////////////////
+
+
+@mixin unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+@mixin headings {
+    h1, h2, h3, h4, h5, h6 {
+        @content;
+    }
+}
+
+
+////////////
+// MARKUP //
+////////////
+
+
+// everything is under timeline so as to not affect the rest of the page, since this will be embedded
+.timeline {
+    // TODO: import reset
+
+
+    // set the box model to be sensible
+    // box-sizing: border-box;
+    *, *:before, *:after {
+        // box-sizing: inherit;
+        box-sizing: border-box;
+    }
+
+
+    ////////////////////
+    // GENERAL LAYOUT //
+    ////////////////////
+
+
+    & {
+        // width: 100%;
+        padding: 10px;
+
+        background: $background-color;
+
+        border-radius: 15px;
+    }
+
+
+    // general header setup
+    @include headings {
+        font-family: Georgia, serif;
+        text-align: center;
+        font-weight: bold;
+    }
+
+
+    h1 {
+        margin: 8px 0 15px 0;
+        font-size: 130%;
+        color: darken($background-color, 70%);
+    }
+
+
+    ////////////////////
+    // SECTION LAYOUT //
+    ////////////////////
+
+
+    & > section {
+        h2 {
+            margin: 10px 5px 13px 5px;
+            // text-align: left;
+            font-size: 100%;
+            color: darken($section-color, 70%);
+        }
+
+
+        margin: 10px 5px 10px 5px;
+        padding: 8px 12px 8px 12px;
+
+        text-align: $cell-alignment;
+
+        background-color: $section-color;
+
+        border: solid;
+        border-color: darken($section-color, 20%);
+        border-width: 5px;
+        border-radius: 10px;
+    }
+
+
+    ////////////////
+    // LIST SETUP //
+    ////////////////
+
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+
+    .sub-list ul {
+        display: inline;
+    }
+
+
+    ////////////////
+    // CELL SETUP //
+    ////////////////
+
+
+    // the list elements create the highlight around the city cells
+    li {
+        display: inline-block;
+
+        text-align: center;
+        vertical-align: middle;
+
+        list-style-type: none;
+    }
+
+
+    // these are the actual city cells
+    li > span {
+        height: $cell-height;
+        display: inline-block;
+
+        text-align: center;
+        vertical-align: middle;
+
+        padding-left: $cell-padding;
+        padding-right: $cell-padding;
+
+        border-radius: $cell-border-radius;
+
+        font-size: $cell-font-size;
+        font-family: Tahoma, Geneva, sans-serif;
+
+        // THIS IS A HACK
+        line-height: $cell-height;
+    }
+
+
+    .days {
+        font-size: 80%;
+        // display: none;
+
+        &::before {
+            content:"\00D7";
+        }
+    }
+
+
+    ///////////////////
+    // SPECIAL CELLS //
+    ///////////////////
+
+
+    .category-transport, .status-in-progress {
+        border-width: 3px;
+
+        // THIS IS A HACK
+        line-height: $cell-height - 3px * 2;
+    }
+
+
+    .category-transport {
+        border: dotted;
+    }
+
+
+    .status-in-progress {
+        border: solid;
+        border-color: lighten(yellow, 15%); // TODO:
+    }
+
+
+    ////////////////////
+    // SUB-LIST SETUP //
+    ////////////////////
+
+
+    .sub-list {
+        border-radius: 5px;
+        display: inline;
+        padding: 0;
+
+        // hide the list heading, it's only there for data completeness
+        & > h3 {
+            display: none;
+        }
+    }
+
+
+    // sub-list cell header setup
+    .sub-list li:nth-child(1)::before {    
+        font-family: sans-serif;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: $sublist-country-name-line-height;
+        width: $sublist-country-name-width;
+        // TODO: make sure line breaks
+        letter-spacing: $sublist-country-name-width * 2;
+        font-size: $sublist-country-name-font-size;
+        font-weight: bold;
+        word-wrap: break-word;
+    }
+
+
+    /////////////////////
+    // SUB-LIST COLORS //
+    /////////////////////
+
+
+    // colors and labels for specific countries
+    @mixin sublist-style($country-class, $country-name, $color) {
+        // sub-list cells; also includes non-list cells for blank call
+        #{$country-class} li > span {
+            color: darken($color, 40%);
+            background-color: lighten($color, 15%);
+            // background-color: mix($color, white, 50%);
+            border-color: darken($color, 30%);
+        }
+        // days font color
+        #{$country-class} .days {
+            color: darken($color, 15%);
+        }
+        // sub-list background
+        #{$country-class}.sub-list > ul > li {
+            background-color: $color;
+        }
+        // sub-list cell header
+        #{$country-class}.sub-list li:nth-child(1)::before {
+            color: darken($color, 20%);
+
+            @if not $country-name {
+                display: none;
+            }
+            @else {
+                content: $country-name;
+            }
+        }
+        #{$country-class}.sub-list li > span > a {
+            background-color: lighten($color, 20%);
+        }
+    }
+    @include sublist-style("", none, gray);
+    @include sublist-style(".united-states", "US", lightblue);
+    @include sublist-style(".canada", "CA", #77DD77);
+    @include sublist-style(".united-kingdom", "UK", #FFB347);
+    @include sublist-style(".spain", "ES", #F49AC2);
+    @include sublist-style(".france", "FR", #CB99C9);
+
+
+    @mixin cell-style($class, $color) {
+        // sub-list cells; also includes non-list cells for blank call
+        // NOTE: IMPORTANT IS NOT GREAT PRACTICE BUT WE NEED IT HERE
+        #{$class} {
+            color: lighten($color, 40%) !important;
+            background-color: $color !important;
+            border-color: lighten($color, 30%) !important;
+        }
+        #{$class} .days {
+            color: lighten($color, 20%) !important;
+        }
+
+
+        
+        #{$class} {
+            position: relative; // TODO: wat?
+        }
+        #{$class}::after {
+            content: url('/images/circle.png');
+            position: absolute;
+            text-align: center;
+            left: 0;
+            right: 0;
+            left: -50px;
+            top: -30px;
+            @include unselectable;
+        }
+    }
+    @include cell-style(".ship", lighten(navy, 30%));
+    @include cell-style(".train", darken(orange, 15%));
+
+
+    /////////////
+    // SPACING //
+    /////////////
+
+
+    // line spacing via margins, since the attribute seems to not work
+    li {
+        margin-top: $line-spacing/2;
+        margin-bottom: $line-spacing/2;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    
+    // top-level cell spacing
+    section > ul > li {
+        margin-right: $cell-spacing;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+
+    ////////////////////
+    // FAKE HIGHLIGHT //
+    ////////////////////
+
+
+    .sub-list {
+        li {
+            padding-left: $sublist-cell-spacing/2;
+            padding-right: $sublist-cell-spacing/2;
+            padding-top: $sublist-border-extrusion;
+            padding-bottom: $sublist-border-extrusion;
+        }
+
+        li:nth-child(1) {
+            border-top-left-radius: $sublist-border-radius;
+            border-bottom-left-radius: $sublist-border-radius;
+        }
+
+        li:last-child {
+            border-top-right-radius: $sublist-border-radius;
+            border-bottom-right-radius: $sublist-border-radius;
+        }
+    }
+}

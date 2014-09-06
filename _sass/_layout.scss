@@ -262,8 +262,12 @@
 
 .archive_year_element {
     @include flexbox();
-    @include flex-flow(row nowrap);
     @include justify-content(space-around);
+
+    @include flex-flow(row nowrap);
+    @include media-query($on-palm) {
+        @include flex-flow(column nowrap);
+    }
 
     margin-top: 15px;
     margin-bottom: 15px;
@@ -273,13 +277,19 @@
     // @include flex(1);
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
-    -webkit-flex-basis: 50px;
     -moz-flex-shrink: 0;
     -moz-flex-grow: 0;
+    -webkit-flex-basis: 50px;
     -moz-flex-basis: 50px;
     flex-basis: 50px;
 
     text-align: right;
+    @include media-query($on-palm) {
+        text-align: left;
+        -webkit-flex-basis: auto;
+        -moz-flex-basis: auto;
+        flex-basis: auto;
+    }
 }
 
 .archive_month_list {
@@ -288,25 +298,40 @@
     @include flexbox();
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
+
+    @include media-query($on-palm) {
+        margin: 0;
+    }
 }
 
 .archive_month_element {
     @include flexbox();
-    @include flex-flow(row nowrap);
     @include justify-content(space-around);
+
+    @include flex-flow(row nowrap);
+    @include media-query($on-palm) {
+        @include flex-flow(column nowrap);
+    }
 }
 
 .archive_month {
     // @include flex(1);
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
-    -webkit-flex-basis: 100px;
     -moz-flex-shrink: 0;
     -moz-flex-grow: 0;
+    -webkit-flex-basis: 100px;
     -moz-flex-basis: 100px;
     flex-basis: 100px;
 
     text-align: right;
+    @include media-query($on-palm) {
+        text-align: left;
+        -webkit-flex-basis: auto;
+        -moz-flex-basis: auto;
+        flex-basis: auto;
+    }
+
     color: darkblue;
 }
 
@@ -316,6 +341,10 @@
     @include flexbox();
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
+
+    @include media-query($on-palm) {
+        margin: 0;
+    }
 }
 
 .archive_post {
@@ -361,9 +390,9 @@
 
     -webkit-flex-shrink: 0;
     -webkit-flex-grow: 0;
-    -webkit-flex-basis: 70px;
     -moz-flex-shrink: 0;
     -moz-flex-grow: 0;
+    -webkit-flex-basis: 70px;
     -moz-flex-basis: 70px;
     flex-basis: 70px;
 
