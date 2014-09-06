@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Design of a Trip Widget</title>
+    <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://archagon.github.io/jekyll/2014/08/28/design-of-a-trip-widget.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Archagon Was Here (Jekyll Test)</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archive/">Archive</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/timeline/">Travel Timeline</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Design of a Trip Widget</h1>
+    <p class="post-meta">Aug 28, 2014</p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="jekyll-design-of-a-trip-widget">Jekyll: Design of a Trip Widget</h1>
+
+<pre><code>TODO: each item links to either cateogry or to the solo post (INTERNET)
+    TODO: separate city category (INTERNET)
+TODO: disabled look (INTERNET)
+TODO: template variables? (INTERNET)
+TODO: trip widget tag
+TODO: circle around current item in jquery
+TODO: autoanchor headers
+</code></pre>
+
+<p>I have just completed a little HTML widget for tracking my travels. Behold!</p>
+
+<p>
+
+    
+    
+    <article class="timeline"><section><h2>US Trip 2013</h2><ul><li class="sub-list united-states"><h3>United States</h3><ul><li><span>Seattle&nbsp;<span class="days">9</span></span></li></ul></li><li class="sub-list canada"><h3>Canada</h3><ul><li><span>Vancouver&nbsp;<span class="days">2</span></span></li><li><span class="category-transport train">Train&nbsp;<span class="days">5</span></span></li><li><span>Toronto&nbsp;<span class="days">12</span></span></li><li><span>Montreal&nbsp;<span class="days">7</span></span></li><li><span>Quebec City&nbsp;<span class="days">5</span></span></li><li><span>Montreal&nbsp;<span class="days">3</span></span></li></ul></li><li class="sub-list united-states"><h3>United States</h3><ul><li><span>New York&nbsp;<span class="days">4</span></span></li><li><span>Boston&nbsp;<span class="days">7</span></span></li><li><span>New York&nbsp;<span class="days">17</span></span></li><li><span>Princeton&nbsp;<span class="days">1</span></span></li><li><span>Philadelphia&nbsp;<span class="days">3</span></span></li><li><span>Chicago&nbsp;<span class="days">7</span></span></li><li><span>New Orleans&nbsp;<span class="days">6</span></span></li><li><span>Houston&nbsp;<span class="days">1</span></span></li><li><span>Austin&nbsp;<span class="days">8</span></span></li><li><span>Los Angeles&nbsp;<span class="days">3</span></span></li></ul></li></ul></section></article>
+
+</p>
+
+<p>I’ve only marginally dabbled in HTML and CSS before, so I’m quite proud of this little thing. And it’s actually a whole lot more interesting than it looks.</p>
+
+<h2 id="htmlcss">HTML/CSS</h2>
+
+<p>First of all, if you look at the raw HTML, you’ll notice that it’s nothing fancy — just a bunch of nested lists. In other words, almost everything is semantic. I didn’t want <code>div</code> soup if I could help it.</p>
+
+<p>The main HTML/CSS challenges here were, <strong>a)</strong> to display all the cities horizontally and continuously despite them being in different city lists, <strong>b)</strong> have the cities wrap across lines even if they’re in the middle of a country list, and <strong>c)</strong> have a colored highlight around each city list, including across line breaks.</p>
+
+<p>All my research pointed to <code>display: inline</code> being the only way for text to naturally wrap across lines, so I had to set that property on all my city list <code>ul</code> elements. (This also solved the problem of them flowing horizontally instead of vertically.) The actual city <code>li</code>s, however, were marked up as <code>display: inline-block</code>, so that I could adjust the height and appearance freely.</p>
+
+<p>My initial design caused me a bit of a problem with feature c), that being colored borders around all the country lists. Since my lists were <code>inline</code>, their height automatically collapsed to height 0. This meant that setting the background color and padding on the list didn’t have the desired effect in regards to the colored highlight:</p>
+
+<!--<style>
+    div {
+        display: inline-block;
+        width: 400px;   
+    }
+    ul {
+        display: inline;
+        padding: 25px;
+        background-color: yellow;
+    }
+    li {
+        display: inline-block;
+        background-color: salmon;
+        height: 20px;
+        padding: 10px;
+    }
+</style>
+
+<div>
+    <ul>
+        <li>Alabama</li>
+        <li>Alaska</li>
+        <li>Arizona</li>
+        <li>Arkansas</li>
+    </ul>
+</div>-->
+
+<p>I could sort of work around this problem by increasing the padding until it overlapped the top and bottom of each cell, but this required a ton of manual adjustment and variables (including for things like line height) and didn’t even work consistently across browsers.</p>
+
+<p>So instead I went for the “stupid, but works” approach. I moved the CSS that defined each city cell out of its <code>li</code> and into an inner <code>span</code>. Then, I gave each <code>li</code> margins of 0 and the highlight stylings that used to be in the list itself. Finally, the first and last <code>li</code> (using <code>last-item</code> and <code>nth-item</code>) were given border radii only on the corners facing out. This scheme gave the <em>appearance</em> of one continuous colored highlight applied to the list, but was actually a fake highlight applied to all the individual <code>li</code>s. I couldn’t quite get <code>word-spacing</code> and <code>line-height</code> to work with this, but setting <code>padding-left</code>/<code>padding-right</code> and <code>margin-top</code>/<code>margin-bottom</code> worked perfectly fine for that purpose.</p>
+
+<p>This technique inadvertedly solved another ornery problem I was having. After thinking about the best way to designate the country for each list without having lots of intrusive text, I settled on a subtle 2-letter country code at the start of each list. Before I added the extra <code>span</code> to solve the highlight problem, I was using a <code>before</code> pseudo-element on the list to add those letters. This worked fine, but it behaved like another <code>li</code>, which meant that the first city cell could wrap to the next line and leave the country code dangling behind:</p>
+
+<p>~~~example 2~~~</p>
+
+<p>However, with the extra <code>span</code> in each <code>li</code> now containing the actual city cell styling information, I could move the country code to the <code>before</code> pseudo-element on the first <code>li</code> of each country list. Since the country code now belonged to the <code>li</code> and not the list, it wrapped together with the fist cell.</p>
+
+<p>I was seeing another minor problem: there were little slivers of whitespace between all my cells! This was obvious whenever the first element was wrapped:</p>
+
+<p>~~~example 3~~~</p>
+
+<p>I learned after doing a bit of research that setting list elements to <code>inline-block</code> suddenly made the whitespace (and newlines!) between them relevant. StackOverflow provided a number of hacky solutions, including writing all your HTML like this:</p>
+
+<pre><code>&lt;ul
+    &gt;&lt;li&gt;This&lt;/li
+    &gt;&lt;li&gt;hurts&lt;/li
+    &gt;&lt;li&gt;my&lt;/li
+    &gt;&lt;li&gt;head.&lt;/li
+&gt;&lt;/ul&gt;
+</code></pre>
+
+<p>Ultimately, I decided on a better solution: simply use a Liquid filter to automatically strip and remove newlines from the sections in which this matters. Note that this isn’t the same as an overall minification step: since the whitespace becomes relevant in this situation, an explicit strip Liquid tag is important to get the correct meaning across.</p>
+
+<h2 id="sass">SASS</h2>
+
+<p>The next trick is leveraging the power of SASS. In case you don’t know, SASS is a CSS preprocessor that lets you do things like save variables, do math, nest selectors, use macros, and many other powerful features. It makes potentially complicated and repetitive CSS very easy to maintain.</p>
+
+<p>Here’s a good example of the power of SASS. If you look at the CSS for the city widget, you’ll see that each country class has its own set of colors for the background, text, and border. Figuring out these colors manually and typing them all out would have been an unmaintainable mess. By using SASS, I can codify the relationship between each set of colors:</p>
+
+<pre><code>@mixin sublist-style($country-class, $country-name, $color) {
+    // sub-list cells; also includes non-list cells for blank call
+    #{$country-class} li &gt; span {
+        color: darken($color, 40%);
+        background-color: lighten($color, 15%);
+        border-color: darken($color, 30%);
+    }
+    // days font color
+    #{$country-class} .days {
+        color: darken($color, 15%);
+    }
+    // sub-list background
+    #{$country-class}.sub-list &gt; ul &gt; li {
+        background-color: $color;
+    }
+    // sub-list cell header
+    #{$country-class}.sub-list li:nth-child(1)::before {
+        color: darken($color, 20%);
+
+        @if not $country-name {
+            display: none;
+        }
+        @else {
+            content: $country-name;
+        }
+    }
+}
+@include sublist-style("", none, gray);
+@include sublist-style(".united-states", "US", lightblue);
+@include sublist-style(".canada", "CA", #77DD77);
+@include sublist-style(".united-kingdom", "UK", #FFB347);
+@include sublist-style(".spain", "ES", #F49AC2);
+@include sublist-style(".france", "FR", #CB99C9);
+</code></pre>
+
+<p>All the colors are automatically generated from a base color that I provide. The “mixin” (macro) does the rest, including setting the country code text!</p>
+
+<p>SASS also allows me to very easily do things like limit the scope of all my CSS to the timeline widget, add variables to the top of the file for easier tweaking, add mixins to style all header elements simultaneously, and set relationships between different values by using math. It’s easy and intuitive and it makes me sad that it’s not part of the official CSS spec!</p>
+
+<p><div class="code-source ">
+<p>You can find <a href="http://www.google.com">the full SASS file here</a>.</p>
+
+</div></p>
+
+<h2 id="templating--data">Templating &amp; Data</h2>
+
+<p>I was initially writing the HTML for the widget by hand, but now that I was using templating anyway, it made sense to switch to templates fully. After all, even bare-bones HTML makes it hard to read and edit the actual data. (It’s the whole reason Markdown is around!)</p>
+
+<p>Here’s the final trick, and probably the most interesting one. Using the power of Jekyll, I am able to store my data in a simple JSON file and use the powerful Liquid templating engine to automatically generate each trip section based on the data.</p>
+
+<p>One final note: the dates in my trip JSON file are stored as ISO 2-letter country codes. Since I needed the full country name for certain things (selectors, for example), I added an additional JSON data file that maps 2-letter country codes to the full country name.</p>
+
+<p>templates</p>
+
+<p>With these components in place, all I now have to worry about is updating my JSON file. When I do, every page that includes this widget will update automatically! I also have the freedom to add any additional metadata I wish — hostels, weather, star ranking, anything I wish — and only have to worry about changing one little template.</p>
+
+<p>I think this is fundamentally what keeps me so interested in programming: getting to a point in your project where you can basically move mountains with just one little change in a text file.</p>
+
+<p>The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now <em>that’s</em> the power of static blogging!</p>
+
+<p><div class="code-source ">
+<p>You can find the <a href="http://www.google.com">templated HTML file here</a> and the <a href="http://www.google.com">trip JSON file here</a>.</p>
+
+</div></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I realized over the course of this widget’s construction that I was pulling more and more features from Jekyll. This made me happy: I wasn’t 100% on static blogging before this experiment, but now I see now that Jekyll is almost perfectly suited for extensible, data-driven blogging. With relative ease, I can inject completely custom content into my blog posts that nevertheless has a centralized source of truth somewhere in my code. No need for updating multiple blog posts manually. No need for a Javascript crutch. Once I type <code>jekyll build</code>, my site has a fully-working snapshot that can be uploaded anywhere and doesn’t require any server-side dependencies aside from Apache.</p>
+
+<p>If this post seems overly verbose, I’m sorry. I only hope that it might help clarify why a platform like Jekyll is so exciting, and how you can build up an interesting project from bare HTML/CSS all the way to a robust, extensible, data-driven widget that can be used throughout your site.</p>
+
+<p><div class="code-source ">
+<p>As a bit of a meta addendum, check out the pieces coming together in <a href="http://www.google.com">the Markdown for this blog post here</a>!</p>
+
+</div></p>
+
+<style>
+
+hr {
+    display:block;
+    border:0px;
+    height: 15px;
+    margin: 40px 0 40px 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image:url("/images/Decoration.svg");
+}
+
+</style>
+
+<hr />
+
+<div class="new_jekyll_assets">
+
+  <h1 id="jekyll-assets-created-over-the-course-of-this-exercise">Jekyll assets created over the course of this exercise</h1>
+
+  <ul>
+    <li><a href="http://google.com"><span class="asset-name">filterize.rb</span></a> — A Liquid block tag that applies filters to a block of text. Makes doing things like <code>scssify</code> easier — no more <code>capture</code> boilerplate.</li>
+    <li><a href="http://google.com"><span class="asset-name">whitespace_compressor.rb</span></a> — A filter that cuts out newlines and whitespace around each line.</li>
+    <li><a href="http://google.com"><span class="asset-name">date_calculator.rb</span></a> — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.</li>
+    <li><a href="http://google.com"><span class="asset-name">normalize.rb</span></a> — A filter that hooks into a slightly modified <a href="http://google.com">extend-string.rb&lt;/span&gt;</a> in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)</li>
+    <li><a href="http://google.com"><span class="asset-name">divify.rb</span></a> — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)</li>
+    <li><a href="http://google.com"><span class="asset-name">html_sample.rb</span></a> — A Liquid block tag that renders out the given HTML into a PNG.</li>
+  </ul>
+
+</div>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+        <ul class="contact-list">
+          <li>Archagon Was Here (Jekyll Test)</li>
+          <li><a href="mailto:archagon@archagon.net">archagon@archagon.net</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/archagon">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">archagon</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/archagon">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">archagon</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

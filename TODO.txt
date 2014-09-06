@@ -1,0 +1,21 @@
+TODO
+
+designated images
+    icons
+banners for archive page
+rerouting list
+styling — headers, main header
+
+iterate generated markdown
+    find first header
+    find first image
+    replace image with appropriate css
+
+what we want: a plugin that can access the post html right after rendering, but before the post
+is used anywhere else (allows us to process based on rendered output)
+
+
+captions
+get sample posts from blog
+reflow archive
+implicit title
