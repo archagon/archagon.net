@@ -1,20 +1,19 @@
 ---
-layout: default
+layout: page
+title: Archive
+permalink: /archive/
 ---
 
 <!-- we need this here because this CSS is dependant on the post metadata -->
 <style>
     {% for post in site.posts %}
-        {% capture archive_post_to_scss %}
-          {% include archive_post.scss %}
-        {% endcapture %}
-        {{ archive_post_to_scss | scssify }}
+        {% filterize scssify %}
+        {% include archive_post.scss %}
+        {% endfilterize %}
     {% endfor %}
 </style>
 
 <div class="home">
-  <h1 class="page-heading">Archive</h1>
-
   <div class="archive">
     <!-- This is a little bonkers, coming in at O(N^3), but it's simple and more understandable
     than the alternatives. If performance becomes an issue I will revisit. -->
