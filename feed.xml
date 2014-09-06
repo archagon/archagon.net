@@ -4,10 +4,10 @@
     <title>Archagon Was Here (Jekyll Test)</title>
     <description>Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
 </description>
-    <link>http://archagon.github.io/</link>
-    <atom:link href="http://archagon.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 07 Sep 2014 01:43:27 +0200</pubDate>
-    <lastBuildDate>Sun, 07 Sep 2014 01:43:27 +0200</lastBuildDate>
+    <link>http://archagon.github.io/archagon.net//</link>
+    <atom:link href="http://archagon.github.io/archagon.net//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 07 Sep 2014 01:53:44 +0200</pubDate>
+    <lastBuildDate>Sun, 07 Sep 2014 01:53:44 +0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -212,8 +212,8 @@ hr {
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 28 Aug 2014 15:28:22 +0200</pubDate>
-        <link>http://archagon.github.io/jekyll/2014/08/28/design-of-a-trip-widget.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/jekyll/2014/08/28/design-of-a-trip-widget.html</guid>
+        <link>http://archagon.github.io/archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html</guid>
         
         
         <category>jekyll</category>
@@ -235,8 +235,8 @@ hr {
 &lt;p&gt;The benefit here is flexibility. What if we want to experiment with different icon shapes? What if we want to scale them? Add a filter? With just a few lines of Ruby script, we can recreate every image in just a few seconds and completely redo our site.&lt;/p&gt;
 </description>
         <pubDate>Mon, 18 Aug 2014 15:22:13 +0200</pubDate>
-        <link>http://archagon.github.io/2014/08/18/the-mad-power-of-jekyll.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/2014/08/18/the-mad-power-of-jekyll.html</guid>
+        <link>http://archagon.github.io/archagon.net//2014/08/18/the-mad-power-of-jekyll.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//2014/08/18/the-mad-power-of-jekyll.html</guid>
         
         
       </item>
@@ -247,7 +247,7 @@ hr {
 
 &lt;p&gt;For the first paragraph, let’s test some images.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/SxSKhhK.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/archagon.net//images/SxSKhhK.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, let’s test this code snippet. Below is an example of some pretty terrible code in a language I just made up.&lt;/p&gt;
 
@@ -262,8 +262,8 @@ for varbal c in b [
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Sat, 16 Aug 2014 14:03:39 +0200</pubDate>
-        <link>http://archagon.github.io/programming/2014/08/16/second-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/programming/2014/08/16/second-post.html</guid>
+        <link>http://archagon.github.io/archagon.net//programming/2014/08/16/second-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//programming/2014/08/16/second-post.html</guid>
         
         
         <category>programming</category>
@@ -288,8 +288,8 @@ for varbal c in b [
 
 </description>
         <pubDate>Sat, 16 Aug 2014 11:03:39 +0200</pubDate>
-        <link>http://archagon.github.io/jekyll/update/2014/08/16/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/jekyll/update/2014/08/16/welcome-to-jekyll.html</guid>
+        <link>http://archagon.github.io/archagon.net//jekyll/update/2014/08/16/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/update/2014/08/16/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
@@ -300,9 +300,9 @@ for varbal c in b [
     
       <item>
         <title>Gathering the Goods, Part 2</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/Cruise Balconies.jpeg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/archagon.net//images/Cruise Balconies.jpeg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/2013/8/28/gathering-the-goods&quot;&gt;My first run at a packing list&lt;/a&gt; was suprisingly solid: everything worked pretty much as intended and there wasn’t anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/archagon.net//2013/8/28/gathering-the-goods&quot;&gt;My first run at a packing list&lt;/a&gt; was suprisingly solid: everything worked pretty much as intended and there wasn’t anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;I very rarely used my Silver Streak bag as a backpack, and when I did, it was just too heavy for prolonged use. (The total weight of all my equipment was almost 50 pounds.) As a result, I mostly ended up detatching the backpack and carrying the main bag on a shoulder strap, which was very uncomfortable.&lt;/li&gt;
@@ -312,7 +312,7 @@ for varbal c in b [
 
 &lt;p&gt;As a result, I have replaced my Silver Streak with an &lt;a href=&quot;http://www.amazon.com/dp/B00BYFABC2/?tag=arcwasher-20&quot;&gt;Eagle Creek Switchback 22&lt;/a&gt; (on sale). The Switchback does almost everything the Silver Streak does, but adds one vital feature for city use: wheels! Contrary to most of the advice I found on travel blogs, I desparately wished for wheels many times during my trip. (Maybe this would be different if I were spending long miles walking on unpaved roads, but the fact is that most of my traveling happens in modern cities and not the countryside.) The backpack half of the bag now serves as the store for all my tech equipment, while the main bag keeps all my clothes and accessories. Among other things, this consolidation means that I no longer have to move things from bag to bag when I’m leaving the main bag in a locker or on a bus/train/plane. Space is more tight than in the Silver Streak, but everything still fits. (At the moment, I’ve decided to roll up my jacket and clip it onto the handle, since cramming it in takes a bit too much effort.) The Switchback offers great flexibility in regards to transport: backpack zipped onto the main bag, backpack threaded onto the carrying handle, or backpack and main bag separate. (So far, I’ve found the most convenient option to be zipping the backpack onto the main bag and using the wheels. You can walk many miles like this without a problem.) There are many other details that make the Switchback feel like a high quality product, from the multipurpose outside straps to the secondary handle position all the way down to the stitching. It’s clear that a lot of thought was put into the design. One minor annoynace is that the backpack straps have to be taken off the backpack to be used with the main bag, but since I’m mostly set on using the wheels, this isn’t a big deal for me. Before I settled on the Switchback, I also tried the &lt;a href=&quot;http://www.amazon.com/dp/B006P65P1W/?tag=arcwasher-20&quot;&gt;Osprey Meridian&lt;/a&gt;, but I was simply not able cram all my stuff in!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/Cruise Desk.jpg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/archagon.net//images/Cruise Desk.jpg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I also made a few other changes:&lt;/p&gt;
 
@@ -334,8 +334,8 @@ for varbal c in b [
 &lt;p&gt;Already, HoboPack Mark II feels so much more useful and refined. Onward to more adventures!&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Aug 2013 00:00:00 +0200</pubDate>
-        <link>http://archagon.github.io/travel/2013/08/28/gathering-the-goods-part-2.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/travel/2013/08/28/gathering-the-goods-part-2.html</guid>
+        <link>http://archagon.github.io/archagon.net//travel/2013/08/28/gathering-the-goods-part-2.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//travel/2013/08/28/gathering-the-goods-part-2.html</guid>
         
         
         <category>travel</category>
@@ -348,8 +348,8 @@ for varbal c in b [
 &lt;p&gt;I'm a paragraph!&lt;/p&gt;
 &lt;p&gt;another test image:&lt;/p&gt;</description>
         <pubDate>Mon, 19 Aug 2013 22:28:19 +0200</pubDate>
-        <link>http://archagon.github.io/2013/08/19/test-html-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/2013/08/19/test-html-post.html</guid>
+        <link>http://archagon.github.io/archagon.net//2013/08/19/test-html-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//2013/08/19/test-html-post.html</guid>
         
         
       </item>
@@ -359,8 +359,8 @@ for varbal c in b [
         <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
 </description>
         <pubDate>Wed, 12 Dec 2012 00:00:00 +0100</pubDate>
-        <link>http://archagon.github.io/jekyll/2012/12/12/older-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/jekyll/2012/12/12/older-post.html</guid>
+        <link>http://archagon.github.io/archagon.net//jekyll/2012/12/12/older-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/2012/12/12/older-post.html</guid>
         
         
         <category>jekyll</category>
@@ -372,8 +372,8 @@ for varbal c in b [
         <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
 </description>
         <pubDate>Tue, 11 Dec 2012 00:00:00 +0100</pubDate>
-        <link>http://archagon.github.io/2012/12/11/older-categoryless-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/2012/12/11/older-categoryless-post.html</guid>
+        <link>http://archagon.github.io/archagon.net//2012/12/11/older-categoryless-post.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//2012/12/11/older-categoryless-post.html</guid>
         
         
       </item>
@@ -383,8 +383,8 @@ for varbal c in b [
         <description>&lt;p&gt;This is another intentionally older post to test the archive page.&lt;/p&gt;
 </description>
         <pubDate>Sun, 01 Jan 2012 00:00:00 +0100</pubDate>
-        <link>http://archagon.github.io/jekyll/2012/01/01/older-post2.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/jekyll/2012/01/01/older-post2.html</guid>
+        <link>http://archagon.github.io/archagon.net//jekyll/2012/01/01/older-post2.html</link>
+        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/2012/01/01/older-post2.html</guid>
         
         
         <category>jekyll</category>
