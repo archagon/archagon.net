@@ -15,14 +15,11 @@ require 'nokogiri'
     # not to be processed, AND the outside page processed
 
 module Jekyll
-    module Convertible
-        alias_method :old_read_yaml, :read_yaml
-        def read_yaml(base, name, opts = {})
-            old_read_yaml(base, name, opts)
-            if self.data['title']
-                self.data['title'] = 'replaced'
-            end
-        end
+    module ConvertibleTest
+        # alias_method :old_read_yaml, :read_yaml
+        # def read_yaml(base, name, opts = {})
+        #     old_read_yaml(base, name, opts)
+        # end
 
         # alias_method :old_transform, :transform
         # def transform
@@ -30,16 +27,35 @@ module Jekyll
         #     return old_transform_output
         # end
 
-        alias_method :old_do_layout, :do_layout
+        # alias_method :old_do_layout, :do_layout
         def do_layout(payload, layouts)
-            old_do_layout(payload, layouts)
+            old_do_layout_output = old_do_layout(payload, layouts)
+
             if !place_in_layout?
-                puts "no place in layout for #{self.name}, #{self.class.name}"
                 do_html_preprocessing
+            end
+
+            # second pass to re-render potential changes to data
+            has_changed = false
+            for processor in html_processors
+                has_changed = has_changed || processor.post_render_callback(self)
+            end
+
+            puts "i am a #{self.class.name}"
+
+            if has_changed && @not_again != true
+                puts "re-rendering"
+                @not_again = true
+                self.content = @original_content
+                return do_layout(payload, layouts)
+            else
+                # puts "second time around"
+                @not_again = false
+                return old_do_layout_output
             end
         end
 
-        alias_method :old_render_all_layouts, :render_all_layouts
+        # alias_method :old_render_all_layouts, :render_all_layouts
         def render_all_layouts(layouts, payload, info)
             do_html_preprocessing # place_in_layout? == true
             old_render_all_layouts_output = old_render_all_layouts(layouts, payload, info)
@@ -48,8 +64,13 @@ module Jekyll
 
         # this has to be called before layouts are rendered
         def do_html_preprocessing
-            TitleFinder.analyze_pre_render(self)
-            ImageCaptionAdder.analyze_pre_render(self)
+            for processor in html_processors
+                processor.analyze_pre_render(self)
+            end
+        end
+
+        def html_processors
+            return [TitleFinder, ImageCaptionAdder, TitleReplacer]
         end
     end
 end
@@ -59,33 +80,57 @@ module Jekyll
         def self.is_valid_to_analyze?(post)
             # no Excerpt, because it's only used for includes TODO: why?
             for converter in post.converters
-                if converter.output_ext(nil) == ".html"
+                if post.is_a?(Post) || converter.output_ext(nil) == ".html"
                     return true
                 end
             end
             return false
         end
 
+        # can only modify HTML
         def self.analyze_pre_render(post)
             self.analyze(post, true)
+        end
+
+        # can only modify post data
+        def self.analyze_post_render(post)
+            # if self.is_valid_to_analyze?(post)
+                return self.post_render_callback(post)
+            # end
         end
 
         def self.analyze(post, pre)
             if self.is_valid_to_analyze?(post)
                 nokogiri_html = Nokogiri::HTML(post.output)
-                self.pre_render_callback(post, nokogiri_html)
+                self.pre_render_callback(nokogiri_html)
                 post.output = nokogiri_html.to_html
             end
         end
 
-        def self.pre_render_callback(post, nokogiri_html)
+        def self.pre_render_callback(nokogiri_html)
+        end
+
+        def self.post_render_callback(data)
+            return false
+        end
+    end
+end
+
+module Jekyll
+    class TitleReplacer < HTMLProcessor
+        def self.post_render_callback(post)
+            # puts "altering post which is a #{post.class.name}"
+            if post.data['title']
+                post.data['title'] = "IT WORKS!"
+            end
+            return true
         end
     end
 end
 
 module Jekyll
     class TitleFinder < HTMLProcessor
-        def self.pre_render_callback(post, nokogiri_html)
+        def self.pre_render_callback(nokogiri_html)
             nokogiri_html.xpath("//h1").each do |img|
                 # post.data['title'] = "replaced"
             end
@@ -95,7 +140,7 @@ end
 
 module Jekyll
     class ImageCaptionAdder < HTMLProcessor
-        def self.pre_render_callback(post, nokogiri_html)
+        def self.pre_render_callback(nokogiri_html)
             nokogiri_html.xpath("//img").each do |img|
                 css = "<style>.border
                         {
