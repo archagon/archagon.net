@@ -256,7 +256,7 @@ $sublist-cell-spacing: 6px;
 
 
     // colors and labels for specific countries
-    @mixin sublist-style($country-class, $country-name, $color) {
+    @mixin sublist-style($country-class, $color) {
         // sub-list cells; also includes non-list cells for blank call
         #{$country-class} li > span {
             color: darken($color, 40%);
@@ -275,24 +275,32 @@ $sublist-cell-spacing: 6px;
         // sub-list cell header
         #{$country-class}.sub-list li:nth-child(1)::before {
             color: darken($color, 20%);
-
-            @if not $country-name {
-                display: none;
-            }
-            @else {
-                content: $country-name;
-            }
+            display: none;
         }
         #{$country-class}.sub-list li > span > a {
             background-color: lighten($color, 20%);
         }
     }
-    @include sublist-style("", none, gray);
-    @include sublist-style(".united-states", "US", lightblue);
-    @include sublist-style(".canada", "CA", #77DD77);
-    @include sublist-style(".united-kingdom", "UK", #FFB347);
-    @include sublist-style(".spain", "ES", #F49AC2);
-    @include sublist-style(".france", "FR", #CB99C9);
+    @include sublist-style("", gray);
+    @include sublist-style(".united-states", lightblue);
+    @include sublist-style(".canada", #77DD77);
+    @include sublist-style(".united-kingdom", #FFB347);
+    @include sublist-style(".spain", #F49AC2);
+    @include sublist-style(".france", #CB99C9);
+
+
+    @mixin add-country-code($country-class, $country-code) {
+        #{$country-class}.sub-list li:nth-child(1)::before {
+            display: inline-block;
+            content: $country-code;
+        }
+    }
+    @include add-country-code(".united-states", "US");
+    @include add-country-code(".canada", "CA");
+    @include add-country-code(".united-kingdom", "UK");
+    @include add-country-code(".spain", "ES");
+    @include add-country-code(".france", "FR");
+    @include add-country-code(".netherlands", "NA");
 
 
     @mixin cell-style($class, $color) {
@@ -306,22 +314,21 @@ $sublist-cell-spacing: 6px;
         #{$class} .days {
             color: lighten($color, 20%) !important;
         }
-
-
         
-        #{$class} {
-            position: relative; // TODO: wat?
-        }
-        #{$class}::after {
-            content: url('/images/circle.png');
-            position: absolute;
-            text-align: center;
-            left: 0;
-            right: 0;
-            left: -50px;
-            top: -30px;
-            @include unselectable;
-        }
+        // TODO: circle -- probably JS better?        
+        // #{$class} {
+        //     position: relative; // TODO: wat?
+        // }
+        // #{$class}::after {
+        //     content: url('/images/circle.png');
+        //     position: absolute;
+        //     text-align: center;
+        //     left: 0;
+        //     right: 0;
+        //     left: -50px;
+        //     top: -30px;
+        //     @include unselectable;
+        // }
     }
     @include cell-style(".ship", lighten(navy, 30%));
     @include cell-style(".train", darken(orange, 15%));
