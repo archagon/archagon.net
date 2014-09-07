@@ -10,8 +10,8 @@
     <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
 ">
 
-    <link rel="stylesheet" href="/archagon.net//css/main.css">
-    <link rel="canonical" href="http://archagon.github.io/archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html">
+    <link rel="stylesheet" href="//css/main.css">
+    <link rel="canonical" href="http://beta-blog.archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html">
 </head>
 
 
@@ -21,7 +21,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="/archagon.net//">Archagon Was Here (Jekyll Test)</a>
+    <a class="site-title" href="//">Archagon Was Here (Jekyll Test)</a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -33,24 +33,24 @@
       </a>
 
       <div class="trigger">
-        <a class="page-link" href="/archagon.net//">Home</a>
+        <a class="page-link" href="//">Home</a>
         
           
-          <a class="page-link" href="/archagon.net//about/">About</a>
-          
-        
-          
-          <a class="page-link" href="/archagon.net//archive/">Archive</a>
+          <a class="page-link" href="//about/">About</a>
           
         
           
-        
+          <a class="page-link" href="//archive/">Archive</a>
           
         
           
         
           
-          <a class="page-link" href="/archagon.net//timeline/">Travel Timeline</a>
+        
+          
+        
+          
+          <a class="page-link" href="//timeline/">Travel Timeline</a>
           
         
       </div>
@@ -127,81 +127,75 @@
 
 <p>Here’s a good example of the power of SASS. If you look at the CSS for the city widget, you’ll see that each country class has its own set of colors for the background, text, and border. Figuring out these colors manually and typing them all out would have been an unmaintainable mess. By using SASS, I can codify the relationship between each set of colors:</p>
 
-<pre><code>@mixin sublist-style($country-class, $country-name, $color) {
-    // sub-list cells; also includes non-list cells for blank call
-    #{$country-class} li &gt; span {
-        color: darken($color, 40%);
-        background-color: lighten($color, 15%);
-        border-color: darken($color, 30%);
-    }
-    // days font color
-    #{$country-class} .days {
-        color: darken($color, 15%);
-    }
-    // sub-list background
-    #{$country-class}.sub-list &gt; ul &gt; li {
-        background-color: $color;
-    }
-    // sub-list cell header
-    #{$country-class}.sub-list li:nth-child(1)::before {
-        color: darken($color, 20%);
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="k">@mixin</span><span class="nf"> sublist-style</span><span class="p">(</span><span class="nv">$country-class</span><span class="o">,</span> <span class="nv">$color</span><span class="p">)</span> <span class="err">{</span>
+        <span class="c1">// sub-list cells; also includes non-list cells for blank call</span>
+        <span class="nn">#</span><span class="err">{$</span><span class="nt">country-class</span><span class="err">}</span> <span class="nt">li</span> <span class="o">&gt;</span> <span class="nt">span</span> <span class="err">{</span>
+            <span class="na">color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">40</span><span class="kt">%</span><span class="p">)</span><span class="err">;</span>
+            <span class="na">background-color</span><span class="o">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">15</span><span class="kt">%</span><span class="p">)</span><span class="err">;</span>
+            <span class="c1">// background-color: mix($color, white, 50%);</span>
+            <span class="na">border-color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">30</span><span class="kt">%</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+        <span class="c1">// days font color</span>
+        <span class="nn">#</span><span class="err">{$</span><span class="nt">country-class</span><span class="err">}</span> <span class="nc">.days</span> <span class="err">{</span>
+            <span class="na">color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">15</span><span class="kt">%</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+        <span class="c1">// sub-list background</span>
+        <span class="nn">#</span><span class="err">{$</span><span class="nt">country-class</span><span class="err">}</span><span class="nc">.sub-list</span> <span class="o">&gt;</span> <span class="nt">ul</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="err">{</span>
+            <span class="na">background-color</span><span class="o">:</span> <span class="nv">$color</span><span class="err">;</span>
+        <span class="err">}</span>
+        <span class="c1">// sub-list cell header</span>
+        <span class="na">#{$country-class}.sub-list</span><span class="err"> </span><span class="na">li</span><span class="o">:</span><span class="nf">nth-child</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">::</span><span class="n">before</span> <span class="err">{</span>
+            <span class="na">color</span><span class="o">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">20</span><span class="kt">%</span><span class="p">)</span><span class="err">;</span>
+            <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="err">;</span>
+        <span class="err">}</span>
+        <span class="nn">#</span><span class="err">{$</span><span class="nt">country-class</span><span class="err">}</span><span class="nc">.sub-list</span> <span class="nt">li</span> <span class="o">&gt;</span> <span class="nt">span</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="err">{</span>
+            <span class="na">background-color</span><span class="o">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="mi">20</span><span class="kt">%</span><span class="p">)</span><span class="err">;</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+    <span class="k">@include</span><span class="nd"> sublist-style</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">,</span> <span class="nb">gray</span><span class="p">)</span><span class="err">;</span>
+    <span class="k">@include</span><span class="nd"> sublist-style</span><span class="p">(</span><span class="s2">&quot;.united-states&quot;</span><span class="o">,</span> <span class="ni">lightblue</span><span class="p">)</span><span class="err">;</span>
+    <span class="k">@include</span><span class="nd"> sublist-style</span><span class="p">(</span><span class="s2">&quot;.canada&quot;</span><span class="o">,</span> <span class="mh">#77DD77</span><span class="p">)</span><span class="err">;</span>
+    <span class="k">@include</span><span class="nd"> sublist-style</span><span class="p">(</span><span class="s2">&quot;.united-kingdom&quot;</span><span class="o">,</span> <span class="mh">#FFB347</span><span class="p">)</span><span class="err">;</span>
+    <span class="k">@include</span><span class="nd"> sublist-style</span><span class="p">(</span><span class="s2">&quot;.spain&quot;</span><span class="o">,</span> <span class="mh">#F49AC2</span><span class="p">)</span><span class="err">;</span>
+    <span class="k">@include</span><span class="nd"> sublist-style</span><span class="p">(</span><span class="s2">&quot;.france&quot;</span><span class="o">,</span> <span class="mh">#CB99C9</span><span class="p">)</span><span class="err">;</span></code></pre></div>
 
-        @if not $country-name {
-            display: none;
-        }
-        @else {
-            content: $country-name;
-        }
-    }
-}
-@include sublist-style("", none, gray);
-@include sublist-style(".united-states", "US", lightblue);
-@include sublist-style(".canada", "CA", #77DD77);
-@include sublist-style(".united-kingdom", "UK", #FFB347);
-@include sublist-style(".spain", "ES", #F49AC2);
-@include sublist-style(".france", "FR", #CB99C9);
-</code></pre>
-
-<p>All the colors are automatically generated from a base color that I provide. The “mixin” (macro) does the rest, including setting the country code text!</p>
+<p>All the colors are automatically generated from a base color that I provide. The “mixin” (macro) does the rest!</p>
 
 <p>SASS also allows me to very easily do things like limit the scope of all my CSS to the timeline widget, add variables to the top of the file for easier tweaking, add mixins to style all header elements simultaneously, and set relationships between different values by using math. It’s easy and intuitive and it makes me sad that it’s not part of the official CSS spec!</p>
 
-<p><div class="code-source ">
-<p>You can find <a href="https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss">the full SASS file here</a>.</p>
+<div class="code-source">
 
-</div></p>
+  <p>You can find <a href="https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss">the full SASS file here</a>.</p>
+
+</div>
 
 <h2 id="templating--data">Templating &amp; Data</h2>
 
-<p>I was initially writing the HTML for the widget by hand, but now that I was using templating anyway, it made sense to switch to templates fully. After all, even bare-bones HTML makes it hard to read and edit the actual data. (It’s the whole reason Markdown is around!)</p>
+<p>Here’s the final trick, and probably the most interesting one. Initially, I was writing out all my data in raw HTML, by hand. But this ultimately seemed inelegant. Using the power of Jekyll, I was able to move my data to a simple JSON file and then use Jekyll’s built-in Liquid templating engine to automatically generate each trip section.</p>
 
-<p>Here’s the final trick, and probably the most interesting one. Using the power of Jekyll, I am able to store my data in a simple JSON file and use the powerful Liquid templating engine to automatically generate each trip section based on the data.</p>
+<p>With this change, everything in my widget is decoupled. I can make a small addition to my trip JSON and have the change propagate to every instance of the widget throughout my entire site. I can change the HTML without changing the data. I can modify the CSS without affecting the markup. If I decide to add a new data field to my trip JSON at a later time, I don’t have to manually edit a bunch of HTML files by hand.</p>
 
-<p>One final note: the dates in my trip JSON file are stored as ISO 2-letter country codes. Since I needed the full country name for certain things (selectors, for example), I added an additional JSON data file that maps 2-letter country codes to the full country name.</p>
+<p>I think this is fundamentally what keeps me so interested in programming: getting to a point in your project where you can basically move mountains with just one little change in a text file!</p>
 
-<p>templates</p>
+<div class="code-source">
 
-<p>With these components in place, all I now have to worry about is updating my JSON file. When I do, every page that includes this widget will update automatically! I also have the freedom to add any additional metadata I wish — hostels, weather, star ranking, anything I wish — and only have to worry about changing one little template.</p>
+  <p>You can find the <a href="https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html">templated HTML file here</a> and the <a href="https://github.com/archagon/archagon.net/blob/master/_data/trips.json">trip JSON file here</a>.</p>
 
-<p>I think this is fundamentally what keeps me so interested in programming: getting to a point in your project where you can basically move mountains with just one little change in a text file.</p>
-
-<p>The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now <em>that’s</em> the power of static blogging!</p>
-
-<p><div class="code-source ">
-<p>You can find the <a href="https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html">templated HTML file here</a> and the <a href="https://github.com/archagon/archagon.net/blob/master/_data/trips.json">trip JSON file here</a>.</p>
-
-</div></p>
+</div>
 
 <h2 id="conclusion">Conclusion</h2>
+
+<p>The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now <em>that’s</em> the power of static blogging!</p>
 
 <p>I realized over the course of this widget’s construction that I was pulling more and more features from Jekyll. This made me happy: I wasn’t 100% on static blogging before this experiment, but now I see now that Jekyll is almost perfectly suited for extensible, data-driven blogging. With relative ease, I can inject completely custom content into my blog posts that nevertheless has a centralized source of truth somewhere in my code. No need for updating multiple blog posts manually. No need for a Javascript crutch. Once I type <code>jekyll build</code>, my site has a fully-working snapshot that can be uploaded anywhere and doesn’t require any server-side dependencies aside from Apache.</p>
 
 <p>If this post seems overly verbose, I’m sorry. I only hope that it might help clarify why a platform like Jekyll is so exciting, and how you can build up an interesting project from bare HTML/CSS all the way to a robust, extensible, data-driven widget that can be used throughout your site.</p>
 
-<p><div class="code-source ">
-<p>As a bit of a meta addendum, check out the pieces coming together in <a href="https://github.com/archagon/archagon.net/blob/master/_posts/2014-08-28-design-of-a-trip-widget.md">the Markdown for this blog post here</a>!</p>
+<div class="code-source">
 
-</div></p>
+  <p>As a bit of a meta addendum, check out the pieces coming together in <a href="https://raw.githubusercontent.com/archagon/archagon.net/master/_posts/2014-08-28-design-of-a-trip-widget.md">the Markdown for this blog post here</a>!</p>
+
+</div>
 
 <hr />
 
@@ -213,8 +207,8 @@
     <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/filterize.rb"><span class="asset-name">filterize.rb</span></a> — A Liquid block tag that applies filters to a block of text. Makes doing things like <code>scssify</code> easier — no more <code>capture</code> boilerplate.</li>
     <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/whitespace_compressor_filter.rb"><span class="asset-name">whitespace_compressor.rb</span></a> — A filter that cuts out newlines and whitespace around each line.</li>
     <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/date_calculator.rb"><span class="asset-name">date_calculator.rb</span></a> — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.</li>
-    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb"><span class="asset-name">normalize.rb</span></a> — A filter that hooks into a slightly modified <a href="https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb">extend-string.rb&lt;/span&gt;</a> in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)</li>
-    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb"><span class="asset-name">divify.rb</span></a> — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb"><span class="asset-name">normalize.rb</span></a> — A filter that hooks into a slightly modified <a href="https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb">extend-string.rb</a> in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb"><span class="asset-name">divify.rb</span></a> — A Liquid block tag that wraps the containing text in a div with the provided classes. (Not necessary since I discovered that you could add <code>markdown="1"</code> to <code>div</code>s in some Markdown processors in order to continue parsing inside HTML, but still potentially useful.)</li>
     <li><a href="http://google.com"><span class="asset-name">html_sample.rb</span></a> — A Liquid block tag that renders out the given HTML into a PNG.</li>
   </ul>
 
@@ -233,7 +227,7 @@
 
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
-        <p class="rss-subscribe">subscribe <a href="/archagon.net//feed.xml">via RSS</a></p>
+        <p class="rss-subscribe">subscribe <a href="//feed.xml">via RSS</a></p>
         <ul class="contact-list">
           <li>Archagon Was Here (Jekyll Test)</li>
           <li><a href="mailto:archagon@archagon.net">archagon@archagon.net</a></li>

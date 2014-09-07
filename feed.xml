@@ -4,10 +4,10 @@
     <title>Archagon Was Here (Jekyll Test)</title>
     <description>Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
 </description>
-    <link>http://archagon.github.io/archagon.net//</link>
-    <atom:link href="http://archagon.github.io/archagon.net//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 07 Sep 2014 03:29:14 +0200</pubDate>
-    <lastBuildDate>Sun, 07 Sep 2014 03:29:14 +0200</lastBuildDate>
+    <link>http://beta-blog.archagon.net//</link>
+    <atom:link href="http://beta-blog.archagon.net//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 07 Sep 2014 03:55:11 +0200</pubDate>
+    <lastBuildDate>Sun, 07 Sep 2014 03:55:11 +0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -68,81 +68,75 @@
 
 &lt;p&gt;Here’s a good example of the power of SASS. If you look at the CSS for the city widget, you’ll see that each country class has its own set of colors for the background, text, and border. Figuring out these colors manually and typing them all out would have been an unmaintainable mess. By using SASS, I can codify the relationship between each set of colors:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;@mixin sublist-style($country-class, $country-name, $color) {
-    // sub-list cells; also includes non-list cells for blank call
-    #{$country-class} li &amp;gt; span {
-        color: darken($color, 40%);
-        background-color: lighten($color, 15%);
-        border-color: darken($color, 30%);
-    }
-    // days font color
-    #{$country-class} .days {
-        color: darken($color, 15%);
-    }
-    // sub-list background
-    #{$country-class}.sub-list &amp;gt; ul &amp;gt; li {
-        background-color: $color;
-    }
-    // sub-list cell header
-    #{$country-class}.sub-list li:nth-child(1)::before {
-        color: darken($color, 20%);
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sass&quot; data-lang=&quot;sass&quot;&gt;&lt;span class=&quot;k&quot;&gt;@mixin&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$country-class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// sub-list cells; also includes non-list cells for blank call&lt;/span&gt;
+        &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;country-class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// background-color: mix($color, white, 50%);&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;border-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// days font color&lt;/span&gt;
+        &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;country-class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.days&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// sub-list background&lt;/span&gt;
+        &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;country-class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.sub-list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// sub-list cell header&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;#{$country-class}.sub-list&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nth-child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;before&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;darken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nn&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{$&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;country-class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.sub-list&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;gray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.united-states&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ni&quot;&gt;lightblue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.canada&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#77DD77&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.united-kingdom&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#FFB347&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.spain&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#F49AC2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt; sublist-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.france&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#CB99C9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-        @if not $country-name {
-            display: none;
-        }
-        @else {
-            content: $country-name;
-        }
-    }
-}
-@include sublist-style(&quot;&quot;, none, gray);
-@include sublist-style(&quot;.united-states&quot;, &quot;US&quot;, lightblue);
-@include sublist-style(&quot;.canada&quot;, &quot;CA&quot;, #77DD77);
-@include sublist-style(&quot;.united-kingdom&quot;, &quot;UK&quot;, #FFB347);
-@include sublist-style(&quot;.spain&quot;, &quot;ES&quot;, #F49AC2);
-@include sublist-style(&quot;.france&quot;, &quot;FR&quot;, #CB99C9);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;All the colors are automatically generated from a base color that I provide. The “mixin” (macro) does the rest, including setting the country code text!&lt;/p&gt;
+&lt;p&gt;All the colors are automatically generated from a base color that I provide. The “mixin” (macro) does the rest!&lt;/p&gt;
 
 &lt;p&gt;SASS also allows me to very easily do things like limit the scope of all my CSS to the timeline widget, add variables to the top of the file for easier tweaking, add mixins to style all header elements simultaneously, and set relationships between different values by using math. It’s easy and intuitive and it makes me sad that it’s not part of the official CSS spec!&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&quot;code-source &quot;&gt;
-&lt;p&gt;You can find &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss&quot;&gt;the full SASS file here&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;code-source&quot;&gt;
 
-&lt;/div&gt;&lt;/p&gt;
+  &lt;p&gt;You can find &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss&quot;&gt;the full SASS file here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
 
 &lt;h2 id=&quot;templating--data&quot;&gt;Templating &amp;amp; Data&lt;/h2&gt;
 
-&lt;p&gt;I was initially writing the HTML for the widget by hand, but now that I was using templating anyway, it made sense to switch to templates fully. After all, even bare-bones HTML makes it hard to read and edit the actual data. (It’s the whole reason Markdown is around!)&lt;/p&gt;
+&lt;p&gt;Here’s the final trick, and probably the most interesting one. Initially, I was writing out all my data in raw HTML, by hand. But this ultimately seemed inelegant. Using the power of Jekyll, I was able to move my data to a simple JSON file and then use Jekyll’s built-in Liquid templating engine to automatically generate each trip section.&lt;/p&gt;
 
-&lt;p&gt;Here’s the final trick, and probably the most interesting one. Using the power of Jekyll, I am able to store my data in a simple JSON file and use the powerful Liquid templating engine to automatically generate each trip section based on the data.&lt;/p&gt;
+&lt;p&gt;With this change, everything in my widget is decoupled. I can make a small addition to my trip JSON and have the change propagate to every instance of the widget throughout my entire site. I can change the HTML without changing the data. I can modify the CSS without affecting the markup. If I decide to add a new data field to my trip JSON at a later time, I don’t have to manually edit a bunch of HTML files by hand.&lt;/p&gt;
 
-&lt;p&gt;One final note: the dates in my trip JSON file are stored as ISO 2-letter country codes. Since I needed the full country name for certain things (selectors, for example), I added an additional JSON data file that maps 2-letter country codes to the full country name.&lt;/p&gt;
+&lt;p&gt;I think this is fundamentally what keeps me so interested in programming: getting to a point in your project where you can basically move mountains with just one little change in a text file!&lt;/p&gt;
 
-&lt;p&gt;templates&lt;/p&gt;
+&lt;div class=&quot;code-source&quot;&gt;
 
-&lt;p&gt;With these components in place, all I now have to worry about is updating my JSON file. When I do, every page that includes this widget will update automatically! I also have the freedom to add any additional metadata I wish — hostels, weather, star ranking, anything I wish — and only have to worry about changing one little template.&lt;/p&gt;
+  &lt;p&gt;You can find the &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html&quot;&gt;templated HTML file here&lt;/a&gt; and the &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_data/trips.json&quot;&gt;trip JSON file here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I think this is fundamentally what keeps me so interested in programming: getting to a point in your project where you can basically move mountains with just one little change in a text file.&lt;/p&gt;
-
-&lt;p&gt;The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now &lt;em&gt;that’s&lt;/em&gt; the power of static blogging!&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&quot;code-source &quot;&gt;
-&lt;p&gt;You can find the &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html&quot;&gt;templated HTML file here&lt;/a&gt; and the &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_data/trips.json&quot;&gt;trip JSON file here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;/div&gt;&lt;/p&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now &lt;em&gt;that’s&lt;/em&gt; the power of static blogging!&lt;/p&gt;
 
 &lt;p&gt;I realized over the course of this widget’s construction that I was pulling more and more features from Jekyll. This made me happy: I wasn’t 100% on static blogging before this experiment, but now I see now that Jekyll is almost perfectly suited for extensible, data-driven blogging. With relative ease, I can inject completely custom content into my blog posts that nevertheless has a centralized source of truth somewhere in my code. No need for updating multiple blog posts manually. No need for a Javascript crutch. Once I type &lt;code&gt;jekyll build&lt;/code&gt;, my site has a fully-working snapshot that can be uploaded anywhere and doesn’t require any server-side dependencies aside from Apache.&lt;/p&gt;
 
 &lt;p&gt;If this post seems overly verbose, I’m sorry. I only hope that it might help clarify why a platform like Jekyll is so exciting, and how you can build up an interesting project from bare HTML/CSS all the way to a robust, extensible, data-driven widget that can be used throughout your site.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&quot;code-source &quot;&gt;
-&lt;p&gt;As a bit of a meta addendum, check out the pieces coming together in &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_posts/2014-08-28-design-of-a-trip-widget.md&quot;&gt;the Markdown for this blog post here&lt;/a&gt;!&lt;/p&gt;
+&lt;div class=&quot;code-source&quot;&gt;
 
-&lt;/div&gt;&lt;/p&gt;
+  &lt;p&gt;As a bit of a meta addendum, check out the pieces coming together in &lt;a href=&quot;https://raw.githubusercontent.com/archagon/archagon.net/master/_posts/2014-08-28-design-of-a-trip-widget.md&quot;&gt;the Markdown for this blog post here&lt;/a&gt;!&lt;/p&gt;
+
+&lt;/div&gt;
 
 &lt;hr /&gt;
 
@@ -154,16 +148,16 @@
     &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/filterize.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;filterize.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that applies filters to a block of text. Makes doing things like &lt;code&gt;scssify&lt;/code&gt; easier — no more &lt;code&gt;capture&lt;/code&gt; boilerplate.&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/whitespace_compressor_filter.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;whitespace_compressor.rb&lt;/span&gt;&lt;/a&gt; — A filter that cuts out newlines and whitespace around each line.&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/date_calculator.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;date_calculator.rb&lt;/span&gt;&lt;/a&gt; — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;normalize.rb&lt;/span&gt;&lt;/a&gt; — A filter that hooks into a slightly modified &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb&quot;&gt;extend-string.rb&amp;lt;/span&amp;gt;&lt;/a&gt; in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;divify.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;normalize.rb&lt;/span&gt;&lt;/a&gt; — A filter that hooks into a slightly modified &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb&quot;&gt;extend-string.rb&lt;/a&gt; in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;divify.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that wraps the containing text in a div with the provided classes. (Not necessary since I discovered that you could add &lt;code&gt;markdown=&quot;1&quot;&lt;/code&gt; to &lt;code&gt;div&lt;/code&gt;s in some Markdown processors in order to continue parsing inside HTML, but still potentially useful.)&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;html_sample.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that renders out the given HTML into a PNG.&lt;/li&gt;
   &lt;/ul&gt;
 
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 28 Aug 2014 15:28:22 +0200</pubDate>
-        <link>http://archagon.github.io/archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html</guid>
+        <link>http://beta-blog.archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net//jekyll/2014/08/28/design-of-a-trip-widget.html</guid>
         
         
         <category>jekyll</category>
@@ -172,9 +166,9 @@
     
       <item>
         <title>Gathering the Goods, Part 2</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/archagon.net//images/Cruise Balconies.jpeg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;//images/Cruise Balconies.jpeg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;/archagon.net//2013/8/28/gathering-the-goods&quot;&gt;My first run at a packing list&lt;/a&gt; was suprisingly solid: everything worked pretty much as intended and there wasn’t anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;//2013/8/28/gathering-the-goods&quot;&gt;My first run at a packing list&lt;/a&gt; was suprisingly solid: everything worked pretty much as intended and there wasn’t anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;I very rarely used my Silver Streak bag as a backpack, and when I did, it was just too heavy for prolonged use. (The total weight of all my equipment was almost 50 pounds.) As a result, I mostly ended up detatching the backpack and carrying the main bag on a shoulder strap, which was very uncomfortable.&lt;/li&gt;
@@ -184,7 +178,7 @@
 
 &lt;p&gt;As a result, I have replaced my Silver Streak with an &lt;a href=&quot;http://www.amazon.com/dp/B00BYFABC2/?tag=arcwasher-20&quot;&gt;Eagle Creek Switchback 22&lt;/a&gt; (on sale). The Switchback does almost everything the Silver Streak does, but adds one vital feature for city use: wheels! Contrary to most of the advice I found on travel blogs, I desparately wished for wheels many times during my trip. (Maybe this would be different if I were spending long miles walking on unpaved roads, but the fact is that most of my traveling happens in modern cities and not the countryside.) The backpack half of the bag now serves as the store for all my tech equipment, while the main bag keeps all my clothes and accessories. Among other things, this consolidation means that I no longer have to move things from bag to bag when I’m leaving the main bag in a locker or on a bus/train/plane. Space is more tight than in the Silver Streak, but everything still fits. (At the moment, I’ve decided to roll up my jacket and clip it onto the handle, since cramming it in takes a bit too much effort.) The Switchback offers great flexibility in regards to transport: backpack zipped onto the main bag, backpack threaded onto the carrying handle, or backpack and main bag separate. (So far, I’ve found the most convenient option to be zipping the backpack onto the main bag and using the wheels. You can walk many miles like this without a problem.) There are many other details that make the Switchback feel like a high quality product, from the multipurpose outside straps to the secondary handle position all the way down to the stitching. It’s clear that a lot of thought was put into the design. One minor annoynace is that the backpack straps have to be taken off the backpack to be used with the main bag, but since I’m mostly set on using the wheels, this isn’t a big deal for me. Before I settled on the Switchback, I also tried the &lt;a href=&quot;http://www.amazon.com/dp/B006P65P1W/?tag=arcwasher-20&quot;&gt;Osprey Meridian&lt;/a&gt;, but I was simply not able cram all my stuff in!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/archagon.net//images/Cruise Desk.jpg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images/Cruise Desk.jpg&quot; alt=&quot;Caption goes here.&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I also made a few other changes:&lt;/p&gt;
 
@@ -206,8 +200,8 @@
 &lt;p&gt;Already, HoboPack Mark II feels so much more useful and refined. Onward to more adventures!&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Aug 2013 00:00:00 +0200</pubDate>
-        <link>http://archagon.github.io/archagon.net//travel/2013/08/28/gathering-the-goods-part-2.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//travel/2013/08/28/gathering-the-goods-part-2.html</guid>
+        <link>http://beta-blog.archagon.net//travel/2013/08/28/gathering-the-goods-part-2.html</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net//travel/2013/08/28/gathering-the-goods-part-2.html</guid>
         
         
         <category>travel</category>
