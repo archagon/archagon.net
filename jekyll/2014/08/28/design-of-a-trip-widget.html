@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Design of a Trip Widget</title>
+    <title>A Trip Down the Jekyll Rabbit Hole: Design of a Trip Widget</title>
     <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
 ">
 
@@ -66,30 +66,19 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Design of a Trip Widget</h1>
+    <h1 class="post-title">A Trip Down the Jekyll Rabbit Hole: Design of a Trip Widget</h1>
     <p class="post-meta">Aug 28, 2014</p>
   </header>
 
   <article class="post-content">
-    <h1 id="jekyll-design-of-a-trip-widget">Jekyll: Design of a Trip Widget</h1>
+    <p>I have just completed a little HTML widget for tracking my travels. Behold!</p>
 
-<pre><code>TODO: each item links to either cateogry or to the solo post (INTERNET)
-    TODO: separate city category (INTERNET)
-TODO: disabled look (INTERNET)
-TODO: template variables? (INTERNET)
-TODO: trip widget tag
-TODO: circle around current item in jquery
-TODO: autoanchor headers
+<pre><code>TODO: rsscutoff
 </code></pre>
-
-<p>I have just completed a little HTML widget for tracking my travels. Behold!</p>
 
 <p>
 
-    
-    
-    <article class="timeline"><section><h2>US Trip 2013</h2><ul><li class="sub-list united-states"><h3>United States</h3><ul><li><span>Seattle&nbsp;<span class="days">9</span></span></li></ul></li><li class="sub-list canada"><h3>Canada</h3><ul><li><span>Vancouver&nbsp;<span class="days">2</span></span></li><li><span class="category-transport train">Train&nbsp;<span class="days">5</span></span></li><li><span>Toronto&nbsp;<span class="days">12</span></span></li><li><span>Montreal&nbsp;<span class="days">7</span></span></li><li><span>Quebec City&nbsp;<span class="days">5</span></span></li><li><span>Montreal&nbsp;<span class="days">3</span></span></li></ul></li><li class="sub-list united-states"><h3>United States</h3><ul><li><span>New York&nbsp;<span class="days">4</span></span></li><li><span>Boston&nbsp;<span class="days">7</span></span></li><li><span>New York&nbsp;<span class="days">17</span></span></li><li><span>Princeton&nbsp;<span class="days">1</span></span></li><li><span>Philadelphia&nbsp;<span class="days">3</span></span></li><li><span>Chicago&nbsp;<span class="days">7</span></span></li><li><span>New Orleans&nbsp;<span class="days">6</span></span></li><li><span>Houston&nbsp;<span class="days">1</span></span></li><li><span>Austin&nbsp;<span class="days">8</span></span></li><li><span>Los Angeles&nbsp;<span class="days">3</span></span></li></ul></li></ul></section></article>
-
+<article class="timeline"><section><h2>Europe Trip 2014</h2><ul><li class="sub-list united-states"><h3>United States</h3><ul><li><span>New Orleans&nbsp;<span class="days">2</span></span></li></ul></li><li><span class="category-transport ship">Cruise&nbsp;<span class="days">19</span></span></li><li class="sub-list spain"><h3>Spain</h3><ul><li><span>Barcelona&nbsp;<span class="days">20</span></span></li></ul></li><li class="sub-list france"><h3>France</h3><ul><li><span>Paris&nbsp;<span class="days">28</span></span></li></ul></li><li class="sub-list united-kingdom"><h3>United Kingdom</h3><ul><li><span>London&nbsp;<span class="days">31</span></span></li><li><span>Penzance&nbsp;<span class="days">4</span></span></li><li><span>Bath&nbsp;<span class="days">5</span></span></li><li><span>Oxford&nbsp;<span class="days">4</span></span></li><li><span>Cambridge&nbsp;<span class="days">2</span></span></li><li><span>York&nbsp;<span class="days">3</span></span></li><li><span>Newcastle&nbsp;<span class="days">3</span></span></li><li><span>Edinburgh&nbsp;<span class="days">4</span></span></li></ul></li><li class="sub-list netherlands"><h3>Netherlands</h3><ul><li><span>Amsterdam&nbsp;<span class="days">2</span></span></li></ul></li></ul></section></article>
 </p>
 
 <p>I’ve only marginally dabbled in HTML and CSS before, so I’m quite proud of this little thing. And it’s actually a whole lot more interesting than it looks.</p>
@@ -98,38 +87,13 @@ TODO: autoanchor headers
 
 <p>First of all, if you look at the raw HTML, you’ll notice that it’s nothing fancy — just a bunch of nested lists. In other words, almost everything is semantic. I didn’t want <code>div</code> soup if I could help it.</p>
 
-<p>The main HTML/CSS challenges here were, <strong>a)</strong> to display all the cities horizontally and continuously despite them being in different city lists, <strong>b)</strong> have the cities wrap across lines even if they’re in the middle of a country list, and <strong>c)</strong> have a colored highlight around each city list, including across line breaks.</p>
+<p>The main HTML/CSS challenges here were, <strong>a)</strong> to display all the cities horizontally and continuously despite them being in different city lists, <strong>b)</strong> have the cities wrap across lines even if they’re in the middle of a country list (i.e. be in the document text flow), and <strong>c)</strong> have a colored highlight around each city list, including across line breaks.</p>
 
-<p>All my research pointed to <code>display: inline</code> being the only way for text to naturally wrap across lines, so I had to set that property on all my city list <code>ul</code> elements. (This also solved the problem of them flowing horizontally instead of vertically.) The actual city <code>li</code>s, however, were marked up as <code>display: inline-block</code>, so that I could adjust the height and appearance freely.</p>
+<p>All my research pointed to <code>display: inline</code> being the only way for text to naturally wrap across lines, so I had to set that property on all my city list <code>ul</code>s. (This also solved the problem of making them flowing horizontally.) The actual city <code>li</code>s, however, were marked up as <code>display: inline-block</code>, so that I could adjust the height and appearance freely.</p>
 
-<p>My initial design caused me a bit of a problem with feature c), that being colored borders around all the country lists. Since my lists were <code>inline</code>, their height automatically collapsed to height 0. This meant that setting the background color and padding on the list didn’t have the desired effect in regards to the colored highlight:</p>
+<p>My initial design caused me a bit of a problem with the colored borders around all the country lists. Since my lists were <code>inline</code>, their height automatically collapsed to height 0. This meant that setting the background color and padding on the list didn’t have the desired effect in regards to the colored highlight:</p>
 
-<!--<style>
-    div {
-        display: inline-block;
-        width: 400px;   
-    }
-    ul {
-        display: inline;
-        padding: 25px;
-        background-color: yellow;
-    }
-    li {
-        display: inline-block;
-        background-color: salmon;
-        height: 20px;
-        padding: 10px;
-    }
-</style>
-
-<div>
-    <ul>
-        <li>Alabama</li>
-        <li>Alaska</li>
-        <li>Arizona</li>
-        <li>Arkansas</li>
-    </ul>
-</div>-->
+<p><img src="images/test_html.png" /></p>
 
 <p>I could sort of work around this problem by increasing the padding until it overlapped the top and bottom of each cell, but this required a ton of manual adjustment and variables (including for things like line height) and didn’t even work consistently across browsers.</p>
 
@@ -203,7 +167,7 @@ TODO: autoanchor headers
 <p>SASS also allows me to very easily do things like limit the scope of all my CSS to the timeline widget, add variables to the top of the file for easier tweaking, add mixins to style all header elements simultaneously, and set relationships between different values by using math. It’s easy and intuitive and it makes me sad that it’s not part of the official CSS spec!</p>
 
 <p><div class="code-source ">
-<p>You can find <a href="http://www.google.com">the full SASS file here</a>.</p>
+<p>You can find <a href="https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss">the full SASS file here</a>.</p>
 
 </div></p>
 
@@ -224,7 +188,7 @@ TODO: autoanchor headers
 <p>The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now <em>that’s</em> the power of static blogging!</p>
 
 <p><div class="code-source ">
-<p>You can find the <a href="http://www.google.com">templated HTML file here</a> and the <a href="http://www.google.com">trip JSON file here</a>.</p>
+<p>You can find the <a href="https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html">templated HTML file here</a> and the <a href="https://github.com/archagon/archagon.net/blob/master/_data/trips.json">trip JSON file here</a>.</p>
 
 </div></p>
 
@@ -235,23 +199,9 @@ TODO: autoanchor headers
 <p>If this post seems overly verbose, I’m sorry. I only hope that it might help clarify why a platform like Jekyll is so exciting, and how you can build up an interesting project from bare HTML/CSS all the way to a robust, extensible, data-driven widget that can be used throughout your site.</p>
 
 <p><div class="code-source ">
-<p>As a bit of a meta addendum, check out the pieces coming together in <a href="http://www.google.com">the Markdown for this blog post here</a>!</p>
+<p>As a bit of a meta addendum, check out the pieces coming together in <a href="https://github.com/archagon/archagon.net/blob/master/_posts/2014-08-28-design-of-a-trip-widget.md">the Markdown for this blog post here</a>!</p>
 
 </div></p>
-
-<style>
-
-hr {
-    display:block;
-    border:0px;
-    height: 15px;
-    margin: 40px 0 40px 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image:url("/images/Decoration.svg");
-}
-
-</style>
 
 <hr />
 
@@ -260,11 +210,11 @@ hr {
   <h1 id="jekyll-assets-created-over-the-course-of-this-exercise">Jekyll assets created over the course of this exercise</h1>
 
   <ul>
-    <li><a href="http://google.com"><span class="asset-name">filterize.rb</span></a> — A Liquid block tag that applies filters to a block of text. Makes doing things like <code>scssify</code> easier — no more <code>capture</code> boilerplate.</li>
-    <li><a href="http://google.com"><span class="asset-name">whitespace_compressor.rb</span></a> — A filter that cuts out newlines and whitespace around each line.</li>
-    <li><a href="http://google.com"><span class="asset-name">date_calculator.rb</span></a> — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.</li>
-    <li><a href="http://google.com"><span class="asset-name">normalize.rb</span></a> — A filter that hooks into a slightly modified <a href="http://google.com">extend-string.rb&lt;/span&gt;</a> in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)</li>
-    <li><a href="http://google.com"><span class="asset-name">divify.rb</span></a> — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/filterize.rb"><span class="asset-name">filterize.rb</span></a> — A Liquid block tag that applies filters to a block of text. Makes doing things like <code>scssify</code> easier — no more <code>capture</code> boilerplate.</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/whitespace_compressor_filter.rb"><span class="asset-name">whitespace_compressor.rb</span></a> — A filter that cuts out newlines and whitespace around each line.</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/date_calculator.rb"><span class="asset-name">date_calculator.rb</span></a> — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb"><span class="asset-name">normalize.rb</span></a> — A filter that hooks into a slightly modified <a href="https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb">extend-string.rb&lt;/span&gt;</a> in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)</li>
+    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb"><span class="asset-name">divify.rb</span></a> — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)</li>
     <li><a href="http://google.com"><span class="asset-name">html_sample.rb</span></a> — A Liquid block tag that renders out the given HTML into a PNG.</li>
   </ul>
 

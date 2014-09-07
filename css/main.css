@@ -309,6 +309,15 @@ pre {
       .post-content h4 {
         font-size: 18px; } }
 
+hr {
+  display: block;
+  border: 0px;
+  height: 15px;
+  margin: 40px 0 40px 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("/images/Decoration.svg"); }
+
 /**
  * Archive
  */
@@ -752,7 +761,7 @@ pre {
   background-color: gray; }
 .timeline .sub-list li:nth-child(1)::before {
   color: #4d4d4d;
-  content: none; }
+  display: none; }
 .timeline .sub-list li > span > a {
   background-color: #b3b3b3; }
 .timeline .united-states li > span {
@@ -765,7 +774,7 @@ pre {
   background-color: lightblue; }
 .timeline .united-states.sub-list li:nth-child(1)::before {
   color: #5fb3ce;
-  content: "US"; }
+  display: none; }
 .timeline .united-states.sub-list li > span > a {
   background-color: #fbfdfe; }
 .timeline .canada li > span {
@@ -778,7 +787,7 @@ pre {
   background-color: #77dd77; }
 .timeline .canada.sub-list li:nth-child(1)::before {
   color: #30be30;
-  content: "CA"; }
+  display: none; }
 .timeline .canada.sub-list li > span > a {
   background-color: #c9f1c9; }
 .timeline .united-kingdom li > span {
@@ -791,7 +800,7 @@ pre {
   background-color: #ffb347; }
 .timeline .united-kingdom.sub-list li:nth-child(1)::before {
   color: #e08300;
-  content: "UK"; }
+  display: none; }
 .timeline .united-kingdom.sub-list li > span > a {
   background-color: #ffddad; }
 .timeline .spain li > span {
@@ -804,7 +813,7 @@ pre {
   background-color: #f49ac2; }
 .timeline .spain.sub-list li:nth-child(1)::before {
   color: #ea3e8a;
-  content: "ES"; }
+  display: none; }
 .timeline .spain.sub-list li > span > a {
   background-color: #fef6fa; }
 .timeline .france li > span {
@@ -817,53 +826,39 @@ pre {
   background-color: #cb99c9; }
 .timeline .france.sub-list li:nth-child(1)::before {
   color: #a856a5;
-  content: "FR"; }
+  display: none; }
 .timeline .france.sub-list li > span > a {
   background-color: #eddded; }
+.timeline .united-states.sub-list li:nth-child(1)::before {
+  display: inline-block;
+  content: "US"; }
+.timeline .canada.sub-list li:nth-child(1)::before {
+  display: inline-block;
+  content: "CA"; }
+.timeline .united-kingdom.sub-list li:nth-child(1)::before {
+  display: inline-block;
+  content: "UK"; }
+.timeline .spain.sub-list li:nth-child(1)::before {
+  display: inline-block;
+  content: "ES"; }
+.timeline .france.sub-list li:nth-child(1)::before {
+  display: inline-block;
+  content: "FR"; }
+.timeline .netherlands.sub-list li:nth-child(1)::before {
+  display: inline-block;
+  content: "NA"; }
 .timeline .ship {
   color: #e6e6ff !important;
   background-color: #1a1aff !important;
   border-color: #b3b3ff !important; }
 .timeline .ship .days {
   color: #8080ff !important; }
-.timeline .ship {
-  position: relative; }
-.timeline .ship::after {
-  content: url("/images/circle.png");
-  position: absolute;
-  text-align: center;
-  left: 0;
-  right: 0;
-  left: -50px;
-  top: -30px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
 .timeline .train {
   color: #ffd280 !important;
   background-color: #b37300 !important;
   border-color: #ffc04d !important; }
 .timeline .train .days {
   color: #ffae1a !important; }
-.timeline .train {
-  position: relative; }
-.timeline .train::after {
-  content: url("/images/circle.png");
-  position: absolute;
-  text-align: center;
-  left: 0;
-  right: 0;
-  left: -50px;
-  top: -30px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
 .timeline li {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -886,19 +881,20 @@ pre {
   border-bottom-right-radius: 5px; }
 
 .new_jekyll_assets {
-  padding: 15px;
-  margin: 30px 20px 30px 20px;
-  border: dashed;
+  padding: 25px;
+  border: dotted;
   border-width: 5px;
-  border-color: red;
-  background-color: yellow;
+  border-color: #d8b2d8;
+  color: #1d1d91;
+  background-color: lavender;
   font-size: 95%;
   border-radius: 10px; }
   .new_jekyll_assets code {
     background-color: pink; }
   .new_jekyll_assets h1 {
-    font-size: 125%;
-    font-weight: bold; }
+    font-size: 135%;
+    font-weight: bold;
+    margin-bottom: 30px; }
   .new_jekyll_assets .asset-name {
     font-weight: bold; }
 
@@ -919,3 +915,7 @@ pre {
     content: "☎"; }
   .code-source p {
     display: inline; }
+
+.htmlsample {
+  width: 100%;
+  height: 100%; }

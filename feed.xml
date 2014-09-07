@@ -6,31 +6,20 @@
 </description>
     <link>http://archagon.github.io/archagon.net//</link>
     <atom:link href="http://archagon.github.io/archagon.net//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 07 Sep 2014 01:53:44 +0200</pubDate>
-    <lastBuildDate>Sun, 07 Sep 2014 01:53:44 +0200</lastBuildDate>
+    <pubDate>Sun, 07 Sep 2014 03:29:14 +0200</pubDate>
+    <lastBuildDate>Sun, 07 Sep 2014 03:29:14 +0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
-        <title>Design of a Trip Widget</title>
-        <description>&lt;h1 id=&quot;jekyll-design-of-a-trip-widget&quot;&gt;Jekyll: Design of a Trip Widget&lt;/h1&gt;
+        <title>A Trip Down the Jekyll Rabbit Hole: Design of a Trip Widget</title>
+        <description>&lt;p&gt;I have just completed a little HTML widget for tracking my travels. Behold!&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;TODO: each item links to either cateogry or to the solo post (INTERNET)
-    TODO: separate city category (INTERNET)
-TODO: disabled look (INTERNET)
-TODO: template variables? (INTERNET)
-TODO: trip widget tag
-TODO: circle around current item in jquery
-TODO: autoanchor headers
+&lt;pre&gt;&lt;code&gt;TODO: rsscutoff
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I have just completed a little HTML widget for tracking my travels. Behold!&lt;/p&gt;
 
 &lt;p&gt;
 
-    
-    
-    &lt;article class=&quot;timeline&quot;&gt;&lt;section&gt;&lt;h2&gt;US Trip 2013&lt;/h2&gt;&lt;ul&gt;&lt;li class=&quot;sub-list united-states&quot;&gt;&lt;h3&gt;United States&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;Seattle&amp;nbsp;&lt;span class=&quot;days&quot;&gt;9&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li class=&quot;sub-list canada&quot;&gt;&lt;h3&gt;Canada&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;Vancouver&amp;nbsp;&lt;span class=&quot;days&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span class=&quot;category-transport train&quot;&gt;Train&amp;nbsp;&lt;span class=&quot;days&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Toronto&amp;nbsp;&lt;span class=&quot;days&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Montreal&amp;nbsp;&lt;span class=&quot;days&quot;&gt;7&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Quebec City&amp;nbsp;&lt;span class=&quot;days&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Montreal&amp;nbsp;&lt;span class=&quot;days&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li class=&quot;sub-list united-states&quot;&gt;&lt;h3&gt;United States&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;New York&amp;nbsp;&lt;span class=&quot;days&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Boston&amp;nbsp;&lt;span class=&quot;days&quot;&gt;7&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;New York&amp;nbsp;&lt;span class=&quot;days&quot;&gt;17&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Princeton&amp;nbsp;&lt;span class=&quot;days&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Philadelphia&amp;nbsp;&lt;span class=&quot;days&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Chicago&amp;nbsp;&lt;span class=&quot;days&quot;&gt;7&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;New Orleans&amp;nbsp;&lt;span class=&quot;days&quot;&gt;6&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Houston&amp;nbsp;&lt;span class=&quot;days&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Austin&amp;nbsp;&lt;span class=&quot;days&quot;&gt;8&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Los Angeles&amp;nbsp;&lt;span class=&quot;days&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/article&gt;
-
+&lt;article class=&quot;timeline&quot;&gt;&lt;section&gt;&lt;h2&gt;Europe Trip 2014&lt;/h2&gt;&lt;ul&gt;&lt;li class=&quot;sub-list united-states&quot;&gt;&lt;h3&gt;United States&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;New Orleans&amp;nbsp;&lt;span class=&quot;days&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span class=&quot;category-transport ship&quot;&gt;Cruise&amp;nbsp;&lt;span class=&quot;days&quot;&gt;19&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li class=&quot;sub-list spain&quot;&gt;&lt;h3&gt;Spain&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;Barcelona&amp;nbsp;&lt;span class=&quot;days&quot;&gt;20&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li class=&quot;sub-list france&quot;&gt;&lt;h3&gt;France&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;Paris&amp;nbsp;&lt;span class=&quot;days&quot;&gt;28&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li class=&quot;sub-list united-kingdom&quot;&gt;&lt;h3&gt;United Kingdom&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;London&amp;nbsp;&lt;span class=&quot;days&quot;&gt;31&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Penzance&amp;nbsp;&lt;span class=&quot;days&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Bath&amp;nbsp;&lt;span class=&quot;days&quot;&gt;5&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Oxford&amp;nbsp;&lt;span class=&quot;days&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Cambridge&amp;nbsp;&lt;span class=&quot;days&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;York&amp;nbsp;&lt;span class=&quot;days&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Newcastle&amp;nbsp;&lt;span class=&quot;days&quot;&gt;3&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;Edinburgh&amp;nbsp;&lt;span class=&quot;days&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li class=&quot;sub-list netherlands&quot;&gt;&lt;h3&gt;Netherlands&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;span&gt;Amsterdam&amp;nbsp;&lt;span class=&quot;days&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;/article&gt;
 &lt;/p&gt;
 
 &lt;p&gt;I’ve only marginally dabbled in HTML and CSS before, so I’m quite proud of this little thing. And it’s actually a whole lot more interesting than it looks.&lt;/p&gt;
@@ -39,38 +28,13 @@ TODO: autoanchor headers
 
 &lt;p&gt;First of all, if you look at the raw HTML, you’ll notice that it’s nothing fancy — just a bunch of nested lists. In other words, almost everything is semantic. I didn’t want &lt;code&gt;div&lt;/code&gt; soup if I could help it.&lt;/p&gt;
 
-&lt;p&gt;The main HTML/CSS challenges here were, &lt;strong&gt;a)&lt;/strong&gt; to display all the cities horizontally and continuously despite them being in different city lists, &lt;strong&gt;b)&lt;/strong&gt; have the cities wrap across lines even if they’re in the middle of a country list, and &lt;strong&gt;c)&lt;/strong&gt; have a colored highlight around each city list, including across line breaks.&lt;/p&gt;
+&lt;p&gt;The main HTML/CSS challenges here were, &lt;strong&gt;a)&lt;/strong&gt; to display all the cities horizontally and continuously despite them being in different city lists, &lt;strong&gt;b)&lt;/strong&gt; have the cities wrap across lines even if they’re in the middle of a country list (i.e. be in the document text flow), and &lt;strong&gt;c)&lt;/strong&gt; have a colored highlight around each city list, including across line breaks.&lt;/p&gt;
 
-&lt;p&gt;All my research pointed to &lt;code&gt;display: inline&lt;/code&gt; being the only way for text to naturally wrap across lines, so I had to set that property on all my city list &lt;code&gt;ul&lt;/code&gt; elements. (This also solved the problem of them flowing horizontally instead of vertically.) The actual city &lt;code&gt;li&lt;/code&gt;s, however, were marked up as &lt;code&gt;display: inline-block&lt;/code&gt;, so that I could adjust the height and appearance freely.&lt;/p&gt;
+&lt;p&gt;All my research pointed to &lt;code&gt;display: inline&lt;/code&gt; being the only way for text to naturally wrap across lines, so I had to set that property on all my city list &lt;code&gt;ul&lt;/code&gt;s. (This also solved the problem of making them flowing horizontally.) The actual city &lt;code&gt;li&lt;/code&gt;s, however, were marked up as &lt;code&gt;display: inline-block&lt;/code&gt;, so that I could adjust the height and appearance freely.&lt;/p&gt;
 
-&lt;p&gt;My initial design caused me a bit of a problem with feature c), that being colored borders around all the country lists. Since my lists were &lt;code&gt;inline&lt;/code&gt;, their height automatically collapsed to height 0. This meant that setting the background color and padding on the list didn’t have the desired effect in regards to the colored highlight:&lt;/p&gt;
+&lt;p&gt;My initial design caused me a bit of a problem with the colored borders around all the country lists. Since my lists were &lt;code&gt;inline&lt;/code&gt;, their height automatically collapsed to height 0. This meant that setting the background color and padding on the list didn’t have the desired effect in regards to the colored highlight:&lt;/p&gt;
 
-&lt;!--&lt;style&gt;
-    div {
-        display: inline-block;
-        width: 400px;   
-    }
-    ul {
-        display: inline;
-        padding: 25px;
-        background-color: yellow;
-    }
-    li {
-        display: inline-block;
-        background-color: salmon;
-        height: 20px;
-        padding: 10px;
-    }
-&lt;/style&gt;
-
-&lt;div&gt;
-    &lt;ul&gt;
-        &lt;li&gt;Alabama&lt;/li&gt;
-        &lt;li&gt;Alaska&lt;/li&gt;
-        &lt;li&gt;Arizona&lt;/li&gt;
-        &lt;li&gt;Arkansas&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/div&gt;--&gt;
+&lt;p&gt;&lt;img src=&quot;images/test_html.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I could sort of work around this problem by increasing the padding until it overlapped the top and bottom of each cell, but this required a ton of manual adjustment and variables (including for things like line height) and didn’t even work consistently across browsers.&lt;/p&gt;
 
@@ -144,7 +108,7 @@ TODO: autoanchor headers
 &lt;p&gt;SASS also allows me to very easily do things like limit the scope of all my CSS to the timeline widget, add variables to the top of the file for easier tweaking, add mixins to style all header elements simultaneously, and set relationships between different values by using math. It’s easy and intuitive and it makes me sad that it’s not part of the official CSS spec!&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&quot;code-source &quot;&gt;
-&lt;p&gt;You can find &lt;a href=&quot;http://www.google.com&quot;&gt;the full SASS file here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can find &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss&quot;&gt;the full SASS file here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;/div&gt;&lt;/p&gt;
 
@@ -165,7 +129,7 @@ TODO: autoanchor headers
 &lt;p&gt;The original goal for this widget was not to sit on a single standalone page, but to embed (possibly in parts) in my travel-related blog posts. With something like Wordpress, this would be impossible without a bunch of custom plugins. But with Jekyll’s powerful static stack, I can edit a single item in my well-ordered JSON file and have my HTML update automatically for every single post and page. Now &lt;em&gt;that’s&lt;/em&gt; the power of static blogging!&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&quot;code-source &quot;&gt;
-&lt;p&gt;You can find the &lt;a href=&quot;http://www.google.com&quot;&gt;templated HTML file here&lt;/a&gt; and the &lt;a href=&quot;http://www.google.com&quot;&gt;trip JSON file here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can find the &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html&quot;&gt;templated HTML file here&lt;/a&gt; and the &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_data/trips.json&quot;&gt;trip JSON file here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;/div&gt;&lt;/p&gt;
 
@@ -176,23 +140,9 @@ TODO: autoanchor headers
 &lt;p&gt;If this post seems overly verbose, I’m sorry. I only hope that it might help clarify why a platform like Jekyll is so exciting, and how you can build up an interesting project from bare HTML/CSS all the way to a robust, extensible, data-driven widget that can be used throughout your site.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=&quot;code-source &quot;&gt;
-&lt;p&gt;As a bit of a meta addendum, check out the pieces coming together in &lt;a href=&quot;http://www.google.com&quot;&gt;the Markdown for this blog post here&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;As a bit of a meta addendum, check out the pieces coming together in &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_posts/2014-08-28-design-of-a-trip-widget.md&quot;&gt;the Markdown for this blog post here&lt;/a&gt;!&lt;/p&gt;
 
 &lt;/div&gt;&lt;/p&gt;
-
-&lt;style&gt;
-
-hr {
-    display:block;
-    border:0px;
-    height: 15px;
-    margin: 40px 0 40px 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image:url(&quot;/images/Decoration.svg&quot;);
-}
-
-&lt;/style&gt;
 
 &lt;hr /&gt;
 
@@ -201,11 +151,11 @@ hr {
   &lt;h1 id=&quot;jekyll-assets-created-over-the-course-of-this-exercise&quot;&gt;Jekyll assets created over the course of this exercise&lt;/h1&gt;
 
   &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;filterize.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that applies filters to a block of text. Makes doing things like &lt;code&gt;scssify&lt;/code&gt; easier — no more &lt;code&gt;capture&lt;/code&gt; boilerplate.&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;whitespace_compressor.rb&lt;/span&gt;&lt;/a&gt; — A filter that cuts out newlines and whitespace around each line.&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;date_calculator.rb&lt;/span&gt;&lt;/a&gt; — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;normalize.rb&lt;/span&gt;&lt;/a&gt; — A filter that hooks into a slightly modified &lt;a href=&quot;http://google.com&quot;&gt;extend-string.rb&amp;lt;/span&amp;gt;&lt;/a&gt; in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;divify.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/filterize.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;filterize.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that applies filters to a block of text. Makes doing things like &lt;code&gt;scssify&lt;/code&gt; easier — no more &lt;code&gt;capture&lt;/code&gt; boilerplate.&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/whitespace_compressor_filter.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;whitespace_compressor.rb&lt;/span&gt;&lt;/a&gt; — A filter that cuts out newlines and whitespace around each line.&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/date_calculator.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;date_calculator.rb&lt;/span&gt;&lt;/a&gt; — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;normalize.rb&lt;/span&gt;&lt;/a&gt; — A filter that hooks into a slightly modified &lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb&quot;&gt;extend-string.rb&amp;lt;/span&amp;gt;&lt;/a&gt; in order to normalize text. (Remove accents, replace spaces, retain only basic letters and numbers.)&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;divify.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;html_sample.rb&lt;/span&gt;&lt;/a&gt; — A Liquid block tag that renders out the given HTML into a PNG.&lt;/li&gt;
   &lt;/ul&gt;
 
@@ -217,84 +167,6 @@ hr {
         
         
         <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>The Mad Power of Jekyll</title>
-        <description>&lt;h1 id=&quot;the-actual-mad-power-of-jekyll&quot;&gt;The ACTUAL Mad Power of Jekyll&lt;/h1&gt;
-
-&lt;h2 id=&quot;asset-management&quot;&gt;Asset Management&lt;/h2&gt;
-
-&lt;p&gt;What really pushed me to give static blog gnereators a try was the ease of asset management. There are many assets in blogs that we don’t think about: background images, charts, icons. In many cases, we process these files in some externa program outside our blog and then render them to .png for use with the blog itself. This means that if anything ever changes in our data, we have to find our tools again, repeat the process, and update the page with the correct data.&lt;/p&gt;
-
-&lt;p&gt;But what if we didn’t have to do that?&lt;/p&gt;
-
-&lt;p&gt;With Jekyll, by leveraging Ruby scripting, we can automate this processing. Let’s say that each of our posts has a designated header image from which we want to extract an icon — used in the archive page, for example.&lt;/p&gt;
-
-&lt;p&gt;The benefit here is flexibility. What if we want to experiment with different icon shapes? What if we want to scale them? Add a filter? With just a few lines of Ruby script, we can recreate every image in just a few seconds and completely redo our site.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 18 Aug 2014 15:22:13 +0200</pubDate>
-        <link>http://archagon.github.io/archagon.net//2014/08/18/the-mad-power-of-jekyll.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//2014/08/18/the-mad-power-of-jekyll.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Second Post</title>
-        <description>&lt;p&gt;This is the second Jekyll post. The intent here is to test all the power features I intend to use in my blog, among them header images, category highlighting, code, article layout, and more.&lt;/p&gt;
-
-&lt;p&gt;For the first paragraph, let’s test some images.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/archagon.net//images/SxSKhhK.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now, let’s test this code snippet. Below is an example of some pretty terrible code in a language I just made up.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;varbal b set 20
-for varbal c in b [
-    b plag 5
-    b plag plag
-    if b egwal 5 [
-        retarn
-    ]
-]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        <pubDate>Sat, 16 Aug 2014 14:03:39 +0200</pubDate>
-        <link>http://archagon.github.io/archagon.net//programming/2014/08/16/second-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//programming/2014/08/16/second-post.html</guid>
-        
-        
-        <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve --watch&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 16 Aug 2014 11:03:39 +0200</pubDate>
-        <link>http://archagon.github.io/archagon.net//jekyll/update/2014/08/16/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/update/2014/08/16/welcome-to-jekyll.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-        <category>update</category>
         
       </item>
     
@@ -339,55 +211,6 @@ for varbal c in b [
         
         
         <category>travel</category>
-        
-      </item>
-    
-      <item>
-        <title>Test HTML Post</title>
-        <description>&lt;img src=&quot;/test_image.png&quot; /&gt;
-&lt;p&gt;I'm a paragraph!&lt;/p&gt;
-&lt;p&gt;another test image:&lt;/p&gt;</description>
-        <pubDate>Mon, 19 Aug 2013 22:28:19 +0200</pubDate>
-        <link>http://archagon.github.io/archagon.net//2013/08/19/test-html-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//2013/08/19/test-html-post.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Older Post</title>
-        <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 12 Dec 2012 00:00:00 +0100</pubDate>
-        <link>http://archagon.github.io/archagon.net//jekyll/2012/12/12/older-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/2012/12/12/older-post.html</guid>
-        
-        
-        <category>jekyll</category>
-        
-      </item>
-    
-      <item>
-        <title>Older Post 2</title>
-        <description>&lt;p&gt;This is an intentionally older post to test the archive page.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 11 Dec 2012 00:00:00 +0100</pubDate>
-        <link>http://archagon.github.io/archagon.net//2012/12/11/older-categoryless-post.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//2012/12/11/older-categoryless-post.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Other Older Post</title>
-        <description>&lt;p&gt;This is another intentionally older post to test the archive page.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 01 Jan 2012 00:00:00 +0100</pubDate>
-        <link>http://archagon.github.io/archagon.net//jekyll/2012/01/01/older-post2.html</link>
-        <guid isPermaLink="true">http://archagon.github.io/archagon.net//jekyll/2012/01/01/older-post2.html</guid>
-        
-        
-        <category>jekyll</category>
         
       </item>
     
