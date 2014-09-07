@@ -127,55 +127,94 @@
             {
                 "name": "New Orleans",
                 "country": "US",
-                "date-start": "2014-4-26",
-                "date-end": "2014-4-29",
+                "date-start": "2014-4-24",
+                "date-end": "2014-4-25",
                 "posts": []
             },
             {
                 "name": "Cruise",
                 "type": "ship",
-                "date-start": "2014-4-29",
-                "date-end": "2014-5-12",
-                "posts": []
-            },
-            {
-                "name": "Train",
-                "type": "train",
-                "date-start": "2014-4-29",
-                "date-end": "2014-5-12",
+                "date-start": "2014-4-26",
+                "date-end": "2014-5-14",
                 "posts": []
             },
             {
                 "name": "Barcelona",
                 "country": "ES",
-                "date-start": "2014-5-12",
-                "date-end": "2014-5-30",
-                "posts": []
-            },
-            {
-                "name": "Madrid",
-                "country": "ES",
+                "date-start": "2014-5-15",
+                "date-end": "2014-6-3",
                 "posts": []
             },
             {
                 "name": "Paris",
                 "country": "FR",
-                "date-start": "2014-5-30",
+                "date-start": "2014-6-5",
                 "date-end": "2014-7-2",
                 "posts": []
             },
             {
-                "name": "Frankfurt",
-                "date-start": "2014-5-30",
-                "date-end": "2014-7-2",
+                "name": "London",
+                "country": "UK",
+                "date-start": "2014-7-3",
+                "date-end": "2014-8-2",
                 "posts": []
             },
             {
-                "name": "Berlin",
-                "date-start": "2014-5-30",
-                "date-end": "2014-7-2",
+                "name": "Penzance",
+                "country": "UK",
+                "date-start": "2014-8-3",
+                "date-end": "2014-8-6",
                 "posts": []
-            }
+            },
+            {
+                "name": "Bath",
+                "country": "UK",
+                "date-start": "2014-8-7",
+                "date-end": "2014-8-11",
+                "posts": []
+            },
+            {
+                "name": "Oxford",
+                "country": "UK",
+                "date-start": "2014-8-12",
+                "date-end": "2014-8-15",
+                "posts": []
+            },
+            {
+                "name": "Cambridge",
+                "country": "UK",
+                "date-start": "2014-8-16",
+                "date-end": "2014-8-17",
+                "posts": []
+            },
+            {
+                "name": "York",
+                "country": "UK",
+                "date-start": "2014-8-18",
+                "date-end": "2014-8-20",
+                "posts": []
+            },
+            {
+                "name": "Newcastle",
+                "country": "UK",
+                "date-start": "2014-8-21",
+                "date-end": "2014-8-23",
+                "posts": []
+            },
+            {
+                "name": "Edinburgh",
+                "country": "UK",
+                "date-start": "2014-8-24",
+                "date-end": "2014-8-27",
+                "posts": []
+            },
+            {
+                "name": "Amsterdam",
+                "country": "NA",
+                "date-start": "2014-8-29",
+                "date-end": "2014-8-30",
+                "posts": []
+            },
         ]
     }
 ]
