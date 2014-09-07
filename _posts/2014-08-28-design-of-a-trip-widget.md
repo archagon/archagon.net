@@ -143,7 +143,7 @@ SASS also allows me to very easily do things like limit the scope of all my CSS 
 
 You can find [the full SASS file here][sass].
 
-[sass]: http://www.google.com
+[sass]: https://github.com/archagon/archagon.net/blob/master/_sass/_timeline-map.scss
 
 {% enddivify %}
 
@@ -170,8 +170,8 @@ The original goal for this widget was not to sit on a single standalone page, bu
 
 You can find the [templated HTML file here][template] and the [trip JSON file here][data].
 
-[template]: http://www.google.com
-[data]: http://www.google.com
+[template]: https://github.com/archagon/archagon.net/blob/master/_includes/timeline-template.html
+[data]: https://github.com/archagon/archagon.net/blob/master/_data/trips.json
 
 {% enddivify %}
 
@@ -185,7 +185,7 @@ If this post seems overly verbose, I'm sorry. I only hope that it might help cla
 
 As a bit of a meta addendum, check out the pieces coming together in [the Markdown for this blog post here][markdown]!
 
-[markdown]: http://www.google.com
+[markdown]: https://github.com/archagon/archagon.net/blob/master/_posts/2014-08-28-design-of-a-trip-widget.md
 
 {% enddivify %}
 
@@ -216,12 +216,12 @@ hr {
 * [<span class="asset-name">divify.rb</span>][divify] — A Liquid block tag that wraps the containing text in a div with the provided classes. (To make this box!)
 * [<span class="asset-name">html_sample.rb</span>][html_sample] — A Liquid block tag that renders out the given HTML into a PNG.
 
-[filterize]: http://google.com
-[whitespace_compressor]: http://google.com
-[date_calculator]: http://google.com
-[normalize]: http://google.com
-[extend-string]: http://google.com
-[divify]: http://google.com
+[filterize]: https://github.com/archagon/archagon.net/blob/master/_plugins/filterize.rb
+[whitespace_compressor]: https://github.com/archagon/archagon.net/blob/master/_plugins/whitespace_compressor_filter.rb
+[date_calculator]: https://github.com/archagon/archagon.net/blob/master/_plugins/date_calculator.rb
+[normalize]: https://github.com/archagon/archagon.net/blob/master/_plugins/normalize_filter.rb
+[extend-string]: https://github.com/archagon/archagon.net/blob/master/_plugins/extend_string.rb
+[divify]: https://github.com/archagon/archagon.net/blob/master/_plugins/divify.rb
 [html_sample]: http://google.com
 
 </div>
