@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 20 Sep 2014 03:04:42 +0200</pubDate>
-    <lastBuildDate>Sat, 20 Sep 2014 03:04:42 +0200</lastBuildDate>
+    <pubDate>Sat, 20 Sep 2014 03:07:29 +0200</pubDate>
+    <lastBuildDate>Sat, 20 Sep 2014 03:07:29 +0200</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -20,7 +20,7 @@
 
 &lt;p&gt;
 &lt;style type=&quot;text/css&quot;&gt;
-    asdf { width: 400px; height: 400px; margin: 0; padding: 0;}
+    #google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml { width: 400px; height: 400px; margin: 0; padding: 0;}
 &lt;/style&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA&quot;&gt;
 &lt;/script&gt;
@@ -39,7 +39,8 @@
     }
     google.maps.event.addDomListener(window, 'load', initialize);
 &lt;/script&gt;
-&lt;div id=&quot;asdf&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml&quot;&gt;&lt;/div&gt;
+&lt;noscript&gt;&lt;/noscript&gt;
 &lt;/p&gt;
 
 &lt;p&gt;(Incidentally, setting this viewer up was surprisingly easy. First, I exported the &lt;code&gt;kml&lt;/code&gt; data from the app — in this case, EasyTrailsLT, which I’m also trying out. Next, I went and got a Google Maps Javascript API key. Finally, I wrote a quick Jekyll Liquid tag to replace &lt;code&gt;kmlasset&lt;/code&gt; tags with a bit of boilerplate Javascript code calling Google Maps with the &lt;code&gt;kml&lt;/code&gt; file URL. End result: drop my &lt;code&gt;kml&lt;/code&gt; in a folder, add a tag, and have the map show up magically in my blog post. More on the power of Jekyll in later posts!)&lt;/p&gt;
