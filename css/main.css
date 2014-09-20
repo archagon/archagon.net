@@ -312,8 +312,9 @@ pre {
 hr {
   display: block;
   border: 0px;
-  height: 15px;
+  height: 1.5em;
   margin: 40px 0 40px 0;
+  background-size: 30em;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("/images/Decoration.svg"); }
@@ -535,6 +536,42 @@ hr {
 
 .archive_blurb_test_container {
   overflow: hidden; }
+
+article h2 {
+  font-weight: 500; }
+article > h1, article > h2, article > h3, article > h4, article > h5, article > h6 {
+  color: #505050;
+  margin-left: -1.62em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0.3em 0 0.3em 0.7em;
+  line-height: initial; }
+  article > h1::before, article > h2::before, article > h3::before, article > h4::before, article > h5::before, article > h6::before {
+    content: "❡";
+    display: inline-block;
+    width: 0.7em;
+    margin-right: 0.2em;
+    color: lightgray;
+    height: 100%;
+    padding-top: auto;
+    padding-bottom: auto; }
+  article > h1 a, article > h2 a, article > h3 a, article > h4 a, article > h5 a, article > h6 a {
+    border-bottom: dotted;
+    border-color: lightgray;
+    border-width: 2px; }
+    article > h1 a, article > h1 a:hover, article > h1 a:visited, article > h2 a, article > h2 a:hover, article > h2 a:visited, article > h3 a, article > h3 a:hover, article > h3 a:visited, article > h4 a, article > h4 a:hover, article > h4 a:visited, article > h5 a, article > h5 a:hover, article > h5 a:visited, article > h6 a, article > h6 a:hover, article > h6 a:visited {
+      color: inherit; }
+    article > h1 a:hover, article > h2 a:hover, article > h3 a:hover, article > h4 a:hover, article > h5 a:hover, article > h6 a:hover {
+      text-decoration: none; }
+
+pre {
+  line-height: 1.2em; }
+  pre > code {
+    font-size: 1.0em; }
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 0.75em; } }
 
 /**
  * Syntax highlighting styles
@@ -916,6 +953,27 @@ hr {
   .code-source p {
     display: inline; }
 
-.htmlsample {
-  width: 100%;
-  height: 100%; }
+.image_with_caption {
+  display: inline-block;
+  border: 3px solid black;
+  border-radius: 5px;
+  border-color: #99cfe0; }
+  .image_with_caption figure {
+    margin: 0;
+    display: table; }
+    .image_with_caption figure img {
+      padding: 5px;
+      margin: 3px;
+      margin-bottom: 1.5px; }
+    .image_with_caption figure figcaption {
+      font-style: italic;
+      font-weight: 500;
+      font-size: 0.8em;
+      color: black;
+      margin: 3px;
+      padding: 5px;
+      margin-top: 1.5px;
+      border-radius: 3px;
+      background-color: #c1e1ec;
+      display: table-caption;
+      caption-side: bottom; }
