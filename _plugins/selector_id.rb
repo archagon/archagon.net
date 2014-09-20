@@ -5,9 +5,9 @@ module Jekyll
         end
 
         def selector_id
-            selector_id = id.gsub! "/", "_" # TODO: might need more
-            selector_id = "sel_" + selector_id
-            return selector_id
+            return_id = id.urlize({:downcase => true, :convert_spaces => true})
+            return_id = "sel_" + return_id
+            return return_id
         end
     end
 end
