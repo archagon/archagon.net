@@ -15,6 +15,7 @@ markdown: kramdown
 
 # Extra directories
 image_dir: images
+assets_dir: assets
 
 # Extra files
 default_icon: icon_default.png
