@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 08 Nov 2014 22:08:15 +0100</pubDate>
-    <lastBuildDate>Sat, 08 Nov 2014 22:08:15 +0100</lastBuildDate>
+    <pubDate>Sat, 08 Nov 2014 22:21:28 +0100</pubDate>
+    <lastBuildDate>Sat, 08 Nov 2014 22:21:28 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -282,9 +282,11 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 &lt;/div&gt;
 </description>
         <pubDate>Sat, 08 Nov 2014 21:26:54 +0100</pubDate>
-        <link>http://beta-blog.archagon.net/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.html</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.html</guid>
+        <link>http://beta-blog.archagon.net/programming/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.html</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/programming/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.html</guid>
         
+        
+        <category>programming</category>
         
       </item>
     
