@@ -12,8 +12,8 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+  font-size: 19px;
   line-height: 1.5;
   font-weight: 300;
   color: #111111;
@@ -42,7 +42,7 @@ figure > img {
   display: block; }
 
 figcaption {
-  font-size: 14px; }
+  font-size: 16.625px; }
 
 /**
  * Lists
@@ -58,7 +58,12 @@ li > ol {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 300; }
+  font-weight: 500;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  color: #505050; }
+
+.post {
+  margin-top: 20px; }
 
 /**
  * Links
@@ -110,16 +115,16 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(1000px - (30px * 2));
-  max-width: calc(1000px - (30px * 2));
+  max-width: -webkit-calc(1100px - (30px * 2));
+  max-width: calc(1100px - (30px * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: 30px;
   padding-left: 30px; }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: -1px) {
     .wrapper {
-      max-width: -webkit-calc(1000px - (30px));
-      max-width: calc(1000px - (30px));
+      max-width: -webkit-calc(1100px - (30px));
+      max-width: calc(1100px - (30px));
       padding-right: 15px;
       padding-left: 15px; } }
 
@@ -146,61 +151,47 @@ pre {
  * Site header
  */
 .site-header {
-  border-top: 5px solid #424242;
-  border-bottom: 1px solid #e8e8e8;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 400;
   min-height: 56px;
   position: relative; }
 
 .site-title {
-  font-size: 26px;
+  text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 70px;
   line-height: 56px;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-  float: left; }
+  letter-spacing: -3px;
+  margin-bottom: 0; }
+  .site-title .name {
+    color: red; }
+  .site-title .subtitle {
+    margin-top: 10px;
+    font-size: 70%;
+    color: lightgray; }
+    .site-title .subtitle::before {
+      content: "("; }
+    .site-title .subtitle::after {
+      content: ")"; }
   .site-title, .site-title:visited {
     color: #424242; }
 
 .site-nav {
-  float: right;
-  line-height: 56px; }
+  border-top: 2px dotted #e8e8e8;
+  border-bottom: 2px dotted #e8e8e8;
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  letter-spacing: 0px;
+  font-size: 125%; }
   .site-nav .menu-icon {
     display: none; }
   .site-nav .page-link {
     color: #111111;
     line-height: 1.5; }
     .site-nav .page-link:not(:first-child) {
-      margin-left: 20px; }
-  @media screen and (max-width: 600px) {
-    .site-nav {
-      position: absolute;
-      top: 9px;
-      right: 30px;
-      background-color: #fdfdfd;
-      border: 1px solid #e8e8e8;
-      border-radius: 5px;
-      text-align: right; }
-      .site-nav .menu-icon {
-        display: block;
-        float: right;
-        width: 36px;
-        height: 26px;
-        line-height: 0;
-        padding-top: 10px;
-        text-align: center; }
-        .site-nav .menu-icon > svg {
-          width: 18px;
-          height: 15px; }
-          .site-nav .menu-icon > svg path {
-            fill: #424242; }
-      .site-nav .trigger {
-        clear: both;
-        display: none; }
-      .site-nav:hover .trigger {
-        display: block;
-        padding-bottom: 5px; }
-      .site-nav .page-link {
-        display: block;
-        padding: 5px 10px; } }
+      margin-left: 35px; }
 
 /**
  * Site footer
@@ -240,7 +231,7 @@ pre {
   width: -webkit-calc(45% - (30px / 2));
   width: calc(45% - (30px / 2)); }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: -1px) {
   .footer-col-1,
   .footer-col-2 {
     width: -webkit-calc(50% - (30px / 2));
@@ -267,27 +258,49 @@ pre {
   margin-left: 0;
   list-style: none; }
   .post-list > li {
+    background-color: aliceblue;
+    border: 4px #d7ecff solid;
+    padding: 15px;
+    border-radius: 10px;
     margin-bottom: 30px; }
 
 .post-meta {
-  font-size: 14px;
-  color: #828282; }
+  font-size: 16.625px;
+  color: #828282;
+  padding: 0;
+  margin: 0;
+  line-height: 65%; }
 
 .post-link {
   display: block;
-  font-size: 24px; }
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  line-height: 65%; }
+
+.post {
+  padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+  border: solid 2px #c1e1ec;
+  border-radius: 15px; }
 
 /**
  * Posts
  */
+.post-content {
+  padding: 15px; }
+
 .post-header {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  margin-bottom: 15px; }
 
 .post-title {
   font-size: 42px;
   letter-spacing: -1px;
   line-height: 1; }
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: -1px) {
     .post-title {
       font-size: 36px; } }
 
@@ -295,17 +308,17 @@ pre {
   margin-bottom: 30px; }
   .post-content h2 {
     font-size: 32px; }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: -1px) {
       .post-content h2 {
         font-size: 28px; } }
   .post-content h3 {
     font-size: 26px; }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: -1px) {
       .post-content h3 {
         font-size: 22px; } }
   .post-content h4 {
     font-size: 20px; }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: -1px) {
       .post-content h4 {
         font-size: 18px; } }
 
