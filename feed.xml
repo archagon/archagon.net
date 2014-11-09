@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 08 Nov 2014 22:47:55 +0100</pubDate>
-    <lastBuildDate>Sat, 08 Nov 2014 22:47:55 +0100</lastBuildDate>
+    <pubDate>Sun, 09 Nov 2014 15:25:45 +0100</pubDate>
+    <lastBuildDate>Sun, 09 Nov 2014 15:25:45 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -214,16 +214,22 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;p&gt;This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well… if you’re implementing a keyboard or anything remotely like it, &lt;em&gt;don’t use autolayout!&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion… forget about it. Aside from the fact that you’ll spend your days knee-deep in &lt;code&gt;constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:&lt;/code&gt; calls and spacer views&lt;sup id=&quot;fnref:spacer_views&quot;&gt;&lt;a href=&quot;#fn:spacer_views&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, you’ll also have to battle with bizarre Autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. Autolayout gives you zero flexibility in this regard.&lt;/p&gt;
+&lt;p&gt;In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in &lt;code&gt;constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:&lt;/code&gt; initializers and spacer views&lt;sup id=&quot;fnref:spacer_views&quot;&gt;&lt;a href=&quot;#fn:spacer_views&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.&lt;/p&gt;
 
-&lt;p&gt;I recently encountered a project called &lt;a href=&quot;https://github.com/Masonry/Masonry&quot;&gt;Masonry&lt;/a&gt;, which intends to be a simplified Autolayout syntax. This is an example from their docs:&lt;/p&gt;
+&lt;p&gt;Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: &lt;code&gt;|-(2)-[myView(30)]-(2)-|&lt;/code&gt;. But every view in such a string must be named, which means that all those anonymous keys and spacer views suddenly need to have unique identifiers. Instead of making my life easier, all this did was create a &lt;em&gt;lot&lt;/em&gt; of bolierplate garbage code all over my layout code. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)&lt;/p&gt;
+
+&lt;p&gt;On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few &lt;em&gt;seconds&lt;/em&gt; longer than just laying everything out in &lt;code&gt;layoutSubviews&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In retrospect, settling on manual layout was certainly the right decision, and I’m not sure why I even spent so long trying to get autolayout working right. With &lt;code&gt;layoutSubviews&lt;/code&gt;, there’s no worrying about priorities or inequalities, no seeking out conflicting constraints, no implicit calculations, no linear algebra. It was as if a fog had been lifted from my mind. My layout code shrunk to only a third of what it was before! And as extra validation, soon after I released my keyboard into alpha, somebody asked me if they could lay out their keys in an arc. This was the simplest of changes with &lt;code&gt;layoutSubviews&lt;/code&gt;, but made me shudder to think what kinds of horrible contortions would have been required had I still been using autolayout.&lt;/p&gt;
+
+&lt;p&gt;As an aside, I recently encountered a project called &lt;a href=&quot;https://github.com/Masonry/Masonry&quot;&gt;Masonry&lt;/a&gt; that intends to be a simplified autolayout syntax. Here is an example from their docs:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(superview).with.insets(padding);
 }];
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To me, that looks &lt;em&gt;marvelous&lt;/em&gt;, and I wish Apple would adopt something similar. Right now, even though Autolayout is very powerful, it is completely unsuited for many applications, including most programmatic interface designs.&lt;/p&gt;
+&lt;p&gt;To me, that looks &lt;em&gt;marvelous&lt;/em&gt;, and I wish Apple would adopt something similar. Right now, even though autolayout is very powerful, it is completely unsuited for many applications, including most programmatic interface designs.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-what-under-the-hood&quot;&gt;The What…? Under the Hood&lt;/h3&gt;
 
@@ -270,6 +276,8 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 &lt;p&gt;There’s no real conclusion. As of iOS 8.1, 3rd party keyboards are functional, but look and feel janky. Programming them is also a horrible pain. I hope Apple fixes this stuff soon. The end.&lt;/p&gt;
 
 &lt;p&gt;Thanks for reading! If you’ve found this article or my keyboard project useful, please consider buying something for yourself on Amazon via &lt;a href=&quot;http://www.amazon.com/gp/product/B00KR27MD4/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B00KR27MD4&amp;amp;linkCode=as2&amp;amp;tag=archagon-20&amp;amp;linkId=3L2N5B744PPUNYM3&quot;&gt;my affiliate link&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Addendum 2014-11-9: Added visual formatting language and performance to autolayout section.&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:other_translit_techniques&quot;&gt;
