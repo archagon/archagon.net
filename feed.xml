@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 09 Nov 2014 15:39:11 +0100</pubDate>
-    <lastBuildDate>Sun, 09 Nov 2014 15:39:11 +0100</lastBuildDate>
+    <pubDate>Sun, 09 Nov 2014 15:41:27 +0100</pubDate>
+    <lastBuildDate>Sun, 09 Nov 2014 15:41:27 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -216,7 +216,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;p&gt;In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in &lt;code&gt;constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:&lt;/code&gt; initializers and spacer views&lt;sup id=&quot;fnref:spacer_views&quot;&gt;&lt;a href=&quot;#fn:spacer_views&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.&lt;/p&gt;
 
-&lt;p&gt;Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: &lt;code&gt;|-(2)-[myView(30)]-(2)-|&lt;/code&gt;. But every view in such a string must be named, which means that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was give me &lt;em&gt;more&lt;/em&gt; work to do and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)&lt;/p&gt;
+&lt;p&gt;Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: &lt;code&gt;|-(2)-[myView(30)]-(2)-|&lt;/code&gt;. But every view in such a string must be named, which meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)&lt;/p&gt;
 
 &lt;p&gt;On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few &lt;em&gt;seconds&lt;/em&gt; longer than just laying everything out in &lt;code&gt;layoutSubviews&lt;/code&gt;.&lt;/p&gt;
 
