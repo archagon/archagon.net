@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 09 Nov 2014 15:25:45 +0100</pubDate>
-    <lastBuildDate>Sun, 09 Nov 2014 15:25:45 +0100</lastBuildDate>
+    <pubDate>Sun, 09 Nov 2014 15:28:08 +0100</pubDate>
+    <lastBuildDate>Sun, 09 Nov 2014 15:28:08 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -220,7 +220,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;p&gt;On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few &lt;em&gt;seconds&lt;/em&gt; longer than just laying everything out in &lt;code&gt;layoutSubviews&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;In retrospect, settling on manual layout was certainly the right decision, and I’m not sure why I even spent so long trying to get autolayout working right. With &lt;code&gt;layoutSubviews&lt;/code&gt;, there’s no worrying about priorities or inequalities, no seeking out conflicting constraints, no implicit calculations, no linear algebra. It was as if a fog had been lifted from my mind. My layout code shrunk to only a third of what it was before! And as extra validation, soon after I released my keyboard into alpha, somebody asked me if they could lay out their keys in an arc. This was the simplest of changes with &lt;code&gt;layoutSubviews&lt;/code&gt;, but made me shudder to think what kinds of horrible contortions would have been required had I still been using autolayout.&lt;/p&gt;
+&lt;p&gt;In retrospect, settling on manual layout was certainly the right decision, and I’m not sure why I even spent so long trying to get autolayout working right. With &lt;code&gt;layoutSubviews&lt;/code&gt;, there’s no worrying about priorities or inequalities, no seeking out conflicting constraints, no implicit calculations, no linear algebra. It was as if a fog had been lifted from my mind. My layout code shrunk to only a third of what it was before. And as extra validation, soon after I released my keyboard into alpha, somebody asked me if they could lay out their keys in an arc. This was the simplest of changes with &lt;code&gt;layoutSubviews&lt;/code&gt;, but made me shudder to think of the horrible contortions that would have been required had I still been using autolayout!&lt;/p&gt;
 
 &lt;p&gt;As an aside, I recently encountered a project called &lt;a href=&quot;https://github.com/Masonry/Masonry&quot;&gt;Masonry&lt;/a&gt; that intends to be a simplified autolayout syntax. Here is an example from their docs:&lt;/p&gt;
 
