@@ -6,9 +6,52 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 09 Nov 2014 15:41:27 +0100</pubDate>
-    <lastBuildDate>Sun, 09 Nov 2014 15:41:27 +0100</lastBuildDate>
+    <pubDate>Thu, 20 Nov 2014 02:55:23 +0100</pubDate>
+    <lastBuildDate>Thu, 20 Nov 2014 02:55:23 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>What's Up with Google Maps These Days?</title>
+        <description>&lt;p&gt;When Apple replaced its Google-powered maps app with a complete in-house rewrite in iOS 6, most users had little good to say about it. It was inaccurate. It lacked public transit directions. The search was paltry, as was the iconography. At best, it could be described as &lt;em&gt;slick&lt;/em&gt;, with the pixellated pop-in of previous generations replaced by crisp, swiftly scaling vector lines. But this was not enough to offset the jarring lack of functionality compared to Google’s definitive mapping solution, and so &lt;a href=&quot;https://www.apple.com/letter-from-tim-cook-on-maps/&quot;&gt;Tim Cook apologized&lt;/a&gt; and we all went on with our lives.&lt;/p&gt;
+
+&lt;p&gt;It’s now a couple of iOS releases later, and over the past year — especially with OSX support in tow — I’ve been frequently finding myself reaching for Apple Maps before going anywhere near a browser. Gradually, Apple has been tending to its garden: improving its data; getting better business listings; making its icons more contextually meaningful. At the same time, in lockstep, Google Maps has been driving me progressively &lt;em&gt;up the wall&lt;/em&gt;. And as someone who has had &lt;em&gt;maps.google.com&lt;/em&gt; burned into his fingertips since its inception, I can’t help but see this as a major shift in the balance of power.&lt;/p&gt;
+
+&lt;p&gt;One of the most frustrating issues with Google Maps is seemingly minor, but hits me every time I use it. When you go to open a map, it initially — silently — loads as a static image. After a few seconds, the UI appears, followed by the actual interactive map. But nothing is done to distinguish the fake image-map from the interactive Javascript map, which means that when I first go to drag the map with my mouse, I am inevitably left with a useless thumbnail dangling from my cursor. &lt;em&gt;Every time&lt;/em&gt;. Even worse, the UI widgets appear to be clickable during this image phase, but have absolutely no function! The only thing you can do to avoid driving yourself crazy is wait for the tell-tale pop-in that heralds the interactive map — assuming you didn’t miss it on initial load.&lt;/p&gt;
+
+&lt;p&gt;The UI just doesn’t seem to work half the time. Widgets always takes a long time to load. Popups frequently overlap each other. Controls often stop working, as does dragging the map, forcing me to use the arrow keys to move around. Zoom takes too long to work and behaves erratically, especially if you use the Ctrl+double-click shortcut. Embedded maps only exacerbate all these issues, breaking more stuff and confining you to a tiny, immobile box. Just trying to &lt;em&gt;use&lt;/em&gt; the map feels like a Mexican standoff between yourself, the browser, and Google’s byzantine Javascript code.&lt;/p&gt;
+
+&lt;p&gt;Google’s own native iOS app never goes above 15 to 30 frames per second. When I first tried the app on release day on my iPhone 4, I figured the performance was a forgivable issue with the 1.0, or that my phone’s hardware simply wasn’t cutting it anymore. But no: even today, on the flagship redesigned version, with an iPhone 5S on iOS 8, everything still runs with massive lag. For a while, I figured, OK, Google didn’t want to give us the full, fluid maps experience on their primary competitor’s platform; whatever. Imagine my shock when I picked up a recent Android device, opened Maps, and found that it had the same 15-30fps bottleneck! On their home turf!&lt;/p&gt;
+
+&lt;p&gt;Apple Maps, from the start, has run at a solid 60 frames per second. It’s no joke: you can feel the smoothness in every scroll, every pinch, every rotation. There’s no longer any pop-in, aside from the initial load: when you zoom in, street lines get more detailed and smooth out instead of reloading, indicative of the updated vector graphics. It was widely rumored that one of Apple’s reasons for moving to their own app was that Google wasn’t giving them access to their full vector data, which they were supposedly already using on Android. If true, &lt;em&gt;why is Google’s native app performance so atrocious, even to this day?&lt;/em&gt; Why do we still see tiles? Why do streets still have to unblur as you zoom in? If Google is actually using vectors, &lt;em&gt;how are they using them in such a way that still causes these issues?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Speaking of smoothness: gestures in Apple Maps, both on iOS and via the trackpad on OSX, are a dream to use. Pinch-zooming, rotating, and panning have become so ingrained in my muscle memory that I keep trying to do it to Google Maps in my browser window — only to watch my fonts grow a size too big.&lt;/p&gt;
+
+&lt;p&gt;When I learned that Google Maps on iOS supported caching maps for offline use, I got excited. Now &lt;em&gt;here&lt;/em&gt; was a great feature that Apple Maps would probably never offer! Well, how’s this for irony? Although Apple doesn’t explicitly allow offline caching, it does, in practice, cache large swaths of map that you’ve recently viewed. I’ve been using my phone offline for the past few months, and in every city I’ve been to, I’ve gotten beautiful offline maps of the area after peeking at the surroundings in Wi-Fi mode. There’s no blur: I can zoom in with no apparent loss of street names or any other detail. Perhaps it’s a bad idea to rely on a cache that may theoretically invalidate at any time, but in practice, it works great.&lt;/p&gt;
+
+&lt;p&gt;In Google Maps — an app, I must remind you, that &lt;em&gt;explicitly supports offline mapping&lt;/em&gt; — saved maps don’t actually seem to work much of the time. I was unfortunate enough to discover this while walking around in a foreign city: upon opening my saved Google map, I found a blurry mess of pixels with no labels whatsoever. (Fortunately, Apple’s cache saved me from having to ask for directions.) To be fair, &lt;em&gt;sometimes&lt;/em&gt; the maps do load, but I can’t seem to trigger this behavior deterministically. Even better, offline maps sometimes “expire” at arbitrary times, rendering them unusable. (The official expiration time — why even have one? — is about a month, but I’ve seen maps expire earlier than that for no reason.) Finally, for reasons I don’t understand, &lt;em&gt;not all areas are cacheable.&lt;/em&gt; That’s right: if you try to save a map in Slovenia, you’ll be hit with an “area not available” error, even though you can save maps in Croatia by stepping over the border! What a mess.&lt;/p&gt;
+
+&lt;p&gt;So what about the elephant in the room: public transit? The lack of public transit directions on iOS is definitely a deal-breaker for me, and Apple’s kludgy third party solution just doesn’t cut it. (To remind readers: if you select public transit directions in Apple Maps, you are given the option of sending your request to any app that supports the transit directions API, or alternatively searching the App Store for one.) However, with the release of third party extensions, I think Apple has a tremendous opportunity on their hands. Although it’s convenient to have all your public transit directions curated by a central party, it’s hard for one organization to keep tabs on every public transit system in the world. How many bus lines are out there? Thousands? Google Maps mostly works in this regard, but I have on more than one occasion run into situations where the directions were inaccurate, misleading, or missing. Even Google can’t extend its feelers to every little city around the globe.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, local transit apps are not only accurate and up-to-date, but can even offer cool features like real-time arrival times and GPS tracking. It’s also pretty easy to find them: Apple already lets you see what apps are most frequently used in an area. But these apps aren’t able to integrate with system-wide services: you have to either open them separately or load them via Apple’s kludgy Maps hook, making them inconvenient for everyday use.&lt;/p&gt;
+
+&lt;p&gt;So here’s an idea. What if Apple &lt;em&gt;kept&lt;/em&gt; its third party transit direction support, but instead of having public transit directions open up in a separate app, brought that information directly into Maps itself?&lt;/p&gt;
+
+&lt;p&gt;Just a year ago, this would have been inconceivable. But today, with third party extension support, this would be a perfect fit with Apple’s strategy. Extensions go through specific, resource-constrained “extension points” to avoid hogging system resources, and Apple explicitly put future extension points on the table in their keynote reveal. How about this? With &lt;strong&gt;transit extensions&lt;/strong&gt;, you could have an app transmit local, up-to-the-minute timetables, GPS markers, and other metadata for public transit services right into any native Maps view!&lt;/p&gt;
+
+&lt;p&gt;This isn’t something that Google could implement with its centralized, web-centric approach. But it’s almost &lt;em&gt;obvious&lt;/em&gt; with Apple’s app-based infrastructure. All the pieces are already in place; all they need to do is give developers an API for it. I don’t think this would necessarily obviate the need for centralized, curated public transit directions, but it would be a great way to augment and future-proof such an offering.&lt;/p&gt;
+
+&lt;p&gt;There are still many problems with Apple Maps. Bookmark management is a nightmare. Getting directions between arbitrary points is nearly impossible. Things like subway stations are poorly delineated. But these are not high level problems; they are easy problems to fix, and Apple has progressively been fixing them. And so, I’m crossing my fingers for an amazing future where I can open Maps, switch over to satellite view, and have a private little “supervillain” moment as I watch the little bus and train pins moving around the city, slowly etching out their hard-worn routes, in real-time.&lt;/p&gt;
+
+&lt;p&gt;All at a buttery 60fps.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 20 Nov 2014 02:39:48 +0100</pubDate>
+        <link>http://beta-blog.archagon.net/2014/11/20/what's_up_with_google_maps_these_days/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2014/11/20/what's_up_with_google_maps_these_days/</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
     
       <item>
         <title>The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</title>
@@ -58,7 +101,7 @@
 
 &lt;p&gt;Some apps are downright broken with 3rd party keyboards.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;EDITOR’S NOTE: None of the problems below seem to happen anymore with Google’s recent Maps redesign. Still, the fact that they were happening at all is troubling, since there’s nothing an app should &lt;em&gt;theoretically&lt;/em&gt; be able to do to influence keyboard behavior.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Editor’s note: None of the problems below seem to happen anymore with Google’s recent Maps redesign. Still, the fact that they were happening at all is troubling, since there’s nothing an app should theoretically be able to do to influence keyboard behavior.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;In Google Maps, a number of strange behaviors happen with the search box. First, it’s one of the few text fields I’ve seen that have custom keyboards slide back in after they’ve been dismissed, rather than just popping in as described above. Why this particular text field and not others? I have no idea. Furthermore, if you track the &lt;code&gt;UIInputViewController&lt;/code&gt; lifecycle during this process, you’ll see that even though &lt;code&gt;viewWillAppear&lt;/code&gt; is called correctly when this happens, &lt;code&gt;viewDidAppear&lt;/code&gt; is not. This is especially odd given that the keyboard still appears to go through &lt;code&gt;init&lt;/code&gt;.&lt;/p&gt;
 
@@ -177,7 +220,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;h3 id=&quot;straight-up-api-errors&quot;&gt;Straight-Up API Errors&lt;/h3&gt;
 
-&lt;p&gt;The &lt;code&gt;UIInputViewController&lt;/code&gt; class, as an adherent to &lt;code&gt;UITextInputDelegate&lt;/code&gt;, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: &lt;code&gt;selectionWillChange&lt;/code&gt;, &lt;code&gt;selectionDidChange&lt;/code&gt;, &lt;code&gt;textWillChange&lt;/code&gt;, and &lt;code&gt;textDidChange&lt;/code&gt;. In fact, &lt;em&gt;none of them actually do those things&lt;/em&gt;. The &lt;code&gt;selection&lt;/code&gt; methods never gets called at all, and &lt;code&gt;text&lt;/code&gt; methods only get called — get this — when the selection changes or the cursor is moved!&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;UIInputViewController&lt;/code&gt; class, as an adherent to &lt;code&gt;UITextInputDelegate&lt;/code&gt;, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: &lt;code&gt;selectionWillChange&lt;/code&gt;, &lt;code&gt;selectionDidChange&lt;/code&gt;, &lt;code&gt;textWillChange&lt;/code&gt;, and &lt;code&gt;textDidChange&lt;/code&gt;. In fact, &lt;em&gt;none of them actually do those things&lt;/em&gt;. The &lt;code&gt;selection&lt;/code&gt; methods never gets called at all, and the &lt;code&gt;text&lt;/code&gt; methods only get called — get this — when the selection changes or the cursor is moved!&lt;/p&gt;
 
 &lt;p&gt;(Incidentally, the &lt;code&gt;UITextInput&lt;/code&gt; object that you get back with these methods is crippled. Many of its methods don’t seem to do anything.)&lt;/p&gt;
 
@@ -216,7 +259,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;p&gt;In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in &lt;code&gt;constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:&lt;/code&gt; initializers and spacer views&lt;sup id=&quot;fnref:spacer_views&quot;&gt;&lt;a href=&quot;#fn:spacer_views&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.&lt;/p&gt;
 
-&lt;p&gt;Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: &lt;code&gt;|-(2)-[myView(30)]-(2)-|&lt;/code&gt;. But every view in such a string must be named, which meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)&lt;/p&gt;
+&lt;p&gt;Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: &lt;code&gt;|-(2)-[myView(30)]-(2)-|&lt;/code&gt;. But every view in such a string must be named. For my implementation, this meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)&lt;/p&gt;
 
 &lt;p&gt;On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few &lt;em&gt;seconds&lt;/em&gt; longer than just laying everything out in &lt;code&gt;layoutSubviews&lt;/code&gt;.&lt;/p&gt;
 
@@ -247,9 +290,9 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;h3 id=&quot;xcode&quot;&gt;Xcode&lt;/h3&gt;
 
-&lt;p&gt;Xcode crashes, stuck builds, stuck indexing, unresponsive buttons, and the never-ceasing SourceKit crash log blinking boxes of doom have become an hourly ritual for me. It’s gotten to the point where I instinctively reach for the “force quit” button if a task hasn’t completed within a few seconds. (I’ve also force-closed SourceKitService in Activity Monitor out of spite.)&lt;/p&gt;
+&lt;p&gt;Xcode quitting “unexpectedly”, stuck builds, stuck indexing, unresponsive buttons, and the never-ceasing SourceKit crash log blinking boxes of doom have become an hourly ritual for me. It’s gotten to the point where I instinctively reach for the “force quit” button if a task hasn’t completed within a few seconds. (I’ve also force-closed SourceKitService in Activity Monitor out of spite.)&lt;/p&gt;
 
-&lt;p&gt;Code completion frequenty stops working for me. I have to perform byzantine tricks to get it working again. (Sometimes, it never really does.)&lt;/p&gt;
+&lt;p&gt;Code completion frequenty stops working for me. I have to perform byzantine tricks to get it working again. (Sometimes, it never really does.) This is &lt;em&gt;infuriating&lt;/em&gt; when you Command-Click on some UIKit class to see the header and Xcode tells you that it doesn’t exist, or when you try to call a particularly long method and Xcode fails to find a match.&lt;/p&gt;
 
 &lt;p&gt;Offline documentation has been in a state of disrepair for the longest time. Apple may have fixed it in 6.1, but I am loathe to check.&lt;/p&gt;
 
@@ -257,7 +300,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;p&gt;It’s become a frequent occurrence that I load up an updated version of my keyboard, tap on my keyboard in the globe menu… and crash out back to the default keyboard. I have to either open the container app, force close the current app, press “stop” in Xcode, or do some other weird trick to get it to show up correctly.&lt;/p&gt;
 
-&lt;p&gt;A lot of the time, when I try to run the Keyboard target directly, it’ll open up the keyboard and then just sit on “waiting to attach” for eternity.&lt;/p&gt;
+&lt;p&gt;A lot of the time, when I try to run the Keyboard target directly, it’ll open up the keyboard and then just sit on “waiting to attach” for eternity. Sometimes I can’t fix this.&lt;/p&gt;
 
 &lt;p&gt;Sometimes my dynamic frameworks won’t compile, and I have to press the run button twice in a row for everything to link up properly. Remember the old quip about how insanity is doing the same thing twice and expecting different results? &lt;em&gt;Doesn’t apply to Xcode!&lt;/em&gt;&lt;/p&gt;
 
@@ -277,7 +320,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 &lt;p&gt;Thanks for reading! If you’ve found this article or my keyboard project useful, please consider buying something for yourself on Amazon via &lt;a href=&quot;http://www.amazon.com/gp/product/B00KR27MD4/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B00KR27MD4&amp;amp;linkCode=as2&amp;amp;tag=archagon-20&amp;amp;linkId=3L2N5B744PPUNYM3&quot;&gt;my affiliate link&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Addendum 2014-11-9: Added visual formatting language and performance to autolayout section.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Addendum 2014-11-9: Added paragraphs on visual format language and performance to autolayout section.&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:other_translit_techniques&quot;&gt;

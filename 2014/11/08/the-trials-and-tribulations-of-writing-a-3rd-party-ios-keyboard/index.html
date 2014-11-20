@@ -117,7 +117,7 @@
 
 <p>Some apps are downright broken with 3rd party keyboards.</p>
 
-<p><strong>EDITOR’S NOTE: None of the problems below seem to happen anymore with Google’s recent Maps redesign. Still, the fact that they were happening at all is troubling, since there’s nothing an app should <em>theoretically</em> be able to do to influence keyboard behavior.</strong></p>
+<p><em>Editor’s note: None of the problems below seem to happen anymore with Google’s recent Maps redesign. Still, the fact that they were happening at all is troubling, since there’s nothing an app should theoretically be able to do to influence keyboard behavior.</em></p>
 
 <p>In Google Maps, a number of strange behaviors happen with the search box. First, it’s one of the few text fields I’ve seen that have custom keyboards slide back in after they’ve been dismissed, rather than just popping in as described above. Why this particular text field and not others? I have no idea. Furthermore, if you track the <code>UIInputViewController</code> lifecycle during this process, you’ll see that even though <code>viewWillAppear</code> is called correctly when this happens, <code>viewDidAppear</code> is not. This is especially odd given that the keyboard still appears to go through <code>init</code>.</p>
 
@@ -236,7 +236,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <h3 id="straight-up-api-errors">Straight-Up API Errors</h3>
 
-<p>The <code>UIInputViewController</code> class, as an adherent to <code>UITextInputDelegate</code>, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: <code>selectionWillChange</code>, <code>selectionDidChange</code>, <code>textWillChange</code>, and <code>textDidChange</code>. In fact, <em>none of them actually do those things</em>. The <code>selection</code> methods never gets called at all, and <code>text</code> methods only get called — get this — when the selection changes or the cursor is moved!</p>
+<p>The <code>UIInputViewController</code> class, as an adherent to <code>UITextInputDelegate</code>, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: <code>selectionWillChange</code>, <code>selectionDidChange</code>, <code>textWillChange</code>, and <code>textDidChange</code>. In fact, <em>none of them actually do those things</em>. The <code>selection</code> methods never gets called at all, and the <code>text</code> methods only get called — get this — when the selection changes or the cursor is moved!</p>
 
 <p>(Incidentally, the <code>UITextInput</code> object that you get back with these methods is crippled. Many of its methods don’t seem to do anything.)</p>
 
@@ -275,7 +275,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in <code>constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:</code> initializers and spacer views<sup id="fnref:spacer_views"><a href="#fn:spacer_views" class="footnote">2</a></sup>, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.</p>
 
-<p>Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: <code>|-(2)-[myView(30)]-(2)-|</code>. But every view in such a string must be named, which meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)</p>
+<p>Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: <code>|-(2)-[myView(30)]-(2)-|</code>. But every view in such a string must be named. For my implementation, this meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)</p>
 
 <p>On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few <em>seconds</em> longer than just laying everything out in <code>layoutSubviews</code>.</p>
 
@@ -306,9 +306,9 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <h3 id="xcode">Xcode</h3>
 
-<p>Xcode crashes, stuck builds, stuck indexing, unresponsive buttons, and the never-ceasing SourceKit crash log blinking boxes of doom have become an hourly ritual for me. It’s gotten to the point where I instinctively reach for the “force quit” button if a task hasn’t completed within a few seconds. (I’ve also force-closed SourceKitService in Activity Monitor out of spite.)</p>
+<p>Xcode quitting “unexpectedly”, stuck builds, stuck indexing, unresponsive buttons, and the never-ceasing SourceKit crash log blinking boxes of doom have become an hourly ritual for me. It’s gotten to the point where I instinctively reach for the “force quit” button if a task hasn’t completed within a few seconds. (I’ve also force-closed SourceKitService in Activity Monitor out of spite.)</p>
 
-<p>Code completion frequenty stops working for me. I have to perform byzantine tricks to get it working again. (Sometimes, it never really does.)</p>
+<p>Code completion frequenty stops working for me. I have to perform byzantine tricks to get it working again. (Sometimes, it never really does.) This is <em>infuriating</em> when you Command-Click on some UIKit class to see the header and Xcode tells you that it doesn’t exist, or when you try to call a particularly long method and Xcode fails to find a match.</p>
 
 <p>Offline documentation has been in a state of disrepair for the longest time. Apple may have fixed it in 6.1, but I am loathe to check.</p>
 
@@ -316,7 +316,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>It’s become a frequent occurrence that I load up an updated version of my keyboard, tap on my keyboard in the globe menu… and crash out back to the default keyboard. I have to either open the container app, force close the current app, press “stop” in Xcode, or do some other weird trick to get it to show up correctly.</p>
 
-<p>A lot of the time, when I try to run the Keyboard target directly, it’ll open up the keyboard and then just sit on “waiting to attach” for eternity.</p>
+<p>A lot of the time, when I try to run the Keyboard target directly, it’ll open up the keyboard and then just sit on “waiting to attach” for eternity. Sometimes I can’t fix this.</p>
 
 <p>Sometimes my dynamic frameworks won’t compile, and I have to press the run button twice in a row for everything to link up properly. Remember the old quip about how insanity is doing the same thing twice and expecting different results? <em>Doesn’t apply to Xcode!</em></p>
 
@@ -336,7 +336,7 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>Thanks for reading! If you’ve found this article or my keyboard project useful, please consider buying something for yourself on Amazon via <a href="http://www.amazon.com/gp/product/B00KR27MD4/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00KR27MD4&amp;linkCode=as2&amp;tag=archagon-20&amp;linkId=3L2N5B744PPUNYM3">my affiliate link</a>.</p>
 
-<p><em>Addendum 2014-11-9: Added visual formatting language and performance to autolayout section.</em></p>
+<p><em>Addendum 2014-11-9: Added paragraphs on visual format language and performance to autolayout section.</em></p>
 <div class="footnotes">
   <ol>
     <li id="fn:other_translit_techniques">
