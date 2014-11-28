@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 28 Nov 2014 19:51:53 +0100</pubDate>
-    <lastBuildDate>Fri, 28 Nov 2014 19:51:53 +0100</lastBuildDate>
+    <pubDate>Fri, 28 Nov 2014 20:04:10 +0100</pubDate>
+    <lastBuildDate>Fri, 28 Nov 2014 20:04:10 +0100</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -18,7 +18,7 @@
 
 &lt;p&gt;One of the most frustrating issues with Google Maps is seemingly minor, but hits me every time I use it. When you go to open a map, it initially — silently — loads as a static image. After a few seconds, the UI appears, followed by the actual interactive map. But nothing is done to distinguish the fake image-map from the interactive Javascript map, which means that when I first go to drag the map with my mouse, I am inevitably left with a useless thumbnail dangling from my cursor. &lt;em&gt;Every time&lt;/em&gt;. Even worse, the UI widgets appear to be clickable during this image phase, but have absolutely no function! The only thing you can do to avoid driving yourself crazy is wait for the tell-tale pop-in that heralds the interactive map — assuming you didn’t miss it on initial load.&lt;/p&gt;
 
-&lt;p&gt;The UI just doesn’t seem to work half the time. Widgets always take a long time to load. Popups frequently overlap each other. Controls often stop working, as does dragging the map, forcing me to use the arrow keys to move around. Zoom takes too long to work and behaves erratically, especially if you use the Ctrl+double-click shortcut. Embedded maps only exacerbate all these issues, breaking more stuff and confining you to a tiny, immobile box. Just trying to &lt;em&gt;use&lt;/em&gt; the map feels like a Mexican standoff between yourself, the browser, and Google’s byzantine Javascript code.&lt;/p&gt;
+&lt;p&gt;The UI just doesn’t seem to work half the time. Widgets always take a long time to load. Popups frequently overlap each other. Controls often stop working, as does dragging the map, forcing me to use the arrow keys to move around. Zoom takes too long to work and behaves erratically, especially if you use the Ctrl+double-click shortcut. Embedded maps only exacerbate all these issues, breaking more stuff and confining you to a tiny, immobile box. Just trying to &lt;em&gt;use&lt;/em&gt; the map feels like a Mexican standoff between yourself, the browser, and Google’s byzantine Javascript code.&lt;/p&gt;
 
 &lt;p&gt;Google’s own native iOS app never goes above 15 to 30 frames per second. When I first tried the app on release day on my iPhone 4, I figured the performance was a forgivable issue with the 1.0, or that my phone’s hardware simply wasn’t cutting it anymore. But no: even today, on the flagship redesigned version, with an iPhone 5S on iOS 8, everything still runs with this lag. For a while, I figured, OK, Google didn’t want to give us the full, fluid maps experience on their primary competitor’s platform; whatever. Imagine my shock when I picked up a recent Android device, opened Maps, and found that it had the same 15-30fps bottleneck! On their home turf!&lt;/p&gt;
 
