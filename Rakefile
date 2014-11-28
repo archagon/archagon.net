@@ -53,6 +53,12 @@ task :build do
   system "jekyll build"
 end
 
+desc "Serve jekyll site"
+task :serve do
+  puts "## Serving Site with Jekyll"
+  system "jekyll serve --baseurl=\"\" --watch"
+end
+
 # desc "Watch the site and regenerate when it changes"
 # task :watch do
 #   raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
