@@ -10,7 +10,7 @@ html {
 body {
   font-size: 1em; }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 600px) {
   html {
     font-size: 7.5px; } }
 
@@ -253,8 +253,10 @@ hr {
   border-radius: 2em; }
   .site-header .wrapper > div {
     display: inline-block;
-    border-radius: 5em !important;
-    padding: 2.5em;
+    border-radius: 3em !important;
+    padding: 1.5em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
     overflow: visible; }
   .site-header .background-overlay {
     background-image: url("/images/background-blur3.jpg");
@@ -825,7 +827,7 @@ article > h1, article > h2, article > h3, article > h4, article > h5, article > 
   flex-flow: row nowrap;
   margin-top: 15px;
   margin-bottom: 15px; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .archive_year_element {
       -webkit-flex-flow: column nowrap;
       -moz-flex-flow: column nowrap;
@@ -841,7 +843,7 @@ article > h1, article > h2, article > h3, article > h4, article > h5, article > 
   -moz-flex-basis: 50px;
   flex-basis: 50px;
   text-align: right; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .archive_year {
       text-align: left;
       -webkit-flex-basis: auto;
@@ -867,7 +869,7 @@ article > h1, article > h2, article > h3, article > h4, article > h5, article > 
   -moz-justify-content: space-around;
   -ms-justify-content: space-around;
   justify-content: space-around; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .archive_month_list {
       margin: 0; } }
 
@@ -885,7 +887,7 @@ article > h1, article > h2, article > h3, article > h4, article > h5, article > 
   -moz-flex-flow: row nowrap;
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .archive_month_element {
       -webkit-flex-flow: column nowrap;
       -moz-flex-flow: column nowrap;
@@ -902,7 +904,7 @@ article > h1, article > h2, article > h3, article > h4, article > h5, article > 
   flex-basis: 100px;
   text-align: right;
   color: darkblue; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .archive_month {
       text-align: left;
       -webkit-flex-basis: auto;
@@ -928,7 +930,7 @@ article > h1, article > h2, article > h3, article > h4, article > h5, article > 
   -moz-justify-content: space-around;
   -ms-justify-content: space-around;
   justify-content: space-around; }
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .archive_post_list {
       margin: 0; } }
 
