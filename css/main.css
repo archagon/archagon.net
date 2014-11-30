@@ -135,10 +135,8 @@ pre {
   margin-left: auto;
   padding-right: 1.579rem;
   padding-left: 1.579rem; }
-  @media screen and (max-width: -1px) {
+  @media screen and (max-width: 600px) {
     .wrapper {
-      max-width: -webkit-calc(100rem - (1.579rem));
-      max-width: calc(100rem - (1.579rem));
       padding-right: 0.7895rem;
       padding-left: 0.7895rem; } }
 
@@ -163,13 +161,23 @@ pre {
 
 .site-header {
   margin-top: 1.579rem; }
+  @media screen and (max-width: 600px) {
+    .site-header {
+      margin-top: 0.7895rem; } }
 
 .site-footer {
   margin-top: 1.579rem;
   margin-bottom: 1.579rem; }
+  @media screen and (max-width: 600px) {
+    .site-footer {
+      margin-top: 0.7895rem;
+      margin-bottom: 0.7895rem; } }
 
 .page-content {
   margin-top: 3.158rem; }
+  @media screen and (max-width: 600px) {
+    .page-content {
+      margin-top: 1.579rem; } }
 
 .page-content {
   font-size: 1.9em; }
@@ -239,6 +247,9 @@ body {
 
 .post-content:not(:last-child) {
   margin-bottom: 1.579rem; }
+  @media screen and (max-width: 600px) {
+    .post-content:not(:last-child) {
+      margin-bottom: 0.7895rem; } }
 
 hr {
   display: block;
@@ -273,7 +284,7 @@ hr {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 7em;
     line-height: 0.9em;
-    font-weight: 800;
+    font-weight: 900;
     overflow: hidden;
     /* header text color */
     border-radius: 0.3em; }
@@ -289,7 +300,7 @@ hr {
         border-color: red; }
     .site-header .site-title .subtitle {
       font-size: 70%;
-      font-weight: 500;
+      font-weight: 300;
       color: #ffc3cd; }
       .site-header .site-title .subtitle::before {
         content: "("; }
@@ -302,6 +313,7 @@ hr {
   .site-header .site-nav {
     font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
     font-size: 2.4em;
+    font-weight: 500;
     border-radius: 0.5em;
     border-width: 2px;
     padding: 0 1em 0 1em;
