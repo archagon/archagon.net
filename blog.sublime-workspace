@@ -241,7 +241,7 @@
 			"file": "_site/feed.xml",
 			"settings":
 			{
-				"buffer_size": 61470,
+				"buffer_size": 61469,
 				"line_ending": "Unix"
 			}
 		},
@@ -249,7 +249,7 @@
 			"file": "_site/2014/11/20/what's_up_with_google_maps_these_days/index.html",
 			"settings":
 			{
-				"buffer_size": 14534,
+				"buffer_size": 14533,
 				"line_ending": "Unix"
 			}
 		},
@@ -429,7 +429,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 106.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -600,7 +600,7 @@
 	"groups":
 	[
 		{
-			"selected": 25,
+			"selected": 19,
 			"sheets":
 			[
 				{
@@ -2329,6 +2329,12 @@
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
 							"bh_regions":
 							[
 								"bh_regex",
@@ -2376,12 +2382,95 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
 							"detect_indentation": false,
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jslint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
 							"output_tag": 11,
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
 							"scroll_past_end": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -5033,8 +5122,8 @@
 						"selection":
 						[
 							[
-								661,
-								661
+								99,
+								99
 							]
 						],
 						"settings":
@@ -5686,15 +5775,15 @@
 					"file": "_site/feed.xml",
 					"settings":
 					{
-						"buffer_size": 61470,
+						"buffer_size": 61469,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3044,
-								3044
+								0,
+								0
 							]
 						],
 						"settings":
@@ -5851,15 +5940,15 @@
 					"file": "_site/2014/11/20/what's_up_with_google_maps_these_days/index.html",
 					"settings":
 					{
-						"buffer_size": 14534,
+						"buffer_size": 14533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5210,
-								5210
+								0,
+								0
 							]
 						],
 						"settings":
@@ -6219,6 +6308,10 @@
 		"selected_items":
 		[
 			[
+				"about",
+				"pages/about.md"
+			],
+			[
 				"default",
 				"_layouts/default.html"
 			],
@@ -6241,10 +6334,6 @@
 			[
 				"feed",
 				"feed.xml"
-			],
-			[
-				"about",
-				"pages/about.md"
 			],
 			[
 				"header.scss",

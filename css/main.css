@@ -12,7 +12,7 @@ body {
 
 @media screen and (max-width: 600px) {
   html {
-    font-size: 7.5px; } }
+    font-size: 5px; } }
 
 /**
  * Reset some basic elements
@@ -251,6 +251,9 @@ hr {
   text-align: center;
   /* layout */
   border-radius: 2em; }
+  @media screen and (max-width: 600px) {
+    .site-header {
+      font-size: 0.75rem; } }
   .site-header .wrapper > div {
     display: inline-block;
     border-radius: 3em !important;
@@ -294,19 +297,33 @@ hr {
     .site-header .site-title a, .site-header .site-title a:visited {
       color: #424242; }
   .site-header .site-nav {
+    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-size: 2.4em;
     border-radius: 0.5em;
     border-width: 2px;
-    display: inline-block;
     padding: 0 1em 0 1em;
     background-color: lightgray;
     color: gray;
-    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-    font-size: 2.4em; }
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row; }
+    @media screen and (max-width: 600px) {
+      .site-header .site-nav {
+        font-size: 3.2em; } }
     .site-header .site-nav .page-link {
       color: #4d4d4d;
       line-height: 1.5; }
-      .site-header .site-nav .page-link:not(:first-child) {
-        margin-left: 35px; }
+    @media screen and (max-width: 600px) {
+      .site-header .site-nav {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column; } }
 
 .site-footer {
   font-size: 2em;
