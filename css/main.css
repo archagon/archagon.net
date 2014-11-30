@@ -72,7 +72,7 @@ li > ol {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
+  font-weight: 400;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   color: #505050; }
 
@@ -218,6 +218,9 @@ body {
   padding-bottom: 3rem;
   background-color: white;
   border-radius: 2rem; }
+  @media screen and (max-width: 600px) {
+    .post {
+      padding: 2.5rem; } }
 
 /**
  * Posts
@@ -270,7 +273,7 @@ hr {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 7em;
     line-height: 0.9em;
-    font-weight: 600;
+    font-weight: 800;
     overflow: hidden;
     /* header text color */
     border-radius: 0.3em; }
@@ -286,7 +289,7 @@ hr {
         border-color: red; }
     .site-header .site-title .subtitle {
       font-size: 70%;
-      font-weight: 300;
+      font-weight: 500;
       color: #ffc3cd; }
       .site-header .site-title .subtitle::before {
         content: "("; }
