@@ -192,6 +192,9 @@ pre {
 
 body {
   background-image: url("/images/bgpattern.jpg"); }
+  @media screen and (max-width: 600px) {
+    body {
+      background-size: 250px; } }
 
 .home {
   margin: 0;
@@ -278,6 +281,9 @@ hr {
   .site-header .background-overlay {
     background-image: url("/images/background-blur3.jpg");
     background-color: white; }
+    @media screen and (max-width: 600px) {
+      .site-header .background-overlay {
+        background-size: 250px; } }
   .site-header .site-nav {
     margin-top: 0.5em; }
   .site-header .site-title {
@@ -347,6 +353,9 @@ hr {
   .site-footer .background-overlay {
     background-image: url("/images/background-blur.jpg");
     background-color: white; }
+    @media screen and (max-width: 600px) {
+      .site-footer .background-overlay {
+        background-size: 250px; } }
   .site-footer ul {
     display: inline-block;
     padding: 0.5em 1em 0.5em 1em;
