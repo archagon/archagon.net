@@ -179,8 +179,17 @@ pre {
     .page-content {
       margin-top: 1.579rem; } }
 
+.image-series img {
+  margin-bottom: 0.3em; }
+
 .page-content {
-  font-size: 1.9em; }
+  font-size: 1.8em; }
+  .page-content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
+  .page-content p {
+    margin-bottom: 1em; }
   .page-content h1 {
     font-size: 175%; }
   .page-content h2 {

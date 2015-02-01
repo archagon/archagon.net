@@ -65,10 +65,10 @@
 			}
 		},
 		{
-			"contents": "Searching 250 files for \"page-content\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    5      <div class=\"body-wrapper\">\n    6      {% include header.html %}\n    7:     <div class=\"page-content\">\n    8        <div class=\"wrapper\">\n    9          {{ content }}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   67   * Page content\n   68   */\n   69: .page-content {\n   70      padding: $spacing-unit 0;\n   71  }\n\n2 matches across 2 files\n\n\nSearching 250 files for \"$base-font-size:\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    4  // Base font size in pixels, if not already defined.\n    5  // Should be the same as the font-size of the html element.\n    6: $base-font-size: 16px !default;\n    7  \n    8  // Whether to output fallback values in px when outputting rems.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n    4  \n    5  // The default font size for all text in pixels\n    6: $base-font-size: 16px !default;\n    7  \n    8  // The distance between text baselines (vertical rhythm) in pixels.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   11  // $base-font-family: \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif;\n   12  // $base-font-family: Georgia, Times, \"Times New Roman\", serif;\n   13: // $base-font-size:   19px;\n   14: $base-font-size: 10px;\n   15  $small-font-size:  $base-font-size * 0.875;\n   16  $base-line-height: 1.5;\n\n4 matches across 3 files\n\n\nSearching 250 files for \"$base-font-size\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   16  body {\n   17      font-family: $base-font-family;\n   18:     font-size: $base-font-size;\n   19      line-height: $base-line-height;\n   20      font-weight: 300;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n    1  body {\n    2:     font-size: $base-font-size;\n    3  }\n    4  \n    .\n   18  // html, body {\n   19  //     @include media-query($on-palm) {\n   20: //         font-size: $base-font-size * 0.75;\n   21  //     }\n   22  // }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    4  // Base font size in pixels, if not already defined.\n    5  // Should be the same as the font-size of the html element.\n    6: $base-font-size: 16px !default;\n    7  \n    8  // Whether to output fallback values in px when outputting rems.\n    .\n   30  	$length,\n   31  	$to-unit,\n   32: 	$from-context: $base-font-size,\n   33  	$to-context: $from-context\n   34  ) {\n   ..\n   50  		// Convert relative units using the from-context parameter.\n   51  		@if      $from-unit == 'em'  { $px-length: $length * $from-context / 1em }\n   52: 		@else if $from-unit == 'rem' { $px-length: $length * $base-font-size / 1rem }\n   53  		@else if $from-unit == '%'   { $px-length: $length * $from-context / 100% }\n   54  		@else if $from-unit == 'ex'  { $px-length: $length * $from-context / 2ex }\n   ..\n   78  		// Relative units\n   79  		@if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }\n   80: 		@else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $base-font-size }\n   81  		@else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }\n   82  		@else if $to-unit == 'ex'  { $output-length: $px-length * 2ex / $to-context }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n    4  \n    5  // The default font size for all text in pixels\n    6: $base-font-size: 16px !default;\n    7  \n    8  // The distance between text baselines (vertical rhythm) in pixels.\n    .\n   34  // The leader is the amount of whitespace in a line.\n   35  // It might be useful in your calculations.\n   36: $base-leader: convert-length($base-line-height - $base-font-size, $rhythm-unit, $base-font-size);\n   37  \n   38  // The half-leader is the amount of whitespace above and below a line.\n   ..\n   44  \n   45  // Validate units\n   46: @if unit($base-font-size)   != 'px' { @warn \"$base-font-size must resolve to a pixel unit.\"; }\n   47  @if unit($base-line-height) != 'px' { @warn \"$base-line-height must resolve to a pixel unit.\"; }\n   48  @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {\n   ..\n   52  \n   53  // Calculate rhythm units.\n   54: @function rhythm($lines: 1, $font-size: $base-font-size, $offset: 0) {\n   55    $rhythm: convert-length($lines * $base-line-height - $offset, $rhythm-unit, $font-size);\n   56    @if unit($rhythm) == px {\n   ..\n   95  \n   96  // Establishes a font baseline for the given font-size.\n   97: @mixin establish-baseline($font-size: $base-font-size) {\n   98    $relative-size: 100% * ($font-size / $browser-default-font-size);\n   99  \n  ...\n  120  \n  121  // Resets the baseline to 1 rhythm unit\n  122: // Does not work on elements whose font-size is different from $base-font-size.\n  123  //\n  124  // @deprecated This mixin will be removed in the next release.\n  125  // Please use `adjust-leading-to(1)` instead.\n  126: @mixin reset-baseline($font-size: $base-font-size) {\n  127    @include adjust-leading-to(1, $font-size);\n  128  }\n  ...\n  147  // defaults to the smallest integer that is large enough to fit the font.\n  148  // Use $from-size to adjust from a font-size other than the base font-size.\n  149: @mixin adjust-font-size-to($to-size, $lines: auto, $from-size: $base-font-size) {\n  150    $to-size: convert-length($to-size, px, $from-size);\n  151    @if $lines == auto {\n  ...\n  160  // font should use up. It does not have to be an integer, but it defaults to the\n  161  // smallest integer that is large enough to fit the font.\n  162: @mixin adjust-leading-to($lines, $font-size: $base-font-size) {\n  163    @include output-rhythm(line-height, rhythm($lines, $font-size));\n  164  }\n  165  \n  166  // Apply leading whitespace. The $property can be margin or padding.\n  167: @mixin leader($lines: 1, $font-size: $base-font-size, $property: margin) {\n  168    @include output-rhythm(#{$property}-top, rhythm($lines, $font-size));\n  169  }\n  170  \n  171  // Apply leading whitespace as padding.\n  172: @mixin padding-leader($lines: 1, $font-size: $base-font-size) {\n  173    @include output-rhythm(padding-top, rhythm($lines, $font-size));\n  174  }\n  175  \n  176  // Apply leading whitespace as margin.\n  177: @mixin margin-leader($lines: 1, $font-size: $base-font-size) {\n  178    @include output-rhythm(margin-top, rhythm($lines, $font-size));\n  179  }\n  180  \n  181  // Apply trailing whitespace. The $property can be margin or padding.\n  182: @mixin trailer($lines: 1, $font-size: $base-font-size, $property: margin) {\n  183    @include output-rhythm(#{$property}-bottom, rhythm($lines, $font-size));\n  184  }\n  185  \n  186  // Apply trailing whitespace as padding.\n  187: @mixin padding-trailer($lines: 1, $font-size: $base-font-size) {\n  188    @include output-rhythm(padding-bottom, rhythm($lines, $font-size));\n  189  }\n  190  \n  191  // Apply trailing whitespace as margin.\n  192: @mixin margin-trailer($lines: 1, $font-size: $base-font-size) {\n  193    @include output-rhythm(margin-bottom, rhythm($lines, $font-size));\n  194  }\n  ...\n  200    $padding-trailer: $padding-leader,\n  201    $trailer: $leader,\n  202:   $font-size: $base-font-size\n  203  ) {\n  204    @include leader($leader, $font-size);\n  ...\n  212    $leader: 1,\n  213    $trailer: $leader,\n  214:   $font-size: $base-font-size\n  215  ) {\n  216    @include leader($leader, $font-size);\n  ...\n  222    $padding-leader: 1,\n  223    $padding-trailer: $padding-leader,\n  224:   $font-size: $base-font-size\n  225  ) {\n  226    @include padding-leader($padding-leader, $font-size);\n  ...\n  234    $width: $default-rhythm-border-width,\n  235    $lines: 1,\n  236:   $font-size: $base-font-size,\n  237    $border-style: $default-rhythm-border-style\n  238  ) {\n  ...\n  253    $width: $default-rhythm-border-width,\n  254    $lines: 1,\n  255:   $font-size: $base-font-size,\n  256    $border-style: $default-rhythm-border-style\n  257  ) {\n  ...\n  263    $width: $default-rhythm-border-width,\n  264    $lines: 1,\n  265:   $font-size: $base-font-size,\n  266    $border-style: $default-rhythm-border-style\n  267  ) {\n  ...\n  273    $width: $default-rhythm-border-width,\n  274    $lines: 1,\n  275:   $font-size: $base-font-size,\n  276    $border-style: $default-rhythm-border-style\n  277  ) {\n  ...\n  284    $width: $default-rhythm-border-width,\n  285    $lines: 1,\n  286:   $font-size: $base-font-size,\n  287    $border-style: $default-rhythm-border-style\n  288  ) {\n  ...\n  294    $width: $default-rhythm-border-width,\n  295    $lines: 1,\n  296:   $font-size: $base-font-size,\n  297    $border-style: $default-rhythm-border-style\n  298  ) {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   11  // $base-font-family: \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif;\n   12  // $base-font-family: Georgia, Times, \"Times New Roman\", serif;\n   13: // $base-font-size:   19px;\n   14: $base-font-size: 10px;\n   15: $small-font-size:  $base-font-size * 0.875;\n   16  $base-line-height: 1.5;\n   17  \n\n36 matches across 5 files\n\n\nSearching 250 files for \"rem\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Gemfile.lock:\n    1  GEM\n    2:   remote: https://rubygems.org/\n    3    specs:\n    4      imgkit (1.4.1)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Rakefile:\n  190  #   theme = args.theme || 'classic'\n  191  #   if File.directory?(\"sass.old\")\n  192: #     puts \"removed existing sass.old directory\"\n  193  #     rm_r \"sass.old\", :secure=>true\n  194  #   end\n  195  #   mv \"sass\", \"sass.old\"\n  196  #   puts \"## Moved styles into sass.old/\"\n  197: #   cp_r \"#{themes_dir}/\"+theme+\"/sass/\", \"sass\", :remove_destination=>true\n  198: #   cp_r \"sass.old/custom/.\", \"sass/custom/\", :remove_destination=>true\n  199  #   puts \"## Updated Sass ##\"\n  200  # end\n  ...\n  210  #   cp_r \"#{source_dir}/.\", \"#{source_dir}.old\"\n  211  #   puts \"## Copied #{source_dir} into #{source_dir}.old/\"\n  212: #   cp_r \"#{themes_dir}/\"+theme+\"/source/.\", source_dir, :remove_destination=>true\n  213: #   cp_r \"#{source_dir}.old/_includes/custom/.\", \"#{source_dir}/_includes/custom/\", :remove_destination=>true\n  214  #   cp \"#{source_dir}.old/favicon.png\", source_dir\n  215  #   mv \"#{source_dir}/index.html\", \"#{blog_index_dir}\", :force=>true if blog_index_dir != source_dir\n  ...\n  220  desc \"Merge raw posts with their metadata and put them in the posts directory.\"\n  221  task :update_posts do\n  222:   # remove contents of posts directory\n  223    rm_rf \"#{posts_dir}\"\n  224    mkdir_p \"#{posts_dir}\"\n  ...\n  352  #   branch = (repo_url.match(/\\/[\\w-]+\\.github\\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'\n  353  #   project = (branch == 'gh-pages') ? repo_url.match(/\\/([^\\.]+)/)[1] : ''\n  354: #   unless (`git remote -v` =~ /origin.+?octopress(?:\\.git)?/).nil?\n  355: #     # If octopress is still the origin remote (from cloning) rename it to octopress\n  356: #     system \"git remote rename origin octopress\"\n  357  #     if branch == 'master'\n  358: #       # If this is a user/organization pages repository, add the correct origin remote\n  359  #       # and checkout the source branch for committing changes to the blog source.\n  360: #       system \"git remote add origin #{repo_url}\"\n  361: #       puts \"Added remote #{repo_url} as origin\"\n  362: #       system \"git config branch.master.remote origin\"\n  363: #       puts \"Set origin as default remote\"\n  364  #       system \"git branch -m master source\"\n  365  #       puts \"Master branch renamed to 'source' for committing your blog source files\"\n  ...\n  383  #     system \"git commit -m \\\"Octopress init\\\"\"\n  384  #     system \"git branch -m gh-pages\" unless branch == 'master'\n  385: #     system \"git remote add origin #{repo_url}\"\n  386  #     rakefile = IO.read(__FILE__)\n  387  #     rakefile.sub!(/deploy_branch(\\s*)=(\\s*)([\"'])[\\w-]*[\"']/, \"deploy_branch\\\\1=\\\\2\\\\3#{branch}\\\\3\")\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  161  {% endhighlight %}\n  162  \n  163: Ultimately, I decided on a better solution: simply use a Liquid filter to automatically strip and remove newlines from the sections in which this matters. Note that this isn't the same as an overall minification step: since the whitespace becomes relevant in this situation, an explicit strip Liquid tag is important to get the correct meaning across.\n  164  \n  165  ## SASS\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-09-08-mac-address-spoofing-for-travel.md:\n   44  Your MAC address resets when you restart your computer, but I'm pretty sure you'll always be able to see the original address with the networksetup command above.\n   45  \n   46: This might seem like an esoteric procedure, especially if you're a non-technical user. However, I've already run into at least four situations where this spoofing was required. One allowed me to stay indefinitely on a free Wi-Fi hotspot for longer than the allotted 30 minutes, and another allowed me to spoof my phone's MAC address and log into a restricted network. Just today, I needed to spoof my iPhone's MAC address to my laptop, because the hostel internet was being extremely picky and allowed my phone to connect, but not my computer.\n   47  \n   48  And of course, I was finally able to log back into the HI-Quebec and watch aaaalllll the YouTube I wanted!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/thoughts_on_masters_of_doom.md:\n    3  Recently, I had the pleasure of listening to an audiobook version of the book \"Masters of Doom\". This book is the story of John Carmack, John Romero, and a few others, who in the early 90's got together and created one of the most influential video game companies in the industry: id software.\n    4  \n    5: First, I want to make it perfectly clear: I do *not* like the tone of id's games. All the demonic stuff — according to Carmack, a mix of his interest in D&D as well as a bit of a \"fuck you\" to religious folks — is disturbing to me. Furthermore, as my older self, I find the obsession with violence in id's games — perhaps the *source* of the extreme obsession with violence in games today — to be in poor taste. (With that said, as a kid, I reveled in it.)\n    6  \n    7  But with that aside, the book was a joy to listen to, because it made me realize where, exactly, most of my videogame influences came from. Many gamers and game developers I know grew up with consoles. Nintendo, Sega, even Atari: the fun, naive blips and bloops of those colorful, joyous games were what they fell in love with.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/divify.rb:\n   26          output += converted\n   27  \n   28:         # TODO: remove outer <p>\n   29  \n   30          output += \"</div>\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/extend_string.rb:\n    4  # Up-to-date version and documentation available at:\n    5  #\n    6: # http://www.techniconseils.ca/en/scripts-remove-accents-ruby.php\n    7  #\n    8  # This script is available under the following license :\n    .\n   26  \n   27  class String\n   28:   # The extended characters map used by removeaccents. The accented characters \n   29    # are coded here using their numerical equivalent to sidestep encoding issues.\n   30    # These correspond to ISO-8859-1 encoding.\n   ..\n   54    \n   55    # Remove the accents from the string. Uses String::ACCENTS_MAPPING as the source map.\n   56:   def removeaccents    \n   57      str = String.new(self)\n   58      String::ACCENTS_MAPPING.each {|letter,accents|\n   59        packed = accents.pack('U*')\n   60:       rxp = Regexp.new(\"[#{packed}]\", nil) # AB: removed 'U' option\n   61        str.gsub!(rxp, letter)\n   62      }\n   ..\n   67    \n   68    # Convert a string to a format suitable for a URL without ever using escaped characters.\n   69:   # It calls strip, removeaccents, downcase (optional) then removes the spaces (optional)\n   70:   # and finally removes any characters matching the default regexp (/[^-_A-Za-z0-9]/).\n   71    #\n   72    # Options\n   ..\n   80      options[:regexp] ||= /[^-_A-Za-z0-9]/\n   81      \n   82:     str = self.strip.removeaccents\n   83      str.downcase! if options[:downcase]\n   84      replacement_char = options[:convert_spaces].is_a?(String) ? options[:convert_spaces] : '_'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/normalize_filter.rb:\n    1  # Reduces the input to simple ASCII letters and numbers. Spaces are replaced with the given\n    2: # character (if provided). Accents are removed.\n    3  \n    4  # require 'extend_string'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/whitespace_compressor_filter.rb:\n    1  # Elminiates newlines and strips whitespace around lines.\n    2: # To be used for syntactic things like removing whitespace between inline-block elements.\n    3  # For general minificaiton, you'll be better off using another solution.\n    4  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2013-8-28-gathering-the-goods-part-2.markdown:\n   32  * A [ShedRain Windjammer](http://www.amazon.com/dp/B0056B9U0Y/?tag=arcwasher-20) umbrella, based on last year's recommendation on [The Wirecutter](http://thewirecutter.com/reviews/best-umbrella/). London Fog's umbrella was awful and broke after about a week of use.\n   33  * A long [stainless steel mesh tea infuser](http://www.amazon.com/dp/B000BU7U0W/?tag=arcwasher-20). Aside from a little metal tag which I bent out of the way, this thing fits perfectly into my Klean Kanteen and allows me to brew loose-leaf tea with plenty of room for leaf expansion. It's the only one of its kind that I was able to find! Every other teaball is either tiny or doesn't fit into the Kleen Kanteen.\n   34: * A [Logitech G602 wireless mouse](http://www.amazon.com/dp/B00E4MQODC/?tag=arcwasher-20). It works well enough and eliminates an annoying stretch of cable. Sensitivity, tracking, and latency are great for gaming use. (In fact, I saw some measurements that put the latency on par with wired mice!) Battery lasts a month. Range is really iffy, but I'm only planning to use it next to my computer, so that's not really an issue.\n   35  * A set of [collapsible compact chopsticks](http://www.amazon.com/dp/B00AWD9LY6/?tag=arcwasher-20). I occasionally find myself in situations where I could really use some sort of utensil, and these chopsticks get the job done in most situations. (Plus, they're great for munching on small, greasy foods like popcorn or chips!)\n   36  * A [Pilot Metropolitan fountain pen](http://www.amazon.com/dp/B009M3PIHQ/?tag=arcwasher-20) — just because it's sweet. `:)`\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-09-18-old_iphone_tricks_gps_tracker.md:\n   10  Here's a thing you might not know about your iPhone[^WhyNotAndroid]: the GPS unit works even without a data connection. I was confused for a long time about what \"assisted GPS\" actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.\n   11  \n   12: So here's what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called [myTracks][myTracks] and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a `kml` file (among several others) to use with Google Maps:\n   13  \n   14  {% kmlasset newcastle_test.kml %}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n   10  When iOS 8 was announced and unexpectedly blew open the doors on extensions, my interest was immediately piqued. Although, on initial glance, the keyboard APIs were rather crude — you were given a gray box at the bottom of the screen and practically nothing else — this gave me a roundabout \"in\" to making input methods work on iOS. What if I were to recreate the system keyboard from scratch? I could make it behave any way I wanted!\n   11  \n   12: And so, [Tasty Imitation Keyboard] was born. If I may take a moment of vanity, the keyboard is very solid: on most phones, it looks and types very much like the system keyboard, minus the landscape side buttons on the 6 and 6+. (iPad support isn't too high on my priority list, but it *is* functional.) This was a satisfying project to work on, giving me great insight into Swift, autolayout (since removed), Core Graphics, and a bit of Interface Builder. But it also gave me experience with something that I had yet to encounter in my sheltered iOS development existence: the horror of undercooked Apple frameworks and tools.\n   13  \n   14: Below are as many of the problems I encountered during development as I can remember. I have high hopes that these will be fixed over the next few years, but until then, perhaps this article will help some poor programmer in dire straits!\n   15  \n   16  [Translit Keyboard]: http://translit-keyboard.archagon.net\n   ..\n  210  ### Autolayout? Yeah, Right\n  211  \n  212: This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well... if you're implementing a keyboard or anything remotely like it, *don't use autolayout!*\n  213  \n  214  In learning this technology, I found several places where autolayout was very appropriate. For example, if you're making a single-screen view with a limited number of static elements — preferably in Interface Builder — it's a great idea to use autolayout. But if you're creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you'll spend your days knee-deep in `constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:` initializers and spacer views[^spacer_views], you'll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    1  .site-footer {\n    2:     font-size: 1.5rem;\n    3      font-family: \"Franklin Gothic Medium\", \"Franklin Gothic\", \"ITC Franklin Gothic\", Arial, sans-serif;\n    4  \n    .\n   24          display: inline-block;\n   25          padding: 0.25em 0.5em 0.25em 0.5em;\n   26:         border-radius: 0.75rem;\n   27          border: 0px solid;\n   28          width: 10em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  113  }\n  114  .post {\n  115:     padding: 3rem;\n  116:     padding-top: 2rem;\n  117:     padding-bottom: 2rem;\n  118      background-color: white;\n  119      // background-image: url(\"/images/background-blur1.jpg\");\n  ...\n  121      // border-color: lightblue;\n  122      // background-color: mix(blue, white, 2%);\n  123:     border-radius: 1.25rem;\n  124  }\n  125  \n  ...\n  163  \n  164  .post-title {\n  165:     font-size: 2.4rem;\n  166      letter-spacing: -1px;\n  167      line-height: 1;\n  168  \n  169:     padding: 0.5rem;\n  170:     border-radius: 0.75rem;\n  171  }\n  172  \n  ...\n  176      }\n  177  \n  178:     font-size: 1.2rem;\n  179  \n  180      h2 {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/_support.scss:\n  391  \n  392  // @private\n  393: @function warn-about-pie-removal() {\n  394    @if global-variable-exists(experimental-support-for-pie) {\n  395      @warn \"Compass no longer supports css3pie.\";\n  ...\n  421  \n  422  // @private\n  423: $pie-removal-warning-issued: warn-about-pie-removal() !default;\n  424  \n  425  // @private\n  ...\n  427    @if $moz != null or $webkit != null or $o != null or $khtml != null or $official != null {\n  428      @warn \"Browser prefix arguments to this mixin are no longer used and \" +\n  429:           \"will be removed in the next release.\";\n  430    }\n  431    @return true;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_box.scss:\n    2  @import \"deprecated-support\";\n    3  \n    4: @warn \"The compass/css3/box module is DEPRECATED and will be removed in the next release. Please use compass/css3/flexbox instead.\";\n    5  \n    6  // @private css3-feature-support variables must always include a list of five boolean values\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_pie.scss:\n    1: @warn \"Support for CSS3Pie has been removed.\";\n    2  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_shared.scss:\n    1  @warn \"The compass/css3/shared module has been deprecated.\n    2  You can silence this warning by importing compass/css3/deprecated-support instead.\n    3: Please be aware that module will be removed in the next release.\";\n    4  \n    5  @import \"deprecated-support\";\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/layout/_grid-background.scss:\n   28  $show-grid-backgrounds            : true                        !default;\n   29  \n   30: // optionally force your grid-image to remain fluid\n   31  // no matter what units you used to declared your grid.\n   32  $grid-background-force-fluid      : false                       !default;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities-legacy.scss:\n   48      @include reset-image-anchor-border; } }\n   49  \n   50: // Reset the box model measurements.\n   51  @mixin reset-box-model {\n   52    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities.scss:\n   62      @include reset-image-anchor-border; } }\n   63  \n   64: // Reset the box model measurements.\n   65  @mixin reset-box-model {\n   66    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    6  $base-font-size: 16px !default;\n    7  \n    8: // Whether to output fallback values in px when outputting rems.\n    9: $rem-with-px-fallback: true !default;\n   10  \n   11  \n   ..\n   41  	// Context values must be in px so we can determine a conversion ratio for\n   42  	// relative units.\n   43: 	@if unit($from-context) != 'px' { @warn \"Paremeter $from-context must resolve to a value in pixel units.\"; }\n   44  	@if unit($to-context) != 'px' { @warn \"Parameter $to-context must resolve to a value in pixel units.\"; }\n   45  \n   ..\n   50  		// Convert relative units using the from-context parameter.\n   51  		@if      $from-unit == 'em'  { $px-length: $length * $from-context / 1em }\n   52: 		@else if $from-unit == 'rem' { $px-length: $length * $base-font-size / 1rem }\n   53  		@else if $from-unit == '%'   { $px-length: $length * $from-context / 100% }\n   54  		@else if $from-unit == 'ex'  { $px-length: $length * $from-context / 2ex }\n   ..\n   78  		// Relative units\n   79  		@if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }\n   80: 		@else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $base-font-size }\n   81  		@else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }\n   82  		@else if $to-unit == 'ex'  { $output-length: $px-length * 2ex / $to-context }\n   ..\n  105  \n  106  \n  107: // @private Get the px/rem versions of a value.\n  108: @function rem-fallback-values($value) {\n  109    $_return: (\n  110      px: $value,\n  111:     rem: $value,\n  112    );\n  113  \n  114    @if type-of($value) == number and not unitless($value) {\n  115:     @if unit($value) == rem {\n  116        $_return: map-merge($_return, (\n  117          px: round(convert-length($value, px)),\n  ...\n  120        $_return: map-merge($_return, (\n  121          px: round($value),\n  122:         rem: convert-length($value, rem),\n  123        ));\n  124      }\n  ...\n  128  }\n  129  \n  130: // @private Get the px/rem versions of a list (or nested lists).\n  131: @function list-convert-rems($value) {\n  132    $_empty: (\n  133      px: (),\n  134:     rem: (),\n  135    );\n  136    $_return: $_empty;\n  ...\n  140      $_sep: list-separator($value);\n  141      @each $sub in $value {\n  142:       $_this: list-convert-rems($sub);\n  143        $_return: (\n  144          px: append(map-get($_return, px), map-get($_this, px), $_sep),\n  145:         rem: append(map-get($_return, rem), map-get($_this, rem), $_sep),\n  146        );\n  147      }\n  148    } @else {\n  149:     $_this: rem-fallback-values($value);\n  150      $_return: map-merge($_return, $_this);\n  151    }\n  ...\n  155  \n  156  \n  157: // Output a given style rule containing rem values along with an (optional)\n  158: // fallback rule for older browsers (with rem values converted to px).\n  159  //\n  160  // @param $property\n  ...\n  167  //   [ true | false ]\n  168  //\n  169: @mixin rem($property, $values, $use-px-fallback: $rem-with-px-fallback) {\n  170  \n  171    // get converted values.\n  172:   $values: list-convert-rems($values);\n  173    $px-values: map-get($values, px);\n  174:   $values: map-get($values, rem);\n  175  \n  176:   // Use pixel fallback for browsers that don't understand rem units.\n  177    @if $use-px-fallback and $px-values != $values {\n  178      #{$property}: $px-values;\n  179    }\n  180  \n  181:   // Use rem values for everyone else (overrides pixel values).\n  182    #{$property}: $values;\n  183  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n   10  \n   11  // The length unit in which to output rhythm values.\n   12: // Supported values: px, em, rem. Percent units can't be used since they\n   13  // make calculating padding and margins impractical, and percentage borders are\n   14  // not valid or supported in css.\n   15  $rhythm-unit: 'em' !default;\n   16  \n   17: // Whether to output fallback values in px when using rem as the rhythm-unit.\n   18: $rem-with-px-fallback: true !default;\n   19  \n   20  // Default values for rhythm borders properties.\n   ..\n   40  $base-half-leader: $base-leader / 2;\n   41  \n   42: // @private Whether the rhythm output is in absolute units (px) or not (em, rem)\n   43  $relative-font-sizing: if($rhythm-unit == px, false, true);\n   44  \n   ..\n   46  @if unit($base-font-size)   != 'px' { @warn \"$base-font-size must resolve to a pixel unit.\"; }\n   47  @if unit($base-line-height) != 'px' { @warn \"$base-line-height must resolve to a pixel unit.\"; }\n   48: @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {\n   49:   @warn \"$rhythm-unit must be `px`, `em` or `rem`.\";\n   50  }\n   51  \n   ..\n   73  \n   74  \n   75: // @private Outputs rhythm values. For rem units, outputs pixel fallbacks\n   76  // by default.\n   77  @mixin output-rhythm($property, $values) {\n   78:   @if $rhythm-unit == rem and $rem-with-px-fallback {\n   79:     @include rem($property, $values);\n   80    }\n   81    @else {\n   ..\n  107      font-size: if($relative-font-sizing, $relative-size, $font-size);\n  108  \n  109:     // Webkit has a bug that prevents line-height being set in rem on <html>;\n  110      // To work around this and simplify output, we can set initial line-height\n  111:     // in ems for all relative rhythm units, even when $rhythm-unit is `rem`.\n  112      @if $relative-font-sizing {\n  113        line-height: convert-length($base-line-height, em);\n  ...\n  122  // Does not work on elements whose font-size is different from $base-font-size.\n  123  //\n  124: // @deprecated This mixin will be removed in the next release.\n  125  // Please use `adjust-leading-to(1)` instead.\n  126  @mixin reset-baseline($font-size: $base-font-size) {\n  ...\n  130  // Show a background image that can be used to debug your alignments.\n  131  // As this is a development feature, this mixin never outputs pixel fallbacks\n  132: // for rem output.\n  133  // Include the $img argument if you would rather use your own image than the\n  134  // Compass default gradient image.\n  ...\n  249  \n  250  // Apply a leading border.\n  251: // $border-style and $width are deprecated and will be removed in a future version of Compass.\n  252  @mixin leading-border(\n  253    $width: $default-rhythm-border-width,\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_nowrap.scss:\n    1: // When remembering whether or not there's a hyphen in white-space is too hard\n    2  @mixin nowrap { white-space: nowrap; }\n    3  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   21    @if $threshold {\n   22      // Deprecated in Compass 0.13\n   23:     @warn \"The $threshold argment to contrast-color is no longer needed and will be removed in the next release.\"\n   24    }\n   25    @if $color == null {\n   ..\n   46    @if $threshold {\n   47      // Deprecated in Compass 0.13\n   48:     @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50    background-color: $background-color;\n\n102 matches across 25 files\n\n\nSearching 250 files for \"rem\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Gemfile.lock:\n    1  GEM\n    2:   remote: https://rubygems.org/\n    3    specs:\n    4      imgkit (1.4.1)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Rakefile:\n  190  #   theme = args.theme || 'classic'\n  191  #   if File.directory?(\"sass.old\")\n  192: #     puts \"removed existing sass.old directory\"\n  193  #     rm_r \"sass.old\", :secure=>true\n  194  #   end\n  195  #   mv \"sass\", \"sass.old\"\n  196  #   puts \"## Moved styles into sass.old/\"\n  197: #   cp_r \"#{themes_dir}/\"+theme+\"/sass/\", \"sass\", :remove_destination=>true\n  198: #   cp_r \"sass.old/custom/.\", \"sass/custom/\", :remove_destination=>true\n  199  #   puts \"## Updated Sass ##\"\n  200  # end\n  ...\n  210  #   cp_r \"#{source_dir}/.\", \"#{source_dir}.old\"\n  211  #   puts \"## Copied #{source_dir} into #{source_dir}.old/\"\n  212: #   cp_r \"#{themes_dir}/\"+theme+\"/source/.\", source_dir, :remove_destination=>true\n  213: #   cp_r \"#{source_dir}.old/_includes/custom/.\", \"#{source_dir}/_includes/custom/\", :remove_destination=>true\n  214  #   cp \"#{source_dir}.old/favicon.png\", source_dir\n  215  #   mv \"#{source_dir}/index.html\", \"#{blog_index_dir}\", :force=>true if blog_index_dir != source_dir\n  ...\n  220  desc \"Merge raw posts with their metadata and put them in the posts directory.\"\n  221  task :update_posts do\n  222:   # remove contents of posts directory\n  223    rm_rf \"#{posts_dir}\"\n  224    mkdir_p \"#{posts_dir}\"\n  ...\n  352  #   branch = (repo_url.match(/\\/[\\w-]+\\.github\\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'\n  353  #   project = (branch == 'gh-pages') ? repo_url.match(/\\/([^\\.]+)/)[1] : ''\n  354: #   unless (`git remote -v` =~ /origin.+?octopress(?:\\.git)?/).nil?\n  355: #     # If octopress is still the origin remote (from cloning) rename it to octopress\n  356: #     system \"git remote rename origin octopress\"\n  357  #     if branch == 'master'\n  358: #       # If this is a user/organization pages repository, add the correct origin remote\n  359  #       # and checkout the source branch for committing changes to the blog source.\n  360: #       system \"git remote add origin #{repo_url}\"\n  361: #       puts \"Added remote #{repo_url} as origin\"\n  362: #       system \"git config branch.master.remote origin\"\n  363: #       puts \"Set origin as default remote\"\n  364  #       system \"git branch -m master source\"\n  365  #       puts \"Master branch renamed to 'source' for committing your blog source files\"\n  ...\n  383  #     system \"git commit -m \\\"Octopress init\\\"\"\n  384  #     system \"git branch -m gh-pages\" unless branch == 'master'\n  385: #     system \"git remote add origin #{repo_url}\"\n  386  #     rakefile = IO.read(__FILE__)\n  387  #     rakefile.sub!(/deploy_branch(\\s*)=(\\s*)([\"'])[\\w-]*[\"']/, \"deploy_branch\\\\1=\\\\2\\\\3#{branch}\\\\3\")\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  161  {% endhighlight %}\n  162  \n  163: Ultimately, I decided on a better solution: simply use a Liquid filter to automatically strip and remove newlines from the sections in which this matters. Note that this isn't the same as an overall minification step: since the whitespace becomes relevant in this situation, an explicit strip Liquid tag is important to get the correct meaning across.\n  164  \n  165  ## SASS\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-09-08-mac-address-spoofing-for-travel.md:\n   44  Your MAC address resets when you restart your computer, but I'm pretty sure you'll always be able to see the original address with the networksetup command above.\n   45  \n   46: This might seem like an esoteric procedure, especially if you're a non-technical user. However, I've already run into at least four situations where this spoofing was required. One allowed me to stay indefinitely on a free Wi-Fi hotspot for longer than the allotted 30 minutes, and another allowed me to spoof my phone's MAC address and log into a restricted network. Just today, I needed to spoof my iPhone's MAC address to my laptop, because the hostel internet was being extremely picky and allowed my phone to connect, but not my computer.\n   47  \n   48  And of course, I was finally able to log back into the HI-Quebec and watch aaaalllll the YouTube I wanted!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/thoughts_on_masters_of_doom.md:\n    3  Recently, I had the pleasure of listening to an audiobook version of the book \"Masters of Doom\". This book is the story of John Carmack, John Romero, and a few others, who in the early 90's got together and created one of the most influential video game companies in the industry: id software.\n    4  \n    5: First, I want to make it perfectly clear: I do *not* like the tone of id's games. All the demonic stuff — according to Carmack, a mix of his interest in D&D as well as a bit of a \"fuck you\" to religious folks — is disturbing to me. Furthermore, as my older self, I find the obsession with violence in id's games — perhaps the *source* of the extreme obsession with violence in games today — to be in poor taste. (With that said, as a kid, I reveled in it.)\n    6  \n    7  But with that aside, the book was a joy to listen to, because it made me realize where, exactly, most of my videogame influences came from. Many gamers and game developers I know grew up with consoles. Nintendo, Sega, even Atari: the fun, naive blips and bloops of those colorful, joyous games were what they fell in love with.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/divify.rb:\n   26          output += converted\n   27  \n   28:         # TODO: remove outer <p>\n   29  \n   30          output += \"</div>\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/extend_string.rb:\n    4  # Up-to-date version and documentation available at:\n    5  #\n    6: # http://www.techniconseils.ca/en/scripts-remove-accents-ruby.php\n    7  #\n    8  # This script is available under the following license :\n    .\n   26  \n   27  class String\n   28:   # The extended characters map used by removeaccents. The accented characters \n   29    # are coded here using their numerical equivalent to sidestep encoding issues.\n   30    # These correspond to ISO-8859-1 encoding.\n   ..\n   54    \n   55    # Remove the accents from the string. Uses String::ACCENTS_MAPPING as the source map.\n   56:   def removeaccents    \n   57      str = String.new(self)\n   58      String::ACCENTS_MAPPING.each {|letter,accents|\n   59        packed = accents.pack('U*')\n   60:       rxp = Regexp.new(\"[#{packed}]\", nil) # AB: removed 'U' option\n   61        str.gsub!(rxp, letter)\n   62      }\n   ..\n   67    \n   68    # Convert a string to a format suitable for a URL without ever using escaped characters.\n   69:   # It calls strip, removeaccents, downcase (optional) then removes the spaces (optional)\n   70:   # and finally removes any characters matching the default regexp (/[^-_A-Za-z0-9]/).\n   71    #\n   72    # Options\n   ..\n   80      options[:regexp] ||= /[^-_A-Za-z0-9]/\n   81      \n   82:     str = self.strip.removeaccents\n   83      str.downcase! if options[:downcase]\n   84      replacement_char = options[:convert_spaces].is_a?(String) ? options[:convert_spaces] : '_'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/normalize_filter.rb:\n    1  # Reduces the input to simple ASCII letters and numbers. Spaces are replaced with the given\n    2: # character (if provided). Accents are removed.\n    3  \n    4  # require 'extend_string'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/whitespace_compressor_filter.rb:\n    1  # Elminiates newlines and strips whitespace around lines.\n    2: # To be used for syntactic things like removing whitespace between inline-block elements.\n    3  # For general minificaiton, you'll be better off using another solution.\n    4  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2013-8-28-gathering-the-goods-part-2.markdown:\n   32  * A [ShedRain Windjammer](http://www.amazon.com/dp/B0056B9U0Y/?tag=arcwasher-20) umbrella, based on last year's recommendation on [The Wirecutter](http://thewirecutter.com/reviews/best-umbrella/). London Fog's umbrella was awful and broke after about a week of use.\n   33  * A long [stainless steel mesh tea infuser](http://www.amazon.com/dp/B000BU7U0W/?tag=arcwasher-20). Aside from a little metal tag which I bent out of the way, this thing fits perfectly into my Klean Kanteen and allows me to brew loose-leaf tea with plenty of room for leaf expansion. It's the only one of its kind that I was able to find! Every other teaball is either tiny or doesn't fit into the Kleen Kanteen.\n   34: * A [Logitech G602 wireless mouse](http://www.amazon.com/dp/B00E4MQODC/?tag=arcwasher-20). It works well enough and eliminates an annoying stretch of cable. Sensitivity, tracking, and latency are great for gaming use. (In fact, I saw some measurements that put the latency on par with wired mice!) Battery lasts a month. Range is really iffy, but I'm only planning to use it next to my computer, so that's not really an issue.\n   35  * A set of [collapsible compact chopsticks](http://www.amazon.com/dp/B00AWD9LY6/?tag=arcwasher-20). I occasionally find myself in situations where I could really use some sort of utensil, and these chopsticks get the job done in most situations. (Plus, they're great for munching on small, greasy foods like popcorn or chips!)\n   36  * A [Pilot Metropolitan fountain pen](http://www.amazon.com/dp/B009M3PIHQ/?tag=arcwasher-20) — just because it's sweet. `:)`\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-09-18-old_iphone_tricks_gps_tracker.md:\n   10  Here's a thing you might not know about your iPhone[^WhyNotAndroid]: the GPS unit works even without a data connection. I was confused for a long time about what \"assisted GPS\" actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.\n   11  \n   12: So here's what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called [myTracks][myTracks] and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a `kml` file (among several others) to use with Google Maps:\n   13  \n   14  {% kmlasset newcastle_test.kml %}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n   10  When iOS 8 was announced and unexpectedly blew open the doors on extensions, my interest was immediately piqued. Although, on initial glance, the keyboard APIs were rather crude — you were given a gray box at the bottom of the screen and practically nothing else — this gave me a roundabout \"in\" to making input methods work on iOS. What if I were to recreate the system keyboard from scratch? I could make it behave any way I wanted!\n   11  \n   12: And so, [Tasty Imitation Keyboard] was born. If I may take a moment of vanity, the keyboard is very solid: on most phones, it looks and types very much like the system keyboard, minus the landscape side buttons on the 6 and 6+. (iPad support isn't too high on my priority list, but it *is* functional.) This was a satisfying project to work on, giving me great insight into Swift, autolayout (since removed), Core Graphics, and a bit of Interface Builder. But it also gave me experience with something that I had yet to encounter in my sheltered iOS development existence: the horror of undercooked Apple frameworks and tools.\n   13  \n   14: Below are as many of the problems I encountered during development as I can remember. I have high hopes that these will be fixed over the next few years, but until then, perhaps this article will help some poor programmer in dire straits!\n   15  \n   16  [Translit Keyboard]: http://translit-keyboard.archagon.net\n   ..\n  210  ### Autolayout? Yeah, Right\n  211  \n  212: This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well... if you're implementing a keyboard or anything remotely like it, *don't use autolayout!*\n  213  \n  214  In learning this technology, I found several places where autolayout was very appropriate. For example, if you're making a single-screen view with a limited number of static elements — preferably in Interface Builder — it's a great idea to use autolayout. But if you're creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you'll spend your days knee-deep in `constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:` initializers and spacer views[^spacer_views], you'll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    1  .site-footer {\n    2:     font-size: 1.5rem;\n    3      font-family: \"Franklin Gothic Medium\", \"Franklin Gothic\", \"ITC Franklin Gothic\", Arial, sans-serif;\n    4  \n    .\n   24          display: inline-block;\n   25          padding: 0.25em 0.5em 0.25em 0.5em;\n   26:         border-radius: 0.75rem;\n   27          border: 0px solid;\n   28          width: 10em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  113  }\n  114  .post {\n  115:     padding: 3rem;\n  116:     padding-top: 2rem;\n  117:     padding-bottom: 2rem;\n  118      background-color: white;\n  119      // background-image: url(\"/images/background-blur1.jpg\");\n  ...\n  121      // border-color: lightblue;\n  122      // background-color: mix(blue, white, 2%);\n  123:     border-radius: 1.25rem;\n  124  }\n  125  \n  ...\n  163  \n  164  .post-title {\n  165:     font-size: 2.4rem;\n  166      letter-spacing: -1px;\n  167      line-height: 1;\n  168  \n  169:     padding: 0.5rem;\n  170:     border-radius: 0.75rem;\n  171  }\n  172  \n  ...\n  176      }\n  177  \n  178:     font-size: 1.2rem;\n  179  \n  180      h2 {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/_support.scss:\n  391  \n  392  // @private\n  393: @function warn-about-pie-removal() {\n  394    @if global-variable-exists(experimental-support-for-pie) {\n  395      @warn \"Compass no longer supports css3pie.\";\n  ...\n  421  \n  422  // @private\n  423: $pie-removal-warning-issued: warn-about-pie-removal() !default;\n  424  \n  425  // @private\n  ...\n  427    @if $moz != null or $webkit != null or $o != null or $khtml != null or $official != null {\n  428      @warn \"Browser prefix arguments to this mixin are no longer used and \" +\n  429:           \"will be removed in the next release.\";\n  430    }\n  431    @return true;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_box.scss:\n    2  @import \"deprecated-support\";\n    3  \n    4: @warn \"The compass/css3/box module is DEPRECATED and will be removed in the next release. Please use compass/css3/flexbox instead.\";\n    5  \n    6  // @private css3-feature-support variables must always include a list of five boolean values\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_pie.scss:\n    1: @warn \"Support for CSS3Pie has been removed.\";\n    2  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_shared.scss:\n    1  @warn \"The compass/css3/shared module has been deprecated.\n    2  You can silence this warning by importing compass/css3/deprecated-support instead.\n    3: Please be aware that module will be removed in the next release.\";\n    4  \n    5  @import \"deprecated-support\";\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/layout/_grid-background.scss:\n   28  $show-grid-backgrounds            : true                        !default;\n   29  \n   30: // optionally force your grid-image to remain fluid\n   31  // no matter what units you used to declared your grid.\n   32  $grid-background-force-fluid      : false                       !default;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities-legacy.scss:\n   48      @include reset-image-anchor-border; } }\n   49  \n   50: // Reset the box model measurements.\n   51  @mixin reset-box-model {\n   52    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities.scss:\n   62      @include reset-image-anchor-border; } }\n   63  \n   64: // Reset the box model measurements.\n   65  @mixin reset-box-model {\n   66    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    6  $base-font-size: 16px !default;\n    7  \n    8: // Whether to output fallback values in px when outputting rems.\n    9: $rem-with-px-fallback: true !default;\n   10  \n   11  \n   ..\n   41  	// Context values must be in px so we can determine a conversion ratio for\n   42  	// relative units.\n   43: 	@if unit($from-context) != 'px' { @warn \"Paremeter $from-context must resolve to a value in pixel units.\"; }\n   44  	@if unit($to-context) != 'px' { @warn \"Parameter $to-context must resolve to a value in pixel units.\"; }\n   45  \n   ..\n   50  		// Convert relative units using the from-context parameter.\n   51  		@if      $from-unit == 'em'  { $px-length: $length * $from-context / 1em }\n   52: 		@else if $from-unit == 'rem' { $px-length: $length * $base-font-size / 1rem }\n   53  		@else if $from-unit == '%'   { $px-length: $length * $from-context / 100% }\n   54  		@else if $from-unit == 'ex'  { $px-length: $length * $from-context / 2ex }\n   ..\n   78  		// Relative units\n   79  		@if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }\n   80: 		@else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $base-font-size }\n   81  		@else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }\n   82  		@else if $to-unit == 'ex'  { $output-length: $px-length * 2ex / $to-context }\n   ..\n  105  \n  106  \n  107: // @private Get the px/rem versions of a value.\n  108: @function rem-fallback-values($value) {\n  109    $_return: (\n  110      px: $value,\n  111:     rem: $value,\n  112    );\n  113  \n  114    @if type-of($value) == number and not unitless($value) {\n  115:     @if unit($value) == rem {\n  116        $_return: map-merge($_return, (\n  117          px: round(convert-length($value, px)),\n  ...\n  120        $_return: map-merge($_return, (\n  121          px: round($value),\n  122:         rem: convert-length($value, rem),\n  123        ));\n  124      }\n  ...\n  128  }\n  129  \n  130: // @private Get the px/rem versions of a list (or nested lists).\n  131: @function list-convert-rems($value) {\n  132    $_empty: (\n  133      px: (),\n  134:     rem: (),\n  135    );\n  136    $_return: $_empty;\n  ...\n  140      $_sep: list-separator($value);\n  141      @each $sub in $value {\n  142:       $_this: list-convert-rems($sub);\n  143        $_return: (\n  144          px: append(map-get($_return, px), map-get($_this, px), $_sep),\n  145:         rem: append(map-get($_return, rem), map-get($_this, rem), $_sep),\n  146        );\n  147      }\n  148    } @else {\n  149:     $_this: rem-fallback-values($value);\n  150      $_return: map-merge($_return, $_this);\n  151    }\n  ...\n  155  \n  156  \n  157: // Output a given style rule containing rem values along with an (optional)\n  158: // fallback rule for older browsers (with rem values converted to px).\n  159  //\n  160  // @param $property\n  ...\n  167  //   [ true | false ]\n  168  //\n  169: @mixin rem($property, $values, $use-px-fallback: $rem-with-px-fallback) {\n  170  \n  171    // get converted values.\n  172:   $values: list-convert-rems($values);\n  173    $px-values: map-get($values, px);\n  174:   $values: map-get($values, rem);\n  175  \n  176:   // Use pixel fallback for browsers that don't understand rem units.\n  177    @if $use-px-fallback and $px-values != $values {\n  178      #{$property}: $px-values;\n  179    }\n  180  \n  181:   // Use rem values for everyone else (overrides pixel values).\n  182    #{$property}: $values;\n  183  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n   10  \n   11  // The length unit in which to output rhythm values.\n   12: // Supported values: px, em, rem. Percent units can't be used since they\n   13  // make calculating padding and margins impractical, and percentage borders are\n   14  // not valid or supported in css.\n   15  $rhythm-unit: 'em' !default;\n   16  \n   17: // Whether to output fallback values in px when using rem as the rhythm-unit.\n   18: $rem-with-px-fallback: true !default;\n   19  \n   20  // Default values for rhythm borders properties.\n   ..\n   40  $base-half-leader: $base-leader / 2;\n   41  \n   42: // @private Whether the rhythm output is in absolute units (px) or not (em, rem)\n   43  $relative-font-sizing: if($rhythm-unit == px, false, true);\n   44  \n   ..\n   46  @if unit($base-font-size)   != 'px' { @warn \"$base-font-size must resolve to a pixel unit.\"; }\n   47  @if unit($base-line-height) != 'px' { @warn \"$base-line-height must resolve to a pixel unit.\"; }\n   48: @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {\n   49:   @warn \"$rhythm-unit must be `px`, `em` or `rem`.\";\n   50  }\n   51  \n   ..\n   73  \n   74  \n   75: // @private Outputs rhythm values. For rem units, outputs pixel fallbacks\n   76  // by default.\n   77  @mixin output-rhythm($property, $values) {\n   78:   @if $rhythm-unit == rem and $rem-with-px-fallback {\n   79:     @include rem($property, $values);\n   80    }\n   81    @else {\n   ..\n  107      font-size: if($relative-font-sizing, $relative-size, $font-size);\n  108  \n  109:     // Webkit has a bug that prevents line-height being set in rem on <html>;\n  110      // To work around this and simplify output, we can set initial line-height\n  111:     // in ems for all relative rhythm units, even when $rhythm-unit is `rem`.\n  112      @if $relative-font-sizing {\n  113        line-height: convert-length($base-line-height, em);\n  ...\n  122  // Does not work on elements whose font-size is different from $base-font-size.\n  123  //\n  124: // @deprecated This mixin will be removed in the next release.\n  125  // Please use `adjust-leading-to(1)` instead.\n  126  @mixin reset-baseline($font-size: $base-font-size) {\n  ...\n  130  // Show a background image that can be used to debug your alignments.\n  131  // As this is a development feature, this mixin never outputs pixel fallbacks\n  132: // for rem output.\n  133  // Include the $img argument if you would rather use your own image than the\n  134  // Compass default gradient image.\n  ...\n  249  \n  250  // Apply a leading border.\n  251: // $border-style and $width are deprecated and will be removed in a future version of Compass.\n  252  @mixin leading-border(\n  253    $width: $default-rhythm-border-width,\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_nowrap.scss:\n    1: // When remembering whether or not there's a hyphen in white-space is too hard\n    2  @mixin nowrap { white-space: nowrap; }\n    3  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   21    @if $threshold {\n   22      // Deprecated in Compass 0.13\n   23:     @warn \"The $threshold argment to contrast-color is no longer needed and will be removed in the next release.\"\n   24    }\n   25    @if $color == null {\n   ..\n   46    @if $threshold {\n   47      // Deprecated in Compass 0.13\n   48:     @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50    background-color: $background-color;\n\n102 matches across 25 files\n\n\nSearching 250 files for \"20px\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n   16              vertical-align: middle;\n   17              list-style-type: none;\n   18:             height: 20px;\n   19              padding: 10px;\n   20              font-family: Tahoma, Geneva, sans-serif;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n   39  There are other fun states that your keyboard can get into. For example, sometimes the keyboard view will show up, but never actually load the keyboard:\n   40  \n   41: <img src=\"{{ site.baseurl }}/images/Missing Keyboard.PNG\" width=\"320px\" />\n   42  \n   43  And the fun is not just limited to 3rd party keyboards! If you hit the globe icon on a system keyboard, sometimes the button will run away from under your finger — and stay that way for a long time:\n   44  \n   45: <img src=\"{{ site.baseurl }}/images/Missing Globe.PNG\" width=\"320px\" />\n   46  \n   47  ### What Is the Text Even Doing?\n   ..\n   69  How about another app? *Hilariously*, in the App Store app, if you try to write a review using a 3rd party keyboard, you'll find that the page turns entirely blank!\n   70  \n   71: <img src=\"{{ site.baseurl }}/images/No Review.PNG\" width=\"320px\" />\n   72  \n   73  ### Reloading the Extension\n   ..\n   83  3rd party keyboards can sometimes exhibit bizarre graphical glitches. For example, this one is easy to consistently reproduce.\n   84  \n   85: <img src=\"{{ site.baseurl }}/images/Graphics Glitches.PNG\" width=\"320px\" />\n   86  \n   87  ### Missing Features\n   ..\n   93  There are two ways that 3rd party keyboards can run. By default, the keyboard cannot do much of anything outside its own sandbox. But if the user goes into their settings and manually flicks a carefully hidden switch, they can enable \"full access\" for that particular keyboard. In the process, they are greeted with this terrifying popup:\n   94  \n   95: <img src=\"{{ site.baseurl }}/images/Full Access.PNG\" width=\"320px\" />\n   96  \n   97  This totally makes sense if there's a chance that your keyboard could send your precious keystrokes over the net. Unfortunately, there are a number of other vital features that require getting past the full access barrier. Sharing data between your keyboard and your container app. Sharing data between multiple keyboards in a single app. Having a settings bundle. Using in-app purchases with your keyboard. *Playing sounds*, for crying out loud. Some of these are reasonable since they could allow private data to escape out of the sandbox in roundabout ways, but it's causing many developers to *strongly encourage* their users to enable full access.\n   ..\n  103  As you would expect, customers have no idea that any of these behaviors are caused by the OS. Just look at these reviews for various 3rd party keyboards:\n  104  \n  105: <img src=\"{{ site.baseurl }}/images/Review Broken App.PNG\" width=\"320px\">\n  106  \n  107: <img src=\"{{ site.baseurl }}/images/Review Full Access 2.PNG\" width=\"320px\">\n  108  \n  109: <img src=\"{{ site.baseurl }}/images/Review Features.PNG\" width=\"320px\">\n  110  \n  111: <img src=\"{{ site.baseurl }}/images/Review Disappearing Keyboard.PNG\" width=\"320px\">\n  112  \n  113: <img src=\"{{ site.baseurl }}/images/Review Full Access.PNG\" width=\"320px\">\n  114  \n  115  You'll find it difficult to find a 3rd party keyboard with more than 3 stars. (And can you blame the customers? After seeing these behaviors, *I* certainly wouldn't switch to a 3rd party keyboard full-time!)\n  ...\n  125  Unlike the system keyboard, your custom keyboard is confined to the rect it was created in. There's no drawing outside the box and no adding transparency. This becomes a problem if you want to add popups to your keys like the ones in default keyboard. How do you handle the top row when you can't draw over the top?\n  126  \n  127: <img src=\"{{ site.baseurl }}/images/Popup.png\" width=\"320px\" />\n  128  \n  129  In the early betas, you couldn't do much at all. Your best option was to either draw sideways popups or just do nothing. Closer to release, we got the ability to expand the height of the keyboard view. Sadly, the implementation feels like an afterthought. \n  ...\n  160  But if you perform the rotation in the Simulator, you see things like this:\n  161  \n  162: <img src=\"{{ site.baseurl }}/images/Glitch Portrait.png\" width=\"320px\" />\n  163  \n  164  And this:\n  ...\n  266  That smiley... that smug, mocking smiley.\n  267  \n  268: <img src=\"{{ site.baseurl }}/images/Smiley.png\" width=\"320px\" />\n  269  \n  270  As of Xcode 6.1, you can no longer open 3rd party keyboards in most apps in the Simulator, *including your own*. (And not just 3rd party keyboards: most system keyboards refuse to show up, too.) Not only does this make debugging a whole lot harder, but it also prevents you from easily making screenshots of your keyboard if you don't own some of the newer devices. This issue is marked as a bug in Radar, and seeing as how it first appeared in the Xcode 6.1 betas, I cannot fathom how it got through to release.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n  115  .post {\n  116      // background-color: pink;\n  117:     // padding: 20px;\n  118      // border-radius: 10px;\n  119:     margin-top: 20px;\n  120      overflow: hidden;\n  121  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   21      // border: 2px solid mix(lavender, white, 10%);\n   22  \n   23:     // -webkit-filter: blur(20px) grayscale(20%);\n   24  \n   25      /* layout */\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   64  \n   65  .page-heading {\n   66:     font-size: 20px;\n   67  }\n   68  \n   ..\n  132      // padding-right: 45px;\n  133      // padding-top: 10px;\n  134:     // padding-bottom: 20px;\n  135      // border-color: lighten(gray, 30%);\n  136   }\n  ...\n  143  //     padding-left: 45px;\n  144  //     padding-right: 45px;\n  145: //     padding-top: 20px;\n  146: //     padding-bottom: 20px;\n  147  //     border-color: lighten(gray, 30%);\n  148  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_columns.scss:\n   25  }\n   26  \n   27: // Specify the gap between columns e.g. `20px`\n   28  @mixin column-gap($width) {\n   29    @include prefixed-properties(multicolumn, $multicolumn-support-threshold,(\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/assets/kml/newcastle_test.kml:\n   13  				<div id=\"desc-summary\" style=\"width: 100%; float:left;\">\n   14  					<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n   15: 						<tr><td style=\"font-weight: bold; width: 120px;\">Start: </td><td>Aug 21, 2014, 6:07:11 PM</td></tr>\n   16: 						<tr><td style=\"font-weight: bold; width: 120px;\">End: </td><td>Aug 21, 2014, 6:27:37 PM</td></tr>\n   17: 						<tr><td style=\"font-weight: bold; width: 120px;\">Flat distance: </td><td>0.82 mi</td></tr>\n   18: 						<tr><td style=\"font-weight: bold; width: 120px;\">Total time: </td><td>00:20:25</td></tr>\n   19: 						<tr><td style=\"font-weight: bold; width: 120px;\">Moving time: </td><td>00:17:25</td></tr>\n   20: 						<tr><td style=\"font-weight: bold; width: 120px;\">Average speed: </td><td>2.4 mph</td></tr>\n   21: 						<tr><td style=\"font-weight: bold; width: 120px;\">Minimum speed: </td><td>1 mph</td></tr>\n   22: 						<tr><td style=\"font-weight: bold; width: 120px;\">Maximum speed: </td><td>5.7 mph</td></tr>\n   23: 						<tr><td style=\"font-weight: bold; width: 120px;\">Minimum altitude: </td><td>123 ft</td></tr>\n   24: 						<tr><td style=\"font-weight: bold; width: 120px;\">Maximum altitude: </td><td>317 ft</td></tr>\n   25: 						<tr><td style=\"font-weight: bold; width: 120px;\">Ascent: </td><td>274 ft</td></tr>\n   26: 						<tr><td style=\"font-weight: bold; width: 120px;\">Descent: </td><td>242 ft</td></tr>\n   27  					</table>\n   28  					<table>\n   ..\n   45  						<div id=\"desc-summary\" style=\"width: 100%; float:left;\">\n   46  							<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n   47: 								<tr><td style=\"font-weight: bold; width: 120px;\">Start: </td><td>Aug 21, 2014, 6:07:11 PM</td></tr>\n   48: 								<tr><td style=\"font-weight: bold; width: 120px;\">End: </td><td>Aug 21, 2014, 6:27:37 PM</td></tr>\n   49: 								<tr><td style=\"font-weight: bold; width: 120px;\">Flat distance: </td><td>0.82 mi</td></tr>\n   50: 								<tr><td style=\"font-weight: bold; width: 120px;\">Total time: </td><td>00:20:25</td></tr>\n   51: 								<tr><td style=\"font-weight: bold; width: 120px;\">Moving time: </td><td>00:17:25</td></tr>\n   52: 								<tr><td style=\"font-weight: bold; width: 120px;\">Average speed: </td><td>2.4 mph</td></tr>\n   53: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum speed: </td><td>1 mph</td></tr>\n   54: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum speed: </td><td>5.7 mph</td></tr>\n   55: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum altitude: </td><td>123 ft</td></tr>\n   56: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum altitude: </td><td>317 ft</td></tr>\n   57: 								<tr><td style=\"font-weight: bold; width: 120px;\">Ascent: </td><td>274 ft</td></tr>\n   58: 								<tr><td style=\"font-weight: bold; width: 120px;\">Descent: </td><td>242 ft</td></tr>\n   59  							</table>\n   60  						</div>\n   ..\n  615  						<visibility>1</visibility>\n  616  						<description>\n  617: 							<div id=\"desc-container\" style=\"font-size: 12px; min-height: 120px; min-width: 350px\">\n  618  								<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n  619  									<tr><td style=\"font-weight: bold; width: 90px;\">Latitude:</td><td>54° 58' 16.33'' N</td></tr>\n  ...\n  638  						<visibility>1</visibility>\n  639  						<description> \n  640: 							<div id=\"desc-container\" style=\"font-size: 12px; min-height: 120px; min-width: 350px\">\n  641  								<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n  642  									<tr><td style=\"font-weight: bold; width: 90px;\">Latitude:</td><td>54° 58' 08.27'' N</td></tr>\n  ...\n  663  								<div id=\"desc-summary\" style=\"width: 100%; float:left;\">\n  664  									<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n  665: 								<tr><td style=\"font-weight: bold; width: 120px;\">Start: </td><td>Aug 21, 2014, 6:07:11 PM</td></tr>\n  666: 								<tr><td style=\"font-weight: bold; width: 120px;\">End: </td><td>Aug 21, 2014, 6:27:37 PM</td></tr>\n  667: 								<tr><td style=\"font-weight: bold; width: 120px;\">Flat distance: </td><td>0.82 mi</td></tr>\n  668: 								<tr><td style=\"font-weight: bold; width: 120px;\">Total time: </td><td>00:20:25</td></tr>\n  669: 								<tr><td style=\"font-weight: bold; width: 120px;\">Moving time: </td><td>00:17:25</td></tr>\n  670: 								<tr><td style=\"font-weight: bold; width: 120px;\">Average speed: </td><td>2.4 mph</td></tr>\n  671: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum speed: </td><td>1 mph</td></tr>\n  672: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum speed: </td><td>5.7 mph</td></tr>\n  673: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum altitude: </td><td>123 ft</td></tr>\n  674: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum altitude: </td><td>317 ft</td></tr>\n  675: 								<tr><td style=\"font-weight: bold; width: 120px;\">Ascent: </td><td>274 ft</td></tr>\n  676: 								<tr><td style=\"font-weight: bold; width: 120px;\">Descent: </td><td>242 ft</td></tr>\n  677  									</table>\n  678  								</div>\n\n60 matches across 7 files\n\n\nSearching 250 files for \": 20px\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n   16              vertical-align: middle;\n   17              list-style-type: none;\n   18:             height: 20px;\n   19              padding: 10px;\n   20              font-family: Tahoma, Geneva, sans-serif;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n  115  .post {\n  116      // background-color: pink;\n  117:     // padding: 20px;\n  118      // border-radius: 10px;\n  119:     margin-top: 20px;\n  120      overflow: hidden;\n  121  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   64  \n   65  .page-heading {\n   66:     font-size: 20px;\n   67  }\n   68  \n   ..\n  132      // padding-right: 45px;\n  133      // padding-top: 10px;\n  134:     // padding-bottom: 20px;\n  135      // border-color: lighten(gray, 30%);\n  136   }\n  ...\n  143  //     padding-left: 45px;\n  144  //     padding-right: 45px;\n  145: //     padding-top: 20px;\n  146: //     padding-bottom: 20px;\n  147  //     border-color: lighten(gray, 30%);\n  148  \n\n7 matches across 3 files\n\n\nSearching 250 files for \":not\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n  118              line-height: $base-line-height;\n  119  \n  120:             &:not(:first-child) {\n  121                  margin-left: 35px;\n  122              }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  172  \n  173  .post-content {\n  174:     &:not(:last-child) {\n  175          margin-bottom: $spacing-unit * 0.75;\n  176      }\n\n2 matches across 2 files\n\n\nSearching 250 files for \"2.4rem\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  163  \n  164  .post-title {\n  165:     font-size: 2.4rem;\n  166      letter-spacing: -1px;\n  167      line-height: 1;\n\n1 match in 1 file\n\n\nSearching 250 files for \".selector_id\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   19  \n   20    // assign color\n   21:   #{{ post.selector_id }} {\n   22      @if variable-exists({{ category_color_name }}) {\n   23        background-color: mix(${{ category_color_name }}, white, 25%);\n   ..\n   42    <ul class=\"post-list\">\n   43      {% for post in site.posts %}\n   44:     <li id=\"{{ post.selector_id }}\" class=\"post post-content\">\n   45        <header class=\"post-header\">\n   46          <a class=\"post-link\" href=\"{{ post.url | prepend: site.baseurl }}\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   13  // hide the default icon if there's an image\n   14  {% if post.using_default_icon == false %}\n   15:   #{{ post.selector_id }} .archive_post_image {\n   16        visibility: hidden;\n   17    }\n   ..\n   25  // set the colors for all the post elements\n   26  @if variable-exists({{ category_color_name }}) {\n   27:   #{{ post.selector_id }} {\n   28      background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31:   #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33        background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   ..\n   38  }\n   39  @else {\n   40:   #{{ post.selector_id }} {\n   41      background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44:   #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46        background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   ..\n   53  // set the post background image, if appropriate\n   54  {% if post.using_default_icon == false %}\n   55:   #{{ post.selector_id }} {\n   56      $standard_width: 800px;\n   57      $expected_scale: 0.65;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   18  \n   19    // assign color\n   20:   #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22        background-color: mix(${{ category_color_name }}, white, 25%);\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/post.html:\n    2  layout: default\n    3  ---\n    4: <div class=\"post\" id=\"{{ page.selector_id }}\">\n    5    <header class=\"post-header\">\n    6      <h1 class=\"post-title\">{{ page.title }}</h1>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/image_clipper.rb:\n   21                  #     # get output filename\n   22                  #     icon_extension = File.extname(local_icon_url)\n   23:                 #     new_icon_name = post.selector_id + icon_extension\n   24                  #     local_new_icon_url = File.join(image_dir, new_icon_name)\n   25  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/selector_id.rb:\n    2      class Post\n    3          def store_selector_id\n    4:             self.data['selector_id'] = self.selector_id\n    5          end\n    6  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n   58                                <li class=\"archive_post_element\">\n   59                                  <a href=\"{{ post.url | prepend: site.baseurl }}\">\n   60:                                   <div id=\"{{ post.selector_id }}\" class=\"archive_post\">\n   61                                      <div class=\"archive_post_image\"><img src=\"{{ post.icon_url }}\"></img></div>\n   62:                                     <div id=\"{{ post.selector_id }}-inner\" class=\"archive_post_blurb\">\n   63                                        <div class=\"archive_blurb_test_container\">\n   64                                          <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>\n\n14 matches across 7 files\n\n\nSearching 250 files for \"post.selector_id\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   19  \n   20    // assign color\n   21:   #{{ post.selector_id }} {\n   22      @if variable-exists({{ category_color_name }}) {\n   23        background-color: mix(${{ category_color_name }}, white, 25%);\n   ..\n   42    <ul class=\"post-list\">\n   43      {% for post in site.posts %}\n   44:     <li id=\"{{ post.selector_id }}\" class=\"post post-content\">\n   45        <header class=\"post-header\">\n   46          <a class=\"post-link\" href=\"{{ post.url | prepend: site.baseurl }}\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   13  // hide the default icon if there's an image\n   14  {% if post.using_default_icon == false %}\n   15:   #{{ post.selector_id }} .archive_post_image {\n   16        visibility: hidden;\n   17    }\n   ..\n   25  // set the colors for all the post elements\n   26  @if variable-exists({{ category_color_name }}) {\n   27:   #{{ post.selector_id }} {\n   28      background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31:   #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33        background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   ..\n   38  }\n   39  @else {\n   40:   #{{ post.selector_id }} {\n   41      background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44:   #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46        background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   ..\n   53  // set the post background image, if appropriate\n   54  {% if post.using_default_icon == false %}\n   55:   #{{ post.selector_id }} {\n   56      $standard_width: 800px;\n   57      $expected_scale: 0.65;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   18  \n   19    // assign color\n   20:   #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22        background-color: mix(${{ category_color_name }}, white, 25%);\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/post.html:\n    2  layout: default\n    3  ---\n    4: <div class=\"post\" id=\"{{ post.selector_id }}\">\n    5    <header class=\"post-header\">\n    6      <h1 class=\"post-title\">{{ page.title }}</h1>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/image_clipper.rb:\n   21                  #     # get output filename\n   22                  #     icon_extension = File.extname(local_icon_url)\n   23:                 #     new_icon_name = post.selector_id + icon_extension\n   24                  #     local_new_icon_url = File.join(image_dir, new_icon_name)\n   25  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n   58                                <li class=\"archive_post_element\">\n   59                                  <a href=\"{{ post.url | prepend: site.baseurl }}\">\n   60:                                   <div id=\"{{ post.selector_id }}\" class=\"archive_post\">\n   61                                      <div class=\"archive_post_image\"><img src=\"{{ post.icon_url }}\"></img></div>\n   62:                                     <div id=\"{{ post.selector_id }}-inner\" class=\"archive_post_blurb\">\n   63                                        <div class=\"archive_blurb_test_container\">\n   64                                          <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>\n\n13 matches across 6 files\n",
+			"contents": "Searching 250 files for \"page-content\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    5      <div class=\"body-wrapper\">\n    6      {% include header.html %}\n    7:     <div class=\"page-content\">\n    8        <div class=\"wrapper\">\n    9          {{ content }}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   67   * Page content\n   68   */\n   69: .page-content {\n   70      padding: $spacing-unit 0;\n   71  }\n\n2 matches across 2 files\n\n\nSearching 250 files for \"$base-font-size:\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    4  // Base font size in pixels, if not already defined.\n    5  // Should be the same as the font-size of the html element.\n    6: $base-font-size: 16px !default;\n    7  \n    8  // Whether to output fallback values in px when outputting rems.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n    4  \n    5  // The default font size for all text in pixels\n    6: $base-font-size: 16px !default;\n    7  \n    8  // The distance between text baselines (vertical rhythm) in pixels.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   11  // $base-font-family: \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif;\n   12  // $base-font-family: Georgia, Times, \"Times New Roman\", serif;\n   13: // $base-font-size:   19px;\n   14: $base-font-size: 10px;\n   15  $small-font-size:  $base-font-size * 0.875;\n   16  $base-line-height: 1.5;\n\n4 matches across 3 files\n\n\nSearching 250 files for \"$base-font-size\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   16  body {\n   17      font-family: $base-font-family;\n   18:     font-size: $base-font-size;\n   19      line-height: $base-line-height;\n   20      font-weight: 300;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n    1  body {\n    2:     font-size: $base-font-size;\n    3  }\n    4  \n    .\n   18  // html, body {\n   19  //     @include media-query($on-palm) {\n   20: //         font-size: $base-font-size * 0.75;\n   21  //     }\n   22  // }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    4  // Base font size in pixels, if not already defined.\n    5  // Should be the same as the font-size of the html element.\n    6: $base-font-size: 16px !default;\n    7  \n    8  // Whether to output fallback values in px when outputting rems.\n    .\n   30  	$length,\n   31  	$to-unit,\n   32: 	$from-context: $base-font-size,\n   33  	$to-context: $from-context\n   34  ) {\n   ..\n   50  		// Convert relative units using the from-context parameter.\n   51  		@if      $from-unit == 'em'  { $px-length: $length * $from-context / 1em }\n   52: 		@else if $from-unit == 'rem' { $px-length: $length * $base-font-size / 1rem }\n   53  		@else if $from-unit == '%'   { $px-length: $length * $from-context / 100% }\n   54  		@else if $from-unit == 'ex'  { $px-length: $length * $from-context / 2ex }\n   ..\n   78  		// Relative units\n   79  		@if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }\n   80: 		@else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $base-font-size }\n   81  		@else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }\n   82  		@else if $to-unit == 'ex'  { $output-length: $px-length * 2ex / $to-context }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n    4  \n    5  // The default font size for all text in pixels\n    6: $base-font-size: 16px !default;\n    7  \n    8  // The distance between text baselines (vertical rhythm) in pixels.\n    .\n   34  // The leader is the amount of whitespace in a line.\n   35  // It might be useful in your calculations.\n   36: $base-leader: convert-length($base-line-height - $base-font-size, $rhythm-unit, $base-font-size);\n   37  \n   38  // The half-leader is the amount of whitespace above and below a line.\n   ..\n   44  \n   45  // Validate units\n   46: @if unit($base-font-size)   != 'px' { @warn \"$base-font-size must resolve to a pixel unit.\"; }\n   47  @if unit($base-line-height) != 'px' { @warn \"$base-line-height must resolve to a pixel unit.\"; }\n   48  @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {\n   ..\n   52  \n   53  // Calculate rhythm units.\n   54: @function rhythm($lines: 1, $font-size: $base-font-size, $offset: 0) {\n   55    $rhythm: convert-length($lines * $base-line-height - $offset, $rhythm-unit, $font-size);\n   56    @if unit($rhythm) == px {\n   ..\n   95  \n   96  // Establishes a font baseline for the given font-size.\n   97: @mixin establish-baseline($font-size: $base-font-size) {\n   98    $relative-size: 100% * ($font-size / $browser-default-font-size);\n   99  \n  ...\n  120  \n  121  // Resets the baseline to 1 rhythm unit\n  122: // Does not work on elements whose font-size is different from $base-font-size.\n  123  //\n  124  // @deprecated This mixin will be removed in the next release.\n  125  // Please use `adjust-leading-to(1)` instead.\n  126: @mixin reset-baseline($font-size: $base-font-size) {\n  127    @include adjust-leading-to(1, $font-size);\n  128  }\n  ...\n  147  // defaults to the smallest integer that is large enough to fit the font.\n  148  // Use $from-size to adjust from a font-size other than the base font-size.\n  149: @mixin adjust-font-size-to($to-size, $lines: auto, $from-size: $base-font-size) {\n  150    $to-size: convert-length($to-size, px, $from-size);\n  151    @if $lines == auto {\n  ...\n  160  // font should use up. It does not have to be an integer, but it defaults to the\n  161  // smallest integer that is large enough to fit the font.\n  162: @mixin adjust-leading-to($lines, $font-size: $base-font-size) {\n  163    @include output-rhythm(line-height, rhythm($lines, $font-size));\n  164  }\n  165  \n  166  // Apply leading whitespace. The $property can be margin or padding.\n  167: @mixin leader($lines: 1, $font-size: $base-font-size, $property: margin) {\n  168    @include output-rhythm(#{$property}-top, rhythm($lines, $font-size));\n  169  }\n  170  \n  171  // Apply leading whitespace as padding.\n  172: @mixin padding-leader($lines: 1, $font-size: $base-font-size) {\n  173    @include output-rhythm(padding-top, rhythm($lines, $font-size));\n  174  }\n  175  \n  176  // Apply leading whitespace as margin.\n  177: @mixin margin-leader($lines: 1, $font-size: $base-font-size) {\n  178    @include output-rhythm(margin-top, rhythm($lines, $font-size));\n  179  }\n  180  \n  181  // Apply trailing whitespace. The $property can be margin or padding.\n  182: @mixin trailer($lines: 1, $font-size: $base-font-size, $property: margin) {\n  183    @include output-rhythm(#{$property}-bottom, rhythm($lines, $font-size));\n  184  }\n  185  \n  186  // Apply trailing whitespace as padding.\n  187: @mixin padding-trailer($lines: 1, $font-size: $base-font-size) {\n  188    @include output-rhythm(padding-bottom, rhythm($lines, $font-size));\n  189  }\n  190  \n  191  // Apply trailing whitespace as margin.\n  192: @mixin margin-trailer($lines: 1, $font-size: $base-font-size) {\n  193    @include output-rhythm(margin-bottom, rhythm($lines, $font-size));\n  194  }\n  ...\n  200    $padding-trailer: $padding-leader,\n  201    $trailer: $leader,\n  202:   $font-size: $base-font-size\n  203  ) {\n  204    @include leader($leader, $font-size);\n  ...\n  212    $leader: 1,\n  213    $trailer: $leader,\n  214:   $font-size: $base-font-size\n  215  ) {\n  216    @include leader($leader, $font-size);\n  ...\n  222    $padding-leader: 1,\n  223    $padding-trailer: $padding-leader,\n  224:   $font-size: $base-font-size\n  225  ) {\n  226    @include padding-leader($padding-leader, $font-size);\n  ...\n  234    $width: $default-rhythm-border-width,\n  235    $lines: 1,\n  236:   $font-size: $base-font-size,\n  237    $border-style: $default-rhythm-border-style\n  238  ) {\n  ...\n  253    $width: $default-rhythm-border-width,\n  254    $lines: 1,\n  255:   $font-size: $base-font-size,\n  256    $border-style: $default-rhythm-border-style\n  257  ) {\n  ...\n  263    $width: $default-rhythm-border-width,\n  264    $lines: 1,\n  265:   $font-size: $base-font-size,\n  266    $border-style: $default-rhythm-border-style\n  267  ) {\n  ...\n  273    $width: $default-rhythm-border-width,\n  274    $lines: 1,\n  275:   $font-size: $base-font-size,\n  276    $border-style: $default-rhythm-border-style\n  277  ) {\n  ...\n  284    $width: $default-rhythm-border-width,\n  285    $lines: 1,\n  286:   $font-size: $base-font-size,\n  287    $border-style: $default-rhythm-border-style\n  288  ) {\n  ...\n  294    $width: $default-rhythm-border-width,\n  295    $lines: 1,\n  296:   $font-size: $base-font-size,\n  297    $border-style: $default-rhythm-border-style\n  298  ) {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   11  // $base-font-family: \"Calisto MT\", \"Bookman Old Style\", Bookman, \"Goudy Old Style\", Garamond, \"Hoefler Text\", \"Bitstream Charter\", Georgia, serif;\n   12  // $base-font-family: Georgia, Times, \"Times New Roman\", serif;\n   13: // $base-font-size:   19px;\n   14: $base-font-size: 10px;\n   15: $small-font-size:  $base-font-size * 0.875;\n   16  $base-line-height: 1.5;\n   17  \n\n36 matches across 5 files\n\n\nSearching 250 files for \"rem\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Gemfile.lock:\n    1  GEM\n    2:   remote: https://rubygems.org/\n    3    specs:\n    4      imgkit (1.4.1)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Rakefile:\n  190  #   theme = args.theme || 'classic'\n  191  #   if File.directory?(\"sass.old\")\n  192: #     puts \"removed existing sass.old directory\"\n  193  #     rm_r \"sass.old\", :secure=>true\n  194  #   end\n  195  #   mv \"sass\", \"sass.old\"\n  196  #   puts \"## Moved styles into sass.old/\"\n  197: #   cp_r \"#{themes_dir}/\"+theme+\"/sass/\", \"sass\", :remove_destination=>true\n  198: #   cp_r \"sass.old/custom/.\", \"sass/custom/\", :remove_destination=>true\n  199  #   puts \"## Updated Sass ##\"\n  200  # end\n  ...\n  210  #   cp_r \"#{source_dir}/.\", \"#{source_dir}.old\"\n  211  #   puts \"## Copied #{source_dir} into #{source_dir}.old/\"\n  212: #   cp_r \"#{themes_dir}/\"+theme+\"/source/.\", source_dir, :remove_destination=>true\n  213: #   cp_r \"#{source_dir}.old/_includes/custom/.\", \"#{source_dir}/_includes/custom/\", :remove_destination=>true\n  214  #   cp \"#{source_dir}.old/favicon.png\", source_dir\n  215  #   mv \"#{source_dir}/index.html\", \"#{blog_index_dir}\", :force=>true if blog_index_dir != source_dir\n  ...\n  220  desc \"Merge raw posts with their metadata and put them in the posts directory.\"\n  221  task :update_posts do\n  222:   # remove contents of posts directory\n  223    rm_rf \"#{posts_dir}\"\n  224    mkdir_p \"#{posts_dir}\"\n  ...\n  352  #   branch = (repo_url.match(/\\/[\\w-]+\\.github\\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'\n  353  #   project = (branch == 'gh-pages') ? repo_url.match(/\\/([^\\.]+)/)[1] : ''\n  354: #   unless (`git remote -v` =~ /origin.+?octopress(?:\\.git)?/).nil?\n  355: #     # If octopress is still the origin remote (from cloning) rename it to octopress\n  356: #     system \"git remote rename origin octopress\"\n  357  #     if branch == 'master'\n  358: #       # If this is a user/organization pages repository, add the correct origin remote\n  359  #       # and checkout the source branch for committing changes to the blog source.\n  360: #       system \"git remote add origin #{repo_url}\"\n  361: #       puts \"Added remote #{repo_url} as origin\"\n  362: #       system \"git config branch.master.remote origin\"\n  363: #       puts \"Set origin as default remote\"\n  364  #       system \"git branch -m master source\"\n  365  #       puts \"Master branch renamed to 'source' for committing your blog source files\"\n  ...\n  383  #     system \"git commit -m \\\"Octopress init\\\"\"\n  384  #     system \"git branch -m gh-pages\" unless branch == 'master'\n  385: #     system \"git remote add origin #{repo_url}\"\n  386  #     rakefile = IO.read(__FILE__)\n  387  #     rakefile.sub!(/deploy_branch(\\s*)=(\\s*)([\"'])[\\w-]*[\"']/, \"deploy_branch\\\\1=\\\\2\\\\3#{branch}\\\\3\")\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  161  {% endhighlight %}\n  162  \n  163: Ultimately, I decided on a better solution: simply use a Liquid filter to automatically strip and remove newlines from the sections in which this matters. Note that this isn't the same as an overall minification step: since the whitespace becomes relevant in this situation, an explicit strip Liquid tag is important to get the correct meaning across.\n  164  \n  165  ## SASS\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-09-08-mac-address-spoofing-for-travel.md:\n   44  Your MAC address resets when you restart your computer, but I'm pretty sure you'll always be able to see the original address with the networksetup command above.\n   45  \n   46: This might seem like an esoteric procedure, especially if you're a non-technical user. However, I've already run into at least four situations where this spoofing was required. One allowed me to stay indefinitely on a free Wi-Fi hotspot for longer than the allotted 30 minutes, and another allowed me to spoof my phone's MAC address and log into a restricted network. Just today, I needed to spoof my iPhone's MAC address to my laptop, because the hostel internet was being extremely picky and allowed my phone to connect, but not my computer.\n   47  \n   48  And of course, I was finally able to log back into the HI-Quebec and watch aaaalllll the YouTube I wanted!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/thoughts_on_masters_of_doom.md:\n    3  Recently, I had the pleasure of listening to an audiobook version of the book \"Masters of Doom\". This book is the story of John Carmack, John Romero, and a few others, who in the early 90's got together and created one of the most influential video game companies in the industry: id software.\n    4  \n    5: First, I want to make it perfectly clear: I do *not* like the tone of id's games. All the demonic stuff — according to Carmack, a mix of his interest in D&D as well as a bit of a \"fuck you\" to religious folks — is disturbing to me. Furthermore, as my older self, I find the obsession with violence in id's games — perhaps the *source* of the extreme obsession with violence in games today — to be in poor taste. (With that said, as a kid, I reveled in it.)\n    6  \n    7  But with that aside, the book was a joy to listen to, because it made me realize where, exactly, most of my videogame influences came from. Many gamers and game developers I know grew up with consoles. Nintendo, Sega, even Atari: the fun, naive blips and bloops of those colorful, joyous games were what they fell in love with.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/divify.rb:\n   26          output += converted\n   27  \n   28:         # TODO: remove outer <p>\n   29  \n   30          output += \"</div>\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/extend_string.rb:\n    4  # Up-to-date version and documentation available at:\n    5  #\n    6: # http://www.techniconseils.ca/en/scripts-remove-accents-ruby.php\n    7  #\n    8  # This script is available under the following license :\n    .\n   26  \n   27  class String\n   28:   # The extended characters map used by removeaccents. The accented characters \n   29    # are coded here using their numerical equivalent to sidestep encoding issues.\n   30    # These correspond to ISO-8859-1 encoding.\n   ..\n   54    \n   55    # Remove the accents from the string. Uses String::ACCENTS_MAPPING as the source map.\n   56:   def removeaccents    \n   57      str = String.new(self)\n   58      String::ACCENTS_MAPPING.each {|letter,accents|\n   59        packed = accents.pack('U*')\n   60:       rxp = Regexp.new(\"[#{packed}]\", nil) # AB: removed 'U' option\n   61        str.gsub!(rxp, letter)\n   62      }\n   ..\n   67    \n   68    # Convert a string to a format suitable for a URL without ever using escaped characters.\n   69:   # It calls strip, removeaccents, downcase (optional) then removes the spaces (optional)\n   70:   # and finally removes any characters matching the default regexp (/[^-_A-Za-z0-9]/).\n   71    #\n   72    # Options\n   ..\n   80      options[:regexp] ||= /[^-_A-Za-z0-9]/\n   81      \n   82:     str = self.strip.removeaccents\n   83      str.downcase! if options[:downcase]\n   84      replacement_char = options[:convert_spaces].is_a?(String) ? options[:convert_spaces] : '_'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/normalize_filter.rb:\n    1  # Reduces the input to simple ASCII letters and numbers. Spaces are replaced with the given\n    2: # character (if provided). Accents are removed.\n    3  \n    4  # require 'extend_string'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/whitespace_compressor_filter.rb:\n    1  # Elminiates newlines and strips whitespace around lines.\n    2: # To be used for syntactic things like removing whitespace between inline-block elements.\n    3  # For general minificaiton, you'll be better off using another solution.\n    4  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2013-8-28-gathering-the-goods-part-2.markdown:\n   32  * A [ShedRain Windjammer](http://www.amazon.com/dp/B0056B9U0Y/?tag=arcwasher-20) umbrella, based on last year's recommendation on [The Wirecutter](http://thewirecutter.com/reviews/best-umbrella/). London Fog's umbrella was awful and broke after about a week of use.\n   33  * A long [stainless steel mesh tea infuser](http://www.amazon.com/dp/B000BU7U0W/?tag=arcwasher-20). Aside from a little metal tag which I bent out of the way, this thing fits perfectly into my Klean Kanteen and allows me to brew loose-leaf tea with plenty of room for leaf expansion. It's the only one of its kind that I was able to find! Every other teaball is either tiny or doesn't fit into the Kleen Kanteen.\n   34: * A [Logitech G602 wireless mouse](http://www.amazon.com/dp/B00E4MQODC/?tag=arcwasher-20). It works well enough and eliminates an annoying stretch of cable. Sensitivity, tracking, and latency are great for gaming use. (In fact, I saw some measurements that put the latency on par with wired mice!) Battery lasts a month. Range is really iffy, but I'm only planning to use it next to my computer, so that's not really an issue.\n   35  * A set of [collapsible compact chopsticks](http://www.amazon.com/dp/B00AWD9LY6/?tag=arcwasher-20). I occasionally find myself in situations where I could really use some sort of utensil, and these chopsticks get the job done in most situations. (Plus, they're great for munching on small, greasy foods like popcorn or chips!)\n   36  * A [Pilot Metropolitan fountain pen](http://www.amazon.com/dp/B009M3PIHQ/?tag=arcwasher-20) — just because it's sweet. `:)`\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-09-18-old_iphone_tricks_gps_tracker.md:\n   10  Here's a thing you might not know about your iPhone[^WhyNotAndroid]: the GPS unit works even without a data connection. I was confused for a long time about what \"assisted GPS\" actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.\n   11  \n   12: So here's what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called [myTracks][myTracks] and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a `kml` file (among several others) to use with Google Maps:\n   13  \n   14  {% kmlasset newcastle_test.kml %}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n   10  When iOS 8 was announced and unexpectedly blew open the doors on extensions, my interest was immediately piqued. Although, on initial glance, the keyboard APIs were rather crude — you were given a gray box at the bottom of the screen and practically nothing else — this gave me a roundabout \"in\" to making input methods work on iOS. What if I were to recreate the system keyboard from scratch? I could make it behave any way I wanted!\n   11  \n   12: And so, [Tasty Imitation Keyboard] was born. If I may take a moment of vanity, the keyboard is very solid: on most phones, it looks and types very much like the system keyboard, minus the landscape side buttons on the 6 and 6+. (iPad support isn't too high on my priority list, but it *is* functional.) This was a satisfying project to work on, giving me great insight into Swift, autolayout (since removed), Core Graphics, and a bit of Interface Builder. But it also gave me experience with something that I had yet to encounter in my sheltered iOS development existence: the horror of undercooked Apple frameworks and tools.\n   13  \n   14: Below are as many of the problems I encountered during development as I can remember. I have high hopes that these will be fixed over the next few years, but until then, perhaps this article will help some poor programmer in dire straits!\n   15  \n   16  [Translit Keyboard]: http://translit-keyboard.archagon.net\n   ..\n  210  ### Autolayout? Yeah, Right\n  211  \n  212: This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well... if you're implementing a keyboard or anything remotely like it, *don't use autolayout!*\n  213  \n  214  In learning this technology, I found several places where autolayout was very appropriate. For example, if you're making a single-screen view with a limited number of static elements — preferably in Interface Builder — it's a great idea to use autolayout. But if you're creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you'll spend your days knee-deep in `constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:` initializers and spacer views[^spacer_views], you'll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    1  .site-footer {\n    2:     font-size: 1.5rem;\n    3      font-family: \"Franklin Gothic Medium\", \"Franklin Gothic\", \"ITC Franklin Gothic\", Arial, sans-serif;\n    4  \n    .\n   24          display: inline-block;\n   25          padding: 0.25em 0.5em 0.25em 0.5em;\n   26:         border-radius: 0.75rem;\n   27          border: 0px solid;\n   28          width: 10em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  113  }\n  114  .post {\n  115:     padding: 3rem;\n  116:     padding-top: 2rem;\n  117:     padding-bottom: 2rem;\n  118      background-color: white;\n  119      // background-image: url(\"/images/background-blur1.jpg\");\n  ...\n  121      // border-color: lightblue;\n  122      // background-color: mix(blue, white, 2%);\n  123:     border-radius: 1.25rem;\n  124  }\n  125  \n  ...\n  163  \n  164  .post-title {\n  165:     font-size: 2.4rem;\n  166      letter-spacing: -1px;\n  167      line-height: 1;\n  168  \n  169:     padding: 0.5rem;\n  170:     border-radius: 0.75rem;\n  171  }\n  172  \n  ...\n  176      }\n  177  \n  178:     font-size: 1.2rem;\n  179  \n  180      h2 {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/_support.scss:\n  391  \n  392  // @private\n  393: @function warn-about-pie-removal() {\n  394    @if global-variable-exists(experimental-support-for-pie) {\n  395      @warn \"Compass no longer supports css3pie.\";\n  ...\n  421  \n  422  // @private\n  423: $pie-removal-warning-issued: warn-about-pie-removal() !default;\n  424  \n  425  // @private\n  ...\n  427    @if $moz != null or $webkit != null or $o != null or $khtml != null or $official != null {\n  428      @warn \"Browser prefix arguments to this mixin are no longer used and \" +\n  429:           \"will be removed in the next release.\";\n  430    }\n  431    @return true;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_box.scss:\n    2  @import \"deprecated-support\";\n    3  \n    4: @warn \"The compass/css3/box module is DEPRECATED and will be removed in the next release. Please use compass/css3/flexbox instead.\";\n    5  \n    6  // @private css3-feature-support variables must always include a list of five boolean values\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_pie.scss:\n    1: @warn \"Support for CSS3Pie has been removed.\";\n    2  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_shared.scss:\n    1  @warn \"The compass/css3/shared module has been deprecated.\n    2  You can silence this warning by importing compass/css3/deprecated-support instead.\n    3: Please be aware that module will be removed in the next release.\";\n    4  \n    5  @import \"deprecated-support\";\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/layout/_grid-background.scss:\n   28  $show-grid-backgrounds            : true                        !default;\n   29  \n   30: // optionally force your grid-image to remain fluid\n   31  // no matter what units you used to declared your grid.\n   32  $grid-background-force-fluid      : false                       !default;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities-legacy.scss:\n   48      @include reset-image-anchor-border; } }\n   49  \n   50: // Reset the box model measurements.\n   51  @mixin reset-box-model {\n   52    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities.scss:\n   62      @include reset-image-anchor-border; } }\n   63  \n   64: // Reset the box model measurements.\n   65  @mixin reset-box-model {\n   66    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    6  $base-font-size: 16px !default;\n    7  \n    8: // Whether to output fallback values in px when outputting rems.\n    9: $rem-with-px-fallback: true !default;\n   10  \n   11  \n   ..\n   41  	// Context values must be in px so we can determine a conversion ratio for\n   42  	// relative units.\n   43: 	@if unit($from-context) != 'px' { @warn \"Paremeter $from-context must resolve to a value in pixel units.\"; }\n   44  	@if unit($to-context) != 'px' { @warn \"Parameter $to-context must resolve to a value in pixel units.\"; }\n   45  \n   ..\n   50  		// Convert relative units using the from-context parameter.\n   51  		@if      $from-unit == 'em'  { $px-length: $length * $from-context / 1em }\n   52: 		@else if $from-unit == 'rem' { $px-length: $length * $base-font-size / 1rem }\n   53  		@else if $from-unit == '%'   { $px-length: $length * $from-context / 100% }\n   54  		@else if $from-unit == 'ex'  { $px-length: $length * $from-context / 2ex }\n   ..\n   78  		// Relative units\n   79  		@if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }\n   80: 		@else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $base-font-size }\n   81  		@else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }\n   82  		@else if $to-unit == 'ex'  { $output-length: $px-length * 2ex / $to-context }\n   ..\n  105  \n  106  \n  107: // @private Get the px/rem versions of a value.\n  108: @function rem-fallback-values($value) {\n  109    $_return: (\n  110      px: $value,\n  111:     rem: $value,\n  112    );\n  113  \n  114    @if type-of($value) == number and not unitless($value) {\n  115:     @if unit($value) == rem {\n  116        $_return: map-merge($_return, (\n  117          px: round(convert-length($value, px)),\n  ...\n  120        $_return: map-merge($_return, (\n  121          px: round($value),\n  122:         rem: convert-length($value, rem),\n  123        ));\n  124      }\n  ...\n  128  }\n  129  \n  130: // @private Get the px/rem versions of a list (or nested lists).\n  131: @function list-convert-rems($value) {\n  132    $_empty: (\n  133      px: (),\n  134:     rem: (),\n  135    );\n  136    $_return: $_empty;\n  ...\n  140      $_sep: list-separator($value);\n  141      @each $sub in $value {\n  142:       $_this: list-convert-rems($sub);\n  143        $_return: (\n  144          px: append(map-get($_return, px), map-get($_this, px), $_sep),\n  145:         rem: append(map-get($_return, rem), map-get($_this, rem), $_sep),\n  146        );\n  147      }\n  148    } @else {\n  149:     $_this: rem-fallback-values($value);\n  150      $_return: map-merge($_return, $_this);\n  151    }\n  ...\n  155  \n  156  \n  157: // Output a given style rule containing rem values along with an (optional)\n  158: // fallback rule for older browsers (with rem values converted to px).\n  159  //\n  160  // @param $property\n  ...\n  167  //   [ true | false ]\n  168  //\n  169: @mixin rem($property, $values, $use-px-fallback: $rem-with-px-fallback) {\n  170  \n  171    // get converted values.\n  172:   $values: list-convert-rems($values);\n  173    $px-values: map-get($values, px);\n  174:   $values: map-get($values, rem);\n  175  \n  176:   // Use pixel fallback for browsers that don't understand rem units.\n  177    @if $use-px-fallback and $px-values != $values {\n  178      #{$property}: $px-values;\n  179    }\n  180  \n  181:   // Use rem values for everyone else (overrides pixel values).\n  182    #{$property}: $values;\n  183  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n   10  \n   11  // The length unit in which to output rhythm values.\n   12: // Supported values: px, em, rem. Percent units can't be used since they\n   13  // make calculating padding and margins impractical, and percentage borders are\n   14  // not valid or supported in css.\n   15  $rhythm-unit: 'em' !default;\n   16  \n   17: // Whether to output fallback values in px when using rem as the rhythm-unit.\n   18: $rem-with-px-fallback: true !default;\n   19  \n   20  // Default values for rhythm borders properties.\n   ..\n   40  $base-half-leader: $base-leader / 2;\n   41  \n   42: // @private Whether the rhythm output is in absolute units (px) or not (em, rem)\n   43  $relative-font-sizing: if($rhythm-unit == px, false, true);\n   44  \n   ..\n   46  @if unit($base-font-size)   != 'px' { @warn \"$base-font-size must resolve to a pixel unit.\"; }\n   47  @if unit($base-line-height) != 'px' { @warn \"$base-line-height must resolve to a pixel unit.\"; }\n   48: @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {\n   49:   @warn \"$rhythm-unit must be `px`, `em` or `rem`.\";\n   50  }\n   51  \n   ..\n   73  \n   74  \n   75: // @private Outputs rhythm values. For rem units, outputs pixel fallbacks\n   76  // by default.\n   77  @mixin output-rhythm($property, $values) {\n   78:   @if $rhythm-unit == rem and $rem-with-px-fallback {\n   79:     @include rem($property, $values);\n   80    }\n   81    @else {\n   ..\n  107      font-size: if($relative-font-sizing, $relative-size, $font-size);\n  108  \n  109:     // Webkit has a bug that prevents line-height being set in rem on <html>;\n  110      // To work around this and simplify output, we can set initial line-height\n  111:     // in ems for all relative rhythm units, even when $rhythm-unit is `rem`.\n  112      @if $relative-font-sizing {\n  113        line-height: convert-length($base-line-height, em);\n  ...\n  122  // Does not work on elements whose font-size is different from $base-font-size.\n  123  //\n  124: // @deprecated This mixin will be removed in the next release.\n  125  // Please use `adjust-leading-to(1)` instead.\n  126  @mixin reset-baseline($font-size: $base-font-size) {\n  ...\n  130  // Show a background image that can be used to debug your alignments.\n  131  // As this is a development feature, this mixin never outputs pixel fallbacks\n  132: // for rem output.\n  133  // Include the $img argument if you would rather use your own image than the\n  134  // Compass default gradient image.\n  ...\n  249  \n  250  // Apply a leading border.\n  251: // $border-style and $width are deprecated and will be removed in a future version of Compass.\n  252  @mixin leading-border(\n  253    $width: $default-rhythm-border-width,\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_nowrap.scss:\n    1: // When remembering whether or not there's a hyphen in white-space is too hard\n    2  @mixin nowrap { white-space: nowrap; }\n    3  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   21    @if $threshold {\n   22      // Deprecated in Compass 0.13\n   23:     @warn \"The $threshold argment to contrast-color is no longer needed and will be removed in the next release.\"\n   24    }\n   25    @if $color == null {\n   ..\n   46    @if $threshold {\n   47      // Deprecated in Compass 0.13\n   48:     @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50    background-color: $background-color;\n\n102 matches across 25 files\n\n\nSearching 250 files for \"rem\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Gemfile.lock:\n    1  GEM\n    2:   remote: https://rubygems.org/\n    3    specs:\n    4      imgkit (1.4.1)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Rakefile:\n  190  #   theme = args.theme || 'classic'\n  191  #   if File.directory?(\"sass.old\")\n  192: #     puts \"removed existing sass.old directory\"\n  193  #     rm_r \"sass.old\", :secure=>true\n  194  #   end\n  195  #   mv \"sass\", \"sass.old\"\n  196  #   puts \"## Moved styles into sass.old/\"\n  197: #   cp_r \"#{themes_dir}/\"+theme+\"/sass/\", \"sass\", :remove_destination=>true\n  198: #   cp_r \"sass.old/custom/.\", \"sass/custom/\", :remove_destination=>true\n  199  #   puts \"## Updated Sass ##\"\n  200  # end\n  ...\n  210  #   cp_r \"#{source_dir}/.\", \"#{source_dir}.old\"\n  211  #   puts \"## Copied #{source_dir} into #{source_dir}.old/\"\n  212: #   cp_r \"#{themes_dir}/\"+theme+\"/source/.\", source_dir, :remove_destination=>true\n  213: #   cp_r \"#{source_dir}.old/_includes/custom/.\", \"#{source_dir}/_includes/custom/\", :remove_destination=>true\n  214  #   cp \"#{source_dir}.old/favicon.png\", source_dir\n  215  #   mv \"#{source_dir}/index.html\", \"#{blog_index_dir}\", :force=>true if blog_index_dir != source_dir\n  ...\n  220  desc \"Merge raw posts with their metadata and put them in the posts directory.\"\n  221  task :update_posts do\n  222:   # remove contents of posts directory\n  223    rm_rf \"#{posts_dir}\"\n  224    mkdir_p \"#{posts_dir}\"\n  ...\n  352  #   branch = (repo_url.match(/\\/[\\w-]+\\.github\\.(?:io|com)/).nil?) ? 'gh-pages' : 'master'\n  353  #   project = (branch == 'gh-pages') ? repo_url.match(/\\/([^\\.]+)/)[1] : ''\n  354: #   unless (`git remote -v` =~ /origin.+?octopress(?:\\.git)?/).nil?\n  355: #     # If octopress is still the origin remote (from cloning) rename it to octopress\n  356: #     system \"git remote rename origin octopress\"\n  357  #     if branch == 'master'\n  358: #       # If this is a user/organization pages repository, add the correct origin remote\n  359  #       # and checkout the source branch for committing changes to the blog source.\n  360: #       system \"git remote add origin #{repo_url}\"\n  361: #       puts \"Added remote #{repo_url} as origin\"\n  362: #       system \"git config branch.master.remote origin\"\n  363: #       puts \"Set origin as default remote\"\n  364  #       system \"git branch -m master source\"\n  365  #       puts \"Master branch renamed to 'source' for committing your blog source files\"\n  ...\n  383  #     system \"git commit -m \\\"Octopress init\\\"\"\n  384  #     system \"git branch -m gh-pages\" unless branch == 'master'\n  385: #     system \"git remote add origin #{repo_url}\"\n  386  #     rakefile = IO.read(__FILE__)\n  387  #     rakefile.sub!(/deploy_branch(\\s*)=(\\s*)([\"'])[\\w-]*[\"']/, \"deploy_branch\\\\1=\\\\2\\\\3#{branch}\\\\3\")\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  161  {% endhighlight %}\n  162  \n  163: Ultimately, I decided on a better solution: simply use a Liquid filter to automatically strip and remove newlines from the sections in which this matters. Note that this isn't the same as an overall minification step: since the whitespace becomes relevant in this situation, an explicit strip Liquid tag is important to get the correct meaning across.\n  164  \n  165  ## SASS\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-09-08-mac-address-spoofing-for-travel.md:\n   44  Your MAC address resets when you restart your computer, but I'm pretty sure you'll always be able to see the original address with the networksetup command above.\n   45  \n   46: This might seem like an esoteric procedure, especially if you're a non-technical user. However, I've already run into at least four situations where this spoofing was required. One allowed me to stay indefinitely on a free Wi-Fi hotspot for longer than the allotted 30 minutes, and another allowed me to spoof my phone's MAC address and log into a restricted network. Just today, I needed to spoof my iPhone's MAC address to my laptop, because the hostel internet was being extremely picky and allowed my phone to connect, but not my computer.\n   47  \n   48  And of course, I was finally able to log back into the HI-Quebec and watch aaaalllll the YouTube I wanted!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/thoughts_on_masters_of_doom.md:\n    3  Recently, I had the pleasure of listening to an audiobook version of the book \"Masters of Doom\". This book is the story of John Carmack, John Romero, and a few others, who in the early 90's got together and created one of the most influential video game companies in the industry: id software.\n    4  \n    5: First, I want to make it perfectly clear: I do *not* like the tone of id's games. All the demonic stuff — according to Carmack, a mix of his interest in D&D as well as a bit of a \"fuck you\" to religious folks — is disturbing to me. Furthermore, as my older self, I find the obsession with violence in id's games — perhaps the *source* of the extreme obsession with violence in games today — to be in poor taste. (With that said, as a kid, I reveled in it.)\n    6  \n    7  But with that aside, the book was a joy to listen to, because it made me realize where, exactly, most of my videogame influences came from. Many gamers and game developers I know grew up with consoles. Nintendo, Sega, even Atari: the fun, naive blips and bloops of those colorful, joyous games were what they fell in love with.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/divify.rb:\n   26          output += converted\n   27  \n   28:         # TODO: remove outer <p>\n   29  \n   30          output += \"</div>\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/extend_string.rb:\n    4  # Up-to-date version and documentation available at:\n    5  #\n    6: # http://www.techniconseils.ca/en/scripts-remove-accents-ruby.php\n    7  #\n    8  # This script is available under the following license :\n    .\n   26  \n   27  class String\n   28:   # The extended characters map used by removeaccents. The accented characters \n   29    # are coded here using their numerical equivalent to sidestep encoding issues.\n   30    # These correspond to ISO-8859-1 encoding.\n   ..\n   54    \n   55    # Remove the accents from the string. Uses String::ACCENTS_MAPPING as the source map.\n   56:   def removeaccents    \n   57      str = String.new(self)\n   58      String::ACCENTS_MAPPING.each {|letter,accents|\n   59        packed = accents.pack('U*')\n   60:       rxp = Regexp.new(\"[#{packed}]\", nil) # AB: removed 'U' option\n   61        str.gsub!(rxp, letter)\n   62      }\n   ..\n   67    \n   68    # Convert a string to a format suitable for a URL without ever using escaped characters.\n   69:   # It calls strip, removeaccents, downcase (optional) then removes the spaces (optional)\n   70:   # and finally removes any characters matching the default regexp (/[^-_A-Za-z0-9]/).\n   71    #\n   72    # Options\n   ..\n   80      options[:regexp] ||= /[^-_A-Za-z0-9]/\n   81      \n   82:     str = self.strip.removeaccents\n   83      str.downcase! if options[:downcase]\n   84      replacement_char = options[:convert_spaces].is_a?(String) ? options[:convert_spaces] : '_'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/normalize_filter.rb:\n    1  # Reduces the input to simple ASCII letters and numbers. Spaces are replaced with the given\n    2: # character (if provided). Accents are removed.\n    3  \n    4  # require 'extend_string'\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/whitespace_compressor_filter.rb:\n    1  # Elminiates newlines and strips whitespace around lines.\n    2: # To be used for syntactic things like removing whitespace between inline-block elements.\n    3  # For general minificaiton, you'll be better off using another solution.\n    4  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2013-8-28-gathering-the-goods-part-2.markdown:\n   32  * A [ShedRain Windjammer](http://www.amazon.com/dp/B0056B9U0Y/?tag=arcwasher-20) umbrella, based on last year's recommendation on [The Wirecutter](http://thewirecutter.com/reviews/best-umbrella/). London Fog's umbrella was awful and broke after about a week of use.\n   33  * A long [stainless steel mesh tea infuser](http://www.amazon.com/dp/B000BU7U0W/?tag=arcwasher-20). Aside from a little metal tag which I bent out of the way, this thing fits perfectly into my Klean Kanteen and allows me to brew loose-leaf tea with plenty of room for leaf expansion. It's the only one of its kind that I was able to find! Every other teaball is either tiny or doesn't fit into the Kleen Kanteen.\n   34: * A [Logitech G602 wireless mouse](http://www.amazon.com/dp/B00E4MQODC/?tag=arcwasher-20). It works well enough and eliminates an annoying stretch of cable. Sensitivity, tracking, and latency are great for gaming use. (In fact, I saw some measurements that put the latency on par with wired mice!) Battery lasts a month. Range is really iffy, but I'm only planning to use it next to my computer, so that's not really an issue.\n   35  * A set of [collapsible compact chopsticks](http://www.amazon.com/dp/B00AWD9LY6/?tag=arcwasher-20). I occasionally find myself in situations where I could really use some sort of utensil, and these chopsticks get the job done in most situations. (Plus, they're great for munching on small, greasy foods like popcorn or chips!)\n   36  * A [Pilot Metropolitan fountain pen](http://www.amazon.com/dp/B009M3PIHQ/?tag=arcwasher-20) — just because it's sweet. `:)`\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-09-18-old_iphone_tricks_gps_tracker.md:\n   10  Here's a thing you might not know about your iPhone[^WhyNotAndroid]: the GPS unit works even without a data connection. I was confused for a long time about what \"assisted GPS\" actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.\n   11  \n   12: So here's what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called [myTracks][myTracks] and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a `kml` file (among several others) to use with Google Maps:\n   13  \n   14  {% kmlasset newcastle_test.kml %}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n   10  When iOS 8 was announced and unexpectedly blew open the doors on extensions, my interest was immediately piqued. Although, on initial glance, the keyboard APIs were rather crude — you were given a gray box at the bottom of the screen and practically nothing else — this gave me a roundabout \"in\" to making input methods work on iOS. What if I were to recreate the system keyboard from scratch? I could make it behave any way I wanted!\n   11  \n   12: And so, [Tasty Imitation Keyboard] was born. If I may take a moment of vanity, the keyboard is very solid: on most phones, it looks and types very much like the system keyboard, minus the landscape side buttons on the 6 and 6+. (iPad support isn't too high on my priority list, but it *is* functional.) This was a satisfying project to work on, giving me great insight into Swift, autolayout (since removed), Core Graphics, and a bit of Interface Builder. But it also gave me experience with something that I had yet to encounter in my sheltered iOS development existence: the horror of undercooked Apple frameworks and tools.\n   13  \n   14: Below are as many of the problems I encountered during development as I can remember. I have high hopes that these will be fixed over the next few years, but until then, perhaps this article will help some poor programmer in dire straits!\n   15  \n   16  [Translit Keyboard]: http://translit-keyboard.archagon.net\n   ..\n  210  ### Autolayout? Yeah, Right\n  211  \n  212: This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well... if you're implementing a keyboard or anything remotely like it, *don't use autolayout!*\n  213  \n  214  In learning this technology, I found several places where autolayout was very appropriate. For example, if you're making a single-screen view with a limited number of static elements — preferably in Interface Builder — it's a great idea to use autolayout. But if you're creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you'll spend your days knee-deep in `constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:` initializers and spacer views[^spacer_views], you'll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    1  .site-footer {\n    2:     font-size: 1.5rem;\n    3      font-family: \"Franklin Gothic Medium\", \"Franklin Gothic\", \"ITC Franklin Gothic\", Arial, sans-serif;\n    4  \n    .\n   24          display: inline-block;\n   25          padding: 0.25em 0.5em 0.25em 0.5em;\n   26:         border-radius: 0.75rem;\n   27          border: 0px solid;\n   28          width: 10em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  113  }\n  114  .post {\n  115:     padding: 3rem;\n  116:     padding-top: 2rem;\n  117:     padding-bottom: 2rem;\n  118      background-color: white;\n  119      // background-image: url(\"/images/background-blur1.jpg\");\n  ...\n  121      // border-color: lightblue;\n  122      // background-color: mix(blue, white, 2%);\n  123:     border-radius: 1.25rem;\n  124  }\n  125  \n  ...\n  163  \n  164  .post-title {\n  165:     font-size: 2.4rem;\n  166      letter-spacing: -1px;\n  167      line-height: 1;\n  168  \n  169:     padding: 0.5rem;\n  170:     border-radius: 0.75rem;\n  171  }\n  172  \n  ...\n  176      }\n  177  \n  178:     font-size: 1.2rem;\n  179  \n  180      h2 {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/_support.scss:\n  391  \n  392  // @private\n  393: @function warn-about-pie-removal() {\n  394    @if global-variable-exists(experimental-support-for-pie) {\n  395      @warn \"Compass no longer supports css3pie.\";\n  ...\n  421  \n  422  // @private\n  423: $pie-removal-warning-issued: warn-about-pie-removal() !default;\n  424  \n  425  // @private\n  ...\n  427    @if $moz != null or $webkit != null or $o != null or $khtml != null or $official != null {\n  428      @warn \"Browser prefix arguments to this mixin are no longer used and \" +\n  429:           \"will be removed in the next release.\";\n  430    }\n  431    @return true;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_box.scss:\n    2  @import \"deprecated-support\";\n    3  \n    4: @warn \"The compass/css3/box module is DEPRECATED and will be removed in the next release. Please use compass/css3/flexbox instead.\";\n    5  \n    6  // @private css3-feature-support variables must always include a list of five boolean values\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_pie.scss:\n    1: @warn \"Support for CSS3Pie has been removed.\";\n    2  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_shared.scss:\n    1  @warn \"The compass/css3/shared module has been deprecated.\n    2  You can silence this warning by importing compass/css3/deprecated-support instead.\n    3: Please be aware that module will be removed in the next release.\";\n    4  \n    5  @import \"deprecated-support\";\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/layout/_grid-background.scss:\n   28  $show-grid-backgrounds            : true                        !default;\n   29  \n   30: // optionally force your grid-image to remain fluid\n   31  // no matter what units you used to declared your grid.\n   32  $grid-background-force-fluid      : false                       !default;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities-legacy.scss:\n   48      @include reset-image-anchor-border; } }\n   49  \n   50: // Reset the box model measurements.\n   51  @mixin reset-box-model {\n   52    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/reset/_utilities.scss:\n   62      @include reset-image-anchor-border; } }\n   63  \n   64: // Reset the box model measurements.\n   65  @mixin reset-box-model {\n   66    margin: 0;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_units.scss:\n    6  $base-font-size: 16px !default;\n    7  \n    8: // Whether to output fallback values in px when outputting rems.\n    9: $rem-with-px-fallback: true !default;\n   10  \n   11  \n   ..\n   41  	// Context values must be in px so we can determine a conversion ratio for\n   42  	// relative units.\n   43: 	@if unit($from-context) != 'px' { @warn \"Paremeter $from-context must resolve to a value in pixel units.\"; }\n   44  	@if unit($to-context) != 'px' { @warn \"Parameter $to-context must resolve to a value in pixel units.\"; }\n   45  \n   ..\n   50  		// Convert relative units using the from-context parameter.\n   51  		@if      $from-unit == 'em'  { $px-length: $length * $from-context / 1em }\n   52: 		@else if $from-unit == 'rem' { $px-length: $length * $base-font-size / 1rem }\n   53  		@else if $from-unit == '%'   { $px-length: $length * $from-context / 100% }\n   54  		@else if $from-unit == 'ex'  { $px-length: $length * $from-context / 2ex }\n   ..\n   78  		// Relative units\n   79  		@if      $to-unit == 'em'  { $output-length: $px-length * 1em / $to-context }\n   80: 		@else if $to-unit == 'rem' { $output-length: $px-length * 1rem / $base-font-size }\n   81  		@else if $to-unit == '%'   { $output-length: $px-length * 100% / $to-context }\n   82  		@else if $to-unit == 'ex'  { $output-length: $px-length * 2ex / $to-context }\n   ..\n  105  \n  106  \n  107: // @private Get the px/rem versions of a value.\n  108: @function rem-fallback-values($value) {\n  109    $_return: (\n  110      px: $value,\n  111:     rem: $value,\n  112    );\n  113  \n  114    @if type-of($value) == number and not unitless($value) {\n  115:     @if unit($value) == rem {\n  116        $_return: map-merge($_return, (\n  117          px: round(convert-length($value, px)),\n  ...\n  120        $_return: map-merge($_return, (\n  121          px: round($value),\n  122:         rem: convert-length($value, rem),\n  123        ));\n  124      }\n  ...\n  128  }\n  129  \n  130: // @private Get the px/rem versions of a list (or nested lists).\n  131: @function list-convert-rems($value) {\n  132    $_empty: (\n  133      px: (),\n  134:     rem: (),\n  135    );\n  136    $_return: $_empty;\n  ...\n  140      $_sep: list-separator($value);\n  141      @each $sub in $value {\n  142:       $_this: list-convert-rems($sub);\n  143        $_return: (\n  144          px: append(map-get($_return, px), map-get($_this, px), $_sep),\n  145:         rem: append(map-get($_return, rem), map-get($_this, rem), $_sep),\n  146        );\n  147      }\n  148    } @else {\n  149:     $_this: rem-fallback-values($value);\n  150      $_return: map-merge($_return, $_this);\n  151    }\n  ...\n  155  \n  156  \n  157: // Output a given style rule containing rem values along with an (optional)\n  158: // fallback rule for older browsers (with rem values converted to px).\n  159  //\n  160  // @param $property\n  ...\n  167  //   [ true | false ]\n  168  //\n  169: @mixin rem($property, $values, $use-px-fallback: $rem-with-px-fallback) {\n  170  \n  171    // get converted values.\n  172:   $values: list-convert-rems($values);\n  173    $px-values: map-get($values, px);\n  174:   $values: map-get($values, rem);\n  175  \n  176:   // Use pixel fallback for browsers that don't understand rem units.\n  177    @if $use-px-fallback and $px-values != $values {\n  178      #{$property}: $px-values;\n  179    }\n  180  \n  181:   // Use rem values for everyone else (overrides pixel values).\n  182    #{$property}: $values;\n  183  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/_vertical_rhythm.scss:\n   10  \n   11  // The length unit in which to output rhythm values.\n   12: // Supported values: px, em, rem. Percent units can't be used since they\n   13  // make calculating padding and margins impractical, and percentage borders are\n   14  // not valid or supported in css.\n   15  $rhythm-unit: 'em' !default;\n   16  \n   17: // Whether to output fallback values in px when using rem as the rhythm-unit.\n   18: $rem-with-px-fallback: true !default;\n   19  \n   20  // Default values for rhythm borders properties.\n   ..\n   40  $base-half-leader: $base-leader / 2;\n   41  \n   42: // @private Whether the rhythm output is in absolute units (px) or not (em, rem)\n   43  $relative-font-sizing: if($rhythm-unit == px, false, true);\n   44  \n   ..\n   46  @if unit($base-font-size)   != 'px' { @warn \"$base-font-size must resolve to a pixel unit.\"; }\n   47  @if unit($base-line-height) != 'px' { @warn \"$base-line-height must resolve to a pixel unit.\"; }\n   48: @if $rhythm-unit != 'px' and $rhythm-unit != 'em' and $rhythm-unit != 'rem' {\n   49:   @warn \"$rhythm-unit must be `px`, `em` or `rem`.\";\n   50  }\n   51  \n   ..\n   73  \n   74  \n   75: // @private Outputs rhythm values. For rem units, outputs pixel fallbacks\n   76  // by default.\n   77  @mixin output-rhythm($property, $values) {\n   78:   @if $rhythm-unit == rem and $rem-with-px-fallback {\n   79:     @include rem($property, $values);\n   80    }\n   81    @else {\n   ..\n  107      font-size: if($relative-font-sizing, $relative-size, $font-size);\n  108  \n  109:     // Webkit has a bug that prevents line-height being set in rem on <html>;\n  110      // To work around this and simplify output, we can set initial line-height\n  111:     // in ems for all relative rhythm units, even when $rhythm-unit is `rem`.\n  112      @if $relative-font-sizing {\n  113        line-height: convert-length($base-line-height, em);\n  ...\n  122  // Does not work on elements whose font-size is different from $base-font-size.\n  123  //\n  124: // @deprecated This mixin will be removed in the next release.\n  125  // Please use `adjust-leading-to(1)` instead.\n  126  @mixin reset-baseline($font-size: $base-font-size) {\n  ...\n  130  // Show a background image that can be used to debug your alignments.\n  131  // As this is a development feature, this mixin never outputs pixel fallbacks\n  132: // for rem output.\n  133  // Include the $img argument if you would rather use your own image than the\n  134  // Compass default gradient image.\n  ...\n  249  \n  250  // Apply a leading border.\n  251: // $border-style and $width are deprecated and will be removed in a future version of Compass.\n  252  @mixin leading-border(\n  253    $width: $default-rhythm-border-width,\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_nowrap.scss:\n    1: // When remembering whether or not there's a hyphen in white-space is too hard\n    2  @mixin nowrap { white-space: nowrap; }\n    3  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   21    @if $threshold {\n   22      // Deprecated in Compass 0.13\n   23:     @warn \"The $threshold argment to contrast-color is no longer needed and will be removed in the next release.\"\n   24    }\n   25    @if $color == null {\n   ..\n   46    @if $threshold {\n   47      // Deprecated in Compass 0.13\n   48:     @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50    background-color: $background-color;\n\n102 matches across 25 files\n\n\nSearching 250 files for \"20px\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n   16              vertical-align: middle;\n   17              list-style-type: none;\n   18:             height: 20px;\n   19              padding: 10px;\n   20              font-family: Tahoma, Geneva, sans-serif;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n   39  There are other fun states that your keyboard can get into. For example, sometimes the keyboard view will show up, but never actually load the keyboard:\n   40  \n   41: <img src=\"{{ site.baseurl }}/images/Missing Keyboard.PNG\" width=\"320px\" />\n   42  \n   43  And the fun is not just limited to 3rd party keyboards! If you hit the globe icon on a system keyboard, sometimes the button will run away from under your finger — and stay that way for a long time:\n   44  \n   45: <img src=\"{{ site.baseurl }}/images/Missing Globe.PNG\" width=\"320px\" />\n   46  \n   47  ### What Is the Text Even Doing?\n   ..\n   69  How about another app? *Hilariously*, in the App Store app, if you try to write a review using a 3rd party keyboard, you'll find that the page turns entirely blank!\n   70  \n   71: <img src=\"{{ site.baseurl }}/images/No Review.PNG\" width=\"320px\" />\n   72  \n   73  ### Reloading the Extension\n   ..\n   83  3rd party keyboards can sometimes exhibit bizarre graphical glitches. For example, this one is easy to consistently reproduce.\n   84  \n   85: <img src=\"{{ site.baseurl }}/images/Graphics Glitches.PNG\" width=\"320px\" />\n   86  \n   87  ### Missing Features\n   ..\n   93  There are two ways that 3rd party keyboards can run. By default, the keyboard cannot do much of anything outside its own sandbox. But if the user goes into their settings and manually flicks a carefully hidden switch, they can enable \"full access\" for that particular keyboard. In the process, they are greeted with this terrifying popup:\n   94  \n   95: <img src=\"{{ site.baseurl }}/images/Full Access.PNG\" width=\"320px\" />\n   96  \n   97  This totally makes sense if there's a chance that your keyboard could send your precious keystrokes over the net. Unfortunately, there are a number of other vital features that require getting past the full access barrier. Sharing data between your keyboard and your container app. Sharing data between multiple keyboards in a single app. Having a settings bundle. Using in-app purchases with your keyboard. *Playing sounds*, for crying out loud. Some of these are reasonable since they could allow private data to escape out of the sandbox in roundabout ways, but it's causing many developers to *strongly encourage* their users to enable full access.\n   ..\n  103  As you would expect, customers have no idea that any of these behaviors are caused by the OS. Just look at these reviews for various 3rd party keyboards:\n  104  \n  105: <img src=\"{{ site.baseurl }}/images/Review Broken App.PNG\" width=\"320px\">\n  106  \n  107: <img src=\"{{ site.baseurl }}/images/Review Full Access 2.PNG\" width=\"320px\">\n  108  \n  109: <img src=\"{{ site.baseurl }}/images/Review Features.PNG\" width=\"320px\">\n  110  \n  111: <img src=\"{{ site.baseurl }}/images/Review Disappearing Keyboard.PNG\" width=\"320px\">\n  112  \n  113: <img src=\"{{ site.baseurl }}/images/Review Full Access.PNG\" width=\"320px\">\n  114  \n  115  You'll find it difficult to find a 3rd party keyboard with more than 3 stars. (And can you blame the customers? After seeing these behaviors, *I* certainly wouldn't switch to a 3rd party keyboard full-time!)\n  ...\n  125  Unlike the system keyboard, your custom keyboard is confined to the rect it was created in. There's no drawing outside the box and no adding transparency. This becomes a problem if you want to add popups to your keys like the ones in default keyboard. How do you handle the top row when you can't draw over the top?\n  126  \n  127: <img src=\"{{ site.baseurl }}/images/Popup.png\" width=\"320px\" />\n  128  \n  129  In the early betas, you couldn't do much at all. Your best option was to either draw sideways popups or just do nothing. Closer to release, we got the ability to expand the height of the keyboard view. Sadly, the implementation feels like an afterthought. \n  ...\n  160  But if you perform the rotation in the Simulator, you see things like this:\n  161  \n  162: <img src=\"{{ site.baseurl }}/images/Glitch Portrait.png\" width=\"320px\" />\n  163  \n  164  And this:\n  ...\n  266  That smiley... that smug, mocking smiley.\n  267  \n  268: <img src=\"{{ site.baseurl }}/images/Smiley.png\" width=\"320px\" />\n  269  \n  270  As of Xcode 6.1, you can no longer open 3rd party keyboards in most apps in the Simulator, *including your own*. (And not just 3rd party keyboards: most system keyboards refuse to show up, too.) Not only does this make debugging a whole lot harder, but it also prevents you from easily making screenshots of your keyboard if you don't own some of the newer devices. This issue is marked as a bug in Radar, and seeing as how it first appeared in the Xcode 6.1 betas, I cannot fathom how it got through to release.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n  115  .post {\n  116      // background-color: pink;\n  117:     // padding: 20px;\n  118      // border-radius: 10px;\n  119:     margin-top: 20px;\n  120      overflow: hidden;\n  121  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   21      // border: 2px solid mix(lavender, white, 10%);\n   22  \n   23:     // -webkit-filter: blur(20px) grayscale(20%);\n   24  \n   25      /* layout */\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   64  \n   65  .page-heading {\n   66:     font-size: 20px;\n   67  }\n   68  \n   ..\n  132      // padding-right: 45px;\n  133      // padding-top: 10px;\n  134:     // padding-bottom: 20px;\n  135      // border-color: lighten(gray, 30%);\n  136   }\n  ...\n  143  //     padding-left: 45px;\n  144  //     padding-right: 45px;\n  145: //     padding-top: 20px;\n  146: //     padding-bottom: 20px;\n  147  //     border-color: lighten(gray, 30%);\n  148  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_columns.scss:\n   25  }\n   26  \n   27: // Specify the gap between columns e.g. `20px`\n   28  @mixin column-gap($width) {\n   29    @include prefixed-properties(multicolumn, $multicolumn-support-threshold,(\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/assets/kml/newcastle_test.kml:\n   13  				<div id=\"desc-summary\" style=\"width: 100%; float:left;\">\n   14  					<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n   15: 						<tr><td style=\"font-weight: bold; width: 120px;\">Start: </td><td>Aug 21, 2014, 6:07:11 PM</td></tr>\n   16: 						<tr><td style=\"font-weight: bold; width: 120px;\">End: </td><td>Aug 21, 2014, 6:27:37 PM</td></tr>\n   17: 						<tr><td style=\"font-weight: bold; width: 120px;\">Flat distance: </td><td>0.82 mi</td></tr>\n   18: 						<tr><td style=\"font-weight: bold; width: 120px;\">Total time: </td><td>00:20:25</td></tr>\n   19: 						<tr><td style=\"font-weight: bold; width: 120px;\">Moving time: </td><td>00:17:25</td></tr>\n   20: 						<tr><td style=\"font-weight: bold; width: 120px;\">Average speed: </td><td>2.4 mph</td></tr>\n   21: 						<tr><td style=\"font-weight: bold; width: 120px;\">Minimum speed: </td><td>1 mph</td></tr>\n   22: 						<tr><td style=\"font-weight: bold; width: 120px;\">Maximum speed: </td><td>5.7 mph</td></tr>\n   23: 						<tr><td style=\"font-weight: bold; width: 120px;\">Minimum altitude: </td><td>123 ft</td></tr>\n   24: 						<tr><td style=\"font-weight: bold; width: 120px;\">Maximum altitude: </td><td>317 ft</td></tr>\n   25: 						<tr><td style=\"font-weight: bold; width: 120px;\">Ascent: </td><td>274 ft</td></tr>\n   26: 						<tr><td style=\"font-weight: bold; width: 120px;\">Descent: </td><td>242 ft</td></tr>\n   27  					</table>\n   28  					<table>\n   ..\n   45  						<div id=\"desc-summary\" style=\"width: 100%; float:left;\">\n   46  							<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n   47: 								<tr><td style=\"font-weight: bold; width: 120px;\">Start: </td><td>Aug 21, 2014, 6:07:11 PM</td></tr>\n   48: 								<tr><td style=\"font-weight: bold; width: 120px;\">End: </td><td>Aug 21, 2014, 6:27:37 PM</td></tr>\n   49: 								<tr><td style=\"font-weight: bold; width: 120px;\">Flat distance: </td><td>0.82 mi</td></tr>\n   50: 								<tr><td style=\"font-weight: bold; width: 120px;\">Total time: </td><td>00:20:25</td></tr>\n   51: 								<tr><td style=\"font-weight: bold; width: 120px;\">Moving time: </td><td>00:17:25</td></tr>\n   52: 								<tr><td style=\"font-weight: bold; width: 120px;\">Average speed: </td><td>2.4 mph</td></tr>\n   53: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum speed: </td><td>1 mph</td></tr>\n   54: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum speed: </td><td>5.7 mph</td></tr>\n   55: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum altitude: </td><td>123 ft</td></tr>\n   56: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum altitude: </td><td>317 ft</td></tr>\n   57: 								<tr><td style=\"font-weight: bold; width: 120px;\">Ascent: </td><td>274 ft</td></tr>\n   58: 								<tr><td style=\"font-weight: bold; width: 120px;\">Descent: </td><td>242 ft</td></tr>\n   59  							</table>\n   60  						</div>\n   ..\n  615  						<visibility>1</visibility>\n  616  						<description>\n  617: 							<div id=\"desc-container\" style=\"font-size: 12px; min-height: 120px; min-width: 350px\">\n  618  								<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n  619  									<tr><td style=\"font-weight: bold; width: 90px;\">Latitude:</td><td>54° 58' 16.33'' N</td></tr>\n  ...\n  638  						<visibility>1</visibility>\n  639  						<description> \n  640: 							<div id=\"desc-container\" style=\"font-size: 12px; min-height: 120px; min-width: 350px\">\n  641  								<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n  642  									<tr><td style=\"font-weight: bold; width: 90px;\">Latitude:</td><td>54° 58' 08.27'' N</td></tr>\n  ...\n  663  								<div id=\"desc-summary\" style=\"width: 100%; float:left;\">\n  664  									<table border=\"0\" style=\"width: 100%; margin: 8px 0\">\n  665: 								<tr><td style=\"font-weight: bold; width: 120px;\">Start: </td><td>Aug 21, 2014, 6:07:11 PM</td></tr>\n  666: 								<tr><td style=\"font-weight: bold; width: 120px;\">End: </td><td>Aug 21, 2014, 6:27:37 PM</td></tr>\n  667: 								<tr><td style=\"font-weight: bold; width: 120px;\">Flat distance: </td><td>0.82 mi</td></tr>\n  668: 								<tr><td style=\"font-weight: bold; width: 120px;\">Total time: </td><td>00:20:25</td></tr>\n  669: 								<tr><td style=\"font-weight: bold; width: 120px;\">Moving time: </td><td>00:17:25</td></tr>\n  670: 								<tr><td style=\"font-weight: bold; width: 120px;\">Average speed: </td><td>2.4 mph</td></tr>\n  671: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum speed: </td><td>1 mph</td></tr>\n  672: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum speed: </td><td>5.7 mph</td></tr>\n  673: 								<tr><td style=\"font-weight: bold; width: 120px;\">Minimum altitude: </td><td>123 ft</td></tr>\n  674: 								<tr><td style=\"font-weight: bold; width: 120px;\">Maximum altitude: </td><td>317 ft</td></tr>\n  675: 								<tr><td style=\"font-weight: bold; width: 120px;\">Ascent: </td><td>274 ft</td></tr>\n  676: 								<tr><td style=\"font-weight: bold; width: 120px;\">Descent: </td><td>242 ft</td></tr>\n  677  									</table>\n  678  								</div>\n\n60 matches across 7 files\n\n\nSearching 250 files for \": 20px\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n   16              vertical-align: middle;\n   17              list-style-type: none;\n   18:             height: 20px;\n   19              padding: 10px;\n   20              font-family: Tahoma, Geneva, sans-serif;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n  115  .post {\n  116      // background-color: pink;\n  117:     // padding: 20px;\n  118      // border-radius: 10px;\n  119:     margin-top: 20px;\n  120      overflow: hidden;\n  121  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   64  \n   65  .page-heading {\n   66:     font-size: 20px;\n   67  }\n   68  \n   ..\n  132      // padding-right: 45px;\n  133      // padding-top: 10px;\n  134:     // padding-bottom: 20px;\n  135      // border-color: lighten(gray, 30%);\n  136   }\n  ...\n  143  //     padding-left: 45px;\n  144  //     padding-right: 45px;\n  145: //     padding-top: 20px;\n  146: //     padding-bottom: 20px;\n  147  //     border-color: lighten(gray, 30%);\n  148  \n\n7 matches across 3 files\n\n\nSearching 250 files for \":not\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n  118              line-height: $base-line-height;\n  119  \n  120:             &:not(:first-child) {\n  121                  margin-left: 35px;\n  122              }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  172  \n  173  .post-content {\n  174:     &:not(:last-child) {\n  175          margin-bottom: $spacing-unit * 0.75;\n  176      }\n\n2 matches across 2 files\n\n\nSearching 250 files for \"2.4rem\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n  163  \n  164  .post-title {\n  165:     font-size: 2.4rem;\n  166      letter-spacing: -1px;\n  167      line-height: 1;\n\n1 match in 1 file\n\n\nSearching 250 files for \".selector_id\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   19  \n   20    // assign color\n   21:   #{{ post.selector_id }} {\n   22      @if variable-exists({{ category_color_name }}) {\n   23        background-color: mix(${{ category_color_name }}, white, 25%);\n   ..\n   42    <ul class=\"post-list\">\n   43      {% for post in site.posts %}\n   44:     <li id=\"{{ post.selector_id }}\" class=\"post post-content\">\n   45        <header class=\"post-header\">\n   46          <a class=\"post-link\" href=\"{{ post.url | prepend: site.baseurl }}\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   13  // hide the default icon if there's an image\n   14  {% if post.using_default_icon == false %}\n   15:   #{{ post.selector_id }} .archive_post_image {\n   16        visibility: hidden;\n   17    }\n   ..\n   25  // set the colors for all the post elements\n   26  @if variable-exists({{ category_color_name }}) {\n   27:   #{{ post.selector_id }} {\n   28      background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31:   #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33        background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   ..\n   38  }\n   39  @else {\n   40:   #{{ post.selector_id }} {\n   41      background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44:   #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46        background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   ..\n   53  // set the post background image, if appropriate\n   54  {% if post.using_default_icon == false %}\n   55:   #{{ post.selector_id }} {\n   56      $standard_width: 800px;\n   57      $expected_scale: 0.65;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   18  \n   19    // assign color\n   20:   #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22        background-color: mix(${{ category_color_name }}, white, 25%);\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/post.html:\n    2  layout: default\n    3  ---\n    4: <div class=\"post\" id=\"{{ page.selector_id }}\">\n    5    <header class=\"post-header\">\n    6      <h1 class=\"post-title\">{{ page.title }}</h1>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/image_clipper.rb:\n   21                  #     # get output filename\n   22                  #     icon_extension = File.extname(local_icon_url)\n   23:                 #     new_icon_name = post.selector_id + icon_extension\n   24                  #     local_new_icon_url = File.join(image_dir, new_icon_name)\n   25  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/selector_id.rb:\n    2      class Post\n    3          def store_selector_id\n    4:             self.data['selector_id'] = self.selector_id\n    5          end\n    6  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n   58                                <li class=\"archive_post_element\">\n   59                                  <a href=\"{{ post.url | prepend: site.baseurl }}\">\n   60:                                   <div id=\"{{ post.selector_id }}\" class=\"archive_post\">\n   61                                      <div class=\"archive_post_image\"><img src=\"{{ post.icon_url }}\"></img></div>\n   62:                                     <div id=\"{{ post.selector_id }}-inner\" class=\"archive_post_blurb\">\n   63                                        <div class=\"archive_blurb_test_container\">\n   64                                          <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>\n\n14 matches across 7 files\n\n\nSearching 250 files for \"post.selector_id\" (case sensitive)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   19  \n   20    // assign color\n   21:   #{{ post.selector_id }} {\n   22      @if variable-exists({{ category_color_name }}) {\n   23        background-color: mix(${{ category_color_name }}, white, 25%);\n   ..\n   42    <ul class=\"post-list\">\n   43      {% for post in site.posts %}\n   44:     <li id=\"{{ post.selector_id }}\" class=\"post post-content\">\n   45        <header class=\"post-header\">\n   46          <a class=\"post-link\" href=\"{{ post.url | prepend: site.baseurl }}\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   13  // hide the default icon if there's an image\n   14  {% if post.using_default_icon == false %}\n   15:   #{{ post.selector_id }} .archive_post_image {\n   16        visibility: hidden;\n   17    }\n   ..\n   25  // set the colors for all the post elements\n   26  @if variable-exists({{ category_color_name }}) {\n   27:   #{{ post.selector_id }} {\n   28      background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31:   #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33        background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   ..\n   38  }\n   39  @else {\n   40:   #{{ post.selector_id }} {\n   41      background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44:   #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46        background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   ..\n   53  // set the post background image, if appropriate\n   54  {% if post.using_default_icon == false %}\n   55:   #{{ post.selector_id }} {\n   56      $standard_width: 800px;\n   57      $expected_scale: 0.65;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   18  \n   19    // assign color\n   20:   #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22        background-color: mix(${{ category_color_name }}, white, 25%);\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/post.html:\n    2  layout: default\n    3  ---\n    4: <div class=\"post\" id=\"{{ post.selector_id }}\">\n    5    <header class=\"post-header\">\n    6      <h1 class=\"post-title\">{{ page.title }}</h1>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/image_clipper.rb:\n   21                  #     # get output filename\n   22                  #     icon_extension = File.extname(local_icon_url)\n   23:                 #     new_icon_name = post.selector_id + icon_extension\n   24                  #     local_new_icon_url = File.join(image_dir, new_icon_name)\n   25  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n   58                                <li class=\"archive_post_element\">\n   59                                  <a href=\"{{ post.url | prepend: site.baseurl }}\">\n   60:                                   <div id=\"{{ post.selector_id }}\" class=\"archive_post\">\n   61                                      <div class=\"archive_post_image\"><img src=\"{{ post.icon_url }}\"></img></div>\n   62:                                     <div id=\"{{ post.selector_id }}-inner\" class=\"archive_post_blurb\">\n   63                                        <div class=\"archive_blurb_test_container\">\n   64                                          <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>\n\n13 matches across 6 files\n\n\nSearching 253 files for \"background-image\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   57      $expected_scale: 0.65;\n   58      $scale: $expected_scale * $standard_width / {{ post.icon_width }}px;\n   59:     background-image: url('{{ post.icon_url }}');\n   60      background-size: {{ post.icon_width }}px * $scale {{ post.icon_height }}px * $scale;\n   61      {% if post.icon-center-x && post.icon-center-y %}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    6  \n    7      .background-overlay {\n    8:         background-image: url(\"/images/background-blur.jpg\");\n    9          background-color: white;\n   10      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   16  \n   17      .background-overlay {\n   18:         background-image: url(\"/images/background-blur3.jpg\");\n   19          background-color: white;\n   20      }\n   ..\n   23  \n   24      // background-color: mix(lightblue, white, 15%);\n   25:     // background-image: url(\"/images/background-blur2.jpg\");\n   26      \n   27      // background-position: 270px -10px;\n   ..\n   44  \n   45          // background-color: mix(lightblue, white, 15%);\n   46:         // background-image: url(\"/images/background-blur.jpg\");\n   47          // padding-top: 10px;\n   48  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   49  \n   50  body {\n   51:     background-image: url(\"/images/bgpattern.jpg\");\n   52      @include media-query($on-palm) {\n   53          background-size: 250px;\n   54      }\n   55:     // background-image: url(\"/images/bgpatch.jpg\");\n   56  }\n   57  \n   ..\n   76  //     padding-top: 0;\n   77  //     margin-top: 1em;\n   78: //     background-image: url(\"/images/background-blur3.jpg\");\n   79  //     border-radius: 3em;\n   80  // }\n   ..\n  145  body {\n  146      // background-color: mix(blue, white, 3%);\n  147:     // background-image: url(\"/images/PaintBlobsLight.png\");\n  148  }\n  149  .post {\n  ...\n  156      padding-bottom: 3rem;\n  157      background-color: white;\n  158:     // background-image: url(\"/images/background-blur1.jpg\");\n  159      // border: solid 10px lighten(lightblue, 5%);\n  160      // border-color: lightblue;\n  ...\n  241      background-position: center;\n  242      background-repeat: no-repeat;\n  243:     background-image: url(\"/images/Decoration.svg\");\n  244  }\n  245  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_images.scss:\n   95  \n   96  // Background image property support for vendor prefixing within values.\n   97: @mixin background-image($images...) {\n   98:   @include image-property(background-image, $images...) {\n   99      @if $current-prefix == -svg {\n  100        background-size: 100%;\n  ...\n  106  // For use in IE 6 - 8. Best practice would have you apply this via a\n  107  // conditional IE stylesheet, but if you must, you should place this before\n  108: // any background-image properties that you have specified.\n  109  //\n  110  // For the `$orientation` parameter, you can pass `vertical` or `horizontal`.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/layout/_grid-background.scss:\n  127  ) {\n  128    @if $show-grid-backgrounds and $show-baseline-grid-backgrounds {\n  129:     @include background-image(get-baseline-gradient($color));\n  130      @include background-size(100% $baseline);\n  131      background-position: left top;\n  ...\n  144  ) {\n  145    @if $show-grid-backgrounds and $show-column-grid-backgrounds {\n  146:     @include background-image(\n  147        get-column-gradient($total,$column,$gutter,$offset,$column-color,$gutter-color, $force-fluid)\n  148      );\n  ...\n  165    @if $show-grid-backgrounds {\n  166      @if $show-baseline-grid-backgrounds and $show-column-grid-backgrounds {\n  167:       @include background-image(\n  168          get-baseline-gradient($baseline-color),\n  169          get-column-gradient($total,$column,$gutter,$offset,$column-color,$gutter-color, $force-fluid)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/sprites/_sprite-img.scss:\n   70    @include hide-text;\n   71    @include sprite($map, $sprite, $dimensions, $offset-x, $offset-y);\n   72:   background-image: $map;\n   73    background-repeat: no-repeat;\n   74  }\n\n18 matches across 7 files\n\n\nSearching 253 files for \"background-overlay\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/footer.html:\n    1  <footer class=\"site-footer\">\n    2    <div class=\"wrapper\">\n    3:     <ul class=\"background-overlay\">\n    4        <!-- rss link -->\n    5        <li class=\"rss\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/header.html:\n    1  <header class=\"site-header\">\n    2      <div class=\"wrapper\">\n    3:         <div class=\"background-overlay\">\n    4              <header class=\"site-title\">\n    5                  <a href=\"{{ site.baseurl }}/\">{{ site.html_title }}</a>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   50  </html>\n   51  <script>\n   52: var elems = document.querySelectorAll('.background-overlay');\n   53  \n   54  var setHeaderImageOffset = function() {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    5      text-align: center;\n    6  \n    7:     .background-overlay {\n    8          background-image: url(\"/images/background-blur.jpg\");\n    9          background-color: white;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   15      }\n   16  \n   17:     .background-overlay {\n   18          background-image: url(\"/images/background-blur3.jpg\");\n   19          background-color: white;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/2014/11/20/what's_up_with_google_maps_these_days/index.html:\n   45      <header class=\"site-header\">\n   46      <div class=\"wrapper\">\n   47:         <div class=\"background-overlay\">\n   48              <header class=\"site-title\">\n   49                  <a href=\"/\"><div class=\"title\"><span class=\"name\">Archagon</span> Was Here</div><div class=\"subtitle\">Jekyll Test</div></a>\n   ..\n  127      <footer class=\"site-footer\">\n  128    <div class=\"wrapper\">\n  129:     <ul class=\"background-overlay\">\n  130        <!-- rss link -->\n  131        <li class=\"rss\">\n  ...\n  159  </html>\n  160  <script>\n  161: var elems = document.querySelectorAll('.background-overlay');\n  162  \n  163  var setHeaderImageOffset = function() {\n\n8 matches across 6 files\n\n\nSearching 253 files for \"background-overlay\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/footer.html:\n    1  <footer class=\"site-footer\">\n    2    <div class=\"wrapper\">\n    3:     <ul class=\"background-overlay\">\n    4        <!-- rss link -->\n    5        <li class=\"rss\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/header.html:\n    1  <header class=\"site-header\">\n    2      <div class=\"wrapper\">\n    3:         <div class=\"background-overlay\">\n    4              <header class=\"site-title\">\n    5                  <a href=\"{{ site.baseurl }}/\">{{ site.html_title }}</a>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   50  </html>\n   51  <script>\n   52: var elems = document.querySelectorAll('.background-overlay');\n   53  \n   54  var setHeaderImageOffset = function() {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    5      text-align: center;\n    6  \n    7:     .background-overlay {\n    8          background-image: url(\"/images/background-blur.jpg\");\n    9          background-color: white;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   15      }\n   16  \n   17:     .background-overlay {\n   18          background-image: url(\"/images/background-blur3.jpg\");\n   19          background-color: white;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/2014/11/20/what's_up_with_google_maps_these_days/index.html:\n   45      <header class=\"site-header\">\n   46      <div class=\"wrapper\">\n   47:         <div class=\"background-overlay\">\n   48              <header class=\"site-title\">\n   49                  <a href=\"/\"><div class=\"title\"><span class=\"name\">Archagon</span> Was Here</div><div class=\"subtitle\">Jekyll Test</div></a>\n   ..\n  127      <footer class=\"site-footer\">\n  128    <div class=\"wrapper\">\n  129:     <ul class=\"background-overlay\">\n  130        <!-- rss link -->\n  131        <li class=\"rss\">\n  ...\n  159  </html>\n  160  <script>\n  161: var elems = document.querySelectorAll('.background-overlay');\n  162  \n  163  var setHeaderImageOffset = function() {\n\n8 matches across 6 files\n\n\nSearching 253 files for \"background-overlay\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/footer.html:\n    1  <footer class=\"site-footer\">\n    2    <div class=\"wrapper\">\n    3:     <ul class=\"background-overlay\">\n    4        <!-- rss link -->\n    5        <li class=\"rss\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/header.html:\n    1  <header class=\"site-header\">\n    2      <div class=\"wrapper\">\n    3:         <div class=\"background-overlay\">\n    4              <header class=\"site-title\">\n    5                  <a href=\"{{ site.baseurl }}/\">{{ site.html_title }}</a>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   50  </html>\n   51  <script>\n   52: var elems = document.querySelectorAll('.background-overlay');\n   53  \n   54  var setHeaderImageOffset = function() {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    5      text-align: center;\n    6  \n    7:     .background-overlay {\n    8          background-image: url(\"/images/background-blur.jpg\");\n    9          background-color: white;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   15      }\n   16  \n   17:     .background-overlay {\n   18          background-image: url(\"/images/background-blur3.jpg\");\n   19          background-color: white;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/2014/11/20/what's_up_with_google_maps_these_days/index.html:\n   45      <header class=\"site-header\">\n   46      <div class=\"wrapper\">\n   47:         <div class=\"background-overlay\">\n   48              <header class=\"site-title\">\n   49                  <a href=\"/\"><div class=\"title\"><span class=\"name\">Archagon</span> Was Here</div><div class=\"subtitle\">Jekyll Test</div></a>\n   ..\n  127      <footer class=\"site-footer\">\n  128    <div class=\"wrapper\">\n  129:     <ul class=\"background-overlay\">\n  130        <!-- rss link -->\n  131        <li class=\"rss\">\n  ...\n  159  </html>\n  160  <script>\n  161: var elems = document.querySelectorAll('.background-overlay');\n  162  \n  163  var setHeaderImageOffset = function() {\n\n8 matches across 6 files\n",
 			"settings":
 			{
-				"buffer_size": 79647,
+				"buffer_size": 90571,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
@@ -129,7 +129,7 @@
 			"file": "_sass/_footer.scss",
 			"settings":
 			{
-				"buffer_size": 1406,
+				"buffer_size": 1493,
 				"line_ending": "Unix"
 			}
 		},
@@ -177,7 +177,15 @@
 			"file": "_sass/_layout.scss",
 			"settings":
 			{
-				"buffer_size": 4010,
+				"buffer_size": 4535,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "rakefile",
+			"settings":
+			{
+				"buffer_size": 16754,
 				"line_ending": "Unix"
 			}
 		},
@@ -185,7 +193,7 @@
 			"file": "_sass/_base.scss",
 			"settings":
 			{
-				"buffer_size": 3620,
+				"buffer_size": 3764,
 				"line_ending": "Unix"
 			}
 		},
@@ -225,7 +233,15 @@
 			"file": "_sass/_header.scss",
 			"settings":
 			{
-				"buffer_size": 3256,
+				"buffer_size": 3679,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/archagon/Documents/Programming/OSX/Transliterator/LandingPage/index.html",
+			"settings":
+			{
+				"buffer_size": 5452,
 				"line_ending": "Unix"
 			}
 		},
@@ -442,6 +458,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"background-overlay",
+			"background-image",
+			"update_posts",
+			"background",
+			"font-weight",
+			"$spacing-unit",
+			"wrapper",
+			"$spacing-unit",
+			"spacing",
+			"font-weigh",
+			"nav",
+			"font-family",
+			"font",
+			"pxheader",
+			"px",
+			"rem",
+			"media",
+			"site-nav",
 			"javascrip",
 			"Javascrip",
 			"Javascript code",
@@ -551,25 +585,7 @@
 			"blue",
 			".post",
 			"post {",
-			"font-family: ",
-			"h1,",
-			"header",
-			"(tan",
-			":tan",
-			": tan",
-			"tan",
-			"-radius",
-			"post-list",
-			"$on-laptop",
-			"line-height",
-			"code",
-			"h2",
-			"h1",
-			"image_dir",
-			"top-",
-			"nth-child(1)",
-			".canada",
-			"canada"
+			"font-family: "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -600,7 +616,7 @@
 	"groups":
 	[
 		{
-			"selected": 19,
+			"selected": 23,
 			"sheets":
 			[
 				{
@@ -935,7 +951,7 @@
 					"buffer": 2,
 					"settings":
 					{
-						"buffer_size": 79647,
+						"buffer_size": 90571,
 						"regions":
 						{
 							"match":
@@ -2314,6 +2330,174 @@
 									[
 										79336,
 										79352
+									],
+									[
+										79906,
+										79922
+									],
+									[
+										80245,
+										80261
+									],
+									[
+										80488,
+										80504
+									],
+									[
+										80684,
+										80700
+									],
+									[
+										80895,
+										80911
+									],
+									[
+										81107,
+										81123
+									],
+									[
+										81265,
+										81281
+									],
+									[
+										81409,
+										81425
+									],
+									[
+										81598,
+										81614
+									],
+									[
+										81765,
+										81781
+									],
+									[
+										82014,
+										82030
+									],
+									[
+										82275,
+										82291
+									],
+									[
+										82339,
+										82355
+									],
+									[
+										82628,
+										82644
+									],
+									[
+										82985,
+										83001
+									],
+									[
+										83238,
+										83254
+									],
+									[
+										83526,
+										83542
+									],
+									[
+										83932,
+										83948
+									],
+									[
+										84250,
+										84268
+									],
+									[
+										84511,
+										84529
+									],
+									[
+										84819,
+										84837
+									],
+									[
+										85027,
+										85045
+									],
+									[
+										85270,
+										85288
+									],
+									[
+										85628,
+										85646
+									],
+									[
+										85942,
+										85960
+									],
+									[
+										86108,
+										86126
+									],
+									[
+										86430,
+										86448
+									],
+									[
+										86691,
+										86709
+									],
+									[
+										86999,
+										87017
+									],
+									[
+										87207,
+										87225
+									],
+									[
+										87450,
+										87468
+									],
+									[
+										87808,
+										87826
+									],
+									[
+										88122,
+										88140
+									],
+									[
+										88288,
+										88306
+									],
+									[
+										88610,
+										88628
+									],
+									[
+										88871,
+										88889
+									],
+									[
+										89179,
+										89197
+									],
+									[
+										89387,
+										89405
+									],
+									[
+										89630,
+										89648
+									],
+									[
+										89988,
+										90006
+									],
+									[
+										90302,
+										90320
+									],
+									[
+										90468,
+										90486
 									]
 								],
 								"scope": ""
@@ -2322,8 +2506,8 @@
 						"selection":
 						[
 							[
-								75855,
-								75855
+								89641,
+								89641
 							]
 						],
 						"settings":
@@ -2434,7 +2618,7 @@
 								"trailing": true,
 								"wsh": true
 							},
-							"output_tag": 11,
+							"output_tag": 15,
 							"pep8": true,
 							"pep8_ignore":
 							[
@@ -2475,7 +2659,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 27795.0,
+						"translation.y": 35802.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -3467,15 +3651,15 @@
 					"file": "_sass/_footer.scss",
 					"settings":
 					{
-						"buffer_size": 1406,
+						"buffer_size": 1493,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								332,
-								332
+								165,
+								165
 							]
 						],
 						"settings":
@@ -3622,7 +3806,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 143.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -4297,8 +4481,8 @@
 						"selection":
 						[
 							[
-								443,
-								443
+								613,
+								600
 							]
 						],
 						"settings":
@@ -4455,15 +4639,15 @@
 					"file": "_sass/_layout.scss",
 					"settings":
 					{
-						"buffer_size": 4010,
+						"buffer_size": 4535,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								714,
-								722
+								945,
+								875
 							]
 						],
 						"settings":
@@ -4610,25 +4794,190 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 422.0,
+						"translation.y": 479.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 16,
-					"file": "_sass/_base.scss",
+					"file": "rakefile",
 					"settings":
 					{
-						"buffer_size": 3620,
+						"buffer_size": 16754,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								908,
-								921
+								2434,
+								2434
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jslint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 570.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "_sass/_base.scss",
+					"settings":
+					{
+						"buffer_size": 3764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3132,
+								3011
 							]
 						],
 						"settings":
@@ -4775,13 +5124,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 116.0,
+						"translation.y": 3023.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 18,
 					"file": "_sass/_post.scss",
 					"settings":
 					{
@@ -4792,8 +5141,8 @@
 						"selection":
 						[
 							[
-								490,
-								490
+								449,
+								449
 							]
 						],
 						"settings":
@@ -4940,13 +5289,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 19,
 					"file": "index.html",
 					"settings":
 					{
@@ -5111,7 +5460,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 20,
 					"file": "pages/about.md",
 					"settings":
 					{
@@ -5276,7 +5625,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 21,
 					"file": "feed.xml",
 					"settings":
 					{
@@ -5441,19 +5790,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 22,
 					"file": "_sass/_header.scss",
 					"settings":
 					{
-						"buffer_size": 3256,
+						"buffer_size": 3679,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								213,
-								213
+								528,
+								528
 							]
 						],
 						"settings":
@@ -5606,7 +5955,172 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 23,
+					"file": "/Users/archagon/Documents/Programming/OSX/Transliterator/LandingPage/index.html",
+					"settings":
+					{
+						"buffer_size": 5452,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jslint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 24,
 					"file": "_layouts/default.html",
 					"settings":
 					{
@@ -5617,8 +6131,8 @@
 						"selection":
 						[
 							[
-								992,
-								992
+								1411,
+								1411
 							]
 						],
 						"settings":
@@ -5765,13 +6279,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 499.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 25,
 					"file": "_site/feed.xml",
 					"settings":
 					{
@@ -5936,7 +6450,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 26,
 					"file": "_site/2014/11/20/what's_up_with_google_maps_these_days/index.html",
 					"settings":
 					{
@@ -6101,7 +6615,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 27,
 					"file": "_posts/2014-11-20-what's_up_with_google_maps_these_days.md",
 					"settings":
 					{
@@ -6308,16 +6822,32 @@
 		"selected_items":
 		[
 			[
-				"about",
-				"pages/about.md"
-			],
-			[
 				"default",
 				"_layouts/default.html"
 			],
 			[
-				"header.sc",
+				"layou",
+				"_sass/_layout.scss"
+			],
+			[
+				"base",
+				"_sass/_base.scss"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"_layout",
+				"_sass/_layout.scss"
+			],
+			[
+				"header",
 				"_sass/_header.scss"
+			],
+			[
+				"base.",
+				"_sass/_base.scss"
 			],
 			[
 				"layout",
@@ -6328,8 +6858,24 @@
 				"css/main.scss"
 			],
 			[
-				"base",
-				"_sass/_base.scss"
+				"post.s",
+				"_sass/_post.scss"
+			],
+			[
+				"post",
+				"_layouts/post.html"
+			],
+			[
+				"header.scs",
+				"_sass/_header.scss"
+			],
+			[
+				"about",
+				"pages/about.md"
+			],
+			[
+				"header.sc",
+				"_sass/_header.scss"
 			],
 			[
 				"feed",
@@ -6340,28 +6886,12 @@
 				"_sass/_header.scss"
 			],
 			[
-				"header",
-				"_includes/header.html"
-			],
-			[
 				"header.html",
 				"_includes/header.html"
 			],
 			[
 				"lao",
 				"_sass/_layout.scss"
-			],
-			[
-				"layou",
-				"_sass/_layout.scss"
-			],
-			[
-				"index",
-				"index.html"
-			],
-			[
-				"post",
-				"_layouts/post.html"
 			],
 			[
 				"post.html",
@@ -6378,10 +6908,6 @@
 			[
 				"post.sc",
 				"_sass/_post.scss"
-			],
-			[
-				"base.",
-				"_sass/_base.scss"
 			],
 			[
 				"mai.",
@@ -6406,10 +6932,6 @@
 			[
 				"layout.s",
 				"_sass/_layout.scss"
-			],
-			[
-				"post.s",
-				"_sass/_post.scss"
 			],
 			[
 				"layout.",
