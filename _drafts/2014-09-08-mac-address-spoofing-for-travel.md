@@ -23,6 +23,8 @@ This command will show you a list of all your network devices. Take note of your
 
 This command will generate a random MAC address. If the subsequent commands seem to work but don't actually change your MAC address, try running it again. There are certain MAC addresses that are invalid, but it's easy enough to just regenerate until you get one that I'm not going to bother fixing it.
 
+Instead of generating a random MAC address, you can also use the MAC address from another device — your phone, for example. This is useful in situations where your phone can connect to a network, but (for whatever reason) your laptop can not. If you spoof your phone's MAC address to your laptop, you can make the network think it's still connecting to the phone.
+
 `sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport`
 
 This command makes the "airport" command more acessible.
@@ -41,6 +43,6 @@ This command disconnects you from the current Wi-Fi network.
 
 Your MAC address resets when you restart your computer, but I'm pretty sure you'll always be able to see the original address with the networksetup command above.
 
-This might seem like an esoteric procedure, especially if you're a non-technical user. However, I've already run into at least three situations where this spoofing was required. One allowed me to stay indefinitely on a free Wi-Fi hotspot for longer than the allotted 30 minutes, and another allowed me to spoof my phone's MAC address and log into a restricted network.
+This might seem like an esoteric procedure, especially if you're a non-technical user. However, I've already run into at least four situations where this spoofing was required. One allowed me to stay indefinitely on a free Wi-Fi hotspot for longer than the allotted 30 minutes, and another allowed me to spoof my phone's MAC address and log into a restricted network. Just today, I needed to spoof my iPhone's MAC address to my laptop, because the hostel internet was being extremely picky and allowed my phone to connect, but not my computer.
 
 And of course, I was finally able to log back into the HI-Quebec and watch aaaalllll the YouTube I wanted!

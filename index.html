@@ -1,22 +1,21 @@
 ---
 layout: default
 ---
-
 <div class="home">
-  
   <ul class="post-list">
     {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <li id="{{ post.selector_id }}" class="post post-content">
+      <header class="post-header">
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+        <h1 class="post-title">{{ post.title }}</h1>
+        </a>
+        <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+      </header>
 
-        <p>
-          <h2>
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-          <p class="post-excerpt">{{ post.excerpt }} <a href="{{ post.url | prepend: site.baseurl }}">More inside...</a></p>
-        </p>
-      </li>
+      <article class="post-content">
+      {{ post.excerpt }} <a href="{{ post.url | prepend: site.baseurl }}">More inside...</a>
+      </article>
+    </li>
     {% endfor %}
   </ul>
-
 </div>

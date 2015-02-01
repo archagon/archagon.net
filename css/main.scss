@@ -6,12 +6,16 @@
 
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+// $base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+// $base-font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+// $base-font-family: Georgia, Times, "Times New Roman", serif;
+// $base-font-size:   19px;
+$base-font-size: 10px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
-$spacing-unit:     30px;
+$spacing-unit:     1.579rem;
 
 $text-color:       #111;
 $background-color: #fdfdfd;
@@ -19,10 +23,10 @@ $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
 
 $on-palm:          600px;
-$on-laptop:        800px;
+$on-laptop:        -1px; //TODO: temporarily disabled
+$content-width:    100rem;
 
 
 
@@ -40,13 +44,28 @@ $on-laptop:        800px;
 }
 
 
+// TODO: move elsewhere
+@mixin category-color($color-name, $default-color) {
+  @if variable-exists($color-name) {
+      background-color: $color-name;
+  }
+  @else {
+      background-color: $default-color;
+  }
+}
+
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
+        // "compass",
         "prefixes",
         "base",
         "layout",
+        "header",
+        "footer",
         "syntax-highlighting",
         "timeline-map",
-        "post-extras"
+        "post-extras",
+        "post",
+        "archive"
 ;

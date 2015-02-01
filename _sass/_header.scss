@@ -1,0 +1,147 @@
+.site-header {
+    @include media-query($on-palm) {
+        font-size: 0.75rem;
+    }
+
+    text-align: center;
+
+    .wrapper > div {
+        display: inline-block;
+        border-radius: 3em !important;
+        padding: 1.5em;
+        padding-left: 2.5em;
+        padding-right: 2.5em;
+        overflow: visible;
+    }
+
+    .background-overlay {
+        background-image: url("/images/background-blur3.jpg");
+        background-color: white;
+        @include media-query($on-palm) {
+            background-size: 250px;
+        }
+    }
+
+    // max-width: 68em;
+
+    // background-color: mix(lightblue, white, 15%);
+    // background-image: url("/images/background-blur2.jpg");
+    
+    // background-position: 270px -10px;
+    // border: 2px solid mix(lavender, white, 10%);
+
+    // -webkit-filter: blur(20px) grayscale(20%);
+
+    /* layout */
+    .site-nav {
+        margin-top: 0.5em;
+    }
+
+    .site-title {
+        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        font-size: 7em;
+
+        line-height: 0.9em;
+        font-weight: 900;
+        overflow: hidden;
+
+        // background-color: mix(lightblue, white, 15%);
+        // background-image: url("/images/background-blur.jpg");
+        // padding-top: 10px;
+
+        .title {
+            word-spacing: -0.114em;
+            letter-spacing: -0.043em;
+
+            .name {
+                color: red;
+
+                border-radius: 0.25em;
+                border: 3px solid black;
+                border-style: solid none none none;
+                display: inline-block;
+                border-color: red;
+            }
+        }
+
+        .subtitle {
+            &::before {
+                content: "(";
+            }
+            &::after {
+                content: ")";
+            }
+
+            font-size: 70%;
+            font-weight: 300;
+
+            // color: lightgray;
+            color: mix(pink, white, 95%);
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
+
+        /* header text color */
+        a, a:visited {
+            color: darken($grey-color, 25%);
+        }
+
+        // background-color: white;
+        // padding: 0.2em;
+        // border-radius: 0.3em;
+        // border: 3px solid black;
+        // border-style: solid none none none;
+        // border-color: red;
+        // padding: 0;
+
+        // background-color: mix(red, white, 10%);
+        border-radius: 0.3em;
+    }
+
+    // background-color: mix(rgba(236,214,252,1), white, 60%);
+    // padding: 1.5em 0.75em 1.5em 0.75em;
+    border-radius: 2em;
+
+    .site-nav {
+        font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+        font-size: 2.4em;
+        @include media-query($on-palm) {
+            font-size: 3.2em;
+        }
+        font-weight: 500;
+
+        border-radius: 0.5em;
+        border-width: 2px;
+        padding: 0 1em 0 1em;
+        background-color: lightgray;
+        color: gray;
+
+        $nav-border-color: lighten($grey-color, 37%);
+        $nav-background-color: mix(rgba(236,214,252,1), white, 10%);
+
+        .page-link {
+            color: darken(gray, 20%);
+            line-height: $base-line-height;
+        }
+
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+
+        -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+
+        @include media-query($on-palm) {
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+    }
+}

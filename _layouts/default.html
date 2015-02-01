@@ -1,20 +1,64 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
+  <style>
+  /* dynamically assigns category colors */
+  {% filterize scssify %}
 
+  // include category color definitions
+  {% include categories.scss %}
+
+  {% for post in site.posts %}
+  // capture category name
+  {% if post.categories != empty %}
+    {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}
+  {% else %}
+    {% capture category_color_name %}category-default-color{% endcapture %}
+  {% endif %}
+
+  // assign color
+  #{{ post.selector_id }} {
+    @if variable-exists({{ category_color_name }}) {
+      background-color: mix(${{ category_color_name }}, white, 30%);
+      .post-title {
+        /*color: mix(${{ category_color_name }}, black, 60%);*/
+        background-color: mix(${{ category_color_name }}, white, 80%);
+      }
+    }
+    @else {
+      background-color: mix($category-default-color, white, 30%);
+      .post-title {
+        background-color: mix($category-default-color, white, 80%);
+        /*color: $category-default-color;*/
+      }
+    }
+  }
+  {% endfor %}
+  {% endfilterize %}
+  </style>
   <body>
-
+    <div class="body-wrapper">
     {% include header.html %}
-
     <div class="page-content">
       <div class="wrapper">
         {{ content }}
       </div>
     </div>
-
     {% include footer.html %}
-
+    </div>
   </body>
-
 </html>
+<script>
+var elems = document.querySelectorAll('.background-overlay');
+
+var setHeaderImageOffset = function() {
+  for (var i = 0; i < elems.length; i++) {
+    var elem = elems[i];
+    var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
+    elem.style['background-position'] = positionString;
+  }
+};
+
+setHeaderImageOffset();
+window.onresize = setHeaderImageOffset;
+</script>

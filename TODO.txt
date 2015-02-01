@@ -1,5 +1,12 @@
 TODO
 
+big projects:
+    HTML preprocessor
+    asset pipeline
+    properly minified posts
+    implement auto prefix adder
+    rearrange sections
+
 designated images
     icons
 banners for archive page

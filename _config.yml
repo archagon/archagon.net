@@ -1,5 +1,6 @@
 # Site settings
 title: Archagon Was Here (Jekyll Test)
+html_title: <div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div>
 email: archagon@archagon.net
 description: > # this means to ignore newlines until "baseurl:"
   Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal
@@ -9,6 +10,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/ TODO: double slash
 url: "http://beta-blog.archagon.net" # the base hostname & protocol for your site
 twitter_username: archagon
 github_username:  archagon
+permalink: /:year/:month/:day/:title/
 
 # Build settings
 markdown: kramdown

@@ -1,3 +1,26 @@
+// border box sizing
+*, *:before, *:after {
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+// reset for em and rem
+html {
+    font-size: $base-font-size;
+}
+body {
+    font-size: 1em;
+}
+
+// responsive font sizing
+html {
+    @include media-query($on-palm) {
+        font-size: $base-font-size * 0.5;
+    }
+}
+
+
 /**
  * Reset some basic elements
  */
@@ -15,7 +38,7 @@ dl, dd, ol, ul, figure {
  */
 body {
     font-family: $base-font-family;
-    font-size: $base-font-size;
+    // font-size: $base-font-size;
     line-height: $base-line-height;
     font-weight: 300;
     color: $text-color;
@@ -79,7 +102,22 @@ li {
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
+    // font-weight: 300;
+    font-weight: 400;
+    // font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    // font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    color: rgb(80, 80, 80); 
+}
+
+
+
+.post {
+    // background-color: pink;
+    // padding: 20px;
+    // border-radius: 10px;
+    // margin-top: 20px;
+    overflow: hidden;
 }
 
 
@@ -110,7 +148,7 @@ blockquote {
     color: $grey-color;
     border-left: 4px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
-    font-size: 18px;
+    font-size: 1.8em;
     letter-spacing: -1px;
     font-style: italic;
 
@@ -126,18 +164,18 @@ blockquote {
  */
 pre,
 code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
+    font-size: 1em;
+    border: 1px solid lightgray;
+    border-radius: 0.3em;
     background-color: #eef;
 }
 
 code {
-    padding: 1px 5px;
+    padding: 0.053em 0.263em;
 }
 
 pre {
-    padding: 8px 12px;
+    padding: 0.421em 0.632em;
     overflow-x: scroll;
 
     // AB:
@@ -160,20 +198,25 @@ pre {
  * Wrapper
  */
 .wrapper {
-    max-width: -webkit-calc(1000px - (#{$spacing-unit} * 2));
-    max-width:         calc(1000px - (#{$spacing-unit} * 2));
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     @extend %clearfix;
 
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(1000px - (#{$spacing-unit}));
-        max-width:         calc(1000px - (#{$spacing-unit}));
+    @include media-query($on-palm) {
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
+
+    // @include media-query($on-laptop) {
+    //     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    //     max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    //     padding-right: $spacing-unit / 2;
+    //     padding-left: $spacing-unit / 2;
+    // }
 }
 
 

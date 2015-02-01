@@ -49,8 +49,14 @@ desc "Generate jekyll site"
 task :build do
   puts "## Generating Site with Jekyll"
   # system "compass compile --css-dir #{source_dir}/stylesheets"
-  Rake::Task[:update_posts].execute
+  # Rake::Task[:update_posts].execute
   system "jekyll build"
+end
+
+desc "Serve jekyll site"
+task :serve do
+  puts "## Serving Site with Jekyll"
+  system "jekyll serve --baseurl=\"\" --watch"
 end
 
 # desc "Watch the site and regenerate when it changes"

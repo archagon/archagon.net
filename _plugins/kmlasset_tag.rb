@@ -19,7 +19,7 @@ module Jekyll
 
 "<p>
 <style type='text/css'>
-    ##{id} { width: 400px; height: 400px; margin: 0; padding: 0;}
+    ##{id} { width: 100%; height: 400px; margin: 0; padding: 0;}
 </style>
 <script type='text/javascript'
     src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA'>
