@@ -2,17 +2,17 @@
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
 	<channel>
 		<title>Alexei's Audiobooks</title>
-		<link>http://www.asdf.com</link>
+		<!-- <link></link> -->
 		<language>en-us</language>
-		<itunes:author>asdf</itunes:author>
-		<itunes:image href="http://i1.ytimg.com/vi/hR-lVgfGdKw/mqdefault.jpg" />
+		<!-- <itunes:author></itunes:author> -->
+		<!-- <itunes:image href="" /> -->
 			<item>
 			<enclosure url="http://192.168.2.1:80/Hackers1-2.m4a"></enclosure>
 			<link>http://192.168.2.1:80/Hackers1-2.m4a</link>
 			<guid>http://192.168.2.1:80/Hackers1-2.m4a</guid>
 			<title>Hackers: Heroes of the Computer Revolution (Chapters 1-2)</title>
 			<itunes:author>Steven Levy</itunes:author>
-			<itunes:image href="http://i1.ytimg.com/vi/hR-lVgfGdKw/mqdefault.jpg" />
+			<!-- <itunes:image href="" /> -->
 			<itunes:summary>Text-to-speech courtesy of Allison.</itunes:summary>
 			<pubDate>Wed, 15 April 2015 00:00:00 </pubDate>
 			</item>
