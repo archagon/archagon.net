@@ -7,9 +7,9 @@
 		<!-- <itunes:author></itunes:author>
 		<itunes:image href="" /> -->
 			<item>
-			<enclosure url="http://169.254.109.15:80/Hackers-Preface.m4a"></enclosure>
-			<link>http://169.254.109.15:80/Hackers-Preface.m4a</link>
-			<guid>http://169.254.109.15:80/Hackers-Preface.m4a</guid>
+			<enclosure url="http://192.168.0.1:80/Hackers-Preface.m4a"></enclosure>
+			<link>http://192.168.0.1:80/Hackers-Preface.m4a</link>
+			<guid>http://192.168.0.1:80/Hackers-Preface.m4a</guid>
 			<title>Hackers: Heroes of the Computer Revolution — Preface</title>
 			<itunes:author>Steven Levy</itunes:author>
 			<!-- <itunes:image href="" /> -->
@@ -17,9 +17,9 @@
 			<pubDate>Wed, 17 April 2015 00:00:00 </pubDate>
 			</item>
 			<item>
-			<enclosure url="http://169.254.109.15:80/Hackers-Chapter3.m4a"></enclosure>
-			<link>http://169.254.109.15:80/Hackers-Chapter3.m4a</link>
-			<guid>http://169.254.109.15:80/Hackers-Chapter3.m4a</guid>
+			<enclosure url="http://192.168.0.1:80/Hackers-Chapter3.m4a"></enclosure>
+			<link>http://192.168.0.1:80/Hackers-Chapter3.m4a</link>
+			<guid>http://192.168.0.1:80/Hackers-Chapter3.m4a</guid>
 			<title>Hackers: Heroes of the Computer Revolution — Chapter 3</title>
 			<itunes:author>Steven Levy</itunes:author>
 			<!-- <itunes:image href="" /> -->
@@ -27,13 +27,43 @@
 			<pubDate>Wed, 17 April 2015 00:00:00 </pubDate>
 			</item>
 			<item>
-			<enclosure url="http://169.254.109.15:80/Hackers-Chapter4.m4a"></enclosure>
-			<link>http://169.254.109.15:80/Hackers-Chapter4.m4a</link>
-			<guid>http://169.254.109.15:80/Hackers-Chapter4.m4a</guid>
+			<enclosure url="http://192.168.0.1:80/Hackers-Chapter4.m4a"></enclosure>
+			<link>http://192.168.0.1:80/Hackers-Chapter4.m4a</link>
+			<guid>http://192.168.0.1:80/Hackers-Chapter4.m4a</guid>
 			<title>Hackers: Heroes of the Computer Revolution — Chapter 4</title>
 			<itunes:author>Steven Levy</itunes:author>
 			<!-- <itunes:image href="" /> -->
 			<itunes:summary>Text-to-speech courtesy of Serena.</itunes:summary>
+			<pubDate>Wed, 17 April 2015 00:00:00 </pubDate>
+			</item>
+			<item>
+			<enclosure url="http://192.168.0.1:80/Hackers-Chapter5.m4a"></enclosure>
+			<link>http://192.168.0.1:80/Hackers-Chapter5.m4a</link>
+			<guid>http://192.168.0.1:80/Hackers-Chapter5.m4a</guid>
+			<title>Hackers: Heroes of the Computer Revolution — Chapter 5</title>
+			<itunes:author>Steven Levy</itunes:author>
+			<!-- <itunes:image href="" /> -->
+			<itunes:summary>Text-to-speech courtesy of Tom.</itunes:summary>
+			<pubDate>Wed, 17 April 2015 00:00:00 </pubDate>
+			</item>
+			<item>
+			<enclosure url="http://192.168.0.1:80/Hackers-Chapter6.m4a"></enclosure>
+			<link>http://192.168.0.1:80/Hackers-Chapter6.m4a</link>
+			<guid>http://192.168.0.1:80/Hackers-Chapter6.m4a</guid>
+			<title>Hackers: Heroes of the Computer Revolution — Chapter 6</title>
+			<itunes:author>Steven Levy</itunes:author>
+			<!-- <itunes:image href="" /> -->
+			<itunes:summary>Text-to-speech courtesy of Tom.</itunes:summary>
+			<pubDate>Wed, 17 April 2015 00:00:00 </pubDate>
+			</item>
+			<item>
+			<enclosure url="http://192.168.0.1:80/Hackers-Chapter7.m4a"></enclosure>
+			<link>http://192.168.0.1:80/Hackers-Chapter7.m4a</link>
+			<guid>http://192.168.0.1:80/Hackers-Chapter7.m4a</guid>
+			<title>Hackers: Heroes of the Computer Revolution — Chapter 7</title>
+			<itunes:author>Steven Levy</itunes:author>
+			<!-- <itunes:image href="" /> -->
+			<itunes:summary>Text-to-speech courtesy of Tom.</itunes:summary>
 			<pubDate>Wed, 17 April 2015 00:00:00 </pubDate>
 			</item>
 	</channel>
