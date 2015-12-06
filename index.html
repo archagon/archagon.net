@@ -15,7 +15,13 @@
 
   <style>
   /* dynamically assigns category colors */
-  #sel_20150929backgroundifier {
+  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
+  background-color: #f5e4e3; }
+  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
+    /*color: mix($category-programming-color, black, 60%);*/
+    background-color: #e4b7b6; }
+
+#sel_20150929backgroundifier {
   background-color: #f4fbff; }
   #sel_20150929backgroundifier .post-title {
     /*color: mix($category-releases-color, black, 60%);*/
@@ -108,6 +114,21 @@
       <div class="wrapper">
         <div class="home">
   <ul class="post-list">
+    
+    <li id="sel_20151205ipad-pro-plus-pencil-slow-motion-bug" class="post post-content">
+      <header class="post-header">
+        <a class="post-link" href="/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/">
+        <h1 class="post-title">iPad Pro + Pencil Slow Motion Bug</h1>
+        </a>
+        <p class="post-meta">Dec 5, 2015</p>
+      </header>
+
+      <article class="post-content">
+      <p>I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you’re using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there’s some sort of interference between Pencil and gesture event processing — perhaps on account of the Pencil’s increased sampling rate? Notably, the framerate remains stable while this is happening.</p>
+
+ <a href="/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/">More inside...</a>
+      </article>
+    </li>
     
     <li id="sel_20150929backgroundifier" class="post post-content">
       <header class="post-header">

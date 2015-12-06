@@ -6,9 +6,28 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 29 Sep 2015 18:37:27 -0700</pubDate>
-    <lastBuildDate>Tue, 29 Sep 2015 18:37:27 -0700</lastBuildDate>
+    <pubDate>Sat, 05 Dec 2015 17:00:16 -0800</pubDate>
+    <lastBuildDate>Sat, 05 Dec 2015 17:00:16 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>iPad Pro + Pencil Slow Motion Bug</title>
+        <description>&lt;p&gt;I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you’re using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there’s some sort of interference between Pencil and gesture event processing — perhaps on account of the Pencil’s increased sampling rate? Notably, the framerate remains stable while this is happening.&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe class=&quot;youtube&quot; width=&quot;800&quot; height=&quot;450&quot; src=&quot;https://www.youtube.com/embed/ioPRiHBj8l4&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;p&gt;I noticed that the Paper app also has this problem. Other drawing apps seem to avoid it (accidentally or intentionally) by disabling canvas navigation while drawing. In Procreate, you can adjust the brush sliders while drawing without any slow motion, but I think this has to do with the fact that Procreate uses a custom OpenGL-based implementation for their widgets, not UIGestureRecognizer.&lt;/p&gt;
+
+&lt;p&gt;Regardless of whether this is an iOS bug or something I messed up on my end, I’d love to know if there’s a way to fix this! Simultaneously scrolling with your hand while drawing with the Pencil should be a given.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 05 Dec 2015 16:50:30 -0800</pubDate>
+        <link>http://beta-blog.archagon.net/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/</guid>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Backgroundifier</title>
@@ -219,6 +238,21 @@
 &lt;p&gt;Con: although I didn’t take photos to compare, it seems that the text on the bottom is getting more faded. I don’t think it’s going to last, alas.&lt;/p&gt;
 
 &lt;p&gt;Despite the disappointing quality of the paint job and printing, I’d still heartily recommend this bottle for its shape, performance, and design.&lt;/p&gt;
+
+&lt;h2 id=&quot;update-2015-11-3&quot;&gt;Update 2015-11-3&lt;/h2&gt;
+
+&lt;p&gt;I’ve noticed that whenever I get a growler fill from Cellarmaker and let it sit for 4-5 days, it tastes a bit flat when I open it. Not outright flat, mind you, but clearly not as spritzy as when fresh. At present, I’m not entirely certain what the source of the problem is; after all, people claim that they’ve had growlers that kept carbonation for a month or longer. Here are the possibilities as I see them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The Klean Kanteen is worse at preserving carbonation than other growlers. I find this just a little unlikely, since a) there have been no liquid leaks at all, b) the construction and materials are top-notch, and c) contents under pressure will “pop” (see above) even hours after the initial fill. But it’s definitely something to consider.&lt;/li&gt;
+  &lt;li&gt;Cellarmaker beer goes flat quicker than beer from other breweries.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;All&lt;/em&gt; beer gets a bit flat after a few days in a growler, regardless of its construction. The people who claim otherwise either have different standards for carbonation, or are simply deluding themselves.&lt;/li&gt;
+  &lt;li&gt;Only growlers that are filled absolutely, 100% to the brim will remain carbonated for long periods of time.&lt;/li&gt;
+  &lt;li&gt;Only growlers filled with a counter pressure filler will remain fresh for long periods of time.&lt;/li&gt;
+  &lt;li&gt;A lot depends on the width of the neck.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To get to the bottom of this, I am currently experimenting with filling my 3 stainless steel insulated bottles with carbonated SodaStream water and letting them sit in the fridge for 4 days. Results will be posted after testing is complete.&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 09 Sep 2015 23:12:18 -0700</pubDate>
