@@ -6,9 +6,39 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 25 Dec 2015 01:27:48 -0800</pubDate>
-    <lastBuildDate>Fri, 25 Dec 2015 01:27:48 -0800</lastBuildDate>
+    <pubDate>Sun, 27 Dec 2015 00:28:36 -0800</pubDate>
+    <lastBuildDate>Sun, 27 Dec 2015 00:28:36 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>The Perfect Travel Gaiwan</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/mug_portrait.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Loose-leaf tea is a bit of a finicky hobby. Unlike the boring old teabag, you can’t just dump a bunch of tea leaves in a cup of boiling water and expect good results. At the very least, you need a way to strain your tea leaves quickly and without burning yourself. Many tea geeks enjoy the use of gaiwans for this purpose — small, lidded cups whose shape and thermal properties make them useful as single-serving teapots.&lt;/p&gt;
+
+&lt;p&gt;But what do you do when you travel?&lt;/p&gt;
+
+&lt;p&gt;Gaiwans tend to be made of porcelain or clay, so they’re very fragile. Until recently, I assumed I’d just have to make do with makeshift mug-plus-strainer brews when on the road. But a few months ago, I discovered a wonderful product that effectively fixed this problem, as well as several I didn’t even know I had: the &lt;a href=&quot;http://amzn.to/1ShqqsP&quot;&gt;Asobu Imperial Beverage Insulated Cup&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mug_items.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Although not marketed as a travel gaiwan, this product is suited almost perfectly to this role. The lid attaches loosely with a rubber seal, allowing for quick removal and keeping the temperature stable. There’s a hook on the back of the lid that can be used as a handy stopper when tilting it back for straining. The mug is vacuum insulated, allowing you to hold it normally even with boiling hot water inside; there’s no need to perform the crazy hand gymnastics you have to use with an ordinary gaiwan.  The insulation also ensures that the temperature inside the mug remains very hot throughout the steeping process — hotter, I would imagine, than any other material, as barely any heat radiates out! Because the mug is made from steel, you can throw it in your backpack without worrying about it breaking. And brewing aside, it’s great for public transit: if you have a thermos full of hot tea or coffee, you can slowly sip from this mug without burning your hands.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mug_pour.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sure, it’s a bit ugly, while my porcelain gaiwan is beautiful. But in all honesty, I’ve been reaching for this mug every time I brew my loose-leaf tea. The practical benefits far outweigh the aesthetic concerns.&lt;/p&gt;
+
+&lt;p&gt;There are a few issues worth mentioning. The shape is far blobbier than it looks in the marketing photos. The paint is of poor quality and has chipped away from the bottom even with fairly light use; I’d recommend getting the stainless steel model and avoiding the colors. But overall, this mug is an incredibly functional and unique product that, to my knowledge, has no rival on Amazon.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mug_result.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 26 Dec 2015 02:18:44 -0800</pubDate>
+        <link>http://beta-blog.archagon.net/2015/12/26/the-perfect-travel-gaiwan/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2015/12/26/the-perfect-travel-gaiwan/</guid>
+        
+        
+      </item>
     
       <item>
         <title>The Stanley 64oz Classic Vacuum Growler</title>
@@ -847,75 +877,6 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
         
         
         <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Old iPhone Tricks: GPS Tracker</title>
-        <description>&lt;p&gt;This is the time of year when a lot of people are upgrading their phones. If you are, don’t chuck your old phone just yet!&lt;/p&gt;
-
-&lt;p&gt;Here’s a thing you might not know about your iPhone&lt;sup id=&quot;fnref:WhyNotAndroid&quot;&gt;&lt;a href=&quot;#fn:WhyNotAndroid&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;: the GPS unit works even without a data connection. I was confused for a long time about what “assisted GPS” actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.&lt;/p&gt;
-
-&lt;p&gt;So here’s what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called &lt;a href=&quot;http://itunes.apple.com/en/app/mytracks-the-gps-logger/id358697908?mt=8&quot;&gt;myTracks&lt;/a&gt; and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a &lt;code&gt;kml&lt;/code&gt; file (among several others) to use with Google Maps:&lt;/p&gt;
-
-&lt;p&gt;
-&lt;style type=&quot;text/css&quot;&gt;
-    #google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml { width: 100%; height: 400px; margin: 0; padding: 0;}
-&lt;/style&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;https://maps.googleapis.com/maps/api/js?key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA&quot;&gt;
-&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    function initialize() {
-        var fullPath = &#39;http://beta-blog.archagon.net/assets/kml/newcastle_test.kml&#39;
-        var mapOptions = {
-            // center: { lat: 54.966667, lng: -1.6 },
-            // zoom: 14,
-            // mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById(&#39;google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml&#39;),
-            mapOptions);
-        var kmzLayer = new google.maps.KmlLayer(fullPath);
-        kmzLayer.setMap(map);
-    }
-    google.maps.event.addDomListener(window, &#39;load&#39;, initialize);
-&lt;/script&gt;
-&lt;div id=&quot;google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml&quot;&gt;&lt;/div&gt;
-&lt;noscript&gt;&lt;/noscript&gt;
-&lt;/p&gt;
-
-&lt;p&gt;(Incidentally, setting this viewer up was surprisingly easy. First, I exported the &lt;code&gt;kml&lt;/code&gt; data from the app — in this case, &lt;a href=&quot;https://itunes.apple.com/us/app/easytrails-gps-lite/id325929832?mt=8&quot;&gt;EasyTrailsLT&lt;/a&gt;, which I’m also trying out. Next, I went and got a &lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/tutorial&quot;&gt;Google Maps Javascript API key&lt;/a&gt;. Finally, I wrote a quick Jekyll plugin to replace &lt;code&gt;kmlasset&lt;/code&gt; tags with a bit of boilerplate Javascript code that calls Google Maps. End result: I can drop my &lt;code&gt;kml&lt;/code&gt; in a folder, add a tag, and have the map show up magically in my blog post. This is just a small example of how Jekyll makes doing data-heavy blogging a lot more simple, which I’ll delve into in later posts!)&lt;/p&gt;
-
-&lt;p&gt;Most of the GPS apps I’ve looked at still support iOS5, so your phone doesn’t even have to be a recent model. I’d still use my 3GS for this purpose if the battery was up to snuff.&lt;/p&gt;
-
-&lt;p&gt;People always panic when Google or Apple slips up and caches a bit of your location data, but I feel the opposite. With an old iPhone and just a bit of dilligence, I can create a map of everywhere I’ve walked in the world!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;div class=&quot;new_jekyll_assets&quot;&gt;
-
-  &lt;h1 id=&quot;jekyll-assets-created-over-the-course-of-this-exercise&quot;&gt;Jekyll assets created over the course of this exercise&lt;/h1&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;https://github.com/archagon/archagon.net/blob/master/_plugins/kmlasset_tag.rb&quot;&gt;&lt;span class=&quot;asset-name&quot;&gt;kmlasset_tag.rb&lt;/span&gt;&lt;/a&gt; — A Liquid tag that feeds a &lt;code&gt;kml&lt;/code&gt; file url into a Google Maps applet.&lt;/li&gt;
-  &lt;/ul&gt;
-
-&lt;/div&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:WhyNotAndroid&quot;&gt;
-      &lt;p&gt;Since I only have Apple hardware at the moment, I have no idea if this also applies to Android. Sorry! &lt;a href=&quot;#fnref:WhyNotAndroid&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 18 Sep 2014 08:28:45 -0700</pubDate>
-        <link>http://beta-blog.archagon.net/2014/09/18/old_iphone_tricks_gps_tracker/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2014/09/18/old_iphone_tricks_gps_tracker/</guid>
-        
-        
-        <category>travel</category>
-        
-        <category>technology</category>
         
       </item>
     
