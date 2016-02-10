@@ -6,9 +6,111 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 27 Dec 2015 00:28:36 -0800</pubDate>
-    <lastBuildDate>Sun, 27 Dec 2015 00:28:36 -0800</lastBuildDate>
+    <pubDate>Wed, 10 Feb 2016 09:21:49 -0800</pubDate>
+    <lastBuildDate>Wed, 10 Feb 2016 09:21:49 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Composer&#39;s Sketchpad</title>
+        <description>&lt;style&gt;
+&lt;/style&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/composers-sketchpad/icon.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Just last month, I released my first major project for the iPad: &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer’s Sketchpad&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Composer’s Sketchpad is an interactive, “doodle-y” take on music sequencing and notation. When you launch the app, you’re presented with a giant canvas that can be panned around with your finger. The canvas is covered with a grid, indicating time on the horizontal axis and pitch on the vertical. To draw musical notes, you hold down the canvas with one finger and draw with another. (You can also zoom using a similar gesture.) Unlike most sequencers, the app lets you start your notes at any time and bend them to any pitch, giving you the ability to sketch out twisted solos and complex rhythms with no extra effort. You can also snap to the gridlines if you wish.&lt;/p&gt;
+
+&lt;center&gt;
+&lt;p&gt;
+&lt;div class=&quot;videoWrapper&quot;&gt;
+&lt;iframe width=&quot;600rem&quot; height=&quot;450rem&quot; src=&quot;https://www.youtube.com/embed/v6J0qbzLD4c&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;/center&gt;
+
+&lt;p&gt;In the coming months, I’m going to (try to) post a series of articles concerning the technical, design, and marketing aspects of the project. But for now, I’d like to write about the genesis of the idea.&lt;/p&gt;
+
+&lt;p&gt;I made Composer’s Sketchpad for two reasons.&lt;/p&gt;
+
+&lt;p&gt;The first was my inability to compose music using the tools I had at hand. Today, with the help of computers, creativity in practically all artistic mediums is blooming. Everything is digital, iterable, undoable: instead of having to buy messy paints or develop your film after every 30 shots, you can open your favorite graphics editor, grab your tablet, and tear through hundreds of sketches at a time. This reduction in creative friction must be an astounding source of growth for the arts!&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, I feel composition has not quite made the same magnitude of leap forward. While the studios of the past can now be entirely replaced by powerful tools running on our computers, most of them are dreadnoughts aimed at heavy production or performance use. The rhetorical art of composition — the process of taking musical notes and putting them in an order that sounds good and meaningful to our ears — has yet to see the equivalent of a Word or a Photoshop. To put it another way, there’s very little music software out there with a tight creative feedback loop specifically tuned to plonking down a few notes, playing them back, and repeating the process until you get something that sounds good. You could certainly use a DAW sequencer, Finale, or even a tracker for that purpose — many composers successfully do! — but I’ve found that the delay between editing and playback is still too high in those applications, to say nothing of the often immense UX hurdles. Worse yet, barely any of these tools are optimized for touch or stylus input — surely an ideal interface for composing at the piano (or under a tree)!&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;img src=&quot;/images/composers-sketchpad/flstudio.jpg&quot; /&gt;
+&lt;p&gt;DAW interfaces tend to be aimed at production, not freehand composition.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Tooling aside, many musicians write music by simply improvising on their instrument and recording the results. Sadly, this is not a tenable approach for amateurs. Whenever I’m sitting at the piano and get the flicker of an interesting idea, I always lose the thread by the time I get around to actually playing or writing it down. I’d need many more years of practice to actually be able to compose anything interesting using this approach.&lt;/p&gt;
+
+&lt;p&gt;It was clear that my musical life was missing a tool that allowed for the rapid entry and immediate playback of notes — a kind of interactive, audible sheet music. Whenever inspiration struck, I wanted the ability to pull out my tablet or phone and jot down my musical thoughts in a matter of seconds.&lt;/p&gt;
+
+&lt;p&gt;Composer’s Sketchpad fulfills this demand by heavily prioritizing navigation and note entry above all else. There’s no mode for moving around the canvas: you simply swipe like in a mapping app. To make a note, you hold down the canvas with one finger and draw with another, as if applying pressure to a particularly slippery piece of paper. Undo/redo and erase are right there in the corners, and the playback controls are within easy reach at the bottom of the screen. (Your current viewport is also your playback position.) A piece is divided into several layers of notes — each with their own instrument or percussion set — and the active layer can be changed with a simple swipe of the instrument box at the top of the screen. Doing this brightens the active layer and dims any background layers, allowing you to edit the current layer exclusively while still having a sense of what all the other instruments are doing. In short, there’s barely any cognitive overhead: every tool you need to rapidly sketch out music is right there in front of you.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;img src=&quot;/images/composers-sketchpad/ui.png&quot; /&gt;
+&lt;p&gt;The UI in Composer&#39;s Sketchpad is carefully tuned to enable a tight creative feedback loop.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The other problem I wanted to tackle was the antiquated nature of sheet music.&lt;/p&gt;
+
+&lt;p&gt;I love classical and popular music alike. Unfortunately, popular music differs enough from classical to make traditional notation simply the wrong tool for the job. For one, practically every piece of popular music uses syncopated rhythm. Most classical music is fairly on-the-beat, and notation is designed with that in mind. With syncopated music, you usually end up with a mess of rests, ties, and dotted notes that is hard to read and write. Modern music is also irreverent when it comes to duration and pitch. Solos are a great example: they’re fluid and expressive, and each note only lasts and remains on pitch as long as the performer wishes. Once again, notating them is an incredible pain.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;img src=&quot;/images/composers-sketchpad/solo.png&quot; /&gt;
+&lt;p&gt;An excerpt from &quot;Comfortably Numb&quot;. Solos are cumbersome to write out using traditional notation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;What about music from other cultures? The scales for many musical traditions differ vastly from our own. Simply put, their notes fit between our notes! Composers shouldn’t have to switch their system of notation just to play around with different kinds of music.&lt;/p&gt;
+
+&lt;p&gt;What about our own (Western) myriad of different scales and tunings? We’re so used to Equal Temperament that we’ve completely forgotten the incredible polyculture of tunings in early music, to say nothing of the microtonal experimentation of the 20th century. Indeed, the &lt;a href=&quot;http://www.huygens-fokker.org/scala/&quot;&gt;Scala microtonal tuning archive&lt;/a&gt; has over 4000 scales! All impossible to convey with traditional notation.&lt;/p&gt;
+
+&lt;p&gt;Instead of trying to shoehorn all music into a Western style of notation invented several centuries ago, it occurred to me that maybe an entirely new approach was needed. In fact, why encode the music at all? The barest, most obvious form of notation is a graph of time and pitch. This system would have been too difficult for musicians to read from and write to back in the day, but that’s not really an issue when the music can play itself and your musical canvas is tactile and effectively infinite. It seemed like the best shot at covering all bases.&lt;/p&gt;
+
+&lt;p&gt;In Composer’s Sketchpad, each “note” is a simple array of times and pitches. Note names, measures, and time signatures still exist, but only as a grid or stencil over the absolute time/pitch graph — a feature of the tooling, not an intrinsic part of the piece. You use the current scale and meter grid to align and snap your notes, but you can also change them up for use in later sections without having to worry about your existing music. Under the hood, it’s all the same: scattered little point clouds of absolute time and pitch.&lt;/p&gt;
+
+&lt;p&gt;As a result, writing out complicated and expressive sections of music in Composer’s Section no longer feels like caging a canary. The grid is your friend, not an oppressive bureaucrat. If you want to write more conventional music, snapping to time or pitch works just as it did with traditional notation. But turn snapping off and you can bend your notes or extend them out to the exact length of time needed. Because the shape of your notes corresponds exactly to their time and pitch, a quick glance at your music tells you exactly how it’s going to sound without having to decode a mess of symbols in your head. And you can edit any part of any section or overlap as many notes as you like without having to worry about fulfilling the “note quota” of a measure, as you constantly have to do in sheet music apps like Finale.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;img src=&quot;/images/composers-sketchpad/melody.png&quot; /&gt;
+&lt;p&gt;&quot;Comfortably Numb&quot; again in Composer&#39;s Sketchpad, transcribed by ear. This style of notation is great for conveying expressive melodic lines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And now, a bit of a pretentious digression, as well as a few words about the future of the project!&lt;/p&gt;
+
+&lt;p&gt;Most programmers today are very excited about building for the web. Each day, the front page of Hacker News is filled with stories of up-and-coming web-based startups as well as new Javascript frameworks and libraries. There’s also a lot of related talk about how pay-to-own software is going away, and about how subscriptions, in-app purchases, and advertising are going to replace them.&lt;/p&gt;
+
+&lt;p&gt;Speaking strictly for myself, I can’t stand the idea of my software residing permanently on other people’s servers or relying on money from other people’s products. For every new and exciting startup that I read about, there’s a related story of yet another acquisition or shutdown flushing years of work down the drain. What were all those man-hours, well-intentioned ideas, and midnight flashes of inspiration good for in the end? No, that style of development is not for me. I don’t want to create services, networks, or support organizations; I want to create beautiful &lt;em&gt;objects&lt;/em&gt;, little bits of clockwork that are both lovely and useful in their whole. Once they’re made, I want to be able to take my hands off them and let them live without my further involvement. I’m not interested in running servers or providing exciting new content patches week after week. You pay once — you get the object. There is certainly room for updates, but only in the interest of making the object better.&lt;/p&gt;
+
+&lt;p&gt;I’m still far from that ideal — for example, in-app purchases might be tempting down the line — but that’s the direction I want to head with my current and future projects.&lt;/p&gt;
+
+&lt;p&gt;Composer’s Sketchpad isn’t a profit-driven venture looking for a market or buyer. It’s one of those objects that didn’t exist in the world before I made it, and its reason for being is to help me be creative. I plan to add many new features over the years as my compositional needs develop, and I hope that eventually I’ll be able to port it to other platforms and release the source code for everyone to use. It’s a tool from my own personal toolbox that I’m happy to put out into the world.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;img src=&quot;/images/composers-sketchpad/sketches.jpg&quot; /&gt;
+&lt;p&gt;Some of the many design sketches made during development.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Using &lt;code&gt;cloc&lt;/code&gt;, the project comes in at around 20,000 lines of code. This is a massive leap for me, and I’m incredibly excited to get started on the next 20,000!&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 05 Feb 2016 23:35:12 -0800</pubDate>
+        <link>http://beta-blog.archagon.net/2016/02/05/composers-sketchpad/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2016/02/05/composers-sketchpad/</guid>
+        
+        
+      </item>
     
       <item>
         <title>The Perfect Travel Gaiwan</title>
@@ -589,294 +691,6 @@ Your browser does not support the video tag.
         
         
         <category>technology</category>
-        
-      </item>
-    
-      <item>
-        <title>The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</title>
-        <description>&lt;p&gt;I recently released my first commercial project: &lt;a href=&quot;http://translit-keyboard.archagon.net&quot;&gt;Translit Keyboard&lt;/a&gt;, a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known &lt;a href=&quot;https://developer.apple.com/library/Mac/documentation/Cocoa/Reference/InputMethodKitFrameworkRef/index.html&quot;&gt;Input Method Kit&lt;/a&gt;. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased&lt;sup id=&quot;fnref:other_translit_techniques&quot;&gt;&lt;a href=&quot;#fn:other_translit_techniques&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Sadly, iOS was off-limits: since 3rd party extensions weren’t even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.&lt;/p&gt;
-
-&lt;p&gt;When iOS 8 was announced and unexpectedly blew open the doors on extensions, my interest was immediately piqued. Although, on initial glance, the keyboard APIs were rather crude — you were given a gray box at the bottom of the screen and practically nothing else — this gave me a roundabout “in” to making input methods work on iOS. What if I were to recreate the system keyboard from scratch? I could make it behave any way I wanted!&lt;/p&gt;
-
-&lt;p&gt;And so, &lt;a href=&quot;https://github.com/archagon/tasty-imitation-keyboard&quot;&gt;Tasty Imitation Keyboard&lt;/a&gt; was born. If I may take a moment of vanity, the keyboard is very solid: on most phones, it looks and types very much like the system keyboard, minus the landscape side buttons on the 6 and 6+. (iPad support isn’t too high on my priority list, but it &lt;em&gt;is&lt;/em&gt; functional.) This was a satisfying project to work on, giving me great insight into Swift, autolayout (since removed), Core Graphics, and a bit of Interface Builder. But it also gave me experience with something that I had yet to encounter in my sheltered iOS development existence: the horror of undercooked Apple frameworks and tools.&lt;/p&gt;
-
-&lt;p&gt;Below are as many of the problems I encountered during development as I can remember. I have high hopes that these will be fixed over the next few years, but until then, perhaps this article will help some poor programmer in dire straits!&lt;/p&gt;
-
-&lt;h2 id=&quot;behavioral-bugs&quot;&gt;Behavioral Bugs&lt;/h2&gt;
-
-&lt;p&gt;Prevalent in Apple land is the expectation that software should adhere to the conventions of its host OS. We like our apps to use common widgets, behave consistently, react smoothly, and acknowledge the current design trends; very much unlike the “anything goes” philosophy that Windows and Android have often adopted. So it surprises me that 3rd party keyboards are even a thing on iOS. To take such an essential, constantly used, frequently visible UI element and put it at the mercy of developers — many with their own twisted ideas of how a keyboard should look — seems like a very un-Apple-y thing to do.&lt;/p&gt;
-
-&lt;p&gt;But it gets worse. 3rd party keyboards on iOS don’t just have the opportunity to look alien; they &lt;em&gt;act&lt;/em&gt; alien, and this is something that programmers can’t guard against. Consequently, all the 3rd party keyboards currently available on iOS feel like some sort of jailbreak hack.&lt;/p&gt;
-
-&lt;h3 id=&quot;that-pop-in&quot;&gt;That Pop-In&lt;/h3&gt;
-
-&lt;p&gt;This is the first thing you notice. Unlike the system keyboards, which smoothly slide in from the bottom of the screen, 3rd party keyboards just… pop into existence. (Most of the time. Sometimes they slide in, though it’s hard to predict when this will happen. There are also some scary bugs associated with this particular entrance. More below.) Worse, if you’re switching from a default keyboard to a 3rd party keyboard, the entire keyboard &lt;em&gt;disappears&lt;/em&gt; for a second while the 3rd party keyboard loads up.&lt;/p&gt;
-
-&lt;h3 id=&quot;invalid-state&quot;&gt;Invalid State&lt;/h3&gt;
-
-&lt;p&gt;And guess what? Sometimes you’ll have to wait forever!&lt;/p&gt;
-
-&lt;p&gt;On occasion — frighteningly frequent occasion — I’ve seen the keyboard simply fail to appear, even after waiting for many seconds. When this happens, it’s hard to tell when the keyboard is going to come back. Will it happen when you hit the home button and re-open the app? (Sometimes it doesn’t.) When you switch to another app? (Sometimes it doesn’t.) One of the few sure-fire ways to fix this problem is to force-close and re-open your current app, which isn’t always possible. (Spotlight.) And until then, have fun not being able to type!&lt;/p&gt;
-
-&lt;p&gt;There are other fun states that your keyboard can get into. For example, sometimes the keyboard view will show up, but never actually load the keyboard:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Missing Keyboard.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And the fun is not just limited to 3rd party keyboards! If you hit the globe icon on a system keyboard, sometimes the button will run away from under your finger — and stay that way for a long time:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Missing Globe.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-the-text-even-doing&quot;&gt;What Is the Text Even Doing?&lt;/h3&gt;
-
-&lt;p&gt;The text entry behavior of 3rd party keyboards is a bit erratic. For example, try using SwiftKey (or any other 3rd party keyboard) to type out part of a saved URL in Safari — to the point where it starts to autocomplete the rest — and then press delete. You’d expect the highlighted part to disappear, right? No: what actually happens is that the cursor simply moves to the left, leaving the autocompleted part intact and still highlighted. This does not happen with the system keyboard.&lt;/p&gt;
-
-&lt;h3 id=&quot;settings-what-settings&quot;&gt;Settings? What Settings?&lt;/h3&gt;
-
-&lt;p&gt;With 3rd party keyboards, you can’t access any of the keyboard preferences that the user has set, including auto-capitalization, automatic spaces after periods, disabling the shift key, and playing clicks when typing. As a result, you either have to assume a default, or re-implement the settings entirely.&lt;/p&gt;
-
-&lt;p&gt;(Fortunately, accessibility settings like “reduced transparency” are still available.)&lt;/p&gt;
-
-&lt;h3 id=&quot;broken-apps&quot;&gt;Broken Apps&lt;/h3&gt;
-
-&lt;p&gt;Some apps are downright broken with 3rd party keyboards.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Editor’s note: None of the problems below seem to happen anymore with Google’s recent Maps redesign. Still, the fact that they were happening at all is troubling, since there’s nothing an app should theoretically be able to do to influence keyboard behavior.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In Google Maps, a number of strange behaviors happen with the search box. First, it’s one of the few text fields I’ve seen that have custom keyboards slide back in after they’ve been dismissed, rather than just popping in as described above. Why this particular text field and not others? I have no idea. Furthermore, if you track the &lt;code&gt;UIInputViewController&lt;/code&gt; lifecycle during this process, you’ll see that even though &lt;code&gt;viewWillAppear&lt;/code&gt; is called correctly when this happens, &lt;code&gt;viewDidAppear&lt;/code&gt; is not. This is especially odd given that the keyboard still appears to go through &lt;code&gt;init&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Next, if you tap on the search field in portrait and then rotate to landscape, your keyboard will suddenly expand almost to the top of the screen.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Google Maps.PNG&quot; width=&quot;568px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;How about another app? &lt;em&gt;Hilariously&lt;/em&gt;, in the App Store app, if you try to write a review using a 3rd party keyboard, you’ll find that the page turns entirely blank!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/No Review.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;reloading-the-extension&quot;&gt;Reloading the Extension&lt;/h3&gt;
-
-&lt;p&gt;If you’ve recently updated a 3rd party keyboard, your apps might still have the old keyboard bundle loaded in. This is fixed by force-closing and reopening the app.&lt;/p&gt;
-
-&lt;h3 id=&quot;mystery-crashes&quot;&gt;Mystery Crashes&lt;/h3&gt;
-
-&lt;p&gt;I have seen numerous mystery crashes affecting their 3rd party keyboards. Sometimes they just… close for no reason. And you don’t even necessarily see it in your crash logs!&lt;/p&gt;
-
-&lt;h3 id=&quot;mystery-glitches&quot;&gt;Mystery Glitches&lt;/h3&gt;
-
-&lt;p&gt;3rd party keyboards can sometimes exhibit bizarre graphical glitches. For example, this one is easy to consistently reproduce.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Graphics Glitches.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;missing-features&quot;&gt;Missing Features&lt;/h3&gt;
-
-&lt;p&gt;There are some features that customers are used to — or even find essential! — in their keyboards, but that we cannot currently provide. One is autocorrect, including the red-squiggle variety. Another is physical keyboard support.&lt;/p&gt;
-
-&lt;h3 id=&quot;full-access-is-almost-necessary&quot;&gt;Full Access Is Almost Necessary&lt;/h3&gt;
-
-&lt;p&gt;There are two ways that 3rd party keyboards can run. By default, the keyboard cannot do much of anything outside its own sandbox. But if the user goes into their settings and manually flicks a carefully hidden switch, they can enable “full access” for that particular keyboard. In the process, they are greeted with this terrifying popup:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Full Access.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This totally makes sense if there’s a chance that your keyboard could send your precious keystrokes over the net. Unfortunately, there are a number of other vital features that require getting past the full access barrier. Sharing data between your keyboard and your container app. Sharing data between multiple keyboards in a single app. Having a settings bundle. Using in-app purchases with your keyboard. &lt;em&gt;Playing sounds&lt;/em&gt;, for crying out loud. Some of these are reasonable since they could allow private data to escape out of the sandbox in roundabout ways, but it’s causing many developers to &lt;em&gt;strongly encourage&lt;/em&gt; their users to enable full access.&lt;/p&gt;
-
-&lt;p&gt;I wanted to be as secure as possible in my app, so I worked around these problems in various ways. To compensate for the demo aspects of IAP, I released my app for a fixed price, and then released a Lite version with a useless transliterator (Old Slavonic) for trial purposes. Instead of having a single keyboard with a language selector accessible from the container app, I opted to have multiple keyboards instead. The one feature in my keyboard that still requires full access is sound; this defaults to “off” in the in-keyboard settings and offers users an explanation on how to enable it.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-reviews-oh-the-reviews&quot;&gt;The Reviews; Oh, the Reviews!&lt;/h3&gt;
-
-&lt;p&gt;As you would expect, customers have no idea that any of these behaviors are caused by the OS. Just look at these reviews for various 3rd party keyboards:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Review Broken App.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Review Full Access 2.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Review Features.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Review Disappearing Keyboard.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Review Full Access.PNG&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You’ll find it difficult to find a 3rd party keyboard with more than 3 stars. (And can you blame the customers? After seeing these behaviors, &lt;em&gt;I&lt;/em&gt; certainly wouldn’t switch to a 3rd party keyboard full-time!)&lt;/p&gt;
-
-&lt;p&gt;What can we do about this? Nothing! We have to pay for these bugs with our precious developer cachet.&lt;/p&gt;
-
-&lt;h2 id=&quot;programming-problems&quot;&gt;Programming Problems&lt;/h2&gt;
-
-&lt;p&gt;In addition to the above hassles, us programmers have other things to worry about. The framework that Apple has given us is… rough around the edges.&lt;/p&gt;
-
-&lt;h3 id=&quot;changing-the-height&quot;&gt;Changing the Height&lt;/h3&gt;
-
-&lt;p&gt;Unlike the system keyboard, your custom keyboard is confined to the rect it was created in. There’s no drawing outside the box and no adding transparency. This becomes a problem if you want to add popups to your keys like the ones in default keyboard. How do you handle the top row when you can’t draw over the top?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Popup.png&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the early betas, you couldn’t do much at all. Your best option was to either draw sideways popups or just do nothing. Closer to release, we got the ability to expand the height of the keyboard view. Sadly, the implementation feels like an afterthought. &lt;/p&gt;
-
-&lt;p&gt;Apple specifies in the docs that you can change the height of your keyboard by adding an autolayout constraint with a constant value to the keyboard view. However, if you actually follow these instructions, you’ll find something like this in your log:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;2014-11-08 17:17:09.741 Keyboard[8079:3155417] Unable to simultaneously satisfy constraints.
-	Probably at least one of the constraints in the following list is one you don&#39;t want. Try this: (1) look at each constraint and try to figure out which you don&#39;t expect; (2) find the code that added the unwanted constraint or constraints and fix it. (Note: If you&#39;re seeing NSAutoresizingMaskLayoutConstraints that you don&#39;t understand, refer to the documentation for the UIView property translatesAutoresizingMaskIntoConstraints) 
-(
-    &quot;&amp;lt;NSLayoutConstraint:0x618000096350 &#39;UIView-Encapsulated-Layout-Height&#39; V:[UIInputView:0x7fe0be909690(216)]&amp;gt;&quot;,
-    &quot;&amp;lt;NSLayoutConstraint:0x608000093b50 V:[UIInputView:0x7fe0be909690(246)]&amp;gt;&quot;
-)
-
-Will attempt to recover by breaking constraint 
-&amp;lt;NSLayoutConstraint:0x608000093b50 V:[UIInputView:0x7fe0be909690(246)]&amp;gt;
-
-Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
-The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in &amp;lt;UIKit/UIView.h&amp;gt; may also be helpful.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Adding a constraint to the keyboard view doesn’t &lt;em&gt;set&lt;/em&gt; the height; it rams against the existing autolayout height constraint created by the autoresizing mask, and overrides it in &lt;em&gt;most&lt;/em&gt; cases. This is important: if you add the constraint before the view appears on the screen (this is specified in the docs), or in certain cases where your keyboard view doesn’t contain any subviews with autolayout constraints (this is not), your height constraint will lose and the keyboard will revert to the default height. That second case is particularly mystifying: at one point, I had to create an invisible kludge view with autolayout constraints and add it to my keyboard view in order for the height to set correctly!&lt;/p&gt;
-
-&lt;p&gt;But even with the extra height, you can’t actually make any part of your keyboard transparent. This means that if you want to implement popups for the top row, you either have to add an ugly strip to the top of your keyboard (my solution — it’s a good place to put extra UI anyway), or alternatively try increasing the height whenever you tap a key in the top row and then shrink it back down afterwards.&lt;/p&gt;
-
-&lt;p&gt;I ran into another problem with this constraint technique. For my keyboard, I didn’t &lt;em&gt;really&lt;/em&gt; want to provide an entirely unique keyboard height; all I needed was an extra 30 points or so on top of the native keyboard height. The first idea I had was to change my height constraint from just a constant, to “equal to the keyboard height” plus 30. This did not work. Next, I tried to capture the keyboard height before I added my constraint, as well as on rotations; unfortunately, after my constraint was added, I found that this technique stopped working. (It warrants further investigation, however.) Finally, I decided to just hardcode the keyboard heights for each device and each orientation.&lt;/p&gt;
-
-&lt;p&gt;Speaking of which: with a custom height constraint, on rotation, everything goes &lt;em&gt;nuts&lt;/em&gt;. I don’t think I’m doing anything too crazy. This is what my rotation code looks like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-    self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;…which simply sets the height constraint’s constant to the correct height.&lt;/p&gt;
-
-&lt;p&gt;But if you perform the rotation in the Simulator, you see things like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Glitch Portrait.png&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Glitch Landscape 1.png&quot; width=&quot;568px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And maybe this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Glitch Landscape 2.png&quot; width=&quot;568px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the process of trying to figure out what was causing this, I discovered that during certain points in this transition, the &lt;code&gt;bounds&lt;/code&gt; of the keyboard view (or its superview, or its layers) were incorrect. For example, in the second screenshot, the &lt;code&gt;bounds&lt;/code&gt; would be 320×216, even though they’re clearly 568×162 at that point.&lt;/p&gt;
-
-&lt;p&gt;I couldn’t find a way to work around this issue, and so I was freaking out for a few days until I discovered that it didn’t happen on device unless your performance was really slow. With that said, if you don’t add the Apple-sanctioned height constraint, none of this occurs.&lt;/p&gt;
-
-&lt;h3 id=&quot;straight-up-api-errors&quot;&gt;Straight-Up API Errors&lt;/h3&gt;
-
-&lt;p&gt;The &lt;code&gt;UIInputViewController&lt;/code&gt; class, as an adherent to &lt;code&gt;UITextInputDelegate&lt;/code&gt;, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: &lt;code&gt;selectionWillChange&lt;/code&gt;, &lt;code&gt;selectionDidChange&lt;/code&gt;, &lt;code&gt;textWillChange&lt;/code&gt;, and &lt;code&gt;textDidChange&lt;/code&gt;. In fact, &lt;em&gt;none of them actually do those things&lt;/em&gt;. The &lt;code&gt;selection&lt;/code&gt; methods never gets called at all, and the &lt;code&gt;text&lt;/code&gt; methods only get called — get this — when the selection changes or the cursor is moved!&lt;/p&gt;
-
-&lt;p&gt;(Incidentally, the &lt;code&gt;UITextInput&lt;/code&gt; object that you get back with these methods is crippled. Many of its methods don’t seem to do anything.)&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;viewWillTransitionToSize&lt;/code&gt; is another offender. As of iOS 8, if you use the old &lt;code&gt;willRotateToInterfaceOrientation&lt;/code&gt; method, Xcode will tell you that it’s deprecated and that you should be using &lt;code&gt;viewWillTransitionToSize&lt;/code&gt;. However, &lt;code&gt;viewWillTransitionToSize&lt;/code&gt; never actually gets called! You’re forced to use a deprecated method in one of Apple’s newest UIKit additions.&lt;/p&gt;
-
-&lt;h3 id=&quot;uitextinputtraits-transgressions&quot;&gt;UITextInputTraits Transgressions&lt;/h3&gt;
-
-&lt;p&gt;Your &lt;code&gt;UIInputViewController&lt;/code&gt; has a mysterious &lt;code&gt;NSObject&lt;/code&gt; called &lt;code&gt;textDocumentProxy&lt;/code&gt; that serves as the interface between the keyboard and the current text field via the &lt;code&gt;UITextDocumentProxy&lt;/code&gt; protocol. (Why is it a nebulous &lt;code&gt;NSObject&lt;/code&gt; instead of a &lt;code&gt;UITextDocumentProxy&lt;/code&gt;?) Among other things, this protocol lets you access certain attributes of the text field.&lt;/p&gt;
-
-&lt;p&gt;Perhaps the most important of these is &lt;code&gt;keyboardAppearance&lt;/code&gt;, which tells you if your keyboard should be using dark mode or not. One would expect this value to be correct on keyboard initialization, but no: you actually have to wait for the keyboard to appear on screen before this field populates with the correct value. I have not tested, but I have a hunch this applies to the other input traits as well. To my knowledge, this is not described in the documentation.&lt;/p&gt;
-
-&lt;p&gt;The properties of &lt;code&gt;UITextInputTraits&lt;/code&gt; may change while the keyboard is still open, if the user switches from one text field to another. This is pretty sensible, if uncommon. What’s &lt;em&gt;not&lt;/em&gt; sensible is that the &lt;code&gt;textDocumentProxy&lt;/code&gt; object is not KVO compliant, meaning that there’s no easy way for you to observe these changes! The only thing you can really do is &lt;em&gt;poll the object, 60 times a second&lt;/em&gt;. (I’m not suggesting that there’s a performance penalty for this, but still… yuck.)&lt;/p&gt;
-
-&lt;h3 id=&quot;audio&quot;&gt;Audio&lt;/h3&gt;
-
-&lt;p&gt;As mentioned above, you need to enable full access to get any audio going. You would think, at least, that you could call the standard &lt;code&gt;AudioServicesPlaySystemSound&lt;/code&gt; function to play the keyboard tock; but instead, you have to do this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-    AudioServicesPlaySystemSound(1104)
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And yes, that &lt;code&gt;dispatch_async&lt;/code&gt; is necessary; otherwise, your keyboard will &lt;em&gt;simply stop working&lt;/em&gt; if full access is disabled.&lt;/p&gt;
-
-&lt;h3 id=&quot;ipad-woes&quot;&gt;iPad Woes&lt;/h3&gt;
-
-&lt;p&gt;This is more sensible than the other issues, but I still think it’s worth mentioning. If you want to sell an iPhone-only keyboard… well, you kind of can’t. True, the app won’t show up in the iPad App Store; but if you install the container app on your iPad, you’ll still be able to install the keyboard in the settings! This is especially a problem if users find your app via your product website rather than through the App Store, since they probably won’t check whether your app is “optimized” for iPad before buying.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-cruel-mockery-of-size-classes&quot;&gt;The Cruel Mockery of Size Classes&lt;/h3&gt;
-
-&lt;p&gt;Apple strongly encourages the use of size classes in iOS 8. Seems like such an elegant solution: why worry about device dimensions or even portrait vs. landscape when you can just read the size class and show the appropriate UI? Alas, in the case of keyboards, they’re useless. Aside from the 6+ in landscape, keyboards are all strictly &lt;code&gt;Compact&lt;/code&gt;, even though the layout constants for landscape are very different from those of portrait. Even worse: like the 6+, the 6 has those handy side buttons for editing in landscape — but its size class is still &lt;code&gt;Compact&lt;/code&gt;, while the 6+ is &lt;code&gt;Regular&lt;/code&gt;! And what about the iPad? Its keyboard is sized &lt;code&gt;Regular&lt;/code&gt; in both orientations, even though it has exactly nothing in common with the 6+ keyboard in landscape.&lt;/p&gt;
-
-&lt;h3 id=&quot;autolayout-yeah-right&quot;&gt;Autolayout? Yeah, Right&lt;/h3&gt;
-
-&lt;p&gt;This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well… if you’re implementing a keyboard or anything remotely like it, &lt;em&gt;don’t use autolayout!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in &lt;code&gt;constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:&lt;/code&gt; initializers and spacer views&lt;sup id=&quot;fnref:spacer_views&quot;&gt;&lt;a href=&quot;#fn:spacer_views&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.&lt;/p&gt;
-
-&lt;p&gt;Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: &lt;code&gt;|-(2)-[myView(30)]-(2)-|&lt;/code&gt;. But every view in such a string must be named. For my implementation, this meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)&lt;/p&gt;
-
-&lt;p&gt;On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few &lt;em&gt;seconds&lt;/em&gt; longer than just laying everything out in &lt;code&gt;layoutSubviews&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;In retrospect, settling on manual layout was certainly the right decision, and I’m not sure why I even spent so long trying to get autolayout working right. With &lt;code&gt;layoutSubviews&lt;/code&gt;, there’s no worrying about priorities or inequalities, no seeking out conflicting constraints, no implicit calculations, no linear algebra. It was as if a fog had been lifted from my mind. My layout code shrunk to only a third of what it was before. And as extra validation, soon after I released my keyboard into alpha, somebody asked me if they could lay out their keys in an arc. This was the simplest of changes with &lt;code&gt;layoutSubviews&lt;/code&gt;, but made me shudder to think of the horrible contortions that would have been required had I still been using autolayout!&lt;/p&gt;
-
-&lt;p&gt;As an aside, I recently encountered a project called &lt;a href=&quot;https://github.com/Masonry/Masonry&quot;&gt;Masonry&lt;/a&gt; that intends to be a simplified autolayout syntax. Here is an example from their docs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.equalTo(superview).with.insets(padding);
-}];
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To me, that looks &lt;em&gt;marvelous&lt;/em&gt;, and I wish Apple would adopt something similar. Right now, even though autolayout is very powerful, it is completely unsuited for many applications, including most programmatic interface designs.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-what-under-the-hood&quot;&gt;The What…? Under the Hood&lt;/h3&gt;
-
-&lt;p&gt;If you examine at the view hierarchy of your keyboard, you’ll find it completely baffling. A &lt;code&gt;view&lt;/code&gt;, which is the same as your &lt;code&gt;inputView&lt;/code&gt;… added on top of a view… on top of another view… on top of another view… on top of the window, maybe? What are all these views even doing?&lt;/p&gt;
-
-&lt;p&gt;User visput on Russian site Habrahabr illustrates this with the following screenshot from his &lt;a href=&quot;http://habrahabr.ru/post/235917/&quot;&gt;excellent article on iOS keyboard development&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/View Hierarchy.png&quot; alt=&quot;View Hierarchy&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In short, I give this framework a rating of NC-17.&lt;/p&gt;
-
-&lt;h2 id=&quot;tooling-troubles&quot;&gt;Tooling Troubles&lt;/h2&gt;
-
-&lt;p&gt;On a recent episode of ATP (was it ATP?), the gang talked about how the condition of Apple’s tools is a troubling sign that they might be barging ahead too fast. Believe me: it’s worse than you could ever imagine.&lt;/p&gt;
-
-&lt;h3 id=&quot;xcode&quot;&gt;Xcode&lt;/h3&gt;
-
-&lt;p&gt;Xcode quitting “unexpectedly”, stuck builds, stuck indexing, unresponsive buttons, and the never-ceasing SourceKit crash log blinking boxes of doom have become an hourly ritual for me. It’s gotten to the point where I instinctively reach for the “force quit” button if a task hasn’t completed within a few seconds. (I’ve also force-closed SourceKitService in Activity Monitor out of spite.)&lt;/p&gt;
-
-&lt;p&gt;Code completion frequenty stops working for me. I have to perform byzantine tricks to get it working again. (Sometimes, it never really does.) This is &lt;em&gt;infuriating&lt;/em&gt; when you Command-Click on some UIKit class to see the header and Xcode tells you that it doesn’t exist, or when you try to call a particularly long method and Xcode fails to find a match.&lt;/p&gt;
-
-&lt;p&gt;Offline documentation has been in a state of disrepair for the longest time. Apple may have fixed it in 6.1, but I am loathe to check.&lt;/p&gt;
-
-&lt;p&gt;Slow. Scrolling is slow. Code completion is slow. Documentation is slow. Search is slow. &lt;em&gt;Typing&lt;/em&gt; is slow. Everything is dog, dog slow. I am not exaggerating when I say that it sometimes takes &lt;em&gt;half a second&lt;/em&gt; for my text to show up on the screen! (Albeit, this is with far, far too many browser tabs open, but Sublime keeps chugging on without a problem. And… &lt;em&gt;it’s freaking text entry!&lt;/em&gt;)&lt;/p&gt;
-
-&lt;p&gt;It’s become a frequent occurrence that I load up an updated version of my keyboard, tap on my keyboard in the globe menu… and crash out back to the default keyboard. I have to either open the container app, force close the current app, press “stop” in Xcode, or do some other weird trick to get it to show up correctly.&lt;/p&gt;
-
-&lt;p&gt;A lot of the time, when I try to run the Keyboard target directly, it’ll open up the keyboard and then just sit on “waiting to attach” for eternity. Sometimes I can’t fix this.&lt;/p&gt;
-
-&lt;p&gt;Sometimes my dynamic frameworks won’t compile, and I have to press the run button twice in a row for everything to link up properly. Remember the old quip about how insanity is doing the same thing twice and expecting different results? &lt;em&gt;Doesn’t apply to Xcode!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;It’s such a shame because I actually, unironically like Xcode. Visual Studio disturbs me on a visceral level. How can I tell people that Xcode is a better-designed IDE when &lt;em&gt;this&lt;/em&gt; kind of stuff is still going on? It’s unacceptable.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-simulator&quot;&gt;The Simulator&lt;/h3&gt;
-
-&lt;p&gt;That smiley… that smug, mocking smiley.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Smiley.png&quot; width=&quot;320px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As of Xcode 6.1, you can no longer open 3rd party keyboards in most apps in the Simulator, &lt;em&gt;including your own&lt;/em&gt;. (And not just 3rd party keyboards: most system keyboards refuse to show up, too.) Not only does this make debugging a whole lot harder, but it also prevents you from easily making screenshots of your keyboard if you don’t own some of the newer devices. This issue is marked as a bug in Radar, and seeing as how it first appeared in the Xcode 6.1 betas, I cannot fathom how it got through to release.&lt;/p&gt;
-
-&lt;h2 id=&quot;fin&quot;&gt;Fin&lt;/h2&gt;
-
-&lt;p&gt;There’s no real conclusion. As of iOS 8.1, 3rd party keyboards are functional, but look and feel janky. Programming them is also a horrible pain. I hope Apple fixes this stuff soon. The end.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading! If you’ve found this article or my keyboard project useful, please consider buying something for yourself on Amazon via &lt;a href=&quot;http://www.amazon.com/gp/product/B00KR27MD4/ref=as_li_tl?ie=UTF8&amp;amp;camp=1789&amp;amp;creative=390957&amp;amp;creativeASIN=B00KR27MD4&amp;amp;linkCode=as2&amp;amp;tag=archagon-20&amp;amp;linkId=3L2N5B744PPUNYM3&quot;&gt;my affiliate link&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Addendum 2014-11-9: Added paragraphs on visual format language and performance to autolayout section.&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:other_translit_techniques&quot;&gt;
-      &lt;p&gt;There were a number of other interesting ways to accomplish the same goal, including Quartz event taps and &lt;code&gt;.keylayout&lt;/code&gt; files. You can check out the code, in various states of completion, in &lt;a href=&quot;https://github.com/archagon/cyrillic-transliterator&quot;&gt;my Github repo&lt;/a&gt;. (Warning: gnarly code ahead!) &lt;a href=&quot;#fnref:other_translit_techniques&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:spacer_views&quot;&gt;
-      &lt;p&gt;If you want to have equal spacing between a set of views, you need to add an equally-sized set of “spacer” views between them. This is the technique recommended in the official documentation. &lt;a href=&quot;#fnref:spacer_views&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Sat, 08 Nov 2014 12:26:54 -0800</pubDate>
-        <link>http://beta-blog.archagon.net/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/</guid>
-        
-        
-        <category>programming</category>
         
       </item>
     
