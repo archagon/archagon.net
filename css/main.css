@@ -380,7 +380,6 @@ hr {
   position: relative;
   padding-bottom: 75%;
   /* 4:3 */
-  padding-top: 25px;
   height: 0; }
 
 .videoWrapper iframe {
