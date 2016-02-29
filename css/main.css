@@ -30,7 +30,7 @@ body {
   font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
   line-height: 1.5;
   font-weight: 300;
-  color: #111;
+  color: #000;
   background-color: #fdfdfd; }
 
 /**
@@ -88,7 +88,7 @@ a {
   a:visited {
     color: #1756a9; }
   a:hover {
-    color: #111;
+    color: #000;
     text-decoration: underline; }
 
 /**
@@ -291,7 +291,7 @@ td.corner {
     margin-left: 0;
     margin-right: 0; }
   .page-content p {
-    margin-bottom: 1em; }
+    margin-bottom: 1.5em; }
   .page-content h1 {
     font-size: 175%; }
   .page-content h2 {
@@ -411,6 +411,10 @@ hr {
 
 .caption :last-child {
   margin-bottom: 0; }
+
+.important_list {
+  list-style-position: inside;
+  font-weight: bold; }
 
 .site-header {
   text-align: center;

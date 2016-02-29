@@ -15,80 +15,100 @@
 
   <style>
   /* dynamically assigns category colors */
-  #sel_20160205composers-sketchpad {
-  background-color: #f0f0ed; }
+  #sel_20160227path-rendering-in-composers-sketchpad {
+  /*background-color: mix($category-programming-color, white, 30%);*/
+  background-color: white; }
+  #sel_20160227path-rendering-in-composers-sketchpad .post-title {
+    /*color: mix($category-programming-color, black, 60%);*/
+    background-color: #e4b7b6; }
+
+#sel_20160205composers-sketchpad {
+  /*background-color: mix($category-default-color, white, 30%);*/
+  background-color: white; }
   #sel_20160205composers-sketchpad .post-title {
     /*color: mix($category-default-color, black, 60%);*/
     background-color: #d8d8cf; }
 
 #sel_20151226the-perfect-travel-gaiwan {
-  background-color: #f0f0ed; }
+  /*background-color: mix($category-default-color, white, 30%);*/
+  background-color: white; }
   #sel_20151226the-perfect-travel-gaiwan .post-title {
     /*color: mix($category-default-color, black, 60%);*/
     background-color: #d8d8cf; }
 
 #sel_20151225the-stanley-64oz-classic-vacuum-growler {
-  background-color: #f0f0ed; }
+  /*background-color: mix($category-default-color, white, 30%);*/
+  background-color: white; }
   #sel_20151225the-stanley-64oz-classic-vacuum-growler .post-title {
     /*color: mix($category-default-color, black, 60%);*/
     background-color: #d8d8cf; }
 
 #sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
-  background-color: #f5e4e3; }
+  /*background-color: mix($category-programming-color, white, 30%);*/
+  background-color: white; }
   #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
     /*color: mix($category-programming-color, black, 60%);*/
     background-color: #e4b7b6; }
 
 #sel_20150929backgroundifier {
-  background-color: #f4fbff; }
+  /*background-color: mix($category-releases-color, white, 30%);*/
+  background-color: white; }
   #sel_20150929backgroundifier .post-title {
     /*color: mix($category-releases-color, black, 60%);*/
     background-color: #e3f6ff; }
 
 #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap {
-  background-color: #f0f0ed; }
+  /*background-color: mix($category-default-color, white, 30%);*/
+  background-color: white; }
   #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap .post-title {
     /*color: mix($category-default-color, black, 60%);*/
     background-color: #d8d8cf; }
 
 #sel_20150308who-cares-about-the-apple-watch-edition {
-  background-color: #ffe8c7; }
+  /*background-color: mix($category-technology-color, white, 30%);*/
+  background-color: white; }
   #sel_20150308who-cares-about-the-apple-watch-edition .post-title {
     /*color: mix($category-technology-color, black, 60%);*/
     background-color: #ffc26b; }
 
 #sel_20150201vancouver {
-  background-color: #fefedf; }
+  /*background-color: mix($category-travel-color, white, 30%);*/
+  background-color: white; }
   #sel_20150201vancouver .post-title {
     /*color: mix($category-travel-color, black, 60%);*/
     background-color: #fdfdab; }
 
 #sel_20150131state_of_the_union {
-  background-color: #f0f0ed; }
+  /*background-color: mix($category-default-color, white, 30%);*/
+  background-color: white; }
   #sel_20150131state_of_the_union .post-title {
     /*color: mix($category-default-color, black, 60%);*/
     background-color: #d8d8cf; }
 
 #sel_20141119whats_up_with_google_maps_these_days {
-  background-color: #ffe8c7; }
+  /*background-color: mix($category-technology-color, white, 30%);*/
+  background-color: white; }
   #sel_20141119whats_up_with_google_maps_these_days .post-title {
     /*color: mix($category-technology-color, black, 60%);*/
     background-color: #ffc26b; }
 
 #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard {
-  background-color: #f5e4e3; }
+  /*background-color: mix($category-programming-color, white, 30%);*/
+  background-color: white; }
   #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard .post-title {
     /*color: mix($category-programming-color, black, 60%);*/
     background-color: #e4b7b6; }
 
 #sel_20140918old_iphone_tricks_gps_tracker {
-  background-color: #fefedf; }
+  /*background-color: mix($category-travel-color, white, 30%);*/
+  background-color: white; }
   #sel_20140918old_iphone_tricks_gps_tracker .post-title {
     /*color: mix($category-travel-color, black, 60%);*/
     background-color: #fdfdab; }
 
 #sel_20130828gathering-the-goods-part-2 {
-  background-color: #fefedf; }
+  /*background-color: mix($category-travel-color, white, 30%);*/
+  background-color: white; }
   #sel_20130828gathering-the-goods-part-2 .post-title {
     /*color: mix($category-travel-color, black, 60%);*/
     background-color: #fdfdab; }
@@ -138,6 +158,121 @@
 
   <article class="post-content">
     <p><img src="/images/composers-sketchpad/icon.png" alt="" /></p>
+
+<!-- TODO: move most of this to one of the global scss files -->
+
+<style>
+.toc {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 0.2em;
+  border-color: #93d7ff;
+  border-radius: 2em;
+  width: 80%;
+  background-color: #c6eaff; }
+
+.toc_header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+
+.toc_header {
+  text-align: left;
+  margin-bottom: 0.75em !important; }
+
+.toc_header > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0.5em !important;
+  margin-right: 0.5em !important;
+  padding: 0; }
+
+.toc_header :first-child {
+  margin-left: 0 !important; }
+
+.toc_header :last-child {
+  margin-right: 0 !important; }
+
+.toc_header > p {
+  font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.1em;
+  color: #444;
+  font-weight: 500;
+  /*line-height: 140%;*/ }
+
+.toc_header > a {
+  min-width: 5em;
+  max-width: 5em; }
+
+.toc_links {
+  /*text-align: center;*/ }
+
+.toc_links > ol {
+  font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.1em;
+  font-weight: 500; }
+
+.toc_links > ol {
+  margin: 0;
+  list-style-position: inside;
+  counter-reset: i 0; }
+
+.toc_links li {
+  padding: 0.15em 0.5em 0.15em 0.5em; }
+
+.toc a {
+  text-decoration: underline; }
+
+</style>
+
+<style>
+.toc_links > ol li:nth-child(1) {
+/*color: darkgreen;*/
+color: green;
+border-radius: 0.5em;
+background-color: lightgreen;
+/*border: 1px dashed green;*/
+}
+.toc_links > ol li:nth-child(1) a {
+text-decoration: none;
+pointer-events: none;
+cursor: default;
+color: inherit;
+text-decoration: inherit;
+}
+</style>
+
+<p>
+<div class="toc">
+    <div class="toc_header">
+        <a href="http://www.composerssketchpad.com"><img src="/images/composers_sketchpad_icon.png" /></a>
+        <p>This blog post is part of a series on the development of <a href="http://www.composerssketchpad.com">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>
+    </div>
+
+    <div class="toc_links">
+        <ol>
+        <li><a href="/2016/02/05/composers-sketchpad">Rethinking Musical Notation with Composer's Sketchpad</a></li>
+        <li><a href="/2016/02/27/path-rendering-in-composers-sketchpad">Path Rendering in Composer's Sketchpad</a></li>
+        </ol>
+    </div>
+</div>
+</p>
 
 <p>Just last month, I released my first major project for the iPad: <a href="http://www.composerssketchpad.com">Composer’s Sketchpad</a>!</p>
 
