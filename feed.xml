@@ -6,9 +6,164 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 17 Mar 2016 16:07:40 -0700</pubDate>
-    <lastBuildDate>Thu, 17 Mar 2016 16:07:40 -0700</lastBuildDate>
+    <pubDate>Thu, 24 Mar 2016 16:26:26 -0700</pubDate>
+    <lastBuildDate>Thu, 24 Mar 2016 16:26:26 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Liberating Pitch and Taming MIDI in Composer&#39;s Sketchpad</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/composers-sketchpad-absolute-pitch/banner.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- TODO: move most of this to one of the global scss files --&gt;
+
+&lt;style&gt;
+.toc {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 0.2em;
+  border-color: #93d7ff;
+  border-radius: 2em;
+  width: 80%;
+  background-color: #c6eaff; }
+
+.toc_header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+
+.toc_header {
+  text-align: left;
+  margin-bottom: 0.75em !important; }
+
+.toc_header &gt; * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 0.5em !important;
+  margin-right: 0.5em !important;
+  padding: 0; }
+
+.toc_header :first-child {
+  margin-left: 0 !important; }
+
+.toc_header :last-child {
+  margin-right: 0 !important; }
+
+.toc_header &gt; p {
+  font-family: &#39;Avenir Next&#39;, &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
+  font-size: 1.1em;
+  color: #444;
+  font-weight: 500;
+  /*line-height: 140%;*/ }
+
+.toc_header &gt; a {
+  min-width: 5em;
+  max-width: 5em; }
+
+.toc_links {
+  /*text-align: center;*/ }
+
+.toc_links &gt; ol {
+  font-family: &#39;Avenir Next&#39;, &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
+  font-size: 1.1em;
+  font-weight: 500; }
+
+.toc_links &gt; ol {
+  margin: 0;
+  list-style-position: inside;
+  counter-reset: i 0; }
+
+.toc_links li {
+  padding: 0.15em 0.5em 0.15em 0.5em; }
+
+.toc a {
+  text-decoration: underline; }
+
+&lt;/style&gt;
+
+&lt;style&gt;
+.toc_links &gt; ol li:nth-child(3) {
+/*color: darkgreen;*/
+color: green;
+border-radius: 0.5em;
+background-color: lightgreen;
+/*border: 1px dashed green;*/
+}
+.toc_links &gt; ol li:nth-child(3) a {
+text-decoration: none;
+pointer-events: none;
+cursor: default;
+color: inherit;
+text-decoration: inherit;
+}
+&lt;/style&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;toc&quot;&gt;
+    &lt;div class=&quot;toc_header&quot;&gt;
+        &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;
+        &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;toc_links&quot;&gt;
+        &lt;ol&gt;
+        &lt;li&gt;&lt;a href=&quot;/2016/02/05/composers-sketchpad&quot;&gt;Rethinking Musical Notation with Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/2016/02/27/path-rendering-in-composers-sketchpad&quot;&gt;Path Rendering in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/&quot;&gt;Liberating Pitch and Taming MIDI in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I wanted Composer’s Sketchpad to have the ability to represent musical notes at any pitch. In order to do this, I needed to solve two problems: representing arbitrary pitches internally and making them compatible with MIDI.&lt;/p&gt;
+
+&lt;p&gt;Human perception of pitch follows a logarithmic curve, meaning that a frequency will sound an octave higher when multiplied by two. However, we tend to think of notes in a linear fashion: C4 is a fixed distance from C3 on the piano, just as C3 is from C2.&lt;/p&gt;
+
+&lt;p&gt;The naive approach to representing pitch would be to simply store the frequency in hertz and be done with it. But this didn’t sit right with me: since my canvas depicted pitches linearly like on a piano keyboard, I’d have to be constantly taking the logarithm of my points and subsequently introducing possible floating point errors as we went up the ladder. The pitches would also have to be stored as irrational floating point numbers, making it impossible to tell whether a point is sitting precisely on a pitch gridline.&lt;/p&gt;
+
+&lt;p&gt;So I decided to represent my pitches as &lt;a href=&quot;https://en.wikipedia.org/wiki/Cent_(music)&quot;&gt;cents&lt;/a&gt;. Cents are the linear unit counterpart to frequency: C4 is 1200 cents from C3, and C3 is 1200 cents from C2. (Per equal temperament tuning, each piano key is 100 cents apart from the next.) This means that cents aren’t an absolute unit like pitch, but rather the function of two frequencies: in order to get the expected 1200 cents from C4 (261.6Hz) to C3 (130.8Hz) we take the base-2 logarithm of C4 divided by C3 and multiply by 1200. As convenient as these units were, I still needed to represent my points in an absolute way, and so I created an internal unit of “absolute cents”: simply the number of cents a pitch is from A440. If you peek inside a Composer’s Sketchpad JSON file, you’ll see that C4 has a value of -900, B4 a value of -1000, etc. Mathemtacially convenient and human-readable!&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;img src=&quot;/images/composers-sketchpad-absolute-pitch/cents.png&quot; /&gt;
+&lt;p&gt;Different representations of pitch for the inflection points on a single note.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The second problem was a little trickier. Internally, the app was using the built-in MIDI functionality found on iOS, in the form of &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/AudioToolbox/Reference/MusicPlayerServices_Reference/index.html&quot;&gt;MusicPlayer&lt;/a&gt; and AUMIDISynth. Unfortunately, traditional MIDI — having been designed in the stone age of computing — didn’t support arbitrary pitch values. Instead, you were given a measly 128 MIDI notes, each corresponding to a note on a standard, equally-tempered (and slightly extended) piano. This was great for interfacing with hardware MIDI keyboards, but hardly appropriate for playing back arbitrary pitches.&lt;/p&gt;
+
+&lt;p&gt;(To be clear: MIDI is simply a standard for sending instructions to a synthesizer. While the standard is very limited and fiddly, it does have the advantage of being supported ubiquitously. You can also save your MIDI packets to a file and use it with a wide variety of software. However, synthesizers themselves are usually much more robust. When interfacing with them directly, you may well be able to play arbitrary pitches and use other custom functionality. The thing you’d lose by going this route is compatibility with existing technology, which is frankly a very big hurdle.)&lt;/p&gt;
+
+&lt;p&gt;There are several ways to alter the pitch of a MIDI note, some more widely supported than others. The most common is using the pitch-bend wheel. Another is using the &lt;a href=&quot;https://en.wikipedia.org/wiki/MIDI_Tuning_Standard&quot;&gt;MIDI Tuning “Standard”&lt;/a&gt; (which is in fact hardly supported anywhere). Yet another is using polyphonic aftertouch, but only after setting up your synthesizer to correctly parse the signals. For its ubiquity and semantic correctness, I decided to go with the pitch-bending approach. To play back an arbitrary pitch, I’d simply play the closest MIDI note and then bend it up or down to the desired frequency. However, there were two issues with this approach. First, the pitch-bend wheel applied bending to the entire keyboard range, not just individual notes. This meant that with the naive implementation, you could only play a single arbitrary pitch at a time! Second, the default range for the entire pitch-bend wheel was a measly whole tone up or down, which was simply insufficient for arbitrary bends. (For wider bends, one might consider getting around this problem by bending to a note, stopping the first note, playing the second note, and continuing the bend. However, this sounds pretty poor due to the fact that most instruments have a distinctive-sounding “attack” that appears as soon as you play a note. This makes the bend sound discontinuous at MIDI note boundaries.)&lt;/p&gt;
+
+&lt;p&gt;I’ll get into the specifics of my MIDI architecture in a later article, but in brief, I solved the first problem using MIDI channels and multiple MIDI instruments. A MIDI instrument can often have 16 so-called channels, which are sort of like presets. Each channel has its own setting for instrument, volume, vibrato, and — conveniently — pitch bend, among many other properties. Whenever you play a MIDI note, you assign it to a channel and it plays with the corresponding properties for that channel. For my use case, this meant that if I used each MIDI channel for playing just a single note at a time (as opposed to the usual approach of playing multiple notes per channel and assigning each channel to a unique instrument), I could have 16 notes simultaneously pitch-bending at once! I wanted more polyphonic notes than that, however, so I decided to simply create a new virtual MIDI synth for each instrumental layer in my app: 16 channels per instrument, with 10 maximum instruments at once (for now). Surprisingly, even 10 maxed-out MIDI synths playing simultaneously didn’t peg my iPad 3’s CPU too hard. Kudos to a great audio architecture!&lt;/p&gt;
+
+&lt;p&gt;The second problem — limited pitch-bend range — was solved using a so-called &lt;a href=&quot;http://www.blitter.com/~russtopia/MIDI/~jglatt/tech/midispec/rpn.htm&quot;&gt;MIDI RPN&lt;/a&gt;, or registered parameter number. These are special, widely-supported MIDI commands that let you configure certain properties of your synth, with one of the primary ones being the range of your pitch-bend wheel. (Note that I say &lt;em&gt;widely&lt;/em&gt; supported, not universally. Only about half the software I’ve tried seems to understand the pitch-bend range RPN. Fortunately, Apple’s built-in synth does just fine.) Rather than having each tick on my virtual pitch-bend wheel correspond to 0.024 cents (as is the default), I sent an RPN command at the start of playback to make each tick equal to one cent. Completely impractical for a physical weel, but quite conveinent for our use case! (Incidentally, this makes the new pitch-bend range +/- almost 7 octaves. Except for the most esoteric use cases, it’s totally unnecessary to go any further than that, since even a pitch-bend of a single octave sounds pretty terrible on most synths.)&lt;/p&gt;
+
+&lt;p&gt;All in all, it’s a messy, imperfect system, but it gets the job done. I can take a bunch of pitches stored as “absolute cents” in my JSON file, push them through a few conversion functions, retrieve a set of MIDI packets on the other end, send them to a bunch of virtual MIDI synths, and have them sound as the correct, precise audio frequencies through my speakers. Maybe someday a more modern standard like OSC will reign supreme and allow this sort of architecture to be radically simplified, but for now, we’re unfortunately a bit stuck in the 80’s.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 24 Mar 2016 01:18:04 -0700</pubDate>
+        <link>http://beta-blog.archagon.net/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Path Rendering in Composer&#39;s Sketchpad</title>
@@ -124,6 +279,7 @@ text-decoration: inherit;
         &lt;ol&gt;
         &lt;li&gt;&lt;a href=&quot;/2016/02/05/composers-sketchpad&quot;&gt;Rethinking Musical Notation with Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&quot;/2016/02/27/path-rendering-in-composers-sketchpad&quot;&gt;Path Rendering in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/&quot;&gt;Liberating Pitch and Taming MIDI in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
         &lt;/ol&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -184,12 +340,14 @@ text-decoration: inherit;
 &lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;In retrospect, it was quite fortunate that I just happened to fall into the optimal rendering implementation for my project. My path rendering requirements were a little different from the norm: after eliminating point #5 from my initial goal list, I no longer needed most of my curves to be dynamic. The only curves that actually changed their structure from frame to frame were those belonging to the notes currently being drawn or erased — and even those were localized to the point of editing, since my notes were comprised of multiple tiny Bézier segments chained together. (I’ll talk details in a later article.) Instead, my highest priority was to translate and scale my notes at a constant 60fps while still preserving their sharpness, and polygons happened to be uniquely qualified for this task. At the expense of jaggedness on close zoom — fine by me — polygon tessellation effectively gave me infinite resolution along with free transforms. They were also perfectly suited for caching: once tessellated, I could store the vertices of the generated polygons for all my note objects without wasting too much space, wheareas doing the same with textures would have quickly filled up my memory. (To say nothing of being terribly ugly when scaled.) Better yet, I eventually learned from profiling that it was the tessellation step — not drawing — that was the biggest roadblock in my path rendering implementation, so caching was absolutely critical to getting the performance I needed! Had I used a shader-based approach, I would have had to write a ton of additional code to enable caching, and it &lt;em&gt;still&lt;/em&gt; probably wouldn’t have gotten close to my 60fps benchmark for large scenes.&lt;/p&gt;
+&lt;p&gt;In retrospect, it was quite fortunate that I just happened to fall into the optimal rendering implementation for my project. My path rendering requirements were a little different from the norm: after eliminating point #5 from my initial goal list, I no longer needed most of my curves to be dynamic. The only curves that actually changed their structure from frame to frame were those belonging to the notes currently being drawn or erased — and even those were localized to the point of editing, since my notes were comprised of multiple tiny Bézier segments chained together. (I’ll talk details in a later article.) Instead, my highest priority was to translate and scale my notes at a constant 60fps while still preserving their sharpness, and polygons happened to be uniquely qualified for this task. At the expense of jaggedness on close zoom — fine by me — polygon tessellation effectively gave me infinite resolution along with free transforms. They were also perfectly suited for caching: once tessellated, I could store the vertices of the generated polygons for all my note objects without wasting too much space, wheareas doing the same with textures would have quickly filled up my memory. (To say nothing of looking terribly ugly when scaled.) Better yet, I eventually learned from profiling that it was the tessellation step — not drawing — that was the biggest roadblock in my path rendering implementation, so caching was absolutely critical to getting the performance I needed! Had I used a shader-based approach, I would have had to write a ton of additional code to enable caching, and it &lt;em&gt;still&lt;/em&gt; probably wouldn’t have gotten close to my 60fps benchmark for large scenes.&lt;/p&gt;
 
 &lt;p&gt;For convenience, I decided to use &lt;a href=&quot;http://cocos2d.spritebuilder.com&quot;&gt;Cocos2d&lt;/a&gt; as the graphical core of my project, so I had to figure out a way to wedge MonkVG in there somehow. 
 Fortunately, it was fairly simple to write a Cocos2d &lt;code&gt;CCNode&lt;/code&gt; wrapper around MonkVG’s rendering functions, since each &lt;code&gt;CCNode&lt;/code&gt; in Cocos2d had a lovely overridable &lt;code&gt;draw&lt;/code&gt; method that allowed you to call OpenGL functions directly. (One reason why you might want to use it over SpriteKit!) Still, especially as the project moved forward, the framework was becoming a massive cognitive burden. MonkVG had a fairly old and creaky codebase, and as the hacks I made to enable unsupported features such as real-time color changes piled on, I realized that it would take me forever to actually fix everything up and integrate it into my project in a sensible and modern way. Additionally, the one-VBO-per-curve approach was quickly becoming unwieldily. Already I had to synchronize a ton of state between MonkVG and the rest of my app in order to cache previously-tessellated curves for performance reasons; far more daunting was the idea of cycling VBOs in and out of GPU memory while retaining the underlying geometry client-side, which I wasn’t doing yet. Unfortunately, this was going to be necessary to enable my potentially-infinite canvas, and MonkVG didn’t natively support it.&lt;/p&gt;
 
 &lt;p&gt;At this point, I realized that even though writing my own hardware-accelerated path renderer was probably too much work, my path rendering needs were actually very simple. I didn’t need to create unions of shapes, arbitrary curves, or even strokes! All my note shapes were simple Bézier “tubes” with round endcaps and outlines, and so creating a super-simple note renderer for direct use in Cocos2d would require minimal effort. Better yet, most of the work was done already: for the purpose of creating better outlines, I was already interpolating all of my Bézier curves myself and only using MonkVG to draw and tessellate the final polygon tubes from the perimeter vertices. The only thing I needed to do was to create polygon strips from my points and send them through Cocos2d’s native rendering system, as well as to write a bit of code for the round endcaps. Sure, it bummed me out that this would preclude me from creating more complex and dynamic shapes in the future, but I was on a deadline and the project needed to be shipped. Despite my initial trepidation, the process was extremely quick and only took a couple of days of work.&lt;/p&gt;
+
+&lt;p&gt;As I dove deeper into Cocos2d’s architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called “geometry streaming”.) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What’s more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate &lt;code&gt;CCNode&lt;/code&gt;s. This was a massive benefit I was not expecting!&lt;/p&gt;
 
 &lt;p&gt;
 &lt;div class=&quot;caption&quot;&gt;
@@ -197,8 +355,6 @@ Fortunately, it was fairly simple to write a Cocos2d &lt;code&gt;CCNode&lt;/code
 &lt;p&gt;The final path rendering pipeline.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/p&gt;
-
-&lt;p&gt;As I dove deeper into Cocos2d’s architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called “geometry streaming”.) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What’s more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate &lt;code&gt;CCNode&lt;/code&gt;s. This was a massive benefit I was not expecting!&lt;/p&gt;
 
 &lt;p&gt;There was a new problem, though. With the new path rendering system (now using geometry streaming), my performance hovered at around 50%-70% of what I was getting in MonkVG. Intuitively, I feared that a fix was impossible: wouldn’t uploading thousands of polygons in every frame be naturally more resource-intensive than storing polygons in VBOs for later reuse? But after some digging, I learned something very interesting: OpenGL ES actually allowed you to map GPU memory directly into a shared application-space buffer, eliminating the need to “upload” your geometry at all! I did a sanity check and realized that there was &lt;em&gt;no way&lt;/em&gt; that copying even hundreds of thousands of polygons to a buffer could be the roadblock. But Cocos2d was already using memory mapping in its renderer! So what was the problem?&lt;/p&gt;
 
@@ -347,6 +503,7 @@ text-decoration: inherit;
         &lt;ol&gt;
         &lt;li&gt;&lt;a href=&quot;/2016/02/05/composers-sketchpad&quot;&gt;Rethinking Musical Notation with Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&quot;/2016/02/27/path-rendering-in-composers-sketchpad&quot;&gt;Path Rendering in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/&quot;&gt;Liberating Pitch and Taming MIDI in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
         &lt;/ol&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -956,33 +1113,6 @@ Your browser does not support the video tag.
         
         
         <category>travel</category>
-        
-      </item>
-    
-      <item>
-        <title>State of the Union</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/portrait_with_silly_cat.jpg&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I’m sure bad at this blogging thing. Since I first set out in — technically, July 2013, but let’s say August — I’ve only gotten &lt;em&gt;one week&lt;/em&gt; into my journey before hanging up. I’d like to see if I can try again, perhaps this time with a little more success.&lt;/p&gt;
-
-&lt;p&gt;Right now, I’m writing this from Dublin, Ireland. In the interim, since my last entry from an actual city, I’ve visited Vancouver, Toronto, Montreal, Quebec City, New York, Boston, Philadelphia, Chicago, New Orleans, Austin, Los Angeles, Barcelona, Paris, London, Cornwall, Bath, Oxford, Cambridge, York, Newcastle, Edinburgh, Amsterdam, Luxembourg, Prague, Berlin, Vienna, Ljubljana, Zagreb, Split, Bologna, Modena, Milan, Florence, Rome, and Turin — plus a number of smaller towns along the way. That’s more than a dozen different countries over the course of the past two years. To the person first setting out on this trip — the person who expected to arrive in London and cautiously venture to other countries only on rare occasion — this list would have been unimaginable. I was nervous. I’d never been alone in a place where the primary language wasn’t English. I wasn’t sure about the logistics. I didn’t even know if I’d be able to tinker with my projects in peace.&lt;/p&gt;
-
-&lt;p&gt;But it’s all worked out. I’ve cracked the code. With some trial and error, I’ve figured out how to live affordably and comfortably in different cities around the world. I’ve gotten a lot more bold about venturing to places where I have to resort to broken apologetic phrases in a new language. I’ve discovered many breathtaking sights, incredible architectural wonders, and fascinating local tastes. I’ve pared my belongings down to a bare minimum appropriate for most climates. I’ve worked in many lovely cafés, bars, and apartments. I feel like I understand so much more about the world than when I started.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, I’ve also had to face certain facets of myself head-on, with uncertain results. I’ve learned that my impression of different cities around the world was heavily painted by my childhood imagination. The places I’d hoped would bring my soul some peace — a magical sort of quality that I faintly recall in cities like London, Barcelona, and Rome from when I was little — were found to be fairly ordinary in contrast. I’ve found it disheartening to overwrite so much impressionistic imagery in my head with reality — because I know those feelings will never be back. I’ve learned that no matter how lonely I might get at times, there is still no part of me that will seek out others for company. I’ve learned that I can swallow up entire months at a time and wake up on the other end a good chunk older, but with nothing to show for it. All the attributes I hated about myself as a young teen are still there, entrenched, and at this point as much a part of my personality as anything else. I’ve learned that there are parts of me that I constantly have to fight, lest I end up old, unfulfilled, and alone. &lt;/p&gt;
-
-&lt;p&gt;I’ve also learned that time moves quickly, and that it’s easy to get stuck in a simple routine. I’ve developed a great, burning fear that prods me almost every waking minute. The fear of aging. The fear of death. The fear of it “being too late”. Every day, I count the fractions of my age. 26 point 0. Point 25. Point 3, repeating. Every day that I’m not doing something productive — which is most days, to be honest — I feel like I’m actively destroying my potential. Other dates have been creeping into my head, too. How old is too old to live in a house with other people? How old is too old to get married? To have kids, if I decide to have them? To have a nice house, friendly neighbors, warm dinner parties? When I was in college, I half-jokingly feared that my study habits — put it off, put it off, then half-ass it on the last day — would translate in broader strokes to the rest of my life. But now I see that this was no joke. This is exactly what happens when you let a negative aspect of your personality fester for years and years.&lt;/p&gt;
-
-&lt;p&gt;But these dark thoughts are not a reflection on travel. My journey has neither been a negative experience nor an entirely positive one. I see it as just another page in the book of my life: many new and interesting inputs from the environment feeding into the black box of my mind, allowing me to discover new truths about the world and myself.&lt;/p&gt;
-
-&lt;p&gt;So that’s what’s going on in my head on this day, January the 31st, 2015, in the city of Dublin. And now, let’s step back into the past, to Vancouver, as it was during the &lt;a href=&quot;/2015/02/01/vancouver/&quot;&gt;last few weeks of August of 2013&lt;/a&gt; …&lt;/p&gt;
-
-&lt;p&gt;(Technical note: from this point on, I will be posting all my blog entries on the &lt;a href=&quot;http://beta-blog.archagon.net&quot;&gt;beta-blog&lt;/a&gt; subdomain of my website. They will be linked from the main site, but I highly suggest reading on beta-blog instead. Eventually, the main site — hosted on Squarespace — will be removed, and the beta-blog page — hosted on Github Pages using a static site generator — will replace it. I will backport all the existing entries before I do that, and all the links should still hopefully work.)&lt;/p&gt;
-</description>
-        <pubDate>Sat, 31 Jan 2015 17:00:00 -0800</pubDate>
-        <link>http://beta-blog.archagon.net/2015/01/31/state_of_the_union/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2015/01/31/state_of_the_union/</guid>
-        
         
       </item>
     
