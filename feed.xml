@@ -6,9 +6,41 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 24 Mar 2016 16:26:26 -0700</pubDate>
-    <lastBuildDate>Thu, 24 Mar 2016 16:26:26 -0700</lastBuildDate>
+    <pubDate>Tue, 21 Jun 2016 19:31:53 -0700</pubDate>
+    <lastBuildDate>Tue, 21 Jun 2016 19:31:53 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Headphone Jacks are the New Power Plugs</title>
+        <description>&lt;p&gt;Blog comments are out, blog responses are in — and so I thought I’d respond to John Gruber’s recent article titled &lt;a href=&quot;http://daringfireball.net/2016/06/headphone_jacks_are_the_new_floppy_drives&quot;&gt;“Headphone Jacks Are the New Floppy Drives”&lt;/a&gt;. Here’s why I think removing the headphone jack would be a bad idea at this moment in time:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Poor wireless options and standards. I use Bluetooth headphones and I love them, but they’re a world of compromises. Audio quality is far from lossless, and not just because of the codecs: with the sound off, you are likely to hear noise and static from the radio right next to your ear. (This does not bother me, but would drive many people crazy.) Switching between devices is a pain. Pairing is a pain. You have to remember to charge them. There is unbearable latency for games and occasionally even movies. Few audiophile-level headphone makers bother with Bluetooth headphones, leaving us with just the consumer brands. They can only be as powerful as the battery-powered driver. Might Apple introduce a new wireless codec that tackles all of these pain points? Sure. But then we get:&lt;/li&gt;
+  &lt;li&gt;Vendor lock-in. Apple Wireless or Lighning headphones wouldn’t be compatible with much else. Not a problem for cheap earbuds, but definitely a big deal for high-quality, $400+ headphones. After years of freedom, audio would be siloed. As Gruber mentions, this is in Apple’s best interests; but among all our gadgets, headphones have always been among the most universal and independent. They are a true analog path between our disparate electronics — an intuitive and surprisingly error-free technolgoy in a world where devices routinely refuse to talk to each other. You wouldn’t find yourself spending an hour helping your mom troubleshoot the headphone jack. This change would be a major pain point, especially when it comes to:&lt;/li&gt;
+  &lt;li&gt;Loss of plug-and-play. I constantly plug my headphones from my phone to my laptop and back. Bluetooth can &lt;em&gt;sort of&lt;/em&gt; do this, but it always takes me about a minute with my wireless headphones. With Lightning headphones, it wouldn’t even be a possibility. (Barring Lightning-endowed Macbooks, which would be utterly bizzarre. What else would that port be used for? How would it be differentiated from USB-C?) A once-flexible workflow would be completely subverted.&lt;/li&gt;
+  &lt;li&gt;Needless complication. Headphones are a very simple thing: just a wire leading to drivers. Very few things can go wrong in this arrangement, as evidenced by the proven durability and versatility of headphones over the past few decades. Headphone makers have gotten really good at working with these few parameters to create truly world-class audio devices. Indeed, some of the most esteemed headphones in the low-end audiophile space (I’m thinking of Grados) are basically glued together by hand in a workshop. If we start shoving more electronics — Lightning circuitry or a DAC, most obviously — into headphones, we make this proven system far more brittle than it needs to be. Headphones will malfunction in frustrating ways. Noise will be introduced. Designs will become more bloated to accommodate the extra circuitry. Every headphone having its own DAC is like every monitor having its own video card: clearly putting technology on the wrong side of the divide.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What is all this for? What do we gain in return?&lt;/p&gt;
+
+&lt;p&gt;In the past, every time a prominent piece of technology was removed from my Apple hardware — most recently the CD drive and the Ethernet port — my response was ambivalent because I had already been happily using the alternative for a while. Wi-Fi, despite its flaws, offered countless advantages over Ethernet, leading to rapid adoption. Steam, iTunes, and Netflix had made me almost forget that CDs were still a thing by the time I got my Retina Macbook Pro. It almost goes without saying that these technologies were standard and universal — nobody would have accepted them otherwise. But there’s no Next Best Thing in headphones. This is an entirely artificial change.&lt;/p&gt;
+
+&lt;p&gt;Were there an existing high-quality wireless standard for headphones, I’d be somewhat on board, especially if the phone could be waterproofed in exchange. But we’re not there yet, and I fear that in this instance, Apple is looking out for their corporate interests instead of their users. When Apple removes features, I can usually envision the “better tomorrow” they’re striving for. Here, what future can we look forward to if we’re all using bloated, proprietary, and fragile headphones that sound like garbage?&lt;/p&gt;
+
+&lt;p&gt;I can already hear the cry that “the average consumer won’t care”. Sure, maybe not. But their listening experience wouldn’t really be improved by the change, their options for audio hardware would become a lot more limited, and their lives would become riddled with new minor frustrations. The “average consumer” doesn’t care about typography, True Tone displays, or Retina graphics, either. But it all adds up. I respect Apple because they’re internally motivated to strive for quality, and a move towards pointless proprietary standards — towards profit-driven mediocrity with the “average consumer” as a scapegoat — would be a sad blow to that image.&lt;/p&gt;
+
+&lt;p&gt;There’s a good chance I’ll keep buying iPhones without a headphone jack, but also a 100% chance I’ll end up carrying a 3.5mm adaptor wherever I go. One more thing to lose. A permanent ugly tail sticking out of Ive’s immaculately-designed round rect.&lt;/p&gt;
+
+&lt;p&gt;Good work, team?&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Jun 2016 18:49:04 -0700</pubDate>
+        <link>http://beta-blog.archagon.net/2016/06/21/headphones/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2016/06/21/headphones/</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
     
       <item>
         <title>Liberating Pitch and Taming MIDI in Composer&#39;s Sketchpad</title>
@@ -1057,62 +1089,6 @@ text-decoration: inherit;
         
         
         <category>technology</category>
-        
-      </item>
-    
-      <item>
-        <title>Vancouver</title>
-        <description>&lt;p&gt;On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and headed up north in the direction of Vancouver. I couldn’t resist bringing along a small bag of produce and dairy that I’d been using to cook in the hostels, even though it added a few pounds of heft to my already-painful load. (This pattern will be shown to repeat itself throughout my travels.)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://maps.googleapis.com/maps/api/staticmap? &amp;amp;center=Victoria, BC &amp;amp;size=1000x400 &amp;amp;scale=2 &amp;amp;zoom=6 &amp;amp;markers=color:red%7CPacific Central Station, Vancouver, BC &amp;amp;path=color:blue%7CAmtrak Station, San Jose, CA|King Street Station, Seattle, WA &amp;amp;path=color:red%7CKing Street Station, Seattle, WA|Pacific Central Station, Vancouver, BC &amp;amp;key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA&quot; width=&quot;1000px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The ride was clean and beautiful. We planted ourselves in the observation car for most of the 4-hour trip. Dangerous electric tea was made. I was introduced to a devious card game called Bartok, in which each player adds a new, arbitrary rule during their turn. Every time a player breaks a rule or asks a question, they draw a card. As you might expect, it gets a little bit crazy.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&quot;image-series&quot;&gt;
-&lt;img src=&quot;/images/vancouver-2013/train1.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/train2.jpg&quot; /&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;Half an hour from the border, I realized that I was woefully underprepared for my customs interview. What was I doing? Where was I going? Should I have brought some printouts of my itinerary? &lt;em&gt;Did I need to hide my butter?!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;The border agent gave my slightly disheveled self a stern look before letting me through. Little did he know of my contraband!&lt;/p&gt;
-
-&lt;p&gt;I booked into my hostel, while my friends checked into a hotel in a… slightly seedy part of town. (Given how high Vancouver is rated in terms of life satisfaction, I didn’t even know it &lt;em&gt;had&lt;/em&gt; seedy parts!) We had a good laugh observing some friendly neighborhood drug dealers from the hotel room’s 3rd story window.&lt;/p&gt;
-
-&lt;p&gt;So… Vancouver! What’s it all about?&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&quot;image-series&quot;&gt;
-&lt;img src=&quot;/images/vancouver-2013/skylight.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/ducks.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/ships1.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/ships2.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/graffiti.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/road.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/hotel.jpg&quot; /&gt;
-&lt;img src=&quot;/images/vancouver-2013/cranes.jpg&quot; /&gt;
-&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;Well, it’s a peaceful little city. Stanley Park is lovely to walk through, and it seems like there’s a lot of interesting restaurants and other businesses. (Once place I want to give a shout-out to is &lt;a href=&quot;http://www.yelp.com/biz/fritz-european-fry-house-vancouver&quot;&gt;Fritz European Fry House&lt;/a&gt;. I don’t think the poutine there was “real” — the cheese curds were kind of melty — but it was still some of the best poutine-like stuff that I tasted during my Canadian trip.)&lt;/p&gt;
-
-&lt;p&gt;However, much like the last time I visited, it didn’t strike me as a city I wanted to spend too much time in. The architecture was kind of drab, and the whole place had an overbearing “new development” feel. Not cozy. Didn’t warm the heart. I don’t know how else to put it.&lt;/p&gt;
-
-&lt;p&gt;However, I’m very thankful for the company I had. The trip wouldn’t have been the same without it!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/vancouver-2013/group.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Onward we go… aboard the VIA Rail.&lt;/p&gt;
-
-&lt;video width=&quot;100%&quot; controls=&quot;&quot;&gt;
-	&lt;source src=&quot;/images/vancouver-2013/outbound.mp4&quot; type=&quot;video/mp4&quot; /&gt;
-Your browser does not support the video tag.
-&lt;/video&gt;
-</description>
-        <pubDate>Sun, 01 Feb 2015 00:00:00 -0800</pubDate>
-        <link>http://beta-blog.archagon.net/2015/02/01/vancouver/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2015/02/01/vancouver/</guid>
-        
-        
-        <category>travel</category>
         
       </item>
     
