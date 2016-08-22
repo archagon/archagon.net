@@ -111,7 +111,7 @@
 			"file": "_includes/categories.scss",
 			"settings":
 			{
-				"buffer_size": 233,
+				"buffer_size": 314,
 				"line_ending": "Unix"
 			}
 		},
@@ -148,18 +148,58 @@
 			}
 		},
 		{
-			"file": "css/main.scss",
+			"file": "_includes/composers_sketchpad_toc.html",
 			"settings":
 			{
-				"buffer_size": 1697,
-				"line_ending": "Windows"
+				"buffer_size": 2995,
+				"line_ending": "Unix",
+				"name": "<p>"
 			}
 		},
 		{
 			"file": "_sass/_layout.scss",
 			"settings":
 			{
-				"buffer_size": 4822,
+				"buffer_size": 5676,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/archagon/Documents/Programming/OSX/Composer's Sketchpad/Composer's Sketchpad/Classes/CSSynthInstrument.m",
+			"settings":
+			{
+				"buffer_size": 8434,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/archagon/Documents/Programming/OSX/Composer's Sketchpad/Composer's Sketchpad/Classes/CSSynthInstrumentDLS_SF2.m",
+			"settings":
+			{
+				"buffer_size": 6073,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "//\n//  CCUIScrollViewAdaptor.m\n//  Composer's Sketchpad\n//\n//  Created by Alexei Baboulevitch on 2015-3-4.\n//\n//\n\n#import \"CCUIScrollViewAdaptor.h\"\n#import \"CCUIScrollViewAdaptor_Private.h\"\n#import <UIKit/UIGestureRecognizerSubclass.h>\n\n// replicates view touch handling, with the additional benefit of being able to filter stylus touches\n@interface UIGestureRecognizerAny : UIGestureRecognizer\n@end\n\nNSString* NSStringFromUIGestureState(UIGestureRecognizerState aState) {\n    NSString* state;\n    \n    switch(aState) {\n        case UIGestureRecognizerStatePossible:\n            state = @\"possible\";\n            break;\n        case UIGestureRecognizerStateBegan:\n            state = @\"began\";\n            break;\n        case UIGestureRecognizerStateEnded:\n            state = @\"ended/recognized\";\n            break;\n        case UIGestureRecognizerStateCancelled:\n            state = @\"cancelled\";\n            break;\n        case UIGestureRecognizerStateChanged:\n            state = @\"changed\";\n            break;\n        case UIGestureRecognizerStateFailed:\n            state = @\"failed\";\n            break;\n    }\n    \n    return state;\n}\n\n@implementation CCUIScrollViewAdaptor\n\n@dynamic contentOffset;\n@dynamic contentInset;\n@dynamic scrollContentSize;\n@dynamic minimumZoomScale;\n@dynamic maximumZoomScale;\n@dynamic zoomScale;\n\n-(void) dealloc {\n    [_scrollView removeFromSuperview];\n    [_dummyView removeFromSuperview];\n    [_dummyZoomView removeFromSuperview];\n    \n    [_scrollView release];\n    [_dummyView release];\n    [_dummyZoomView release];\n    \n    [_touchToFakePencilTouch release];\n    \n    [super dealloc];\n}\n\n-(instancetype) initScrollAdaptorWithSuperview:(UIView*)superview {\n    self = [super initWithColor:[CCColor colorWithCcColor4b:ccc4(0, 0, 0, 0)] width:0 height:0];\n    \n    if (self) {\n        self.touchToFakePencilTouch = [NSMutableDictionary dictionary];\n        \n        self.superview = superview;\n        \n        // NOTE: currently provides no benefits over UIScrollView\n        UIScrollViewBehavior* scrollView = [[[UIScrollViewBehavior alloc] initWithFrame:CGRectZero] autorelease];\n        self.scrollView = scrollView;\n        scrollView.hidden = YES;\n        scrollView.delegate = self;\n        scrollView.delaysContentTouches = NO;\n        scrollView.userInteractionEnabled = NO;\n        \n        CCUIScrollViewAdaptorDummyView* dummyView = [[[CCUIScrollViewAdaptorDummyView alloc] initWithFrame:CGRectZero] autorelease];\n        [dummyView addSubview:self.scrollView]; // NOTE: I'm not sure why this has to be done anymore, but removing it screws everything up, especially re: zoom\n        dummyView.delegate = self;\n        self.dummyView = dummyView;\n        \n        self.dummyZoomView = [UIView new];\n        self.dummyZoomView.userInteractionEnabled = NO;\n        [self.scrollView addSubview:self.dummyZoomView];\n        \n        [self addView];\n        self.gestureRecognizersAdded = YES;\n    }\n    \n    return self;\n}\n\n#pragma mark - Fundamental State -\n\n-(void) setEnabled:(BOOL)enabled {\n    if (_enabled != enabled) {\n        _enabled = enabled;\n        \n        if (!_enabled) {\n            [self cancelGestures];\n            [self cancelMotion];\n        }\n    }\n}\n\n-(void) setGestureRecognizersAdded:(BOOL)enabled {\n    if (enabled != _gestureRecognizersAdded) {\n        _gestureRecognizersAdded = enabled;\n        \n        if (enabled) {\n            if (self.scrollView.panGestureRecognizer && self.scrollView.panGestureRecognizer.view != self.dummyView) {\n                if ([ABSupport supportsStylus]) {\n                    self.scrollView.panGestureRecognizer.allowedTouchTypes = @[ @(UITouchTypeDirect) ];\n                }\n                // AB: commenting this out fixes a lot of problems; why was it enabled in the first place?\n                //self.scrollView.panGestureRecognizer.maximumNumberOfTouches = 1;\n                \n                [self.dummyView addGestureRecognizer:self.scrollView.panGestureRecognizer];\n                [self.scrollView.panGestureRecognizer addTarget:self action:@selector(gestureAction:)];\n            }\n            if (self.scrollView.pinchGestureRecognizer && self.scrollView.pinchGestureRecognizer.view != self.dummyView && self.zoomEnabled) {\n                if ([ABSupport supportsStylus]) {\n                    self.scrollView.pinchGestureRecognizer.allowedTouchTypes = @[ @(UITouchTypeDirect) ];\n                }\n                \n                [self.dummyView addGestureRecognizer:self.scrollView.pinchGestureRecognizer];\n                [self.scrollView.pinchGestureRecognizer addTarget:self action:@selector(gestureAction:)];\n            }\n        }\n        else {\n            if (self.scrollView.panGestureRecognizer) {\n                [self.scrollView.panGestureRecognizer.view removeGestureRecognizer:self.scrollView.panGestureRecognizer];\n                [self.scrollView.panGestureRecognizer removeTarget:self action:@selector(gestureAction:)];\n            }\n            if (self.scrollView.pinchGestureRecognizer) {\n                [self.scrollView.pinchGestureRecognizer.view removeGestureRecognizer:self.scrollView.pinchGestureRecognizer];\n                [self.scrollView.pinchGestureRecognizer removeTarget:self action:@selector(gestureAction:)];\n            }\n        }\n    }\n}\n\n-(void) setupView {\n    CGRect uiFrame = CGRectApplyAffineTransform(CGRectMake(0, 0, self.contentSize.width, self.contentSize.height), [self nodeToWorldTransform]);\n    CGPoint uiOrigin = [[CCDirector sharedDirector] convertToGL:uiFrame.origin];\n    uiOrigin.y -= uiFrame.size.height;\n    uiFrame.origin = uiOrigin;\n    \n    self.dummyView.frame = uiFrame;\n}\n\n-(void) addView {\n    if (self.dummyView.superview != self.superview) {\n        [self.dummyView removeFromSuperview];\n        [self.superview addSubview:self.dummyView];\n    }\n}\n\n-(void) removeView {\n    [self.dummyView removeFromSuperview];\n}\n\n-(void) cancelGestures {\n    self.scrollView.delegate = nil;\n    \n    BOOL oldPinchState = self.scrollView.pinchGestureRecognizer.enabled;\n    BOOL oldPanState = self.scrollView.panGestureRecognizer.enabled;\n    \n    self.scrollView.pinchGestureRecognizer.enabled = NO;\n    self.scrollView.panGestureRecognizer.enabled = NO;\n    \n    self.scrollView.pinchGestureRecognizer.enabled = oldPinchState;\n    self.scrollView.panGestureRecognizer.enabled = oldPanState;\n    \n    self.scrollView.delegate = self;\n}\n\n-(void) cancelMotion {\n    [self setContentOffset:self.contentOffset force:YES];\n}\n\n#pragma mark - Other State -\n\n-(void) setPosition:(CGPoint)position {\n    [super setPosition:position];\n    [self setupView];\n}\n\n-(void) setZoomEnabled:(BOOL)zoomEnabled {\n    if (_zoomEnabled != zoomEnabled) {\n        _zoomEnabled = zoomEnabled;\n        \n        if (self.gestureRecognizersAdded) {\n            [self setGestureRecognizersAdded:NO];\n            [self setGestureRecognizersAdded:YES];\n        }\n    }\n}\n\n#pragma mark - Scroll View Adaptors -\n\n// TODO: correct size?\n-(CGSize) scrollContentSize {\n    return self.scrollView.contentSize;\n}\n\n-(void) setScrollContentSize:(CGSize)scrollContentSize {\n    if (!CGSizeEqualToSize(scrollContentSize, self.scrollView.contentSize)) {\n        [self willChangeValueForKey:NSStringFromSelector(@selector(contentSize))];\n        \n        self.scrollView.contentSize = scrollContentSize;\n        self.dummyZoomView.frame = CGRectMake(0, 0, scrollContentSize.width, scrollContentSize.height);\n        \n        [self setGestureRecognizersAdded:NO];\n        [self setGestureRecognizersAdded:YES];\n        \n        [self didChangeValueForKey:NSStringFromSelector(@selector(contentSize))];\n    }\n}\n\n-(CGFloat) minimumZoomScale {\n    return self.scrollView.minimumZoomScale;\n}\n\n-(void) setMinimumZoomScale:(CGFloat)minimumZoomScale {\n    self.scrollView.minimumZoomScale = minimumZoomScale;\n    [self setGestureRecognizersAdded:NO];\n    [self setGestureRecognizersAdded:YES];\n}\n\n-(CGFloat) maximumZoomScale {\n    return self.scrollView.maximumZoomScale;\n}\n\n-(void) setMaximumZoomScale:(CGFloat)maximumZoomScale {\n    self.scrollView.maximumZoomScale = maximumZoomScale;\n    [self setGestureRecognizersAdded:NO];\n    [self setGestureRecognizersAdded:YES];\n}\n\n-(CGPoint) contentOffset {\n    CGPoint offset = self.scrollView.bounds.origin;\n    offset.x = (offset.x / self.scrollView.zoomScale);\n    offset.y = ((self.scrollView.contentSize.height - offset.y - self.scrollView.bounds.size.height) / self.scrollView.zoomScale);\n    \n    return offset;\n}\n\n-(void) setContentOffset:(CGPoint)contentOffset {\n    [self setContentOffset:contentOffset force:NO];\n}\n\n-(void) setContentOffset:(CGPoint)contentOffset force:(BOOL)force {\n    if (force || !CGPointEqualToPoint(contentOffset, self.contentOffset)) {\n        CGPoint offset = contentOffset;\n        offset.x = offset.x * self.scrollView.zoomScale;\n        offset.y = self.scrollView.contentSize.height - (offset.y * self.scrollView.zoomScale) - self.scrollView.bounds.size.height;\n        \n        [self.scrollView setContentOffset:offset animated:NO];\n    }\n}\n\n-(UIEdgeInsets) contentInset {\n    // oddly enough, NOT scaled by content size\n    return self.scrollView.contentInset;\n}\n\n-(void) setContentInset:(UIEdgeInsets)contentInset {\n    if (!UIEdgeInsetsEqualToEdgeInsets(contentInset, self.scrollView.contentInset)) {\n        self.scrollView.contentInset = contentInset;\n    }\n}\n\n-(CGFloat) zoomScale {\n    return self.scrollView.zoomScale;\n}\n\n-(void) setZoomScale:(CGFloat)zoomScale {\n    [self willChangeValueForKey:NSStringFromSelector(@selector(zoomScale))];\n    self.scrollView.zoomScale = zoomScale;\n    [self didChangeValueForKey:NSStringFromSelector(@selector(zoomScale))];\n}\n\n-(void) setContentSize:(CGSize)contentSize {\n    [super setContentSize:contentSize];\n    self.scrollView.frame = CGRectMake(0, 0, contentSize.width, contentSize.height);\n    [self setupView];\n}\n\n#pragma mark - Helpers -\n\n-(BOOL) panGestureActive {\n    return [self gestureActive:self.scrollView.panGestureRecognizer];\n}\n\n-(BOOL) pinchGestureActive {\n    return [self gestureActive:self.scrollView.pinchGestureRecognizer];\n}\n\n-(BOOL) gestureActive:(UIGestureRecognizer*)gesture {\n    if (!gesture) {\n        return NO;\n    }\n    \n    switch (gesture.state) {\n        case UIGestureRecognizerStateBegan:\n        case UIGestureRecognizerStateChanged:\n        {\n            return YES;\n            break;\n        }\n        default:\n            return NO;\n    }\n}\n\n#pragma mark - Scroll View Delegate -\n\n-(void) scrollViewDidScroll:(UIScrollView*)scrollView {\n    [self willChangeValueForKey:NSStringFromSelector(@selector(contentOffset))];\n    [self didChangeValueForKey:NSStringFromSelector(@selector(contentOffset))];\n}\n\n-(void) scrollViewDidZoom:(UIScrollView *)scrollView {\n    [self willChangeValueForKey:NSStringFromSelector(@selector(zoomScale))];\n    [self didChangeValueForKey:NSStringFromSelector(@selector(zoomScale))];\n}\n\n-(UIView*) viewForZoomingInScrollView:(UIScrollView *)scrollView {\n    return self.dummyZoomView;\n}\n\n#pragma mark - Gesture / Callback Logic -\n\n-(void) gestureAction:(UIGestureRecognizer*)gesture {\n    // TODO: move this stuff\n    \n    if (self.scrollView.zoomScale >= 1) {\n        self.scrollView.bouncesZoom = YES;\n    }\n    else {\n        self.scrollView.bouncesZoom = NO;\n    }\n    \n    self.dummyView.longPressGestureRecognizer.enabled = NO;\n    self.dummyView.longPressGestureRecognizer.enabled = YES;\n    \n    __block CCUIScrollViewAdaptor* unretainedSelf = self;\n    \n    NSInteger (^rightmostTouch)(UIGestureRecognizer*) = ^NSInteger(UIGestureRecognizer* gestureRecognizer) {\n        NSInteger rightmostIndex = NSNotFound;\n        CGPoint rightmostPosition = CGPointNull;\n        \n        for (int t = 0; t < [gesture numberOfTouches]; t++) {\n            CGPoint position = [gesture locationOfTouch:t inView:gesture.view];\n            \n            if (rightmostIndex == NSNotFound || position.x > rightmostPosition.x) {\n                rightmostIndex = t;\n                rightmostPosition = position;\n            }\n        }\n        \n        return rightmostIndex;\n    };\n    \n    void (^safeBegan)(UIGestureRecognizer*) = ^(UIGestureRecognizer* gestureRecognizer) {\n        if ([unretainedSelf.delegate respondsToSelector:@selector(scrollViewAdaptor:beganPanAtPosition:)]) {\n            if ([gesture numberOfTouches] > 0) {\n                [unretainedSelf.delegate scrollViewAdaptor:unretainedSelf beganPanAtPosition:[[CCDirector sharedDirector] convertToGL:[gesture locationOfTouch:rightmostTouch(gesture) inView:nil]]];\n            }\n            else {\n                [unretainedSelf.delegate scrollViewAdaptor:unretainedSelf beganPanAtPosition:[[CCDirector sharedDirector] convertToGL:[gesture locationInView:nil]]];\n            }\n        }\n    };\n    \n    void (^safeMoved)(UIGestureRecognizer*) = ^(UIGestureRecognizer* gestureRecognizer) {\n        if ([unretainedSelf.delegate respondsToSelector:@selector(scrollViewAdaptor:beganPanAtPosition:)]) {\n            if ([gesture numberOfTouches] > 0) {\n                [unretainedSelf.delegate scrollViewAdaptor:unretainedSelf movedPanToPosition:[[CCDirector sharedDirector] convertToGL:[gesture locationOfTouch:rightmostTouch(gesture) inView:nil]]];\n            }\n            else {\n                [unretainedSelf.delegate scrollViewAdaptor:unretainedSelf movedPanToPosition:[[CCDirector sharedDirector] convertToGL:[gesture locationInView:nil]]];\n            }\n        }\n    };\n    \n    void (^safeEnded)(UIGestureRecognizer*) = ^(UIGestureRecognizer* gestureRecognizer) {\n        if ([unretainedSelf.delegate respondsToSelector:@selector(scrollViewAdaptor:beganPanAtPosition:)]) {\n            if ([gesture numberOfTouches] > 0) {\n                [unretainedSelf.delegate scrollViewAdaptor:unretainedSelf endedPanAtPosition:[[CCDirector sharedDirector] convertToGL:[gesture locationOfTouch:rightmostTouch(gesture) inView:nil]]];\n            }\n            else {\n                [unretainedSelf.delegate scrollViewAdaptor:unretainedSelf endedPanAtPosition:[[CCDirector sharedDirector] convertToGL:[gesture locationInView:nil]]];\n            }\n        }\n    };\n    \n    // ASSUMPTION: began only called once per gesture cycle for each gesture recognizer\n    \n    // Our goal here is to transition the initial touch to a bona-fide pan gesture touch as soon as possible.\n    // Prior to this goal, we will rely on surrogate pan touches such as the initial touch down in the dummy view\n    // and the initial (== will-transition-to-pan-if-moved) touch of the pinch view.\n    \n    switch (self.initialTouchMode) {\n        case CCUIScrollViewAdaptorInitialTouchModeNone:\n            // NOTE: seems to never happen; we always go through the dummy view first\n            if (gesture == self.scrollView.panGestureRecognizer) {\n                switch (gesture.state) {\n                    case UIGestureRecognizerStateBegan:\n                        safeBegan(gesture);\n                        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeCaptured;\n                        break;\n                    default:\n                        break;\n                }\n            }\n            else if (gesture == self.scrollView.pinchGestureRecognizer) {\n                switch (gesture.state) {\n                    case UIGestureRecognizerStateBegan:\n                        safeBegan(gesture);\n                        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModePinchGesture;\n                        break;\n                    default:\n                        break;\n                }\n            }\n            break;\n        case CCUIScrollViewAdaptorInitialTouchModeViewResponder:\n        case CCUIScrollViewAdaptorInitialTouchModePinchGesture:\n            if (gesture == self.scrollView.panGestureRecognizer) {\n                switch (gesture.state) {\n                    case UIGestureRecognizerStatePossible:\n                        break;\n                    case UIGestureRecognizerStateBegan:\n                        safeMoved(gesture);\n                        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeCaptured;\n                        break;\n                    case UIGestureRecognizerStateChanged:\n                        safeMoved(gesture);\n                        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeCaptured;\n                        break;\n                    case UIGestureRecognizerStateEnded:\n                    case UIGestureRecognizerStateCancelled:\n                        if ([self pinchGestureActive]) {\n                            self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModePinchGesture;\n                        }\n                        else {\n                            safeEnded(gesture);\n                            self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeNone;\n                        }\n                        break;\n                    case UIGestureRecognizerStateFailed:\n                        break;\n                }\n            }\n            else if (gesture == self.scrollView.pinchGestureRecognizer) {\n                switch (gesture.state) {\n                    case UIGestureRecognizerStatePossible:\n                        break;\n                    case UIGestureRecognizerStateBegan:\n                        safeMoved(gesture);\n                        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModePinchGesture;\n                        break;\n                    case UIGestureRecognizerStateChanged:\n                        safeMoved(gesture);\n                        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModePinchGesture;\n                        break;\n                    case UIGestureRecognizerStateEnded:\n                    case UIGestureRecognizerStateCancelled:\n                        if ([self panGestureActive]) {\n                            self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeCaptured;\n                        }\n                        else {\n                            safeEnded(gesture);\n                            self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeNone;\n                        }\n                        break;\n                    case UIGestureRecognizerStateFailed:\n                        break;\n                }\n            }\n            break;\n        case CCUIScrollViewAdaptorInitialTouchModeCaptured:\n            if (gesture == self.scrollView.panGestureRecognizer) {\n                switch (gesture.state) {\n                    case UIGestureRecognizerStatePossible:\n                        break;\n                    case UIGestureRecognizerStateBegan:\n                        safeBegan(gesture);\n                        break;\n                    case UIGestureRecognizerStateChanged:\n                        safeMoved(gesture);\n                        break;\n                    case UIGestureRecognizerStateEnded:\n                    case UIGestureRecognizerStateCancelled:\n                        if ([self pinchGestureActive]) {\n                            self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModePinchGesture;\n                        }\n                        else {\n                            safeEnded(gesture);\n                            self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeNone;\n                        }\n                        break;\n                    case UIGestureRecognizerStateFailed:\n                        break;\n                }\n            }\n            break;\n    }\n}\n\n-(BOOL) dummyView:(CCUIScrollViewAdaptorDummyView*)view shouldAllowPoint:(CGPoint)point withEvent:(UIEvent*)event {\n    if (!self.enabled) {\n        return NO;\n    }\n    \n    BOOL returnValue = NO;\n    CGPoint ccPoint = [[CCDirector sharedDirector] convertToGL:[view convertPoint:point toView:nil]];\n    \n    BOOL fakePanIsActive = self.initialTouchMode == CCUIScrollViewAdaptorInitialTouchModeViewResponder;\n    BOOL panIsActive = [self panGestureActive];\n    BOOL pinchIsActive = [self pinchGestureActive];\n    BOOL pinchIsComplete = self.scrollView.pinchGestureRecognizer.numberOfTouches > 1; // if you let go of a pinch, it can still be active, but missing fingers\n    \n    // cases:\n    // * no touches active -- YES\n    // * fake touch active -- left and right (ask)\n    // * pan active -- left and right (ask)\n    // * pinch active -- left and right (\n    // TODO: we probably don't need the complexity below; only a check for no touches and ask for everything else\n    \n    if (fakePanIsActive) {\n        if ([self.delegate respondsToSelector:@selector(scrollViewAdaptor:shouldAllowPinchFingerAtPosition:)]) {\n            returnValue =[self.delegate scrollViewAdaptor:self shouldAllowPinchFingerAtPosition:ccPoint];\n        }\n        else {\n            returnValue = YES;\n        }\n    }\n    else {\n        if (panIsActive && pinchIsActive && pinchIsComplete) {\n            returnValue = NO;\n        }\n        else if (panIsActive && (!pinchIsActive || (pinchIsActive && !pinchIsComplete))) {\n            if ([self.delegate respondsToSelector:@selector(scrollViewAdaptor:shouldAllowPinchFingerAtPosition:)]) {\n                returnValue = [self.delegate scrollViewAdaptor:self shouldAllowPinchFingerAtPosition:ccPoint];\n            }\n            else {\n                returnValue = YES;\n            }\n        }\n        else if (!panIsActive) {\n            returnValue = YES;\n        }\n    }\n\n    return returnValue;\n}\n\n// NOTE: The dummy touch doesn't do much. At the moment, its only purpose is to a) display/hide the draw/zoom overlay before\n// the gesture is recognized, and b) allow notes to be drawn even if a gesture is not yet active. It gets cancelled\n// when a gesture is recognized.\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view setDownFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n//    if ([ABSupport supportsStylus] && touch.type == UITouchTypeStylus) {\n//        self.touchToFakePencilTouch[@([touch hash])] = [CCTouch touchWithPlatformTouch:touch];\n//        if (self.touchToFakePencilTouch[@([touch hash])]) {\n//            [self.delegate scrollViewAdaptor:self beganPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n//        }\n//        return;\n//    }\n\n    if (self.initialTouchMode == CCUIScrollViewAdaptorInitialTouchModeNone) {\n        self.initialTouchPoint = point;\n        [self.delegate scrollViewAdaptor:self beganPanAtPosition:[[CCDirector sharedDirector] convertToGL:[touch locationInView:nil]]];\n        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeViewResponder;\n    }\n    else {\n        NSAssert(NO, @\"!!! touch started while dummy touch still active\");\n    }\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view movedFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    if ([ABSupport supportsStylus] && touch.type == UITouchTypeStylus) {\n        if (self.touchToFakePencilTouch[@([touch hash])]) {\n            [self.delegate scrollViewAdaptor:self movedPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n        }\n        return;\n    }\n    \n    // AB: there's a slight delay between dummy view movement and pan gesture recognition; add callbacks here to correspondingly move draw/zoom overlay\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view endedSetDownFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    if ([ABSupport supportsStylus] && touch.type == UITouchTypeStylus) {\n        if (self.touchToFakePencilTouch[@([touch hash])]) {\n            [self.delegate scrollViewAdaptor:self endedPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n        }\n        return;\n    }\n    \n    if (self.initialTouchMode == CCUIScrollViewAdaptorInitialTouchModeViewResponder) {\n        [self.delegate scrollViewAdaptor:self endedPanAtPosition:CGPointZero];\n        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeNone;\n    }\n    else {\n        NSAssert(NO, @\"!!! touch ended with no dummy touch\");\n    }\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view cancelledSetDownFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    if ([ABSupport supportsStylus] && touch.type == UITouchTypeStylus) {\n        if (self.touchToFakePencilTouch[@([touch hash])]) {\n            [self.delegate scrollViewAdaptor:self cancelledPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n        }\n        return;\n    }\n    \n    if (self.initialTouchMode == CCUIScrollViewAdaptorInitialTouchModeViewResponder) {\n        // probably palm rejection\n        [self.delegate scrollViewAdaptor:self endedPanAtPosition:CGPointZero];\n        self.initialTouchMode = CCUIScrollViewAdaptorInitialTouchModeNone;\n    }\n    else if (self.initialTouchMode == CCUIScrollViewAdaptorInitialTouchModeCaptured ||\n             self.initialTouchMode == CCUIScrollViewAdaptorInitialTouchModePinchGesture) {\n        // everything OK, gesture happened\n    }\n    else {\n        NSAssert(NO, @\"!!! touch cancelled with no dummy touch\");\n    }\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view fallenThroughSetDownFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    CCTouch* ccTouch = [CCTouch touchWithPlatformTouch:touch];\n    self.touchToFakePencilTouch[@([touch hash])] = ccTouch;\n    \n    [self.delegate scrollViewAdaptor:self beganPencilWithTouch:ccTouch];\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view fallenThroughMovedFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    [self.delegate scrollViewAdaptor:self movedPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view fallenThroughEndedSetDownFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    [self.delegate scrollViewAdaptor:self endedPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n}\n\n-(void) dummyView:(CCUIScrollViewAdaptorDummyView*)view fallenThroughCancelledSetDownFingerAtPoint:(CGPoint)point withTouch:(UITouch*)touch {\n    [self.delegate scrollViewAdaptor:self cancelledPencilWithTouch:self.touchToFakePencilTouch[@([touch hash])]];\n}\n\n#pragma mark -\n\n@end\n\n@interface CCUIScrollViewAdaptorDummyView () <UIGestureRecognizerDelegate>\n@end\n\n@implementation CCUIScrollViewAdaptorDummyView\n\n-(instancetype) initWithFrame:(CGRect)frame {\n    self = [super initWithFrame:frame];\n    \n    if (self) {\n        UIGestureRecognizerAny* longPressRecognizer = [[UIGestureRecognizerAny alloc] initWithTarget:self action:@selector(longPress:)];\n        longPressRecognizer.allowedTouchTypes = @[ @(UITouchTypeDirect) ];\n        longPressRecognizer.delegate = self;\n        \n        self.longPressGestureRecognizer = longPressRecognizer;\n        \n        [self addGestureRecognizer:self.longPressGestureRecognizer];\n    }\n    \n    return self;\n}\n\n-(void) longPress:(UIGestureRecognizer*)gr {\n    switch (gr.state) {\n        case UIGestureRecognizerStateBegan: {\n            CGPoint pos = [gr locationInView:gr.view];\n            [self.delegate dummyView:self setDownFingerAtPoint:pos withTouch:nil];\n            break;\n        }\n        case UIGestureRecognizerStateChanged: {\n            CGPoint pos = [gr locationInView:gr.view];\n            [self.delegate dummyView:self movedFingerAtPoint:pos withTouch:nil];\n            break;\n        }\n        case UIGestureRecognizerStateEnded: {\n            CGPoint pos = [gr locationInView:gr.view];\n            [self.delegate dummyView:self endedSetDownFingerAtPoint:pos withTouch:nil];\n            break;\n        }\n        case UIGestureRecognizerStateCancelled: {\n            CGPoint pos = [gr locationInView:gr.view];\n            [self.delegate dummyView:self cancelledSetDownFingerAtPoint:pos withTouch:nil];\n            break;\n        }\n        default: {\n            break;\n        }\n    }\n}\n\n-(UIView*) hitTest:(CGPoint)point withEvent:(UIEvent*)event {\n    return ([self.delegate dummyView:self shouldAllowPoint:point withEvent:event] ? self : nil);\n}\n\n@end\n\n@implementation UIGestureRecognizerAny\n- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {\n    [super touchesBegan:touches withEvent:event];\n    self.state = UIGestureRecognizerStateBegan;\n}\n- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {\n    [super touchesMoved:touches withEvent:event];\n    self.state = UIGestureRecognizerStateChanged;\n}\n- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {\n    [super touchesEnded:touches withEvent:event];\n    self.state = UIGestureRecognizerStateEnded;\n}\n- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {\n    [super touchesCancelled:touches withEvent:event];\n    self.state = UIGestureRecognizerStateCancelled;\n}\n@end\n",
+			"settings":
+			{
+				"buffer_size": 28773,
+				"line_ending": "Unix",
+				"name": "//"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -175,7 +215,7 @@
 			"file": "_sass/_base.scss",
 			"settings":
 			{
-				"buffer_size": 3764,
+				"buffer_size": 5459,
 				"line_ending": "Unix"
 			}
 		},
@@ -234,18 +274,44 @@
 			"file": "_layouts/default.html",
 			"settings":
 			{
-				"buffer_size": 2147,
+				"buffer_size": 2217,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 261 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n",
+			"contents": "Package Control Messages\n========================\n\nPackage Control:\n---------------\n\n  Version 3.1 Release Notes\n  \n  Package Control continues its focus on polish and fixing edge-case bugs. Some\n  of the changes in this version include:\n  \n   - quick panel for Install Package now stays open on Windows with recent\n     versions of ST3, even when focus is lost\n   - new \"downloader_precedence\" setting to allow users to use specific HTTP\n     backend due to network proxy or SSL issues\n   - added Install Local Dependency command for package developers to more\n     easily deal with dependencies during development\n   - improved handling of git/hg package upgrade errors\n   - better handling of locked .sublime-package files on Windows\n   - performance improvements for users with a large number of open windows\n  \n  For package developers, the list of available dependencies has been growing:\n  https://github.com/wbond/package_control_channel/blob/master/repository/dependencies.json\n  \n  Enjoy!\n  \n  ",
 			"settings":
 			{
-				"buffer_size": 1258,
+				"buffer_size": 1004,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"scratch": true
+			}
+		},
+		{
+			"contents": "Searching 261 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n\n\nSearching 263 files for \"bgpatch\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n1 match in 1 file\n\n\nSearching 263 files for \"bgpatch\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n1 match in 1 file\n\n\nSearching 263 files for \"background.\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_replacement.scss:\n   40  }\n   41  \n   42: // Hides text in an element so you can see the background.\n   43  //\n   44  // The direction indicates how the text should be moved out of view.\n\n1 match in 1 file\n\n\nSearching 263 files for \"bgtest\"\n\n0 matches across 0 files\n\n\nSearching 263 files for \"bg\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   66  \n   67  body {\n   68:     background-image: url(\"/images/bgpattern.jpg\");\n   69      background-attachment: fixed;\n   70      @include media-query($on-palm) {\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/sprites/_sprite-img.scss:\n   28  \n   29  // Sets all the rules for a sprite from a given sprite image to show just one of the sprites.\n   30: // To reduce duplication use a sprite-bg mixin for common properties and a sprite-select mixin for positioning.\n   31  @mixin sprite-img($img, $col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin) {\n   32    @include sprite-background($img, $width, $height);\n\n3 matches across 2 files\n\n\nSearching 263 files for \"excerpt_separator\"\n\n0 matches across 0 files\n\n\nSearching 263 files for \"more inside\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   14  \n   15        <article class=\"post-content\">\n   16:       {{ post.excerpt }} <a href=\"{{ post.url | prepend: site.baseurl }}\">More inside...</a>\n   17        </article>\n   18      </li>\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2: title: UI Mockup\n    3  permalink: /ui_mockup/\n    4  ---\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2: title: UI Mockup\n    3  permalink: /ui_mockup/\n    4  ---\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui_mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2  title: UI Mockup\n    3: permalink: /ui_mockup/\n    4  ---\n    5  \n\n1 match in 1 file\n\n\nSearching 263 files for \"UI Mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1: <!-- title: UI Mockup -->\n    2  <!-- permalink: /ui_mockup/ -->\n    3  \n\n1 match in 1 file\n\n\nSearching 265 files for \"category-technology-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    5  $category-programming-color:    #DEA5A4;\n    6  $category-travel-color:         #FDFD96;\n    7: $category-technology-color:     #FFB347;\n    8  \n    9  \n\n1 match in 1 file\n\n\nSearching 279 files for \"background-color: \"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n    8              display: inline;\n    9              padding: 5px;\n   10:             background-color: red;\n   11          }\n   12          li {\n   13              display: inline-block;\n   14:             background-color: salmon;\n   15              text-align: center;\n   16              vertical-align: middle;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n   44              border-radius: 0.5em;\n   45  \n   46:             background-color: #77dd77;\n   47          }\n   48          li {\n   ..\n   62  \n   63              color: #1b6d1b;\n   64:             background-color: #b4ecb4;\n   65          }\n   66      </style>\n   ..\n  106              padding: 0.5em;\n  107  \n  108:             background-color: #77dd77;\n  109          }\n  110          li:nth-child(1) {\n  ...\n  129  \n  130              color: #1b6d1b;\n  131:             background-color: #b4ecb4;\n  132          }\n  133      </style>\n  ...\n  175      #{$country-class} li > span {\n  176          color: darken($color, 40%);\n  177:         background-color: lighten($color, 15%);\n  178:         // background-color: mix($color, white, 50%);\n  179          border-color: darken($color, 30%);\n  180      }\n  ...\n  185      // sub-list background\n  186      #{$country-class}.sub-list > ul > li {\n  187:         background-color: $color;\n  188      }\n  189      // sub-list cell header\n  ...\n  193      }\n  194      #{$country-class}.sub-list li > span > a {\n  195:         background-color: lighten($color, 20%);\n  196      }\n  197  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   26  @if variable-exists({{ category_color_name }}) {\n   27    #{{ post.selector_id }} {\n   28:     background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31    #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33:       background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   34      {% else %}\n   35:       background-color: lighten(${{ category_color_name }}, $archive_post_inner_color_lightness);\n   36      {% endif %}\n   37    }\n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n   11  border-radius: 1em;\n   12  width: 80%;\n   13: background-color: white;\n   14  text-align: center;\n   15  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   20    #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22:       background-color: mix(${{ category_color_name }}, white, 30%);\n   23        .post-title {\n   24          /*color: mix(${{ category_color_name }}, black, 60%);*/\n   25:         background-color: mix(${{ category_color_name }}, white, 80%);\n   26        }\n   27      }\n   28      @else {\n   29:       background-color: mix($category-default-color, white, 30%);\n   30        .post-title {\n   31:         background-color: mix($category-default-color, white, 80%);\n   32          /*color: $category-default-color;*/\n   33        }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/html_postprocessor.rb:\n  150                          }\n  151                          .caption {\n  152:                             background-color: blue;\n  153                              margin: 4px;\n  154                          }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   43      font-weight: 300;\n   44      color: $text-color;\n   45:     background-color: $background-color;\n   46  }\n   47  \n   ..\n  114  \n  115  .post {\n  116:     // background-color: pink;\n  117      // padding: 20px;\n  118      // border-radius: 10px;\n  ...\n  168      border: 1px solid lightgray;\n  169      border-radius: 0.3em;\n  170:     background-color: #eef;\n  171  }\n  172  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    7      .background-overlay {\n    8          background-image: url(\"/images/background-blur.jpg\");\n    9:         background-color: white;\n   10          @include media-query($on-palm) {\n   11              background-size: 250px;\n   ..\n   47              fill: mix(blue, white, 40%);\n   48          }\n   49:         background-color: pink;\n   50          border-color: salmon;\n   51  \n   ..\n   59              fill: mix(blue, white, 40%);\n   60          }\n   61:         background-color: lightblue;\n   62          border-color: mix(blue, white, 40%);\n   63  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   17      .background-overlay {\n   18          background-image: url(\"/images/background-blur3.jpg\");\n   19:         background-color: white;\n   20          @include media-query($on-palm) {\n   21              background-size: 250px;\n   ..\n   25      // max-width: 68em;\n   26  \n   27:     // background-color: mix(lightblue, white, 15%);\n   28      // background-image: url(\"/images/background-blur2.jpg\");\n   29      \n   ..\n   46          overflow: hidden;\n   47  \n   48:         // background-color: mix(lightblue, white, 15%);\n   49          // background-image: url(\"/images/background-blur.jpg\");\n   50          // padding-top: 10px;\n   ..\n   89          }\n   90  \n   91:         // background-color: white;\n   92          // padding: 0.2em;\n   93          // border-radius: 0.3em;\n   ..\n   97          // padding: 0;\n   98  \n   99:         // background-color: mix(red, white, 10%);\n  100          border-radius: 0.3em;\n  101      }\n  102  \n  103:     // background-color: mix(rgba(236,214,252,1), white, 60%);\n  104      // padding: 1.5em 0.75em 1.5em 0.75em;\n  105      border-radius: 2em;\n  ...\n  116          border-width: 2px;\n  117          padding: 0 1em 0 1em;\n  118:         background-color: lightgray;\n  119          color: gray;\n  120  \n  121          $nav-border-color: lighten($grey-color, 37%);\n  122:         $nav-background-color: mix(rgba(236,214,252,1), white, 10%);\n  123  \n  124          .page-link {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   98  \n   99  // .body-wrapper {\n  100: //     background-color: white;\n  101  //     max-width: $content-width;\n  102  //     margin-left: auto;\n  ...\n  146  \n  147  //     > li {\n  148: //         background-color: darken(AliceBlue, 0%);\n  149  //         border: 4px darken(AliceBlue, 5%) solid;\n  150  //         // box-shadow: 5px 10px 10px lighten(lightgray, 5%);\n  ...\n  175  // TODO:\n  176  body {\n  177:     // background-color: mix(blue, white, 3%);\n  178      // background-image: url(\"/images/PaintBlobsLight.png\");\n  179  }\n  ...\n  186      padding-top: 3rem;\n  187      padding-bottom: 3rem;\n  188:     background-color: white;\n  189      // background-image: url(\"/images/background-blur1.jpg\");\n  190      // border: solid 10px lighten(lightblue, 5%);\n  191      // border-color: lightblue;\n  192:     // background-color: mix(blue, white, 2%);\n  193      border-radius: 2rem;\n  194  }\n  ...\n  296  border-width: 0.125em;\n  297  border-style: solid;\n  298:     background-color: white;\n  299      padding: 1em;\n  300  border-radius: 1em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_post-extras.scss:\n    8      border-color: $border-color;\n    9      color: darken($color, 60%);\n   10:     background-color: $color;\n   11      font-size: 95%;\n   12      border-radius: 10px;\n   13      \n   14      code {\n   15:         background-color: pink;\n   16      }\n   17      \n   ..\n   34      // left: -25px;\n   35  \n   36:     background-color: $color;\n   37      color: darken($color, 50%);\n   38      padding: 5px 10px 5px 10px;\n   ..\n   93  \n   94              border-radius: 3px;\n   95:             background-color: lighten(lightblue, 5%);\n   96  \n   97              display: table-caption;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_syntax-highlighting.scss:\n    7  \n    8      .c     { color: #998; font-style: italic } // Comment\n    9:     .err   { color: #a61717; background-color: #e3d2d2 } // Error\n   10      .k     { font-weight: bold } // Keyword\n   11      .o     { font-weight: bold } // Operator\n   ..\n   14      .c1    { color: #998; font-style: italic } // Comment.Single\n   15      .cs    { color: #999; font-weight: bold; font-style: italic } // Comment.Special\n   16:     .gd    { color: #000; background-color: #fdd } // Generic.Deleted\n   17:     .gd .x { color: #000; background-color: #faa } // Generic.Deleted.Specific\n   18      .ge    { font-style: italic } // Generic.Emph\n   19      .gr    { color: #a00 } // Generic.Error\n   20      .gh    { color: #999 } // Generic.Heading\n   21:     .gi    { color: #000; background-color: #dfd } // Generic.Inserted\n   22:     .gi .x { color: #000; background-color: #afa } // Generic.Inserted.Specific\n   23      .go    { color: #888 } // Generic.Output\n   24      .gp    { color: #555 } // Generic.Prompt\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_timeline-map.scss:\n   11  \n   12  // colors\n   13: $background-color: #E3E2F0;\n   14  $section-color: lighten(#E3E2F0, 8%);\n   15  \n   ..\n  123          text-align: $cell-alignment;\n  124  \n  125:         background-color: $section-color;\n  126  \n  127          border: solid;\n  ...\n  261          #{$country-class} li > span {\n  262              color: darken($color, 40%);\n  263:             background-color: lighten($color, 15%);\n  264:             // background-color: mix($color, white, 50%);\n  265              border-color: darken($color, 30%);\n  266          }\n  ...\n  271          // sub-list background\n  272          #{$country-class}.sub-list > ul > li {\n  273:             background-color: $color;\n  274          }\n  275          // sub-list cell header\n  ...\n  279          }\n  280          #{$country-class}.sub-list li > span > a {\n  281:             background-color: lighten($color, 20%);\n  282          }\n  283      }\n  ...\n  309          #{$class} {\n  310              color: lighten($color, 40%) !important;\n  311:             background-color: $color !important;\n  312              border-color: lighten($color, 30%) !important;\n  313          }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_selection.scss:\n   44  // specify only the background-color, you should pass an explicit `null` value\n   45  // for `$color` or use mixin content.\n   46: @mixin selection($background-color: null, $color: contrast-color($background-color)) {\n   47    @include with-each-prefix(css-selection, $selection-support-threshold) {\n   48      $selector: '';\n   ..\n   53      #{$selector} {\n   54        color: $color;\n   55:       background-color: $background-color;\n   56        @content;\n   57      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   48      @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50:   background-color: $background-color;\n   51    color: contrast-color($background-color, $dark, $light);\n   52  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/tables/_alternating-rows-and-columns.scss:\n    1  @mixin alternating-rows-and-columns($even-row-color, $odd-row-color, $dark-intersection, $header-color: white, $footer-color: white) {\n    2    th {\n    3:     background-color: $header-color;\n    4      &.even, &:nth-child(2n) {\n    5:       background-color: $header-color - $dark-intersection; } }\n    6    tr {\n    7      &.odd, &:nth-child(2n+1) {\n    8        td {\n    9:        background-color: $odd-row-color;\n   10         &.even, &:nth-child(2n) {\n   11:          background-color: $odd-row-color - $dark-intersection; } } }\n   12      }\n   13    tr.even {\n   14      td {\n   15:       background-color: $even-row-color;\n   16        &.even, &:nth-child(2n) {\n   17:         background-color: $even-row-color - $dark-intersection; } } }\n   18    tfoot {\n   19      th, td {\n   20:       background-color: $footer-color;\n   21        &.even, &:nth-child(2n) {\n   22:         background-color: $footer-color - $dark-intersection; } } } }\n   23  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   19  \n   20  $text-color:       #111;\n   21: $background-color: #fdfdfd;\n   22  $brand-color:      #2a7ae2;\n   23  \n   ..\n   48  @mixin category-color($color-name, $default-color) {\n   49    @if variable-exists($color-name) {\n   50:       background-color: $color-name;\n   51    }\n   52    @else {\n   53:       background-color: $default-color;\n   54    }\n   55  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n   42  border-radius: 1em;\n   43  width: 80%;\n   44: background-color: white;\n   45  text-align: center;\n   46  }\n\n73 matches across 18 files\n\n\nSearching 279 files for \"category-default-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n    8    {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n    9  {% else %}\n   10:   {% capture category_color_name %}category-default-color{% endcapture %}\n   11  {% endif %}\n   12  \n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    1  // Colors for categories.\n    2  \n    3: $category-default-color:        #CFCFC4;\n    4  $category-jekyll-color:         #B19CD9;\n    5  $category-programming-color:    #DEA5A4;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/category_color_setter.scss:\n    5    {% capture category_color_name %}category-{{ var_post.categories[0] }}-color{% endcapture %}\n    6  {% else %}\n    7:   {% capture category_color_name %}category-default-color{% endcapture %}\n    8  {% endif %}\n    9  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   14      {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n   15    {% else %}\n   16:     {% capture category_color_name %}category-default-color{% endcapture %}\n   17    {% endif %}\n   18  \n   ..\n   27      }\n   28      @else {\n   29:       background-color: mix($category-default-color, white, 30%);\n   30        .post-title {\n   31:         background-color: mix($category-default-color, white, 80%);\n   32:         /*color: $category-default-color;*/\n   33        }\n   34      }\n\n10 matches across 4 files\n\n\nSearching 279 files for \"$text-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   42      line-height: $base-line-height;\n   43      font-weight: 300;\n   44:     color: $text-color;\n   45      background-color: $background-color;\n   46  }\n   ..\n  135  \n  136      &:hover {\n  137:         color: $text-color;\n  138          text-decoration: underline;\n  139      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   18  $spacing-unit:     1.579rem;\n   19  \n   20: $text-color:       #111;\n   21  $background-color: #fdfdfd;\n   22  $brand-color:      #2a7ae2;\n\n3 matches across 2 files\n\n\nSearching 279 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n\n\nSearching 279 files for \".page-content\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   16  }\n   17  \n   18: .page-content {\n   19      margin-top: $spacing-unit * 2;\n   20      @include media-query($on-palm) {\n   ..\n   29  }\n   30  \n   31: .page-content {\n   32      font-size: 1.8em;\n   33  \n   ..\n  133   * Page content\n  134   */\n  135: .page-content {\n  136      // padding: $spacing-unit 0;\n  137  }\n\n3 matches in 1 file\n\n\nSearching 282 files for \"This blog post is part of a series\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n  107      <div class=\"toc_header\">\n  108          <a href=\"http://www.composerssketchpad.com\"><img src=\"{{ site.baseurl }}/images/composers_sketchpad_icon.png\"></img></a>\n  109:         <p>This blog post is part of a series on the development of <a href=\"http://www.composerssketchpad.com\">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>\n  110      </div>\n  111  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n  118      &lt;div class=&quot;toc_header&quot;&gt;\n  119          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  120:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  121      &lt;/div&gt;\n  122  \n  ...\n  370      &lt;div class=&quot;toc_header&quot;&gt;\n  371          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  372:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  373      &lt;/div&gt;\n  374  \n  ...\n  525      &lt;div class=&quot;toc_header&quot;&gt;\n  526          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  527:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  528      &lt;/div&gt;\n  529  \n  ...\n  749      &lt;div class=&quot;toc_header&quot;&gt;\n  750          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  751:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  752      &lt;/div&gt;\n  753  \n\n5 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 25550,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
+			}
+		},
+		{
+			"file": "css/main.scss",
+			"settings":
+			{
+				"buffer_size": 1697,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "temp/ui_mockup.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -260,7 +326,7 @@
 			"file": "_site/feed.xml",
 			"settings":
 			{
-				"buffer_size": 75650,
+				"buffer_size": 124937,
 				"line_ending": "Unix"
 			}
 		},
@@ -268,7 +334,7 @@
 			"file": "_site/2014/11/20/what's_up_with_google_maps_these_days/index.html",
 			"settings":
 			{
-				"buffer_size": 15696,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		},
@@ -285,6 +351,14 @@
 			"settings":
 			{
 				"buffer_size": 370,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.yml",
+			"settings":
+			{
+				"buffer_size": 841,
 				"line_ending": "Unix"
 			}
 		}
@@ -321,6 +395,7 @@
 	},
 	"file_history":
 	[
+		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/kmlasset_tag.rb",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/index.html",
@@ -329,7 +404,6 @@
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/signature.html",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/page.html",
-		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_archive.scss",
@@ -456,7 +530,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 106.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -469,6 +543,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"This blog post is part of a series",
+			".page-content",
+			"scssify",
+			"$text-color",
+			"category-default-color",
+			"background-color: ",
+			"background-",
+			"spacing-unit",
+			"margin-bottom",
+			"<<<<<<< HEAD",
+			"center",
+			"img",
+			"image",
+			"category-technology-color",
+			"ui",
+			"title: UI Mockup",
+			"UI Mockup",
+			"ui_mockup",
+			"ui mockup",
+			"more inside",
+			"excerpt_separator",
+			"bg",
+			"bgtest",
+			"background.",
+			"bgpatch",
+			"2015-09-09-the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap.md",
+			"bgpatch",
 			"scssify",
 			"lighten",
 			"spacing-unit",
@@ -569,34 +670,7 @@
 			"15%",
 			"rgba(236,214,252,1)",
 			"rgba(255,255,255,0)",
-			"full-support: true",
-			"\"trigger",
-			".trigger",
-			"site-header",
-			"menu-icon",
-			".menu-icon",
-			"$grey-color-light",
-			"$grey-color-dark",
-			"\"site-title",
-			".site-title",
-			"$on-palm)",
-			"12px",
-			"120%",
-			"1.2em",
-			"font-size: ",
-			"@include media-query(",
-			"$base-font-size",
-			"@include media-query($on-palm)",
-			"@include media-query($on-",
-			"@include media-query($on-)",
-			"@include media-query($on-phone)",
-			"@include media-query($on-laptop)",
-			"$base-font-size",
-			"center",
-			"font-weig",
-			"font-weight",
-			"_post-extras",
-			"site-header"
+			"full-support: true"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -627,7 +701,7 @@
 	"groups":
 	[
 		{
-			"selected": 23,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -642,8 +716,8 @@
 						"selection":
 						[
 							[
-								143,
-								143
+								120,
+								120
 							]
 						],
 						"settings":
@@ -1300,8 +1374,8 @@
 						"selection":
 						[
 							[
-								53,
-								53
+								392,
+								420
 							]
 						],
 						"settings":
@@ -1613,7 +1687,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 69.0,
+						"translation.y": 74.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1630,8 +1704,8 @@
 						"selection":
 						[
 							[
-								347,
-								0
+								270,
+								292
 							]
 						],
 						"settings":
@@ -1789,15 +1863,15 @@
 					"file": "_includes/categories.scss",
 					"settings":
 					{
-						"buffer_size": 233,
+						"buffer_size": 314,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27,
-								50
+								312,
+								312
 							]
 						],
 						"settings":
@@ -1960,8 +2034,8 @@
 						"selection":
 						[
 							[
-								165,
-								165
+								889,
+								892
 							]
 						],
 						"settings":
@@ -2109,7 +2183,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 417.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2612,29 +2686,24 @@
 				},
 				{
 					"buffer": 12,
-					"file": "css/main.scss",
+					"file": "_includes/composers_sketchpad_toc.html",
 					"settings":
 					{
-						"buffer_size": 1697,
+						"buffer_size": 2995,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								621,
-								624
+								2949,
+								2949
 							]
 						],
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
+							"auto_name": "<p>",
 							"bh_regions":
 							[
 								"bh_regex",
@@ -2682,96 +2751,12 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jslint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 7.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 1261.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2781,15 +2766,15 @@
 					"file": "_sass/_layout.scss",
 					"settings":
 					{
-						"buffer_size": 4822,
+						"buffer_size": 5676,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								666,
-								666
+								5608,
+								5608
 							]
 						],
 						"settings":
@@ -2937,13 +2922,387 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 241.0,
+						"translation.y": 2367.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 14,
+					"file": "/Users/archagon/Documents/Programming/OSX/Composer's Sketchpad/Composer's Sketchpad/Classes/CSSynthInstrument.m",
+					"settings":
+					{
+						"buffer_size": 8434,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4620,
+								4620
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Objective-C/Objective-C.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2429.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/Users/archagon/Documents/Programming/OSX/Composer's Sketchpad/Composer's Sketchpad/Classes/CSSynthInstrumentDLS_SF2.m",
+					"settings":
+					{
+						"buffer_size": 6073,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Objective-C/Objective-C.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"settings":
+					{
+						"buffer_size": 28773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28773,
+								28773
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_name": "//",
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 12113.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
 					"file": "rakefile",
 					"settings":
 					{
@@ -3109,19 +3468,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 20,
 					"file": "_sass/_base.scss",
 					"settings":
 					{
-						"buffer_size": 3764,
+						"buffer_size": 5459,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								908,
-								920
+								907,
+								925
 							]
 						],
 						"settings":
@@ -3269,13 +3628,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 560.0,
+						"translation.y": 344.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 21,
 					"file": "_sass/_post.scss",
 					"settings":
 					{
@@ -3441,7 +3800,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 22,
 					"file": "index.html",
 					"settings":
 					{
@@ -3452,8 +3811,8 @@
 						"selection":
 						[
 							[
-								23,
-								23
+								474,
+								486
 							]
 						],
 						"settings":
@@ -3607,7 +3966,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 23,
 					"file": "pages/about.md",
 					"settings":
 					{
@@ -3773,7 +4132,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 24,
 					"file": "feed.xml",
 					"settings":
 					{
@@ -3939,7 +4298,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 25,
 					"file": "_sass/_header.scss",
 					"settings":
 					{
@@ -4105,7 +4464,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 26,
 					"file": "/Users/archagon/Documents/Programming/OSX/Transliterator/LandingPage/index.html",
 					"settings":
 					{
@@ -4271,19 +4630,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 27,
 					"file": "_layouts/default.html",
 					"settings":
 					{
-						"buffer_size": 2147,
+						"buffer_size": 2217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1339,
-								1339
+								128,
+								105
 							]
 						],
 						"settings":
@@ -4431,16 +4790,93 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 852.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 28,
 					"settings":
 					{
-						"buffer_size": 1258,
+						"buffer_size": 1004,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1004,
+								1004
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_indent": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"settings":
+					{
+						"buffer_size": 25550,
 						"regions":
 						{
 							"match":
@@ -4459,6 +4895,442 @@
 									[
 										1140,
 										1147
+									],
+									[
+										1471,
+										1478
+									],
+									[
+										1735,
+										1742
+									],
+									[
+										2006,
+										2017
+									],
+									[
+										2359,
+										2361
+									],
+									[
+										2558,
+										2560
+									],
+									[
+										2854,
+										2856
+									],
+									[
+										3488,
+										3499
+									],
+									[
+										3711,
+										3720
+									],
+									[
+										3925,
+										3934
+									],
+									[
+										4168,
+										4177
+									],
+									[
+										4355,
+										4364
+									],
+									[
+										4680,
+										4705
+									],
+									[
+										4964,
+										4982
+									],
+									[
+										5085,
+										5103
+									],
+									[
+										5368,
+										5386
+									],
+									[
+										5500,
+										5518
+									],
+									[
+										5632,
+										5650
+									],
+									[
+										5777,
+										5795
+									],
+									[
+										5946,
+										5964
+									],
+									[
+										6004,
+										6022
+									],
+									[
+										6215,
+										6233
+									],
+									[
+										6377,
+										6395
+									],
+									[
+										6630,
+										6648
+									],
+									[
+										6892,
+										6910
+									],
+									[
+										7012,
+										7030
+									],
+									[
+										7205,
+										7223
+									],
+									[
+										7464,
+										7482
+									],
+									[
+										7581,
+										7599
+									],
+									[
+										7857,
+										7875
+									],
+									[
+										8109,
+										8127
+									],
+									[
+										8285,
+										8303
+									],
+									[
+										8408,
+										8426
+									],
+									[
+										8510,
+										8528
+									],
+									[
+										8838,
+										8856
+									],
+									[
+										9092,
+										9110
+									],
+									[
+										9189,
+										9207
+									],
+									[
+										9367,
+										9385
+									],
+									[
+										9605,
+										9623
+									],
+									[
+										9807,
+										9825
+									],
+									[
+										9962,
+										9980
+									],
+									[
+										10249,
+										10267
+									],
+									[
+										10424,
+										10442
+									],
+									[
+										10616,
+										10634
+									],
+									[
+										10820,
+										10838
+									],
+									[
+										10981,
+										10999
+									],
+									[
+										11093,
+										11111
+									],
+									[
+										11322,
+										11340
+									],
+									[
+										11468,
+										11486
+									],
+									[
+										11688,
+										11706
+									],
+									[
+										11840,
+										11858
+									],
+									[
+										12061,
+										12079
+									],
+									[
+										12258,
+										12276
+									],
+									[
+										12462,
+										12480
+									],
+									[
+										12618,
+										12636
+									],
+									[
+										12870,
+										12888
+									],
+									[
+										13000,
+										13018
+									],
+									[
+										13101,
+										13119
+									],
+									[
+										13277,
+										13295
+									],
+									[
+										13572,
+										13590
+									],
+									[
+										13915,
+										13933
+									],
+									[
+										13992,
+										14010
+									],
+									[
+										14239,
+										14257
+									],
+									[
+										14317,
+										14335
+									],
+									[
+										14594,
+										14612
+									],
+									[
+										14747,
+										14765
+									],
+									[
+										14936,
+										14954
+									],
+									[
+										14998,
+										15016
+									],
+									[
+										15229,
+										15247
+									],
+									[
+										15411,
+										15429
+									],
+									[
+										15592,
+										15610
+									],
+									[
+										15964,
+										15982
+									],
+									[
+										16214,
+										16232
+									],
+									[
+										16530,
+										16548
+									],
+									[
+										16936,
+										16954
+									],
+									[
+										17019,
+										17037
+									],
+									[
+										17161,
+										17179
+									],
+									[
+										17251,
+										17269
+									],
+									[
+										17373,
+										17391
+									],
+									[
+										17462,
+										17480
+									],
+									[
+										17574,
+										17592
+									],
+									[
+										17661,
+										17679
+									],
+									[
+										17854,
+										17872
+									],
+									[
+										18047,
+										18065
+									],
+									[
+										18119,
+										18137
+									],
+									[
+										18302,
+										18320
+									],
+									[
+										18689,
+										18711
+									],
+									[
+										18841,
+										18863
+									],
+									[
+										19105,
+										19127
+									],
+									[
+										19225,
+										19247
+									],
+									[
+										19457,
+										19479
+									],
+									[
+										19853,
+										19875
+									],
+									[
+										20166,
+										20188
+									],
+									[
+										20308,
+										20330
+									],
+									[
+										20410,
+										20432
+									],
+									[
+										20472,
+										20494
+									],
+									[
+										20761,
+										20772
+									],
+									[
+										20888,
+										20899
+									],
+									[
+										21083,
+										21094
+									],
+									[
+										21573,
+										21580
+									],
+									[
+										22117,
+										22124
+									],
+									[
+										22346,
+										22353
+									],
+									[
+										22610,
+										22623
+									],
+									[
+										22742,
+										22755
+									],
+									[
+										22842,
+										22855
+									],
+									[
+										23281,
+										23315
+									],
+									[
+										23802,
+										23836
+									],
+									[
+										24291,
+										24325
+									],
+									[
+										24780,
+										24814
+									],
+									[
+										25269,
+										25303
 									]
 								],
 								"scope": ""
@@ -4467,8 +5339,8 @@
 						"selection":
 						[
 							[
-								1137,
-								1137
+								23068,
+								23068
 							]
 						],
 						"settings":
@@ -4522,7 +5394,7 @@
 								"bh_single_quote_close"
 							],
 							"detect_indentation": false,
-							"output_tag": 1,
+							"output_tag": 19,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -4531,13 +5403,165 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
+						"translation.y": 10785.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 30,
+					"file": "css/main.scss",
+					"settings":
+					{
+						"buffer_size": 1697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								653,
+								653
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 31,
+					"file": "temp/ui_mockup.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 32,
 					"file": "SETUP",
 					"settings":
 					{
@@ -4701,11 +5725,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 33,
 					"file": "_site/feed.xml",
 					"settings":
 					{
-						"buffer_size": 75650,
+						"buffer_size": 124937,
 						"regions":
 						{
 						},
@@ -4867,11 +5891,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 34,
 					"file": "_site/2014/11/20/what's_up_with_google_maps_these_days/index.html",
 					"settings":
 					{
-						"buffer_size": 15696,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -5033,7 +6057,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 35,
 					"file": "_posts/2014-11-20-what's_up_with_google_maps_these_days.md",
 					"settings":
 					{
@@ -5197,7 +6221,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 36,
 					"file": "pages/timeline.md",
 					"settings":
 					{
@@ -5359,6 +6383,80 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 37,
+					"file": "_config.yml",
+					"settings":
+					{
+						"buffer_size": 841,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								700,
+								700
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/YAML/YAML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -5404,6 +6502,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"_config.yml",
+				"_config.yml"
+			],
 			[
 				"kmlasset",
 				"_plugins/kmlasset_tag.rb"
