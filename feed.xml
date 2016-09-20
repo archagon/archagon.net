@@ -6,13 +6,13 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 20 Sep 2016 13:24:08 -0700</pubDate>
-    <lastBuildDate>Tue, 20 Sep 2016 13:24:08 -0700</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 13:33:25 -0700</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 13:33:25 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>GoodNotes &amp; The Joys of Digital Note-Taking</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/header.png&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/header.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I have to admit: I’m an analog kind of fellow. Much as I benefit from our growing roster of digital tools, I’m always on the lookout for software that reminds me of reality’s imperfect grit. Fake mechanical clock faces. &lt;a href=&quot;http://fffff.at/noisy-typer-a-typewriter-for-your-laptop/&quot;&gt;Typewriter sounds&lt;/a&gt;. &lt;a href=&quot;http://www.secretgeometry.com/apps/cathode/&quot;&gt;Simulated CRT monitors&lt;/a&gt;! Some might call them skeumorphic, clunky, or even fraudulent; but in a world increasingly bent on making things shiny and pristine, I enjoy having a reminder of which side of the screen is the more important one.&lt;/p&gt;
 
@@ -30,17 +30,17 @@
 
 &lt;p&gt;There were a good handful of contenders, but three names kept coming up: &lt;a href=&quot;https://itunes.apple.com/us/app/notability/id360593530?mt=8&amp;amp;at=1000lqfI&quot;&gt;Notability&lt;/a&gt;, &lt;a href=&quot;https://itunes.apple.com/us/app/noteshelf/id392188745?mt=8&amp;amp;at=1000lqfI&quot;&gt;Noteshelf&lt;/a&gt;, and &lt;a href=&quot;https://itunes.apple.com/us/app/goodnotes-4-notes-pdf/id778658393?mt=8&amp;amp;at=1000lqfI&quot;&gt;GoodNotes&lt;/a&gt;. None were perfect. Notability had many bells and whistles and was clearly the audience favorite, coming up in any thread where people were talking notes. Noteshelf was beautifully designed and seemed to be directly targeting my digital notebook use case, sporting flippable pages and an iBooks-like shelf for your notebooks. Unfortunately, both options felt fairly proprietary. If PDF export was even a feature, it was clearly treated in a throw-it-over-the-fence kind of way: the pristine copies of your notebooks only lived inside their respective app silos. Then there was GoodNotes. This was a subtle app without too much pizzaz and not overflowing with features. It almost resembled an Office-style product more than any of its hipper competitors. But the features it did offer were incredible.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/note.png&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/note.jpg&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;First, GoodNotes stored your drawings as vectors instead of rasterizing them out. Every line, shape, and highlight you drew was retained as a pristine geometric shape, preserving your work for the ages and offering 100% clarity at any zoom level. Any text that you wrote would automatically get OCR-ed, allowing you to actually search through your notes if your handwriting was legible enough. Covers and pages could be swapped with ease to any image of your choosing, even in the middle of an existing notebook. (Templates such as graph paper and even musical staff paper were included.) The UI and gestures were bog-standard iOS, and accordingly intuitive: it took little effort to figure out how to manage your documents and create new content. You still got all the “parity features” offered by other note-taking apps such as typing, shapes, image support, and more, which weren’t particularly relevant to me but still felt like they could be useful on occasion. Then there was the kicker. Even though your notebooks weren’t stored &lt;em&gt;directly&lt;/em&gt; as PDF, you could opt to encode them into Dropbox right as you were working. The implementation here was simply remarkable. Each PDF produced was, functionally, a lossless copy of your notebook, harnessing the full power of PDF to reproduce every GoodNotes feature in full. Digging around in the generated file internals, I saw that everything was layered just as it was in the app. The backgorund texture of each page was its own asset. Your writing was stored in its original vector form. &lt;em&gt;Even the OCR text was there&lt;/em&gt;, hidden from view but layered on top of the original text and searchable using most PDF software. This was as close to a perfect copy of your notebook as you could get, and I felt confident that my data would be perfectly safe were GoodNotes to ever go out of business.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/pages.png&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/pages.jpg&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;(It should be noted that there’s one downside to GoodNotes’ vector drawing approach: performance is proportional to the amount of content on the page. In most cases, this isn’t a problem: loading takes no time at all and drawing is lag-free. But if one of your pages is especially dense with translucent lines and complex shapes, it might take a second for everything to tile in. In practice, the tradeoff of having a lossless copy of your data versus fixed performance is well worth it. I can wait a second if it means that my writing will look as crisp 100 years from now as it does today.)&lt;/p&gt;
 
 &lt;p&gt;It’s hard to deny that you lose something in moving away from the physical world. No amount of code will give back the glide of an ink pen across cream-colored paper or  the crinkle of a bound old set of pages. But you only trade one kind of magic for another. I can now switch colors and brush strokes in a snap. Mistakes can be erased and even undone with barely a thought. If I need to make a graph or draw some musical notes, I can switch out the “paper” I’m using to almost any other format — or even provide my own. And covers! Whereas in my paper notebook days, I could spend hours window-shopping for a cover with just the right look and feel, the joy of discovering the perfect vector image for the cover of my digital notebook comes very close indeed. Best of all, I now have a digital archive of all my notes without any extra work on my part. On finishing my work for the day, I can peek inside my Dropbox and leaf through a remarkable document featuring every paragraph, graph, and schematic I’d scribbled.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/preview.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/preview.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Today, all my work-related notes are made directly on my iPad using &lt;a href=&quot;https://itunes.apple.com/us/app/goodnotes-4-notes-pdf/id778658393?mt=8&amp;amp;at=1000lqfI&quot;&gt;GoodNotes&lt;/a&gt;. And it’s just wonderful!&lt;/p&gt;
 
