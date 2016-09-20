@@ -6,9 +6,53 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 23 Aug 2016 13:08:17 -0700</pubDate>
-    <lastBuildDate>Tue, 23 Aug 2016 13:08:17 -0700</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 13:24:08 -0700</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 13:24:08 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>GoodNotes &amp; The Joys of Digital Note-Taking</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/header.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I have to admit: I’m an analog kind of fellow. Much as I benefit from our growing roster of digital tools, I’m always on the lookout for software that reminds me of reality’s imperfect grit. Fake mechanical clock faces. &lt;a href=&quot;http://fffff.at/noisy-typer-a-typewriter-for-your-laptop/&quot;&gt;Typewriter sounds&lt;/a&gt;. &lt;a href=&quot;http://www.secretgeometry.com/apps/cathode/&quot;&gt;Simulated CRT monitors&lt;/a&gt;! Some might call them skeumorphic, clunky, or even fraudulent; but in a world increasingly bent on making things shiny and pristine, I enjoy having a reminder of which side of the screen is the more important one.&lt;/p&gt;
+
+&lt;p&gt;The same even applies to my work notes. No doubt, there are immense benefits to limiting your note-taking to professional software like OneNote or Google Docs, including obvious features like copy &amp;amp; paste and text search that we all rely on while taking completely for granted. But whenever I undertake a major project, any spare pieces of paper lying around (including napkins, envelopes, and candy wrappers) will inevitably become conscripted as scratch paper, despite the vast universe of affordances on the digital side of the divide. As much as I’ve tried to adopt my thinking to software, the cold, hard truth of digital type just doesn’t represent my thoughts very well. On paper, my ideas becomes non-linear: sometimes visually grouped with related bits of info, sometimes crawling up the sides, sometimes accompanied by quick sketches and diagrams.&lt;/p&gt;
+
+&lt;p&gt;One day, after failing yet again to trace my line of thought in Evernote, I decided to just give in and buy myself a nice paper notebook. Despite my initial concerns about all the features I was giving up, the switch turned out to be remarkably liberating. I loved to dig around in my backpack for my latest set of notes; feel the ever-growing creases in the covers; flip past all the dog-eared pages. And of course, no app in the world could replicate the joy of jotting down a rickety diagram with ink flowing in its wake! It felt significant that I could hold in my hands a tangible artifact representing the course of my project, and I looked forward to the days when I would exhaust my current notebook and have to go shopping for a new one. The tactile pleasures of this simple thing couldn’t be reproduced by any computer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/notebook.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The digital world still beckoned, slightly. Largely spurred by my light-packing travels, most of my other media had become digital at this point. My work notes usually served the role of scratch paper, so I didn’t miss the search feature in Evernote too much. Still, it was a terrible shame that once a project was over, all these notebooks had to be thrown in a closet to gather dust in obscurity. I tried scanning bits of them in, but it was too much of a hassle.&lt;/p&gt;
+
+&lt;p&gt;In September 2015, Apple announced the new iPad Pro along with their brand new stylus, the Apple Pencil. This was a necessary purchase for my work anyway, and so a new hope crossed my mind: could I finally reconcile the analog and digital worlds with this tech? Here was a tablet that could finally act like a digital pad of paper, sporting a glass-welded, ambient-light-adapting screen and a digitizer running at 120Hz with barely any latency. Just a few years before, you needed an enormous desk-sized piece of hardware to do the same thing — and people still complained about the lag. With the Apple Pencil, seemingly everyone (artists and reviewers alike) agreed that it was the closest thing to paper they’d ever tried.&lt;/p&gt;
+
+&lt;p&gt;After receiving my new iPad, I started to search for a very specific kind of software. Plenty of great drawing apps were out already, but I wanted more than that. I wanted an app that would let me collect a roster of virtual notebooks, all sporting different shapes and covers. I wanted each notebook to have a variety of pages, customizable with their own type and texture. Most importantly, I wanted every notebook to exist as an open-format file on my Dropbox. Instead of relying on a proprietary app to access my notebooks, it was critical that I be able to leaf through them — and maybe even edit them! — using other software. It seemed that PDF might be suited for the task; I’d routinely used it for book scans to great effect, and I also knew that the underlying rendering technology — PostScript — was more than capable of displaying any manner of graphic. Perhaps there was an app that fused PDF creation and annotation with just the right amount of magic make it work?&lt;/p&gt;
+
+&lt;p&gt;There were a good handful of contenders, but three names kept coming up: &lt;a href=&quot;https://itunes.apple.com/us/app/notability/id360593530?mt=8&amp;amp;at=1000lqfI&quot;&gt;Notability&lt;/a&gt;, &lt;a href=&quot;https://itunes.apple.com/us/app/noteshelf/id392188745?mt=8&amp;amp;at=1000lqfI&quot;&gt;Noteshelf&lt;/a&gt;, and &lt;a href=&quot;https://itunes.apple.com/us/app/goodnotes-4-notes-pdf/id778658393?mt=8&amp;amp;at=1000lqfI&quot;&gt;GoodNotes&lt;/a&gt;. None were perfect. Notability had many bells and whistles and was clearly the audience favorite, coming up in any thread where people were talking notes. Noteshelf was beautifully designed and seemed to be directly targeting my digital notebook use case, sporting flippable pages and an iBooks-like shelf for your notebooks. Unfortunately, both options felt fairly proprietary. If PDF export was even a feature, it was clearly treated in a throw-it-over-the-fence kind of way: the pristine copies of your notebooks only lived inside their respective app silos. Then there was GoodNotes. This was a subtle app without too much pizzaz and not overflowing with features. It almost resembled an Office-style product more than any of its hipper competitors. But the features it did offer were incredible.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/note.png&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;First, GoodNotes stored your drawings as vectors instead of rasterizing them out. Every line, shape, and highlight you drew was retained as a pristine geometric shape, preserving your work for the ages and offering 100% clarity at any zoom level. Any text that you wrote would automatically get OCR-ed, allowing you to actually search through your notes if your handwriting was legible enough. Covers and pages could be swapped with ease to any image of your choosing, even in the middle of an existing notebook. (Templates such as graph paper and even musical staff paper were included.) The UI and gestures were bog-standard iOS, and accordingly intuitive: it took little effort to figure out how to manage your documents and create new content. You still got all the “parity features” offered by other note-taking apps such as typing, shapes, image support, and more, which weren’t particularly relevant to me but still felt like they could be useful on occasion. Then there was the kicker. Even though your notebooks weren’t stored &lt;em&gt;directly&lt;/em&gt; as PDF, you could opt to encode them into Dropbox right as you were working. The implementation here was simply remarkable. Each PDF produced was, functionally, a lossless copy of your notebook, harnessing the full power of PDF to reproduce every GoodNotes feature in full. Digging around in the generated file internals, I saw that everything was layered just as it was in the app. The backgorund texture of each page was its own asset. Your writing was stored in its original vector form. &lt;em&gt;Even the OCR text was there&lt;/em&gt;, hidden from view but layered on top of the original text and searchable using most PDF software. This was as close to a perfect copy of your notebook as you could get, and I felt confident that my data would be perfectly safe were GoodNotes to ever go out of business.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/pages.png&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(It should be noted that there’s one downside to GoodNotes’ vector drawing approach: performance is proportional to the amount of content on the page. In most cases, this isn’t a problem: loading takes no time at all and drawing is lag-free. But if one of your pages is especially dense with translucent lines and complex shapes, it might take a second for everything to tile in. In practice, the tradeoff of having a lossless copy of your data versus fixed performance is well worth it. I can wait a second if it means that my writing will look as crisp 100 years from now as it does today.)&lt;/p&gt;
+
+&lt;p&gt;It’s hard to deny that you lose something in moving away from the physical world. No amount of code will give back the glide of an ink pen across cream-colored paper or  the crinkle of a bound old set of pages. But you only trade one kind of magic for another. I can now switch colors and brush strokes in a snap. Mistakes can be erased and even undone with barely a thought. If I need to make a graph or draw some musical notes, I can switch out the “paper” I’m using to almost any other format — or even provide my own. And covers! Whereas in my paper notebook days, I could spend hours window-shopping for a cover with just the right look and feel, the joy of discovering the perfect vector image for the cover of my digital notebook comes very close indeed. Best of all, I now have a digital archive of all my notes without any extra work on my part. On finishing my work for the day, I can peek inside my Dropbox and leaf through a remarkable document featuring every paragraph, graph, and schematic I’d scribbled.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/preview.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Today, all my work-related notes are made directly on my iPad using &lt;a href=&quot;https://itunes.apple.com/us/app/goodnotes-4-notes-pdf/id778658393?mt=8&amp;amp;at=1000lqfI&quot;&gt;GoodNotes&lt;/a&gt;. And it’s just wonderful!&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 30 Aug 2016 13:26:53 -0700</pubDate>
+        <link>http://beta-blog.archagon.net/2016/08/30/on-the-wonders-of-digital-journaling/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2016/08/30/on-the-wonders-of-digital-journaling/</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
     
       <item>
         <title>Indie App Reliance</title>
@@ -1088,49 +1132,6 @@ text-decoration: inherit;
         
         
         <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Backgroundifier</title>
-        <description>&lt;p&gt;I made a Mac app! It’s called &lt;a href=&quot;http://backgroundifier.archagon.net&quot;&gt;Backgroundifier&lt;/a&gt;, and it turns any image into a desktop background. (But it’s better for fine art and illustration.)&lt;/p&gt;
-
-&lt;p&gt;You can pass an image like this…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/bgify-1.jpg&quot; class=&quot;content&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;…through the droplet…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/bgify-2.png&quot; class=&quot;content&quot; width=&quot;600px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;…to get something like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/bgify-3.jpg&quot; class=&quot;content&quot; width=&quot;400px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I collect lots of art from websites like &lt;a href=&quot;https://www.reddit.com/r/ImaginaryCityscapes&quot;&gt;/r/imaginarycityscapes&lt;/a&gt; and artist blogs. Unfortunately, there never seems to be enough time in the day to actually sit down and look through it all. As a result, it mostly sits and gathers dust in a directory in my Dropbox — not a great place for art to be.&lt;/p&gt;
-
-&lt;p&gt;So I’ve been thinking of ways to get it in front of my eyes. On a Mac, the desktop background seemed like the perfect place to put it, especially since OSX natively supports randomly rotating your desktop background from a directory of images. Unfortunately, since all my art was in different sizes and aspect ratios, it looked ugly with the default letterbox color that OSX added to compensate.&lt;/p&gt;
-
-&lt;p&gt;After seeing the visual design of &lt;a href=&quot;https://news.ycombinator.com/item?id=8723120&quot;&gt;tomkinstinch’s Artful app&lt;/a&gt;, I realized that images could be framed more cleverly. By processing the image instead of using a solid color, you could create a background that hinted at contents of the image while still being subdued enough to serve as a backdrop. But Artful didn’t support local files; it pulled its art from the web. Furthermore, like many Mac users, I’m a proponent of keeping things close to the defaults. What I wanted was a basic utility that could simply input my images and output the backgrounds, allowing the OS do the background rotation for me. No need to keep any apps open; no compatibility issues; nothing but a basic command line utility with a bit of GUI attached.&lt;/p&gt;
-
-&lt;p&gt;So that’s what I made. In addition to the GUI, the app actually supports command line mode. If you Terminal into the MacOS directory inside the package, you can run the Backgroundifier executable straight from the command line. (On my machine, I’ve even set up an Automator script to watch my input image directory and automatically convert any new arrivals.) Unfortunately, due to sandboxing restrictions, you can only read and write to the ~/Pictures directory unless you use the GUI… but check in the Resources directory in the bundle and you might find something a bit more robust!&lt;/p&gt;
-
-&lt;p&gt;This was mostly a small side project for me, but I couldn’t help but implement a few bits of UI bling. One is the animation of the droplet:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/bgify-demo2.gif&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;(That shadow looks better when it’s not in a gif!)&lt;/p&gt;
-
-&lt;p&gt;Unfortunately, doing this on OSX is a bit more tricky than on iOS. Whereas in UIKit, you can access (and transform!) each view’s layer without any issues, this is disabled by default in AppKit. And even if you do enable layer-backed views, transforming them is not officially allowed. One of the reasons UIKit feels so good is because layers are supported on the most fundamental level; I hope that we get a similar framework update for OSX sometime in the near future. Visually, the current tech stack feels like it’s stuck in the 90’s.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/archagon/backgroundifier-public&quot;&gt;The app is mostly open source&lt;/a&gt;. I’ve decided to not release my one user interface nib file for now, but everything else is up for grabs. It’s written in Swift 2. (The repo is a bit out of date, but I hope to commit my latest changes in the near future.)&lt;/p&gt;
-</description>
-        <pubDate>Tue, 29 Sep 2015 17:36:37 -0700</pubDate>
-        <link>http://beta-blog.archagon.net/2015/09/29/backgroundifier/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2015/09/29/backgroundifier/</guid>
-        
-        
-        <category>releases</category>
         
       </item>
     
