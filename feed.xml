@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Sep 2016 14:31:55 -0700</pubDate>
-    <lastBuildDate>Tue, 27 Sep 2016 14:31:55 -0700</lastBuildDate>
+    <pubDate>Tue, 27 Sep 2016 15:10:40 -0700</pubDate>
+    <lastBuildDate>Tue, 27 Sep 2016 15:10:40 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -109,7 +109,7 @@ killall Finder
 
 &lt;p&gt;Whenever you wish to see a new work of art, just pop open Mission Control (in my case, bound to &lt;code&gt;Command-Option-up&lt;/code&gt;), create a few new Spaces, and keep switching Spaces to the right. It’s just like leafing through an art book!&lt;/p&gt;
 
-&lt;video controls=&quot;&quot; width=&quot;800px&quot;&gt;
+&lt;video controls=&quot;&quot; width=&quot;800px&quot; poster=&quot;/images/backgroundifier-gallery/demo.jpg&quot;&gt;
 	&lt;source src=&quot;/images/backgroundifier-gallery/demo.mp4&quot; type=&quot;video/mp4&quot; /&gt;
 	Your browser does not support the video tag.
 &lt;/video&gt;
