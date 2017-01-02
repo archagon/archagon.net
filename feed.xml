@@ -6,9 +6,213 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Sep 2016 15:10:40 -0700</pubDate>
-    <lastBuildDate>Tue, 27 Sep 2016 15:10:40 -0700</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 11:44:13 -0800</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 11:44:13 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Cheap and Painless eGPU Thrills on a 2013 MacBook Pro</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/egpu/egpu.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My late-2013 15” MacBook Pro’s discrete GPU — an NVIDIA GeForce GT 750M — was pretty good for gaming during the first year of its life.  But around the time that the new generation of consoles dropped, AAA games on the PC started becoming unplayable, even at postage-stamp resolutions with the lowest possible settings. I lived on a strict diet of indie games from 2015 to 2016 — thank goodness for well-tuned titles like Overwatch and The Witness! — but the itch to try games like the new Mirror’s Edge and Deus Ex became too great. Initially, I thought it might be time to switch out my MacBook for the upcoming 2016 model, but the winter reveal wasn’t particularly tempting: CPU performance was about the same as mine and the GPU was — at best — 3 times as powerful. (Still need to see the benchmarks on that — educated guess.) Worth it for a few hundred bucks, but $2000? No way! &lt;/p&gt;
+
+&lt;p&gt;Building a gaming PC wasn’t an option due to my mobile lifestyle, and in any case the kind of CPU I could buy for cheap would be comically underpowered compared to the i7 4850HQ I already had in front of me. So I started looking into the scary world of external Thunderbolt GPUs, colloquially known as eGPU. Modern Thunderbolt 3 (allegedly) supports external GPUs in an official capacity, but older Thunderbolt 2 can get the job done as well, even though it’s unsanctioned by Intel. I’m usually reluctant to pursue these sorts of under-the-radar hobbyist projects, but there was enough prior art to make it worth a shot!&lt;/p&gt;
+
+&lt;p&gt;Unlike many gaming enthusiasts, my goal was to optimize for simplicity over power: the fewer hacks and workarounds I had to use, the better. I already knew I’d have to use an external monitor and do my gaming in BootCamp, which was already the case. I knew there would be some performance loss from the limited bandwidth of TB2. I gathered that there may be timing issues and other problems that would require a bevy of software hacks to fix — mostly on the Windows side of things. But I was most concerned about the hardware hacking required to get the thing up and running in the first place.&lt;/p&gt;
+
+&lt;p&gt;The majority of published eGPU builds involve enormous graphics cards connected to hotwired desktop PSUs, sitting in unseemly, torn-apart Thunderbolt-to-PCI chassises. It was clear that the anointed case for the job was the &lt;a href=&quot;http://amzn.to/2itWCP9&quot;&gt;Akitio Thunder2&lt;/a&gt;. The Thunder2 wasn’t designed for eGPU use, but dozens of eGPU enthusiasts on forums like &lt;a href=&quot;https://www.techinferno.com/index.php?/forums/forum/83-diy-e-gpu-projects/&quot;&gt;TechInferno&lt;/a&gt; demonstrated that it ran stable and performed admirably. (Akitio engineers even popped in on occasion to offer under-the-table eGPU advice — off-warranty, of course.) It was also one of the cheapest options on the market at around $200: very fair considering that a barebones development Thunderbolt 2 board cost nearly as much!&lt;/p&gt;
+
+&lt;p&gt;Most eGPU builders buy this case to hack up, not to use as-is. Usually, the front panel is bent back or removed to fit larger cards, and then a desktop PSU is made to turn on with a paperclip and adapted to fit the DC plug. There are also arcane startup rituals to get everything powered and running with the right timing. I really didn’t want to have a PSU octopus and a ragged hunk of metal sitting bare on my table, though it sadly seemed inevitable. Then I discovered an alternate route.&lt;/p&gt;
+
+&lt;p&gt;Most GPUs are power hogs that rely on one or two extra power ports on top of the card, but there are a few designed to pull power straight from the PCI slot. These aren’t super-extreme gaming cards, but these days they more than get the job done. For example, the just-released NVIDIA GeForce GTX 1050 Ti does 60fps/1080p at very high settings in most modern games and currently benchmarks as the ~40th best video card on the market! Better yet, many of these single-slot offerings are short and half as long as the monster enthusiast cards, easily fitting into Akitio’s compact case without any modifications. Using this type of card, I’d be able to keep my Thunder2 in one piece and avoid using a PSU entirely. No hacks required!&lt;/p&gt;
+
+&lt;p&gt;At peak, these slot-powered cards can draw 75W from the PCI Express slot. Unfortunately, the Akitio Thunder2 only comes with a 60W adaptor, 30W of which is allocated to the circuitry. A dead-end? Not so fast: &lt;a href=&quot;https://www.akitio.com/faq/270-thunder2-pcie-box-what-s-the-maximum-power-output-through-the-pcie-slot&quot;&gt;as stated in the official docs&lt;/a&gt; and verified by employees, the Thunder2 can actually pull as much as 120W from a more powerful adaptor. To be compatible, the new power brick needs to sport a 5.5×2.5mm barrel plug, provide 12V output, and have &lt;a href=&quot;https://en.wikipedia.org/wiki/Polarity_symbols&quot;&gt;center positive polarity&lt;/a&gt;. (Practically every power adaptor has these last two items listed on the back.) My hope was to find a laptop power brick with these same specs, but it turned out that most laptops used chargers with an all-too-high output of 20V. Surprisingly, well-reviewed 12V/10A bricks weren’t common at all on Amazon (unless you &lt;a href=&quot;https://www.amazon.de/Netzteil-Laufwerke-Lichtschläuche-LED-Strips-geeignet/dp/B006Z9TQE6&quot;&gt;lived in the UK or Europe&lt;/a&gt;), with most of the listings taken up by rebranded versions of a sketchy-looking adaptor with model number CT-1250. Eventually, I discovered one vendor who was selling bricks with model number CD120100A, which had a more confident label and looked identical to a power brick I saw in another successful closed-case Akitio build. (The Amazon listing was full of typos and the product photos didn’t match the user photos, but it just so happened that the adaptor in the user photos was exactly the one I was hoping to find — and Prime allowed for painless returns in any case.) If the US 12V/10A adaptor market was really dominated by CT-1250 and CD120100A, the latter just seemed like a better bet.&lt;/p&gt;
+
+&lt;p&gt;For the graphics card, I decided to give the &lt;a href=&quot;http://amzn.to/2itNpGC&quot;&gt;EVGA factory-overclocked version of the 1050 Ti&lt;/a&gt; a try, since one eGPU enthusiast mentioned that their EVGA card handled boot timing issues a bit better. (True or not, I’ve also had positive experiences with EVGA warranty and support in the past, so it was an easy decision.) Potentially, the overclock was a problem: the Akitio Thunder2 wouldn’t provide more than 75W of power to the slot, and any excess power pulled by the card could destabilize the system or even fry the circuitry (as reported by one user). But from everything I read, factory-overclocked EVGA cards were designed to never exceed the 75W threshold, and any instability could simply be fixed by underclocking the card slightly using EVGA’s (or possibly NVIDIA’s) own tools. Factor in the fact that the non-overclocked version cost exactly the same as overclocked while probably having lower resale value, and it became clear that the SC model was almost certainly the better buy — even if you dropped the clocks right from the get-go.&lt;/p&gt;
+
+&lt;p&gt;(Note: many reviews will point out that the regular 1050 is a much better deal than the 1050 Ti from a price/performance perspective. Still, the Ti is about 20% faster than the non-Ti for just $20 more, and for the sake of future-proofing as well as TB2 performance loss it just makes sense to wring as much power from the purchase as possible.)&lt;/p&gt;
+
+&lt;p&gt;Trawling eGPU forums for installation instructions was quite frustrating. Most users preferred to write about how they got their eGPUs working with their laptop displays (using Optimus drivers — possible with NVIDIA GTX cards) and/or in OSX. Both tasks involved copious scripts and hacks. I was only interested in the bare minimum — BootCamp on an external display — but most guides simply skipped that “easy” part. Would I need to make a custom build of Windows? Edit drivers? Install a custom bootloader? Nothing was clear, so I decided to just jump into it.&lt;/p&gt;
+
+&lt;p&gt;Once I got all the parts assembled, I plugged the Thunder2 into my laptop and my monitor into the Thunder2, crossed my fingers, and turned on the computer while holding down the Alt key (for the boot menu — I already had BootCamp with the latest Windows 10 installed). At first… nothing. Just a black screen and no chime. I tried unplugging the cable, turning the machine on, waiting for the chime, and &lt;em&gt;then&lt;/em&gt; plugging it in. The boot menu showed up, but froze when I selected Windows. I tried one more time to boot with the cable plugged in and it worked! Or — at least, it booted into Windows. Nothing showed up on the external display, but the Windows Device Manager had a tempting entry named “Microsoft Basic Display Adapter”. Hopeful, I searched for other eGPU users who had gotten to this step, and it became apparent that all I had to do was install the latest NVIDIA drivers. One reboot later (with no issues this time) and I was seeing “NVIDIA GTX 1050 Ti” in my Device Manager. I gave Overwatch a quick run on the highest settings, but performance didn’t seem particularly great; my suspicion was that the laptop defaulted to the discrete 750M instead of the eGPU. I returned to Device Manager and disabled the 750M, restarted Overwatch, and… 60fps! It actually worked! Holy cow!&lt;/p&gt;
+
+&lt;p&gt;eGPU setup can be daunting depending on your hardware, but I seem to have gotten away with a problem-free configuration. The “hardest” part is getting the computer to chime on boot, presumably indicating that POST went correctly. This involves turning the computer off and on again one or two times in the worst case: if it chimes and the boot menu appears, everything is sure to work fine. (Recently, I’ve been getting the boot menu on first try 100% of the time. Maybe I was just impatient before!) Once booted into Windows, I’ve learned that simply changing the display settings to only use the external monitor, or to extend the desktop and use the external monitor as the main monitor, ensures that the eGPU is used over the discrete chip. (And I believe Windows remembers this preference when you launch with the eGPU connected.)&lt;/p&gt;
+
+&lt;p&gt;Now for some benchmarks! The main bottleneck in this setup is the TB2 connection. TB2 doesn’t allow for the full PCIe x16 throughput, potentially crippling graphics card performance. In practice, this isn’t really that big of a deal: users have reported at most a 20% performance loss over native, and usually a bit less. Let’s see how well we do.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;tablecontainer&quot;&gt;
+&lt;div class=&quot;tablepadding&quot;&gt;
+&lt;table&gt;
+
+&lt;colgroup&gt;
+&lt;col class=&quot;ch&quot; /&gt;
+&lt;col span=&quot;3&quot; class=&quot;data&quot; /&gt;
+&lt;/colgroup&gt;
+
+&lt;tbody&gt;
+
+&lt;tr class=&quot;rh&quot;&gt;
+&lt;td class=&quot;corner&quot;&gt;&lt;/td&gt;
+&lt;th&gt;GTX 1050 Ti SC&lt;/th&gt;
+&lt;th&gt;GT 750M&lt;/th&gt;
+&lt;th&gt;Improvement&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th colspan=&quot;4&quot;&gt;3DMark Fire Strike&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics Score&lt;/th&gt;
+&lt;td&gt;6993&lt;/td&gt;
+&lt;td&gt;1911&lt;/td&gt;
+&lt;td&gt;3.66×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 1&lt;/th&gt;
+&lt;td&gt;32.28&lt;/td&gt;
+&lt;td&gt;8.74&lt;/td&gt;
+&lt;td&gt;3.69×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 2&lt;/th&gt;
+&lt;td&gt;28.74&lt;/td&gt;
+&lt;td&gt;7.96&lt;/td&gt;
+&lt;td&gt;3.61×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th colspan=&quot;4&quot;&gt;3DMark Time Spy&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics Score&lt;/th&gt;
+&lt;td&gt;2040&lt;/td&gt;
+&lt;td&gt;450&lt;/td&gt;
+&lt;td&gt;4.53×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 1&lt;/th&gt;
+&lt;td&gt;13.67&lt;/td&gt;
+&lt;td&gt;3.00&lt;/td&gt;
+&lt;td&gt;4.56×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 2&lt;/th&gt;
+&lt;td&gt;11.43&lt;/td&gt;
+&lt;td&gt;2.54&lt;/td&gt;
+&lt;td&gt;4.50×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th colspan=&quot;4&quot;&gt;3DMark Sky Dive&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics Score&lt;/th&gt;
+&lt;td&gt;22564&lt;/td&gt;
+&lt;td&gt;5602&lt;/td&gt;
+&lt;td&gt;4.03×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 1&lt;/th&gt;
+&lt;td&gt;102.25&lt;/td&gt;
+&lt;td&gt;26.41&lt;/td&gt;
+&lt;td&gt;3.87×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 2&lt;/th&gt;
+&lt;td&gt;103.83&lt;/td&gt;
+&lt;td&gt;24.80&lt;/td&gt;
+&lt;td&gt;4.19×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th colspan=&quot;4&quot;&gt;3DMark11 Free&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics Score&lt;/th&gt;
+&lt;td&gt;8802&lt;/td&gt;
+&lt;td&gt;2445&lt;/td&gt;
+&lt;td&gt;3.60×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 1&lt;/th&gt;
+&lt;td&gt;42.83&lt;/td&gt;
+&lt;td&gt;11.27&lt;/td&gt;
+&lt;td&gt;3.80×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 2&lt;/th&gt;
+&lt;td&gt;42.18&lt;/td&gt;
+&lt;td&gt;11.40&lt;/td&gt;
+&lt;td&gt;3.70×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 3&lt;/th&gt;
+&lt;td&gt;54.32&lt;/td&gt;
+&lt;td&gt;15.52&lt;/td&gt;
+&lt;td&gt;3.50×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;th class=&quot;th1&quot;&gt;Graphics FPS 4&lt;/th&gt;
+&lt;td&gt;25.13&lt;/td&gt;
+&lt;td&gt;7.39&lt;/td&gt;
+&lt;td&gt;3.40×&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/tbody&gt;
+
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Quite an upgrade! According to Passmark and other benchmark listings, a 1050 Ti should, under normal circumstances, be about 4.5× as powerful as a 750M. Factor in 10%-20% performance loss from the TB link and that’s exactly what we see in our results: a 4x boost on average.&lt;/p&gt;
+
+&lt;p&gt;Even without any underclocking, stability has not been an issue. I’ve been playing hours of Crysis 3, Far Cry 4, and Mirror’s Edge Catalyst over the past few days and everything’s still working great. I’m keeping the case closed, but I don’t think there’s any real risk of overheating: the GPU fan is designed to funnel heat right out through the back and there’s an extra font fan build into the case anyway. According to 3DMark, temperature during benchmarking has been stable.&lt;/p&gt;
+
+&lt;p&gt;I’m not interested in running any weird scripts to get Optimus drivers for the internal display working, but I learned something interesting while fiddling with the Windows display settings. If you set the multiple display setting to &lt;a href=&quot;/images/egpu/duplicate.png&quot;&gt;“Duplicate these displays”&lt;/a&gt;, it seems that somehow the eGPU gets used for both the internal and external display! Assuming I’m interpreting this finding correctly, this means that theoretically you could buy something like this &lt;a href=&quot;https://www.amazon.com/CompuLab-fit-Headless-Display-Emulator/dp/B00FLZXGJ6&quot;&gt;HDMI display emulator&lt;/a&gt; and use the eGPU on the internal display without an external monitor and without having to go through the hacky process of getting Optimus up and running. Unfortunately, there’s a performance penalty of about 20%-25% (according to my benchmarks) as well as approximately 0.25 seconds of latency, making this approach untenable for first-person shooters and other twitchy games. (I wonder if this is also the case with the Optimus driver route?)&lt;/p&gt;
+
+&lt;p&gt;Another interesting finding: if you keep the discrete GPU enabled, there’s a setting in the NVIDIA control panel to &lt;a href=&quot;/images/egpu/physx.png&quot;&gt;dedicate one of the GPUs to PhysX&lt;/a&gt;. I’m not sure if this will make a real difference in performance or cause stability issues, but it might be worth investigating in the future.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/egpu/egpu2.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To summarize, using only…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://amzn.to/2itWCP9&quot;&gt;An Akitio Thunder2 PCIe Box&lt;/a&gt; ($220)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://amzn.to/2itNpGC&quot;&gt;An EVGA GeForce GTX 1050 Ti SC&lt;/a&gt; ($140)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://amzn.to/2iQUoWJ&quot;&gt;A 120W 12V/10A power adaptor with a 5.5×2.5mm plug and center positive polarity&lt;/a&gt; ($35 — though buy it from a seller with Prime in case it’s the wrong one! This listing used to have a Prime seller, but I don’t see them anymore.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;…you can assemble a painless, hack-less eGPU build and use it with your late-2013 15” dGPU MacBook as a fairly cheap graphics upgrade. (Cheaper still if you wait for rebates or use an older/weaker X50 card.) &lt;strong&gt;Caveat emptor:&lt;/strong&gt; the same build might not work so well — or at all! — on other MacBook models or even with a different driver version. Remember that eGPU on TB2 is not officially supported and mostly works by accident, though clearly it can work very well.&lt;/p&gt;
+
+&lt;p&gt;In time, I hope somebody releases a Thunderbolt 3 eGPU the size of one of those Square credit card readers — maybe sporting a GTX 980M caliber chip? — that plugs into a USB-C port and works seamlessly with the internal display. But for now, this lovely little eGPU will do just fine. I’m confident that my trusty MacBook can now serve me for another few years, especially if NVIDIA continues to release excellent and inexpensive PCI-powered cards on the regular. &lt;/p&gt;
+
+&lt;p&gt;Let’s hope that the eGPU revolution is just beginning!&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 31 Dec 2016 18:18:54 -0800</pubDate>
+        <link>http://beta-blog.archagon.net/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
     
       <item>
         <title>Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</title>
@@ -1079,153 +1283,6 @@ text-decoration: inherit;
         <pubDate>Sat, 26 Dec 2015 02:18:44 -0800</pubDate>
         <link>http://beta-blog.archagon.net/2015/12/26/the-perfect-travel-gaiwan/</link>
         <guid isPermaLink="true">http://beta-blog.archagon.net/2015/12/26/the-perfect-travel-gaiwan/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>The Stanley 64oz Classic Vacuum Growler</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/stanley_main.JPG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Shortly after I posted my &lt;a href=&quot;/2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/&quot;&gt;Klean Kanteen review&lt;/a&gt;, Stanely offered to send me one of their own bottles to play around with: the &lt;a href=&quot;http://amzn.to/1ItRmn0&quot;&gt;64oz Classic Vacuum Growler&lt;/a&gt;. I was quite happy with the build quality of the Stanleys I saw at REI, so at risk of becoming a professional growler reviewer, I figured I’d give this bottle an equally thorough look.&lt;/p&gt;
-
-&lt;h2 id=&quot;construction&quot;&gt;Construction&lt;/h2&gt;
-
-&lt;p&gt;There’s a lot of good things to say about the construction of this growler. The outer shell, painted in the usual Stanley enamel-matte-green, is very solid and attractive in both look and feel. There’s certainly no concern about the coating fading or chipping with use. The plastic is also very smooth and feels higher quality than the typical materials used in these kinds of bottles.&lt;/p&gt;
-
-&lt;p&gt;The latching mechanism that encircles the neck and lid of the bottle is made entirely from plastic. This is very concerning to me. The way it works is very simple: a metal loop, attached to a plastic tab, snags around a plastic hook in the lid and then depresses with a plastic lever. Looking closely at the lower plastic hinge, &lt;a href=&quot;/images/stanley_lower_hinge.jpg&quot;&gt;there are white stress marks where the hinge attaches to the lid&lt;/a&gt;, right out of the box. Similarly, on the upper plastic hook, &lt;a href=&quot;/images/stanley_upper_hinge.jpg&quot;&gt;you can see the plastic starting to wear down and whiten from the shape of the metal loop&lt;/a&gt;. This wasn’t just my bottle, either: every Stanley growler I’ve seen at REI has had these marks. I’d love to be proven wrong, but my feeling is that these parts will be the first to fail.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, the rubber/silicone material used in the gasket feels very sturdy. I expect it to last for a long time.&lt;/p&gt;
-
-&lt;p&gt;The Stanley logo on the side of the bottle looks like a sticker and I’m concerned it will eventually fall off. Compared to the rest of the body it looks a bit cheap.&lt;/p&gt;
-
-&lt;h2 id=&quot;design&quot;&gt;Design&lt;/h2&gt;
-
-&lt;p&gt;The lid opens very, very smoothly — almost surprisingly so. There’s just enough friction in the joint that it stops &lt;a href=&quot;/images/stanley_cap.jpg&quot;&gt;almost parallel to the neck of the bottle without ever touching the body&lt;/a&gt;. It feels great.&lt;/p&gt;
-
-&lt;p&gt;The latch is slightly problematic in that the lever is very easy to smack against the side of the growler — loud and a bit troubling due to the plastic construction. (But you learn to avoid this fairly quickly.) However, the design is certainly preferable to the Miir-style puzzle-latch. It’s simple and effective.&lt;/p&gt;
-
-&lt;p&gt;This is a wide-mouth bottle, and you can read about the trade-offs in my previous article. (To summarize: I think you will find the small, rounded lip of the Klean Kanteen better for pouring and drinking, but the wide mouth of the Stanley will allow for easier fills as well as use with tea infusers, ice, etc.) This is clearly not meant to be a bottle that you drink straight out of, especially given the &lt;a href=&quot;/images/stanley_top.jpg&quot;&gt;wide ring of plastic around the lip&lt;/a&gt; (though I’ve been doing it a little bit and it’s been fine). While similar in overall design, Stanley’s neck ring looks a lot better than Miir’s. The tolerances are much tighter, though there are still some very small gaps that I fear water might get into.&lt;/p&gt;
-
-&lt;p&gt;Pouring this bottle is very easy. The lid opens perpendicular to the handle, and due to the fact that the plastic latch ring is inset from the actual, metal lip of the bottle by a centimeter or so, you don’t get the usual problem of liquid trickling down the side of the bottle when you start pouring. Even if you pour slowly, the plastic edge acts as a spout and directs the stream right into your glass! I specifically wanted to avoid a handle when picking my previous growler, but after using this one for a while, I’ve come around to it: at 64oz, it’s really the best way to pour out the contents of your growler when full. One minor issue is that, due to the fact that the rubber/silicone on the underside of the lid has a central ring that juts out, liquid can gather and drip from this outcropping when you pour.&lt;/p&gt;
-
-&lt;p&gt;64oz is a lot of fizzy water, so I have not yet tested how well the growler keeps liquids carbonated. However, there was a &lt;em&gt;lot&lt;/em&gt; of suction in the seal after a few hours keeping hot tea, so I think it should perform well in this regard.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;/images/stanley_govt_warning.jpg&quot;&gt;The bottom has the volume and government warning engraved&lt;/a&gt;. Hallelujah! No chance of these rubbing off.&lt;/p&gt;
-
-&lt;p&gt;Volume-wise, the space in the neck gives you an extra 4oz or so over the base 64oz.&lt;/p&gt;
-
-&lt;p&gt;This bottle is listed as dishwasher-safe — unusual for thermally-insulated bottles.&lt;/p&gt;
-
-&lt;h2 id=&quot;temperature&quot;&gt;Temperature&lt;/h2&gt;
-
-&lt;p&gt;Due to the fact that this growler holds twice as much water as my Klean Kanteen, I performed two tests: one with 64oz of water and one with 32oz. Since 64oz of water takes a lot longer to change temperature than 32oz, I figured it would be more fair to do it this way for comparison’s sake with previous results. Do note, though, that since there’s a lot more space for the heat to dissipate when filled with 32oz, performance at that level is going to be worse than in a bottle designed to hold 32oz.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;div class=&quot;tablecontainer&quot;&gt;
-&lt;div class=&quot;tablepadding&quot;&gt;
-&lt;table&gt;
-
-&lt;colgroup&gt;
-&lt;col class=&quot;ch&quot; /&gt;
-&lt;col span=&quot;2&quot; class=&quot;data&quot; /&gt;
-&lt;/colgroup&gt;
-
-&lt;tbody&gt;
-
-&lt;tr class=&quot;rh&quot;&gt;
-&lt;td class=&quot;corner&quot;&gt;&lt;/td&gt;
-&lt;th&gt;Stanley Growler (Filled 64oz)&lt;/th&gt;
-&lt;th&gt;Stanley Growler (Filled 32oz)&lt;/th&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;0 minutes&lt;/th&gt;
-&lt;td&gt;95.7 ℃&lt;/td&gt;
-&lt;td&gt;94.3 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;8 minutes&lt;/th&gt;
-&lt;td&gt;95.1 ℃&lt;/td&gt;
-&lt;td&gt;92.7 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;td class=&quot;data&quot; colspan=&quot;2&quot;&gt;Open&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;21 minutes&lt;/th&gt;
-&lt;td&gt;91.3 ℃&lt;/td&gt;
-&lt;td&gt;82.4 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;td class=&quot;data&quot; colspan=&quot;2&quot;&gt;Closed&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;35 minutes&lt;/th&gt;
-&lt;td&gt;90.7 ℃&lt;/td&gt;
-&lt;td&gt;80.3 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;td class=&quot;data&quot; colspan=&quot;2&quot;&gt;Open&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;56 minutes&lt;/th&gt;
-&lt;td&gt;85.5 ℃&lt;/td&gt;
-&lt;td&gt;68.9 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;td class=&quot;data&quot; colspan=&quot;2&quot;&gt;Closed&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;71 minutes&lt;/th&gt;
-&lt;td&gt;84.7 ℃&lt;/td&gt;
-&lt;td&gt;67.6 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;98 minutes&lt;/th&gt;
-&lt;td&gt;83.6 ℃&lt;/td&gt;
-&lt;td&gt;66.3 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;th class=&quot;th1&quot;&gt;220 minutes&lt;/th&gt;
-&lt;td&gt;79.7 ℃&lt;/td&gt;
-&lt;td&gt;61.3 ℃&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;/tbody&gt;
-
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Results with 64oz are fantastic and great with 32oz as well, keeping in mind the temperature/volume considerations above.&lt;/p&gt;
-
-&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;I’m very concerned about the durability of the plastic latch, but overall, this growler feels great. It’s also one of the most attractive 64oz growlers I’ve seen, especially in the flip-top arena. In terms of 64oz, I’d be torn between the Stanley and the Klean Kanteen, but I’d definitely pick the Stanley over the Miir and probably over the Hydro Flask. Having continuously used this growler for a few months with water, tea, and beer and receiving admirable performance in every regard, I give it a thumbs up!&lt;/p&gt;
-
-&lt;p&gt;(Better yet: at the time I wrote this review, Stanley didn’t offer a growler in 32oz size, but it looks like they do now! Definitely worth checking out.)&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 25 Dec 2015 00:58:32 -0800</pubDate>
-        <link>http://beta-blog.archagon.net/2015/12/25/the-stanley-64oz-classic-vacuum-growler/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2015/12/25/the-stanley-64oz-classic-vacuum-growler/</guid>
         
         
       </item>

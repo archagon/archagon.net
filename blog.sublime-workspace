@@ -160,7 +160,7 @@
 			"file": "_sass/_layout.scss",
 			"settings":
 			{
-				"buffer_size": 5676,
+				"buffer_size": 5773,
 				"line_ending": "Unix"
 			}
 		},
@@ -215,7 +215,7 @@
 			"file": "_sass/_base.scss",
 			"settings":
 			{
-				"buffer_size": 5459,
+				"buffer_size": 5514,
 				"line_ending": "Unix"
 			}
 		},
@@ -289,10 +289,10 @@
 			}
 		},
 		{
-			"contents": "Searching 261 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n\n\nSearching 263 files for \"bgpatch\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n1 match in 1 file\n\n\nSearching 263 files for \"bgpatch\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n1 match in 1 file\n\n\nSearching 263 files for \"background.\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_replacement.scss:\n   40  }\n   41  \n   42: // Hides text in an element so you can see the background.\n   43  //\n   44  // The direction indicates how the text should be moved out of view.\n\n1 match in 1 file\n\n\nSearching 263 files for \"bgtest\"\n\n0 matches across 0 files\n\n\nSearching 263 files for \"bg\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   66  \n   67  body {\n   68:     background-image: url(\"/images/bgpattern.jpg\");\n   69      background-attachment: fixed;\n   70      @include media-query($on-palm) {\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/sprites/_sprite-img.scss:\n   28  \n   29  // Sets all the rules for a sprite from a given sprite image to show just one of the sprites.\n   30: // To reduce duplication use a sprite-bg mixin for common properties and a sprite-select mixin for positioning.\n   31  @mixin sprite-img($img, $col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin) {\n   32    @include sprite-background($img, $width, $height);\n\n3 matches across 2 files\n\n\nSearching 263 files for \"excerpt_separator\"\n\n0 matches across 0 files\n\n\nSearching 263 files for \"more inside\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   14  \n   15        <article class=\"post-content\">\n   16:       {{ post.excerpt }} <a href=\"{{ post.url | prepend: site.baseurl }}\">More inside...</a>\n   17        </article>\n   18      </li>\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2: title: UI Mockup\n    3  permalink: /ui_mockup/\n    4  ---\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2: title: UI Mockup\n    3  permalink: /ui_mockup/\n    4  ---\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui_mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2  title: UI Mockup\n    3: permalink: /ui_mockup/\n    4  ---\n    5  \n\n1 match in 1 file\n\n\nSearching 263 files for \"UI Mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1: <!-- title: UI Mockup -->\n    2  <!-- permalink: /ui_mockup/ -->\n    3  \n\n1 match in 1 file\n\n\nSearching 265 files for \"category-technology-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    5  $category-programming-color:    #DEA5A4;\n    6  $category-travel-color:         #FDFD96;\n    7: $category-technology-color:     #FFB347;\n    8  \n    9  \n\n1 match in 1 file\n\n\nSearching 279 files for \"background-color: \"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n    8              display: inline;\n    9              padding: 5px;\n   10:             background-color: red;\n   11          }\n   12          li {\n   13              display: inline-block;\n   14:             background-color: salmon;\n   15              text-align: center;\n   16              vertical-align: middle;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n   44              border-radius: 0.5em;\n   45  \n   46:             background-color: #77dd77;\n   47          }\n   48          li {\n   ..\n   62  \n   63              color: #1b6d1b;\n   64:             background-color: #b4ecb4;\n   65          }\n   66      </style>\n   ..\n  106              padding: 0.5em;\n  107  \n  108:             background-color: #77dd77;\n  109          }\n  110          li:nth-child(1) {\n  ...\n  129  \n  130              color: #1b6d1b;\n  131:             background-color: #b4ecb4;\n  132          }\n  133      </style>\n  ...\n  175      #{$country-class} li > span {\n  176          color: darken($color, 40%);\n  177:         background-color: lighten($color, 15%);\n  178:         // background-color: mix($color, white, 50%);\n  179          border-color: darken($color, 30%);\n  180      }\n  ...\n  185      // sub-list background\n  186      #{$country-class}.sub-list > ul > li {\n  187:         background-color: $color;\n  188      }\n  189      // sub-list cell header\n  ...\n  193      }\n  194      #{$country-class}.sub-list li > span > a {\n  195:         background-color: lighten($color, 20%);\n  196      }\n  197  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   26  @if variable-exists({{ category_color_name }}) {\n   27    #{{ post.selector_id }} {\n   28:     background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31    #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33:       background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   34      {% else %}\n   35:       background-color: lighten(${{ category_color_name }}, $archive_post_inner_color_lightness);\n   36      {% endif %}\n   37    }\n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n   11  border-radius: 1em;\n   12  width: 80%;\n   13: background-color: white;\n   14  text-align: center;\n   15  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   20    #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22:       background-color: mix(${{ category_color_name }}, white, 30%);\n   23        .post-title {\n   24          /*color: mix(${{ category_color_name }}, black, 60%);*/\n   25:         background-color: mix(${{ category_color_name }}, white, 80%);\n   26        }\n   27      }\n   28      @else {\n   29:       background-color: mix($category-default-color, white, 30%);\n   30        .post-title {\n   31:         background-color: mix($category-default-color, white, 80%);\n   32          /*color: $category-default-color;*/\n   33        }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/html_postprocessor.rb:\n  150                          }\n  151                          .caption {\n  152:                             background-color: blue;\n  153                              margin: 4px;\n  154                          }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   43      font-weight: 300;\n   44      color: $text-color;\n   45:     background-color: $background-color;\n   46  }\n   47  \n   ..\n  114  \n  115  .post {\n  116:     // background-color: pink;\n  117      // padding: 20px;\n  118      // border-radius: 10px;\n  ...\n  168      border: 1px solid lightgray;\n  169      border-radius: 0.3em;\n  170:     background-color: #eef;\n  171  }\n  172  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    7      .background-overlay {\n    8          background-image: url(\"/images/background-blur.jpg\");\n    9:         background-color: white;\n   10          @include media-query($on-palm) {\n   11              background-size: 250px;\n   ..\n   47              fill: mix(blue, white, 40%);\n   48          }\n   49:         background-color: pink;\n   50          border-color: salmon;\n   51  \n   ..\n   59              fill: mix(blue, white, 40%);\n   60          }\n   61:         background-color: lightblue;\n   62          border-color: mix(blue, white, 40%);\n   63  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   17      .background-overlay {\n   18          background-image: url(\"/images/background-blur3.jpg\");\n   19:         background-color: white;\n   20          @include media-query($on-palm) {\n   21              background-size: 250px;\n   ..\n   25      // max-width: 68em;\n   26  \n   27:     // background-color: mix(lightblue, white, 15%);\n   28      // background-image: url(\"/images/background-blur2.jpg\");\n   29      \n   ..\n   46          overflow: hidden;\n   47  \n   48:         // background-color: mix(lightblue, white, 15%);\n   49          // background-image: url(\"/images/background-blur.jpg\");\n   50          // padding-top: 10px;\n   ..\n   89          }\n   90  \n   91:         // background-color: white;\n   92          // padding: 0.2em;\n   93          // border-radius: 0.3em;\n   ..\n   97          // padding: 0;\n   98  \n   99:         // background-color: mix(red, white, 10%);\n  100          border-radius: 0.3em;\n  101      }\n  102  \n  103:     // background-color: mix(rgba(236,214,252,1), white, 60%);\n  104      // padding: 1.5em 0.75em 1.5em 0.75em;\n  105      border-radius: 2em;\n  ...\n  116          border-width: 2px;\n  117          padding: 0 1em 0 1em;\n  118:         background-color: lightgray;\n  119          color: gray;\n  120  \n  121          $nav-border-color: lighten($grey-color, 37%);\n  122:         $nav-background-color: mix(rgba(236,214,252,1), white, 10%);\n  123  \n  124          .page-link {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   98  \n   99  // .body-wrapper {\n  100: //     background-color: white;\n  101  //     max-width: $content-width;\n  102  //     margin-left: auto;\n  ...\n  146  \n  147  //     > li {\n  148: //         background-color: darken(AliceBlue, 0%);\n  149  //         border: 4px darken(AliceBlue, 5%) solid;\n  150  //         // box-shadow: 5px 10px 10px lighten(lightgray, 5%);\n  ...\n  175  // TODO:\n  176  body {\n  177:     // background-color: mix(blue, white, 3%);\n  178      // background-image: url(\"/images/PaintBlobsLight.png\");\n  179  }\n  ...\n  186      padding-top: 3rem;\n  187      padding-bottom: 3rem;\n  188:     background-color: white;\n  189      // background-image: url(\"/images/background-blur1.jpg\");\n  190      // border: solid 10px lighten(lightblue, 5%);\n  191      // border-color: lightblue;\n  192:     // background-color: mix(blue, white, 2%);\n  193      border-radius: 2rem;\n  194  }\n  ...\n  296  border-width: 0.125em;\n  297  border-style: solid;\n  298:     background-color: white;\n  299      padding: 1em;\n  300  border-radius: 1em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_post-extras.scss:\n    8      border-color: $border-color;\n    9      color: darken($color, 60%);\n   10:     background-color: $color;\n   11      font-size: 95%;\n   12      border-radius: 10px;\n   13      \n   14      code {\n   15:         background-color: pink;\n   16      }\n   17      \n   ..\n   34      // left: -25px;\n   35  \n   36:     background-color: $color;\n   37      color: darken($color, 50%);\n   38      padding: 5px 10px 5px 10px;\n   ..\n   93  \n   94              border-radius: 3px;\n   95:             background-color: lighten(lightblue, 5%);\n   96  \n   97              display: table-caption;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_syntax-highlighting.scss:\n    7  \n    8      .c     { color: #998; font-style: italic } // Comment\n    9:     .err   { color: #a61717; background-color: #e3d2d2 } // Error\n   10      .k     { font-weight: bold } // Keyword\n   11      .o     { font-weight: bold } // Operator\n   ..\n   14      .c1    { color: #998; font-style: italic } // Comment.Single\n   15      .cs    { color: #999; font-weight: bold; font-style: italic } // Comment.Special\n   16:     .gd    { color: #000; background-color: #fdd } // Generic.Deleted\n   17:     .gd .x { color: #000; background-color: #faa } // Generic.Deleted.Specific\n   18      .ge    { font-style: italic } // Generic.Emph\n   19      .gr    { color: #a00 } // Generic.Error\n   20      .gh    { color: #999 } // Generic.Heading\n   21:     .gi    { color: #000; background-color: #dfd } // Generic.Inserted\n   22:     .gi .x { color: #000; background-color: #afa } // Generic.Inserted.Specific\n   23      .go    { color: #888 } // Generic.Output\n   24      .gp    { color: #555 } // Generic.Prompt\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_timeline-map.scss:\n   11  \n   12  // colors\n   13: $background-color: #E3E2F0;\n   14  $section-color: lighten(#E3E2F0, 8%);\n   15  \n   ..\n  123          text-align: $cell-alignment;\n  124  \n  125:         background-color: $section-color;\n  126  \n  127          border: solid;\n  ...\n  261          #{$country-class} li > span {\n  262              color: darken($color, 40%);\n  263:             background-color: lighten($color, 15%);\n  264:             // background-color: mix($color, white, 50%);\n  265              border-color: darken($color, 30%);\n  266          }\n  ...\n  271          // sub-list background\n  272          #{$country-class}.sub-list > ul > li {\n  273:             background-color: $color;\n  274          }\n  275          // sub-list cell header\n  ...\n  279          }\n  280          #{$country-class}.sub-list li > span > a {\n  281:             background-color: lighten($color, 20%);\n  282          }\n  283      }\n  ...\n  309          #{$class} {\n  310              color: lighten($color, 40%) !important;\n  311:             background-color: $color !important;\n  312              border-color: lighten($color, 30%) !important;\n  313          }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_selection.scss:\n   44  // specify only the background-color, you should pass an explicit `null` value\n   45  // for `$color` or use mixin content.\n   46: @mixin selection($background-color: null, $color: contrast-color($background-color)) {\n   47    @include with-each-prefix(css-selection, $selection-support-threshold) {\n   48      $selector: '';\n   ..\n   53      #{$selector} {\n   54        color: $color;\n   55:       background-color: $background-color;\n   56        @content;\n   57      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   48      @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50:   background-color: $background-color;\n   51    color: contrast-color($background-color, $dark, $light);\n   52  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/tables/_alternating-rows-and-columns.scss:\n    1  @mixin alternating-rows-and-columns($even-row-color, $odd-row-color, $dark-intersection, $header-color: white, $footer-color: white) {\n    2    th {\n    3:     background-color: $header-color;\n    4      &.even, &:nth-child(2n) {\n    5:       background-color: $header-color - $dark-intersection; } }\n    6    tr {\n    7      &.odd, &:nth-child(2n+1) {\n    8        td {\n    9:        background-color: $odd-row-color;\n   10         &.even, &:nth-child(2n) {\n   11:          background-color: $odd-row-color - $dark-intersection; } } }\n   12      }\n   13    tr.even {\n   14      td {\n   15:       background-color: $even-row-color;\n   16        &.even, &:nth-child(2n) {\n   17:         background-color: $even-row-color - $dark-intersection; } } }\n   18    tfoot {\n   19      th, td {\n   20:       background-color: $footer-color;\n   21        &.even, &:nth-child(2n) {\n   22:         background-color: $footer-color - $dark-intersection; } } } }\n   23  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   19  \n   20  $text-color:       #111;\n   21: $background-color: #fdfdfd;\n   22  $brand-color:      #2a7ae2;\n   23  \n   ..\n   48  @mixin category-color($color-name, $default-color) {\n   49    @if variable-exists($color-name) {\n   50:       background-color: $color-name;\n   51    }\n   52    @else {\n   53:       background-color: $default-color;\n   54    }\n   55  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n   42  border-radius: 1em;\n   43  width: 80%;\n   44: background-color: white;\n   45  text-align: center;\n   46  }\n\n73 matches across 18 files\n\n\nSearching 279 files for \"category-default-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n    8    {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n    9  {% else %}\n   10:   {% capture category_color_name %}category-default-color{% endcapture %}\n   11  {% endif %}\n   12  \n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    1  // Colors for categories.\n    2  \n    3: $category-default-color:        #CFCFC4;\n    4  $category-jekyll-color:         #B19CD9;\n    5  $category-programming-color:    #DEA5A4;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/category_color_setter.scss:\n    5    {% capture category_color_name %}category-{{ var_post.categories[0] }}-color{% endcapture %}\n    6  {% else %}\n    7:   {% capture category_color_name %}category-default-color{% endcapture %}\n    8  {% endif %}\n    9  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   14      {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n   15    {% else %}\n   16:     {% capture category_color_name %}category-default-color{% endcapture %}\n   17    {% endif %}\n   18  \n   ..\n   27      }\n   28      @else {\n   29:       background-color: mix($category-default-color, white, 30%);\n   30        .post-title {\n   31:         background-color: mix($category-default-color, white, 80%);\n   32:         /*color: $category-default-color;*/\n   33        }\n   34      }\n\n10 matches across 4 files\n\n\nSearching 279 files for \"$text-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   42      line-height: $base-line-height;\n   43      font-weight: 300;\n   44:     color: $text-color;\n   45      background-color: $background-color;\n   46  }\n   ..\n  135  \n  136      &:hover {\n  137:         color: $text-color;\n  138          text-decoration: underline;\n  139      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   18  $spacing-unit:     1.579rem;\n   19  \n   20: $text-color:       #111;\n   21  $background-color: #fdfdfd;\n   22  $brand-color:      #2a7ae2;\n\n3 matches across 2 files\n\n\nSearching 279 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n\n\nSearching 279 files for \".page-content\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   16  }\n   17  \n   18: .page-content {\n   19      margin-top: $spacing-unit * 2;\n   20      @include media-query($on-palm) {\n   ..\n   29  }\n   30  \n   31: .page-content {\n   32      font-size: 1.8em;\n   33  \n   ..\n  133   * Page content\n  134   */\n  135: .page-content {\n  136      // padding: $spacing-unit 0;\n  137  }\n\n3 matches in 1 file\n\n\nSearching 282 files for \"This blog post is part of a series\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n  107      <div class=\"toc_header\">\n  108          <a href=\"http://www.composerssketchpad.com\"><img src=\"{{ site.baseurl }}/images/composers_sketchpad_icon.png\"></img></a>\n  109:         <p>This blog post is part of a series on the development of <a href=\"http://www.composerssketchpad.com\">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>\n  110      </div>\n  111  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n  118      &lt;div class=&quot;toc_header&quot;&gt;\n  119          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  120:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  121      &lt;/div&gt;\n  122  \n  ...\n  370      &lt;div class=&quot;toc_header&quot;&gt;\n  371          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  372:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  373      &lt;/div&gt;\n  374  \n  ...\n  525      &lt;div class=&quot;toc_header&quot;&gt;\n  526          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  527:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  528      &lt;/div&gt;\n  529  \n  ...\n  749      &lt;div class=&quot;toc_header&quot;&gt;\n  750          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  751:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  752      &lt;/div&gt;\n  753  \n\n5 matches across 2 files\n",
+			"contents": "Searching 261 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n\n\nSearching 263 files for \"bgpatch\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n1 match in 1 file\n\n\nSearching 263 files for \"bgpatch\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n1 match in 1 file\n\n\nSearching 263 files for \"background.\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/typography/text/_replacement.scss:\n   40  }\n   41  \n   42: // Hides text in an element so you can see the background.\n   43  //\n   44  // The direction indicates how the text should be moved out of view.\n\n1 match in 1 file\n\n\nSearching 263 files for \"bgtest\"\n\n0 matches across 0 files\n\n\nSearching 263 files for \"bg\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   66  \n   67  body {\n   68:     background-image: url(\"/images/bgpattern.jpg\");\n   69      background-attachment: fixed;\n   70      @include media-query($on-palm) {\n   71          background-size: 250px;\n   72      }\n   73:     // background-image: url(\"/images/bgpatch.jpg\");\n   74  }\n   75  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/sprites/_sprite-img.scss:\n   28  \n   29  // Sets all the rules for a sprite from a given sprite image to show just one of the sprites.\n   30: // To reduce duplication use a sprite-bg mixin for common properties and a sprite-select mixin for positioning.\n   31  @mixin sprite-img($img, $col, $row: 1, $width: $sprite-image-default-width, $height: $sprite-image-default-height, $margin: $sprite-default-margin) {\n   32    @include sprite-background($img, $width, $height);\n\n3 matches across 2 files\n\n\nSearching 263 files for \"excerpt_separator\"\n\n0 matches across 0 files\n\n\nSearching 263 files for \"more inside\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/index.html:\n   14  \n   15        <article class=\"post-content\">\n   16:       {{ post.excerpt }} <a href=\"{{ post.url | prepend: site.baseurl }}\">More inside...</a>\n   17        </article>\n   18      </li>\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2: title: UI Mockup\n    3  permalink: /ui_mockup/\n    4  ---\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2: title: UI Mockup\n    3  permalink: /ui_mockup/\n    4  ---\n\n1 match in 1 file\n\n\nSearching 263 files for \"ui_mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1  ---\n    2  title: UI Mockup\n    3: permalink: /ui_mockup/\n    4  ---\n    5  \n\n1 match in 1 file\n\n\nSearching 263 files for \"UI Mockup\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/temp/ui_mockup.html:\n    1: <!-- title: UI Mockup -->\n    2  <!-- permalink: /ui_mockup/ -->\n    3  \n\n1 match in 1 file\n\n\nSearching 265 files for \"category-technology-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    5  $category-programming-color:    #DEA5A4;\n    6  $category-travel-color:         #FDFD96;\n    7: $category-technology-color:     #FFB347;\n    8  \n    9  \n\n1 match in 1 file\n\n\nSearching 279 files for \"background-color: \"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sample.html:\n    8              display: inline;\n    9              padding: 5px;\n   10:             background-color: red;\n   11          }\n   12          li {\n   13              display: inline-block;\n   14:             background-color: salmon;\n   15              text-align: center;\n   16              vertical-align: middle;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n   44              border-radius: 0.5em;\n   45  \n   46:             background-color: #77dd77;\n   47          }\n   48          li {\n   ..\n   62  \n   63              color: #1b6d1b;\n   64:             background-color: #b4ecb4;\n   65          }\n   66      </style>\n   ..\n  106              padding: 0.5em;\n  107  \n  108:             background-color: #77dd77;\n  109          }\n  110          li:nth-child(1) {\n  ...\n  129  \n  130              color: #1b6d1b;\n  131:             background-color: #b4ecb4;\n  132          }\n  133      </style>\n  ...\n  175      #{$country-class} li > span {\n  176          color: darken($color, 40%);\n  177:         background-color: lighten($color, 15%);\n  178:         // background-color: mix($color, white, 50%);\n  179          border-color: darken($color, 30%);\n  180      }\n  ...\n  185      // sub-list background\n  186      #{$country-class}.sub-list > ul > li {\n  187:         background-color: $color;\n  188      }\n  189      // sub-list cell header\n  ...\n  193      }\n  194      #{$country-class}.sub-list li > span > a {\n  195:         background-color: lighten($color, 20%);\n  196      }\n  197  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n   26  @if variable-exists({{ category_color_name }}) {\n   27    #{{ post.selector_id }} {\n   28:     background-color: ${{ category_color_name }};\n   29      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31    #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33:       background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   34      {% else %}\n   35:       background-color: lighten(${{ category_color_name }}, $archive_post_inner_color_lightness);\n   36      {% endif %}\n   37    }\n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n   11  border-radius: 1em;\n   12  width: 80%;\n   13: background-color: white;\n   14  text-align: center;\n   15  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   20    #{{ post.selector_id }} {\n   21      @if variable-exists({{ category_color_name }}) {\n   22:       background-color: mix(${{ category_color_name }}, white, 30%);\n   23        .post-title {\n   24          /*color: mix(${{ category_color_name }}, black, 60%);*/\n   25:         background-color: mix(${{ category_color_name }}, white, 80%);\n   26        }\n   27      }\n   28      @else {\n   29:       background-color: mix($category-default-color, white, 30%);\n   30        .post-title {\n   31:         background-color: mix($category-default-color, white, 80%);\n   32          /*color: $category-default-color;*/\n   33        }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/html_postprocessor.rb:\n  150                          }\n  151                          .caption {\n  152:                             background-color: blue;\n  153                              margin: 4px;\n  154                          }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   43      font-weight: 300;\n   44      color: $text-color;\n   45:     background-color: $background-color;\n   46  }\n   47  \n   ..\n  114  \n  115  .post {\n  116:     // background-color: pink;\n  117      // padding: 20px;\n  118      // border-radius: 10px;\n  ...\n  168      border: 1px solid lightgray;\n  169      border-radius: 0.3em;\n  170:     background-color: #eef;\n  171  }\n  172  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n    7      .background-overlay {\n    8          background-image: url(\"/images/background-blur.jpg\");\n    9:         background-color: white;\n   10          @include media-query($on-palm) {\n   11              background-size: 250px;\n   ..\n   47              fill: mix(blue, white, 40%);\n   48          }\n   49:         background-color: pink;\n   50          border-color: salmon;\n   51  \n   ..\n   59              fill: mix(blue, white, 40%);\n   60          }\n   61:         background-color: lightblue;\n   62          border-color: mix(blue, white, 40%);\n   63  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   17      .background-overlay {\n   18          background-image: url(\"/images/background-blur3.jpg\");\n   19:         background-color: white;\n   20          @include media-query($on-palm) {\n   21              background-size: 250px;\n   ..\n   25      // max-width: 68em;\n   26  \n   27:     // background-color: mix(lightblue, white, 15%);\n   28      // background-image: url(\"/images/background-blur2.jpg\");\n   29      \n   ..\n   46          overflow: hidden;\n   47  \n   48:         // background-color: mix(lightblue, white, 15%);\n   49          // background-image: url(\"/images/background-blur.jpg\");\n   50          // padding-top: 10px;\n   ..\n   89          }\n   90  \n   91:         // background-color: white;\n   92          // padding: 0.2em;\n   93          // border-radius: 0.3em;\n   ..\n   97          // padding: 0;\n   98  \n   99:         // background-color: mix(red, white, 10%);\n  100          border-radius: 0.3em;\n  101      }\n  102  \n  103:     // background-color: mix(rgba(236,214,252,1), white, 60%);\n  104      // padding: 1.5em 0.75em 1.5em 0.75em;\n  105      border-radius: 2em;\n  ...\n  116          border-width: 2px;\n  117          padding: 0 1em 0 1em;\n  118:         background-color: lightgray;\n  119          color: gray;\n  120  \n  121          $nav-border-color: lighten($grey-color, 37%);\n  122:         $nav-background-color: mix(rgba(236,214,252,1), white, 10%);\n  123  \n  124          .page-link {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   98  \n   99  // .body-wrapper {\n  100: //     background-color: white;\n  101  //     max-width: $content-width;\n  102  //     margin-left: auto;\n  ...\n  146  \n  147  //     > li {\n  148: //         background-color: darken(AliceBlue, 0%);\n  149  //         border: 4px darken(AliceBlue, 5%) solid;\n  150  //         // box-shadow: 5px 10px 10px lighten(lightgray, 5%);\n  ...\n  175  // TODO:\n  176  body {\n  177:     // background-color: mix(blue, white, 3%);\n  178      // background-image: url(\"/images/PaintBlobsLight.png\");\n  179  }\n  ...\n  186      padding-top: 3rem;\n  187      padding-bottom: 3rem;\n  188:     background-color: white;\n  189      // background-image: url(\"/images/background-blur1.jpg\");\n  190      // border: solid 10px lighten(lightblue, 5%);\n  191      // border-color: lightblue;\n  192:     // background-color: mix(blue, white, 2%);\n  193      border-radius: 2rem;\n  194  }\n  ...\n  296  border-width: 0.125em;\n  297  border-style: solid;\n  298:     background-color: white;\n  299      padding: 1em;\n  300  border-radius: 1em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_post-extras.scss:\n    8      border-color: $border-color;\n    9      color: darken($color, 60%);\n   10:     background-color: $color;\n   11      font-size: 95%;\n   12      border-radius: 10px;\n   13      \n   14      code {\n   15:         background-color: pink;\n   16      }\n   17      \n   ..\n   34      // left: -25px;\n   35  \n   36:     background-color: $color;\n   37      color: darken($color, 50%);\n   38      padding: 5px 10px 5px 10px;\n   ..\n   93  \n   94              border-radius: 3px;\n   95:             background-color: lighten(lightblue, 5%);\n   96  \n   97              display: table-caption;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_syntax-highlighting.scss:\n    7  \n    8      .c     { color: #998; font-style: italic } // Comment\n    9:     .err   { color: #a61717; background-color: #e3d2d2 } // Error\n   10      .k     { font-weight: bold } // Keyword\n   11      .o     { font-weight: bold } // Operator\n   ..\n   14      .c1    { color: #998; font-style: italic } // Comment.Single\n   15      .cs    { color: #999; font-weight: bold; font-style: italic } // Comment.Special\n   16:     .gd    { color: #000; background-color: #fdd } // Generic.Deleted\n   17:     .gd .x { color: #000; background-color: #faa } // Generic.Deleted.Specific\n   18      .ge    { font-style: italic } // Generic.Emph\n   19      .gr    { color: #a00 } // Generic.Error\n   20      .gh    { color: #999 } // Generic.Heading\n   21:     .gi    { color: #000; background-color: #dfd } // Generic.Inserted\n   22:     .gi .x { color: #000; background-color: #afa } // Generic.Inserted.Specific\n   23      .go    { color: #888 } // Generic.Output\n   24      .gp    { color: #555 } // Generic.Prompt\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_timeline-map.scss:\n   11  \n   12  // colors\n   13: $background-color: #E3E2F0;\n   14  $section-color: lighten(#E3E2F0, 8%);\n   15  \n   ..\n  123          text-align: $cell-alignment;\n  124  \n  125:         background-color: $section-color;\n  126  \n  127          border: solid;\n  ...\n  261          #{$country-class} li > span {\n  262              color: darken($color, 40%);\n  263:             background-color: lighten($color, 15%);\n  264:             // background-color: mix($color, white, 50%);\n  265              border-color: darken($color, 30%);\n  266          }\n  ...\n  271          // sub-list background\n  272          #{$country-class}.sub-list > ul > li {\n  273:             background-color: $color;\n  274          }\n  275          // sub-list cell header\n  ...\n  279          }\n  280          #{$country-class}.sub-list li > span > a {\n  281:             background-color: lighten($color, 20%);\n  282          }\n  283      }\n  ...\n  309          #{$class} {\n  310              color: lighten($color, 40%) !important;\n  311:             background-color: $color !important;\n  312              border-color: lighten($color, 30%) !important;\n  313          }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/css3/_selection.scss:\n   44  // specify only the background-color, you should pass an explicit `null` value\n   45  // for `$color` or use mixin content.\n   46: @mixin selection($background-color: null, $color: contrast-color($background-color)) {\n   47    @include with-each-prefix(css-selection, $selection-support-threshold) {\n   48      $selector: '';\n   ..\n   53      #{$selector} {\n   54        color: $color;\n   55:       background-color: $background-color;\n   56        @content;\n   57      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/color/_contrast.scss:\n   48      @warn \"The $threshold argment to contrasted is no longer needed and will be removed in the next release.\"\n   49    }\n   50:   background-color: $background-color;\n   51    color: contrast-color($background-color, $dark, $light);\n   52  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/compass/utilities/tables/_alternating-rows-and-columns.scss:\n    1  @mixin alternating-rows-and-columns($even-row-color, $odd-row-color, $dark-intersection, $header-color: white, $footer-color: white) {\n    2    th {\n    3:     background-color: $header-color;\n    4      &.even, &:nth-child(2n) {\n    5:       background-color: $header-color - $dark-intersection; } }\n    6    tr {\n    7      &.odd, &:nth-child(2n+1) {\n    8        td {\n    9:        background-color: $odd-row-color;\n   10         &.even, &:nth-child(2n) {\n   11:          background-color: $odd-row-color - $dark-intersection; } } }\n   12      }\n   13    tr.even {\n   14      td {\n   15:       background-color: $even-row-color;\n   16        &.even, &:nth-child(2n) {\n   17:         background-color: $even-row-color - $dark-intersection; } } }\n   18    tfoot {\n   19      th, td {\n   20:       background-color: $footer-color;\n   21        &.even, &:nth-child(2n) {\n   22:         background-color: $footer-color - $dark-intersection; } } } }\n   23  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   19  \n   20  $text-color:       #111;\n   21: $background-color: #fdfdfd;\n   22  $brand-color:      #2a7ae2;\n   23  \n   ..\n   48  @mixin category-color($color-name, $default-color) {\n   49    @if variable-exists($color-name) {\n   50:       background-color: $color-name;\n   51    }\n   52    @else {\n   53:       background-color: $default-color;\n   54    }\n   55  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n   42  border-radius: 1em;\n   43  width: 80%;\n   44: background-color: white;\n   45  text-align: center;\n   46  }\n\n73 matches across 18 files\n\n\nSearching 279 files for \"category-default-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n    8    {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n    9  {% else %}\n   10:   {% capture category_color_name %}category-default-color{% endcapture %}\n   11  {% endif %}\n   12  \n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42      border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    1  // Colors for categories.\n    2  \n    3: $category-default-color:        #CFCFC4;\n    4  $category-jekyll-color:         #B19CD9;\n    5  $category-programming-color:    #DEA5A4;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/category_color_setter.scss:\n    5    {% capture category_color_name %}category-{{ var_post.categories[0] }}-color{% endcapture %}\n    6  {% else %}\n    7:   {% capture category_color_name %}category-default-color{% endcapture %}\n    8  {% endif %}\n    9  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n   14      {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n   15    {% else %}\n   16:     {% capture category_color_name %}category-default-color{% endcapture %}\n   17    {% endif %}\n   18  \n   ..\n   27      }\n   28      @else {\n   29:       background-color: mix($category-default-color, white, 30%);\n   30        .post-title {\n   31:         background-color: mix($category-default-color, white, 80%);\n   32:         /*color: $category-default-color;*/\n   33        }\n   34      }\n\n10 matches across 4 files\n\n\nSearching 279 files for \"$text-color\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   42      line-height: $base-line-height;\n   43      font-weight: 300;\n   44:     color: $text-color;\n   45      background-color: $background-color;\n   46  }\n   ..\n  135  \n  136      &:hover {\n  137:         color: $text-color;\n  138          text-decoration: underline;\n  139      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   18  $spacing-unit:     1.579rem;\n   19  \n   20: $text-color:       #111;\n   21  $background-color: #fdfdfd;\n   22  $brand-color:      #2a7ae2;\n\n3 matches across 2 files\n\n\nSearching 279 files for \"scssify\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n  293  # Jekyll assets created over the course of this exercise\n  294  \n  295: * [<span class=\"asset-name\">filterize.rb</span>][filterize] — A Liquid block tag that applies filters to a block of text. Makes doing things like `scssify` easier — no more `capture` boilerplate.\n  296  * [<span class=\"asset-name\">whitespace_compressor.rb</span>][whitespace_compressor] — A filter that cuts out newlines and whitespace around each line.\n  297  * [<span class=\"asset-name\">date_calculator.rb</span>][date_calculator] — A Liquid tag that does basic math (currently just subtraction) with ~~ISO~~ dates.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    4    <style>\n    5    /* dynamically assigns category colors */\n    6:   {% filterize scssify %}\n    7  \n    8    // include category color definitions\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n    8  <style>\n    9      {% for post in site.posts %}\n   10:         {% filterize scssify %}\n   11          {% include archive_post.scss %}\n   12          {% endfilterize %}\n\n3 matches across 3 files\n\n\nSearching 279 files for \".page-content\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   16  }\n   17  \n   18: .page-content {\n   19      margin-top: $spacing-unit * 2;\n   20      @include media-query($on-palm) {\n   ..\n   29  }\n   30  \n   31: .page-content {\n   32      font-size: 1.8em;\n   33  \n   ..\n  133   * Page content\n  134   */\n  135: .page-content {\n  136      // padding: $spacing-unit 0;\n  137  }\n\n3 matches in 1 file\n\n\nSearching 282 files for \"This blog post is part of a series\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n  107      <div class=\"toc_header\">\n  108          <a href=\"http://www.composerssketchpad.com\"><img src=\"{{ site.baseurl }}/images/composers_sketchpad_icon.png\"></img></a>\n  109:         <p>This blog post is part of a series on the development of <a href=\"http://www.composerssketchpad.com\">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>\n  110      </div>\n  111  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n  118      &lt;div class=&quot;toc_header&quot;&gt;\n  119          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  120:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  121      &lt;/div&gt;\n  122  \n  ...\n  370      &lt;div class=&quot;toc_header&quot;&gt;\n  371          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  372:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  373      &lt;/div&gt;\n  374  \n  ...\n  525      &lt;div class=&quot;toc_header&quot;&gt;\n  526          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  527:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  528      &lt;/div&gt;\n  529  \n  ...\n  749      &lt;div class=&quot;toc_header&quot;&gt;\n  750          &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;\n  751:         &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;\n  752      &lt;/div&gt;\n  753  \n\n5 matches across 2 files\n\n\nSearching 290 files for \"max-width:\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n   62  .toc_header > a {\n   63  min-width: 5em;\n   64: max-width: 5em;\n   65  }\n   66  .toc_links {\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_archive.scss:\n    4  \n    5  .archive {\n    6:     max-width: 800px;\n    7      margin-left: auto;\n    8      margin-right: auto;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n   64   */\n   65  img {\n   66:     max-width: 100%;\n   67      vertical-align: middle;\n   68  }\n   ..\n  199   */\n  200  .wrapper {\n  201:     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));\n  202:     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));\n  203      margin-right: auto;\n  204      margin-left: auto;\n  ...\n  213  \n  214      // @include media-query($on-laptop) {\n  215:     //     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));\n  216:     //     max-width:         calc(#{$content-width} - (#{$spacing-unit}));\n  217      //     padding-right: $spacing-unit / 2;\n  218      //     padding-left: $spacing-unit / 2;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_header.scss:\n   23      }\n   24  \n   25:     // max-width: 68em;\n   26  \n   27      // background-color: mix(lightblue, white, 15%);\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   42  \n   43      .youtube {\n   44:         max-width: 100%;\n   45          display: block;\n   46          margin-left: auto;\n   ..\n   99  // .body-wrapper {\n  100  //     background-color: white;\n  101: //     max-width: $content-width;\n  102  //     margin-left: auto;\n  103  //     margin-right: auto;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   39  // }\n   40  @mixin media-query($device) {\n   41:     @media screen and (max-width: $device) {\n   42          @content;\n   43      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n  261  .toc_header &gt; a {\n  262    min-width: 5em;\n  263:   max-width: 5em; }\n  264  \n  265  .toc_links {\n  ...\n  518  .toc_header &gt; a {\n  519    min-width: 5em;\n  520:   max-width: 5em; }\n  521  \n  522  .toc_links {\n  ...\n  674  .toc_header &gt; a {\n  675    min-width: 5em;\n  676:   max-width: 5em; }\n  677  \n  678  .toc_links {\n  ...\n  899  .toc_header &gt; a {\n  900    min-width: 5em;\n  901:   max-width: 5em; }\n  902  \n  903  .toc_links {\n\n15 matches across 7 files\n\n\nSearching 287 files for \"margin-left: auto\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/composers_sketchpad_toc.html:\n    7  margin-bottom: 2em;\n    8  padding: 1em;\n    9: margin-left: auto;\n   10  margin-right: auto;\n   11  border-style: solid;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_archive.scss:\n    5  .archive {\n    6      max-width: 800px;\n    7:     margin-left: auto;\n    8      margin-right: auto;\n    9  }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_base.scss:\n  190      // AB:\n  191      // width: 700px;\n  192:     // margin-left: auto;\n  193      // margin-right: auto;\n  194      // margin-top: 40px;\n  ...\n  211      max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));\n  212      margin-right: auto;\n  213:     margin-left: auto;\n  214      padding-right: $spacing-unit;\n  215      padding-left: $spacing-unit;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_footer.scss:\n   18          border-radius: 0.5em;\n   19          margin: 0;\n   20:         margin-left: auto;\n   21          margin-right: auto;\n   22      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   37      img {\n   38          display: block;\n   39:         margin-left: auto;\n   40          margin-right: auto;\n   41      }\n   ..\n   44          max-width: 100%;\n   45          display: block;\n   46:         margin-left: auto;\n   47          margin-right:auto;\n   48      }\n   ..\n  100  //     background-color: white;\n  101  //     max-width: $content-width;\n  102: //     margin-left: auto;\n  103  //     margin-right: auto;\n  104  //     padding: 1em;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n  209    margin-bottom: 2em;\n  210    padding: 1em;\n  211:   margin-left: auto;\n  212    margin-right: auto;\n  213    border-style: solid;\n  ...\n  466    margin-bottom: 2em;\n  467    padding: 1em;\n  468:   margin-left: auto;\n  469    margin-right: auto;\n  470    border-style: solid;\n  ...\n  622    margin-bottom: 2em;\n  623    padding: 1em;\n  624:   margin-left: auto;\n  625    margin-right: auto;\n  626    border-style: solid;\n  ...\n  847    margin-bottom: 2em;\n  848    padding: 1em;\n  849:   margin-left: auto;\n  850    margin-right: auto;\n  851    border-style: solid;\n\n12 matches across 6 files\n\n\nSearching 287 files for \".page_content {\"\n\n0 matches across 0 files\n\n\nSearching 287 files for \".page_content\"\n\n0 matches across 0 files\n\n\nSearching 287 files for \".page-content {\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_layout.scss:\n   16  }\n   17  \n   18: .page-content {\n   19      margin-top: $spacing-unit * 2;\n   20      @include media-query($on-palm) {\n   ..\n   29  }\n   30  \n   31: .page-content {\n   32      font-size: 1.8em;\n   33  \n   ..\n  133   * Page content\n  134   */\n  135: .page-content {\n  136      // padding: $spacing-unit 0;\n  137  }\n\n3 matches in 1 file\n\n\nSearching 287 files for \"categ\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/feed.xml:\n   20          <guid isPermaLink=\"true\">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>\n   21          {% for tag in post.tags %}\n   22:         <category>{{ tag | xml_escape }}</category>\n   23          {% endfor %}\n   24:         {% for cat in post.categories %}\n   25:         <category>{{ cat | xml_escape }}</category>\n   26          {% endfor %}\n   27        </item>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/Rakefile:\n  122      post.puts \"date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S %z')}\"\n  123      post.puts \"comments: true\"\n  124:     post.puts \"categories: \"\n  125      post.puts \"---\"\n  126    end\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/TODO.txt:\n   29  trip widget:\n   30      TODO: each item links to either cateogry or to the solo post (INTERNET)\n   31:         TODO: separate city category (INTERNET)\n   32      TODO: disabled look (INTERNET)\n   33      TODO: template variables? (INTERNET)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2013-08-19-test-html-post.html:\n    4  date: 2013-08-19 21:28:19 +0100\n    5  comments: true\n    6: categories: \n    7  ---\n    8  <img src=\"/test_image.png\" />\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2013-12-12-older-post.markdown:\n    4  date:   2012-12-12\n    5  description: \"Just a sample old post.\"\n    6: categories: jekyll\n    7  ---\n    8  This is an intentionally older post to test the archive page.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-16-second-post.markdown:\n    4  date:   2014-08-16 12:03:39\n    5  description: \"A test post containing test cases for certain power features.\"\n    6: categories: programming\n    7  icon: \"SxSKhhK.jpg\"\n    8  icon-center-x: 0.48\n    9  icon-center-y: 0.42\n   10  ---\n   11: This is the second Jekyll post. The intent here is to test all the power features I intend to use in my blog, among them header images, category highlighting, code, article layout, and more.\n   12  \n   13  For the first paragraph, let's test some images.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-16-welcome-to-jekyll.markdown:\n    3  title:  \"Welcome to Jekyll!\"\n    4  date:   2014-08-16 09:03:39\n    5: categories: jekyll update\n    6  ---\n    7  You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve --watch`, which launches a web server and auto-regenerates your site when a file is updated.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-18-the-mad-power-of-jekyll.md:\n    4  date: 2014-08-18 14:22:13 +0100\n    5  comments: true\n    6: categories: \n    7  ---\n    8  # The ACTUAL Mad Power of Jekyll\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-08-28-design-of-a-trip-widget.md:\n    4  date: 2014-08-28 14:28:22 +0100\n    5  comments: true\n    6: categories: jekyll\n    7  ---\n    8  I have just completed a little HTML widget for tracking my travels. Behold!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-09-08-mac-address-spoofing-for-travel.md:\n    4  date: 2014-09-08 17:28:45 +0200\n    5  comments: true\n    6: categories: \n    7  ---\n    8  During my stay in HI-Quebec, I ran into an odd issue with the Wi-Fi. After about a day, the hotspot started giving me an \"access denied\" message when I tried to log in. No explanation or anything. Maybe I was watching too many videos? I'm pretty sure I didn't have any bandwidth-hogging applications running, and I couldn't ask the front desk since it was some sort of licensed/rented hotspot, as is common in hostels. I tried using my phone tethering for a while, but I found that I couldn't procrastinate effectively without better internet. So I decided to do the sensible thing and spoof my MAC address.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2014-1-1-older-post2.markdown:\n    3  title:  \"Other Older Post\"\n    4  date:   2012-1-1\n    5: categories: jekyll\n    6  ---\n    7  This is another intentionally older post to test the archive page.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2016-09-07-nintendo-on-ios.md:\n    4  date: 2016-09-07 10:18:33 -0700\n    5  comments: true\n    6: categories: \n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/archive_post.scss:\n    2  // assume 'post' is defined and refers to a post object\n    3  \n    4: {% include categories.scss %}\n    5  \n    6: // capture the name of the expected category color selector\n    7: {% if post.categories != empty %}\n    8:   {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n    9  {% else %}\n   10:   {% capture category_color_name %}category-default-color{% endcapture %}\n   11  {% endif %}\n   12  \n   ..\n   24  // TODO: mixin?\n   25  // set the colors for all the post elements\n   26: @if variable-exists({{ category_color_name }}) {\n   27    #{{ post.selector_id }} {\n   28:     background-color: ${{ category_color_name }};\n   29:     border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   30    }\n   31    #{{ post.selector_id }}-inner {\n   32      {% if post.using_default_icon == false %}\n   33:       background-color: rgba(${{ category_color_name }}, $archive_post_inner_color_alpha);\n   34      {% else %}\n   35:       background-color: lighten(${{ category_color_name }}, $archive_post_inner_color_lightness);\n   36      {% endif %}\n   37    }\n   ..\n   39  @else {\n   40    #{{ post.selector_id }} {\n   41:     background-color: $category-default-color;\n   42:     border-color: darken(${{ category_color_name }}, $archive_post_border_color_darkness);\n   43    }\n   44    #{{ post.selector_id }}-inner {\n   45      {% if post.using_default_icon == false %}\n   46:       background-color: rgba($category-default-color, $archive_post_inner_color_alpha);\n   47      {% else %}\n   48:       background-color: lighten($category-default-color, $archive_post_inner_color_lightness);\n   49      {% endif %}\n   50    }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    1: // Colors for categories.\n    2  \n    3: $category-default-color:        #CFCFC4;\n    4: $category-jekyll-color:         #B19CD9;\n    5: $category-programming-color:    #DEA5A4;\n    6: $category-travel-color:         #FDFD96;\n    7: $category-technology-color:     #FFB347;\n    8: $category-releases-color:       #DDF4FF;\n    9: $category-design-color:         #C0DFFE;\n   10  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/category_color_setter.scss:\n    1: {% include categories.scss %}\n    2  \n    3: // capture the name of the expected category color selector\n    4: {% if var_post.categories != empty %}\n    5:   {% capture category_color_name %}category-{{ var_post.categories[0] }}-color{% endcapture %}\n    6  {% else %}\n    7:   {% capture category_color_name %}category-default-color{% endcapture %}\n    8  {% endif %}\n    9  \n   10: {{ category_color_name }}\n   11  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/timeline-europe-trip-2014.html:\n    7              ></ul\n    8          ></li\n    9:         > <li><span class=\"category-transport ship\">Cruise</span></li\n   10          > <li class=\"sub-list spain\"\n   11              ><ul\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/timeline-template.html:\n   34  \n   35              <li>\n   36:                 <span class=\"category-transport {{ place.type }}\">\n   37                      {{ place.name }}\n   38                      {% if days %}\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/timeline-us-trip-2013.html:\n   10              ><ul\n   11                  ><li><span class=\"status-in-progress\">Vancouver <span class=\"days\">2</span></span></li\n   12:                 ><li><span class=\"category-transport train\">Train <span class=\"days\">4</span></span></li\n   13                  ><li><span>Toronto <span class=\"days\">12</span></span></li\n   14                  ><li><span>Montreal <span class=\"days\">10</span></span></li\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_layouts/default.html:\n    3    {% include head.html %}\n    4    <style>\n    5:   /* dynamically assigns category colors */\n    6    {% filterize scssify %}\n    7  \n    8:   // include category color definitions\n    9:   {% include categories.scss %}\n   10  \n   11    {% for post in site.posts %}\n   12:   // capture category name\n   13:   {% if post.categories != empty %}\n   14:     {% capture category_color_name %}category-{{ post.categories[0] }}-color{% endcapture %}\n   15    {% else %}\n   16:     {% capture category_color_name %}category-default-color{% endcapture %}\n   17    {% endif %}\n   18  \n   19    // assign color\n   20    #{{ post.selector_id }} {\n   21:     @if variable-exists({{ category_color_name }}) {\n   22:       /*background-color: mix(${{ category_color_name }}, white, 30%);*/\n   23        background-color: white;\n   24        .post-title {\n   25:         /*color: mix(${{ category_color_name }}, black, 60%);*/\n   26:         background-color: mix(${{ category_color_name }}, white, 80%);\n   27        }\n   28      }\n   29      @else {\n   30:       /*background-color: mix($category-default-color, white, 30%);*/\n   31        background-color: white;\n   32        .post-title {\n   33:         background-color: mix($category-default-color, white, 80%);\n   34:         /*color: $category-default-color;*/\n   35        }\n   36      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2013-8-28-gathering-the-goods-part-2.markdown:\n    4  date:   2013-8-28\n    5  description: \"The second revision of my globetrotting packing list.\"\n    6: categories: travel\n    7  icon: \"Cruise Balconies.jpeg\"\n    8  icon-center-x: 0.265\n    .\n   23  I also made a few other changes:\n   24  \n   25: * An [Eider Roc de Chere](http://www.backcountry.com/eider-roc-de-chere-jacket-mens) jacket in blue (also on sale). I made a bad call on my previous jacket: it was cold, scratchy, and most definitely not waterproof. I briefly considered applying more wax, which is what you're supposed to do to make a waxed cotton jacket more water resistant, but I decided it wasn't worth my time. Instead, I set out to find a no-compromise jacket this time around: waterproof, warm, comfortable, usable in all cold weather conditions, featuring a detatchable hood, and not horrendously ugly. (Most of the widely-recommended technical jackets and rain shells fell into that category for me.) I tried on a large number of different jackets from REI, Nau, Carhartt, Patagonia, Marmot, Eider, and Helly Hahn. Close contenders were the [REI Montour](http://www.rei.com/product/833085/rei-montour-travel-jacket-mens) (green is not my favorite color), the [Carhartt Grayling](http://www.amazon.com/dp/B007MKTRVY/?tag=arcwasher-20) (fit perfectly, but material felt plasticky), and the [Nau Temp](http://www.nau.com/mens/categories/jackets/temp-jacket-plaid-050m01.html) (super comfy, but too warm and the fit wasn't right around the waist). The Roc de Chere's material is light enough for use even in warm-ish weather, and the color and material are fairly unique. Still, I wish it had buttons down the front! Is jacket envy a thing?\n   26  * A pair of [Adidas Duramo](http://www.amazon.com/dp/B002F00D9G/?tag=arcwasher-20) slides. The Nike Benassis I had earlier were very comfortable, but the mesh lining took *forever* to dry out, to the point where, one, I simply couldn't shower in them if I had to leave the next day, and two, they actually had a propensity to mold! Their everlasting wetness also ensured that they could never double as slippers. Despite being made of a plastic-like material, my new Duramos are shockingly comfortable and dry out pretty much immediately. Somebody on the internet described them as \"prison sandals\", but no worries: all you have to do is lower your standards and you'll be going out in public in no time!\n   27  * Two cloth bags: one for food (as mentioned earlier) and one for carrying dirty laundry around. They barely take up any space.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-09-18-old_iphone_tricks_gps_tracker.md:\n    4  date: 2014-09-18 17:28:45 +0200\n    5  comments: true\n    6: categories: [\"Travel\", \"Technology\"]\n    7  ---\n    8  This is the time of year when a lot of people are upgrading their phones. If you are, don't chuck your old phone just yet!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-08-the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard.md:\n    4  date: 2014-11-08 21:26:54 +0100\n    5  comments: true\n    6: categories: programming\n    7  ---\n    8  I recently released my first commercial project: [Translit Keyboard][], a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known [Input Method Kit][]. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased[^other_translit_techniques]. Sadly, iOS was off-limits: since 3rd party extensions weren't even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.\n    .\n  142      \n  143      Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.\n  144:     The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.\n  145  \n  146  Adding a constraint to the keyboard view doesn't *set* the height; it rams against the existing autolayout height constraint created by the autoresizing mask, and overrides it in *most* cases. This is important: if you add the constraint before the view appears on the screen (this is specified in the docs), or in certain cases where your keyboard view doesn't contain any subviews with autolayout constraints (this is not), your height constraint will lose and the keyboard will revert to the default height. That second case is particularly mystifying: at one point, I had to create an invisible kludge view with autolayout constraints and add it to my keyboard view in order for the height to set correctly!\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-20-what's_up_with_google_maps_these_days.md:\n    4  date: 2014-11-20 02:39:48 +0100\n    5  comments: true\n    6: categories: technology\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-02-01-state_of_the_union.md:\n    4  date: 2015-02-01 01:00:00 +0000\n    5  comments: true\n    6: categories: \n    7  ---\n    8  <img src=\"{{ site.baseurl }}/images/portrait_with_silly_cat.jpg\" width=\"500px\">\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-02-01-vancouver.md:\n    4  date: 2015-02-01\n    5  comments: true\n    6: categories: travel\n    7  ---\n    8  On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and headed up north in the direction of Vancouver. I couldn't resist bringing along a small bag of produce and dairy that I'd been using to cook in the hostels, even though it added a few pounds of heft to my already-painful load. (This pattern will be shown to repeat itself throughout my travels.)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-03-08-who-cares-about-the-apple-watch-edition.md:\n    4  date: 2015-03-08 19:00:55 +0000\n    5  comments: true\n    6: categories: technology\n    7  ---\n    8  It's disappointing to see many of my [favorite](http://daringfireball.net/2015/02/apple_watch_pricing) Apple [bloggers](http://www.marco.org/2015/03/04/boring-apple-watch-edition-pricing) devote so much of their time to Apple Watch Edition gossip. How much of it is going to be solid gold? Will it be $5000, $10000, $15000? How much of them will Apple sell in their first quarter? Will they be a hit with the rich and powerful in China?\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-09-09-the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap.md:\n    4  date: 2015-09-09 23:12:18 -0700\n    5  comments: true\n    6: categories:\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-09-29-backgroundifier.md:\n    4  date: 2015-09-29 17:36:37 -0700\n    5  comments: true\n    6: categories: releases\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-12-05-ipad-pro-plus-pencil-slow-motion-bug.md:\n    4  date: 2015-12-05 16:50:30 -0800\n    5  comments: true\n    6: categories: programming\n    7  ---\n    8  I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you're using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there's some sort of interference between Pencil and gesture event processing. Notably, the framerate remains stable while this is happening.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-12-25-the-stanley-64oz-classic-vacuum-growler.md:\n    4  date: 2015-12-25 00:58:32 -0800\n    5  comments: true\n    6: categories: \n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-12-26-the-perfect-travel-gaiwan.md:\n    4  date: 2015-12-26 02:18:44 -0800\n    5  comments: true\n    6: categories: \n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-02-05-composers-sketchpad.md:\n    4  date: 2016-02-05 23:35:12 -0800\n    5  comments: true\n    6: categories: \n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-02-27-path-rendering-in-composers-sketchpad.md:\n    4  date: 2016-02-27 15:33:37 -0800\n    5  comments: true\n    6: categories: programming\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-03-24-liberating-pitch-and-taming-midi-in-composers-sketchpad.md:\n    4  date: 2016-03-24 01:18:04 -0700\n    5  comments: true\n    6: categories: \n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-05-27-composers-sketchpad-adventures-in-icon-design.md:\n    4  date: 2016-07-16 07:00:00 -0700\n    5  comments: true\n    6: categories: design\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-06-21-headphones.md:\n    4  date: 2016-06-21 18:49:04 -0700\n    5  comments: true\n    6: categories: technology\n    7  ---\n    8  Blog comments are out, blog responses are in — and so I thought I'd respond to John Gruber's recent article titled [\"Headphone Jacks Are the New Floppy Drives\"](http://daringfireball.net/2016/06/headphone_jacks_are_the_new_floppy_drives). Here's why I think removing the headphone jack would be a bad idea at this moment in time:\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-08-21-tool-reliance.md:\n    4  date: 2016-08-21 17:01:19 -0700\n    5  comments: true\n    6: categories: technology\n    7  ---\n    8  \n    .\n   13  Several bloggers have expressed curiosity as to why public interest in the App Store has waned so much. I can't answer for everyone, but at least within myself, I've noticed an increasing and persistant reluctance to try new apps. It's just that I've seen same pattern crop up over and over again. Somebody releases an interesting new app, touting fantastic design and improved productivity. The app gains some (but not overwhelming) traction. The app gets a few updates. The app lingers for a few years. And finally, the app untriumphantly rides off into the sunset, taking entire years of not just developer time, but thousands of users' ingrained habits with it. The case is clear: most apps — and especially indie apps — cannot be reliably expected to continue operating.\n   14  \n   15: After being burned so many times by products that have been pulled out from under me, I've unconsciously adopted a worrying philosophy for trying new apps: unless the app I'm using is backed by a large corporation or is outright open-source, I'm not going to use it for anything particularly important in my life.  (And even then, certain corporations — ahem, Google — are put under further scrutiny.) I hate having to do this because many amazing UX advancements can be found in apps produced by smaller developers. (Apple folks love to talk about how certain categories of apps are [design playgrounds](https://daringfireball.net/2009/04/twitter_clients_playground).) But at the same time, I know that with these apps, there is an inevitable sunset e-mail waiting for me in the not-too-distant future. It's gotten so bad that I'm starting to seriously consider switching most of the (snappy, beautiful, well-designed) productivity apps on my phone over to their (ugly, clunky) open-source alternatives, just because I know that OpenWhatever will long outlive the current App Store darling for that category. (1Password is one hot spot that immediately comes to mind. Losing them would be a disaster.) I don't want to worry every day about whether these proprietary silos will suddenly go up in flames with all my carefully-constructed workflows and data in tow.\n   16  \n   17  Despite the low prices on the App Store, I now get decision fatigue whenever I go to purchase an app. How long is this product going to be around? How reliable is this developer? How easy is it to export the data? How open are all the underlying formats and APIs? The price might be insignificant, but the commitment implied by my purchase is not trivial at all! Unfortunately, developers don't seem to care much about the mental toll that pulling an app might cause, even when they were the ones touting life-changing productivity and workflow improvements in the first place. It's one thing I miss about Windows utility software: so much of it is terribly designed, but at least I know it'll run more or less forever. (Both on account of the open platform and Windows' amazing legacy support.)\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-08-30-on-the-wonders-of-digital-journaling.md:\n    4  date: 2016-08-30 13:26:53 -0700\n    5  comments: true\n    6: categories: technology\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-09-19-backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery.md:\n    4  date: 2016-09-19 16:10:16 -0700\n    5  comments: true\n    6: categories: \n    7  ---\n    8  \n    9  <img src=\"{{ site.baseurl }}/images/backgroundifier-gallery/title_2.jpg\" />\n   10  \n   11: The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there's (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we've already enjoyed?\n   12  \n   13  For several years, I wanted to create a sort of \"digital museum\" that would give me random, on-demand access to this very important side of the art world. The constraints weren't complicated. All I needed was a large amount of art along with a mechanism that would randomly show me new works from this collection every fifteen minutes or so. But while acquiring the art was hardly a problem, there were relatively few areas in my life where I could idly display images. Screensavers? Showed up too infrequently and weren't easily controllable. Wallpapers? Couldn't deal with arbitrary aspect ratios. I thought I had my solution when I ran the [Google Art Project][googleart] in a full-screen browser tab on a second monitor, but the selection turned out to be too limited and I could no longer rely on the luxury of more than one display when I set out on my travels.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_sass/_timeline-map.scss:\n  200  \n  201  \n  202:     .category-transport, .status-in-progress {\n  203          border-width: 3px;\n  204  \n  ...\n  208  \n  209  \n  210:     .category-transport {\n  211          border: dotted;\n  212      }\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss:\n   46  \n   47  // TODO: move elsewhere\n   48: @mixin category-color($color-name, $default-color) {\n   49    @if variable-exists($color-name) {\n   50        background-color: $color-name;\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html:\n   19      than the alternatives. If performance becomes an issue I will revisit. -->\n   20  \n   21:     <!-- TODO: JS filtering for categories and stuff. -->\n   22  \n   23      <!-- <ul>\n   ..\n   62                                      <div id=\"{{ post.selector_id }}-inner\" class=\"archive_post_blurb\">\n   63                                        <div class=\"archive_blurb_test_container\">\n   64:                                         <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>\n   65                                          <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 50 }}{% endif %}</p>\n   66                                        </div>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n   15          <description>&lt;p&gt;&lt;img src=&quot;/images/backgroundifier-gallery/title_2.jpg&quot; /&gt;&lt;/p&gt;\n   16  \n   17: &lt;p&gt;The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there’s (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives?&lt;/p&gt;\n   18  \n   19  &lt;p&gt;For several years, I wanted to create a sort of “digital museum” that would give me random access to this very important side of the art world. The constraints weren’t complicated. All I needed was a large body of art along with a mechanism that would randomly show me new works from this collection every hour or so. But while acquiring the art was hardly a problem, there were relatively few areas in my life where I could idly display images. Screensavers? Showed up too infrequently and weren’t easily controllable. Wallpapers? Couldn’t deal with arbitrary aspect ratios. I thought I had my solution when I ran the &lt;a href=&quot;www.google.com/culturalinstitute/beta/project/art-camera&quot;&gt;Google Art Project&lt;/a&gt; in a full-screen browser tab on a second monitor, but the selection turned out to be too limited and I could no longer rely on the luxury of more than one display when I set out on my travels.&lt;/p&gt;\n   ..\n  167          \n  168          \n  169:         <category>technology</category>\n  170          \n  171        </item>\n  ...\n  179  &lt;p&gt;Several bloggers have expressed curiosity as to why public interest in the App Store has waned so much. I can’t answer for everyone, but at least within myself, I’ve noticed an increasing and persistant reluctance to try new apps. It’s just that I’ve seen same pattern crop up over and over again. Somebody releases an interesting new app, touting fantastic design and improved productivity. The app gains some (but not overwhelming) traction. The app gets a few updates. The app lingers for a few years. And finally, the app untriumphantly rides off into the sunset, taking entire years of not just developer time, but thousands of users’ ingrained habits with it. The case is clear: most apps — and especially indie apps — cannot be reliably expected to continue operating.&lt;/p&gt;\n  180  \n  181: &lt;p&gt;After being burned so many times by products that have been pulled out from under me, I’ve unconsciously adopted a worrying philosophy for trying new apps: unless the app I’m using is backed by a large corporation or is outright open-source, I’m not going to use it for anything particularly important in my life.  (And even then, certain corporations — ahem, Google — are put under further scrutiny.) I hate having to do this because many amazing UX advancements can be found in apps produced by smaller developers. (Apple folks love to talk about how certain categories of apps are &lt;a href=&quot;https://daringfireball.net/2009/04/twitter_clients_playground&quot;&gt;design playgrounds&lt;/a&gt;.) But at the same time, I know that with these apps, there is an inevitable sunset e-mail waiting for me in the not-too-distant future. It’s gotten so bad that I’m starting to seriously consider switching most of the (snappy, beautiful, well-designed) productivity apps on my phone over to their (ugly, clunky) open-source alternatives, just because I know that OpenWhatever will long outlive the current App Store darling for that category. (1Password is one hot spot that immediately comes to mind. Losing them would be a disaster.) I don’t want to worry every day about whether these proprietary silos will suddenly go up in flames with all my carefully-constructed workflows and data in tow.&lt;/p&gt;\n  182  \n  183  &lt;p&gt;Despite the low prices on the App Store, I now get decision fatigue whenever I go to purchase an app. How long is this product going to be around? How reliable is this developer? How easy is it to export the data? How open are all the underlying formats and APIs? The price might be insignificant, but the commitment implied by my purchase is not trivial at all! Unfortunately, developers don’t seem to care much about the mental toll that pulling an app might cause, even when they were the ones touting life-changing productivity and workflow improvements in the first place. It’s one thing I miss about Windows utility software: so much of it is terribly designed, but at least I know it’ll run more or less forever. (Both on account of the open platform and Windows’ amazing legacy support.)&lt;/p&gt;\n  ...\n  194          \n  195          \n  196:         <category>technology</category>\n  197          \n  198        </item>\n  ...\n  419          \n  420          \n  421:         <category>design</category>\n  422          \n  423        </item>\n  ...\n  451          \n  452          \n  453:         <category>technology</category>\n  454          \n  455        </item>\n  ...\n  832          \n  833          \n  834:         <category>programming</category>\n  835          \n  836        </item>\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/rakefile:\n  122      post.puts \"date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S %z')}\"\n  123      post.puts \"comments: true\"\n  124:     post.puts \"categories: \"\n  125      post.puts \"---\"\n  126    end\n\n117 matches across 44 files\n\n\nSearching 287 files for \"releases\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_drafts/2016-09-07-nintendo-on-ios.md:\n   21  These weren't throw-away games, even though the gameplay came in bite-size chunks. These were experiments with doing the most using simple controls, and they were a tremendous critical success.\n   22  \n   23: If Nintendo releases games designed as well on these on iOS, I couldn't complain. However, I also hope that this release will eventually herald a partnership between Apple and Nintendo for an official iOS and tvOS game controller. Then — finally! — we'll be able to reliably create true, retail-quality platformers on the system.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_includes/categories.scss:\n    6  $category-travel-color:         #FDFD96;\n    7  $category-technology-color:     #FFB347;\n    8: $category-releases-color:       #DDF4FF;\n    9  $category-design-color:         #C0DFFE;\n   10  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2014-11-20-what's_up_with_google_maps_these_days.md:\n    9  When Apple replaced its Google-powered maps app with a complete in-house rewrite for iOS 6, most users had little good to say about it. It was inaccurate. It lacked public transit directions. The search was paltry, as was the iconography. At best, it could be described as *slick*, with the pixellated pop-in of previous generations replaced by crisp, swiftly scaling vector lines. But this was not enough to offset the lack of functionality compared to Google's definitive mapping solution, and so [Tim Cook apologized](https://www.apple.com/letter-from-tim-cook-on-maps/) and we all went on with our lives.\n   10  \n   11: It's now a couple of iOS releases later, and over the past year — especially with OSX support in tow — I've been frequently finding myself reaching for Apple Maps before going anywhere near a browser. Gradually, Apple has been tending to its garden: improving its data; getting better business listings; making its icons more contextually meaningful. At the same time, in lockstep, Google Maps has been driving me progressively *up the wall*. And as someone who has had *maps.google.com* burned into his fingertips since its inception, I can't help but see this as building towards a major shift in the balance of power in the mobile sphere.\n   12  \n   13  One of the most frustrating issues with Google Maps is seemingly minor, but hits me every time I use it. When you go to open a map, it initially — silently — loads as a static image. After a few seconds, the UI appears, followed by the actual interactive map. But nothing is done to distinguish the fake image-map from the interactive Javascript map, which means that when I first go to drag the map with my mouse, I am inevitably left with a useless thumbnail dangling from my cursor. *Every time*. Even worse, the UI widgets appear to be clickable during this image phase, but have absolutely no function! The only thing you can do to avoid driving yourself crazy is wait for the tell-tale pop-in that heralds the interactive map — assuming you didn't miss it on initial load.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-09-29-backgroundifier.md:\n    4  date: 2015-09-29 17:36:37 -0700\n    5  comments: true\n    6: categories: releases\n    7  ---\n    8  \n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-02-27-path-rendering-in-composers-sketchpad.md:\n   94  In the end, all the goals I set for myself were successfully met. The app does run at 60fps much of the time on my iPad 3, though it's naturally far more prone to dropping frames than newer devices. (An iPad Air 1 and my iPhone 5s barely dipped below 60fps even in complex scenes.) Real-time tessellation is still something I want to implement for grid scale changes; I doubt I'd be able to truly do it in real-time for a full screen of notes, but I can think of several ways to fake-transform existing tessellated notes while waiting for the correct tessellation to load.\n   95  \n   96: Finally, I do hope that somebody releases a stable, hardware-accelerated path rendering framework for iOS. It's sorely needed for vector-based apps with dynamic content!\n   97  \n   98  [^why_no_hw_vectors]: Curious, I asked programmers.stackexchange.com about this issue and [got some interesting answers](http://programmers.stackexchange.com/questions/191472/why-have-hardware-accelerated-vector-graphics-not-taken-off).\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2016-08-21-tool-reliance.md:\n   11  This is not a post about why Vesper ultimately failed. There are plenty of others who will happily chat about the rusty economics of the App Store. Instead, I want to focus on the other end of this unfortunate feedback loop: the effect that these highly visible app shutdowns might have on App Store customers.\n   12  \n   13: Several bloggers have expressed curiosity as to why public interest in the App Store has waned so much. I can't answer for everyone, but at least within myself, I've noticed an increasing and persistant reluctance to try new apps. It's just that I've seen same pattern crop up over and over again. Somebody releases an interesting new app, touting fantastic design and improved productivity. The app gains some (but not overwhelming) traction. The app gets a few updates. The app lingers for a few years. And finally, the app untriumphantly rides off into the sunset, taking entire years of not just developer time, but thousands of users' ingrained habits with it. The case is clear: most apps — and especially indie apps — cannot be reliably expected to continue operating.\n   14  \n   15  After being burned so many times by products that have been pulled out from under me, I've unconsciously adopted a worrying philosophy for trying new apps: unless the app I'm using is backed by a large corporation or is outright open-source, I'm not going to use it for anything particularly important in my life.  (And even then, certain corporations — ahem, Google — are put under further scrutiny.) I hate having to do this because many amazing UX advancements can be found in apps produced by smaller developers. (Apple folks love to talk about how certain categories of apps are [design playgrounds](https://daringfireball.net/2009/04/twitter_clients_playground).) But at the same time, I know that with these apps, there is an inevitable sunset e-mail waiting for me in the not-too-distant future. It's gotten so bad that I'm starting to seriously consider switching most of the (snappy, beautiful, well-designed) productivity apps on my phone over to their (ugly, clunky) open-source alternatives, just because I know that OpenWhatever will long outlive the current App Store darling for that category. (1Password is one hot spot that immediately comes to mind. Losing them would be a disaster.) I don't want to worry every day about whether these proprietary silos will suddenly go up in flames with all my carefully-constructed workflows and data in tow.\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_site/feed.xml:\n  177  &lt;p&gt;This is not a post about why Vesper ultimately failed. There are plenty of others who will happily chat about the rusty economics of the App Store. Instead, I want to focus on the other end of this unfortunate feedback loop: the effect that these highly visible app shutdowns might have on App Store customers.&lt;/p&gt;\n  178  \n  179: &lt;p&gt;Several bloggers have expressed curiosity as to why public interest in the App Store has waned so much. I can’t answer for everyone, but at least within myself, I’ve noticed an increasing and persistant reluctance to try new apps. It’s just that I’ve seen same pattern crop up over and over again. Somebody releases an interesting new app, touting fantastic design and improved productivity. The app gains some (but not overwhelming) traction. The app gets a few updates. The app lingers for a few years. And finally, the app untriumphantly rides off into the sunset, taking entire years of not just developer time, but thousands of users’ ingrained habits with it. The case is clear: most apps — and especially indie apps — cannot be reliably expected to continue operating.&lt;/p&gt;\n  180  \n  181  &lt;p&gt;After being burned so many times by products that have been pulled out from under me, I’ve unconsciously adopted a worrying philosophy for trying new apps: unless the app I’m using is backed by a large corporation or is outright open-source, I’m not going to use it for anything particularly important in my life.  (And even then, certain corporations — ahem, Google — are put under further scrutiny.) I hate having to do this because many amazing UX advancements can be found in apps produced by smaller developers. (Apple folks love to talk about how certain categories of apps are &lt;a href=&quot;https://daringfireball.net/2009/04/twitter_clients_playground&quot;&gt;design playgrounds&lt;/a&gt;.) But at the same time, I know that with these apps, there is an inevitable sunset e-mail waiting for me in the not-too-distant future. It’s gotten so bad that I’m starting to seriously consider switching most of the (snappy, beautiful, well-designed) productivity apps on my phone over to their (ugly, clunky) open-source alternatives, just because I know that OpenWhatever will long outlive the current App Store darling for that category. (1Password is one hot spot that immediately comes to mind. Losing them would be a disaster.) I don’t want to worry every day about whether these proprietary silos will suddenly go up in flames with all my carefully-constructed workflows and data in tow.&lt;/p&gt;\n  ...\n  817  &lt;p&gt;In the end, all the goals I set for myself were successfully met. The app does run at 60fps much of the time on my iPad 3, though it’s naturally far more prone to dropping frames than newer devices. (An iPad Air 1 and my iPhone 5s barely dipped below 60fps even in complex scenes.) Real-time tessellation is still something I want to implement for grid scale changes; I doubt I’d be able to truly do it in real-time for a full screen of notes, but I can think of several ways to fake-transform existing tessellated notes while waiting for the correct tessellation to load.&lt;/p&gt;\n  818  \n  819: &lt;p&gt;Finally, I do hope that somebody releases a stable, hardware-accelerated path rendering framework for iOS. It’s sorely needed for vector-based apps with dynamic content!&lt;/p&gt;\n  820  \n  821  &lt;div class=&quot;footnotes&quot;&gt;\n\n8 matches across 7 files\n\n\nSearching 287 files for \": releases\"\n\n/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_posts/2015-09-29-backgroundifier.md:\n    4  date: 2015-09-29 17:36:37 -0700\n    5  comments: true\n    6: categories: releases\n    7  ---\n    8  \n\n1 match in 1 file\n",
 			"settings":
 			{
-				"buffer_size": 25550,
+				"buffer_size": 74493,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
@@ -326,7 +326,7 @@
 			"file": "_site/feed.xml",
 			"settings":
 			{
-				"buffer_size": 124937,
+				"buffer_size": 124088,
 				"line_ending": "Unix"
 			}
 		},
@@ -395,6 +395,8 @@
 	},
 	"file_history":
 	[
+		"/Users/archagon/Documents/Programming/OSX/Temp Projects/ForceButton/README.md",
+		"/Users/archagon/Documents/Programming/test.sh",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/css/main.scss",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/pages/archive.html",
 		"/Users/archagon/Documents/Programming/Web/Blog/jekyll-test/_plugins/kmlasset_tag.rb",
@@ -520,9 +522,7 @@
 		"/Media/Media/Reading/Magazines/test2.hash",
 		"/Media/Media/Reading/Magazines/test3.hash",
 		"/Media/archagon.hash",
-		"/Users/archagon/Documents/Programming/Pinboard Linker/python-pinboard/setup.py",
-		"/Media/archagon.hash-verify",
-		"/Media/Media-Original.hash-verify"
+		"/Users/archagon/Documents/Programming/Pinboard Linker/python-pinboard/setup.py"
 	],
 	"find":
 	{
@@ -543,6 +543,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			": releases",
+			"releases",
+			"categ",
+			"img",
+			".page-content {",
+			".page_content",
+			".page_content {",
+			"margin-left: auto",
+			"margin-left",
+			"videos",
+			"max-width:",
 			"This blog post is part of a series",
 			".page-content",
 			"scssify",
@@ -659,18 +670,7 @@
 			"selector_id",
 			"class",
 			"categor",
-			"radius",
-			"imagemagick",
-			"post-link",
-			"post-list",
-			"$nav-background-end-color",
-			"red",
-			"white",
-			"85%",
-			"15%",
-			"rgba(236,214,252,1)",
-			"rgba(255,255,255,0)",
-			"full-support: true"
+			"radius"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -701,7 +701,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1870,8 +1870,8 @@
 						"selection":
 						[
 							[
-								312,
-								312
+								242,
+								250
 							]
 						],
 						"settings":
@@ -2766,15 +2766,15 @@
 					"file": "_sass/_layout.scss",
 					"settings":
 					{
-						"buffer_size": 5676,
+						"buffer_size": 5773,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5608,
-								5608
+								355,
+								355
 							]
 						],
 						"settings":
@@ -2922,7 +2922,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2367.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -3472,15 +3472,15 @@
 					"file": "_sass/_base.scss",
 					"settings":
 					{
-						"buffer_size": 5459,
+						"buffer_size": 5514,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								907,
-								925
+								4129,
+								4140
 							]
 						],
 						"settings":
@@ -3628,7 +3628,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 344.0,
+						"translation.y": 3977.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -4876,7 +4876,7 @@
 					"buffer": 29,
 					"settings":
 					{
-						"buffer_size": 25550,
+						"buffer_size": 74493,
 						"regions":
 						{
 							"match":
@@ -5331,6 +5331,630 @@
 									[
 										25269,
 										25303
+									],
+									[
+										25744,
+										25754
+									],
+									[
+										25907,
+										25917
+									],
+									[
+										26099,
+										26109
+									],
+									[
+										26206,
+										26216
+									],
+									[
+										26286,
+										26296
+									],
+									[
+										26497,
+										26507
+									],
+									[
+										26580,
+										26590
+									],
+									[
+										26863,
+										26873
+									],
+									[
+										27073,
+										27083
+									],
+									[
+										27240,
+										27250
+									],
+									[
+										27488,
+										27498
+									],
+									[
+										27686,
+										27696
+									],
+									[
+										27800,
+										27810
+									],
+									[
+										27914,
+										27924
+									],
+									[
+										28028,
+										28038
+									],
+									[
+										28302,
+										28319
+									],
+									[
+										28515,
+										28532
+									],
+									[
+										28712,
+										28729
+									],
+									[
+										28925,
+										28942
+									],
+									[
+										29183,
+										29200
+									],
+									[
+										29393,
+										29410
+									],
+									[
+										29544,
+										29561
+									],
+									[
+										29710,
+										29727
+									],
+									[
+										29928,
+										29945
+									],
+									[
+										30073,
+										30090
+									],
+									[
+										30218,
+										30235
+									],
+									[
+										30363,
+										30380
+									],
+									[
+										30754,
+										30769
+									],
+									[
+										30886,
+										30901
+									],
+									[
+										30986,
+										31001
+									],
+									[
+										31340,
+										31345
+									],
+									[
+										31373,
+										31378
+									],
+									[
+										31445,
+										31450
+									],
+									[
+										31475,
+										31480
+									],
+									[
+										31508,
+										31513
+									],
+									[
+										31771,
+										31776
+									],
+									[
+										32033,
+										32038
+									],
+									[
+										32311,
+										32316
+									],
+									[
+										32551,
+										32556
+									],
+									[
+										32877,
+										32882
+									],
+									[
+										33136,
+										33141
+									],
+									[
+										33440,
+										33445
+									],
+									[
+										33963,
+										33968
+									],
+									[
+										34202,
+										34207
+									],
+									[
+										34498,
+										34503
+									],
+									[
+										35301,
+										35306
+									],
+									[
+										35572,
+										35577
+									],
+									[
+										35782,
+										35787
+									],
+									[
+										35852,
+										35857
+									],
+									[
+										35894,
+										35899
+									],
+									[
+										35937,
+										35942
+									],
+									[
+										35959,
+										35964
+									],
+									[
+										35976,
+										35981
+									],
+									[
+										36053,
+										36058
+									],
+									[
+										36075,
+										36080
+									],
+									[
+										36251,
+										36256
+									],
+									[
+										36345,
+										36350
+									],
+									[
+										36405,
+										36410
+									],
+									[
+										36612,
+										36617
+									],
+									[
+										36735,
+										36740
+									],
+									[
+										36917,
+										36922
+									],
+									[
+										36977,
+										36982
+									],
+									[
+										37181,
+										37186
+									],
+									[
+										37301,
+										37306
+									],
+									[
+										37505,
+										37510
+									],
+									[
+										37533,
+										37538
+									],
+									[
+										37581,
+										37586
+									],
+									[
+										37629,
+										37634
+									],
+									[
+										37677,
+										37682
+									],
+									[
+										37725,
+										37730
+									],
+									[
+										37773,
+										37778
+									],
+									[
+										37821,
+										37826
+									],
+									[
+										37985,
+										37990
+									],
+									[
+										38055,
+										38060
+									],
+									[
+										38101,
+										38106
+									],
+									[
+										38144,
+										38149
+									],
+									[
+										38166,
+										38171
+									],
+									[
+										38187,
+										38192
+									],
+									[
+										38264,
+										38269
+									],
+									[
+										38286,
+										38291
+									],
+									[
+										38362,
+										38367
+									],
+									[
+										38575,
+										38580
+									],
+									[
+										38848,
+										38853
+									],
+									[
+										39244,
+										39249
+									],
+									[
+										39645,
+										39650
+									],
+									[
+										39725,
+										39730
+									],
+									[
+										39772,
+										39777
+									],
+									[
+										39857,
+										39862
+									],
+									[
+										39891,
+										39896
+									],
+									[
+										39936,
+										39941
+									],
+									[
+										39958,
+										39963
+									],
+									[
+										39975,
+										39980
+									],
+									[
+										40056,
+										40061
+									],
+									[
+										40078,
+										40083
+									],
+									[
+										40240,
+										40245
+									],
+									[
+										40307,
+										40312
+									],
+									[
+										40443,
+										40448
+									],
+									[
+										40523,
+										40528
+									],
+									[
+										40645,
+										40650
+									],
+									[
+										40787,
+										40792
+									],
+									[
+										40849,
+										40854
+									],
+									[
+										41125,
+										41130
+									],
+									[
+										41929,
+										41934
+									],
+									[
+										42369,
+										42374
+									],
+									[
+										43710,
+										43715
+									],
+									[
+										44102,
+										44107
+									],
+									[
+										45319,
+										45324
+									],
+									[
+										46301,
+										46306
+									],
+									[
+										46512,
+										46517
+									],
+									[
+										46768,
+										46773
+									],
+									[
+										47370,
+										47375
+									],
+									[
+										48074,
+										48079
+									],
+									[
+										48271,
+										48276
+									],
+									[
+										48498,
+										48503
+									],
+									[
+										49191,
+										49196
+									],
+									[
+										49399,
+										49404
+									],
+									[
+										49601,
+										49606
+									],
+									[
+										49821,
+										49826
+									],
+									[
+										50070,
+										50075
+									],
+									[
+										50298,
+										50303
+									],
+									[
+										50497,
+										50502
+									],
+									[
+										51032,
+										51037
+									],
+									[
+										52439,
+										52444
+									],
+									[
+										52978,
+										52983
+									],
+									[
+										54240,
+										54245
+									],
+									[
+										54503,
+										54508
+									],
+									[
+										54637,
+										54642
+									],
+									[
+										56429,
+										56434
+									],
+									[
+										56547,
+										56552
+									],
+									[
+										56740,
+										56745
+									],
+									[
+										57087,
+										57092
+									],
+									[
+										57424,
+										57429
+									],
+									[
+										57456,
+										57461
+									],
+									[
+										57938,
+										57943
+									],
+									[
+										59693,
+										59698
+									],
+									[
+										59714,
+										59719
+									],
+									[
+										61154,
+										61159
+									],
+									[
+										61726,
+										61731
+									],
+									[
+										62884,
+										62889
+									],
+									[
+										62905,
+										62910
+									],
+									[
+										63006,
+										63011
+									],
+									[
+										63023,
+										63028
+									],
+									[
+										63124,
+										63129
+									],
+									[
+										63145,
+										63150
+									],
+									[
+										63246,
+										63251
+									],
+									[
+										63268,
+										63273
+									],
+									[
+										63519,
+										63524
+									],
+									[
+										63966,
+										63974
+									],
+									[
+										64484,
+										64492
+									],
+									[
+										65347,
+										65355
+									],
+									[
+										66936,
+										66944
+									],
+									[
+										67712,
+										67720
+									],
+									[
+										68837,
+										68845
+									],
+									[
+										71429,
+										71437
+									],
+									[
+										74001,
+										74009
+									],
+									[
+										74444,
+										74454
 									]
 								],
 								"scope": ""
@@ -5339,8 +5963,8 @@
 						"selection":
 						[
 							[
-								23068,
-								23068
+								74231,
+								74231
 							]
 						],
 						"settings":
@@ -5394,7 +6018,7 @@
 								"bh_single_quote_close"
 							],
 							"detect_indentation": false,
-							"output_tag": 19,
+							"output_tag": 27,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -5403,7 +6027,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10785.0,
+						"translation.y": 8536.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -5729,7 +6353,7 @@
 					"file": "_site/feed.xml",
 					"settings":
 					{
-						"buffer_size": 124937,
+						"buffer_size": 124088,
 						"regions":
 						{
 						},
@@ -5881,7 +6505,7 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/XML/XML.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
