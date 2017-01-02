@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 14:34:00 -0800</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 14:34:00 -0800</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 14:37:11 -0800</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 14:37:11 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -195,7 +195,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://amzn.to/2itWCP9&quot;&gt;An AKiTiO Thunder2 PCIe Box&lt;/a&gt; ($220)&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://amzn.to/2itNpGC&quot;&gt;An EVGA GeForce GTX 1050 Ti SC&lt;/a&gt; ($140)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://amzn.to/2iQUoWJ&quot;&gt;A 120W 12V/10A power adaptor with a 5.5×2.5mm plug and center positive polarity&lt;/a&gt; ($35 — though buy it from a seller with Prime in case it’s the wrong one! This listing used to have a Prime seller, but I don’t see them anymore.)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://amzn.to/2iQUoWJ&quot;&gt;A 120W 12V/10A power adaptor with a 5.5×2.5mm plug and center positive polarity&lt;/a&gt; ($35 — though buy it from a seller with Prime in case it’s the wrong one! This listing used to have a Prime seller, but I don’t see them anymore. Also, HN has pointed out that &lt;a href=&quot;http://www.mini-box.com/12v-10A-AC-DC-Power-Adapter&quot;&gt;this&lt;/a&gt; may be a far better adaptor, even if it’s not sold on Amazon.)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;…you can assemble a painless, hack-less eGPU build and use it with your late-2013 15” dGPU MacBook as a relatively inexpensive graphics upgrade compared to building a PC from scratch or buying a console. (Cheaper still if you wait for rebates or use an older/weaker X50 card.) &lt;strong&gt;Caveat emptor:&lt;/strong&gt; the same build might not work so well — or at all! — on other MacBook models or even with a different driver version. In other words, &lt;strong&gt;what worked for me might not work for you!&lt;/strong&gt; Remember that eGPU on TB2 is not officially supported and mostly works by accident, though clearly it can work very well. &lt;/p&gt;
