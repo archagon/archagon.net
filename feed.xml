@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 14:31:42 -0800</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 14:31:42 -0800</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 14:34:00 -0800</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 14:34:00 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -200,7 +200,7 @@
 
 &lt;p&gt;…you can assemble a painless, hack-less eGPU build and use it with your late-2013 15” dGPU MacBook as a relatively inexpensive graphics upgrade compared to building a PC from scratch or buying a console. (Cheaper still if you wait for rebates or use an older/weaker X50 card.) &lt;strong&gt;Caveat emptor:&lt;/strong&gt; the same build might not work so well — or at all! — on other MacBook models or even with a different driver version. In other words, &lt;strong&gt;what worked for me might not work for you!&lt;/strong&gt; Remember that eGPU on TB2 is not officially supported and mostly works by accident, though clearly it can work very well. &lt;/p&gt;
 
-&lt;p&gt;(Also, there’s some great information in the &lt;a href=&quot;https://news.ycombinator.com/item?id=13303912&quot;&gt;HN thread for this post&lt;/a&gt; about new and upcoming TB3 enclosures. If you can get one working with a TB3-to-TB2 adaptor, it might be the best option of all for upgradability, reliability, and future-proofing. Do your research!)&lt;/p&gt;
+&lt;p&gt;(Also, there’s some great information in the &lt;a href=&quot;https://news.ycombinator.com/item?id=13303912&quot;&gt;HN thread for this post&lt;/a&gt; about new and upcoming TB3 enclosures. If you can get one working with a TB3-to-TB2 adaptor, it might be the best option of all for upgradability, reliability, and future-proofing. On the other hand, you’ll probably spend more money and the case will be a lot bigger. Do your research!)&lt;/p&gt;
 
 &lt;p&gt;In time, I hope somebody releases a Thunderbolt 3 eGPU the size of one of those Square credit card readers — maybe sporting a GTX 980M caliber chip? — that plugs into a USB-C port and works seamlessly with the internal display. But for now, this lovely little eGPU will do just fine. I’m confident that my trusty MacBook can now serve me for another few years, especially if NVIDIA continues to release excellent and inexpensive PCI-powered cards on the regular. &lt;/p&gt;
 
