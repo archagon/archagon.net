@@ -6,8 +6,8 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 02 Jan 2017 14:37:11 -0800</pubDate>
-    <lastBuildDate>Mon, 02 Jan 2017 14:37:11 -0800</lastBuildDate>
+    <pubDate>Mon, 02 Jan 2017 16:26:57 -0800</pubDate>
+    <lastBuildDate>Mon, 02 Jan 2017 16:26:57 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -182,7 +182,7 @@
 
 &lt;p&gt;Quite an upgrade! According to Passmark and other benchmark listings, a 1050 Ti should, under normal circumstances, be about 4.5× as powerful as a 750M. Factor in 10%-20% performance loss from the TB link and that’s exactly what we see in our results: a 4x boost on average.&lt;/p&gt;
 
-&lt;p&gt;Even without any underclocking, stability has not been an issue. I’ve been playing hours of Crysis 3, Far Cry 4, and Mirror’s Edge Catalyst over the past few days and everything’s still working great. I’m keeping the case closed, but I don’t think there’s any real risk of overheating: the GPU fan is designed to funnel heat right out through the back and there’s an extra font fan build into the case anyway. According to 3DMark, temperature during benchmarking has been stable.&lt;/p&gt;
+&lt;p&gt;Even without any underclocking, stability has not been an issue. I’ve been playing hours of Crysis 3, Far Cry 4, and Mirror’s Edge Catalyst over the past few days and everything’s still working great. I’m keeping the case closed, but I don’t think there’s any real risk of overheating: the GPU fan is designed to funnel heat right out through the back and there’s an extra front fan build into the case anyway. According to 3DMark, temperature during benchmarking has been stable.&lt;/p&gt;
 
 &lt;p&gt;I’m not interested in running any weird scripts to get Optimus drivers for the internal display working, but I learned something interesting while fiddling with the Windows display settings. If you set the multiple display setting to &lt;a href=&quot;/images/egpu/duplicate.png&quot;&gt;“Duplicate these displays”&lt;/a&gt;, it seems that somehow the eGPU gets used for both the internal and external display! Assuming I’m interpreting this finding correctly, this means that theoretically you could buy something like this &lt;a href=&quot;https://www.amazon.com/CompuLab-fit-Headless-Display-Emulator/dp/B00FLZXGJ6&quot;&gt;HDMI display emulator&lt;/a&gt; and use the eGPU on the internal display without an external monitor and without having to go through the hacky process of getting Optimus up and running. Unfortunately, there’s a performance penalty of about 20%-25% (according to my benchmarks) as well as approximately 0.25 seconds of latency, making this approach untenable for first-person shooters and other twitchy games. (I wonder if this is also the case with the Optimus driver route?)&lt;/p&gt;
 
