@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Headphone Jacks Are the New Power Plugs</title>
+    <title>MusicMessages! Making a Collaborative Sequencer for iMessage</title>
     <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://beta-blog.archagon.net/2016/06/21/headphones/">
+    <link rel="canonical" href="http://beta-blog.archagon.net/2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage/">
 </head>
 
   <style>
@@ -206,37 +206,45 @@
 </header>
     <div class="page-content">
       <div class="wrapper">
-        <div class="post" id="sel_20160621headphones">
+        <div class="post" id="sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage">
   <header class="post-header">
-    <h1 class="post-title">Headphone Jacks Are the New Power Plugs</h1>
-    <!-- <p class="post-meta">Jun 21, 2016</p> -->
+    <h1 class="post-title">MusicMessages! Making a Collaborative Sequencer for iMessage</h1>
+    <!-- <p class="post-meta">Jan 3, 2017</p> -->
   </header>
 
   <article class="post-content">
-    <p>Blog comments are out, blog responses are in — and so I thought I’d respond to John Gruber’s recent article titled <a href="http://daringfireball.net/2016/06/headphone_jacks_are_the_new_floppy_drives">“Headphone Jacks Are the New Floppy Drives”</a>. Here’s why I think removing the headphone jack would be a bad idea at this moment in time:</p>
+    <p><img src="/images/music-messages/banner.png" /></p>
 
-<ul>
-  <li>Poor wireless options and standards. I use Bluetooth headphones and I love them, but they’re a world of compromises. Audio quality is far from lossless, and not just because of the codecs: with the sound off, you are likely to hear noise and static from the radio right next to your ear. (This does not bother me, but would drive many people crazy.) Switching between devices is a pain. Pairing is a pain. You have to remember to charge them. There is unbearable latency for games and occasionally even movies. Few audiophile-level headphone makers bother with Bluetooth headphones, leaving us with just the consumer brands. They can only be as powerful as the battery-powered driver. Might Apple introduce a new wireless codec that tackles all of these pain points? Sure. But then we get:</li>
-  <li>Vendor lock-in. Apple Wireless or Lighning headphones wouldn’t be compatible with much else. Not a problem for cheap earbuds, but definitely a big deal for high-quality, $400+ headphones. After years of freedom, audio would be siloed. As Gruber mentions, this is in Apple’s best interests; but among all our gadgets, headphones have always been among the most universal and independent. They are a true analog path between our disparate electronics — an intuitive and surprisingly error-free technology in a world where devices routinely refuse to talk to each other. You wouldn’t find yourself spending an hour helping your mom troubleshoot the headphone jack. This change would be a major pain point, especially when it comes to:</li>
-  <li>Loss of plug-and-play. I constantly plug my headphones from my phone to my laptop and back. Bluetooth can <em>sort of</em> do this, but it always takes me about a minute with my wireless headphones. With Lightning headphones, it wouldn’t even be a possibility. (Barring Lightning-endowed Macbooks, which would be utterly bizzarre. What else would that port be used for? How would it be differentiated from USB-C?) A once-flexible workflow would be completely subverted.</li>
-  <li>Needless complication. Headphones are a very simple thing: just a wire leading to drivers. Very few things can go wrong in this arrangement, as evidenced by the proven durability and versatility of headphones over the past few decades. Headphone makers have gotten really good at working with these few parameters to create truly world-class audio devices. Indeed, some of the most esteemed headphones in the low-end audiophile space (I’m thinking of Grados) are basically glued together by hand in a workshop. If we start shoving more electronics — Lightning circuitry or a DAC, most obviously — into headphones, we make this proven system far more brittle than it needs to be. Headphones will malfunction in frustrating ways. Noise will be introduced. Designs will become more bloated to accommodate the extra circuitry. Every headphone having its own DAC is like every monitor having its own video card: clearly putting technology on the wrong side of the divide.</li>
-</ul>
+<p>Last month, I released an unusual little app for iMessage. It’s called <a href="http://musicmessages.io">MusicMessages!</a>, and it’s a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it’s the only app of its kind in the iMessage App Store. (Probably for good reason!)</p>
 
-<p>What is all this for? What do we gain in return?</p>
+<p>The app presents you with a grid of buttons, each corresponding to a musical note. Time is horizontal and pitch is vertical, and the entire grid can be panned like any other iOS scroll view. To place a note, simply tap one of the buttons; tap it again to erase the note. (If you have a 3D Touch capable device, you can depress the button using finger pressure. On an iPhone 7, there’s even a bit of haptic feedback at the end.) The tabs on top of the screen represent independent layers of notes, and if you tap their icons, you can pick a new instrument out of 40+ different ones (including percussion). Once you’re happy with your portion of the piece, you can send it off to one or more fellow iMessage users for their contributions. Each participant’s notes show up in their own unique color, making it easy to track the changes to a piece over time.</p>
 
-<p>In the past, every time a prominent piece of technology was removed from my Apple hardware — most recently the CD drive and the Ethernet port — my response was ambivalent because I had already been happily using the alternative for a while. Wi-Fi, despite its flaws, offered countless advantages over Ethernet, leading to rapid adoption. Steam, iTunes, and Netflix had made me almost forget that CDs were still a thing by the time I got my Retina Macbook Pro. It almost goes without saying that these technologies were standard and universal — nobody would have accepted them otherwise. But there’s no Next Best Thing in headphones. This is an entirely artificial change.</p>
+<p>Why iMessage? Since releasing <a href="http://composerssketchpad.com">Composer’s Sketchpad</a>, I’ve wanted to create a companion app that would make it even easier to play around with simple musical ideas, though at the expense of expressiveness. Initially, I envisioned this as a tabbed, pannable, <a href="/images/music-messages/synth.png">Minesweeper-like step sequencer</a> for OSX. But when I started investigating the new iMessage frameworks in iOS 10, I realized that iMessage might be as good a place as any to work out this idea. No sync issues, no file I/O, a format that incentivized short experiments, and plus — the social aspect just seemed neat! Wouldn’t it be fun to riff on a melody or percussion line with your friends?</p>
 
-<p>Were there an existing high-quality wireless standard for headphones, I’d be somewhat on board, especially if the phone could be waterproofed in exchange. But we’re not there yet, and I fear that in this instance, Apple is looking out for their corporate interests instead of their users. When Apple removes features, I can usually envision the “better tomorrow” they’re striving for. Here, what future can we look forward to if we’re all using bloated, proprietary, and fragile headphones that sound like garbage?</p>
+<p><div class="youtube_16_9"><iframe src="https://www.youtube.com/embed/T5B6lANpduI?showinfo=0&amp;rel=0" frameborder="0" allowfullscreen=""></iframe></div></p>
 
-<p>I can already hear the cry that “the average consumer won’t care”. Sure, maybe not. But their listening experience wouldn’t really be improved by the change, their options for audio hardware would become a lot more limited, and their lives would become riddled with new minor frustrations. The “average consumer” doesn’t care about typography, True Tone displays, or Retina graphics, either. But it all adds up. I respect Apple because they’re internally motivated to strive for quality, and a move towards pointless proprietary standards — towards profit-driven mediocrity with the “average consumer” as a scapegoat — would be a sad blow to that image.</p>
+<p>Total development lasted exactly two months and involved approximately 8000 new lines of Swift code, plus 1000 lines and a bunch of assets borrowed from Composer’s Sketchpad.</p>
 
-<p>There’s a good chance I’ll keep buying iPhones without a headphone jack, but also a 100% chance I’ll end up carrying a 3.5mm adaptor wherever I go. One more thing to lose. A permanent ugly tail sticking out of Ive’s immaculately-designed round rect.</p>
+<p>Favorite tech bit? The data format! I hate spinning up and maintaining servers, so my aim was to avoid any outside dependencies by sending data strictly through the iMessage APIs. Unfortunately, iMessage sends data via NSURL, which in this case had a hidden limit of 5120 characters. I hit this limit with plain old NSArchiver after about a dozen notes. To solve the problem, I had to compress all my data — 5+ layers, 5+ participants, and as many notes as possible — into  approximately 3.75kb, assuming base64 encoding for the data string. Swift is pretty terrible at dealing with tightly-packed data structures (a 256-element static array can only be represented by a non-iterable 256-member tuple) and so I designed a struct and corresponding helper functions for my data in straight C. Lots of fun counting bits and optimizing for maximum data density… eventually, I settled on a maximum of 12 layers, 8 participants, and 1120 notes, along with a ton of extra data and even some room to spare. Nothing terribly complex, but it’s still fun to optimize within tight constraints.</p>
 
-<p>Good work, team?</p>
+<p>Another feature I enjoyed integrating was the perceptually-balanced <a href="http://www.hsluv.org/comparison/">HSL<sub>UV</sub> color space</a> for all my user-selected colors. Normally, if you generate colors in the usual HSB color space by varying the hue and keeping saturation and brightness constant, you get colors that are perceived as unequally bright by the human eye. (An artifact of biology, alas.) Perceptually-accurate color spaces like CIELUV attempt to compensate for this, but most of them have large swaths of empty space where impossible colors lie, making it very difficult to create linear ranges of color parametrized by hue. HSL<sub>UV</sub> goes one step further and stretches the chroma to fill in these gaps. Not perceptually perfect, but just a ton more convenient and usable in practice!</p>
+
+<p>Since there’s an element of self-marketing in iMessage apps — recipients of app messages are automatically prompted to download the corresponding apps — it was important to make my app free. As I really didn’t want to plaster my interface with ugly ads, I decided to lock some non-critical features behind an in-app purchase. I’d never dealt with this payment model before, and as a complete novice in cryptography the code samples for receipt decryption and validation seemed quite daunting! Fortunately, I discovered an excellent OSX application called <a href="https://geo.itunes.apple.com/us/app/receigen/id452840086?mt=12&amp;at=1000lqfl">Receigen</a> that generated auto-obfuscated receipt and IAP validation headers for my app. Ended up saving what probably would have been several days of frustrating, unrewarding work for just $30. Highly recommended!</p>
+
+<p><img src="/images/music-messages/icons_full.jpg" /></p>
+
+<p>As before, designing the icon was a lot of fun. Just like last time, there was a long period in the middle where I was sure that the right design — one that would equally hint at the interface, functionality, and ambiance of the app — would elude me. And just as before, after a chain of prototype designs that I wasn’t crazy about, the right pieces suddenly snapped into into place all at once. On a lark, I even spent a few days parametrizing and animating the icon for my trailer, adding another 900 lines of code through Swift Playgrounds. (Next time, I should probably use something like After Effects or Flash. Keyframing in code is a huge pain, and performance in Playgrounds is hardly sufficient.) The thrill of creative experimentation and discovery is something I sorely miss in my day-to-day programming and makes me all the more eager to get started on my game project.</p>
+
+<p>Speaking of Adobe, I finally moved on from iMovie to <a href="http://www.adobe.com/products/premiere-elements.html">Premiere Elements</a> for my trailer. What a relief! Although deceptively simple at first, PE conceals enormous power in its effects and keyframing features. In trademark Adobe fashion, the program does its best to <em>infuriate</em> you into almost paying for the full CC; but with some clunky zoomed-in Bézier adjustments and begrudging cut-and-paste alignment of keyframe positions, it’s easy to create a video that moves, changes color, and feels very dynamic. The trailer I saw in my head came together in just a few days, and now iMovie feels like a joke in comparison. Well worth the $50 I paid for it on sale.</p>
+
+<p>MusicMessages! was an attempt at a speed project, so there’s many stones left unturned. The UI takes up too much room. The instrument tabs in horizontal mode are too hard to reach. Transitions are jittery and some of the UI glitches out on rotation. There should probably be a chord option for beginners. Percussion is in MIDI order, which is… a little bit crazy. But overall, I’m quite happy with the result! I hope people get a kick out of this weird project and enjoy sending their oddball musical ideas to each other.</p>
+
+<p>One more thing. There’s a good chance I’ll be releasing a standalone, file-based version of the app in the future (with MIDI, IAA, Audiobus and all that good stuff). If you’d be interested in using such an app, do let me know!</p>
+
 
     <div class="signature">
     <p>—<span class="signature-name">Archagon</span></p>
-    <p>June 21, 2016</p>
+    <p>January 3, 2017</p>
 </div>
   </article>
 </div>

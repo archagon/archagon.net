@@ -15,7 +15,14 @@
 
   <style>
   /* dynamically assigns category colors */
-  #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
+  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage {
+  /*background-color: mix($category-releases-color, white, 30%);*/
+  background-color: white; }
+  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage .post-title {
+    /*color: mix($category-releases-color, black, 60%);*/
+    background-color: #e3f6ff; }
+
+#sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
   /*background-color: mix($category-technology-color, white, 30%);*/
   background-color: white; }
   #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro .post-title {
@@ -218,7 +225,7 @@
 
 <p>Most eGPU builders buy this case to hack up, not to use as-is. Usually, the front panel is bent back or removed to fit larger cards, and then a desktop PSU is made to turn on with a paperclip and adapted to fit the DC plug. There are also arcane startup rituals to get everything powered and running with the right timing. I really didn’t want to have a PSU octopus and a ragged hunk of metal sitting bare on my table, though it sadly seemed inevitable. Then I discovered an alternate route.</p>
 
-<p>Most GPUs are power hogs that rely on one or two extra power ports on top of the card, but there are a few designed to pull power straight from the PCI slot. These aren’t super-extreme gaming cards, but these days they more than get the job done. For example, the just-released NVIDIA GeForce GTX 1050 Ti does 60fps/1080p at very high settings in most modern games and currently benchmarks as the ~40th best video card on the market! Better yet, many of these single-slot offerings are short and half as long as the monster enthusiast cards, easily fitting into AKiTiO’s compact case without any modifications. Using this type of card, I’d be able to keep my Thunder2 in one piece and avoid using a PSU entirely. No hacks required!</p>
+<p>Most GPUs are power hogs that rely on one or two extra power ports on top of the card, but there are a few designed to pull power straight from the PCI slot. These aren’t super-extreme gaming cards, but these days they more than get the job done. For example, the just-released NVIDIA GeForce GTX 1050 Ti can pull 1080p at medium-high settings in many recent games and currently benchmarks as the ~40th best video card on the market! Better yet, many of these single-slot offerings are short and half as long as the monster enthusiast cards, easily fitting into AKiTiO’s compact case without any modifications. Using this type of card, I’d be able to keep my Thunder2 in one piece and avoid using a PSU entirely. No hacks required!</p>
 
 <p>At peak, these slot-powered cards can draw 75W from the PCI Express slot. Unfortunately, the AKiTiO Thunder2 only comes with a 60W adaptor, 30W of which is allocated to the circuitry. A dead-end? Not so fast: <a href="https://www.akitio.com/faq/270-thunder2-pcie-box-what-s-the-maximum-power-output-through-the-pcie-slot">as stated in the official docs</a> and verified by employees, the Thunder2 can actually pull as much as 120W from a more powerful adaptor. To be compatible, the new power brick needs to sport a 5.5×2.5mm barrel plug, provide 12V output, and have <a href="https://en.wikipedia.org/wiki/Polarity_symbols">center positive polarity</a>. (Practically every power adaptor has these last two items listed on the back.) My hope was to find a laptop power brick with these same specs, but it turned out that most laptops used chargers with an all-too-high output of 20V. Surprisingly, well-reviewed 12V/10A bricks weren’t common at all on Amazon (unless you <a href="https://www.amazon.de/Netzteil-Laufwerke-Lichtschläuche-LED-Strips-geeignet/dp/B006Z9TQE6">lived in the UK or Europe</a>), with most of the listings taken up by rebranded versions of a sketchy-looking adaptor with model number CT-1250. Eventually, I discovered one vendor who was selling bricks with model number CD120100A, which had a more confident label and looked identical to a power brick I saw in another successful closed-case AKiTiO build. (The Amazon listing was full of typos and the product photos didn’t match the user photos, but it just so happened that the adaptor in the user photos was exactly the one I was hoping to find — and Prime allowed for painless returns in any case.) If the US 12V/10A adaptor market was really dominated by CT-1250 and CD120100A, the latter just seemed like a better bet.</p>
 
