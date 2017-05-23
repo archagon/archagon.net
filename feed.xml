@@ -6,9 +6,170 @@
 </description>
     <link>http://beta-blog.archagon.net/</link>
     <atom:link href="http://beta-blog.archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 08 Jan 2017 16:42:33 -0800</pubDate>
-    <lastBuildDate>Sun, 08 Jan 2017 16:42:33 -0800</lastBuildDate>
+    <pubDate>Tue, 23 May 2017 09:58:02 -0700</pubDate>
+    <lastBuildDate>Tue, 23 May 2017 09:58:02 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Winning the Wireless Mouse Game: Logitech MX Master</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/mx-master/master-top.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We all know that Bluetooth has an abundance of flaws, ranging from frustrating latency to arcane pairing rituals. By many measures, it still feels like a technology stuck in the early 90’s. And yet, once you’ve experienced the freedom of going wireless, it’s terribly hard to go back to the old ways. Reaching to unplug your headphones when leaving your desk, only to realize you can simply walk away? Bliss!&lt;/p&gt;
+
+&lt;p&gt;For several years, I’ve been on the lookout for a Bluetooth mouse that could also be used for non-casual gaming. At minimum, the mouse needed to be on par with my trusty &lt;a href=&quot;http://amzn.to/2qbhqeY&quot;&gt;MX 518&lt;/a&gt; at 1600 DPI and have little to no latency. Unfortunately, the vast majority of reputable Bluetooth mice capped at around 1000 DPI and had a reputation for being a bit laggy. The &lt;a href=&quot;http://amzn.to/2qbb8fi&quot;&gt;Razer Orochi&lt;/a&gt; was one of the few models that supported high DPI over Bluetooth, but it was a cramped little thing and felt rather unpleasant to use.&lt;/p&gt;
+
+&lt;p&gt;There were a few wireless gaming peripherals that used proprietary USB adaptors to improve performance, including my latest mouse, the &lt;a href=&quot;http://amzn.to/2rb0idv&quot;&gt;Logitech G602&lt;/a&gt;. This model did what it said on the tin, but despite the praise it garnered from gamers, I actually ended up somewhat disappointed with it. The USB receiver was pretty weak and would routinely cut out if you moved more than a few feet from the port. The fact that you had to use the receiver at all meant that you still used up one of your USB ports, which was a significant setback when your main computer was a two-port Macbook. (Hubs helped, but not while trying to use two USB-powered hard drives at the same time!) I was also unimpressed with the design and build in general: the side buttons were unpleasant and hard to press, the sensitivity toggles got in the way of your clicking finger, and the scroll wheel felt a bit mushy. After using it for about a year, I ended up happily switching back to the MX 518.&lt;/p&gt;
+
+&lt;p&gt;Recently, I’ve been working more in cafés, and the endless dance of the wire once again started to irk me. I thought about getting an extra, cheapie Bluetooth mouse for working on the go, but I try to only buy things that can be stuffed into a suitcase even if I’m not actively traveling — and unfortunately, &lt;a href=&quot;/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/&quot;&gt;my eGPU&lt;/a&gt; was now reserving a large chunk of that real estate. Two mice was just too much, so I decided once again to take a peek at the high end of the Bluetooth peripheral market.&lt;/p&gt;
+
+&lt;p&gt;Logitech had two new headlining models in this category, the &lt;a href=&quot;http://amzn.to/2qbiPSM&quot;&gt;MX Master&lt;/a&gt; and &lt;a href=&quot;http://amzn.to/2rb6SRe&quot;&gt;MX Anywhere 2&lt;/a&gt;. These were clearly top-shelf items, sporting sleek designs, several color choices, and Logitech’s free-spinning MicroGear Precision scroll wheel. Interestingly, they also reached 1600 DPI and shared the ability to connect to Bluetooth &lt;em&gt;or&lt;/em&gt; a Logitech Unifying USB receiver at the user’s discretion. Based on my experience with the G602, I figured Bluetooth might be handy for everyday use while the USB receiver would work great for lag-free gaming. Were these the first Bluetooth mice that could actually satisfy my criteria? I had to give them a spin!&lt;/p&gt;
+
+&lt;p&gt;Eventually, I got my hands on both models and did some side-by-side testing. The result? The MX Master was love at first touch, fixing almost everything I hated about the G602 and even adding a few extra features to win me over. Meanwhile, the MX Anywhere 2 was marred by one awful design decision and just felt too small for ergonomic comfort.&lt;/p&gt;
+
+&lt;p&gt;Below is a discussion of several aspects of these mice that haven’t been covered in most reviews, including handfeel, clickiness, gaming use, and latency measurements.&lt;/p&gt;
+
+&lt;h2 id=&quot;mx-anywhere-2anywhere&quot;&gt;&lt;a href=&quot;http://amzn.to/2rb6SRe&quot;&gt;MX Anywhere 2&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;The MX Anywhere 2 is a cute little mouse. Some reviewers have been comfortable switching to it as their primary work mouse, but in my testing, I found it just a bit too small. This is definitely a travel mouse in form and function. The weight, however, is great for usability. It’s hefty enough to stick a little to the mousepad without losing its high mobility. &lt;/p&gt;
+
+&lt;p&gt;Click-wise, the two main buttons feel pretty good, while the rest aren’t particularly notable. I was happy that the side navigation buttons were fairly normal sized compared to the scrunched side buttons of the Master. The coating feels grippy but maybe a tiny bit less premium than I’d hoped.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;video controls=&quot;&quot; width=&quot;100%&quot; poster=&quot;/images/mx-master/anywhere-clicks.jpg&quot;&gt;
+	&lt;source src=&quot;/images/mx-master/anywhere-clicks.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;Clicking every button on the MX Anywhere 2.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;In case you’re not aware, many Logitech mice now feature a scroll wheel that can also be clicked side-to-side. In reviews of Logitech mice, I often see praise for this sideways-clicking mouse wheel, going as far as to call it a “premium feature”. But I think I’ve come to realize that most people just don’t use their middle click all that much. Me? I’m an compulsive middle-clicker. I use that button for everything. New links. Closing tabs. Panning. Reloading. In fact, it’s possibly the second most important button on my mouse! Unfortunately, sideways-click cripples this button thoroughly, making it rattle from side to side with every minor push.&lt;/p&gt;
+
+&lt;p&gt;If I otherwise loved the Anywhere, I figured I could get accustomed to this annoying hardware quirk. But Logitech &lt;em&gt;really&lt;/em&gt; screwed up the wheel here. Incomprehensibly, there’s no middle click; instead, you get a tiny button right below the wheel that could be rebound to this function. (By default, it serves as the “gesture” button, which lets you show Exposé and whatnot.) The wheel itself, when depressed, mechanically toggles between traditional ratchet and free spin modes for scrolling, resulting in a heavy, chunky “clunk” that feels like you’re squishing something deep inside the mouse’s guts. Is there &lt;em&gt;any other Logitech mouse&lt;/em&gt; that behaves this way? The middle-click has been a staple feature on mice since the 70’s, so why is changing scroll wheel modes suddenly more important? Considered together with the usual sideways-click complaints, this scroll wheel disappointed me in practically every respect.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;video controls=&quot;&quot; width=&quot;100%&quot; poster=&quot;/images/mx-master/anywhere-rattle.jpg&quot;&gt;
+	&lt;source src=&quot;/images/mx-master/anywhere-rattle.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+	Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;A demonstration of the janky scroll wheel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;For a while, I tried rebinding the square button and sideways-click buttons to middle click. It felt OK… in the sense that I could probably get used to it over time. But I knew I’d never be happy with this compromise, and it’s what ultimately pushed me to give the Master a try.&lt;/p&gt;
+
+&lt;h2 id=&quot;mx-mastermaster&quot;&gt;&lt;a href=&quot;http://amzn.to/2qbiPSM&quot;&gt;MX Master&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;I try surround myself with pretty things, and so I’m delighted that tech companies have started injecting fashion into even their most pragmatic product lines. Both MX models come in black, navy, and white (“stone”). I liked the idea of white in honor of my old favorite &lt;a href=&quot;http://amzn.to/2rKpWCQ&quot;&gt;Microsoft Intellimouse&lt;/a&gt;, and it’s the color I chose for my initial Anywhere purchase. But seeing it in person didn’t impress me as much as I had hoped. It was attractive but a little business casual, and in any case, it didn’t mesh with my recent black &lt;a href=&quot;http://amzn.to/2rbgpb0&quot;&gt;Logitech K380&lt;/a&gt; keyboard purchase. (Peripheral matching… I know, I know!) So I decided to seek a different color with the MX Master.&lt;/p&gt;
+
+&lt;p&gt;Between the other two options, navy looked svelte in pictures while black appeared to have some ugly beige accents that screamed “HP peripheral”. And yet… Amazon Prime Now had a promotion going where I could chip $10 off the purchase of just the black model, bringing the price down to a mere $50 and delivering it the very same day. Meanwhile, navy would cost me close to $70 and arrive several days later! Friends, I must admit I did not pass the marshmallow test on that day.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, this turned out to be a great decision: the black model looks fantastic in person. Despite what the photos might show, the accents are actually not beige at all but more along the lines of Apple’s space gray, perfectly complementing the darker matte gray of the body. In addition, the mouse buttons have a slightly different sheen from the rest of the mouse, giving them a pleasing emphasis under certain lighting.&lt;/p&gt;
+
+&lt;p&gt;As most reviews have stated, the ergonomic comfort of this mouse is close to perfect. You lay your hand down and it feels like it was sculpted just for you. What’s more, the main buttons feel incredible to click — perhaps more so than any other mouse I’ve used, including the Anywhere! Seriously, I can’t stop clicking these buttons.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;video controls=&quot;&quot; width=&quot;100%&quot; poster=&quot;/images/mx-master/master-clicks.jpg&quot;&gt;
+	&lt;source src=&quot;/images/mx-master/master-clicks.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;Clicking every button on the MX Master.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The Master’s sideclick-less scroll intrigued me when I first saw it. Most Logitech mice either feature sideclicking and free spinning together, or otherwise just throw in a plain old scroll wheel and call it a day. This was the first mouse I saw that omitted the sideways-clicking while still retaining the free spin mode, which was a very desirable feature in place of the inertial scrolling you’d get with the Apple trackpad. Prior to handling the Master, I figured this setup might finally allow me to have an uncompromised middle click while still benefitting from Logitech’s fancy scroll wheel tech. And… that’s exactly what happened! The middle click on this mouse feels excellent, to the point where it’s very nearly as pleasing as the main buttons. (There’s a slight bit of wobble before the click itself, but I don’t think that can be helped on account of the complex scroll wheel mechanism.)&lt;/p&gt;
+
+&lt;p&gt;My main issue with this mouse is the very poor layout of the back and forward buttons. I use these buttons quite frequently for navigation, and I miss the old Intellimouse days when the side buttons were enormous and clicked just as well as the main buttons. Here? The buttons are quiet and super annoying to reach and differentiate. Why couldn’t they have spread them out just a little bit? The horizontal scroll wheel feels nice, but I frankly don’t see myself getting much mileage out of it, especially now that I’ve learned you can simply Shift-scroll in OS X to get native horizontal scrolling.&lt;/p&gt;
+
+&lt;p&gt;There’s one hidden button on this mouse: the “gesture” button, which can be activated by smashing down on the mesh pad next to your thumb. Unlike the other buttons, this button feels mushy and difficult to press, similar to those membrane buttons you find on cheap remotes. I guess they had to design it this way to avoid accidental clicks, but I wish they thought of something else or eliminated it altogether. I’ve been trying to use it as a surrogate back button instead of the tiny default one, but it’s not particularly pleasant or responsive to use. Oh well.&lt;/p&gt;
+
+&lt;p&gt;Weight-wise, this mouse is pretty hefty, but not overbearing. Still, I’ll have to get used to the inertia compared to my MX 518, which barely feels like it has any weight at all.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&quot;caption&quot;&gt;
+&lt;video controls=&quot;&quot; width=&quot;100%&quot; poster=&quot;/images/mx-master/master-use.jpg&quot;&gt;
+	&lt;source src=&quot;/images/mx-master/master-use.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+	Your browser does not support the video tag.
+&lt;/video&gt;
+&lt;p&gt;The MX Master in regular use.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I was worried when I was first looking at this mouse that it would just be a minor iteration on the G602, but these fears have been unfounded. The Master fixes every problem I had with the G602 (aside from perhaps the weight) and adds a bunch of great features to boot. I feel immediately at home with this device.&lt;/p&gt;
+
+&lt;h2 id=&quot;common-issues&quot;&gt;Common Issues&lt;/h2&gt;
+
+&lt;p&gt;There are a few issues common to both mice that should be addressed.&lt;/p&gt;
+
+&lt;p&gt;Both of these mice can be used while charging, but they don’t register as USB devices even when directly connected to your computer. You still have to use them via Bluetooth or the Unifying receiver, which means that there’s no zero-latency mode. In practice, as I demonstrate below, the mice are pretty darn close to lag-free. Most people didn’t consider wireless-only to be an issue with the G602, and I don’t see it as an issue here either. (The feature would have been appreciated, though.)&lt;/p&gt;
+
+&lt;p&gt;Second, there’s some scrolling weirdness, which seems to be a mix of OS issues as well as user habits. On the OS side, when smooth scrolling is enabled in Logitech Options, it doesn’t always seem to work right. Fairly frequently, you get some weird acceleration or momentum before things get going. (Both OS X and Windows have this issue, though manifested in different ways.) Most unfortunately, the wheel in free spin mode doesn’t seem to have a 1:1 mapping to page scrolling, which (ironically) feels a lot less physically correct than using the trackpad. I think I could get used to this behavior, but my ancient MX 518’s scrolling felt more natural. In terms of habits, if you’re used to trackpad momentum scrolling in OS X, you’ll be surprised when you’re free-scrolling a page and then find other pages continuing to scroll upon switching windows! It might take a while to internalize that the mouse has a mechanical component that needs to be stopped before switching tasks.&lt;/p&gt;
+
+&lt;p&gt;These mice worry me a little with their reliance on mechanical trickery. On the MX Master, whenever the lever (or whatever it is) stops the wheel when switching to ratchet mode, I can feel the entire mouse shudder slightly. At least one user &lt;a href=&quot;https://toemat.com/logitech-mx-master-fix/&quot;&gt;has already demonstrated&lt;/a&gt; that this part can get stuck. (This has apparently been &lt;a href=&quot;https://toemat.com/logitech-mx-master-fix/#comment-3138781165&quot;&gt;quietly fixed by Logitech&lt;/a&gt;.) How long will it take for the mechanism to break or wear out? Fortunately, Logitech has an exceptional warranty department, so I don’t doubt that they’ll send me a replacement if anything bad happens. Still, I don’t like the idea of having to pamper my mouse.&lt;/p&gt;
+
+&lt;p&gt;The Unifying receiver, unfortunately, tends to have a very short range if there’s any sort of interference nearby. (For example, I can hardly move the mouse a foot away if a Thunderbolt cable is attached to the port next to the receiver. Or maybe it’s the eGPU itself?) As a result, I’ve resorted to plugging the receiver into a USB extender. With Bluetooth, this is not an issue at all, so it comes up fairly infrequently.&lt;/p&gt;
+
+&lt;h2 id=&quot;latency&quot;&gt;Latency&lt;/h2&gt;
+
+&lt;p&gt;Now, for my personal dealbreaker with wireless mice: latency. I had a bit of a misconception when I first set my eyes on these two MX models. My assumption was that the Unifying receiver was identical to the one used by my G602, meaning that the adaptor would be highly optimized for reduced latency. But &lt;a href=&quot;https://www.reddit.com/r/LogitechG/comments/2vz5ie/can_i_use_the_same_usb_reciever_with_the_g602/cookz42/&quot;&gt;according to a Logitech representative&lt;/a&gt;, only Logitech’s gaming peripherals used the improved, custom-designed adaptor to get the “precision report rate”, whereas Unifying technology was less fancy and reserved for use with the business lineup. My question was: did “precision report rate” only refer to the actual polling rate, or were the gaming adaptors also less laggy? In other words, was I missing out with my Unifying receiver?&lt;/p&gt;
+
+&lt;p&gt;I knew I wouldn’t have peace of mind until I had solid numbers, so I decided to measure the latency myself. There were two data points I needed to capture: the moment the mouse started moving, and the subsequent moment that the computer registered mouse activity. Both actions had to be on the same clock. My iPhone’s camera could record at 240 FPS, so precision wasn’t an issue; the problem was that my laptop display only refreshed at 60 Hz, meaning that I couldn’t rely on a recording of the screen alone to figure out how fast the mouse signal was going through. (There was only one display frame for every four video frames.)&lt;/p&gt;
+
+&lt;p&gt;I ended up writing a small, single-window Mac application to help me along. On the left side, the window has a running millisecond timer, refreshing at the exact frequency of the display. This gave me the precise timestamp of each display cycle. (Well — with a possible delta of 1 frame or ~17ms, depending on how the labels spaced out their updates under the hood. But I was only interested in relative latencies between the mice, not the absolute latency, so the only important detail was that this offset was consistent.) The app also captured the timestamp for the precise moment mouse movement was first detected. This was displayed in a label on the right side. Both timestamps were generated using the same time function, &lt;code&gt;CACurrentMediaTime&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, I placed a mousepad next to my display along with a small box to evenly and consistently push the mouse along. I set up my phone to show both the laptop display (with the timer app running) and a side view of the mouse and box contact point. I filmed three trials each of the MX 518, MX Master with the USB adaptor, and MX Master in Bluetooth mode, resetting the righthand timer between each trial. &lt;/p&gt;
+
+&lt;p&gt;Finally, I went through the videos frame-by-frame in VLC. (The ‘e’ key: highly convenient!) The left timestamp was used to determine the exact moment when the mouse started moving. If the movement occurred between two timestamps, I could simply interpolate the precise value based on which intermediary frame out of four I landed on. After that, I noted the righthand (“mouse was detected”) timestamp and did a bit of math to arrive at the latency value. Perhaps not a perfect system, but as accurate as I could manage with the tools I had at hand!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mx-master/slide2.gif&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The results were: &lt;strong&gt;55ms/58ms/50ms&lt;/strong&gt; for the wired MX 518; &lt;strong&gt;63ms/74ms/51ms&lt;/strong&gt; for the MX Master in USB receiver mode; and &lt;strong&gt;70ms/58ms/68ms&lt;/strong&gt; for the MX Master in Bluetooth mode. (Keep in mind that these values were not a measure of absolute latency and were only meant to be compared to each other, since the test did not deduct OS latency, monitor latency, etc.)&lt;/p&gt;
+
+&lt;p&gt;To my great surprise, not only was wireless latency very close to wired (~55ms vs. ~65ms), but &lt;em&gt;Bluetooth was practically as performant as the USB receiver!&lt;/em&gt; I don’t know how Logitech managed it, but somehow the Bluetooth performance of these mice is nearly flawless, to the point where perhaps the dongle is basically unnecessary. (Except for edge cases like BIOS use.) You could make the argument that wireless performance is less consistent than wired, but I’d need to do more tests to figure this out. (And it’s probably more effort than it’s worth.)&lt;/p&gt;
+
+&lt;p&gt;So is 10ms of lag a dealbreaker when it comes to precision gaming? I strongly suspect it won’t be noticeable — especially given how much latency already exists in the long chain from mouse to display — but I’d love to see some empirical evidence backing this up.&lt;/p&gt;
+
+&lt;h2 id=&quot;gaming&quot;&gt;Gaming&lt;/h2&gt;
+
+&lt;p&gt;There’s some mild consternation for these two MX models when it comes to gaming. Whenever people ask, some enthusiast always shows up and levies the following grievances against them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;They have no wired mode, and thus always feature some latency.&lt;/li&gt;
+  &lt;li&gt;They have built-in acceleration and angle snapping.&lt;/li&gt;
+  &lt;li&gt;They only poll at 125 Hz.&lt;/li&gt;
+  &lt;li&gt;They only go up to 1600 DPI.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In contrast, they suggest, Razer and Logitech themselves make gaming-tailored wireless mice (the &lt;a href=&quot;http://amzn.to/2rvezS9&quot;&gt;Logitech G900&lt;/a&gt;, or the new &lt;a href=&quot;https://www.razerzone.com/gaming-mice/razer-lancehead&quot;&gt;Razer Lancehead&lt;/a&gt;) that go up to 12000 DPI at 1000 Hz and use proprietary receivers for optimal performance. All technically true! However, the mouse I’ve loved the longest, and gamed the most with, has been my trusty MX 518, a classic model popular with gamers even today. &lt;a href=&quot;http://www.pcgamer.com/gaming-mouse-myths-busted/&quot;&gt;And it turns out&lt;/a&gt; that this mouse &lt;em&gt;also&lt;/em&gt; has built-in angle snapping, &lt;em&gt;also&lt;/em&gt; only goes up to 1600 DPI, and &lt;em&gt;also&lt;/em&gt; polls at a mere 125 Hz. The horror!&lt;/p&gt;
+
+&lt;p&gt;In practice, none of these quirks are dealbreakers. 1600 DPI is more than enough for the vast, vast majority of people; it was a high standard a decade ago and accuracy-per-inch demands in humans have not suddenly spiked during that time. (DPI is more of an issue with enormous monitors and insane resolutions, but it doesn’t matter for my use case.) Same goes for 125Hz polling, which is effectively 2x the refresh rate of most monitors. On top of that, you’ll get about 30x less battery life (30 hours vs. 40 days!)  with gaming wireless mice — not to mention losing all the benefits of Bluetooth. Unless you’re a pro, I don’t think it’s nearly worth the tradeoff.&lt;/p&gt;
+
+&lt;p&gt;However… I have to admit that something about these mice definitely feels off when playing FPS. Side-by-side with the MX 518, the difference is immediately noticeable. With the 518, I feel like I’m directly inside the character’s head. With the Master, there’s a bit of a “cockpit effect”, or a very subtle sense that my movements aren’t perfectly mapped to the camera. Accordingly, things like rapid 180 degree turns and snap-shots feel more hesitant and unnatural. For a while, I assumed this was due to wireless latency, but my experiments showed that this was unlikely to be the case. (Besides, my setup was a mess and there was plenty of latency coursing through the system already.) I also thought it might be the weight of the Master, but no dice: the Anywhere had the same issue at half the weight. So my working hypothesis is that this issue is caused by some subtle differences in mapping of mouse movement between the Master and the 518, meaning that I’ll have to reprogram my brain a little before I’m fully comfortable with it. (I think I could also customize this curve in software using various third-party tools, but this might be too finicky even for my tastes.) I actually remember having this exact response to the G602, so maybe that 10ms does make a critical difference in FPS gameplay after all? Or perhaps the G602 shares its motion curve with the Master? Who knows! Will have to do a bit more digging.&lt;/p&gt;
+
+&lt;p&gt;Still, take the above comments as the nitpicks of a reasonably skilled FPS player who’s been at it since the 90’s. The Master absolutely works for gaming in general, and I spent several fun hours playing Overwatch and Lawbreakers using both the receiver and Bluetooth.&lt;/p&gt;
+
+&lt;p&gt;(I would like to additionally measure the latency of the G602 and see how it compares to the Master. Will eventually post results in this section.)&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://amzn.to/2qbiPSM&quot;&gt;MX Master&lt;/a&gt; is as close to a perfect all-arounder mouse as I’ve used over the past few years. Sure, there are still a few details I’d love to see changed, and I actually think the &lt;a href=&quot;http://amzn.to/2qOQogz&quot;&gt;M720&lt;/a&gt; would be even better if only it went up to 1600 DPI. Nonetheless: if I can get accustomed to competitive-ish gaming on this thing, I think I can finally retire my MX 518 and join the world of wireless for good!&lt;/p&gt;
+
+&lt;p&gt;Finally, if you’ll be traveling with this mouse, I recommend grabbing a &lt;a href=&quot;http://amzn.to/2qJl3LO&quot;&gt;Hermitshell case&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mx-master/master-keyboard.jpg&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 22 May 2017 13:14:48 -0700</pubDate>
+        <link>http://beta-blog.archagon.net/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/</link>
+        <guid isPermaLink="true">http://beta-blog.archagon.net/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/</guid>
+        
+        
+        <category>technology</category>
+        
+      </item>
     
       <item>
         <title>An Even Better Travel Gaiwan</title>
@@ -887,231 +1048,6 @@ text-decoration: inherit;
         <link>http://beta-blog.archagon.net/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/</link>
         <guid isPermaLink="true">http://beta-blog.archagon.net/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>Path Rendering in Composer&#39;s Sketchpad</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/composers-sketchpad-rendering/rendering.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;!-- TODO: move most of this to one of the global scss files --&gt;
-
-&lt;style&gt;
-.toc {
-  margin-top: 2em;
-  margin-bottom: 2em;
-  padding: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: solid;
-  border-width: 0.2em;
-  border-color: #93d7ff;
-  border-radius: 2em;
-  width: 80%;
-  background-color: #c6eaff; }
-
-.toc_header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row; }
-
-.toc_header {
-  text-align: left;
-  margin-bottom: 0.75em !important; }
-
-.toc_header &gt; * {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  margin-left: 0.5em !important;
-  margin-right: 0.5em !important;
-  padding: 0; }
-
-.toc_header :first-child {
-  margin-left: 0 !important; }
-
-.toc_header :last-child {
-  margin-right: 0 !important; }
-
-.toc_header &gt; p {
-  font-family: &#39;Avenir Next&#39;, &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
-  font-size: 1.1em;
-  color: #444;
-  font-weight: 500;
-  /*line-height: 140%;*/ }
-
-.toc_header &gt; a {
-  min-width: 5em;
-  max-width: 5em; }
-
-.toc_links {
-  /*text-align: center;*/ }
-
-.toc_links &gt; ol {
-  font-family: &#39;Avenir Next&#39;, &#39;Helvetica&#39;, &#39;Arial&#39;, sans-serif;
-  font-size: 1.1em;
-  font-weight: 500; }
-
-.toc_links &gt; ol {
-  margin: 0;
-  list-style-position: inside;
-  counter-reset: i 0; }
-
-.toc_links li {
-  padding: 0.15em 0.5em 0.15em 0.5em; }
-
-.toc a {
-  text-decoration: underline; }
-
-&lt;/style&gt;
-
-&lt;style&gt;
-.toc_links &gt; ol li:nth-child(2) {
-/*color: darkgreen;*/
-color: green;
-border-radius: 0.5em;
-background-color: lightgreen;
-/*border: 1px dashed green;*/
-}
-.toc_links &gt; ol li:nth-child(2) a {
-text-decoration: none;
-pointer-events: none;
-cursor: default;
-color: inherit;
-text-decoration: inherit;
-}
-&lt;/style&gt;
-
-&lt;p&gt;
-&lt;div class=&quot;toc&quot;&gt;
-    &lt;div class=&quot;toc_header&quot;&gt;
-        &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;&lt;img src=&quot;/images/composers_sketchpad_icon.png&quot; /&gt;&lt;/a&gt;
-        &lt;p&gt;This blog post is part of a series on the development of &lt;a href=&quot;http://www.composerssketchpad.com&quot;&gt;Composer&#39;s Sketchpad&lt;/a&gt;, a new iPad app for making musical rough drafts and doodles.&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;toc_links&quot;&gt;
-        &lt;ol&gt;
-        &lt;li&gt;&lt;a href=&quot;/2016/02/05/composers-sketchpad&quot;&gt;Rethinking Musical Notation with Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&quot;/2016/02/27/path-rendering-in-composers-sketchpad&quot;&gt;Path Rendering in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&quot;/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/&quot;&gt;Liberating Pitch and Taming MIDI in Composer&#39;s Sketchpad&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&quot;/2016/07/16/composers-sketchpad-adventures-in-icon-design/&quot;&gt;Composer&#39;s Sketchpad: Adventures in Icon Design&lt;/a&gt;&lt;/li&gt;
-        &lt;/ol&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Before starting any work on Composer’s Sketchpad, I had to ask myself: was the app as I envisioned it even possible to make? My initial goals were as follows:&lt;/p&gt;
-
-&lt;p&gt;
-&lt;div class=&quot;important_list&quot;&gt;
-    &lt;ol&gt;
-      &lt;li&gt;Have an (effectively) infinite canvas with a large number of notes visible at once.&lt;/li&gt;
-      &lt;li&gt;Allow the canvas to zoom and pan with without any lag.&lt;/li&gt;
-      &lt;li&gt;Allow the canvas to zoom without the notes losing any sharpness.&lt;/li&gt;
-      &lt;li&gt;Have notes belonging to the current layer blur or fade when the layer switches.&lt;/li&gt;
-      &lt;li&gt;Allow the notes to stretch and skew when the grid scale changes without distorting their appearance. (I ended up dropping this for the release version.)&lt;/li&gt;
-      &lt;li&gt;Have the whole thing run at 60fps on my iPad 3.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;I had barely done any graphics programming up to this point, so I had to feel out the limits of OpenGL as I blindly barged ahead — always a painful way to develop a project.&lt;/p&gt;
-
-&lt;p&gt;At first, I briefly considered implementing drawing using Photoshop-like brushes: that is to say, directly toggling pixels on a bitmap as the user moved their fingers around the screen. This seemed appropriate for something that behaved so much like a drawing application. However, I quickly realized that the representation of my notes should really be separate from their rendering (as with any good MVC design), which meant that I couldn’t just save the bitmap and be done with it. Furthermore, the finite resolution of the bitmap presented a number of problems. How could I implement high-quality zoom without having to re-render everything? How would it be possible to have an infinite canvas without having to implement a complex tiled rendering system? (I was aiming for maximum possible simplicity in my architecture at this point.) How could I switch layers seamlessly without storing a bitmap for each layer? It just wasn’t a good fit given the dynamic features of my app.&lt;/p&gt;
-
-&lt;p&gt;So I decided try for a &lt;a href=&quot;https://developer.nvidia.com/nv-path-rendering&quot;&gt;path rendering&lt;/a&gt; approach instead. My musical notes would be stored as points in time/pitch space, and then the renderer would convert them into pleasing, smooth curves to draw on the screen.&lt;/p&gt;
-
-&lt;p&gt;There were two obvious techniques that came to mind. The first was to use the CoreGraphics path renderer in the form of &lt;code&gt;UIBezierCurve&lt;/code&gt;. This approach was compelling because CoreGraphics’ path drawing support was very robust, to the point of being the foundation of heavyweight applications like &lt;a href=&quot;http://www.pixelmator.com/&quot;&gt;Pixelmator&lt;/a&gt;. Strokes, fills, and complex shapes were incredibly simple to define and draw, and it was all built-in and battle-tested by thousands of developers.&lt;/p&gt;
-
-&lt;p&gt;The second approach that I immediately considered was to convert each curve into polygons and draw them using the GPU. My experience with hardware-accelerated vector graphics, though minor, was very positive: performance seemed smooth and stutterless compared to software rendering in the apps that used it, and the artifacts that occurred while waiting for data to load (jagged lines turning into smooth lines) felt a lot more pleasing than those in software renderers (blurry lines turning into crisp lines). Intuitively, even though I didn’t know any of the details at this point, the idea of manipulating groups of polygons on the GPU rather than plotting out curves pixel-by-pixel seemed like a very efficient approach. In addition, I knew that with polygons, scales and other translations would be effectively free.&lt;/p&gt;
-
-&lt;p&gt;Unfortunately, there weren’t any built-in iOS frameworks that allowed me to do this. (Or — so I thought. I later learned that &lt;a href=&quot;https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SCNShape_Class/index.html&quot;&gt;SceneKit had support for path rendering&lt;/a&gt;, but it turned out to be fairly ugly, slow, and not particularly configurable.) I didn’t really feel up to the task of rolling my own solution, so I decided to hunt around for a framework. With high high-DPI displays ruling the roost and minimalist UIs being all the rage, surely somebody had a stable framework for hardware-accelerated path rendering on iOS?&lt;/p&gt;
-
-&lt;p&gt;During my search, I learned of &lt;a href=&quot;https://en.wikipedia.org/wiki/OpenVG&quot;&gt;OpenVG&lt;/a&gt;, the Khronos Group’s standard for hardware-accelerated path rendering. It seemed to be exactly what I was looking for! Unfortunately, the standard appeared to be all but abandoned&lt;sup id=&quot;fnref:why_no_hw_vectors&quot;&gt;&lt;a href=&quot;#fn:why_no_hw_vectors&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, with Nvidia’s &lt;a href=&quot;https://developer.nvidia.com/nv-path-rendering&quot;&gt;NV_path_rendering&lt;/a&gt; being the only other standard trying to take up the mantle. (Naturally, this was not an extension that iOS OpenGL ES supported.) However, I did manage to find an OpenGL ES framework called &lt;a href=&quot;https://github.com/micahpearlman/MonkVG&quot;&gt;MonkVG&lt;/a&gt; that incorporated a subset of OpenVG suitable for my project. Looking at the terrifying, twisted, OpenGL-ES-2-wrapping-OpenGL-ES-1-code, I feared that I might have great difficulty using the framework on iOS. Fortunately, it turned out that MonkVG only handled shaders and polygon drawing, not setting up the context or any other platform-specific technical details. After creating my GL &lt;code&gt;UIView&lt;/code&gt; and fixing a couple of minor errors, I was good to go.&lt;/p&gt;
-
-&lt;p&gt;(Quick aside: over the course of my research, I learned that there were several ways to hardware-accelerate path rendering. MonkVG’s tessellation approach worked fairly efficiently, but it was also imprecise on account of the fact that you ended up with polygon strips in the end. It also required the actual tessellation step to be done on the CPU. In contrast, there are newer approaches that can render the paths directly using shaders. These tend to have high accuracy and detail, and they only require a single bounding-box polygon for the entire shape. Unfortunately, in my limited testing, I found the performance of this approach to be lacking on my iPad 3. Additionally, as I further discuss below, the polygon strip approach turned out to be ideal in the case where shapes needed to be generated once and then cached for future reuse and transformation. From what I can tell, it’s far more difficult to cache rendered curves using the shader approach.)&lt;/p&gt;
-
-&lt;p&gt;Having figured out how to use both frameworks, I made a quick performance prototype: a simple draw loop at 60fps with a set of full-screen, randomly generated Bézier curves in each frame. (I considered this my worst-case scenario, as in the case of changing the width or height scales of my grid.) There were two rendering paths: one for CoreGraphics and one for MonkVG.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;div class=&quot;caption&quot;&gt;
-&lt;img src=&quot;/images/composers-sketchpad-rendering/stresstest.png&quot; /&gt;
-&lt;p&gt;A randomly-generated scene from the stress test. CoreGraphics couldn&#39;t handle it while MonkVG passed with flying colors.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Sadly, as much as I wanted to stick with the battle-hardened CoreGraphics approach, it wasn’t even able to draw a single animating curve at a solid 60fps on my iPad 3. MonkVG, on the other hand, tore through 10+ curves without breaking a sweat. Graphically, the results of both approaches looked quite similar to me — or at least good enough for the app I was trying to make.&lt;/p&gt;
-
-&lt;p&gt;After closely examining the technical underpinnings of both technologies, I learned that CoreGraphics was doing all of its work on the CPU, while MonkVG was tessellating its curves into polygon strips CPU-side and then sending them to VBOs on the GPU — one per curve. Interestingly, the performance difference still applied even when accounting for the tessellation step. Presumably, this is because drawing multiple polygons is a very fast and parallelizable operation on the GPU, even if they number in the thousands, while generating a Retina-sized Bézier curve on the CPU requires you to touch tens of thousands of pixels by “hand”. (But don’t quote me on that — I am definitely still a novice in this area.) It also helps that MonkVG is much less precise than CoreGraphics in its tessellation.&lt;/p&gt;
-
-&lt;p&gt;Despite these finds, I really wanted to work with CoreGraphics, and so I attempted to return to the technology a number of times during my project. (Perhaps I missed something that would account for the massive performance difference?) Notably, I tried using it together with &lt;code&gt;CATiledLayer&lt;/code&gt;, hoping that this particular optimization would offset the inefficiencies of the software render. But even though I could now pan and zoom at 60fps, the chunks loaded far, &lt;em&gt;far&lt;/em&gt; too slowly for realtime use — I’m talking on the order of several seconds whenever you zoomed in. So that was that.&lt;/p&gt;
-
-&lt;p&gt;For much of the project, owing to my inexperience, I was burdened with the question of the framerate cap. If everything was done perfectly, how high could I go? After getting caching and draw call batching working correctly, my MonkVG implementation yielded an acceptable framerate of 30-60fps in the general case, but I still wondered if I was an order of magnitude off on account of my incompetence. How did Apple Maps manage to work so smoothly with so many shapes on screen? How did web browsers manage to display thousands of character paths — possibly with transforms! — and still attain smooth performance? In truth, the geometry I was showing on screen was fairly complex: each quarter-measure note had about 300 triangles once you included the outline and endcaps, leading to an upper bound of almost 400,000 triangles on screen for a dense piece (12 notes, or 4 chords, per measure per layer, with 10 full layers and 10 measures on screen). Surely a breeze for modern machines, but quite a lot to handle for an old iPad! It’s always important to be able to answer the question, “where is all that performance going?”, and in my case it was going towards the multitude of dynamic features in my app.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;div class=&quot;caption&quot;&gt;
-&lt;img src=&quot;/images/composers-sketchpad-rendering/curves.png&quot; /&gt;
-&lt;p&gt;The mesh structure of a note. Each blue dot is a recorded time/pitch sample. Having a screen full of these can be surprisingly performance-intensive!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;In retrospect, it was quite fortunate that I just happened to fall into the optimal rendering implementation for my project. My path rendering requirements were a little different from the norm: after eliminating point #5 from my initial goal list, I no longer needed most of my curves to be dynamic. The only curves that actually changed their structure from frame to frame were those belonging to the notes currently being drawn or erased — and even those were localized to the point of editing, since my notes were comprised of multiple tiny Bézier segments chained together. (I’ll talk details in a later article.) Instead, my highest priority was to translate and scale my notes at a constant 60fps while still preserving their sharpness, and polygons happened to be uniquely qualified for this task. At the expense of jaggedness on close zoom — fine by me — polygon tessellation effectively gave me infinite resolution along with free transforms. They were also perfectly suited for caching: once tessellated, I could store the vertices of the generated polygons for all my note objects without wasting too much space, wheareas doing the same with textures would have quickly filled up my memory. (To say nothing of looking terribly ugly when scaled.) Better yet, I eventually learned from profiling that it was the tessellation step — not drawing — that was the biggest roadblock in my path rendering implementation, so caching was absolutely critical to getting the performance I needed! Had I used a shader-based approach, I would have had to write a ton of additional code to enable caching, and it &lt;em&gt;still&lt;/em&gt; probably wouldn’t have gotten close to my 60fps benchmark for large scenes.&lt;/p&gt;
-
-&lt;p&gt;For convenience, I decided to use &lt;a href=&quot;http://cocos2d.spritebuilder.com&quot;&gt;Cocos2d&lt;/a&gt; as the graphical core of my project, so I had to figure out a way to wedge MonkVG in there somehow. 
-Fortunately, it was fairly simple to write a Cocos2d &lt;code&gt;CCNode&lt;/code&gt; wrapper around MonkVG’s rendering functions, since each &lt;code&gt;CCNode&lt;/code&gt; in Cocos2d had a lovely overridable &lt;code&gt;draw&lt;/code&gt; method that allowed you to call OpenGL functions directly. (One reason why you might want to use it over SpriteKit!) Still, especially as the project moved forward, the framework was becoming a massive cognitive burden. MonkVG had a fairly old and creaky codebase, and as the hacks I made to enable unsupported features such as real-time color changes piled on, I realized that it would take me forever to actually fix everything up and integrate it into my project in a sensible and modern way. Additionally, the one-VBO-per-curve approach was quickly becoming unwieldily. Already I had to synchronize a ton of state between MonkVG and the rest of my app in order to cache previously-tessellated curves for performance reasons; far more daunting was the idea of cycling VBOs in and out of GPU memory while retaining the underlying geometry client-side, which I wasn’t doing yet. Unfortunately, this was going to be necessary to enable my potentially-infinite canvas, and MonkVG didn’t natively support it.&lt;/p&gt;
-
-&lt;p&gt;At this point, I realized that even though writing my own hardware-accelerated path renderer was probably too much work, my path rendering needs were actually very simple. I didn’t need to create unions of shapes, arbitrary curves, or even strokes! All my note shapes were simple Bézier “tubes” with round endcaps and outlines, and so creating a super-simple note renderer for direct use in Cocos2d would require minimal effort. Better yet, most of the work was done already: for the purpose of creating better outlines, I was already interpolating all of my Bézier curves myself and only using MonkVG to draw and tessellate the final polygon tubes from the perimeter vertices. The only thing I needed to do was to create polygon strips from my points and send them through Cocos2d’s native rendering system, as well as to write a bit of code for the round endcaps. Sure, it bummed me out that this would preclude me from creating more complex and dynamic shapes in the future, but I was on a deadline and the project needed to be shipped. Despite my initial trepidation, the process was extremely quick and only took a couple of days of work.&lt;/p&gt;
-
-&lt;p&gt;As I dove deeper into Cocos2d’s architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called “geometry streaming”.) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What’s more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate &lt;code&gt;CCNode&lt;/code&gt;s. This was a massive benefit I was not expecting!&lt;/p&gt;
-
-&lt;p&gt;
-&lt;div class=&quot;caption&quot;&gt;
-&lt;img src=&quot;/images/composers-sketchpad-rendering/pipeline.png&quot; /&gt;
-&lt;p&gt;The final path rendering pipeline.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;There was a new problem, though. With the new path rendering system (now using geometry streaming), my performance hovered at around 50%-70% of what I was getting in MonkVG. Intuitively, I feared that a fix was impossible: wouldn’t uploading thousands of polygons in every frame be naturally more resource-intensive than storing polygons in VBOs for later reuse? But after some digging, I learned something very interesting: OpenGL ES actually allowed you to map GPU memory directly into a shared application-space buffer, eliminating the need to “upload” your geometry at all! I did a sanity check and realized that there was &lt;em&gt;no way&lt;/em&gt; that copying even hundreds of thousands of polygons to a buffer could be the roadblock. But Cocos2d was already using memory mapping in its renderer! So what was the problem?&lt;/p&gt;
-
-&lt;p&gt;There was another issue with the Cocos2d renderer. If I opened a project with lots of notes, my performance was usually 60fps at the default zoom level. But if I zoomed out (getting lots of notes on screen) and then zoomed back in, the performance dropped to 30fps or lower and then never actually recovered, no matter how closely I zoomed! This didn’t make any sense since my notes were always culled to the current viewport, meaning that performance should have always been identical for any given view. This also never happened in MonkVG.&lt;/p&gt;
-
-&lt;p&gt;I decided to dig even deeper. After several hours of Googling keywords related to geometry streaming versus VBO performance, I zeroed in on a fantastic thread in the OpenGL forums. In this thread, &lt;a href=&quot;https://www.opengl.org/discussion_boards/showthread.php/170118-VBOs-strangely-slow?p=1197780#post1197780&quot;&gt;Rob Barris provided a very clear rundown&lt;/a&gt; of exactly how OpenGL managed memory in streaming situations. As it turned out, there was a certain art to managing your geometry buffers in a way that avoided stalls in the pipeline.&lt;/p&gt;
-
-&lt;p&gt;Digging around in Cocos2d’s renderer, it seemed that the streaming architecture had some inefficiencies and bugs. There was a single memory-mapped buffer that was used for all the geometry, but it got “orphaned” and subsequently re-allocated in every frame. This caused a continuous allocation of up to several megabytes per frame — a significant performance consideration. What’s more, if a given scene was big enough to fill up the buffer, it expanded in place, but then never actually shrank back to its original size once the extra space was no longer needed. This meant that if you happened to render a giant scene — say, requiring a 9MB buffer — you would get an allocation of 9MB in every single frame after that, regardless of its complexity!&lt;/p&gt;
-
-&lt;p&gt;At this point, I had a solid intuition for my next course of action. Rob Barris’s advice, as well as some other references, indicated that it was possible to use the &lt;em&gt;same&lt;/em&gt; buffer over the course of several frames without having to reallocate it. You could simply keep a pointer to the last filled slot in the array and start from there for your next frame. Once you ran out of memory, you could orphan your buffer and have OpenGL allocate you a new one. If you set your sizes correctly, you’d have one large allocation every few frames instead of an allocation in every single frame. In the end, I opted for a slightly simpler (architecturally-speaking) double-buffer solution: two large buffers side-by-side, with one buffer always serving as the main buffer. Once the main buffer ran out of space (over the course of several frames), the other would become the main buffer and allow the first buffer to orphan and reallocate.&lt;/p&gt;
-
-&lt;p&gt;Fixing the renderer required a number of very low-level changes, but it was somewhat easier than expected, largely on account of Cocos2d’s excellent code organization. After making my changes and fixing a couple of Cocos2d bugs along the way, I fired up the app and was delighted to see my old MonkVG framerate — maybe even a little better! Not only did I have my original performance back, but I also gained an immense amount of architectural simplicity along the way.&lt;/p&gt;
-
-&lt;p&gt;In the end, all the goals I set for myself were successfully met. The app does run at 60fps much of the time on my iPad 3, though it’s naturally far more prone to dropping frames than newer devices. (An iPad Air 1 and my iPhone 5s barely dipped below 60fps even in complex scenes.) Real-time tessellation is still something I want to implement for grid scale changes; I doubt I’d be able to truly do it in real-time for a full screen of notes, but I can think of several ways to fake-transform existing tessellated notes while waiting for the correct tessellation to load.&lt;/p&gt;
-
-&lt;p&gt;Finally, I do hope that somebody releases a stable, hardware-accelerated path rendering framework for iOS. It’s sorely needed for vector-based apps with dynamic content!&lt;/p&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:why_no_hw_vectors&quot;&gt;
-      &lt;p&gt;Curious, I asked programmers.stackexchange.com about this issue and &lt;a href=&quot;http://programmers.stackexchange.com/questions/191472/why-have-hardware-accelerated-vector-graphics-not-taken-off&quot;&gt;got some interesting answers&lt;/a&gt;. &lt;a href=&quot;#fnref:why_no_hw_vectors&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Sat, 27 Feb 2016 15:33:37 -0800</pubDate>
-        <link>http://beta-blog.archagon.net/2016/02/27/path-rendering-in-composers-sketchpad/</link>
-        <guid isPermaLink="true">http://beta-blog.archagon.net/2016/02/27/path-rendering-in-composers-sketchpad/</guid>
-        
-        
-        <category>programming</category>
         
       </item>
     
