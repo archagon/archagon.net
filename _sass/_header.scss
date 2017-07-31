@@ -1,3 +1,30 @@
+// TODO: add clouds or some sort of large, subtle pattern to title
+
+// TODO: shrink w/compact layout
+$header-title-spacing-unit: $layout-spacing-unit * 1;
+$header-navbar-spacing-unit: $layout-spacing-unit * 0.4;
+
+////////////
+// Layout //
+////////////
+
+.site-header {    
+}
+
+.site-nav {
+    margin-bottom: $header-navbar-spacing-unit;
+    margin-top: $header-navbar-spacing-unit;
+}
+
+.site-title {
+    margin-top: $header-title-spacing-unit;
+    margin-bottom: $header-title-spacing-unit;
+}
+
+///////////
+// Style //
+///////////
+
 .site-header {
     @include media-query($on-palm) {
         font-size: 0.75rem;
@@ -8,140 +35,139 @@
     .wrapper > div {
         display: inline-block;
         border-radius: 3em !important;
-        padding: 1.5em;
-        padding-left: 2.5em;
-        padding-right: 2.5em;
+        padding: 0;
+        padding-left: 4rem;
+        padding-right: 4rem;
         overflow: visible;
     }
 
     .background-overlay {
-        background-image: url("/images/background-blur3.jpg");
+        // background-image: url("/images/background-blur3.jpg");
+        // @include media-query($on-palm) {
+        //     background-size: 250px;
+        // }
+
+        //background-color: #DAF3FB;
         background-color: white;
-        @include media-query($on-palm) {
-            background-size: 250px;
-        }
+        //border: solid 10px;
+        // border: solid 0.2rem;
+        //border-color: darken(#DAF3FB, 10%);
+        // background-color: darken(#DAF3FB, 10%);
+
+        // QQQ: header bg
+        // background-image: url("/images/clouds.png");
+        // background-size: 100rem;
+        // //background-size: cover;
+        // background-repeat: no-repeat;
+        // background-position: left -220px bottom -80px;
     }
 
-    // max-width: 68em;
-
-    // background-color: mix(lightblue, white, 15%);
-    // background-image: url("/images/background-blur2.jpg");
-    
-    // background-position: 270px -10px;
-    // border: 2px solid mix(lavender, white, 10%);
-
-    // -webkit-filter: blur(20px) grayscale(20%);
-
-    /* layout */
-    .site-nav {
-        margin-top: 0.5em;
-    }
-
-    .site-title {
-        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-        font-size: 7em;
-
-        line-height: 0.9em;
-        font-weight: 900;
-        overflow: hidden;
-
-        // background-color: mix(lightblue, white, 15%);
-        // background-image: url("/images/background-blur.jpg");
-        // padding-top: 10px;
-
-        .title {
-            word-spacing: -0.114em;
-            letter-spacing: -0.043em;
-
-            .name {
-                color: red;
-
-                border-radius: 0.25em;
-                border: 3px solid black;
-                border-style: solid none none none;
-                display: inline-block;
-                border-color: red;
-            }
-        }
-
-        .subtitle {
-            &::before {
-                content: "(";
-            }
-            &::after {
-                content: ")";
-            }
-
-            font-size: 70%;
-            font-weight: 300;
-
-            // color: lightgray;
-            color: mix(pink, white, 95%);
-        }
-
-        a, a:hover {
-            text-decoration: none;
-        }
-
-        /* header text color */
-        a, a:visited {
-            color: darken($grey-color, 25%);
-        }
-
-        // background-color: white;
-        // padding: 0.2em;
-        // border-radius: 0.3em;
-        // border: 3px solid black;
-        // border-style: solid none none none;
-        // border-color: red;
-        // padding: 0;
-
-        // background-color: mix(red, white, 10%);
-        border-radius: 0.3em;
-    }
-
-    // background-color: mix(rgba(236,214,252,1), white, 60%);
-    // padding: 1.5em 0.75em 1.5em 0.75em;
     border-radius: 2em;
 
-    .site-nav {
-        font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-        font-size: 2.4em;
-        @include media-query($on-palm) {
-            font-size: 3.2em;
+    hr {
+        //background-color: #ccc;
+        background-color: darken(#DAF3FB, 10%);
+        // background-color: white;
+        border: none;
+        height: 0.2rem;
+    }
+}
+
+.site-title {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 7em;
+
+    .site-title-description {
+        font-size: 1.8rem !important;
+        line-height: 1.1;
+        font-weight: 200;
+        margin-top: 1em;
+        width: 60rem;
+        margin-left: auto;
+        color: #444;
+    }
+
+    line-height: 0.9em;
+    font-weight: 900;
+    overflow: hidden;
+
+    .title {
+        word-spacing: -0.114em;
+        letter-spacing: -0.043em;
+
+        .name {
+            color: red;
+
+            // this used to be the arch over "Archagon"
+            // border-radius: 0.25em;
+            // border: 3px solid black;
+            // border-style: solid none none none;
+            // border-color: red;
+            // display: inline-block;
         }
-        font-weight: 500;
+    }
 
-        border-radius: 0.5em;
-        border-width: 2px;
-        padding: 0 1em 0 1em;
-        background-color: lightgray;
-        color: gray;
+    // used to be "(Jekyll Test)" class
+    // .subtitle {
+    //     &::before {
+    //         content: "(";
+    //     }
+    //     &::after {
+    //         content: ")";
+    //     }
 
-        $nav-border-color: lighten($grey-color, 37%);
-        $nav-background-color: mix(rgba(236,214,252,1), white, 10%);
+    //     font-size: 70%;
+    //     font-weight: 300;
 
-        .page-link {
-            color: darken(gray, 20%);
-            line-height: $base-line-height;
-        }
+    //     // color: lightgray;
+    //     color: mix(pink, white, 95%);
+    // }
 
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
+    a, a:hover {
+        text-decoration: none;
+    }
 
-        -webkit-justify-content: space-around;
-        -ms-flex-pack: distribute;
-        justify-content: space-around;
+    // header text color
+    a, a:visited {
+        color: darken($grey-color, 25%);
+    }
 
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
+    // otherwise, "g" might get cut off
+    overflow: visible;
+}
 
-        @include media-query($on-palm) {
-            -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-            flex-direction: column;
-        }
+.site-nav {
+    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-size: 2.4em;
+    @include media-query($on-palm) {
+        font-size: 3.2em;
+    }
+    font-weight: 500;
+
+    border-radius: 0.5em;
+    border-width: 2px;
+    padding: 0 1em 0 1em;
+
+    .page-link {
+        color: darken(gray, 20%);
+        line-height: $base-line-height;
+    }
+
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+
+    @include media-query($on-palm) {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
     }
 }

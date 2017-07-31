@@ -1,0 +1,121 @@
+<!-- TODO: move most of this to one of the global scss files -->
+
+<style>
+{% filterize scssify %}
+.toc {
+margin-top: 2em;
+margin-bottom: 2em;
+padding: 1em;
+margin-left: auto;
+margin-right: auto;
+border-style: solid;
+border-width: 0.2em;
+border-color: darken(rgb(198, 234, 255), 10%);
+border-radius: 2em;
+width: 80%;
+background-color: rgb(198, 234, 255);
+}
+.toc_header {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+
+-webkit-box-pack: center;
+-webkit-justify-content: center;
+-ms-flex-pack: center;
+justify-content: center;
+
+-webkit-box-align: center;
+-webkit-align-items: center;
+-ms-flex-align: center;
+align-items: center;
+
+-webkit-flex-direction: row;
+-ms-flex-direction: row;
+flex-direction: row;
+}
+.toc_header {
+text-align: left;
+margin-bottom: 0.75em !important;
+}
+.toc_header > * {
+margin-top: 0 !important;
+margin-bottom: 0 !important;
+margin-left: 0.5em !important;
+margin-right: 0.5em !important;
+padding: 0;
+}
+.toc_header :first-child {
+margin-left: 0 !important;
+}
+.toc_header :last-child {
+margin-right: 0 !important;
+}
+.toc_header > p {
+font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
+font-size: 1.1em;
+color: #444;
+font-weight: 500;
+/*line-height: 140%;*/
+}
+.toc_header > a {
+min-width: 5em;
+max-width: 5em;
+}
+.toc_links {
+/*text-align: center;*/
+}
+.toc_links > ol {
+font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
+font-size: 1.1em;
+font-weight: 500;
+}
+.toc_links > ol {
+margin: 0;
+list-style-position:inside;
+counter-reset: i 0;
+}
+.toc_links li {
+    padding: 0.15em 0.5em 0.15em 0.5em;
+}
+.toc a {
+    text-decoration: underline;
+}
+{% endfilterize %}
+</style>
+
+<style>
+.toc_links > ol li:nth-child({{ include.index }}) {
+/*color: darkgreen;*/
+color: green;
+border-radius: 0.5em;
+background-color: lightgreen;
+/*border: 1px dashed green;*/
+}
+.toc_links > ol li:nth-child({{ include.index }}) a {
+text-decoration: none;
+pointer-events: none;
+cursor: default;
+color: inherit;
+text-decoration: inherit;
+}
+</style>
+
+<p>
+<div class="toc">
+    <div class="toc_header">
+        <a href="http://www.composerssketchpad.com"><img src="{{ site.baseurl }}/images/composers_sketchpad_icon.png"></img></a>
+        <p>This blog post is part of a series on the development of <a href="http://www.composerssketchpad.com">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>
+    </div>
+
+    <div class="toc_links">
+        <ol>
+        <li><a href="/2016/02/05/composers-sketchpad">Rethinking Musical Notation with Composer's Sketchpad</a></li>
+        <li><a href="/2016/02/27/path-rendering-in-composers-sketchpad">Path Rendering in Composer's Sketchpad</a></li>
+        <li><a href="/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">Liberating Pitch and Taming MIDI in Composer's Sketchpad</a></li>
+        <li><a href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/">Composer's Sketchpad: Adventures in Icon Design</a></li>
+        </ol>
+    </div>
+</div>
+</p>

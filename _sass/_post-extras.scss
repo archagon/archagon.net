@@ -1,3 +1,54 @@
+.more-inside {
+    display: inline-block;
+    margin: 0 auto;
+    //width: 100%;
+    text-align: center;
+    font-size: 1.15em;
+    // border-color: ;
+    // border: solid 2px lighten(lightblue, 0%);
+
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+    // QQQ: this bad
+    position: relative;
+     left: 50%;
+     transform: translateX(-50%);
+}
+
+.notification {
+    @extend %vertical-rhythm;
+
+    // display
+    display: block;
+
+    // spacing
+    padding: 1.5rem;
+    // margin-left: 1.5rem;
+    // margin-right: 1.5rem;
+    // margin-bottom: 1.5rem;
+
+    // appearance
+    background-color: lighten(green, 30%);
+    color: mix(green, black, 80%);
+    border-radius: 2rem;
+
+    // text
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 1em;
+    font-family: $alert-font-family;
+    font-weight: 600;
+
+    strong {
+        font-weight: 700;
+    }
+}
+
+.deprecated {
+    color: lightgray;
+    //text-decoration: line-through;
+}
+
 .new_jekyll_assets {
     $color: lavender;
     $border-color: mix(purple, white, 30%);
@@ -52,6 +103,30 @@
     
     p {
         display: inline;
+    }
+}
+
+.full-width {
+    @extend %vertical-rhythm;
+
+    // NEXT: full image
+    // position: static;
+    // width: 50rem;
+    // margin-left: -50rem;
+
+    // margin-left: 0 !important;
+    // margin-right: 0 !important;
+
+    width: calc(100% + #{ $content-horizontal-padding-unit * 2 });
+    margin-left: -$content-horizontal-padding-unit;
+    @include media-query($on-palm) {
+        width: calc(100% + #{ $content-horizontal-padding-unit-small * 2 });
+        margin-left: -$content-horizontal-padding-unit-small;
+    }
+
+    img {
+        max-width: 100%;
+        min-width: 100%;
     }
 }
 

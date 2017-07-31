@@ -5,7 +5,7 @@
     text-align: center;
 
     .background-overlay {
-        background-image: url("/images/background-blur.jpg");
+        //background-image: url("/images/background-blur.jpg");
         background-color: white;
         @include media-query($on-palm) {
             background-size: 250px;

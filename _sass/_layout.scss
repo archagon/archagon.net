@@ -1,24 +1,27 @@
 // general layout
 .site-header {
-    margin-top: $spacing-unit;
+    margin-top: $layout-spacing-unit;
+
     @include media-query($on-palm) {
-        margin-top: $spacing-unit / 2;
+        margin-top: $layout-spacing-unit / 2;
     }
 }
 
 .site-footer {
-    margin-top: $spacing-unit;
-    margin-bottom: $spacing-unit;
+    margin-top: $layout-spacing-unit;
+    margin-bottom: $layout-spacing-unit;
+
     @include media-query($on-palm) {
-        margin-top: $spacing-unit / 2;
-        margin-bottom: $spacing-unit / 2;
+        margin-top: $layout-spacing-unit / 2;
+        margin-bottom: $layout-spacing-unit / 2;
     }
 }
 
 .page-content {
-    margin-top: $spacing-unit * 2;
+    margin-top: $layout-spacing-unit;
+
     @include media-query($on-palm) {
-        margin-top: $spacing-unit;
+        margin-top: $layout-spacing-unit / 2;
     }
 }
 
@@ -39,17 +42,27 @@
         margin-left: auto;
         margin-right: auto;
     }
+    video {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    img.content {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
     p {
-        margin-bottom: 1em;
+        // margin-bottom: 10.5em;
     }
 
     h1 {
-        font-size: 175%;
+        font-size: 160%;
     }
 
     h2 {
-        font-size: 150%;
+        font-size: 140%;
         // text-align: center;
     }
 
@@ -65,12 +78,16 @@
 }
 
 body {
-    background-image: url("/images/bgpattern.jpg");
+    // QQQ:background image
+    // background-image: url("/images/bgsubtle3.jpg");
+    background-image: url("/images/gplaypattern.png");
+    //background-color: darken(#A8CCFF, 5%);
+    //background-color: darken(#A8CCFF, 0%);
+    //background-color: #f2f2f2;
     background-attachment: fixed;
     @include media-query($on-palm) {
         background-size: 250px;
     }
-    // background-image: url("/images/bgpatch.jpg");
 }
 
 // prevents gap from occuring on index page
@@ -102,10 +119,8 @@ body {
 .signature {
     font-size: 115%;
     text-align: right;
-    margin-top: 3.5rem;
 
     p {
-        font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif;
         margin: 0;
     }
 
@@ -116,47 +131,14 @@ body {
 
 
 
-/**
- * Page content
- */
-.page-content {
-    // padding: $spacing-unit 0;
-}
-
-.page-heading {
-    font-size: 20px;
-}
-
-// .post-list {
-//     margin-left: 0;
-//     list-style: none;
-
-//     > li {
-//         background-color: darken(AliceBlue, 0%);
-//         border: 4px darken(AliceBlue, 5%) solid;
-//         // box-shadow: 5px 10px 10px lighten(lightgray, 5%);
-//         padding: 15px;
-//         border-radius: 10px;
-
-//         margin-bottom: $spacing-unit;
-//     }
-// }
 
 .post-meta {
-    // font-size: $small-font-size;
     color: $grey-color;
-    // padding: 0;
-    // margin: 0;
-    // line-height: 65%;
 }
-
-// .post-link {
-//     display: block;
-//     font-size: 30px;
-//     padding: 0;
-//     margin: 0;
-//     line-height: 65%;
-// }
+h2.post-meta {
+    // we have to use h2 to override default header rules
+    font-size: 1.1em;
+}
 
 
 // TODO:
@@ -164,19 +146,17 @@ body {
     // background-color: mix(blue, white, 3%);
     // background-image: url("/images/PaintBlobsLight.png");
 }
-.post {
-    padding: 4rem;
+.document-page, .document-post {
+    padding: $content-horizontal-padding-unit;
     @include media-query($on-palm) {
-        padding: 2.5rem;
+        padding: $content-horizontal-padding-unit-small;
     }
 
     padding-top: 3rem;
     padding-bottom: 3rem;
+
     background-color: white;
-    // background-image: url("/images/background-blur1.jpg");
-    // border: solid 10px lighten(lightblue, 5%);
-    // border-color: lightblue;
-    // background-color: mix(blue, white, 2%);
+
     border-radius: 2rem;
 }
 
@@ -184,79 +164,99 @@ body {
 /**
  * Posts
  */
- .post-content {
-    // padding: 15px;
-    // // border-left: solid;
-    // // border-right: solid;
-    // border: dashed;
-    // // border: solid;
-    // border-top: none;
-    // // border-radius: 10px;
-    // border-width: 2px;
-    // padding-left: 45px;
-    // padding-right: 45px;
-    // padding-top: 10px;
-    // padding-bottom: 20px;
-    // border-color: lighten(gray, 30%);
- }
-.post-header {
-// border: dashed;
-// border: solid;
-// border-bottom: none;
-// border-radius: 10px;
-//     border-width: 2px;
-//     padding-left: 45px;
-//     padding-right: 45px;
-//     padding-top: 20px;
-//     padding-bottom: 20px;
-//     border-color: lighten(gray, 30%);
+.section-header {
+    @extend %vertical-rhythm;
 
-
-    margin-bottom: $spacing-unit * 2;
-    // margin-bottom: 15px;
     text-align: center;
-    // padding: 0 10px 0 10px;
-}
 
-.post-list .post-header {
-    margin-bottom: $spacing-unit;
-}
-
-.post-title {
-    // font-size: 2.4rem;
-    // letter-spacing: -1px;
-    line-height: 1;
-
-    padding: 0.5rem;
-    border-radius: 0.4em;
-}
-
-.post-content {
-    &:not(:last-child) {
-        margin-bottom: $spacing-unit;
-        @include media-query($on-palm) {
-            margin-bottom: $spacing-unit / 2;
-        }
+    // ignore vertical rhythm, except for mild spacing between title and date
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+    .post-meta {
+        margin-top: 1rem;
     }
 }
 
+.post-title {
+    padding: 0 0.5rem 0 0.5rem;
+    border-radius: 0.4em;
+
+
+    // QQQ:
+    width: calc(100% + #{ $content-horizontal-padding-unit * 2 });
+    margin-left: -$content-horizontal-padding-unit !important;
+    @include media-query($on-palm) {
+        width: calc(100% + #{ $content-horizontal-padding-unit-small * 2 });
+        margin-left: -$content-horizontal-padding-unit-small;
+    }
+    margin-top: -$content-horizontal-padding-unit*0.75 !important;
+    border-radius: 0;
+    padding: 1rem;
+}
+
+// spacing between front-page posts
+.post-list {
+    & >:not(:last-child) {
+        margin-bottom: $layout-spacing-unit;
+
+        @include media-query($on-palm) {
+            margin-bottom: $layout-spacing-unit / 2;
+        }
+    }
+}
 
 ////////
 // HR //
 ////////
 
+// fancy image hr
+.document-post, .document-page {
+    hr {
+        $image-height: 15px;
 
-hr {
-    $image-height: 15px;
+        display: block;
+        border: 0px;
+        // height: $image-height;
+        height: 1.5em;
+        margin: 40px 0 40px 0;
 
-    display: block;
-    border: 0px;
-    // height: $image-height;
-    height: 1.5em;
-    margin: 40px 0 40px 0;
+        background-size: 30em;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("/images/Decoration.svg");
+    }
+}
 
-    background-size: 30em;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url("/images/Decoration.svg");
+
+
+
+
+.caption {
+border-color: lightgray;
+border-width: 0.125em;
+border-style: solid;
+    background-color: white;
+    padding: 1em;
+border-radius: 1em;
+}
+.caption > p {
+text-align: center;
+color: black;
+    margin: 0;
+}
+.caption > * {
+margin-top: 1em;
+margin-bottom: 1em;
+}
+.caption :first-child {
+margin-top: 0;
+}
+.caption :last-child {
+margin-bottom: 0;
+}
+
+.important_list {
+list-style-position:inside;
+font-weight: bold;
 }

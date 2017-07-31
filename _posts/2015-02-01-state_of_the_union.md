@@ -3,7 +3,7 @@ layout: post
 title: "State of the Union"
 date: 2015-02-01 01:00:00 +0000
 comments: true
-categories: 
+categories: personal
 ---
 <img src="{{ site.baseurl }}/images/portrait_with_silly_cat.jpg" width="500px">
 
@@ -19,6 +19,6 @@ I've also learned that time moves quickly, and that it's easy to get stuck in a 
 
 But these dark thoughts are not a reflection on travel. My journey has neither been a negative experience nor an entirely positive one. I see it as just another page in the book of my life: many new and interesting inputs from the environment feeding into the black box of my mind, allowing me to discover new truths about the world and myself.
 
-So that's what's going on in my head on this day, January the 31st, 2015, in the city of Dublin. And now, let's step back into the past, to Vancouver, as it was during the last few weeks of August of 2013...
+So that's what's going on in my head on this day, January the 31st, 2015, in the city of Dublin. And now, let's step back into the past, to Vancouver, as it was during the [last few weeks of August of 2013]({{ site.baseurl }}/2015/02/01/vancouver/) ...
 
 (Technical note: from this point on, I will be posting all my blog entries on the [beta-blog](http://beta-blog.archagon.net) subdomain of my website. They will be linked from the main site, but I highly suggest reading on beta-blog instead. Eventually, the main site — hosted on Squarespace — will be removed, and the beta-blog page — hosted on Github Pages using a static site generator — will replace it. I will backport all the existing entries before I do that, and all the links should still hopefully work.)

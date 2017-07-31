@@ -54,7 +54,10 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
+    margin-bottom: $layout-spacing-unit;
+    @include media-query($on-palm) {
+        margin-bottom: $layout-spacing-unit / 2;
+    }
 }
 
 
@@ -65,6 +68,41 @@ ul, ol, dl, figure,
 img {
     max-width: 100%;
     vertical-align: middle;
+}
+
+
+
+/**
+ * Videos
+ */
+video {
+    max-width: 100%;
+}
+
+
+/**
+ * YouTube Embeds: https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
+ */
+ @mixin youtube {
+    position: relative;
+    width: 100%;
+    height: 0;
+
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+ }
+.youtube_16_9 {
+    @include youtube;
+    padding-bottom: 56.25%;
+}
+.youtube_4_3 {
+    @include youtube;
+    padding-bottom: 75%;
 }
 
 
@@ -106,17 +144,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
     // font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     // font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-family: $header-font-family;
     color: rgb(80, 80, 80); 
 }
 
 
 
-.post {
-    // background-color: pink;
-    // padding: 20px;
-    // border-radius: 10px;
-    // margin-top: 20px;
+// TODO: separate "document" class w/ "post" and "page" sibling clases?!
+.document-post, .document-page {
     overflow: hidden;
 }
 
@@ -164,7 +199,7 @@ blockquote {
  */
 pre,
 code {
-    font-size: 1em;
+    font-size: 0.92em;
     border: 1px solid lightgray;
     border-radius: 0.3em;
     background-color: #eef;
@@ -250,4 +285,129 @@ pre {
             fill: $grey-color;
         }
     }
+}
+
+
+
+
+
+
+////////////
+// TABLES //
+////////////
+
+table
+{
+    text-align:center;
+    border-collapse:collapse;
+    border:none;
+    font-size:0.85em;
+    display:inline-block;
+    line-height:1.4em;
+}
+.tablepadding
+{
+    padding:30px;
+    display:inline-block;
+    background:lavender;
+    border-radius:20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.tablecontainer
+{
+    overflow:auto;
+    text-align: center; 
+}
+table caption
+{
+    font-size:1.5em;
+    font-weight:bold;
+    margin-bottom:1.5em;
+}
+th, td
+{
+    padding: 0.4em 1em 0.4em 1em;
+    border:solid;
+    font-size:1.1em;
+}
+th
+{
+    border-width:1px;
+    border-color:#A8A8A8 ;
+}
+td
+{
+    border-width:1px;
+    border-color:#D3D3D3;
+    background-color:white;
+}
+col.ch
+{
+    background-color:#E0E0E0;
+}
+col.data
+{
+    width:175px;
+}
+tr.rh
+{
+    background-color:#E0E0E0;
+}
+th.th1
+{
+    text-align:left;
+}
+th.th2
+{
+    padding-left:4em;
+    text-align:left;
+    font-size:0.95em;
+    font-style:italic;
+    width:100px;
+}
+td.same
+{
+    background-color:#CCFF66;
+    color:black;
+}
+td.bitbetter
+{
+    background-color:#66FF66;
+    color:black;
+}
+td.lotbetter
+{
+    background-color:#00CC00;
+    color:black;
+}
+td.best
+{
+    background-color:#009900;
+    color:black;
+}
+td.bitworse
+{
+    background-color:#FF6666;
+    color:black;
+}
+td.lotworse
+{
+    background-color:#CC3333;
+    color:black;
+}
+td.worst
+{
+    background-color:red;
+    color:black;
+}
+td.empty
+{
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAALklEQVQIW2P8DwQMSODhw4cMjMiCIAF5eXmEIEwApAmsElkALPjgwYP/IC3IAABz6B+VzaCHWgAAAABJRU5ErkJggg==) repeat;
+    text-align:center;
+}
+td.corner
+{
+    border:none;
+    background:lavender;
 }

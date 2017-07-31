@@ -3,7 +3,7 @@ layout: post
 title: "Old iPhone Tricks: GPS Tracker"
 date: 2014-09-18 17:28:45 +0200
 comments: true
-categories: ["Travel", "Technology"]
+categories: ["technology", "travel"]
 ---
 This is the time of year when a lot of people are upgrading their phones. If you are, don't chuck your old phone just yet!
 

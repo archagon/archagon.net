@@ -1,71 +1,103 @@
-/**
- * Archive
- */
+//////////////////
+// Global Stuff //
+//////////////////
+
+$archive-wide-spacing-unit: $layout-spacing-unit * 2;
 
 .archive {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    // override header defaults
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0;
+    }
 }
 
+///////////////////////////////
+// Archive-Specific Elements //
+///////////////////////////////
+
+// lists are used for semantics, not presentation
 .archive_list {
     list-style: none;
-
-    // border: 2px;
-    // border-style: solid;
-    // margin: 2px;
+    margin: 0;
 }
 
+//////////////////////
+// Vertical Spacing //
+//////////////////////
+
+.archive_legend {
+    // TODO: top is technically incorrect b/c there's still bottom margin from title
+    margin-top: $archive-wide-spacing-unit;
+    margin-bottom: $archive-wide-spacing-unit;
+
+    @include media-query($on-palm) {
+        margin-top: $archive-wide-spacing-unit / 2;
+        margin-bottom: $archive-wide-spacing-unit /2;
+    }
+}
+
+.archive_year_element {
+    margin-bottom: $archive-wide-spacing-unit;
+
+    @include media-query($on-palm) {
+        margin-bottom: $archive-wide-spacing-unit / 2;
+    }
+
+    // bottom of page
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// have to do h1 here due to header overrides above
+h2.archive_year {
+    margin-bottom: $layout-spacing-unit;
+
+    @include media-query($on-palm) {
+        margin-bottom: $layout-spacing-unit / 2;
+    }
+}
+
+.archive_post {
+    margin-bottom: $layout-spacing-unit;
+
+    @include media-query($on-palm) {
+        margin-bottom: $layout-spacing-unit / 2;
+    }
+}
+
+////////////////
+// Flex Stuff //
+////////////////
+
+// list of year blocks
 .archive_year_list {
     @include flexbox();
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
 }
 
+// a year block
 .archive_year_element {
-    @include flexbox();
-    @include justify-content(space-around);
-
-    @include flex-flow(row nowrap);
-    @include media-query($on-palm) {
-        @include flex-flow(column nowrap);
-    }
-
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.archive_year {
-    // @include flex(1);
-    -webkit-flex-shrink: 0;
-    -webkit-flex-grow: 0;
-    -moz-flex-shrink: 0;
-    -moz-flex-grow: 0;
-    -webkit-flex-basis: 50px;
-    -moz-flex-basis: 50px;
-    flex-basis: 50px;
-
-    text-align: right;
-    @include media-query($on-palm) {
-        text-align: left;
-        -webkit-flex-basis: auto;
-        -moz-flex-basis: auto;
-        flex-basis: auto;
-    }
-}
-
-.archive_month_list {
-    @include flex(8);
-
     @include flexbox();
     @include flex-flow(column nowrap);
     @include justify-content(space-around);
-
-    @include media-query($on-palm) {
-        margin: 0;
-    }
 }
 
+// the year
+.archive_year {
+    // no more need for flex-basis b/c we're always vertical
+}
+
+// list of month blocks
+.archive_month_list {
+    @include flex(8);
+    @include flexbox();
+    @include flex-flow(column nowrap);
+    @include justify-content(space-around);
+}
+
+// a month block
 .archive_month_element {
     @include flexbox();
     @include justify-content(space-around);
@@ -74,112 +106,129 @@
     @include media-query($on-palm) {
         @include flex-flow(column nowrap);
     }
+
+    // ensures that month label and first post are aligned
+    align-items: baseline;
 }
 
+// the month
 .archive_month {
-    // @include flex(1);
-    -webkit-flex-shrink: 0;
-    -webkit-flex-grow: 0;
-    -moz-flex-shrink: 0;
-    -moz-flex-grow: 0;
-    -webkit-flex-basis: 100px;
-    -moz-flex-basis: 100px;
-    flex-basis: 100px;
-
-    text-align: right;
+    // fixed width when horizontal, but back to auto when vertical
+    // TODO: mixin this
+    flex: 0 0 15rem;
     @include media-query($on-palm) {
-        text-align: left;
         -webkit-flex-basis: auto;
         -moz-flex-basis: auto;
         flex-basis: auto;
     }
-
-    color: darkblue;
 }
 
+// list of post blocks
 .archive_post_list {
-    @include flex(5);
-
     @include flexbox();
     @include flex-flow(column nowrap);
-    @include justify-content(space-around);
 
-    @include media-query($on-palm) {
-        margin: 0;
-    }
+    // TODO: mixin this
+    flex: 1 1 auto;
 }
 
+// a post block
 .archive_post {
     @include flexbox();
     @include flex-flow(row nowrap);
     @include justify-content(space-around);
-
-    // border-style: solid;
-    border-radius: 15px;
-    // border-style: solid;
-    border-width: 2px;
-    // padding: 3px;
-    margin: 5px 0 5px 0;
-    height: 70px;
-    overflow: hidden;
 }
 
-.archive_blurb_test_container h3 {
-    margin: 0;
-    word-wrap: none;
-    margin-top: auto;
-    margin-bottom: auto;
+////////////////
+// Appearance //
+////////////////
+
+.archive_year {
+    // page-centered labels
+    width: 100%;
+    text-align: center;
+}
+
+.archive_month {
+    text-align: left;
+}
+
+.archive_post_list {
+    // allows for title cropping with ellipses
     white-space: nowrap;
+    overflow: hidden;
 
-    // TODO: not working
-    // text-overflow: ellipsis;
-    // overflow: hidden;
-}
-
-.archive_blurb_test_container p {
-    font-size: 75%;
-    line-height: 15px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-// .archive_post_list:first-child {
-//     width: 15px;
-// }
-
-.archive_post_image {
-    // @include flex-flow(0 0);
-
-    -webkit-flex-shrink: 0;
-    -webkit-flex-grow: 0;
-    -moz-flex-shrink: 0;
-    -moz-flex-grow: 0;
-    -webkit-flex-basis: 70px;
-    -moz-flex-basis: 70px;
-    flex-basis: 70px;
-
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 10px;
+    // post blocks should always fill width (compact)
+    width: 100%;
 }
 
 .archive_post_blurb {
-    @include flexbox();
-    @include flex-flow(column nowrap);
-    @include justify-content(space-around);
+    // title formatting
+    h3 {
+        text-align: center;
 
+        // titles should crop with ellipsis
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        padding: 0.5rem;
+    }
+
+    border-radius: 0.7em;
+    overflow: hidden; //weirdly, this affects the border radius?!
+
+    // post blocks should always fill width (non-compact)
     width: 100%;
-    padding: 5px 10px 5px 10px;
-
-    border-radius: 10px;
-
-    margin: 3px;
-
-    overflow: hidden;
-
-    color: black;
 }
 
-.archive_blurb_test_container {
-    overflow: hidden;
+// TODO: old CSS for blurb, remove if blurb no longer needed?
+// .archive_blurb_test_container {
+//     overflow: hidden;
+//
+//     p {
+//         font-size: 75%;
+//         // line-height: 15px;
+//         margin-top: auto;
+//         margin-bottom: auto;
+//     }
+// }
+
+/////////////////////
+// Category Legend //
+/////////////////////
+
+.archive_legend {
+    // bag of legend items
+    @include flexbox();
+    @include flex-flow(row wrap);
+    justify-content: center; // TODO: mixin
+
+    border-style: solid;
+    border-width: 2px;
+    padding: 2rem;
+    border-radius: 2rem;
+    border-color: lightgray;
+
+    width: 80%;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.archive_legend_item {
+    // category color cube and title
+    @include flexbox();
+    @include flex-flow(row nowrap);
+
+    margin: 1rem;
+    width: 16rem;
+
+    .category_swatch {
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.5rem;
+        margin-right: 1rem;
+    }
 }

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vancouver"
-date: 2015-02-01 01:27:26 +0000
+date: 2015-02-01
 comments: true
 categories: travel
 ---

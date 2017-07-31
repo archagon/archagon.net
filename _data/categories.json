@@ -1,0 +1,30 @@
+{
+    "default": {
+        "color": "#CFCFC4",
+        "_source": "http://tristen.ca/hcl-picker/#/hcl/14/1.24/FDC5D3/FDCA90"
+    },
+    "jekyll": {
+        "color": "#B19CD9"
+    },
+    "travel": {
+        "color": "#B0DFB7"
+    },
+    "programming": {
+        "color": "#FDC5D3"
+    },
+    "technology": {
+        "color": "#FDCA99"
+    },
+    "design": {
+        "color": "#B3DBD7"
+    },
+    "releases": {
+        "color": "#C0DFFE"
+    },
+    "reviews": {
+        "color": "#D2D994"
+    },
+    "personal": {
+        "color": "#CAD4E1"
+    }
+}

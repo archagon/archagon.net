@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Travel Timeline
+title: Travel
 permalink: /timeline/
 ---
 <style>article.timeline { width: 600px; }</style>

@@ -1,6 +1,10 @@
 .DS_Store
 .ruby-version
-_site
 .sass-cache
 .travis.yml
 *.sublime-*
+/_sass/compass
+/temp
+/_site
+/_drafts
+/generated

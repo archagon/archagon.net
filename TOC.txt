@@ -1,0 +1,61 @@
+Rakefile                            !!! weirdly customized rake file... did i pull this from jekyll source?
+_config.yml                         blog top-level config
+
+feed.xml                            feed template
+index.html                          main page template
+
+css
+    main.scss                       main font/paragraph/color, width, mixins, imports
+    _css-reset                      basic CSS reset
+_sass
+    _base                           generic css setup
+    _layout                         !!! mostly margins and sizes and stuff, but unclear
+    _footer                         footer specific
+    _header                         header specific
+    _prefixes                       mixins for prefixing common css elements
+    _post                           short -- some tweaks to post stuff
+    _post-extras                    new jekyll assets, code source, image with caption
+    _archive                        archive page                                                                    CLEANED UP!
+    _timeline-map                   travel timeline specific
+    _compass                        compass imports
+    _lemonade                       something to do with sprites
+    _syntax-highlighting
+    compass
+
+_layouts
+    default                         head honcho layout -- wraps other HTML
+    page                            simple page HTML                                                                CLEANED UP!
+    post                            simple post HTML
+
+_includes
+    archive_post                    CSS generation for archive page
+    categories                      category SCSS color mappings -- for parser only, not actual CSS
+    category_color_setter           sets category colors in some situations?
+    composers_sketchpad_toc         inline CSS and HTML for composer's sketchpad TOC
+    footer                          footer
+    header                          header
+    head                            HTML head
+    signature                       my name and post date
+    timeline-us-trip-2013           (old?) trip html
+    timeline-europe-trip-2014       (old?) trip html
+    timeline-hawaii-trip            (old?) trip html
+    timeline-template               trip autogenerator from json?
+
+_data
+    country-codes                   mapping for travel timeline
+    trips                           data for all my trips
+assets                              currently used for kml data
+
+_plugins
+    an_inline_asset                 superclass for generating/substituting assets from text
+    date_calculator                 basic subtraction between two dates
+    divify                          wraps contents in div w/class and p
+    extend_string                   external string normalization library
+    filterize                       applies filter to block of text
+    html_sample                     inline asset that renders html to image
+    kmlasset_tag                    inline kml file w/Google Maps
+    normalize_filter                normalizes span of text
+    whitespace_compressor_filter    trims each line
+    selector_id                     extension to Post to store and retrieve selector id in data
+    image_clipper                   WIP mechansim for specifying post header image
+    html_postprocessor              WIP automatic postprocessor to e.g. detect title, caption images, etc.

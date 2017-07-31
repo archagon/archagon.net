@@ -1,0 +1,1 @@
+{% if include.post.categories[0] != null %} category-{{ include.post.categories[0] }}{% else %} category-default{% endif %}

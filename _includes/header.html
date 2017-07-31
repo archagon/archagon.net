@@ -3,15 +3,14 @@
         <div class="background-overlay">
             <header class="site-title">
                 <a href="{{ site.baseurl }}/">{{ site.html_title }}</a>
+                <p class="site-title-description">Homepage of Archagon and all his blah blah blahxperiments and writings and stuff. Jekyll test. Perpetually under construction.</p>
             </header>
-
+            <hr>
             <nav class="site-nav">
-            <a class="page-link" href="{{ site.baseurl }}/">Home</a>
-            {% for page in site.pages %}
-                {% if page.title %}
+                <a class="page-link" href="{{ site.baseurl }}/">Blog</a>
+                {% for page in site.pages %}{% if page.title %}
                 <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                {% endif %}
-            {% endfor %}
+                {% endif %}{% endfor %}
             </nav>
         </div>
     </div>

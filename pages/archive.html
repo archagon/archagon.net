@@ -4,99 +4,59 @@ title: Archive
 permalink: /archive/
 ---
 
-<!-- we need this here because this CSS is dependant on the post metadata -->
+<!-- we need this here because this CSS is dependant on the post metadata
+... or not 
 <style>
-    {% for post in site.posts %}
-        {% filterize scssify %}
-        {% include archive_post.scss %}
-        {% endfilterize %}
-    {% endfor %}
-</style>
+for post in site.posts
+filterize scssify
+include archive_post.scss
+endfilterize
+endfor
+</style> -->
 
-<div class="home">
-  <div class="archive">
-    <!-- This is a little bonkers, coming in at O(N^3), but it's simple and more understandable
-    than the alternatives. If performance becomes an issue I will revisit. -->
+<div class="home archive">
 
-    <!-- TODO: JS filtering for categories and stuff. -->
+<ul class="archive_legend archive_list">
+{% for category in site.data.categories %}
+<li class="archive_legend_item">
+<div class="category_swatch category-{{ category[0] }}"></div><div>{{ category[0] }}</div>
+</li>
+{% endfor %}
+</ul>
 
-    <!-- <ul>
-      {% assign posts = (site.posts | where: "layout" , "java-tutorials") %}
-      {% for page in tutorials %}
-      {% endfor %}
-    </ul> -->
+<!-- This is a little bonkers, coming in at O(N^3), but it's simple and more understandable
+than the alternatives. If performance becomes an issue I will revisit. -->
 
-    <ul class="archive_year_list archive_list">
-      {% for year_check in site.posts %}
-        {% capture year_check_year %}{{ year_check.date | date: "%Y" }}{% endcapture %}
-
-        {% if year_check_year != year %}
-          {% capture year %}{{ year_check_year }}{% endcapture %}
-          {% assign month = false %}
-
-          <li class="archive_year_element">
-            <h2 class="archive_year">{{ year }}</h2>
-            <ul class="archive_month_list archive_list">
-              {% for month_check in site.posts %}
-                {% capture month_check_year %}{{ month_check.date | date: "%Y" }}{% endcapture %}
-                {% capture month_check_month %}{{ month_check.date | date: "%B" }}{% endcapture %}
-
-                {% if month_check_year == year %}
-                  {% if month_check_month != month %}
-                    {% capture month %}{{ month_check_month }}{% endcapture %}
-
-                    <li class="archive_month_element">
-                      <h2 class="archive_month">{{ month }}</h2>
-                      <ul class="archive_post_list archive_list">
-                        {% for post in site.posts %}
-                          {% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-                          {% capture post_month %}{{ post.date | date: "%B" }}{% endcapture %}
-
-                          {% if year == post_year %}
-                            {% if month == post_month %}
-
-                              <li class="archive_post_element">
-                                <a href="{{ post.url | prepend: site.baseurl }}">
-                                  <div id="{{ post.selector_id }}" class="archive_post">
-                                    <div class="archive_post_image"><img src="{{ post.icon_url }}"></img></div>
-                                    <div id="{{ post.selector_id }}-inner" class="archive_post_blurb">
-                                      <div class="archive_blurb_test_container">
-                                        <h3>{{ post.title }}{% if post.categories != empty %} ({{ post.categories }}){% endif %}</h3>
-                                        <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 50 }}{% endif %}</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-
-                            {% endif %}
-                          {% endif %}
-                        {% endfor %}
-                      </ul></span>
-                    </li>
-
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </ul></span>
-          </li>
-
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-  </div>
-
-<!--   <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }} </span>
-
-        <h3>
-        <a class="post-archive-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul> -->
+<ul class="archive_year_list archive_list">
+{% for year_check in site.posts %}{% capture year_check_year %}{{ year_check.date | date: "%Y" }}{% endcapture %}{% if year_check_year != year %}{% capture year %}{{ year_check_year }}{% endcapture %}{% assign month = false %}
+<li class="archive_year_element">
+<h2 class="archive_year">{{ year }}</h2>
+<ul class="archive_month_list archive_list">
+{% for month_check in site.posts %}{% capture month_check_year %}{{ month_check.date | date: "%Y" }}{% endcapture %}{% capture month_check_month %}{{ month_check.date | date: "%B" }}{% endcapture %}{% if month_check_year == year %}{% if month_check_month != month %}{% capture month %}{{ month_check_month }}{% endcapture %}
+<li class="archive_month_element">
+<h2 class="archive_month">{{ month }}</h2>
+<ul class="archive_post_list archive_list">
+{% for post in site.posts %}{% capture post_year %}{{ post.date | date: "%Y" }}{% endcapture %}{% capture post_month %}{{ post.date | date: "%B" }}{% endcapture %}{% if year == post_year %}{% if month == post_month %}
+<li class="archive_post_element{% include category_class.scss post=post %}">
+<a href="{{ post.url | prepend: site.baseurl }}">
+<div id="{{ post.selector_id }}" class="archive_post">
+<!-- <div class="archive_post_image"><img src="{{ post.icon_url }}"></img></div> -->
+<div id="{{ post.selector_id }}-inner" class="archive_post_blurb">
+<div class="archive_blurb_test_container post-title">
+<h3>{{ post.title }}</h3>
+<!-- <p>{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 50 }}{% endif %}</p> -->
+</div>
+</div>
+</div>
+</a>
+</li>
+{% endif %}{% endif %}{% endfor %}
+</ul>
+</li>
+{% endif %}{% endif %}{% endfor %}
+</ul>
+</li>
+{% endif %}{% endfor %}
+</ul>
 
 </div>

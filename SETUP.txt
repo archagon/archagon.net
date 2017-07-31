@@ -1,2 +1,22 @@
 * install wkhtmltopdf
 * create an 'images' directory
+
+
+
+0. prerequisites
+    * homebrew
+    * rbenv
+    * ruby-build (needed for rbenv intstall)
+1. rbenv install 2.2.0 (or whatever)
+2. rbenv local 2.2.0
+3. brew install imagemagick
+3. gem install jekyll
+4. gem install stringex
+5. gem install nokogiri
+6. gem install imgkit
+7. gem install rmagick
+8. install wkhtmltoimage (I had to use an installer)
+
+sudo `which imgkit` --install-wkhtmltoimage
+        rvmsudo imgkit --install-wkhtmltoimage
+(installs to default /usr/local/bin/wkhtmltoimage)

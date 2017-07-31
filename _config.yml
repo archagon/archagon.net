@@ -1,6 +1,6 @@
 # Site settings
 title: Archagon Was Here (Jekyll Test)
-html_title: <div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div>
+html_title: <div class="title"><span class="name">Archagon</span> Was Here</div>
 email: archagon@archagon.net
 description: > # this means to ignore newlines until "baseurl:"
   Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal
