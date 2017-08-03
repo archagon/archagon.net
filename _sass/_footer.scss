@@ -1,68 +1,70 @@
 .site-footer {
-    font-size: 2em;
-    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-
+    font-size: 1.7rem;
     text-align: center;
+    color: white;
+}
 
-    .background-overlay {
-        //background-image: url("/images/background-blur.jpg");
-        background-color: white;
-        @include media-query($on-palm) {
-            background-size: 250px;
+.site-footer-background {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.site-footer-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.site-footer-credits {
+    text-align: left;
+}
+
+.site-footer-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+
+    font-family: $header-font-family;
+    font-weight: 500;
+    font-size: 1.1em;
+
+    // icon links
+    a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        &:link, &:visited, &:hover, &:active {
+            color: white;
+            text-decoration: underline;
+        }
+
+        &:not(:last-child) {
+            margin-right: 2rem;
         }
     }
 
-    ul {
-        display: inline-block;
-        padding: 0.5em 1em 0.5em 1em;
-        border-radius: 0.5em;
-        margin: 0;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    li {
-        display: inline-block;
-        padding: 0.25em 0.5em 0.25em 0.5em;
-        border-radius: 0.75rem;
-        border: 0px solid;
-        width: 12em;
-        margin-bottom: 0;
-
-        margin-top: 0.15em;
-        margin-bottom: 0.15em;
-        margin-left: 0.25em;
-        margin-right: 0.25em;
-    }
-
-    img, svg {
-        height: 1.5em;
-        margin-right: 0.5em;
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .rss {
-        path {
-            fill: mix(blue, white, 40%);
-        }
-        background-color: pink;
-        border-color: salmon;
-
-        a, a:visited {
-            color: mix(salmon, black, 70%);
-        }
-    }
-
-    .twitter {
-        path {
-            fill: mix(blue, white, 40%);
-        }
-        background-color: lightblue;
-        border-color: mix(blue, white, 40%);
-
-        a, a:visited {
-            color: mix(blue, white, 50%);
-        }
+    // captions
+    span {
+        margin-left: 0.5rem;
     }
 }
