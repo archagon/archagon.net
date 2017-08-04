@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+<div class="wrapper">
+
 <div class="home">
     <ul class="post-list">{% for post in site.posts %}
         <li id="{{ post.selector_id }}" class="document-post{% include category_class.scss post=post %}">
@@ -15,4 +17,6 @@ layout: default
             </article>
         </li>{% endfor %}
     </ul>
+</div>
+
 </div>
