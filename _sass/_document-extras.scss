@@ -1,0 +1,182 @@
+.more-inside {
+    text-align: left;
+    font-size: 1.05em;
+}
+
+.important-list {
+    list-style-position:inside;
+}
+
+.deprecated {
+    color: darken(lightgray, 20%);
+    text-decoration: line-through;
+}
+
+//lots of images right next to one another; easier and more syntactically correct than wrapping in <p>
+.image-series {
+    img {
+        margin-bottom: 0.3em;
+    }
+}
+
+// https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
+@mixin youtube {
+    position: relative;
+    width: 100%;
+    height: 0;
+
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+}
+.youtube_16_9 {
+    @include youtube;
+    padding-bottom: 56.25%;
+}
+.youtube_4_3 {
+    @include youtube;
+    padding-bottom: 75%;
+}
+
+.caption {
+    // so that I don't have to wrap it in <p>
+    @extend %vertical-rhythm;
+    display: block;
+}
+.caption > p {
+    text-align: center;
+    color: grey;
+
+    // font-size: 1.05em;
+    // font-style: italic;
+
+    font-family: $alert-font-family;
+    font-size: 1.1em;
+    font-style: italic;
+
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    // captions should be closer to their image than the default; and margin-bottom is handled by div
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.notification {
+    // so that I don't have to wrap it in <p>
+    @extend %vertical-rhythm;
+    display: block;
+
+    padding: 1.0rem 1.0rem;
+    border-radius: 1.5rem;
+
+    background-color: mix(white, green, 60%);
+    color: #111;
+
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1;
+    font-family: $alert-font-family;
+    font-weight: 400;
+
+    // big bold word at the start
+    strong {
+        font-weight: 700;
+    }
+
+    // green links
+    a {
+        color: mix(black, green, 20%);
+
+        &:visited {
+            color: mix(black, green, 40%);
+        }
+        &:hover {
+            color: mix(black, green, 0%);
+        }
+    }
+}
+
+// applied to div, not image
+.full-width {
+    @extend %vertical-rhythm;
+    display: block;
+
+    width: calc(100% + #{ $document-padding * 2 });
+    margin-left: -$document-padding;
+
+    img {
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+
+///////////////
+// In Drafts //
+///////////////
+
+.code-source {
+    // TODO: can't extend vertical rhythm w/o display block...
+
+    $color: mix(orange, white, 40%);
+    $symbol-color: red;
+
+    background-color: $color;
+    color: darken($color, 50%);
+
+    display: inline-block;
+    padding: 0.4em 0.7em;
+    border-radius: 1.0rem;
+
+    font-size: 105%;
+    font-weight: 500;
+    line-height: 1.15;
+
+    &::before {
+        font-size: 120%;
+        margin-right: 0.02rem;
+        padding: 0.02rem;
+        color: $symbol-color;
+        content: "☎";
+    }
+    
+    p {
+        display: inline;
+    }
+}
+
+.new-jekyll-assets {
+    $color: lavender;
+
+    @extend %vertical-rhythm;
+    display: block;
+
+    padding: 1rem 5rem;
+    color: darken($color, 60%);
+    background-color: $color;
+    font-size: 95%;
+    border-radius: 1.0rem;
+    
+    code {
+        background-color: pink;
+    }
+    
+    h1 {
+        font-size: 120%;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    ul {
+        padding-left: 0; //override default <ul> indentation -- looks better
+    }
+    
+    .asset-name {
+        font-weight: bold;
+    }
+}

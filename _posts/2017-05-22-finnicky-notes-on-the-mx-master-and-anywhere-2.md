@@ -32,7 +32,6 @@ The MX Anywhere 2 is a cute little mouse. Some reviewers have been comfortable s
 
 Click-wise, the two main buttons feel pretty good, while the rest aren't particularly notable. I was happy that the side navigation buttons were fairly normal sized compared to the scrunched side buttons of the Master. The coating feels grippy but maybe a tiny bit less premium than I'd hoped.
 
-<p>
 <div class="caption">
 <video controls width="100%" poster="{{ site.baseurl }}/images/mx-master/anywhere-clicks.jpg">
 	<source src="{{ site.baseurl }}/images/mx-master/anywhere-clicks.mp4" type="video/mp4">
@@ -40,13 +39,11 @@ Your browser does not support the video tag.
 </video>
 <p>Clicking every button on the MX Anywhere 2.</p>
 </div>
-</p>
 
 In case you're not aware, many Logitech mice now feature a scroll wheel that can also be clicked side-to-side. In reviews of Logitech mice, I often see praise for this sideways-clicking mouse wheel, going as far as to call it a "premium feature". But I think I've come to realize that most people just don't use their middle click all that much. Me? I'm an compulsive middle-clicker. I use that button for everything. New links. Closing tabs. Panning. Reloading. In fact, it's possibly the second most important button on my mouse! Unfortunately, sideways-click cripples this button thoroughly, making it rattle from side to side with every minor push.
 
 If I otherwise loved the Anywhere, I figured I could get accustomed to this annoying hardware quirk. But Logitech *really* screwed up the wheel here. Incomprehensibly, there's no middle click; instead, you get a tiny button right below the wheel that could be rebound to this function. (By default, it serves as the "gesture" button, which lets you show Exposé and whatnot.) The wheel itself, when depressed, mechanically toggles between traditional ratchet and free spin modes for scrolling, resulting in a heavy, chunky "clunk" that feels like you're squishing something deep inside the mouse's guts. Is there *any other Logitech mouse* that behaves this way? The middle-click has been a staple feature on mice since the 70's, so why is changing scroll wheel modes suddenly more important? Considered together with the usual sideways-click complaints, this scroll wheel disappointed me in practically every respect.
 
-<p>
 <div class="caption">
 <video controls width="100%" poster="{{ site.baseurl }}/images/mx-master/anywhere-rattle.jpg">
 	<source src="{{ site.baseurl }}/images/mx-master/anywhere-rattle.mp4" type="video/mp4">
@@ -54,7 +51,6 @@ If I otherwise loved the Anywhere, I figured I could get accustomed to this anno
 </video>
 <p>A demonstration of the janky scroll wheel.</p>
 </div>
-</p>
 
 For a while, I tried rebinding the square button and sideways-click buttons to middle click. It felt OK... in the sense that I could probably get used to it over time. But I knew I'd never be happy with this compromise, and it's what ultimately pushed me to give the Master a try.
 
@@ -68,7 +64,6 @@ Fortunately, this turned out to be a great decision: the black model looks fanta
 
 As most reviews have stated, the ergonomic comfort of this mouse is close to perfect. You lay your hand down and it feels like it was sculpted just for you. What's more, the main buttons feel incredible to click — perhaps more so than any other mouse I've used, including the Anywhere! Seriously, I can't stop clicking these buttons.
 
-<p>
 <div class="caption">
 <video controls width="100%" poster="{{ site.baseurl }}/images/mx-master/master-clicks.jpg">
 	<source src="{{ site.baseurl }}/images/mx-master/master-clicks.mp4" type="video/mp4">
@@ -76,7 +71,6 @@ Your browser does not support the video tag.
 </video>
 <p>Clicking every button on the MX Master.</p>
 </div>
-</p>
 
 The Master's sideclick-less scroll intrigued me when I first saw it. Most Logitech mice either feature sideclicking and free spinning together, or otherwise just throw in a plain old scroll wheel and call it a day. This was the first mouse I saw that omitted the sideways-clicking while still retaining the free spin mode, which was a very desirable feature in place of the inertial scrolling you'd get with the Apple trackpad. Prior to handling the Master, I figured this setup might finally allow me to have an uncompromised middle click while still benefitting from Logitech's fancy scroll wheel tech. And... that's exactly what happened! The middle click on this mouse feels excellent, to the point where it's very nearly as pleasing as the main buttons. (There's a slight bit of wobble before the click itself, but I don't think that can be helped on account of the complex scroll wheel mechanism.)
 
@@ -88,7 +82,6 @@ There's one hidden button on this mouse: the "gesture" button, which can be acti
 
 Weight-wise, this mouse is pretty hefty, but not overbearing. Still, I'll have to get used to the inertia compared to my MX 518, which barely feels like it has any weight at all.
 
-<p>
 <div class="caption">
 <video controls width="100%" poster="{{ site.baseurl }}/images/mx-master/master-use.jpg">
 	<source src="{{ site.baseurl }}/images/mx-master/master-use.mp4" type="video/mp4">
@@ -96,7 +89,6 @@ Weight-wise, this mouse is pretty hefty, but not overbearing. Still, I'll have t
 </video>
 <p>The MX Master in regular use.</p>
 </div>
-</p>
 
 I was worried when I was first looking at this mouse that it would just be a minor iteration on the G602, but these fears have been unfounded. The Master fixes every problem I had with the G602 (aside from perhaps the weight) and adds a bunch of great features to boot. I feel immediately at home with this device.
 

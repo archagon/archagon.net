@@ -1,262 +1,34 @@
-// general layout
-.site-header {
-    margin-top: $layout-spacing-unit;
+// TODO: is this file even needed?
 
-    @include media-query($on-palm) {
-        margin-top: $layout-spacing-unit / 2;
-    }
+////////////////////
+// General Layout //
+////////////////////
+
+.site-header {
+}
+
+.page-content {
 }
 
 .site-footer {
-    margin-top: $layout-spacing-unit;
-    margin-bottom: $layout-spacing-unit;
-
-    @include media-query($on-palm) {
-        margin-top: $layout-spacing-unit / 2;
-        margin-bottom: $layout-spacing-unit / 2;
-    }
 }
 
-.page-content {
-    margin-top: $layout-spacing-unit;
+////////////////////
+// Layout Classes //
+////////////////////
 
-    @include media-query($on-palm) {
-        margin-top: $layout-spacing-unit / 2;
-    }
-}
+.wrapper {
+    //max-width: $content-width;
+    max-width: calc(#{$content-width} + (#{$spacing-unit} * 2));
+    margin-right: auto;
+    margin-left: auto;
+    
+    // @extend %clearfix;
 
-.image-series {
-    img {
-        margin-bottom: 0.3em;
-    }
-}
-
-.page-content {
-    font-size: 1.8em;
-
-    // font-size: 1.2em;
-
-    // TODO: find better fix for image centering
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    video {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    img.content {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    p {
-        // margin-bottom: 10.5em;
-    }
-
-    h1 {
-        font-size: 160%;
-    }
-
-    h2 {
-        font-size: 140%;
-        // text-align: center;
-    }
-
-    h3 {
-        font-size: 125%;
-        // text-align: center;
-    }
-
-    h4 {
-        font-size: 115%;
-        // text-align: center;
-    }
-}
-
-body {
-    // QQQ:background image
-    // background-image: url("/images/bgsubtle3.jpg");
-    background-image: url("/images/gplaypattern.png");
-    //background-color: darken(#A8CCFF, 5%);
-    //background-color: darken(#A8CCFF, 0%);
-    //background-color: #f2f2f2;
-    background-attachment: fixed;
-    @include media-query($on-palm) {
-        background-size: 250px;
-    }
-}
-
-// prevents gap from occuring on index page
-.home {
-    margin: 0;
-    padding: 0;
-}
-.post-list {
-    margin: 0;
-    padding: 0;
-}
-
-// .body-wrapper {
-//     background-color: white;
-//     max-width: $content-width;
-//     margin-left: auto;
-//     margin-right: auto;
-//     padding: 1em;
-//     padding-left: 3em;
-//     padding-right: 3em;
-//     padding-top: 0;
-//     margin-top: 1em;
-//     background-image: url("/images/background-blur3.jpg");
-//     border-radius: 3em;
-// }
-
-
-
-.signature {
-    font-size: 115%;
-    text-align: right;
-
-    p {
-        margin: 0;
-    }
-
-    .signature-name {
-        color: red;
-    }
-}
-
-
-
-
-.post-meta {
-    color: $grey-color;
-}
-h2.post-meta {
-    // we have to use h2 to override default header rules
-    font-size: 1.1em;
-}
-
-
-// TODO:
-body {
-    // background-color: mix(blue, white, 3%);
-    // background-image: url("/images/PaintBlobsLight.png");
-}
-.document-page, .document-post {
-    padding: $content-horizontal-padding-unit;
-    @include media-query($on-palm) {
-        padding: $content-horizontal-padding-unit-small;
-    }
-
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-
-    background-color: white;
-
-    border-radius: 2rem;
-}
-
-
-/**
- * Posts
- */
-.section-header {
-    @extend %vertical-rhythm;
-
-    text-align: center;
-
-    // ignore vertical rhythm, except for mild spacing between title and date
-    h1, h2, h3, h4, h5, h6 {
-        margin: 0;
-    }
-    .post-meta {
-        margin-top: 1rem;
-    }
-}
-
-.post-title {
-    padding: 0 0.5rem 0 0.5rem;
-    border-radius: 0.4em;
-
-
-    // QQQ:
-    width: calc(100% + #{ $content-horizontal-padding-unit * 2 });
-    margin-left: -$content-horizontal-padding-unit !important;
-    @include media-query($on-palm) {
-        width: calc(100% + #{ $content-horizontal-padding-unit-small * 2 });
-        margin-left: -$content-horizontal-padding-unit-small;
-    }
-    margin-top: -$content-horizontal-padding-unit*0.75 !important;
-    border-radius: 0;
-    padding: 1rem;
-}
-
-// spacing between front-page posts
-.post-list {
-    & >:not(:last-child) {
-        margin-bottom: $layout-spacing-unit;
-
-        @include media-query($on-palm) {
-            margin-bottom: $layout-spacing-unit / 2;
-        }
-    }
-}
-
-////////
-// HR //
-////////
-
-// fancy image hr
-.document-post, .document-page {
-    hr {
-        $image-height: 15px;
-
-        display: block;
-        border: 0px;
-        // height: $image-height;
-        height: 1.5em;
-        margin: 40px 0 40px 0;
-
-        background-size: 30em;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-image: url("/images/Decoration.svg");
-    }
-}
-
-
-
-
-
-.caption {
-border-color: lightgray;
-border-width: 0.125em;
-border-style: solid;
-    background-color: white;
-    padding: 1em;
-border-radius: 1em;
-}
-.caption > p {
-text-align: center;
-color: black;
-    margin: 0;
-}
-.caption > * {
-margin-top: 1em;
-margin-bottom: 1em;
-}
-.caption :first-child {
-margin-top: 0;
-}
-.caption :last-child {
-margin-bottom: 0;
-}
-
-.important_list {
-list-style-position:inside;
-font-weight: bold;
+    padding-right: $document-padding;
+    padding-left: $document-padding;
+    // @include media-query($on-palm) {
+    //     padding-right: $spacing-unit / 2;
+    //     padding-left: $spacing-unit / 2;
+    // }
 }

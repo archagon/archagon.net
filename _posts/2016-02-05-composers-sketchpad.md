@@ -24,12 +24,10 @@ The first was my inability to compose music using the tools I had at hand. Today
 
 Unfortunately, I feel composition has not quite made the same magnitude of leap forward. While the studios of the past can now be entirely replaced by powerful tools running on our computers, most of them are dreadnoughts aimed at heavy production or performance use. The rhetorical art of composition — the process of taking musical notes and putting them in an order that sounds good and meaningful to our ears — has yet to see the equivalent of a Word or a Photoshop. To put it another way, there's very little music software out there with a tight creative feedback loop specifically tuned to plonking down a few notes, playing them back, and repeating the process until you get something that sounds good. You could certainly use a DAW sequencer, Finale, or even a tracker for that purpose — many composers successfully do! — but I've found that the delay between editing and playback is still too high in those applications, to say nothing of the often immense UX hurdles. Worse yet, barely any of these tools are optimized for touch or stylus input — surely an ideal interface for composing at the piano (or under a tree)!
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad/flstudio.jpg"></img>
 <p>DAW interfaces tend to be aimed at production, not freehand composition.</p>
 </div>
-</p>
 
 Tooling aside, many musicians write music by simply improvising on their instrument and recording the results. Sadly, this is not a tenable approach for amateurs. Whenever I'm sitting at the piano and get the flicker of an interesting idea, I always lose the thread by the time I get around to actually playing or writing it down. I'd need many more years of practice to actually be able to compose anything interesting using this approach.
 
@@ -37,12 +35,10 @@ It was clear that my musical life was missing a tool that allowed for the rapid 
 
 Composer's Sketchpad fulfills this demand by heavily prioritizing navigation and note entry above all else. There's no mode for moving around the canvas: you simply swipe like in a mapping app. To make a note, you hold down the canvas with one finger and draw with another, as if applying pressure to a particularly slippery piece of paper. Undo/redo and erase are right there in the corners, and the playback controls are within easy reach at the bottom of the screen. (Your current viewport is also your playback position.) A piece is divided into several layers of notes — each with their own instrument or percussion set — and the active layer can be changed with a simple swipe of the instrument box at the top of the screen. Doing this brightens the active layer and dims any background layers, allowing you to edit the current layer exclusively while still having a sense of what all the other instruments are doing. In short, there's barely any cognitive overhead: every tool you need to rapidly sketch out music is right there in front of you.
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad/ui.png"></img>
 <p>The UI in Composer's Sketchpad is carefully tuned to enable a tight creative feedback loop.</p>
 </div>
-</p>
 
 The other problem I wanted to tackle was the antiquated nature of sheet music.
 
@@ -52,12 +48,10 @@ What about music from other cultures? The scales for many musical traditions dif
 
 What about our own (Western) myriad of different scales and tunings? We're so used to Equal Temperament that we've completely forgotten the incredible polyculture of tunings in early music, to say nothing of the microtonal experimentation of the 20th century. Indeed, the [Scala microtonal tuning archive][scala] has over 4000 scales! All impossible to convey with traditional notation.
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad/solo.png"></img>
 <p>An excerpt from "Comfortably Numb". Solos are cumbersome to write out using traditional notation.</p>
 </div>
-</p>
 
 Instead of trying to shoehorn all music into a Western style of notation invented several centuries ago, it occurred to me that maybe an entirely new approach was needed. In fact, why encode the music at all? The barest, most obvious form of notation is a graph of time and pitch. This system would have been too difficult for musicians to read from and write to back in the day, but that's not really an issue when the music can play itself and your musical canvas is tactile and effectively infinite. It seemed like the best shot at covering all bases.
 
@@ -65,12 +59,10 @@ In Composer's Sketchpad, each "note" is a simple array of times and pitches. Not
 
 As a result, writing out complicated and expressive sections of music in Composer's Section no longer feels like caging a canary. The grid is your friend, not an oppressive bureaucrat. If you want to write more conventional music, snapping to time or pitch works just as it did with traditional notation. But turn snapping off and you can bend your notes or extend them out to the exact length of time needed. Because the shape of your notes corresponds exactly to their time and pitch, a quick glance at your music tells you exactly how it's going to sound without having to decode a mess of symbols in your head. And you can edit any part of any section or overlap as many notes as you like without having to worry about fulfilling the "note quota" of a measure, as you constantly have to do in sheet music apps like Finale.
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad/melody.png"></img>
 <p>"Comfortably Numb" again in Composer's Sketchpad, transcribed by ear. This style of notation is great for conveying expressive melodic lines.</p>
 </div>
-</p>
 
 And now, a bit of a pretentious digression, as well as a few words about the future of the project!
 
@@ -82,12 +74,10 @@ I'm still far from that ideal — for example, in-app purchases might be temptin
 
 Composer's Sketchpad isn't a profit-driven venture looking for a market or buyer. It's one of those objects that didn't exist in the world before I made it, and its reason for being is to help me be creative. I plan to add many new features over the years as my compositional needs develop, and I hope that eventually I'll be able to port it to other platforms and release the source code for everyone to use. It's a tool from my own personal toolbox that I'm happy to put out into the world.
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad/sketches.jpg"></img>
 <p>Some of the many design sketches made during development.</p>
 </div>
-</p>
 
 Using `cloc`, the project comes in at around 20,000 lines of code. This is a massive leap for me, and I'm incredibly excited to get started on the next 20,000!
 

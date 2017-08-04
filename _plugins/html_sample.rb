@@ -24,8 +24,8 @@ module Jekyll
 
     def output_format(filepath, metadata=nil)
         # TODO: escape
-        metadata_html = (metadata ? "<figcaption>#{metadata}</figcaption>" : "")
-        "<p><div class='image_with_caption htmlasset'><figure><img src='#{filepath}' />#{metadata_html}</figure></div></p>"
+        metadata_html = (metadata ? "<p>#{metadata}</p>" : "")
+        "<div class='caption htmlasset'><img src='#{filepath}' />#{metadata_html}</div>"
     end
   end
 end

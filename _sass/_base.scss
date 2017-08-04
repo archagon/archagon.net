@@ -10,15 +10,17 @@
 //     }
 // }
 
-// TODO: figure out how to make this compatible with clearfix
+// TODO: figure out how to make this compatible with clearfix 
+// TODO: should this include display: block?
 // h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure,
 %vertical-rhythm {
-    &:not(:last-child) { //AB: seems to be the way to go
-        margin-bottom: $layout-spacing-unit;
+    //&:not(:last-child) { //AB: seems to be the way to go
+        margin-top: $spacing-unit;
+        margin-bottom: $spacing-unit;
         // @include media-query($on-palm) {
         //     margin-bottom: $layout-spacing-unit / 2;
         // }
-    }
+    //}
 }
 
 @mixin media-query($device) {
@@ -95,7 +97,12 @@ h1, h2, h3, h4, h5, h6 {
 blockquote {
     color: $grey-color;
     border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
+    padding-left: 0.7em;
+
+    // override defaults: looks better when sides match
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+
     // font-size: 1.1em;
 }
 

@@ -288,7 +288,7 @@ As a bit of a meta addendum, this Markdown post is a test bed for a bunch of cus
 
 ---
 
-<div class="new_jekyll_assets" markdown="1">
+<div class="new-jekyll-assets" markdown="1">
 
 # Jekyll assets created over the course of this exercise
 

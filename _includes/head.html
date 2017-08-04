@@ -1,15 +1,16 @@
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-        <meta name="description" content="{{ site.description }}">
+    <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
 
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
-        <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
-        <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <!-- {% if page.extra_css %}extra css {% for css in page.extra_css %}{{ css }}.css, {% endfor %}{% else %}no extra css{% endif %} -->
 
-        <link rel="icon" href="{{ site.baseurl }}/images/favicon/favicon-96x96.png">
-    </head>
+    <link rel="icon" href="{{ site.baseurl }}/images/favicon/favicon-96x96.png">
+</head>

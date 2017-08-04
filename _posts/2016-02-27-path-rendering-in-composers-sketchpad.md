@@ -13,7 +13,7 @@ categories: programming
 Before starting any work on Composer's Sketchpad, I had to ask myself: was the app as I envisioned it even possible to make? My initial goals were as follows:
 
 <p>
-<div class="important_list" markdown="1">
+<div class="important-list" markdown="1">
 1. Have an (effectively) infinite canvas with a large number of notes visible at once.
 2. Allow the canvas to zoom and pan with without any lag.
 3. Allow the canvas to zoom without the notes losing any sharpness.
@@ -41,12 +41,10 @@ During my search, I learned of [OpenVG][open_vg], the Khronos Group's standard f
 
 Having figured out how to use both frameworks, I made a quick performance prototype: a simple draw loop at 60fps with a set of full-screen, randomly generated Bézier curves in each frame. (I considered this my worst-case scenario, as in the case of changing the width or height scales of my grid.) There were two rendering paths: one for CoreGraphics and one for MonkVG.
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/stresstest.png"></img>
 <p>A randomly-generated scene from the stress test. CoreGraphics couldn't handle it while MonkVG passed with flying colors.</p>
 </div>
-</p>
 
 Sadly, as much as I wanted to stick with the battle-hardened CoreGraphics approach, it wasn't even able to draw a single animating curve at a solid 60fps on my iPad 3. MonkVG, on the other hand, tore through 10+ curves without breaking a sweat. Graphically, the results of both approaches looked quite similar to me — or at least good enough for the app I was trying to make.
 
@@ -56,12 +54,10 @@ Despite these finds, I really wanted to work with CoreGraphics, and so I attempt
 
 For much of the project, owing to my inexperience, I was burdened with the question of the framerate cap. If everything was done perfectly, how high could I go? After getting caching and draw call batching working correctly, my MonkVG implementation yielded an acceptable framerate of 30-60fps in the general case, but I still wondered if I was an order of magnitude off on account of my incompetence. How did Apple Maps manage to work so smoothly with so many shapes on screen? How did web browsers manage to display thousands of character paths — possibly with transforms! — and still attain smooth performance? In truth, the geometry I was showing on screen was fairly complex: each quarter-measure note had about 300 triangles once you included the outline and endcaps, leading to an upper bound of almost 400,000 triangles on screen for a dense piece (12 notes, or 4 chords, per measure per layer, with 10 full layers and 10 measures on screen). Surely a breeze for modern machines, but quite a lot to handle for an old iPad! It's always important to be able to answer the question, "where is all that performance going?", and in my case it was going towards the multitude of dynamic features in my app.
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/curves.png"></img>
 <p>The mesh structure of a note. Each blue dot is a recorded time/pitch sample. Having a screen full of these can be surprisingly performance-intensive!</p>
 </div>
-</p>
 
 In retrospect, it was quite fortunate that I just happened to fall into the optimal rendering implementation for my project. My path rendering requirements were a little different from the norm: after eliminating point #5 from my initial goal list, I no longer needed most of my curves to be dynamic. The only curves that actually changed their structure from frame to frame were those belonging to the notes currently being drawn or erased — and even those were localized to the point of editing, since my notes were comprised of multiple tiny Bézier segments chained together. (I'll talk details in a later article.) Instead, my highest priority was to translate and scale my notes at a constant 60fps while still preserving their sharpness, and polygons happened to be uniquely qualified for this task. At the expense of jaggedness on close zoom — fine by me — polygon tessellation effectively gave me infinite resolution along with free transforms. They were also perfectly suited for caching: once tessellated, I could store the vertices of the generated polygons for all my note objects without wasting too much space, wheareas doing the same with textures would have quickly filled up my memory. (To say nothing of looking terribly ugly when scaled.) Better yet, I eventually learned from profiling that it was the tessellation step — not drawing — that was the biggest roadblock in my path rendering implementation, so caching was absolutely critical to getting the performance I needed! Had I used a shader-based approach, I would have had to write a ton of additional code to enable caching, and it *still* probably wouldn't have gotten close to my 60fps benchmark for large scenes.
 
@@ -72,12 +68,10 @@ At this point, I realized that even though writing my own hardware-accelerated p
 
 As I dove deeper into Cocos2d's architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called "geometry streaming".) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What's more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate `CCNode`s. This was a massive benefit I was not expecting!
 
-<p>
 <div class="caption">
 <img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/pipeline.png"></img>
 <p>The final path rendering pipeline.</p>
 </div>
-</p>
 
 There was a new problem, though. With the new path rendering system (now using geometry streaming), my performance hovered at around 50%-70% of what I was getting in MonkVG. Intuitively, I feared that a fix was impossible: wouldn't uploading thousands of polygons in every frame be naturally more resource-intensive than storing polygons in VBOs for later reuse? But after some digging, I learned something very interesting: OpenGL ES actually allowed you to map GPU memory directly into a shared application-space buffer, eliminating the need to "upload" your geometry at all! I did a sanity check and realized that there was *no way* that copying even hundreds of thousands of polygons to a buffer could be the roadblock. But Cocos2d was already using memory mapping in its renderer! So what was the problem?
 

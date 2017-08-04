@@ -136,6 +136,7 @@ $navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
 
     & > ul {
         margin: 0;
+        padding: 0; //override default <ul> indentation
 
         // bullets between list items
         & > li {
@@ -191,11 +192,11 @@ a.site-nav-page-link:hover {
 // Compact Adjustments //
 /////////////////////////
 
-.site-header {
-    @include media-query($on-palm) {
-        font-size: 1.5em;
-    }
-}
+// .site-header {
+//     @include media-query($on-palm) {
+//         font-size: 1.5em;
+//     }
+// }
 // .site-title {
 //     @include media-query($on-palm) {
 //         font-size: 6.0em;

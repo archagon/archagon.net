@@ -27,7 +27,7 @@ People always panic when Google or Apple slips up and caches a bit of your locat
 
 ---
 
-<div class="new_jekyll_assets" markdown="1">
+<div class="new-jekyll-assets" markdown="1">
 
 # Jekyll assets created over the course of this exercise
 

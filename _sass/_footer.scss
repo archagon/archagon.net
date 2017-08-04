@@ -24,7 +24,9 @@
 }
 
 .site-footer-credits {
-    text-align: left;
+    text-align: center;
+
+    margin-right: 1rem;
 
     p {
         margin: 0; //override default paragraph behavior
@@ -40,8 +42,11 @@
     -ms-flex-align: center;
     align-items: center;
 
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    // -ms-flex-negative: 0;
+    // flex-shrink: 0;
 
     font-family: $header-font-family;
     font-weight: 500;
@@ -69,6 +74,7 @@
 
     // captions
     span {
+        white-space: nowrap;
         margin-left: 0.5rem;
     }
 }

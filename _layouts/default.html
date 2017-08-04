@@ -3,9 +3,8 @@
 
 {% include head.html %}
 
+<!-- inline category colors -->
 <style>
-/* inline category colors */
-
 {% filterize scssify %}
     {% for category in site.data.categories %}
         .category-{{ category[0] }} {
@@ -24,11 +23,11 @@
                 //border-bottom: solid 2rem {{ category[1].color }};
             }
         }
-    {% endfor %}
+{% endfor %}
 {% endfilterize %}
 </style>
 
-<body>
+<body class="body-background">
 
 <div class="body-wrapper">
 
@@ -44,20 +43,6 @@
 
 </div>
 
-<script>
-//     var elems = document.querySelectorAll('.background-overlay');
-//
-//     var setHeaderImageOffset = function() {
-//         for (var i = 0; i < elems.length; i++) {
-//         var elem = elems[i];
-//         var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
-//         elem.style['background-position'] = positionString;
-//         }
-//     };
-//
-//     setHeaderImageOffset();
-//     window.onresize = setHeaderImageOffset;
-</script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
