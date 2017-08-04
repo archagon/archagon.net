@@ -1,16 +1,24 @@
 <header class="site-header">
-    <div class="wrapper">
-        <div class="background-overlay">
-            <header class="site-title">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="{{ site.baseurl }}/"><img src="{{ site.basurl }}/images/avatar2.jpg" class="site-title-icon"></img></a>
                 <a href="{{ site.baseurl }}/">{{ site.html_title }}</a>
-                <p class="site-title-description">Homepage of Archagon and all his blah blah blahxperiments and writings and stuff. Jekyll test. Perpetually under construction.</p>
-            </header>
-            <hr>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
             <nav class="site-nav">
-                <a class="page-link" href="{{ site.baseurl }}/">Blog</a>
-                {% for page in site.pages %}{% if page.title %}
-                <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-                {% endif %}{% endfor %}
+                <ul>
+                    <li><a class="site-nav-page-link" href="{{ site.baseurl }}/">Blog</a></li>
+                    {% for page in site.pages %}{% if page.title %}<li><a class="site-nav-page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+                    {% endif %}{% endfor %}<li><span class="site-nav-page-link site-nav-page-link-icons"><a href="{{ "/feed.xml" | prepend: site.baseurl }}"><img src="{{ site.baseurl }}/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/{{ site.twitter_username }}"><img src="{{ site.baseurl }}/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
             </nav>
         </div>
     </div>

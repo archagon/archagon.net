@@ -1,173 +1,206 @@
-// TODO: add clouds or some sort of large, subtle pattern to title
+$navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
 
-// TODO: shrink w/compact layout
-$header-title-spacing-unit: $layout-spacing-unit * 1;
-$header-navbar-spacing-unit: $layout-spacing-unit * 0.4;
+/////////////
+// Flexbox //
+/////////////
 
-////////////
-// Layout //
-////////////
+.site-header-title-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 
-.site-header {    
-}
-
-.site-nav {
-    margin-bottom: $header-navbar-spacing-unit;
-    margin-top: $header-navbar-spacing-unit;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
 
 .site-title {
-    margin-top: $header-title-spacing-unit;
-    margin-bottom: $header-title-spacing-unit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+.site-nav-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.site-nav {
+    & > ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+}
+
+.site-nav-page-link-icons {
+    // correctly centers images... for some reason
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    & > a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    & > a > img {
+        display: inline-block;
+    }
 }
 
 ///////////
 // Style //
 ///////////
 
-.site-header {
-    @include media-query($on-palm) {
-        font-size: 0.75rem;
-    }
-
-    text-align: center;
-
-    .wrapper > div {
-        display: inline-block;
-        border-radius: 3em !important;
-        padding: 0;
-        padding-left: 4rem;
-        padding-right: 4rem;
-        overflow: visible;
-    }
-
-    .background-overlay {
-        // background-image: url("/images/background-blur3.jpg");
-        // @include media-query($on-palm) {
-        //     background-size: 250px;
-        // }
-
-        //background-color: #DAF3FB;
-        background-color: white;
-        //border: solid 10px;
-        // border: solid 0.2rem;
-        //border-color: darken(#DAF3FB, 10%);
-        // background-color: darken(#DAF3FB, 10%);
-
-        // QQQ: header bg
-        // background-image: url("/images/clouds.png");
-        // background-size: 100rem;
-        // //background-size: cover;
-        // background-repeat: no-repeat;
-        // background-position: left -220px bottom -80px;
-    }
-
-    border-radius: 2em;
-
-    hr {
-        //background-color: #ccc;
-        background-color: darken(#DAF3FB, 10%);
-        // background-color: white;
-        border: none;
-        height: 0.2rem;
-    }
+.site-header-title-background {
+    background-color: white;
 }
 
 .site-title {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    font-size: 7em;
+    font-size: 4.2em;
+    font-weight: 900;
 
-    .site-title-description {
-        font-size: 1.8rem !important;
-        line-height: 1.1;
-        font-weight: 200;
-        margin-top: 1em;
-        width: 60rem;
-        margin-left: auto;
-        color: #444;
+    text-align: left;
+    line-height: 1;
+
+    a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: darken($grey-color, 25%);
     }
 
-    line-height: 0.9em;
-    font-weight: 900;
-    overflow: hidden;
-
     .title {
+        // ensures that baseline is correctly aligned
+        -webkit-transform-origin: center left;
+        transform-origin: center left;
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+
         word-spacing: -0.114em;
         letter-spacing: -0.043em;
 
         .name {
             color: red;
-
-            // this used to be the arch over "Archagon"
-            // border-radius: 0.25em;
-            // border: 3px solid black;
-            // border-style: solid none none none;
-            // border-color: red;
-            // display: inline-block;
         }
     }
+}
 
-    // used to be "(Jekyll Test)" class
-    // .subtitle {
-    //     &::before {
-    //         content: "(";
-    //     }
-    //     &::after {
-    //         content: ")";
-    //     }
-
-    //     font-size: 70%;
-    //     font-weight: 300;
-
-    //     // color: lightgray;
-    //     color: mix(pink, white, 95%);
-    // }
-
-    a, a:hover {
-        text-decoration: none;
-    }
-
-    // header text color
-    a, a:visited {
-        color: darken($grey-color, 25%);
-    }
-
-    // otherwise, "g" might get cut off
-    overflow: visible;
+.site-title-icon {
+    display: block;
+    height: 1em;
+    margin-right: 0.2em;
 }
 
 .site-nav {
-    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-    font-size: 2.4em;
-    @include media-query($on-palm) {
-        font-size: 3.2em;
-    }
+    // font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    // font-family: Helvetica, Arial, sans-serif;
+    font-family: $header-font-family;
+    text-transform: uppercase;
+    font-size: 2.2em;
     font-weight: 500;
 
-    border-radius: 0.5em;
-    border-width: 2px;
-    padding: 0 1em 0 1em;
+    text-align: right;
 
-    .page-link {
-        color: darken(gray, 20%);
-        line-height: $base-line-height;
-    }
+    & > ul {
+        // bullets between list items
+        & > li {
+            position: relative;
+            display: inline-block; //correct positioning of bullet
 
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+            &:not(:first-child) {
+                margin-left: 1.5rem;
+            }
+            &:not(:last-child) {
+                margin-right: 1.5rem;
+            }
 
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-
-    @include media-query($on-palm) {
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
+            &:not(:first-child):before {
+                content: "•";
+                position: absolute;
+                top: 0;
+                color: $navbar-bullet-color;
+                left: -1.8rem; //guess the extra 0.3 accounts for the size of the bullet? dunno
+            }
+        }
     }
 }
+
+.site-nav-page-link-icons {
+    & > a > img {
+        margin: 0;
+        padding: 0;
+    }
+    & > a:first-child {
+        margin-right: 0.5rem;
+    }
+    & > a:last-child {
+        margin-left: 0.5rem;
+    }
+}
+
+.site-nav-page-link {
+    color: white; //mostly for '/'
+}
+a.site-nav-page-link:link, 
+a.site-nav-page-link:visited, 
+a.site-nav-page-link:hover, 
+a.site-nav-page-link:active {
+    color: white;
+    text-decoration: none;
+}
+a.site-nav-page-link:hover {
+    color: darken(blue, 20%);
+}
+
+/////////////////////////
+// Compact Adjustments //
+/////////////////////////
+
+.site-header {
+    @include media-query($on-palm) {
+        font-size: 1.5em;
+    }
+}
+// .site-title {
+//     @include media-query($on-palm) {
+//         font-size: 6.0em;
+//     }
+// }
+// .site-nav {
+//     @include media-query($on-palm) {
+//         font-size: 3.5em;
+//     }
+// }
