@@ -18,7 +18,7 @@ There were a few wireless gaming peripherals that used proprietary USB adaptors 
 
 Recently, I've been working more in cafés, and the endless dance of the wire once again started to irk me. I thought about getting an extra, cheapie Bluetooth mouse for working on the go, but I try to only buy things that can be stuffed into a suitcase even if I'm not actively traveling — and unfortunately, [my eGPU][egpu] was now reserving a large chunk of that real estate. Two mice was just too much, so I decided once again to take a peek at the high end of the Bluetooth peripheral market.
 
->> talk about need for single mouse, as well as accommodations for gaming, e.g. wire or adaptor
+> talk about need for single mouse, as well as accommodations for gaming, e.g. wire or adaptor
 
 Logitech had two new headlining models in this category, the [MX Master][master] and [MX Anywhere 2][anywhere]. These were clearly top-shelf items, sporting sleek designs, several color choices, and Logitech's free-spinning MicroGear Precision scroll wheel. Interestingly, they also reached 1600 DPI and shared the ability to connect to Bluetooth *or* a Logitech Unifying USB receiver at the user's discretion. (Update: the newly-released MX Master S2 goes up to 4000 DPI.) Based on my experience with the G602, I figured Bluetooth might be handy for everyday use while the USB receiver would work well for lag-free gaming. Were these the first Bluetooth mice that could actually satisfy my criteria? I had to give them a spin!
 

@@ -1,3 +1,36 @@
+//////////////
+// Includes //
+//////////////
+
+// %clearfix {
+//     &:after {
+//         content: "";
+//         display: table;
+//         clear: both;
+//     }
+// }
+
+// TODO: figure out how to make this compatible with clearfix
+// h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure,
+%vertical-rhythm {
+    &:not(:last-child) { //AB: seems to be the way to go
+        margin-bottom: $layout-spacing-unit;
+        // @include media-query($on-palm) {
+        //     margin-bottom: $layout-spacing-unit / 2;
+        // }
+    }
+}
+
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+//////////////////////
+// Top-Level Config //
+//////////////////////
+
 // border box sizing
 *, *:before, *:after {
     -webkit-box-sizing: border-box; 
@@ -7,407 +40,94 @@
 
 // reset for em and rem
 html {
-    font-size: $base-font-size;
+    font-size: 10px;
 }
 body {
-    font-size: 1em;
+    font-size: $base-font-size;
 }
 
 // responsive font sizing
+// TODO: html vs. body font size?
 html {
     @include media-query($on-palm) {
-        font-size: $base-font-size * 0.5;
+        font-size: $small-font-size;
     }
 }
 
+/////////////////////////////
+// Default Element Styling //
+/////////////////////////////
 
-/**
- * Reset some basic elements
- */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
-    margin: 0;
-    padding: 0;
+// links
+a {
+    color: $brand-color;
+    // text-decoration: none;
+
+    &:visited {
+        color: mix(black, $brand-color, 50%);
+    }
+    &:hover {
+        color: mix(black, $brand-color, 50%);
+        //text-decoration: underline;
+    }
 }
-
-
-
-/**
- * Basic styling
- */
-body {
-    font-family: $base-font-family;
-    // font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
-    color: $text-color;
-    background-color: $background-color;
-}
-
-
-
-/**
- * Set `margin-bottom` to maintain vertycal rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $layout-spacing-unit;
-    @include media-query($on-palm) {
-        margin-bottom: $layout-spacing-unit / 2;
+h1, h2, h3, h4, h5, h6 {
+    a {
+        text-decoration: none;
     }
 }
 
-
-
-/**
- * Images
- */
 img {
     max-width: 100%;
-    vertical-align: middle;
+    //vertical-align: middle; //TODO: what's this for? ruins icons in navbar
 }
 
-
-
-/**
- * Videos
- */
 video {
     max-width: 100%;
 }
 
-
-/**
- * YouTube Embeds: https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
- */
- @mixin youtube {
-    position: relative;
-    width: 100%;
-    height: 0;
-
-    iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-    }
- }
-.youtube_16_9 {
-    @include youtube;
-    padding-bottom: 56.25%;
-}
-.youtube_4_3 {
-    @include youtube;
-    padding-bottom: 75%;
-}
-
-
-
-/**
- * Figures
- */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
-
-/**
- * Lists
- */
-ul, ol {
-    margin-left: $spacing-unit;
-}
-
-li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-}
-
-
-
-/**
- * Headings
- */
 h1, h2, h3, h4, h5, h6 {
-    // font-weight: 300;
     font-weight: 400;
-    // font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-    // font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-family: $header-font-family;
     color: rgb(80, 80, 80); 
 }
 
-
-
-// TODO: separate "document" class w/ "post" and "page" sibling clases?!
-.document-post, .document-page {
-    overflow: hidden;
-}
-
-
-
-/**
- * Links
- */
-a {
-    color: $brand-color;
-    text-decoration: none;
-
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
-
-    &:hover {
-        color: $text-color;
-        text-decoration: underline;
-    }
-}
-
-
-
-/**
- * Blockquotes
- */
 blockquote {
     color: $grey-color;
     border-left: 4px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
-    font-size: 1.8em;
-    letter-spacing: -1px;
-    font-style: italic;
-
-    > :last-child {
-        margin-bottom: 0;
-    }
+    // font-size: 1.1em;
 }
 
-
-
-/**
- * Code formatting
- */
-pre,
-code {
+pre, code {
     font-size: 0.92em;
     border: 1px solid lightgray;
     border-radius: 0.3em;
     background-color: #eef;
 }
-
 code {
-    padding: 0.053em 0.263em;
+    padding: 0.05em 0.3em; //0.05 to capture underlines
 }
-
 pre {
-    padding: 0.421em 0.632em;
-    overflow-x: scroll;
-
-    // AB:
-    // width: 700px;
-    // margin-left: auto;
-    // margin-right: auto;
-    // margin-top: 40px;
-    // margin-bottom: 40px;
+    padding: 0.4em 0.6em;
+    overflow-x: auto;
 
     > code {
         border: 0;
-        padding-right: 0;
-        padding-left: 0;
+        padding: 0;
     }
 }
 
+//////////////////////////
+// Default Text Styling //
+//////////////////////////
 
-
-/**
- * Wrapper
- */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
-    @extend %clearfix;
-
-    @include media-query($on-palm) {
-        padding-right: $spacing-unit / 2;
-        padding-left: $spacing-unit / 2;
-    }
-
-    // @include media-query($on-laptop) {
-    //     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    //     max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    //     padding-right: $spacing-unit / 2;
-    //     padding-left: $spacing-unit / 2;
-    // }
-}
-
-
-
-/**
- * Clearfix
- */
-%clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
-    }
-}
-
-
-
-
-
-
-////////////
-// TABLES //
-////////////
-
-table
-{
-    text-align:center;
-    border-collapse:collapse;
-    border:none;
-    font-size:0.85em;
-    display:inline-block;
-    line-height:1.4em;
-}
-.tablepadding
-{
-    padding:30px;
-    display:inline-block;
-    background:lavender;
-    border-radius:20px;
-    margin-left:auto;
-    margin-right:auto;
-}
-.tablecontainer
-{
-    overflow:auto;
-    text-align: center; 
-}
-table caption
-{
-    font-size:1.5em;
-    font-weight:bold;
-    margin-bottom:1.5em;
-}
-th, td
-{
-    padding: 0.4em 1em 0.4em 1em;
-    border:solid;
-    font-size:1.1em;
-}
-th
-{
-    border-width:1px;
-    border-color:#A8A8A8 ;
-}
-td
-{
-    border-width:1px;
-    border-color:#D3D3D3;
-    background-color:white;
-}
-col.ch
-{
-    background-color:#E0E0E0;
-}
-col.data
-{
-    width:175px;
-}
-tr.rh
-{
-    background-color:#E0E0E0;
-}
-th.th1
-{
-    text-align:left;
-}
-th.th2
-{
-    padding-left:4em;
-    text-align:left;
-    font-size:0.95em;
-    font-style:italic;
-    width:100px;
-}
-td.same
-{
-    background-color:#CCFF66;
-    color:black;
-}
-td.bitbetter
-{
-    background-color:#66FF66;
-    color:black;
-}
-td.lotbetter
-{
-    background-color:#00CC00;
-    color:black;
-}
-td.best
-{
-    background-color:#009900;
-    color:black;
-}
-td.bitworse
-{
-    background-color:#FF6666;
-    color:black;
-}
-td.lotworse
-{
-    background-color:#CC3333;
-    color:black;
-}
-td.worst
-{
-    background-color:red;
-    color:black;
-}
-td.empty
-{
-    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAALklEQVQIW2P8DwQMSODhw4cMjMiCIAF5eXmEIEwApAmsElkALPjgwYP/IC3IAABz6B+VzaCHWgAAAABJRU5ErkJggg==) repeat;
-    text-align:center;
-}
-td.corner
-{
-    border:none;
-    background:lavender;
+body {
+    font-family: $base-font-family;
+    font-weight: 100;
+    // font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    // font-weight: 300;
+    // font-size: $base-font-size;
+    line-height: $base-line-height;
+    color: $text-color;
 }

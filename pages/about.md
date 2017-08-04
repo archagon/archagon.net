@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-<center><img src="/images/avatar.jpg" width="400em" style="margin-bottom: 2em; border-radius: 1.25em;"/></center>
+<center><img src="/images/avatar.jpg" width="250em" style="margin-bottom: 2em; border-radius: 1.25em;"/></center>
 
 Hello! My name is Alexei Baboulevitch, also known as Archagon. I'm a perpetually traveling software developer working on various apps and games.
 

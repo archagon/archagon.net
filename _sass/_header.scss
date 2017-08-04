@@ -135,6 +135,8 @@ $navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
     text-align: right;
 
     & > ul {
+        margin: 0;
+
         // bullets between list items
         & > li {
             position: relative;

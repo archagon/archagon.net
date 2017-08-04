@@ -1,0 +1,114 @@
+table
+{
+    text-align: center;
+    border-collapse: collapse;
+    border: none;
+    font-size: 1.6rem;
+    display: inline-block;
+    line-height: 1.3;
+}
+.tablepadding
+{
+    padding: 3.0rem;
+    display: inline-block;
+    background: lavender;
+    border-radius: 2.0rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tablecontainer
+{
+    overflow: auto;
+    text-align: center; 
+}
+table caption
+{
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+}
+th, td
+{
+    padding: 0.4em 1em 0.4em 1em;
+    border: solid;
+}
+th
+{
+    border-width: 1px;
+    border-color: #A8A8A8;
+}
+td
+{
+    border-width: 1px;
+    border-color: #D3D3D3;
+    background-color: white;
+}
+col.ch
+{
+    background-color: #E0E0E0;
+}
+col.data
+{
+    width: 20rem;
+}
+tr.rh
+{
+    background-color: #E0E0E0;
+}
+th.th1
+{
+    text-align: left;
+}
+th.th2
+{
+    padding-left: 4em;
+    text-align: left;
+    font-size: 0.95em;
+    font-style: italic;
+    width: 100px;
+}
+td.same
+{
+    background-color: #CCFF66;
+    color: black;
+}
+td.bitbetter
+{
+    background-color: #66FF66;
+    color: black;
+}
+td.lotbetter
+{
+    background-color: #00CC00;
+    color: black;
+}
+td.best
+{
+    background-color: #009900;
+    color: black;
+}
+td.bitworse
+{
+    background-color: #FF6666;
+    color: black;
+}
+td.lotworse
+{
+    background-color: #CC3333;
+    color: black;
+}
+td.worst
+{
+    background-color: red;
+    color: black;
+}
+td.empty
+{
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAALklEQVQIW2P8DwQMSODhw4cMjMiCIAF5eXmEIEwApAmsElkALPjgwYP/IC3IAABz6B+VzaCHWgAAAABJRU5ErkJggg==) repeat;
+    text-align: center;
+}
+td.corner
+{
+    border: none;
+    background: lavender;
+}

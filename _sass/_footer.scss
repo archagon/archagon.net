@@ -25,6 +25,10 @@
 
 .site-footer-credits {
     text-align: left;
+
+    p {
+        margin: 0; //override default paragraph behavior
+    }
 }
 
 .site-footer-links {
