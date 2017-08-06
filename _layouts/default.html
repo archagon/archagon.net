@@ -8,19 +8,19 @@
 {% filterize scssify %}
     {% for category in site.data.categories %}
         .category-{{ category[0] }} {
-            //color: {{ category[1].color }};
-            .post-title { 
-                background-color: {{ category[1].color }};
-                //color: mix({{ category[1].color }}, black, 50%);
-                //color: black;
-            }
-            &.category_swatch {
+            &.category-swatch {
                 background-color: {{ category[1].color }};
             }
-            // QQQ:
-            &.document-post, &.document-page {
-                //border: solid 0.2rem {{ category[1].color }};
-                //border-bottom: solid 2rem {{ category[1].color }};
+            &.document-header-category {
+                background-color: darken({{ category[1].color }}, 30%);
+            }
+        }
+        .post-list {
+            .category-{{ category[0] }} {
+                .post-title { 
+                    background-color: darken({{ category[1].color }}, 20%);
+                    text-shadow: 0px 2px darken({{ category[1].color }}, 30%);
+                }
             }
         }
 {% endfor %}

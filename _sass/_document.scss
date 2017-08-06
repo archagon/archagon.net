@@ -1,0 +1,157 @@
+// TODO: separate "document" class w/ "post" and "page" sibling clases?!
+
+///////////
+// Style //
+///////////
+
+.post-list {
+    padding-left: 0; // <ul> override: prevents gap from occuring on index page
+    list-style: none;
+}
+
+// spacing between front-page posts
+.post-list {
+    $post-list-spacing-unit: 3rem;
+
+    & >:first-child {
+        margin-top: $post-list-spacing-unit;
+    }
+    & >:not(:last-child) {
+        margin-bottom: $post-list-spacing-unit;
+
+        // @include media-query($on-palm) {
+        //     margin-bottom: $layout-spacing-unit;
+        // }
+    }
+    & >:last-child {
+        margin-bottom: $post-list-spacing-unit;
+    }
+}
+
+.document-post, .document-page {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
+    background-color: white;
+
+    .section-content {
+        // fancy image hr
+        hr {
+            display: block;
+            border: 0px;
+            height: 1.5em;
+            margin: 1.5em 0;
+
+            background-size: 30em;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("/images/Decoration.svg");
+        }
+    }
+}
+
+.document-post {
+    .section-content {
+        // top-level, secondary post headers should have decoration
+        & > h2, & > h3, & > h4, & > h5, & > h6 {
+            position: relative;
+
+            &::before {
+                content: "❡";
+                position: absolute;
+                left: -1.0em;
+                color: lightgray;
+            }
+        }
+    }
+}
+
+.post-list {
+    .document-post, .document-page {
+        padding-left: $document-padding;
+        padding-right: $document-padding;
+        padding-top: 0; //for header
+
+        box-shadow: -0.1rem 0.5rem 1.0rem 0 rgba(black, 0.15);
+    }
+}
+
+////////////
+// Header //
+////////////
+
+.section-header {
+    @extend %vertical-rhythm;
+    display: block;
+    margin-top: 0;
+
+    text-align: center;
+
+    // ignore vertical rhythm, except for mild spacing between title and date
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    h1.post-title {
+        font-size: 170%;
+    }
+}
+
+.post-list {
+    .section-header {
+        text-align: left;
+
+        h1.post-title {
+            font-size: 140%;
+        }
+
+        // whole-header links require this brittle nonsense
+        a.post-list-header-link {
+            &:link, &:visited, &:hover, &:active {
+                .post-title {
+                    color: white;
+                }
+                text-decoration: none;
+            }
+        }
+
+        // fancy touching-the-top header block
+        .post-title {
+            padding: 0.25rem 0.5rem;
+
+            display: block;
+
+            color: white;
+
+            // edge touching
+            $padding: $document-padding;
+            margin-left: -$padding;
+            padding-left: $padding;
+            padding-right: $padding;
+            margin-right: -$padding;
+        }
+    }
+}
+
+.post-meta {
+    margin-top: 0.3rem;
+    color: $grey-color;
+}
+h2.post-meta { //we have to use h2 to override default header rules
+    font-size: 1.0em;
+}
+
+// TODO: NEXT: ids
+.document-header-categories {
+    margin-left: 1rem;
+
+    font-family: $alert-font-family;
+    color: white;
+    font-weight: 100;
+    font-size: 0.9em;
+}
+.document-header-category {
+    text-transform: capitalize;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.8rem;
+}

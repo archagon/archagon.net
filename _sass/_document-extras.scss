@@ -1,10 +1,34 @@
+///////////////////////
+// Small Decorations //
+///////////////////////
+
 .more-inside {
     text-align: left;
     font-size: 1.05em;
 }
 
+.signature {
+    text-align: right;
+
+    p {
+        margin: 0;
+    }
+
+    .signature-name {
+        font-size: 115%;
+        color: red;
+    }
+    .signature-date {
+    }
+}
+
+///////////////////////
+// Reusable Elements //
+///////////////////////
+
 .important-list {
-    list-style-position:inside;
+    // list-style-position:inside;
+    margin-left: 1.0em;
 }
 
 .deprecated {
@@ -12,35 +36,23 @@
     text-decoration: line-through;
 }
 
-//lots of images right next to one another; easier and more syntactically correct than wrapping in <p>
-.image-series {
+// applied to div, not image
+.full-width {
+    @extend %vertical-rhythm;
+    display: block;
+
+    width: calc(100% + #{ $document-padding * 2 });
+    margin-left: -$document-padding;
+
     img {
-        margin-bottom: 0.3em;
+        max-width: 100%;
+        min-width: 100%;
     }
 }
 
-// https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
-@mixin youtube {
-    position: relative;
-    width: 100%;
-    height: 0;
-
-    iframe {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-    }
-}
-.youtube_16_9 {
-    @include youtube;
-    padding-bottom: 56.25%;
-}
-.youtube_4_3 {
-    @include youtube;
-    padding-bottom: 75%;
-}
+////////////////
+// Structures //
+////////////////
 
 .caption {
     // so that I don't have to wrap it in <p>
@@ -55,7 +67,7 @@
     // font-style: italic;
 
     font-family: $alert-font-family;
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-style: italic;
 
     max-width: 90%;
@@ -65,6 +77,63 @@
     // captions should be closer to their image than the default; and margin-bottom is handled by div
     margin-top: 0.5em;
     margin-bottom: 0;
+}
+
+//lots of images right next to one another; easier and more syntactically correct than wrapping in <p>
+.image-series {
+    @extend %vertical-rhythm;
+    display: block;
+
+    img {
+        margin-bottom: 0.3em;
+    }
+}
+
+// TODO: related to above... perhaps we can consolidate?
+// TODO: revisit at some point, this is kinda ugly: 1) auto retina max width? 2) explicit wrap size?
+.image-gallery {
+    @extend %vertical-rhythm;
+    display: block;
+    
+    h1 {
+        font-size: 120%;
+        text-align: center;
+    }
+
+    // not given a class for ease of use w/markdown
+    div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    div.image-gallery-two-column { //ish — determined by flex-basis
+        // need second div to make sure image doesn't distort
+        div {
+            -ms-flex-negative: 1;
+            flex-shrink: 1;
+
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+
+            -ms-flex-preferred-size: 25rem;
+            flex-basis: 25rem; //I believe this effectively acts as the target min width before wrap
+
+            margin: 1rem;
+        }
+    }
 }
 
 .notification {
@@ -79,7 +148,7 @@
     color: #111;
 
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1;
     font-family: $alert-font-family;
     font-weight: 400;
@@ -102,18 +171,31 @@
     }
 }
 
-// applied to div, not image
-.full-width {
-    @extend %vertical-rhythm;
-    display: block;
+////////////
+// Mixins //
+////////////
 
-    width: calc(100% + #{ $document-padding * 2 });
-    margin-left: -$document-padding;
+// https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
+@mixin youtube {
+    position: relative;
+    width: 100%;
+    height: 0;
 
-    img {
-        max-width: 100%;
-        min-width: 100%;
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
     }
+}
+.youtube_16_9 {
+    @include youtube;
+    padding-bottom: 56.25%;
+}
+.youtube_4_3 {
+    @include youtube;
+    padding-bottom: 75%;
 }
 
 ///////////////

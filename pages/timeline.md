@@ -3,7 +3,7 @@ layout: page
 title: Travel
 permalink: /timeline/
 ---
-<style>article.timeline { width: 600px; }</style>
+<style>article.timeline { width: 600px; max-width: 100%; }</style>
 
 <p><article class="timeline">
     {%include timeline-us-trip-2013.html %}

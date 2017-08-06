@@ -6,7 +6,7 @@ layout: default
 
 <header class="section-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <h2 class="post-meta">{{ page.date | date: "%b %-d, %Y" }}</h2>
+    <h2 class="post-meta">{{ page.date | date: "%b %-d, %Y" }}<span class="document-header-categories">{% for category in page.categories %} <span class="document-header-category category-{{ category }}">{{ category }}</span>{% endfor %}</span></h2>
 </header>
 
 <article class="section-content">

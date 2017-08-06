@@ -19,7 +19,7 @@
 
 .wrapper {
     //max-width: $content-width;
-    max-width: calc(#{$content-width} + (#{$spacing-unit} * 2));
+    max-width: calc(#{$content-width} + (#{$document-padding} * 2));
     margin-right: auto;
     margin-left: auto;
     

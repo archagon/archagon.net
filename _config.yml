@@ -11,6 +11,7 @@ url: "http://beta-blog.archagon.net" # the base hostname & protocol for your sit
 twitter_username: archagon
 github_username:  archagon
 permalink: /:year/:month/:day/:title/
+timezone: America/Los_Angeles
 
 # Build settings
 markdown: kramdown

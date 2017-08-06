@@ -12,57 +12,37 @@ As an side, I also ran a few tests in [microe's MouseTester][mousetester] to com
 
 ## Data
 
-<p>
-<center><h3>MX 518</h3></center>
-
-<div style="display:flex;flex-wrap:wrap">
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mx518-left.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mx518-right.png" width="45%" />
-
+<div class="image-gallery">
+<h1>MX 518</h1>
+<div class="image-gallery-two-column">
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mx518-left.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mx518-right.png" /></div>
 </div>
-</p>
-
-<p>
-<center><h3>G602</h3></center>
-
-<div style="display:flex;flex-wrap:wrap">
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/g602-left.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/g602-left-2.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/g602-right.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/g602-right-2.png" width="45%" />
-
 </div>
-</p>
 
-<p>
-<center><h3>MX Master</h3></center>
-
-<div style="display:flex;flex-wrap:wrap">
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-left.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-left-extended.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-left-charging.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right-2.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right-extended.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right-charged.png" width="45%" />
-
-<img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-bluetooth.png" width="45%" />
-
+<div class="image-gallery">
+<h1>G602</h1>
+<div class="image-gallery-two-column">
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/g602-left.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/g602-left-2.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/g602-right.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/g602-right-2.png" /></div>
 </div>
-</p>
+</div>
+
+<div class="image-gallery">
+<h1>MX Master</h1>
+<div class="image-gallery-two-column">
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-left.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-left-extended.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-left-charging.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right-2.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right-extended.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-right-charged.png" /></div>
+<div style="max-width: 40rem"><img src="{{ site.baseurl }}/images/mx-master/charts/mxmaster-bluetooth.png" /></div>
+</div>
+</div>
 
 ## Conclusions
 
