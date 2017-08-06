@@ -18,10 +18,6 @@
     }
     & >:not(:last-child) {
         margin-bottom: $post-list-spacing-unit;
-
-        // @include media-query($on-palm) {
-        //     margin-bottom: $layout-spacing-unit;
-        // }
     }
     & >:last-child {
         margin-bottom: $post-list-spacing-unit;
@@ -47,6 +43,18 @@
             background-repeat: no-repeat;
             background-image: url("/images/Decoration.svg");
         }
+    }
+
+    // TODO: find better fix for image centering
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    video {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -93,7 +101,7 @@
     }
 
     h1.post-title {
-        font-size: 170%;
+        line-height: 1.1;
     }
 }
 
@@ -134,10 +142,10 @@
 }
 
 .post-meta {
-    margin-top: 0.3rem;
     color: $grey-color;
 }
 h2.post-meta { //we have to use h2 to override default header rules
+    margin-top: 0.5rem;
     font-size: 1.0em;
 }
 

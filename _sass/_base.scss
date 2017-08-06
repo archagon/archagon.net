@@ -56,6 +56,14 @@ html {
     }
 }
 
+// TODO: footer too high if not enough content; visible on timeline page
+// .page-content {
+//     min-height: 88vh;
+// }
+// .document-page {
+//     min-height: 100%;
+// }
+
 /////////////////////////////
 // Default Element Styling //
 /////////////////////////////
@@ -88,10 +96,36 @@ video {
     max-width: 100%;
 }
 
+img.content {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
     font-family: $header-font-family;
+    font-weight: 400;
+
     color: rgb(80, 80, 80); 
+}
+
+//~1.09x multiplier
+h1 {
+    font-size: 170%;
+}
+h2 {
+    font-size: 155%;
+}
+h3 {
+    font-size: 140%;
+}
+h4 {
+    font-size: 130%;
+}
+h5 {
+    font-size: 120%;
+}
+h6 {
+    font-size: 110%;
 }
 
 blockquote {
@@ -134,7 +168,11 @@ body {
     font-weight: 100;
     // font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
     // font-weight: 300;
-    // font-size: $base-font-size;
+}
+
+// encompasses the center bit -- everything except the header and footer
+.page-content {
+    font-size: 1.9em;
     line-height: $base-line-height;
     color: $text-color;
 }
