@@ -20,6 +20,10 @@
 .wrapper {
     //max-width: $content-width;
     max-width: calc(#{$content-width} + (#{$document-padding} * 2));
+    @include media-query($on-palm) {
+        max-width: calc(#{$content-width} + (#{$document-padding-small} * 2));
+    }
+
     margin-right: auto;
     margin-left: auto;
     
@@ -27,8 +31,8 @@
 
     padding-right: $document-padding;
     padding-left: $document-padding;
-    // @include media-query($on-palm) {
-    //     padding-right: $spacing-unit / 2;
-    //     padding-left: $spacing-unit / 2;
-    // }
+    @include media-query($on-palm) {
+        padding-right: $document-padding-small;
+        padding-left: $document-padding-small;
+    }
 }

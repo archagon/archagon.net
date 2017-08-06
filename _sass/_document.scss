@@ -6,21 +6,25 @@
 
 .post-list {
     padding-left: 0; // <ul> override: prevents gap from occuring on index page
+    margin: 0; // <ul> override: prevents top and bottom margins from interfering with post margins
     list-style: none;
 }
 
 // spacing between front-page posts
 .post-list {
     $post-list-spacing-unit: 3rem;
+    $post-list-spacing-unit-small: 1.5rem;
 
-    & >:first-child {
+    & > * {
         margin-top: $post-list-spacing-unit;
-    }
-    & >:not(:last-child) {
         margin-bottom: $post-list-spacing-unit;
     }
-    & >:last-child {
-        margin-bottom: $post-list-spacing-unit;
+    @include media-query($on-palm) {
+        & > * {
+            // margins too big on compact devices
+            margin-top: $post-list-spacing-unit-small;
+            margin-bottom: $post-list-spacing-unit-small;
+        }
     }
 }
 
@@ -69,6 +73,11 @@
                 position: absolute;
                 left: -1.0em;
                 color: lightgray;
+
+                // margins too small for this to work on compact sizes
+                @include media-query($on-palm) {
+                    visibility: hidden;
+                }
             }
         }
     }
@@ -78,6 +87,11 @@
     .document-post, .document-page {
         padding-left: $document-padding;
         padding-right: $document-padding;
+        @include media-query($on-palm) {
+            padding-left: $document-padding-small;
+            padding-right: $document-padding-small;
+        }
+
         padding-top: 0; //for header
 
         box-shadow: -0.1rem 0.5rem 1.0rem 0 rgba(black, 0.15);
@@ -125,18 +139,23 @@
 
         // fancy touching-the-top header block
         .post-title {
-            padding: 0.25rem 0.5rem;
+            padding: 0.5rem 0.5rem;
 
             display: block;
 
             color: white;
 
             // edge touching
-            $padding: $document-padding;
-            margin-left: -$padding;
-            padding-left: $padding;
-            padding-right: $padding;
-            margin-right: -$padding;
+            margin-left: -$document-padding;
+            padding-left: $document-padding;
+            padding-right: $document-padding;
+            margin-right: -$document-padding;
+            @include media-query($on-palm) {
+                margin-left: -$document-padding-small;
+                padding-left: $document-padding-small;
+                padding-right: $document-padding-small;
+                margin-right: -$document-padding-small;
+            }
         }
     }
 }

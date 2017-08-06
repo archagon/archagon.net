@@ -5,75 +5,38 @@ $navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
 /////////////
 
 .site-header-title-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    @include flexbox;
+    @include justify-content-space-between;
 }
 
 .site-title {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-
-    -webkit-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
+    @include flexbox;
+    @include flex-wrap-nowrap;
+    @include align-items-flex-end;
+    @include flex-shrink(0);
 }
 
 .site-nav-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
+    @include flexbox;
+    @include justify-content-flex-end;
 }
 
 .site-nav {
     & > ul {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+        @include flexbox;
+        @include justify-content-space-between;
+        @include align-items-center;
     }
 }
 
 .site-nav-page-link-icons {
     // correctly centers images... for some reason
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    @include flexbox;
+    @include align-items-center;
 
     & > a {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+        @include flexbox;
+        @include align-items-center;
     }
 
     & > a > img {

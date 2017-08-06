@@ -12,13 +12,14 @@ $alert-font-family: $header-font-family;
 
 $base-font-size:   0.9em;
 $small-font-size:  7px;
-$base-line-height: 1.4;
+$base-line-height: 1.5;
 
 // TODO: figure out how to untangle these
-$spacing-unit:                          1em; //spacing between text elements: p, etc.
-$document-padding:                      4rem; //sides of document
+$spacing-unit: 1em; //spacing between text elements: p, etc.
 
-$layout-spacing-unit:                   2rem; //AB: text etc.
+//sides of document
+$document-padding:       4rem;
+$document-padding-small: 2rem;
 
 $text-color:       #000;
 $brand-color:      #2a7ae2;

@@ -43,6 +43,10 @@
 
     width: calc(100% + #{ $document-padding * 2 });
     margin-left: -$document-padding;
+    @include media-query($on-palm) {
+        width: calc(100% + #{ $document-padding-small * 2 });
+        margin-left: -$document-padding-small;
+    }
 
     img {
         max-width: 100%;
@@ -67,7 +71,7 @@
     // font-style: italic;
 
     font-family: $alert-font-family;
-    font-size: 1.0em;
+    font-size: 1.1em;
     font-style: italic;
 
     max-width: 90%;
@@ -102,34 +106,18 @@
 
     // not given a class for ease of use w/markdown
     div {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
+        @include flexbox;
+        @include flex-wrap-wrap;
+        @include justify-content-center;
+        @include align-items-center;
     }
 
     div.image-gallery-two-column { //ish — determined by flex-basis
         // need second div to make sure image doesn't distort
         div {
-            -ms-flex-negative: 1;
-            flex-shrink: 1;
-
-            -webkit-box-flex: 1;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-
-            -ms-flex-preferred-size: 25rem;
-            flex-basis: 25rem; //I believe this effectively acts as the target min width before wrap
+            @include flex-shrink(1);
+            @include flex-grow(1);
+            @include flex-basis(25rem); //I believe this effectively acts as the target min width before wrap
 
             margin: 1rem;
         }

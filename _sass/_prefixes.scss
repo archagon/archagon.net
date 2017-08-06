@@ -1,41 +1,87 @@
 // TODO: autoprefixer? automate this stuff somehow.
 
-@mixin flexbox() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+/////////////
+// Flexbox //
+/////////////
+
+// generated from http://pleeease.io/play/ on 2017-08-07
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
 
-// TODO: might be incorrect
-@mixin justify-content($values) {
-  -webkit-justify-content: $values;
-  -moz-justify-content:  $values;
-  -ms-justify-content:  $values;
-  justify-content:  $values;
+@mixin flex-shrink($value) {
+    -ms-flex-negative: $value;
+    flex-shrink: $value;
 }
 
-// TODO: might be incorrect
-@mixin flex-flow($values) {
-  -webkit-flex-flow: $values;
-  -moz-flex-flow:  $values;
-  -ms-flex-flow:  $values;
-  flex-flow:  $values;
+@mixin flex-grow($value) {
+    -webkit-box-flex: $value;
+    -ms-flex-positive: $value;
+    flex-grow: $value;
 }
 
-@mixin flex($values) {
-  -webkit-box-flex: $values;
-  -moz-box-flex:  $values;
-  -webkit-flex:  $values;
-  -ms-flex:  $values;
-  flex:  $values;
+@mixin flex-basis($value) {
+    -ms-flex-preferred-size: $value;
+    flex-basis: $value;
 }
 
-@mixin order($val) {
-  -webkit-box-ordinal-group: $val;  
-  -moz-box-ordinal-group: $val;     
-  -ms-flex-order: $val;     
-  -webkit-order: $val;  
-  order: $val;
+@mixin justify-content-space-around {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+@mixin justify-content-flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+@mixin justify-content-flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+@mixin justify-content-center {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+@mixin justify-content-space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+@mixin align-items-flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    -ms-grid-row-align: flex-end;
+    align-items: flex-end;
+}
+@mixin align-items-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+}
+
+@mixin flex-wrap-nowrap {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+@mixin flex-wrap-wrap {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@mixin flex-direction-row {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+@mixin flex-direction-column {
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
