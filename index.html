@@ -3,20 +3,18 @@ layout: default
 ---
 <div class="wrapper">
 
-<div class="home">
-    <ul class="post-list">{% for post in site.posts %}
-        <li id="{{ post.selector_id }}" class="document-post{% include category_class.scss post=post %}">
-            <header class="section-header">
-                <h1 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
-                <h2 class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</h2>
-            </header>
+<ul class="post-list">{% for post in site.posts %}
+    <li id="{{ post.selector_id }}" class="document-post">
+        <header class="section-header">
+            <a href="{{ post.url | prepend: site.baseurl }}" class="post-list-header-link"><h1 class="post-title{% include category_class.scss post=post %}">{{ post.title }}</h1></a>
+            <h2 class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</h2>
+        </header>
 
-            <article class="section-content">
-            {{ post.excerpt }} 
-            <a href="{{ post.url | prepend: site.baseurl }}"><span class="more-inside">Continue Reading...</span></a>
-            </article>
-        </li>{% endfor %}
-    </ul>
-</div>
+        <article class="section-content">
+        {{ post.excerpt }} 
+        <a href="{{ post.url | prepend: site.baseurl }}"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>{% endfor %}
+</ul>
 
 </div>
