@@ -65,6 +65,12 @@
     -ms-grid-row-align: center;
     align-items: center;
 }
+@mixin align-items-baseline {
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    -ms-grid-row-align: baseline;
+    align-items: baseline;
+}
 
 @mixin flex-wrap-nowrap {
     -ms-flex-wrap: nowrap;
