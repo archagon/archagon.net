@@ -4,13 +4,13 @@
         "_source": "http://tristen.ca/hcl-picker/#/hcl/14/1.24/FDC5D3/FDCA90"
     },
     "jekyll": {
-        "color": "#B19CD9"
+        "color": "#C79E85"
     },
     "travel": {
-        "color": "#B0DFB7"
+        "color": "#CEC3E3"
     },
     "programming": {
-        "color": "#FDC5D3"
+        "color": "#FDD5DF"
     },
     "technology": {
         "color": "#FDCA99"
@@ -22,7 +22,8 @@
         "color": "#C0DFFE"
     },
     "reviews": {
-        "color": "#D2D994"
+        "_color": "#32EC4C",
+        "color": "#83DB92"
     },
     "personal": {
         "color": "#CAD4E1"
