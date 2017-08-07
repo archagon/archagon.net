@@ -10,7 +10,6 @@
 //     }
 // }
 
-// TODO: figure out how to make this compatible with clearfix 
 // TODO: should this include display: block?
 // h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure,
 %vertical-rhythm {
@@ -63,13 +62,15 @@ html {
     }
 }
 
-// TODO: footer too high if not enough content; visible on timeline page
-// .page-content {
-//     min-height: 88vh;
-// }
-// .document-page {
-//     min-height: 100%;
-// }
+// footer too high if not enough content; visible on timeline page
+.page-content {
+    // TODO: this is only approximate; I'm not really sure how else to do it
+    min-height: calc(100vh - 9.7rem);
+}
+// HACK: oh boy this does not belong here at all
+.document-page, .document-post {
+    min-height: inherit;
+}
 
 /////////////////////////////
 // Default Element Styling //
