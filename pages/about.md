@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-<img src="/images/avatar.jpg" class="about-photo" />
+<img src="/images/avatar.jpg" class="about-photo bold-shadow" />
 
 Hi! I'm Alexei, and I'm a frequently-on-the-go software developer working on creative tools, games, and other software. Born in the USSR, raised in California, educated at UC Berkeley with a BA in Computer Science and Music. (Go Bears!) Interested in visual art, animation, game design, musical composition, and cooperative living.
 
