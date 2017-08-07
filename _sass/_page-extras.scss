@@ -1,19 +1,34 @@
-.about-icon-container {
-    // display: flex;
-    // align-items: center;
+///////////
+// About //
+///////////
+
+.about-photo {
+    width: 25rem;
+    box-shadow: 0px 0.5rem 1.5rem #888;
+    margin-bottom: 1.5em; //works a bit better w/shadow
 }
 
-.about-icon {
-    > svg {
-        // display: flex;
-        // align-items: center;
-
-        width: 1.6rem;
-        height: 1.6rem;
-        vertical-align: middle; //TODO: works OK, but not as well as flexbox alignment
-
-        path {
-            fill: $grey-color;
-        }
+// TODO: can't quite get icon centering with text right
+.about-social-icon {
+    // need to override document <img> defaults
+    @at-root img#{&} {
+        height: 0.9em;
+        align-self: center;
+        margin-right: 0.15em;
     }
+}
+
+.about-icon-container {
+    @include inline-flex;
+    @include align-items-baseline;
+
+    $padding: 0.3em;
+    &:first-child {
+        padding-left: $padding;
+    }
+    &:last-child {
+        padding-right: $padding;
+    }
+    padding-left: $padding / 2;
+    padding-right: $padding / 2;
 }

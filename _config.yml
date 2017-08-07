@@ -1,17 +1,19 @@
 # Site settings
 title: Archagon Was Here
 html_title: <div class="title"><span class="name">Archagon</span> Was Here</div>
-email: archagon@archagon.net
 description: > # this means to ignore newlines until "baseurl:"
-  Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal
-  blog webspacehomepage, featuring writing on software development, travel, photography,
-  and more.
+ Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 baseurl: "" # the subpath of your site, e.g. /blog/ TODO: double slash
 url: "http://beta-blog.archagon.net" # the base hostname & protocol for your site
-twitter_username: archagon
-github_username:  archagon
 permalink: /:year/:month/:day/:title/
 timezone: America/Los_Angeles
+
+# Social
+email: archagon@archagon.net
+twitter: archagon
+github:  archagon
+instagram: archagon
+goodreads: 2196584-archagon
 
 # Build settings
 markdown: kramdown
