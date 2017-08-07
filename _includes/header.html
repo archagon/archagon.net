@@ -16,8 +16,11 @@
             <nav class="site-nav">
                 <ul>
                     <li><a class="site-nav-page-link" href="{{ site.baseurl }}/">Blog</a></li>
-                    {% for page in site.pages %}{% if page.title %}<li><a class="site-nav-page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
-                    {% endif %}{% endfor %}<li><span class="site-nav-page-link site-nav-page-link-icons"><a href="{{ "/feed.xml" | prepend: site.baseurl }}"><img src="{{ site.baseurl }}/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/{{ site.twitter_username }}"><img src="{{ site.baseurl }}/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                    <!-- <li><a class="site-nav-page-link" href="{{ site.baseurl }}/travel/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="{{ site.baseurl }}/archive/">Archive</a></li>
+                    <li><a class="site-nav-page-link" href="{{ site.baseurl }}/projects/">Projects</a></li>
+                    <li><a class="site-nav-page-link" href="{{ site.baseurl }}/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="{{ "/feed.xml" | prepend: site.baseurl }}"><img src="{{ site.baseurl }}/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/{{ site.twitter_username }}"><img src="{{ site.baseurl }}/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
                 </ul>
             </nav>
         </div>
