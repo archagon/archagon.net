@@ -11,7 +11,7 @@ layout: default
         </header>
 
         <article class="section-content">
-        {{ post.excerpt }} 
+        {{ post.excerpt | strip_footnotes }} 
         <a href="{{ post.url | prepend: site.baseurl }}"><span class="more-inside">Continue Reading...</span></a>
         </article>
     </li>{% endfor %}
