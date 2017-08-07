@@ -25,6 +25,8 @@ Before starting any work on Composer's Sketchpad, I had to ask myself: was the a
 
 I had barely done any graphics programming up to this point, so I had to feel out the limits of OpenGL as I blindly barged ahead — always a painful way to develop a project.
 
+<!--more-->
+
 At first, I briefly considered implementing drawing using Photoshop-like brushes: that is to say, directly toggling pixels on a bitmap as the user moved their fingers around the screen. This seemed appropriate for something that behaved so much like a drawing application. However, I quickly realized that the representation of my notes should really be separate from their rendering (as with any good MVC design), which meant that I couldn't just save the bitmap and be done with it. Furthermore, the finite resolution of the bitmap presented a number of problems. How could I implement high-quality zoom without having to re-render everything? How would it be possible to have an infinite canvas without having to implement a complex tiled rendering system? (I was aiming for maximum possible simplicity in my architecture at this point.) How could I switch layers seamlessly without storing a bitmap for each layer? It just wasn't a good fit given the dynamic features of my app.
 
 So I decided try for a [path rendering][path_rendering] approach instead. My musical notes would be stored as points in time/pitch space, and then the renderer would convert them into pleasing, smooth curves to draw on the screen.

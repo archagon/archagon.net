@@ -7,6 +7,8 @@ categories: technology
 ---
 It's disappointing to see many of my [favorite](http://daringfireball.net/2015/02/apple_watch_pricing) Apple [bloggers](http://www.marco.org/2015/03/04/boring-apple-watch-edition-pricing) devote so much of their time to Apple Watch Edition gossip. How much of it is going to be solid gold? Will it be $5000, $10000, $15000? How much of them will Apple sell in their first quarter? Will they be a hit with the rich and powerful in China?
 
+<!--more-->
+
 My question is: why in the *least bit* should us techies care? Sure — catering to the unfathomably well-off will make an impact on Apple's fortunes in the long run, and spinning out into a fashion brand might make the company grow at an even more breakneck pace. But I was under the impression that we were Apple fans in the first place because they made best-in-breed products for *everyone*, not just the elite.
 
 We loved our iPods and iPhones for their sleek design and smooth UI, even when people dismissed them as "expensive toys". We knew our $2000 laptops were incredible for the price, even while people mocked us for not buying cheap, creaky Windows machines. When Android and Windows users poked fun at our platforms for lacking in free tools, we lauded the benefits of carefully crafted, paid-up-front software. [We let our Apple logos shine bright](https://www.youtube.com/watch?v=5DHYe4dhjXw) because we were *proud* to be affiliated with one of the few companies that seemed philosophically bent on setting a new standard for mass-market products.

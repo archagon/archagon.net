@@ -17,6 +17,8 @@ On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and h
 &path=color:red%7CKing Street Station, Seattle, WA|Pacific Central Station, Vancouver, BC
 &key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA" width="1000px"/>
 
+<!--more-->
+
 The ride was clean and beautiful. We planted ourselves in the observation car for most of the 4-hour trip. Dangerous electric tea was made. I was introduced to a devious card game called Bartok, in which each player adds a new, arbitrary rule during their turn. Every time a player breaks a rule or asks a question, they draw a card. As you might expect, it gets a little bit crazy.
 
 <p><div class="image-series">

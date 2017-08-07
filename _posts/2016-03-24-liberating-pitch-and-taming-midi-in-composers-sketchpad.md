@@ -12,6 +12,8 @@ categories: programming
 
 I wanted Composer's Sketchpad to have the ability to represent musical notes at any pitch. In order to do this, I needed to solve two problems: representing arbitrary pitches internally and making them compatible with MIDI.
 
+<!--more-->
+
 Human perception of pitch follows a logarithmic curve, meaning that a frequency will sound an octave higher when multiplied by two. However, we tend to think of notes in a linear fashion: C4 is a fixed distance from C3 on the piano, just as C3 is from C2.
 
 The naive approach to representing pitch would be to simply store the frequency in hertz and be done with it. But this didn't sit right with me: since my canvas depicted pitches linearly like on a piano keyboard, I'd have to be constantly taking the logarithm of my points and subsequently introducing possible floating point errors as we went up the ladder. The pitches would also have to be stored as irrational floating point numbers, making it impossible to tell whether a point is sitting precisely on a pitch gridline.

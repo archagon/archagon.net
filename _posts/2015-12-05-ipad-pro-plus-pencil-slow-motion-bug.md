@@ -7,6 +7,8 @@ categories: programming
 ---
 I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you're using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there's some sort of interference between Pencil and gesture event processing. Notably, the framerate remains stable while this is happening.
 
+<!--more-->
+
 <p><div class="youtube_16_9"><iframe src="https://www.youtube.com/embed/ioPRiHBj8l4?showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe></div></p>
 
 I noticed that the Paper app also has this problem. Other drawing apps seem to avoid it (accidentally or intentionally) by disabling canvas navigation while drawing. In Procreate, you can adjust the brush sliders while drawing without any slow motion, but I think this has to do with the fact that Procreate uses a custom OpenGL-based implementation for their widgets, not UIGestureRecognizer.

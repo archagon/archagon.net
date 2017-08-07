@@ -14,6 +14,8 @@ Blog comments are out, blog responses are in — and so I thought I'd respond to
  
 What is all this for? What do we gain in return?
 
+<!--more-->
+
 In the past, every time a prominent piece of technology was removed from my Apple hardware — most recently the CD drive and the Ethernet port — my response was ambivalent because I had already been happily using the alternative for a while. Wi-Fi, despite its flaws, offered countless advantages over Ethernet, leading to rapid adoption. Steam, iTunes, and Netflix had made me almost forget that CDs were still a thing by the time I got my Retina Macbook Pro. It almost goes without saying that these technologies were standard and universal — nobody would have accepted them otherwise. But there's no Next Best Thing in headphones. This is an entirely artificial change.
 
 Were there an existing high-quality wireless standard for headphones, I'd be somewhat on board, especially if the phone could be waterproofed in exchange. But we're not there yet, and I fear that in this instance, Apple is looking out for their corporate interests instead of their users. When Apple removes features, I can usually envision the "better tomorrow" they're striving for. Here, what future can we look forward to if we're all using bloated, proprietary, and fragile headphones that sound like garbage?

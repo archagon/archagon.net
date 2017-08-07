@@ -12,6 +12,8 @@ categories: design
 
 [Composer's Sketchpad 1.2 is out][appstore]! This is a major update with several new features, including audio export (via AAC), a new tool for shifting notes along the time axis, and a one-finger drawing mode. I figured this might be a good opportunity to write about something a bit more on the creative side: icon design!
 
+<!--more-->
+
 Having no practical design experience, I am very proud of the icon I created for Composer's Sketchpad. A good icon is absolutely essential for marketing, so most app developers would recommend contracting out this delicate task to a real designer. But I'm stubborn: one of my higher-level goals in creating Composer's Sketchpad was to get better at art and design, and I wanted the icon in particular — the thesis of my app! — to be my own invention.
 
 Going along with the idea that creativity flourishes under harsh constraints, these were the requirements I laid out for the icon:

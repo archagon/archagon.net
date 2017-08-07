@@ -14,6 +14,8 @@ Just last month, I released my first major project for the iPad: [Composer's Ske
 
 Composer's Sketchpad is an interactive, "doodle-y" take on music sequencing and notation. When you launch the app, you're presented with a giant canvas that can be panned around with your finger. The canvas is covered with a grid, indicating time on the horizontal axis and pitch on the vertical. To draw musical notes, you hold down the canvas with one finger and draw with another. (You can also zoom using a similar gesture.) Unlike most sequencers, the app lets you start your notes at any time and bend them to any pitch, giving you the ability to sketch out twisted solos and complex rhythms with no extra effort. You can also snap to the gridlines if you wish.
 
+<!--more-->
+
 <p><div class="youtube_4_3"><iframe src="https://www.youtube.com/embed/ypsLgTY8NXs?showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe></div></p>
 
 In the coming months, I'm going to (try to) post a series of articles concerning the technical, design, and marketing aspects of the project. But for now, I'd like to write about the genesis of the idea.

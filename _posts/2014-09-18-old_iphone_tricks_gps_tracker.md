@@ -9,6 +9,8 @@ This is the time of year when a lot of people are upgrading their phones. If you
 
 Here's a thing you might not know about your iPhone[^WhyNotAndroid]: the GPS unit works even without a data connection. I was confused for a long time about what "assisted GPS" actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.
 
+<!--more-->
+
 So here's what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called [myTracks][myTracks] and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a `kml` file (among several others) to use with Google Maps:
 
 {% kmlasset newcastle_test.kml %}

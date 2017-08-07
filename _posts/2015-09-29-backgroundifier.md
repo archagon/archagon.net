@@ -8,6 +8,8 @@ categories: releases
 
 I made a Mac app! It's called [Backgroundifier](http://backgroundifier.archagon.net), and it turns any image into a desktop background. (But it's better for fine art and illustration.)
 
+<!--more-->
+
 You can pass an image like this...
 
 <img src="{{ site.baseurl }}/images/bgify-1.jpg" class="content" width="400px" />

@@ -10,6 +10,8 @@ categories: reviews
 
 Shortly after I posted my [Klean Kanteen review][klean_kanteen_review], Stanely offered to send me one of their own bottles to play around with: the [64oz Classic Vacuum Growler][stanley_growler]. I was quite happy with the build quality of the Stanleys I saw at REI, so at risk of becoming a professional growler reviewer, I figured I'd give this bottle an equally thorough look.
 
+<!--more-->
+
 ## Construction
 
 There's a lot of good things to say about the construction of this growler. The outer shell, painted in the usual Stanley enamel-matte-green, is very solid and attractive in both look and feel. There's certainly no concern about the coating fading or chipping with use. The plastic is also very smooth and feels higher quality than the typical materials used in these kinds of bottles.

@@ -12,6 +12,8 @@ Loose-leaf tea is a bit of a finicky hobby. Unlike the boring old teabag, you ca
 
 But what do you do when you travel?
 
+<!--more-->
+
 Gaiwans tend to be made of porcelain or clay, so they're very fragile. Until recently, I assumed I'd just have to make do with makeshift mug-plus-strainer brews when on the road. But a few months ago, I discovered a wonderful product that effectively fixed this problem, as well as several I didn't even know I had: the [Asobu Imperial Beverage Insulated Cup][amazon].
 
 ![]( {{ site.baseurl }}/images/mug_items.jpg )

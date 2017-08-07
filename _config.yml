@@ -17,6 +17,7 @@ goodreads: 2196584-archagon
 
 # Build settings
 markdown: kramdown
+excerpt_separator: <!--more-->
 
 # Extra directories
 image_dir: images
