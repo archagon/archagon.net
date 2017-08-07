@@ -1,0 +1,442 @@
+---
+---
+@import
+        "prefixes"
+;
+
+////////////
+/* LAYOUT */
+////////////
+
+#features {
+    margin-bottom: 0.8rem;
+}
+
+//////////////
+/* PROJECTS */
+//////////////
+
+/*appearance*/
+#features {
+    color: #222;
+
+    .feature_box {
+        /*background-color: white;*/
+        border-radius: 1em;
+
+        .header {
+            text-align: left;
+            line-height: 1.6em;
+        }
+
+        .description_type {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.05em;
+            text-align: left;
+
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+        }
+
+        > .header {
+            > .title h2 {
+                // font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+                font-size: 1.7em;
+            }
+
+            > .title h3 {
+                font-size: 1.2em;
+                // font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+                font-weight: 50;
+                text-align: left;
+            }
+        }
+    }
+
+    .feature_icon {
+        -webkit-filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.25));
+        filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.25));
+    }
+
+    .description {
+        text-align: left;
+        line-height: 1.2em;
+        border-radius: 0.6em;
+        
+        background-color: rgba(0,0,0,0.2);
+        color: #FFF;
+
+        > .icons {
+            line-height: 0;
+        }
+    }
+}
+
+/*layout*/
+#features {
+    #features_list {
+        @include flexbox;
+        @include justify-content-center;
+        @include align-items-center;
+        @include flex-direction-column;
+
+        > * {
+            width: 100%;
+        }
+    }
+
+    .feature_box {
+        max-width: 30em;
+
+        padding: 1em 0 1em 0;
+
+        .header {
+            margin-bottom: 0.6em;
+        }
+
+        p {
+            padding: 0;
+        }
+
+        > .header {
+            @include flexbox;
+            @include align-items-center;
+
+            > .icons {
+                @include flexbox;
+
+                > img {
+                    width: 3.1rem;
+                    height: 100%;
+                }
+
+                /*icon spacing*/
+                > * {
+                    margin-left: 0.2em;
+                    margin-right: 0.2em;
+                }
+                > *:first-child {
+                    margin-left: 0;
+                }
+                > *:last-child {
+                    margin-right: 0.8em;
+                }
+            }
+
+            > .title {
+                @include flexbox;
+                @include flex-direction-column;
+
+                h2 {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .feature_icon {
+        width: 26em;
+        /*transform: scale(1.1, 1.1);*/
+
+        @include flex-shrink(0);
+    }
+
+    .description {
+        @include flexbox;
+        @include align-items-center;
+
+        float: left;
+
+        padding: 0.4em;
+        margin: 0 0.8em 0.5em 0;
+
+        > .icons {
+            @include flex-shrink(0);
+
+            margin-right: 0.6em;
+
+            > img {
+                width: 3.5em;
+            }
+        }
+    }
+
+    .content {
+        @include flexbox;
+        @include justify-content-center;
+        @include align-items-center;
+        @include flex-direction-row;
+
+        /*spacing between children*/
+        > * {
+            margin-right: 1rem;
+            margin-left: 1rem;
+        }
+    }
+}
+
+// TODO: exprimenting with icons next to title
+.feature_box .description {
+    display: none !important;
+}
+.feature_box.list_feature .description {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+/* auto-generated using SASS */
+/* color map: http://tristen.ca/hcl-picker/#/clh/8/116/E8FABB/3BA73E */
+#features_list > {
+    $divider-width: 20rem;
+    $divider-height: 6rem;
+    $flip: false;
+    $flip-dir: false;
+
+    // sets divider background pattern and flips it if necessary
+    @mixin divider-theme($top-color, $bottom-color, $flip, $shade) {
+        $darker-bottom-color: if($shade, darken(desaturate($bottom-color, 5%), 3%), $bottom-color);
+        $darker-bottom-color: if($shade, black, $bottom-color);
+
+        $sliver-size: 2;
+        $sliver-opacity: 0.75;
+        $blur-radius: 3;
+
+        // modified by replacing quotes, changing the viewbox, adding preserveAspectRatio, substituting the sliver calculations, and substituting the colors
+        background: url("data:image/svg+xml;utf8,\
+<svg version='1.1' id='Slope' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100px' height='120px' viewBox='0 0 100 120' enable-background='new 0 0 100 120' xml:space='preserve' preserveAspectRatio='none'>\
+<defs><filter id='f1' x='0' y='0'><feGaussianBlur in='SourceGraphic' stdDeviation='#{ $blur-radius }' /></filter></defs>\
+<polygon fill='%23#{ str-slice(ie-hex-str($bottom-color), 4) }' opacity='#{ alpha($bottom-color) }' points='0,100 100,0 100,120 0,120 '/>\
+<polyline fill='%23#{ str-slice(ie-hex-str($darker-bottom-color), 4) }' opacity='#{ $sliver-opacity }' filter='url(%23f1)' points='#{ -$sliver-size },#{ 100+$sliver-size } #{ 100+$sliver-size },#{ -$sliver-size } #{ 100+$sliver-size },0 #{ -$sliver-size },#{ 100+$sliver-size*2 } '/>\
+<polygon fill='%23#{ str-slice(ie-hex-str($top-color), 4) }' opacity='#{ alpha($top-color) }' points='100,0 0,100 0,0 '/>\
+</svg>") repeat-x center center;
+        background-size: 100% 100%;
+
+        @if $flip {
+            //flip horizontally
+            -webkit-transform: scaleX(-1);
+            -ms-transform: scaleX(-1);
+            transform: scaleX(-1);
+        }
+    }
+
+    // allows divider to not be part of document flow (text overlap)
+    .feature {
+        position: relative;
+    }
+
+    // sets up divider pseudoelement
+    @mixin divider-setup {
+        content: "";
+
+        position: absolute;
+        display: block;
+
+        width: $divider-width;
+        height: $divider-height;
+        min-width: 100%;
+
+        // for centering
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    *:before {
+        @include divider-setup;
+    }
+
+    // creates divider pseudoelement
+    @mixin divider($child, $before, $top-color, $bottom-color, $flip: false, $shade: false) {
+        $divider-kludge: 0;
+
+        @if $before {
+            // :nth-child(#{ $child }) > .background_kludge {
+            //     @include divider-setup;
+            //     height: $divider-height + $divider-kludge;
+            //     @include divider-theme($top-color, $bottom-color, $flip, $shade);
+
+            //     @if $child == 1 {
+            //         top: 0 + $divider-kludge;
+            //     }
+            //     @else {
+            //         top: -$divider-height / 2 + $divider-kludge;
+            //     }
+
+            //     z-index: 0;
+            // }
+            :nth-child(#{ $child }):before {
+                // setup moved out of this mixin for CSS space savings
+                @include divider-theme($top-color, $bottom-color, $flip, $shade);
+                top: -$divider-height / 2;
+
+                z-index: 1;
+            }
+        }
+        @else {
+            :nth-child(#{ $child }):after(1) {
+                @include divider-setup;
+                @include divider-theme($top-color, $bottom-color, $flip, $shade);
+                bottom: -$divider-height / 2;
+            }
+        }
+    }
+
+    .feature {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    // accommodates first and last divider; otherwise, they will be half-hidden
+    @mixin divider-fix-first-last {
+        :first-child {
+            padding-top: $divider-height / 2;
+            &:before {
+                top: 0;
+            }
+        }
+        :last-child {
+            padding-bottom: $divider-height / 2;
+            &:after {
+                bottom: 0;
+            }
+        }
+    }
+
+    // colors the text
+    @mixin section-theme($child, $color, $previous-color, $text-color, $flip: false) {
+        :nth-child(#{ $child }) {
+            background-color: $color;
+        }
+        :nth-child(#{ $child }) h2 {
+            color: $text-color;
+        }
+        :nth-child(#{ $child }) h3 {
+            color: $text-color;
+        }
+    }
+
+    $flip-dir-odd: if($flip, $flip-dir, $flip-dir);
+    $flip-dir-even: if($flip, not($flip-dir), $flip-dir);
+
+    // $previous-color: rgba(0,0,0,0);
+    $previous-color: #FFF;
+    $current-color: #A9DEF7; //hue 220
+
+    @include divider(1, true, $previous-color, $current-color, $flip-dir-odd);
+    @include section-theme(1, $current-color, $previous-color, darken($current-color, 50%), $flip-dir-odd);
+
+    $previous-color: $current-color;
+    $current-color: #E6D876;
+
+    @include divider(2, true, $previous-color, $current-color, $flip-dir-even, true);
+    @include section-theme(2, $current-color, $previous-color, darken($current-color, 50%), $flip-dir-even);
+
+    $previous-color: $current-color;
+    $current-color: #97E8AF;
+
+    @include divider(3, true, $previous-color, $current-color, $flip-dir-odd, true);
+    @include section-theme(3, $current-color, $previous-color, darken($current-color, 50%), $flip-dir-odd);
+
+    $previous-color: $current-color;
+    // $current-color: rgba(0,0,0,0);
+    $current-color: #FFF;
+
+    @include divider(4, true, $previous-color, $current-color, $flip-dir-even, true);
+
+    @include divider-fix-first-last;
+}
+
+/*ensures that content is not hidden by svg dividers*/
+#features_list {
+    .content {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+// ODDS AND ENDS
+
+.feature_box.list_feature {
+    max-width: 50em;
+
+    > .descriptions_list {
+        .description {
+            align-items: flex-start !important;
+            background-color: inherit !important;
+            color: black !important;
+            border-color: white;
+            border-width: 0.2em !important;
+            // border-style: solid;
+            width: 35em;
+
+            margin-bottom: 1.2em !important;
+        }
+
+        hr {
+            display: block;
+            border: 0px;
+            height: 1.5em;
+            // margin: 40px 0 40px 0;
+            width: 20em;
+            background-size: 20em;
+            -webkit-mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-image: url("images/hr.svg");
+            background-color: #CCC;
+            color: blue;
+        }
+
+        .icons {
+            margin-right: 1em !important;
+            // -webkit-filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.25));
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.25));
+        }
+
+        @include flexbox;
+        @include flex-direction-column;
+        @include align-items-center;
+
+        p {
+            margin: 0;
+        }
+
+        h2 {
+            margin-bottom: 0.02em;
+            font-size: 1.2em;
+        }
+    }
+
+    > .header > .title {
+        display: block;
+        width: 100%;
+
+        margin-bottom: 1.6em;
+    }
+
+    > .header > .title h2 {
+        text-align: center;
+        font-size: 2.4em;
+    }
+}
+
+.feature:nth-child(2) .content {
+    flex-direction: row-reverse !important;
+}
+.feature:nth-child(2) .feature_box > .header {
+    /*flex-direction: row-reverse !important;*/
+}
+.feature:nth-child(2) .feature_box .description {
+    /*float: right;*/
+}
+
+#features_list {
+    max-width: 100rem;
+    margin: auto;
+}

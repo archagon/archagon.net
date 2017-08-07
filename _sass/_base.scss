@@ -40,6 +40,13 @@
     box-sizing: border-box;
 }
 
+// annoying mobile auto-resizing
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 // reset for em and rem
 html {
     font-size: 10px;
