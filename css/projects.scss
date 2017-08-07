@@ -4,20 +4,13 @@
         "prefixes"
 ;
 
-////////////
-/* LAYOUT */
-////////////
-
-#features {
-    margin-bottom: 0.8rem;
-}
-
 //////////////
-/* PROJECTS */
+// PROJECTS //
 //////////////
 
 /*appearance*/
 #features {
+    background-color: white;
     color: #222;
 
     .feature_box {
@@ -34,7 +27,7 @@
         }
 
         p {
-            font-size: 1.05em;
+            // font-size: 1.0em;
             text-align: left;
 
             -webkit-hyphens: auto;
@@ -46,11 +39,11 @@
         > .header {
             > .title h2 {
                 // font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
-                font-size: 1.7em;
+                // font-size: 1.7em;
             }
 
             > .title h3 {
-                font-size: 1.2em;
+                // font-size: 1.2em;
                 // font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
                 font-weight: 50;
                 text-align: left;
@@ -409,7 +402,7 @@
 
         h2 {
             margin-bottom: 0.02em;
-            font-size: 1.2em;
+            // font-size: 1.2em;
         }
     }
 
@@ -422,7 +415,7 @@
 
     > .header > .title h2 {
         text-align: center;
-        font-size: 2.4em;
+        // font-size: 2.4em;
     }
 }
 
