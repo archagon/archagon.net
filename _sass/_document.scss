@@ -1,4 +1,9 @@
 // TODO: separate "document" class w/ "post" and "page" sibling clases?!
+// TODO: is it right that this also includes post-list? should post-list be so closely related to
+//       document? this has bitten me before...
+
+$post-list-spacing-unit: 3rem;
+$post-list-spacing-unit-small: 1.5rem;
 
 ///////////
 // Style //
@@ -12,18 +17,21 @@
 
 // spacing between front-page posts
 .post-list {
-    $post-list-spacing-unit: 3rem;
-    $post-list-spacing-unit-small: 1.5rem;
-
     & > * {
         margin-top: $post-list-spacing-unit;
         margin-bottom: $post-list-spacing-unit;
+        &:last-child {
+            margin-bottom: 0; //to accommodate footnotes
+        }
     }
     @include media-query($on-palm) {
         & > * {
             // margins too big on compact devices
             margin-top: $post-list-spacing-unit-small;
             margin-bottom: $post-list-spacing-unit-small;
+            &:last-child {
+                margin-bottom: 0; //to accommodate footnotes
+            }
         }
     }
 }
@@ -93,8 +101,6 @@
         }
 
         padding-top: 0; //for header
-
-        box-shadow: -0.1rem 0.5rem 1.0rem 0 rgba(black, 0.15);
     }
 }
 
@@ -181,4 +187,89 @@ h2.post-meta { //we have to use h2 to override default header rules
     text-transform: capitalize;
     padding: 0.3rem 0.8rem;
     border-radius: 0.8rem;
+}
+
+////////////////
+// Pagination //
+////////////////
+
+// TODO: arrow corners
+
+.pagination {
+    @include flex;
+    @include justify-content-space-between;
+
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    font-family: $header-font-family;
+    font-weight: 500;
+    font-size: 1.1em;
+
+    $color: mix(black, #45ABF8, 60%);
+    color: black;
+    color: $color;
+}
+
+.pagination-page-number {
+    @include flex-shrink(0);
+    font-size: 1.1em;
+}
+
+.pagination-next {
+    text-align: right;
+
+    &:after {
+        display: inline-block; //not needed right now, but needed if using transform below
+        content: "▸"; //➾,←
+        margin-left: 0.2em;
+    }
+}
+
+.pagination-previous {
+    text-align: left;
+
+    &:before {
+        display: inline-block;
+        content: "▸";
+        transform: scale(-1, 1);
+        margin-right: 0.2em;
+    }
+}
+
+.pagination-next, .pagination-previous {
+    @include flex-shrink(0);
+    width: 6em; //needed to center page count
+}
+
+// button appearance
+.pagination-next, .pagination-previous {
+    $color: mix(black, #30A4F1, 10%);
+
+    text-decoration: none;
+    text-align: center;
+    background-color: $color;
+    font-weight: 100;
+    padding: 0.2rem 0.7rem;
+    border-radius: 0.8rem;
+
+    &:hover, &:visited, &:active, &:link {
+        color: white;
+    }
+    &:hover {
+        background-color: mix(black, $color, 20%);
+        color: #eee;
+    }
+}
+
+// if not <a> link, then we're on the first/last page -- doesn't work w/above for some reason
+.pagination-next {
+    @at-root span#{&} {
+        visibility: hidden;
+    }
+}
+.pagination-previous {
+    @at-root span#{&} {
+        visibility: hidden;
+    }
 }

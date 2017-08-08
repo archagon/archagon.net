@@ -4,7 +4,7 @@ layout: default
 <div class="wrapper">
 
 <ul class="post-list">{% for post in paginator.posts %}
-    <li id="{{ post.selector_id }}" class="document-post">
+    <li id="{{ post.selector_id }}" class="document-post subtle-shadow">
         <header class="section-header">
             <a href="{{ post.url | prepend: site.baseurl }}" class="post-list-header-link"><h1 class="post-title{% include category_class.scss post=post %}">{{ post.title }}</h1></a>
             <h2 class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</h2>
@@ -19,7 +19,7 @@ layout: default
 
 <div class="pagination">
 {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}" class="pagination-previous">Previous</a>{% else %}<span class="pagination-previous">Previous</span>{% endif %}
-<span class="pagination-page-number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+<span class="pagination-page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
 {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}" class="pagination-next">Next</a>{% else %}<span class="pagination-next ">Next</span>{% endif %}
 </div>
 

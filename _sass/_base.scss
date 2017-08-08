@@ -95,6 +95,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+ol, ul {
+    padding-left: 2.5em; //looks better in compact mode -- default is 40px
+}
+
 img {
     max-width: 100%;
     //vertical-align: middle; //TODO: what's this for? ruins icons in navbar

@@ -14,6 +14,8 @@ twitter: archagon
 github:  archagon
 instagram: archagon
 goodreads: 2196584-archagon
+reddit: archagon
+hackernews: archagon
 
 # Build settings
 markdown: kramdown
@@ -28,4 +30,4 @@ assets_dir: assets
 # Extra files
 default_icon: icon_default.png
 
-exclude: [ blog.sublime-project, blog.sublime-workspace, Gemfile, Gemfile.lock, Rakefile, SETUP.txt, TOC.txt, TODO.txt, QUIRKS.txt, temp, raw, images/old-patterns, images/possible-patterns ]
+exclude: [ blog.sublime-project, blog.sublime-workspace, Gemfile, Gemfile.lock, Rakefile, SETUP.txt, TOC.txt, TODO.txt, QUIRKS.txt, SNIPPETS.txt temp, raw, images/old-patterns, images/possible-patterns ]
