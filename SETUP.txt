@@ -15,7 +15,8 @@
 5. gem install nokogiri
 6. gem install imgkit
 7. gem install rmagick
-8. install wkhtmltoimage (I had to use an installer)
+8. gem install jekyll-redirect-from
+9. install wkhtmltoimage (I had to use an installer)
 
 sudo `which imgkit` --install-wkhtmltoimage
         rvmsudo imgkit --install-wkhtmltoimage

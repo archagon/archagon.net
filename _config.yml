@@ -22,6 +22,8 @@ markdown: kramdown
 excerpt_separator: <!--more-->
 paginate: 10
 paginate_path: "index/:num/"
+gems:
+  - jekyll-redirect-from
 
 # Extra directories
 image_dir: images
