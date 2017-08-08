@@ -18,6 +18,8 @@ goodreads: 2196584-archagon
 # Build settings
 markdown: kramdown
 excerpt_separator: <!--more-->
+paginate: 10
+paginate_path: "index/:num/"
 
 # Extra directories
 image_dir: images

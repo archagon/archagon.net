@@ -27,8 +27,6 @@ People always panic when Google or Apple slips up and caches a bit of your locat
 [EasyTrails]: https://itunes.apple.com/us/app/easytrails-gps-lite/id325929832?mt=8
 [GoogleMapsSetup]: https://developers.google.com/maps/documentation/javascript/tutorial
 
----
-
 <div class="new-jekyll-assets" markdown="1">
 
 # Jekyll assets created over the course of this exercise

@@ -22,6 +22,12 @@ module Jekyll
                 end
             end
 
+            for block in ['script'] do
+                doc.css(block).each do |ele|
+                    ele.remove
+                end
+            end
+
             doc.inner_html
         end
     end

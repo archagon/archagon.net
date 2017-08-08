@@ -1,14 +1,18 @@
 ---
 layout: post
 title:  "Gathering the Goods, Part 2"
-date:   2013-8-28
+date:   2014-6-15
 description: "The second revision of my globetrotting packing list."
 categories: travel
 icon: "Cruise Balconies.jpeg"
 icon-center-x: 0.265
 icon-center-y: 0.325
 ---
-![Caption goes here.]({{ site.baseurl }}/images/Cruise Balconies.jpeg)
+
+<div class="caption">
+<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/539df319e4b0a181d64e08f1/1402860319046/?format=1000w" />
+<p>Passengers on the Allure of the Seas wave goodbye to their fellow ship.</p>
+</div>
 
 [My first run at a packing list]({{ site.baseurl }}/2013/8/28/gathering-the-goods) was suprisingly solid: everything worked pretty much as intended and there wasn't anything I desparately missed or needed during my US trip. However, I misjudged the needs of my travel bag:
 

@@ -71,7 +71,7 @@
     // font-style: italic;
 
     font-family: $alert-font-family;
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-style: italic;
 
     max-width: 90%;
@@ -79,7 +79,7 @@
     margin-right: auto;
 
     // captions should be closer to their image than the default; and margin-bottom is handled by div
-    margin-top: 0.5em;
+    margin-top: 0.25em;
     margin-bottom: 0;
 }
 
@@ -311,5 +311,27 @@
     
     .asset-name {
         font-weight: bold;
+    }
+}
+
+///////////////
+// Footnotes //
+///////////////
+
+.footnote {
+    font-size: 1.1em;
+    // &:link, &:hover, &:active, &:visited {
+    //     color: red;    
+    // }
+}
+
+.footnotes {
+    border-top: solid 1px $grey-color-light;
+
+    font-size: 0.9em;
+    color: $grey-color;
+
+    ol {
+        padding-left: 1.0em; //override default list style -- numbers in line with margins
     }
 }
