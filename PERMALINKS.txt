@@ -1,4 +1,4 @@
-blog permalinks
+Old Blog
 
 http://www.archagon.net/a-few-pointless-thoughts/2013/6/8/on-hosting-a-blog
 http://www.archagon.net/a-few-pointless-thoughts/2013/6/9/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think
@@ -17,3 +17,30 @@ http://www.archagon.net/a-few-pointless-thoughts/2014/6/15/gathering-the-goods-t
 http://www.archagon.net/a-few-pointless-thoughts/2014/6/17/boat
 http://www.archagon.net/a-few-pointless-thoughts/2015/1/31/state-of-the-union
 http://www.archagon.net/a-few-pointless-thoughts/2015/1/31/vancouver
+
+New Blog
+
+http://beta-blog.archagon.net/2013/08/28/gathering-the-goods-part-2/
+http://beta-blog.archagon.net/2014/09/18/old_iphone_tricks_gps_tracker/
+http://beta-blog.archagon.net/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/
+http://beta-blog.archagon.net/2014/11/19/what's_up_with_google_maps_these_days/
+http://beta-blog.archagon.net/2015/01/31/state_of_the_union/
+http://beta-blog.archagon.net/2015/02/01/vancouver/
+http://beta-blog.archagon.net/2015/03/08/who-cares-about-the-apple-watch-edition/
+http://beta-blog.archagon.net/2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/
+http://beta-blog.archagon.net/2015/09/29/backgroundifier/
+http://beta-blog.archagon.net/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/
+http://beta-blog.archagon.net/2015/12/25/the-stanley-64oz-classic-vacuum-growler/
+http://beta-blog.archagon.net/2015/12/26/the-perfect-travel-gaiwan/
+http://beta-blog.archagon.net/2016/02/05/composers-sketchpad/
+http://beta-blog.archagon.net/2016/02/27/path-rendering-in-composers-sketchpad/
+http://beta-blog.archagon.net/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/
+http://beta-blog.archagon.net/2016/06/21/headphones/
+http://beta-blog.archagon.net/2016/07/16/composers-sketchpad-adventures-in-icon-design/
+http://beta-blog.archagon.net/2016/08/21/tool-reliance/
+http://beta-blog.archagon.net/2016/08/30/on-the-wonders-of-digital-journaling/
+http://beta-blog.archagon.net/2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery/
+http://beta-blog.archagon.net/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/
+http://beta-blog.archagon.net/2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage/
+http://beta-blog.archagon.net/2017/01/08/an-even-better-travel-gaiwan/
+http://beta-blog.archagon.net/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/

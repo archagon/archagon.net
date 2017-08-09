@@ -1,16 +1,37 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
+<title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{{ site.description }}">
 
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
-    <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-    {% if page.extra_css %}{% for css in page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}.css">{% endfor %}{% endif %}
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet">
+<link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
+<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+{% if page.extra_css %}{% for css in page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}.css">{% endfor %}{% endif %}
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-    <link rel="icon" href="{{ site.baseurl }}/images/favicon/favicon-96x96.png">
+<link rel="icon" href="{{ site.baseurl }}/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+{% filterize scssify %}
+{% for category in site.data.categories %}
+.category-{{ category[0] }} {
+    &.category-swatch {
+        background-color: darken({{ category[1].color }}, 20%);
+    }
+    &.document-header-category {
+        background-color: darken({{ category[1].color }}, 30%);
+    }
+    &.post-title { 
+        background-color: darken({{ category[1].color }}, 20%);
+        text-shadow: 0px 2px darken({{ category[1].color }}, 30%);
+    }
+}
+{% endfor %}
+{% endfilterize %}
+</style>
 </head>

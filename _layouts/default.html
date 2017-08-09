@@ -3,26 +3,6 @@
 
 {% include head.html %}
 
-<!-- inline category colors -->
-<style>
-{% filterize scssify %}
-{% for category in site.data.categories %}
-.category-{{ category[0] }} {
-    &.category-swatch {
-        background-color: darken({{ category[1].color }}, 20%);
-    }
-    &.document-header-category {
-        background-color: darken({{ category[1].color }}, 30%);
-    }
-    &.post-title { 
-        background-color: darken({{ category[1].color }}, 20%);
-        text-shadow: 0px 2px darken({{ category[1].color }}, 30%);
-    }
-}
-{% endfor %}
-{% endfilterize %}
-</style>
-
 <body class="body-background">
 
 {% include header.html %}
