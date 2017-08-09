@@ -53,35 +53,36 @@ $navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
 }
 
 .site-title {
+    font-size: 4.2em;
+    
     // font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     // font-family: Verdana, Geneva, sans-serif; //squiggly g
     // font-family: "Century Gothic", CenturyGothic, "Muli", sans-serif;
     // font-family: "Muli";
-    font-size: 4.2em;
-    font-weight: 800;
-
-    text-align: left;
-    line-height: 1;
-
-    a:link, a:visited, a:hover, a:active {
-        text-decoration: none;
-        color: darken($grey-color, 25%);
-    }
-
+    // font-weight: 800;
+    // 
+    // text-align: left;
+    // line-height: 1;
+    // 
+    // a:link, a:visited, a:hover, a:active {
+    //     text-decoration: none;
+    //     color: darken($grey-color, 25%);
+    // }
+    // 
     // .title {
     //     // ensures that baseline is correctly aligned
     //     -webkit-transform-origin: center left;
     //     transform-origin: center left;
     //     -webkit-transform: scale(1.3);
     //     transform: scale(1.3);
-
+    // 
     //     // prevents title from glitching out in Safari
     //     white-space: nowrap;
-
+    // 
     //     word-spacing: -0.114em;
     //     letter-spacing: -0.043em;
     //     letter-spacing: -0.03em;
-
+    // 
     //     .name {
     //         color: red;
     //     }

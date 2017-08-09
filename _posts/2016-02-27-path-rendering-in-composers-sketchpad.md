@@ -44,7 +44,7 @@ During my search, I learned of [OpenVG][open_vg], the Khronos Group's standard f
 Having figured out how to use both frameworks, I made a quick performance prototype: a simple draw loop at 60fps with a set of full-screen, randomly generated Bézier curves in each frame. (I considered this my worst-case scenario, as in the case of changing the width or height scales of my grid.) There were two rendering paths: one for CoreGraphics and one for MonkVG.
 
 <div class="caption">
-<img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/stresstest.png"></img>
+<img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/stresstest.png">
 <p>A randomly-generated scene from the stress test. CoreGraphics couldn't handle it while MonkVG passed with flying colors.</p>
 </div>
 
@@ -57,7 +57,7 @@ Despite these finds, I really wanted to work with CoreGraphics, and so I attempt
 For much of the project, owing to my inexperience, I was burdened with the question of the framerate cap. If everything was done perfectly, how high could I go? After getting caching and draw call batching working correctly, my MonkVG implementation yielded an acceptable framerate of 30-60fps in the general case, but I still wondered if I was an order of magnitude off on account of my incompetence. How did Apple Maps manage to work so smoothly with so many shapes on screen? How did web browsers manage to display thousands of character paths — possibly with transforms! — and still attain smooth performance? In truth, the geometry I was showing on screen was fairly complex: each quarter-measure note had about 300 triangles once you included the outline and endcaps, leading to an upper bound of almost 400,000 triangles on screen for a dense piece (12 notes, or 4 chords, per measure per layer, with 10 full layers and 10 measures on screen). Surely a breeze for modern machines, but quite a lot to handle for an old iPad! It's always important to be able to answer the question, "where is all that performance going?", and in my case it was going towards the multitude of dynamic features in my app.
 
 <div class="caption">
-<img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/curves.png"></img>
+<img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/curves.png">
 <p>The mesh structure of a note. Each blue dot is a recorded time/pitch sample. Having a screen full of these can be surprisingly performance-intensive!</p>
 </div>
 
@@ -71,7 +71,7 @@ At this point, I realized that even though writing my own hardware-accelerated p
 As I dove deeper into Cocos2d's architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called "geometry streaming".) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What's more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate `CCNode`s. This was a massive benefit I was not expecting!
 
 <div class="caption">
-<img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/pipeline.png"></img>
+<img src="{{ site.baseurl }}/images/composers-sketchpad-rendering/pipeline.png">
 <p>The final path rendering pipeline.</p>
 </div>
 

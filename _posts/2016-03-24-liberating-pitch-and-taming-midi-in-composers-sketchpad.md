@@ -21,7 +21,7 @@ The naive approach to representing pitch would be to simply store the frequency 
 So I decided to represent my pitches as [cents][cents]. Cents are the linear unit counterpart to frequency: C4 is 1200 cents from C3, and C3 is 1200 cents from C2. (Per equal temperament tuning, each piano key is 100 cents apart from the next.) This means that cents aren't an absolute unit like pitch, but rather the function of two frequencies: in order to get the expected 1200 cents from C4 (261.6Hz) to C3 (130.8Hz) we take the base-2 logarithm of C4 divided by C3 and multiply by 1200. As convenient as these units were, I still needed to represent my points in an absolute way, and so I created an internal unit of "absolute cents": simply the number of cents a pitch is from A440. If you peek inside a Composer's Sketchpad JSON file, you'll see that C4 has a value of -900, B4 a value of -1000, etc. Mathemtacially convenient and human-readable!
 
 <div class="caption">
-<img src="{{ site.baseurl }}/images/composers-sketchpad-absolute-pitch/cents.png"></img>
+<img src="{{ site.baseurl }}/images/composers-sketchpad-absolute-pitch/cents.png">
 <p>Different representations of pitch for the inflection points on a single note.</p>
 </div>
 

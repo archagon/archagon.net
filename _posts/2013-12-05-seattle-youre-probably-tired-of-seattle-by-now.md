@@ -9,7 +9,7 @@ redirect_from:
 
 A week into my Seattle visit, I moved from the downtown City Hostel to the confusingly-named [Hotel Hotel Hostel](http://www.yelp.com/biz/hotel-hotel-seattle) in the Fremont neighborhood. (The very same neighborhood I had visited with my friends [a few days prior](http://www.archagon.net/a-few-pointless-thoughts/2013/10/14/seattle-of-lands-and-locals).) The streets were quiet and a little quirky, the nearby water gently lapped at the shoreline, and the [smell of chocolate](http://www.yelp.com/biz/theo-chocolate-seattle) followed you down the street. It felt a little like being on vacation. (Of course, having a [fantastic gastropub](http://www.yelp.com/biz/brouwers-cafe-seattle) down the street helped. Did I mention I hate the word "gastropub"? It sounds like somewhere you go to cleanse your body of toxins. But I digress...)
 
-<center><p><iframe src="https://player.vimeo.com/video/81097935" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p></center>
+<center><p><iframe src="https://player.vimeo.com/video/81097935" width="640" height="360" style="max-width:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p></center>
 
 <!--more-->
 

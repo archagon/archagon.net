@@ -161,7 +161,7 @@ And really, what more could you ask for from a water bottle (slash covert beer g
 
 ---
 
-##Update 2015-9-25
+### Update 2015-9-25
 
 Here are a few more pros and cons after a month of use.
 
@@ -173,7 +173,7 @@ Con: although I didn't take photos to compare, it seems that the text on the bot
 
 Despite the disappointing quality of the paint job and printing, I'd still heartily recommend this bottle for its shape, performance, and design.
 
-##Update 2015-11-3
+### Update 2015-11-3
 
 I've noticed that whenever I get a growler fill from Cellarmaker and let it sit for 4-5 days, it tastes a bit flat when I open it. Not outright flat, mind you, but clearly not as spritzy as when fresh. At present, I'm not entirely certain what the source of the problem is; after all, people claim that they've had growlers that kept carbonation for a month or longer. Here are the possibilities as I see them:
 
