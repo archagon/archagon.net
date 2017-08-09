@@ -22,7 +22,7 @@ module Jekyll
                 end
             end
 
-            for block in ['script'] do
+            for block in ['style'] do
                 doc.css(block).each do |ele|
                     ele.remove
                 end
