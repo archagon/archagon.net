@@ -1,0 +1,1 @@
+{% if page.title %}/{{ site.category_dir }}/{{ page.title }}{% endif %}

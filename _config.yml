@@ -22,9 +22,12 @@ markdown: kramdown
 excerpt_separator: <!--more-->
 paginate: 10
 paginate_path: "index/:num/"
+category_dir: "category"
+category_layout: "index.html"
 plugins:
   - jekyll-redirect-from
   - jekyll-paginate
+  - jekyll-paginate-category
 
 # Extra directories
 image_dir: images
