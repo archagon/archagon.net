@@ -1,235 +1,148 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</title>
-    <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+    <title>Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier — Archagon Was Here</title>
+    <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 ">
 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    
     <link rel="canonical" href="http://beta-blog.archagon.net/2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery/">
+
+    <link rel="icon" href="/images/favicon/favicon-96x96.png">
 </head>
 
-  <style>
-  /* dynamically assigns category colors */
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
 
-#sel_20170108an-even-better-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170108an-even-better-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
 
-#sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
 
-#sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
 
-#sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
 
-#sel_20160830on-the-wonders-of-digital-journaling {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160830on-the-wonders-of-digital-journaling .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
 
-#sel_20160821tool-reliance {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160821tool-reliance .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
 
-#sel_20160716composers-sketchpad-adventures-in-icon-design {
-  /*background-color: mix($category-design-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160716composers-sketchpad-adventures-in-icon-design .post-title {
-    /*color: mix($category-design-color, black, 60%);*/
-    background-color: #cce5fe; }
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
 
-#sel_20160621headphones {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160621headphones .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
 
-#sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+</style>
 
-#sel_20160227path-rendering-in-composers-sketchpad {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160227path-rendering-in-composers-sketchpad .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
+<body class="body-background">
 
-#sel_20160205composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160205composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151226the-perfect-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151226the-perfect-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151225the-stanley-64oz-classic-vacuum-growler {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151225the-stanley-64oz-classic-vacuum-growler .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20150929backgroundifier {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150929backgroundifier .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
-
-#sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20150308who-cares-about-the-apple-watch-edition {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150308who-cares-about-the-apple-watch-edition .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20150201vancouver {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150201vancouver .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20150131state_of_the_union {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150131state_of_the_union .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20141119whats_up_with_google_maps_these_days {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141119whats_up_with_google_maps_these_days .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20140918old_iphone_tricks_gps_tracker {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20140918old_iphone_tricks_gps_tracker .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20130828gathering-the-goods-part-2 {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20130828gathering-the-goods-part-2 .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-  </style>
-  <body>
-    <div class="body-wrapper">
-    <header class="site-header">
-    <div class="wrapper">
-        <div class="background-overlay">
-            <header class="site-title">
-                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div></a>
-            </header>
-
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></img></a>
+                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
             <nav class="site-nav">
-            <a class="page-link" href="/">Home</a>
-            
-                
-                <a class="page-link" href="/about/">About</a>
-                
-            
-                
-                <a class="page-link" href="/archive/">Archive</a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                <a class="page-link" href="/timeline/">Travel Timeline</a>
-                
-            
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
             </nav>
         </div>
     </div>
 </header>
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="post" id="sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery">
-  <header class="post-header">
-    <h1 class="post-title">Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</h1>
-    <!-- <p class="post-meta">Sep 19, 2016</p> -->
-  </header>
 
-  <article class="post-content">
-    <p><img src="/images/backgroundifier-gallery/title_2.jpg" /></p>
+<div class="page-content">
+
+<div class="document-post category-releases" id="sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</h1>
+    <h2 class="post-meta">Sep 19, 2016<span class="document-header-categories"> <span class="document-header-category category-releases">releases</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<p><img src="/images/backgroundifier-gallery/title_2.jpg" /></p>
 
 <p>The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there’s (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we’ve already enjoyed?</p>
+
+<!--more-->
 
 <p>For several years, I wanted to create a sort of “digital museum” that would give me random, on-demand access to this very important side of the art world. The constraints weren’t complicated. All I needed was a large amount of art along with a mechanism that would randomly show me new works from this collection every fifteen minutes or so. But while acquiring the art was hardly a problem, there were relatively few areas in my life where I could idly display images. Screensavers? Showed up too infrequently and weren’t easily controllable. Wallpapers? Couldn’t deal with arbitrary aspect ratios. I thought I had my solution when I ran the <a href="http://www.google.com/culturalinstitute/beta/project/art-camera">Google Art Project</a> in a full-screen browser tab on a second monitor, but the selection turned out to be too limited and I could no longer rely on the luxury of having more than one display when I set out on my travels.</p>
 
@@ -255,11 +168,11 @@
 
 <h2 id="harnessing-the-command-line">Harnessing the Command Line</h2>
 
-<p>Although Backgroundifier presents a user-friendly GUI, it can also be accessed through the command line. (To see how one can make such a dual-mode app in Swift, you can examine my code <a href="https://github.com/archagon/backgroundifier-public/blob/master/Backgroundifier/main.swift">here</a>.) One way to do this is to navigate to your <code>Backgroundifier.app</code> bundle in Terminal and run the Backgroundifier executable found in the <code>Contents/MacOS</code> subdirectory. With the standard <code>--usage</code> flag, you can view all the options available to you. (Some of these aren’t even accessible through the GUI!)</p>
+<p>Although Backgroundifier presents a user-friendly GUI, it can also be accessed through the command line. (To see how one can make such a dual-mode app in Swift, you can examine my code <a href="https://github.com/archagon/backgroundifier-public/blob/master/Backgroundifier/main.swift">here</a>.) One way to do this is to navigate to your <code class="highlighter-rouge">Backgroundifier.app</code> bundle in Terminal and run the Backgroundifier executable found in the <code class="highlighter-rouge">Contents/MacOS</code> subdirectory. With the standard <code class="highlighter-rouge">--usage</code> flag, you can view all the options available to you. (Some of these aren’t even accessible through the GUI!)</p>
 
-<p>The simplest way to process a file is to run <code>Backgroundifier -i /path/to/input_image.jpg -o /path/to/output_image.jpg -w 1920 -h 1080</code>. Unfortunately, due to the fact that Backgroundifier is a sandboxed app, you can’t just do this for any random directory. Whereas a sandboxed GUI app can expand its sandbox to include any directories opened through the file picker or dropped directly onto it, command line apps (to my knowledge) have no such ability. You can therefore only process files located in your <code>~/Pictures</code> directory.</p>
+<p>The simplest way to process a file is to run <code class="highlighter-rouge">Backgroundifier -i /path/to/input_image.jpg -o /path/to/output_image.jpg -w 1920 -h 1080</code>. Unfortunately, due to the fact that Backgroundifier is a sandboxed app, you can’t just do this for any random directory. Whereas a sandboxed GUI app can expand its sandbox to include any directories opened through the file picker or dropped directly onto it, command line apps (to my knowledge) have no such ability. You can therefore only process files located in your <code class="highlighter-rouge">~/Pictures</code> directory.</p>
 
-<p>Fortunately, there’s another way. In the Resources directory of <code>Backgroundifier.app</code> bundle, there’s a zip file containing a non-sandboxed, Developer ID signed version of the command line tool. Extract it and you can use it in any directory you please.</p>
+<p>Fortunately, there’s another way. In the Resources directory of <code class="highlighter-rouge">Backgroundifier.app</code> bundle, there’s a zip file containing a non-sandboxed, Developer ID signed version of the command line tool. Extract it and you can use it in any directory you please.</p>
 
 <p><img src="/images/backgroundifier-gallery/bgify.png" width="885px" /></p>
 
@@ -271,7 +184,7 @@
 
 <p>Item 2 contains the path to the output directory and item 3 contains the path to the Backgroundifier command line utility. (They exist as separate items to make the paths easy to modify without having to resort to scripting.) Here’s the full text for the script in item 3:</p>
 
-<pre><code># assign paths
+<div class="highlighter-rouge"><pre class="highlight"><code># assign paths
 bgify=$1
 output=$2
 
@@ -287,8 +200,9 @@ do
     "$bgify" -i "$var" -o "$full_output" -w 2560 -h 1600
 done
 </code></pre>
+</div>
 
-<p>Nothing too complicated! You can find the workflow file <a href="/images/backgroundifier-gallery/Backgroundify.workflow.zip">here</a>, and I assume you can just drop it into your <code>~/Library/Workflows/Applications/Folder Actions</code> directory. You can also pretty easily recreate it from scratch: just make a new Automator workflow with a Folder Action document type and copy the items.</p>
+<p>Nothing too complicated! You can find the workflow file <a href="/images/backgroundifier-gallery/Backgroundify.workflow.zip">here</a>, and I assume you can just drop it into your <code class="highlighter-rouge">~/Library/Workflows/Applications/Folder Actions</code> directory. You can also pretty easily recreate it from scratch: just make a new Automator workflow with a Folder Action document type and copy the items.</p>
 
 <p>Whenever I find an interesting new image on Reddit, all I now have to do is drag-and-drop it straight from my browser into the designated Input directory on my desktop. macOS and Backgroundifier automatically take care of the rest.</p>
 
@@ -298,23 +212,24 @@ done
 
 <p><img src="/images/backgroundifier-gallery/wallpaper.jpg" width="668px" /></p>
 
-<p>It’s no fun to manually move every window out of the way whenever you want to peek at your wallpaper. Fortunately, there are several macOS-native shortcuts for showing the desktop. One is to use a four-finger trackpad pinch, selectable under <code>Trackpad → More Gestures → Show Desktop</code> in System Preferences. Personally, I prefer binding the action to a keyboard shortcut: <code>Command-Option-down</code>, to go with my assigned <code>Command-Option-left</code> and <code>right</code> shortcuts for switching spaces. You can do this under <code>Keyboard → Shortcuts</code>.</p>
+<p>It’s no fun to manually move every window out of the way whenever you want to peek at your wallpaper. Fortunately, there are several macOS-native shortcuts for showing the desktop. One is to use a four-finger trackpad pinch, selectable under <code class="highlighter-rouge">Trackpad → More Gestures → Show Desktop</code> in System Preferences. Personally, I prefer binding the action to a keyboard shortcut: <code class="highlighter-rouge">Command-Option-down</code>, to go with my assigned <code class="highlighter-rouge">Command-Option-left</code> and <code class="highlighter-rouge">right</code> shortcuts for switching spaces. You can do this under <code class="highlighter-rouge">Keyboard → Shortcuts</code>.</p>
 
 <p>Some of us are… more messy than others. The desktop can acquire quite a bit of cruft over time, blocking view of the beautiful art below. But why bother cleaning it up when you can just sweep the mess under a rug? If you’re lazy like me, you can toggle visibility for the icons on your desktop by running <a href="/images/backgroundifier-gallery/toggle_desktop.command.zip">this simple script</a>:</p>
 
-<pre><code>#!/bin/sh
-# Toggles desktop icons.
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="c"># Toggles desktop icons.</span>
 
-if [[ $(defaults read com.apple.finder CreateDesktop) = false ]]; then
-    echo "Showing desktop icons."
-    defaults write com.apple.finder CreateDesktop true
-else
-    echo "Hiding desktop icons."
-    defaults write com.apple.finder CreateDesktop false
-fi
+<span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>defaults <span class="nb">read </span>com.apple.finder CreateDesktop<span class="k">)</span> <span class="o">=</span> <span class="nb">false</span> <span class="o">]]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Showing desktop icons."</span>
+    defaults write com.apple.finder CreateDesktop <span class="nb">true
+</span><span class="k">else
+    </span><span class="nb">echo</span> <span class="s2">"Hiding desktop icons."</span>
+    defaults write com.apple.finder CreateDesktop <span class="nb">false
+</span><span class="k">fi
 
-killall Finder
+</span>killall Finder
 </code></pre>
+</div>
 
 <p>And voilà! Clutter-free art with hardly a fuss.</p>
 
@@ -322,7 +237,7 @@ killall Finder
 
 <p>Here’s where it all comes together. One my favorite macOS features is Spaces, or virtual desktops. Spaces have an extra hidden benefit for our use case: whenever a new Space is created, its desktop background settings are taken from the previous space. This means that any new Space created in our configuration will automatically arrive with a fresh work of art in tow!</p>
 
-<p>Whenever you wish to see a new work of art, just pop open Mission Control (in my case, bound to <code>Command-Option-up</code>), create a few new Spaces, and keep switching Spaces to the right. It’s just like leafing through an art book!</p>
+<p>Whenever you wish to see a new work of art, just pop open Mission Control (in my case, bound to <code class="highlighter-rouge">Command-Option-up</code>), create a few new Spaces, and keep switching Spaces to the right. It’s just like leafing through an art book!</p>
 
 <video controls="" width="800px" poster="/images/backgroundifier-gallery/demo.jpg">
 	<source src="/images/backgroundifier-gallery/demo.mp4" type="video/mp4" />
@@ -333,70 +248,44 @@ killall Finder
 
 <p>It’s quite a thing knowing that a new, enriching artistic discovery — be it a Picasso, a Van Gogh, or even a Mike From Around The Web — is only a quick peek away!</p>
 
-
-    <div class="signature">
+<div class="signature">
     <p>—<span class="signature-name">Archagon</span></p>
-    <p>September 19, 2016</p>
-</div>
-  </article>
+    <p class="signature-date">September 19, 2016</p>
 </div>
 
-      </div>
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img> <span>Tweet me up</span></a>
+            </div>
+        </div>
     </div>
-    <footer class="site-footer">
-  <div class="wrapper">
-    <ul class="background-overlay">
-      <!-- rss link -->
-      <li class="rss">
-        <a href="/feed.xml">
-          <div>
-            <img src="/images/RSS.svg" />
-            <span>Subscribe via RSS</span>
-          </div>
-        </a>
-      </li>
-
-      <!-- twitter link -->
-      <li class="twitter">
-        <a href="https://twitter.com/archagon">
-          <div>
-            <svg viewBox="0 0 16 16">
-              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-              c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-            </svg>
-            <span>Tweet me up</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  </a>
 </footer>
 
-    </div>
-  </body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
 </html>
-<script>
-var elems = document.querySelectorAll('.background-overlay');
-
-var setHeaderImageOffset = function() {
-  for (var i = 0; i < elems.length; i++) {
-    var elem = elems[i];
-    var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
-    elem.style['background-position'] = positionString;
-  }
-};
-
-setHeaderImageOffset();
-window.onresize = setHeaderImageOffset;
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-44612590-2', 'auto');
-  ga('send', 'pageview');
-
-</script>

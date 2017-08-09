@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Robocopy: it's not as scary as it looks! — Archagon Was Here</title>
+    <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <link rel="canonical" href="http://beta-blog.archagon.net/2013/06/16/robocopy-its-not-as-scary-as-it-looks/">
+
+    <link rel="icon" href="/images/favicon/favicon-96x96.png">
+</head>
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></img></a>
+                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-technology" id="sel_20130616robocopy-its-not-as-scary-as-it-looks">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Robocopy: it's not as scary as it looks!</h1>
+    <h2 class="post-meta">Jun 16, 2013<span class="document-header-categories"> <span class="document-header-category category-technology">technology</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<p><img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/51be7beae4b090c42fe54e4d/1371438059771/Robocopy.gif?format=750w" /></p>
+
+<p>(OK, so I know a true sysadmin would be talking about the wonders of rsync in this post, but please bear with me. This was a Windows problem and I wanted to use the right Windows tool for the job.)</p>
+
+<p>I recently got a <a href="http://www.synology.com/">Synology</a> NAS unit, and I needed to copy a couple of terabytes worth of data from my external NTFS drives over to the new RAID array. What to do? First of all, it might seem obvious to most of you, but I just want to make it clear: Windows file copy was simply not an option. Among other nasty things, my drives contained backed up user directories from a bunch of old Windows installs, meaning that they were riddled with broken permissions, confused symbolic links and NTFS junction points, and paths that were somehow too long for Windows to handle. Windows file copy would have choked about halfway through.</p>
+
+<p>No, this was a job for some serious command line jujitsu. And thankfully, Windows has a built-in tool that was perfect for the job: <a href="https://technet.microsoft.com/en-us/library/cc733145(v=ws.10).aspx">robocopy</a>. Just like rsync, robocopy has dozens of incomprehensible flags that you need to spend hours studying to fully understand. Fortunately, I’ve whittled them down to an abridged summary in case you find yourself in a similar situation.</p>
+
+<!--more-->
+
+<p>To clarify, here are the options I needed: </p>
+
+<ul>
+  <li>NTFS backup privileges. This was required to allow Windows to copy every single file, regardless of whatever mangled permissions they had set.</li>
+  <li>Ignore symbolic links. Since I was copying the full contents of my drives, the symbolic links would have been redundant. Furthermore, since these drives were used on Windows only, I didn’t have any symbolic links that I created myself. The only ones that were there were hidden Windows symbolic links that enabled backwards compatibility (or something).</li>
+  <li>Ignore <a href="http://en.wikipedia.org/wiki/NTFS_junction_point">NTFS junction points</a>. Same reasoning as above.</li>
+  <li>(Danger Will Robinson! Without these two options, your robocopy may well run into an infinite loop with Windows system directories, as mine did when I was still figuring out what to do.) </li>
+  <li>Ignore system files. The only system files I had were Windows files that I had no reason to copy.</li>
+  <li>Remove hidden attributes from files. I was copying these drives strictly for the data, and I wanted to start with a clean slate.</li>
+  <li>Remove existing permissions and replace with default permissions. Same reasoning as above. </li>
+  <li>Keep a robust log.</li>
+</ul>
+
+<p>And here’s what my robocopy call ended up looking like. Simply boot up PowerShell in admin mode and give it a go. (The normal command prompt should work too, but you might have to fiddle with the formatting a bit.)</p>
+
+<noscript><p><em>To see this Gist, please use a browser that supports Javascript.</em></p></noscript>
+<script src="https://gist.github.com/archagon/5791332.js"></script>
+
+<p>robocopy appears to work by first doing a depth-first run through the entire tree, creating directories as it goes. It then copies the actual files in the same traversal order. Do note that the console log isn’t always real-time; it occasionally takes it a while to catch up to the written log.</p>
+
+<p>One caveat, from my understanding, is that robocopy doesn’t automatically checksum copied files. If you want to be extra, 100% sure that everything copied correctly, I suggest using a tool like <a href="http://corz.org/windows/software/checksum/">checksum</a>. (I know it’s a bit, uh, hacker-y looking, but it gets the job done quickly and efficiently, minus a few issues with Russian text.)</p>
+
+<p>And as a bonus, here’s a command you can run if Windows refuses to delete a directory due to the path length of some files contained inside! (This can happen sometimes with deeply nested folders.) Simply create an empty directory and mirror it into the directory you wish to clear. robocopy does not adhere to the same constraints as Windows file copy. (I am not responsible for any unintended data loss that may occur.)</p>
+
+<noscript><p><em>To see this Gist, please use a browser that supports Javascript.</em></p></noscript>
+<script src="https://gist.github.com/archagon/5791339.js"></script>
+
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">June 16, 2013</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

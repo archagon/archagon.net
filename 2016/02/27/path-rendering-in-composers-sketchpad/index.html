@@ -1,355 +1,185 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Path Rendering in Composer's Sketchpad</title>
-    <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+    <title>Path Rendering in Composer's Sketchpad — Archagon Was Here</title>
+    <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 ">
 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    
     <link rel="canonical" href="http://beta-blog.archagon.net/2016/02/27/path-rendering-in-composers-sketchpad/">
+
+    <link rel="icon" href="/images/favicon/favicon-96x96.png">
 </head>
 
-  <style>
-  /* dynamically assigns category colors */
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
 
-#sel_20170108an-even-better-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170108an-even-better-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
 
-#sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
 
-#sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
 
-#sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
 
-#sel_20160830on-the-wonders-of-digital-journaling {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160830on-the-wonders-of-digital-journaling .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
 
-#sel_20160821tool-reliance {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160821tool-reliance .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
 
-#sel_20160716composers-sketchpad-adventures-in-icon-design {
-  /*background-color: mix($category-design-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160716composers-sketchpad-adventures-in-icon-design .post-title {
-    /*color: mix($category-design-color, black, 60%);*/
-    background-color: #cce5fe; }
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
 
-#sel_20160621headphones {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160621headphones .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
 
-#sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+</style>
 
-#sel_20160227path-rendering-in-composers-sketchpad {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160227path-rendering-in-composers-sketchpad .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
+<body class="body-background">
 
-#sel_20160205composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160205composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151226the-perfect-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151226the-perfect-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151225the-stanley-64oz-classic-vacuum-growler {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151225the-stanley-64oz-classic-vacuum-growler .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20150929backgroundifier {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150929backgroundifier .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
-
-#sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20150308who-cares-about-the-apple-watch-edition {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150308who-cares-about-the-apple-watch-edition .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20150201vancouver {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150201vancouver .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20150131state_of_the_union {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150131state_of_the_union .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20141119whats_up_with_google_maps_these_days {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141119whats_up_with_google_maps_these_days .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20140918old_iphone_tricks_gps_tracker {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20140918old_iphone_tricks_gps_tracker .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20130828gathering-the-goods-part-2 {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20130828gathering-the-goods-part-2 .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-  </style>
-  <body>
-    <div class="body-wrapper">
-    <header class="site-header">
-    <div class="wrapper">
-        <div class="background-overlay">
-            <header class="site-title">
-                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div></a>
-            </header>
-
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></img></a>
+                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
             <nav class="site-nav">
-            <a class="page-link" href="/">Home</a>
-            
-                
-                <a class="page-link" href="/about/">About</a>
-                
-            
-                
-                <a class="page-link" href="/archive/">Archive</a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                <a class="page-link" href="/timeline/">Travel Timeline</a>
-                
-            
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
             </nav>
         </div>
     </div>
 </header>
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="post" id="sel_20160227path-rendering-in-composers-sketchpad">
-  <header class="post-header">
+
+<div class="page-content">
+
+<div class="document-post category-programming" id="sel_20160227path-rendering-in-composers-sketchpad">
+<div class="wrapper">
+
+<header class="section-header">
     <h1 class="post-title">Path Rendering in Composer's Sketchpad</h1>
-    <!-- <p class="post-meta">Feb 27, 2016</p> -->
-  </header>
+    <h2 class="post-meta">Feb 27, 2016<span class="document-header-categories"> <span class="document-header-category category-programming">programming</span></span></h2>
+</header>
 
-  <article class="post-content">
-    <p><img src="/images/composers-sketchpad-rendering/rendering.png" alt="" /></p>
+<article class="section-content">
 
-<!-- TODO: move most of this to one of the global scss files -->
+<p><img src="/images/composers-sketchpad-rendering/rendering.png" alt="" /></p>
 
 <style>
-.toc {
-  margin-top: 2em;
-  margin-bottom: 2em;
-  padding: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: solid;
-  border-width: 0.2em;
-  border-color: #93d7ff;
-  border-radius: 2em;
-  width: 80%;
-  background-color: #c6eaff; }
-
-.toc_header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row; }
-
-.toc_header {
-  text-align: left;
-  margin-bottom: 0.75em !important; }
-
-.toc_header > * {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  margin-left: 0.5em !important;
-  margin-right: 0.5em !important;
-  padding: 0; }
-
-.toc_header :first-child {
-  margin-left: 0 !important; }
-
-.toc_header :last-child {
-  margin-right: 0 !important; }
-
-.toc_header > p {
+.toc.composers-sketchpad {
+  background-color: #c6eaff;
   font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
-  font-size: 1.1em;
-  color: #444;
-  font-weight: 500;
-  /*line-height: 140%;*/ }
-
-.toc_header > a {
-  min-width: 5em;
-  max-width: 5em; }
-
-.toc_links {
-  /*text-align: center;*/ }
-
-.toc_links > ol {
-  font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
-  font-size: 1.1em;
+  font-size: 0.9em;
   font-weight: 500; }
-
-.toc_links > ol {
-  margin: 0;
-  list-style-position: inside;
-  counter-reset: i 0; }
-
-.toc_links li {
-  padding: 0.15em 0.5em 0.15em 0.5em; }
-
-.toc a {
-  text-decoration: underline; }
+  .toc.composers-sketchpad .toc-header > p {
+    color: #444; }
+  .toc.composers-sketchpad .toc-links > ol li:nth-child(2) {
+    color: white;
+    border-radius: 0.5em;
+    background-color: #8aa3b2; }
+  .toc.composers-sketchpad .toc-links > ol li:nth-child(2) a {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+    color: inherit; }
 
 </style>
 
-<style>
-.toc_links > ol li:nth-child(2) {
-/*color: darkgreen;*/
-color: green;
-border-radius: 0.5em;
-background-color: lightgreen;
-/*border: 1px dashed green;*/
-}
-.toc_links > ol li:nth-child(2) a {
-text-decoration: none;
-pointer-events: none;
-cursor: default;
-color: inherit;
-text-decoration: inherit;
-}
-</style>
-
-<p>
-<div class="toc">
-    <div class="toc_header">
+<div class="toc composers-sketchpad">
+    <div class="toc-header">
         <a href="http://www.composerssketchpad.com"><img src="/images/composers_sketchpad_icon.png" /></a>
         <p>This blog post is part of a series on the development of <a href="http://www.composerssketchpad.com">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>
     </div>
 
-    <div class="toc_links">
+    <div class="toc-links">
         <ol>
-        <li><a href="/2016/02/05/composers-sketchpad">Rethinking Musical Notation with Composer's Sketchpad</a></li>
-        <li><a href="/2016/02/27/path-rendering-in-composers-sketchpad">Path Rendering in Composer's Sketchpad</a></li>
-        <li><a href="/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">Liberating Pitch and Taming MIDI in Composer's Sketchpad</a></li>
-        <li><a href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/">Composer's Sketchpad: Adventures in Icon Design</a></li>
+            <li><a href="/2016/02/05/composers-sketchpad">Rethinking Musical Notation with Composer's Sketchpad</a></li>
+            <li><a href="/2016/02/27/path-rendering-in-composers-sketchpad">Path Rendering in Composer's Sketchpad</a></li>
+            <li><a href="/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">Liberating Pitch and Taming MIDI in Composer's Sketchpad</a></li>
+            <li><a href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/">Composer's Sketchpad: Adventures in Icon Design</a></li>
         </ol>
     </div>
 </div>
-</p>
 
 <p>Before starting any work on Composer’s Sketchpad, I had to ask myself: was the app as I envisioned it even possible to make? My initial goals were as follows:</p>
 
 <p>
-<div class="important_list">
+<div class="important-list">
     <ol>
       <li>Have an (effectively) infinite canvas with a large number of notes visible at once.</li>
       <li>Allow the canvas to zoom and pan with without any lag.</li>
@@ -363,59 +193,55 @@ text-decoration: inherit;
 
 <p>I had barely done any graphics programming up to this point, so I had to feel out the limits of OpenGL as I blindly barged ahead — always a painful way to develop a project.</p>
 
+<!--more-->
+
 <p>At first, I briefly considered implementing drawing using Photoshop-like brushes: that is to say, directly toggling pixels on a bitmap as the user moved their fingers around the screen. This seemed appropriate for something that behaved so much like a drawing application. However, I quickly realized that the representation of my notes should really be separate from their rendering (as with any good MVC design), which meant that I couldn’t just save the bitmap and be done with it. Furthermore, the finite resolution of the bitmap presented a number of problems. How could I implement high-quality zoom without having to re-render everything? How would it be possible to have an infinite canvas without having to implement a complex tiled rendering system? (I was aiming for maximum possible simplicity in my architecture at this point.) How could I switch layers seamlessly without storing a bitmap for each layer? It just wasn’t a good fit given the dynamic features of my app.</p>
 
 <p>So I decided try for a <a href="https://developer.nvidia.com/nv-path-rendering">path rendering</a> approach instead. My musical notes would be stored as points in time/pitch space, and then the renderer would convert them into pleasing, smooth curves to draw on the screen.</p>
 
-<p>There were two obvious techniques that came to mind. The first was to use the CoreGraphics path renderer in the form of <code>UIBezierCurve</code>. This approach was compelling because CoreGraphics’ path drawing support was very robust, to the point of being the foundation of heavyweight applications like <a href="http://www.pixelmator.com/">Pixelmator</a>. Strokes, fills, and complex shapes were incredibly simple to define and draw, and it was all built-in and battle-tested by thousands of developers.</p>
+<p>There were two obvious techniques that came to mind. The first was to use the CoreGraphics path renderer in the form of <code class="highlighter-rouge">UIBezierCurve</code>. This approach was compelling because CoreGraphics’ path drawing support was very robust, to the point of being the foundation of heavyweight applications like <a href="http://www.pixelmator.com/">Pixelmator</a>. Strokes, fills, and complex shapes were incredibly simple to define and draw, and it was all built-in and battle-tested by thousands of developers.</p>
 
 <p>The second approach that I immediately considered was to convert each curve into polygons and draw them using the GPU. My experience with hardware-accelerated vector graphics, though minor, was very positive: performance seemed smooth and stutterless compared to software rendering in the apps that used it, and the artifacts that occurred while waiting for data to load (jagged lines turning into smooth lines) felt a lot more pleasing than those in software renderers (blurry lines turning into crisp lines). Intuitively, even though I didn’t know any of the details at this point, the idea of manipulating groups of polygons on the GPU rather than plotting out curves pixel-by-pixel seemed like a very efficient approach. In addition, I knew that with polygons, scales and other translations would be effectively free.</p>
 
 <p>Unfortunately, there weren’t any built-in iOS frameworks that allowed me to do this. (Or — so I thought. I later learned that <a href="https://developer.apple.com/library/prerelease/ios/documentation/SceneKit/Reference/SCNShape_Class/index.html">SceneKit had support for path rendering</a>, but it turned out to be fairly ugly, slow, and not particularly configurable.) I didn’t really feel up to the task of rolling my own solution, so I decided to hunt around for a framework. With high high-DPI displays ruling the roost and minimalist UIs being all the rage, surely somebody had a stable framework for hardware-accelerated path rendering on iOS?</p>
 
-<p>During my search, I learned of <a href="https://en.wikipedia.org/wiki/OpenVG">OpenVG</a>, the Khronos Group’s standard for hardware-accelerated path rendering. It seemed to be exactly what I was looking for! Unfortunately, the standard appeared to be all but abandoned<sup id="fnref:why_no_hw_vectors"><a href="#fn:why_no_hw_vectors" class="footnote">1</a></sup>, with Nvidia’s <a href="https://developer.nvidia.com/nv-path-rendering">NV_path_rendering</a> being the only other standard trying to take up the mantle. (Naturally, this was not an extension that iOS OpenGL ES supported.) However, I did manage to find an OpenGL ES framework called <a href="https://github.com/micahpearlman/MonkVG">MonkVG</a> that incorporated a subset of OpenVG suitable for my project. Looking at the terrifying, twisted, OpenGL-ES-2-wrapping-OpenGL-ES-1-code, I feared that I might have great difficulty using the framework on iOS. Fortunately, it turned out that MonkVG only handled shaders and polygon drawing, not setting up the context or any other platform-specific technical details. After creating my GL <code>UIView</code> and fixing a couple of minor errors, I was good to go.</p>
+<p>During my search, I learned of <a href="https://en.wikipedia.org/wiki/OpenVG">OpenVG</a>, the Khronos Group’s standard for hardware-accelerated path rendering. It seemed to be exactly what I was looking for! Unfortunately, the standard appeared to be all but abandoned<sup id="fnref:why_no_hw_vectors"><a href="#fn:why_no_hw_vectors" class="footnote">1</a></sup>, with Nvidia’s <a href="https://developer.nvidia.com/nv-path-rendering">NV_path_rendering</a> being the only other standard trying to take up the mantle. (Naturally, this was not an extension that iOS OpenGL ES supported.) However, I did manage to find an OpenGL ES framework called <a href="https://github.com/micahpearlman/MonkVG">MonkVG</a> that incorporated a subset of OpenVG suitable for my project. Looking at the terrifying, twisted, OpenGL-ES-2-wrapping-OpenGL-ES-1-code, I feared that I might have great difficulty using the framework on iOS. Fortunately, it turned out that MonkVG only handled shaders and polygon drawing, not setting up the context or any other platform-specific technical details. After creating my GL <code class="highlighter-rouge">UIView</code> and fixing a couple of minor errors, I was good to go.</p>
 
 <p>(Quick aside: over the course of my research, I learned that there were several ways to hardware-accelerate path rendering. MonkVG’s tessellation approach worked fairly efficiently, but it was also imprecise on account of the fact that you ended up with polygon strips in the end. It also required the actual tessellation step to be done on the CPU. In contrast, there are newer approaches that can render the paths directly using shaders. These tend to have high accuracy and detail, and they only require a single bounding-box polygon for the entire shape. Unfortunately, in my limited testing, I found the performance of this approach to be lacking on my iPad 3. Additionally, as I further discuss below, the polygon strip approach turned out to be ideal in the case where shapes needed to be generated once and then cached for future reuse and transformation. From what I can tell, it’s far more difficult to cache rendered curves using the shader approach.)</p>
 
 <p>Having figured out how to use both frameworks, I made a quick performance prototype: a simple draw loop at 60fps with a set of full-screen, randomly generated Bézier curves in each frame. (I considered this my worst-case scenario, as in the case of changing the width or height scales of my grid.) There were two rendering paths: one for CoreGraphics and one for MonkVG.</p>
 
-<p>
 <div class="caption">
 <img src="/images/composers-sketchpad-rendering/stresstest.png" />
 <p>A randomly-generated scene from the stress test. CoreGraphics couldn't handle it while MonkVG passed with flying colors.</p>
 </div>
-</p>
 
 <p>Sadly, as much as I wanted to stick with the battle-hardened CoreGraphics approach, it wasn’t even able to draw a single animating curve at a solid 60fps on my iPad 3. MonkVG, on the other hand, tore through 10+ curves without breaking a sweat. Graphically, the results of both approaches looked quite similar to me — or at least good enough for the app I was trying to make.</p>
 
 <p>After closely examining the technical underpinnings of both technologies, I learned that CoreGraphics was doing all of its work on the CPU, while MonkVG was tessellating its curves into polygon strips CPU-side and then sending them to VBOs on the GPU — one per curve. Interestingly, the performance difference still applied even when accounting for the tessellation step. Presumably, this is because drawing multiple polygons is a very fast and parallelizable operation on the GPU, even if they number in the thousands, while generating a Retina-sized Bézier curve on the CPU requires you to touch tens of thousands of pixels by “hand”. (But don’t quote me on that — I am definitely still a novice in this area.) It also helps that MonkVG is much less precise than CoreGraphics in its tessellation.</p>
 
-<p>Despite these finds, I really wanted to work with CoreGraphics, and so I attempted to return to the technology a number of times during my project. (Perhaps I missed something that would account for the massive performance difference?) Notably, I tried using it together with <code>CATiledLayer</code>, hoping that this particular optimization would offset the inefficiencies of the software render. But even though I could now pan and zoom at 60fps, the chunks loaded far, <em>far</em> too slowly for realtime use — I’m talking on the order of several seconds whenever you zoomed in. So that was that.</p>
+<p>Despite these finds, I really wanted to work with CoreGraphics, and so I attempted to return to the technology a number of times during my project. (Perhaps I missed something that would account for the massive performance difference?) Notably, I tried using it together with <code class="highlighter-rouge">CATiledLayer</code>, hoping that this particular optimization would offset the inefficiencies of the software render. But even though I could now pan and zoom at 60fps, the chunks loaded far, <em>far</em> too slowly for realtime use — I’m talking on the order of several seconds whenever you zoomed in. So that was that.</p>
 
 <p>For much of the project, owing to my inexperience, I was burdened with the question of the framerate cap. If everything was done perfectly, how high could I go? After getting caching and draw call batching working correctly, my MonkVG implementation yielded an acceptable framerate of 30-60fps in the general case, but I still wondered if I was an order of magnitude off on account of my incompetence. How did Apple Maps manage to work so smoothly with so many shapes on screen? How did web browsers manage to display thousands of character paths — possibly with transforms! — and still attain smooth performance? In truth, the geometry I was showing on screen was fairly complex: each quarter-measure note had about 300 triangles once you included the outline and endcaps, leading to an upper bound of almost 400,000 triangles on screen for a dense piece (12 notes, or 4 chords, per measure per layer, with 10 full layers and 10 measures on screen). Surely a breeze for modern machines, but quite a lot to handle for an old iPad! It’s always important to be able to answer the question, “where is all that performance going?”, and in my case it was going towards the multitude of dynamic features in my app.</p>
 
-<p>
 <div class="caption">
 <img src="/images/composers-sketchpad-rendering/curves.png" />
 <p>The mesh structure of a note. Each blue dot is a recorded time/pitch sample. Having a screen full of these can be surprisingly performance-intensive!</p>
 </div>
-</p>
 
 <p>In retrospect, it was quite fortunate that I just happened to fall into the optimal rendering implementation for my project. My path rendering requirements were a little different from the norm: after eliminating point #5 from my initial goal list, I no longer needed most of my curves to be dynamic. The only curves that actually changed their structure from frame to frame were those belonging to the notes currently being drawn or erased — and even those were localized to the point of editing, since my notes were comprised of multiple tiny Bézier segments chained together. (I’ll talk details in a later article.) Instead, my highest priority was to translate and scale my notes at a constant 60fps while still preserving their sharpness, and polygons happened to be uniquely qualified for this task. At the expense of jaggedness on close zoom — fine by me — polygon tessellation effectively gave me infinite resolution along with free transforms. They were also perfectly suited for caching: once tessellated, I could store the vertices of the generated polygons for all my note objects without wasting too much space, wheareas doing the same with textures would have quickly filled up my memory. (To say nothing of looking terribly ugly when scaled.) Better yet, I eventually learned from profiling that it was the tessellation step — not drawing — that was the biggest roadblock in my path rendering implementation, so caching was absolutely critical to getting the performance I needed! Had I used a shader-based approach, I would have had to write a ton of additional code to enable caching, and it <em>still</em> probably wouldn’t have gotten close to my 60fps benchmark for large scenes.</p>
 
 <p>For convenience, I decided to use <a href="http://cocos2d.spritebuilder.com">Cocos2d</a> as the graphical core of my project, so I had to figure out a way to wedge MonkVG in there somehow. 
-Fortunately, it was fairly simple to write a Cocos2d <code>CCNode</code> wrapper around MonkVG’s rendering functions, since each <code>CCNode</code> in Cocos2d had a lovely overridable <code>draw</code> method that allowed you to call OpenGL functions directly. (One reason why you might want to use it over SpriteKit!) Still, especially as the project moved forward, the framework was becoming a massive cognitive burden. MonkVG had a fairly old and creaky codebase, and as the hacks I made to enable unsupported features such as real-time color changes piled on, I realized that it would take me forever to actually fix everything up and integrate it into my project in a sensible and modern way. Additionally, the one-VBO-per-curve approach was quickly becoming unwieldily. Already I had to synchronize a ton of state between MonkVG and the rest of my app in order to cache previously-tessellated curves for performance reasons; far more daunting was the idea of cycling VBOs in and out of GPU memory while retaining the underlying geometry client-side, which I wasn’t doing yet. Unfortunately, this was going to be necessary to enable my potentially-infinite canvas, and MonkVG didn’t natively support it.</p>
+Fortunately, it was fairly simple to write a Cocos2d <code class="highlighter-rouge">CCNode</code> wrapper around MonkVG’s rendering functions, since each <code class="highlighter-rouge">CCNode</code> in Cocos2d had a lovely overridable <code class="highlighter-rouge">draw</code> method that allowed you to call OpenGL functions directly. (One reason why you might want to use it over SpriteKit!) Still, especially as the project moved forward, the framework was becoming a massive cognitive burden. MonkVG had a fairly old and creaky codebase, and as the hacks I made to enable unsupported features such as real-time color changes piled on, I realized that it would take me forever to actually fix everything up and integrate it into my project in a sensible and modern way. Additionally, the one-VBO-per-curve approach was quickly becoming unwieldily. Already I had to synchronize a ton of state between MonkVG and the rest of my app in order to cache previously-tessellated curves for performance reasons; far more daunting was the idea of cycling VBOs in and out of GPU memory while retaining the underlying geometry client-side, which I wasn’t doing yet. Unfortunately, this was going to be necessary to enable my potentially-infinite canvas, and MonkVG didn’t natively support it.</p>
 
 <p>At this point, I realized that even though writing my own hardware-accelerated path renderer was probably too much work, my path rendering needs were actually very simple. I didn’t need to create unions of shapes, arbitrary curves, or even strokes! All my note shapes were simple Bézier “tubes” with round endcaps and outlines, and so creating a super-simple note renderer for direct use in Cocos2d would require minimal effort. Better yet, most of the work was done already: for the purpose of creating better outlines, I was already interpolating all of my Bézier curves myself and only using MonkVG to draw and tessellate the final polygon tubes from the perimeter vertices. The only thing I needed to do was to create polygon strips from my points and send them through Cocos2d’s native rendering system, as well as to write a bit of code for the round endcaps. Sure, it bummed me out that this would preclude me from creating more complex and dynamic shapes in the future, but I was on a deadline and the project needed to be shipped. Despite my initial trepidation, the process was extremely quick and only took a couple of days of work.</p>
 
-<p>As I dove deeper into Cocos2d’s architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called “geometry streaming”.) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What’s more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate <code>CCNode</code>s. This was a massive benefit I was not expecting!</p>
+<p>As I dove deeper into Cocos2d’s architecture, I was struck by the beauty of its rendering pipeline. Unlike MonkVG, there was no VBO juggling here at all: the geometry for each object in the entire scene graph was sent to the GPU anew in every frame. (I soon learned that this was called “geometry streaming”.) This approach completely eliminated the need to track the mapping between tessellated curves and their corresponding VBOs, eliminating hundreds, if not thousands, of lines of brittle complexity in my app. What’s more, Cocos2d batched draw calls automatically, meaning that all your geometry would automatically coalesce into just a couple of draw calls without having to do any extra work, even if it resided in completely separate <code class="highlighter-rouge">CCNode</code>s. This was a massive benefit I was not expecting!</p>
 
-<p>
 <div class="caption">
 <img src="/images/composers-sketchpad-rendering/pipeline.png" />
 <p>The final path rendering pipeline.</p>
 </div>
-</p>
 
 <p>There was a new problem, though. With the new path rendering system (now using geometry streaming), my performance hovered at around 50%-70% of what I was getting in MonkVG. Intuitively, I feared that a fix was impossible: wouldn’t uploading thousands of polygons in every frame be naturally more resource-intensive than storing polygons in VBOs for later reuse? But after some digging, I learned something very interesting: OpenGL ES actually allowed you to map GPU memory directly into a shared application-space buffer, eliminating the need to “upload” your geometry at all! I did a sanity check and realized that there was <em>no way</em> that copying even hundreds of thousands of polygons to a buffer could be the roadblock. But Cocos2d was already using memory mapping in its renderer! So what was the problem?</p>
 
@@ -440,70 +266,44 @@ Fortunately, it was fairly simple to write a Cocos2d <code>CCNode</code> wrapper
     </li>
   </ol>
 </div>
-
-    <div class="signature">
+<div class="signature">
     <p>—<span class="signature-name">Archagon</span></p>
-    <p>February 27, 2016</p>
-</div>
-  </article>
+    <p class="signature-date">February 27, 2016</p>
 </div>
 
-      </div>
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img> <span>Tweet me up</span></a>
+            </div>
+        </div>
     </div>
-    <footer class="site-footer">
-  <div class="wrapper">
-    <ul class="background-overlay">
-      <!-- rss link -->
-      <li class="rss">
-        <a href="/feed.xml">
-          <div>
-            <img src="/images/RSS.svg" />
-            <span>Subscribe via RSS</span>
-          </div>
-        </a>
-      </li>
-
-      <!-- twitter link -->
-      <li class="twitter">
-        <a href="https://twitter.com/archagon">
-          <div>
-            <svg viewBox="0 0 16 16">
-              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-              c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-            </svg>
-            <span>Tweet me up</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  </a>
 </footer>
 
-    </div>
-  </body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
 </html>
-<script>
-var elems = document.querySelectorAll('.background-overlay');
-
-var setHeaderImageOffset = function() {
-  for (var i = 0; i < elems.length; i++) {
-    var elem = elems[i];
-    var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
-    elem.style['background-position'] = positionString;
-  }
-};
-
-setHeaderImageOffset();
-window.onresize = setHeaderImageOffset;
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-44612590-2', 'auto');
-  ga('send', 'pageview');
-
-</script>

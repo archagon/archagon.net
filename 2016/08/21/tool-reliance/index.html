@@ -1,233 +1,146 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Indie App Reliance</title>
-    <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+    <title>Indie App Reliance — Archagon Was Here</title>
+    <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 ">
 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    
     <link rel="canonical" href="http://beta-blog.archagon.net/2016/08/21/tool-reliance/">
+
+    <link rel="icon" href="/images/favicon/favicon-96x96.png">
 </head>
 
-  <style>
-  /* dynamically assigns category colors */
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
 
-#sel_20170108an-even-better-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170108an-even-better-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
 
-#sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
 
-#sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
 
-#sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
 
-#sel_20160830on-the-wonders-of-digital-journaling {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160830on-the-wonders-of-digital-journaling .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
 
-#sel_20160821tool-reliance {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160821tool-reliance .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
 
-#sel_20160716composers-sketchpad-adventures-in-icon-design {
-  /*background-color: mix($category-design-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160716composers-sketchpad-adventures-in-icon-design .post-title {
-    /*color: mix($category-design-color, black, 60%);*/
-    background-color: #cce5fe; }
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
 
-#sel_20160621headphones {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160621headphones .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
 
-#sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+</style>
 
-#sel_20160227path-rendering-in-composers-sketchpad {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160227path-rendering-in-composers-sketchpad .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
+<body class="body-background">
 
-#sel_20160205composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160205composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151226the-perfect-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151226the-perfect-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151225the-stanley-64oz-classic-vacuum-growler {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151225the-stanley-64oz-classic-vacuum-growler .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20150929backgroundifier {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150929backgroundifier .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
-
-#sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20150308who-cares-about-the-apple-watch-edition {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150308who-cares-about-the-apple-watch-edition .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20150201vancouver {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150201vancouver .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20150131state_of_the_union {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150131state_of_the_union .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20141119whats_up_with_google_maps_these_days {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141119whats_up_with_google_maps_these_days .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20140918old_iphone_tricks_gps_tracker {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20140918old_iphone_tricks_gps_tracker .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20130828gathering-the-goods-part-2 {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20130828gathering-the-goods-part-2 .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-  </style>
-  <body>
-    <div class="body-wrapper">
-    <header class="site-header">
-    <div class="wrapper">
-        <div class="background-overlay">
-            <header class="site-title">
-                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div></a>
-            </header>
-
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></img></a>
+                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
             <nav class="site-nav">
-            <a class="page-link" href="/">Home</a>
-            
-                
-                <a class="page-link" href="/about/">About</a>
-                
-            
-                
-                <a class="page-link" href="/archive/">Archive</a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                <a class="page-link" href="/timeline/">Travel Timeline</a>
-                
-            
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
             </nav>
         </div>
     </div>
 </header>
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="post" id="sel_20160821tool-reliance">
-  <header class="post-header">
-    <h1 class="post-title">Indie App Reliance</h1>
-    <!-- <p class="post-meta">Aug 21, 2016</p> -->
-  </header>
 
-  <article class="post-content">
-    <p>Today, <a href="https://twitter.com/brentsimmons/status/767461318538383360">with a single tweet</a>, the note-taking app <a href="http://vesperapp.co">Vesper</a> has officially been shuttered. At its release, Vesper was <a href="https://marco.org/2013/06/06/vesper">widely promoted</a> by the <a href="https://www.macstories.net/reviews/vesper-review-collect-your-thoughts/">Apple indie developer communtiy</a> as the hot new thing to try. More than anything else, it had an excellent pedigree, with influential blogger John Gruber of <a href="http://daringfireball.net">Daring Fireball</a> at the helm. Many hopeful users switched to it for their primary note-taking needs, expecting that features like Mac support would arrive in short order. If any app from this circle was destined to be a breakaway hit, it was this one. And now, with barely a mention, it’s all but swept away, years after langishing with barely an update.</p>
+<div class="page-content">
+
+<div class="document-post category-technology" id="sel_20160821tool-reliance">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Indie App Reliance</h1>
+    <h2 class="post-meta">Aug 21, 2016<span class="document-header-categories"> <span class="document-header-category category-technology">technology</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<p>Today, <a href="https://twitter.com/brentsimmons/status/767461318538383360">with a single tweet</a>, the note-taking app <a href="http://vesperapp.co">Vesper</a> has officially been shuttered. At its release, Vesper was <a href="https://marco.org/2013/06/06/vesper">widely promoted</a> by the <a href="https://www.macstories.net/reviews/vesper-review-collect-your-thoughts/">Apple indie developer communtiy</a> as the hot new thing to try. More than anything else, it had an excellent pedigree, with influential blogger John Gruber of <a href="http://daringfireball.net">Daring Fireball</a> at the helm. Many hopeful users switched to it for their primary note-taking needs, expecting that features like Mac support would arrive in short order. If any app from this circle was destined to be a breakaway hit, it was this one. And now, with barely a mention, it’s all but swept away, years after langishing with barely an update.</p>
+
+<!--more-->
 
 <p>This is not a post about why Vesper ultimately failed. There are plenty of others who will happily chat about the rusty economics of the App Store. Instead, I want to focus on the other end of this unfortunate feedback loop: the effect that these highly visible app shutdowns might have on App Store customers.</p>
 
@@ -242,70 +155,44 @@
 <p>To be clear: I’m <em>not</em> saying that developers should be expected to support and add features to their apps indefinitely. That would be a very extreme stance. But on the other end, adopting a scorched earth policy for your app once you tire of it is also pretty extreme and poisons the market to boot.</p>
 
 <p>Apps — products that encapsulate <em>years</em> of people’s lives — should never outright disappear just because a developer can’t be bothered to support them anymore. If we don’t have that assurance, and if we can’t rely on our tools, all we’re doing is playing with toys.</p>
-
-    <div class="signature">
+<div class="signature">
     <p>—<span class="signature-name">Archagon</span></p>
-    <p>August 21, 2016</p>
-</div>
-  </article>
+    <p class="signature-date">August 21, 2016</p>
 </div>
 
-      </div>
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img> <span>Tweet me up</span></a>
+            </div>
+        </div>
     </div>
-    <footer class="site-footer">
-  <div class="wrapper">
-    <ul class="background-overlay">
-      <!-- rss link -->
-      <li class="rss">
-        <a href="/feed.xml">
-          <div>
-            <img src="/images/RSS.svg" />
-            <span>Subscribe via RSS</span>
-          </div>
-        </a>
-      </li>
-
-      <!-- twitter link -->
-      <li class="twitter">
-        <a href="https://twitter.com/archagon">
-          <div>
-            <svg viewBox="0 0 16 16">
-              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-              c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-            </svg>
-            <span>Tweet me up</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  </a>
 </footer>
 
-    </div>
-  </body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
 </html>
-<script>
-var elems = document.querySelectorAll('.background-overlay');
-
-var setHeaderImageOffset = function() {
-  for (var i = 0; i < elems.length; i++) {
-    var elem = elems[i];
-    var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
-    elem.style['background-position'] = positionString;
-  }
-};
-
-setHeaderImageOffset();
-window.onresize = setHeaderImageOffset;
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-44612590-2', 'auto');
-  ga('send', 'pageview');
-
-</script>

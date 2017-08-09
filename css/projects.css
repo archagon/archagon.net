@@ -1,0 +1,264 @@
+/*appearance*/
+#features {
+  background-color: white;
+  color: #222; }
+  #features .feature_box {
+    /*background-color: white;*/
+    border-radius: 1em; }
+    #features .feature_box .header {
+      text-align: left;
+      line-height: 1.6em; }
+    #features .feature_box .description_type {
+      font-weight: bold; }
+    #features .feature_box p {
+      text-align: left;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto; }
+    #features .feature_box > .header > .title h3 {
+      font-weight: 50;
+      text-align: left; }
+  #features .feature_icon {
+    -webkit-filter: drop-shadow(2px 5px 10px rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(2px 5px 10px rgba(0, 0, 0, 0.25)); }
+  #features .description {
+    text-align: left;
+    line-height: 1.2em;
+    border-radius: 0.6em;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #FFF; }
+    #features .description > .icons {
+      line-height: 0; }
+
+/*layout*/
+#features #features_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  #features #features_list > * {
+    width: 100%; }
+#features .feature_box {
+  max-width: 30em;
+  padding: 1em 0 1em 0; }
+  #features .feature_box .header {
+    margin-bottom: 0.6em; }
+  #features .feature_box p {
+    padding: 0; }
+  #features .feature_box > .header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center; }
+    #features .feature_box > .header > .icons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      /*icon spacing*/ }
+      #features .feature_box > .header > .icons > img {
+        width: 3.1rem;
+        height: 100%; }
+      #features .feature_box > .header > .icons > * {
+        margin-left: 0.2em;
+        margin-right: 0.2em; }
+      #features .feature_box > .header > .icons > *:first-child {
+        margin-left: 0; }
+      #features .feature_box > .header > .icons > *:last-child {
+        margin-right: 0.8em; }
+    #features .feature_box > .header > .title {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      #features .feature_box > .header > .title h2 {
+        padding: 0; }
+#features .feature_icon {
+  width: 26em;
+  /*transform: scale(1.1, 1.1);*/
+  -ms-flex-negative: 0;
+  flex-shrink: 0; }
+#features .description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  float: left;
+  padding: 0.4em;
+  margin: 0 0.8em 0.5em 0; }
+  #features .description > .icons {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-right: 0.6em; }
+    #features .description > .icons > img {
+      width: 3.5em; }
+#features .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  /*spacing between children*/ }
+  #features .content > * {
+    margin-right: 1rem;
+    margin-left: 1rem; }
+
+.feature_box .description {
+  display: none !important; }
+
+.feature_box.list_feature .description {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important; }
+
+/* auto-generated using SASS */
+/* color map: http://tristen.ca/hcl-picker/#/clh/8/116/E8FABB/3BA73E */
+#features_list > .feature {
+  position: relative; }
+#features_list > *:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 20rem;
+  height: 6rem;
+  min-width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto; }
+#features_list > .feature {
+  padding-top: 0;
+  padding-bottom: 0; }
+#features_list > :nth-child(1):before {
+  background: url("data:image/svg+xml;utf8,<svg version='1.1' id='Slope' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100px' height='120px' viewBox='0 0 100 120' enable-background='new 0 0 100 120' xml:space='preserve' preserveAspectRatio='none'><defs><filter id='f1' x='0' y='0'><feGaussianBlur in='SourceGraphic' stdDeviation='3' /></filter></defs><polygon fill='%23A9DEF7' opacity='1' points='0,100 100,0 100,120 0,120 '/><polyline fill='%23A9DEF7' opacity='0.75' filter='url(%23f1)' points='-2,102 102,-2 102,0 -2,104 '/><polygon fill='%23FFFFFF' opacity='1' points='100,0 0,100 0,0 '/></svg>") repeat-x center center;
+  background-size: 100% 100%;
+  top: -3rem;
+  z-index: 1; }
+#features_list > :nth-child(1) {
+  background-color: #A9DEF7; }
+#features_list > :nth-child(1) h2 {
+  color: #0e6893; }
+#features_list > :nth-child(1) h3 {
+  color: #0e6893; }
+#features_list > :nth-child(2):before {
+  background: url("data:image/svg+xml;utf8,<svg version='1.1' id='Slope' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100px' height='120px' viewBox='0 0 100 120' enable-background='new 0 0 100 120' xml:space='preserve' preserveAspectRatio='none'><defs><filter id='f1' x='0' y='0'><feGaussianBlur in='SourceGraphic' stdDeviation='3' /></filter></defs><polygon fill='%23E6D876' opacity='1' points='0,100 100,0 100,120 0,120 '/><polyline fill='%23000000' opacity='0.75' filter='url(%23f1)' points='-2,102 102,-2 102,0 -2,104 '/><polygon fill='%23A9DEF7' opacity='1' points='100,0 0,100 0,0 '/></svg>") repeat-x center center;
+  background-size: 100% 100%;
+  top: -3rem;
+  z-index: 1; }
+#features_list > :nth-child(2) {
+  background-color: #E6D876; }
+#features_list > :nth-child(2) h2 {
+  color: #4f470e; }
+#features_list > :nth-child(2) h3 {
+  color: #4f470e; }
+#features_list > :nth-child(3):before {
+  background: url("data:image/svg+xml;utf8,<svg version='1.1' id='Slope' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100px' height='120px' viewBox='0 0 100 120' enable-background='new 0 0 100 120' xml:space='preserve' preserveAspectRatio='none'><defs><filter id='f1' x='0' y='0'><feGaussianBlur in='SourceGraphic' stdDeviation='3' /></filter></defs><polygon fill='%2397E8AF' opacity='1' points='0,100 100,0 100,120 0,120 '/><polyline fill='%23000000' opacity='0.75' filter='url(%23f1)' points='-2,102 102,-2 102,0 -2,104 '/><polygon fill='%23E6D876' opacity='1' points='100,0 0,100 0,0 '/></svg>") repeat-x center center;
+  background-size: 100% 100%;
+  top: -3rem;
+  z-index: 1; }
+#features_list > :nth-child(3) {
+  background-color: #97E8AF; }
+#features_list > :nth-child(3) h2 {
+  color: #17692f; }
+#features_list > :nth-child(3) h3 {
+  color: #17692f; }
+#features_list > :nth-child(4):before {
+  background: url("data:image/svg+xml;utf8,<svg version='1.1' id='Slope' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='100px' height='120px' viewBox='0 0 100 120' enable-background='new 0 0 100 120' xml:space='preserve' preserveAspectRatio='none'><defs><filter id='f1' x='0' y='0'><feGaussianBlur in='SourceGraphic' stdDeviation='3' /></filter></defs><polygon fill='%23FFFFFF' opacity='1' points='0,100 100,0 100,120 0,120 '/><polyline fill='%23000000' opacity='0.75' filter='url(%23f1)' points='-2,102 102,-2 102,0 -2,104 '/><polygon fill='%2397E8AF' opacity='1' points='100,0 0,100 0,0 '/></svg>") repeat-x center center;
+  background-size: 100% 100%;
+  top: -3rem;
+  z-index: 1; }
+#features_list > :first-child {
+  padding-top: 3rem; }
+  #features_list > :first-child:before {
+    top: 0; }
+#features_list > :last-child {
+  padding-bottom: 3rem; }
+  #features_list > :last-child:after {
+    bottom: 0; }
+
+/*ensures that content is not hidden by svg dividers*/
+#features_list .content {
+  position: relative;
+  z-index: 2; }
+
+.feature_box.list_feature {
+  max-width: 50em; }
+  .feature_box.list_feature > .descriptions_list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center; }
+    .feature_box.list_feature > .descriptions_list .description {
+      align-items: flex-start !important;
+      background-color: inherit !important;
+      color: black !important;
+      border-color: white;
+      border-width: 0.2em !important;
+      width: 35em;
+      margin-bottom: 1.2em !important; }
+    .feature_box.list_feature > .descriptions_list hr {
+      display: block;
+      border: 0px;
+      height: 1.5em;
+      width: 20em;
+      background-size: 20em;
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-image: url("images/hr.svg");
+      background-color: #CCC;
+      color: blue; }
+    .feature_box.list_feature > .descriptions_list .icons {
+      margin-right: 1em !important;
+      filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25)); }
+    .feature_box.list_feature > .descriptions_list p {
+      margin: 0; }
+    .feature_box.list_feature > .descriptions_list h2 {
+      margin-bottom: 0.02em; }
+  .feature_box.list_feature > .header > .title {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.6em; }
+  .feature_box.list_feature > .header > .title h2 {
+    text-align: center; }
+
+.feature:nth-child(2) .content {
+  flex-direction: row-reverse !important; }
+
+.feature:nth-child(2) .feature_box > .header {
+  /*flex-direction: row-reverse !important;*/ }
+
+.feature:nth-child(2) .feature_box .description {
+  /*float: right;*/ }
+
+#features_list {
+  max-width: 100rem;
+  margin: auto; }

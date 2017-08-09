@@ -1,654 +1,343 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Archagon Was Here (Jekyll Test)</title>
-    <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+    <title>Archagon Was Here</title>
+    <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 ">
 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    
     <link rel="canonical" href="http://beta-blog.archagon.net/">
+
+    <link rel="icon" href="/images/favicon/favicon-96x96.png">
 </head>
 
-  <style>
-  /* dynamically assigns category colors */
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
 
-#sel_20170108an-even-better-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170108an-even-better-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
 
-#sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
 
-#sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
 
-#sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
 
-#sel_20160830on-the-wonders-of-digital-journaling {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160830on-the-wonders-of-digital-journaling .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
 
-#sel_20160821tool-reliance {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160821tool-reliance .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
 
-#sel_20160716composers-sketchpad-adventures-in-icon-design {
-  /*background-color: mix($category-design-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160716composers-sketchpad-adventures-in-icon-design .post-title {
-    /*color: mix($category-design-color, black, 60%);*/
-    background-color: #cce5fe; }
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
 
-#sel_20160621headphones {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160621headphones .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
 
-#sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+</style>
 
-#sel_20160227path-rendering-in-composers-sketchpad {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160227path-rendering-in-composers-sketchpad .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
+<body class="body-background">
 
-#sel_20160205composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160205composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151226the-perfect-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151226the-perfect-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151225the-stanley-64oz-classic-vacuum-growler {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151225the-stanley-64oz-classic-vacuum-growler .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20150929backgroundifier {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150929backgroundifier .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
-
-#sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20150308who-cares-about-the-apple-watch-edition {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150308who-cares-about-the-apple-watch-edition .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20150201vancouver {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150201vancouver .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20150131state_of_the_union {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150131state_of_the_union .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20141119whats_up_with_google_maps_these_days {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141119whats_up_with_google_maps_these_days .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20140918old_iphone_tricks_gps_tracker {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20140918old_iphone_tricks_gps_tracker .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20130828gathering-the-goods-part-2 {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20130828gathering-the-goods-part-2 .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-  </style>
-  <body>
-    <div class="body-wrapper">
-    <header class="site-header">
-    <div class="wrapper">
-        <div class="background-overlay">
-            <header class="site-title">
-                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div></a>
-            </header>
-
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></img></a>
+                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
             <nav class="site-nav">
-            <a class="page-link" href="/">Home</a>
-            
-                
-                <a class="page-link" href="/about/">About</a>
-                
-            
-                
-                <a class="page-link" href="/archive/">Archive</a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                <a class="page-link" href="/timeline/">Travel Timeline</a>
-                
-            
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
             </nav>
         </div>
     </div>
 </header>
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="home">
-  <ul class="post-list">
-    
-    <li id="sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/">
-        <h1 class="post-title">Winning the Wireless Mouse Game: Logitech MX Master</h1>
-        </a>
-        <p class="post-meta">May 22, 2017</p>
-      </header>
 
-      <article class="post-content">
-      <p><img src="/images/mx-master/master-top.jpg" /></p>
+<div class="page-content">
 
- <a href="/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/">More inside...</a>
-      </article>
+<div class="wrapper">
+
+<ul class="post-list">
+    <li id="sel_20170524mx-master-continued-mouse-latency-measurements" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2017/05/24/mx-master-continued-mouse-latency-measurements/" class="post-list-header-link"><h1 class="post-title category-reviews">MX Master Continued: Mouse Latency Measurements</h1></a>
+            <h2 class="post-meta">May 24, 2017</h2>
+        </header>
+
+        <article class="section-content">
+        <p>In the course of doing latency testing for <a href="/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/">my previous article</a> on the Logitech MX Master, I discovered a couple of flaws in my helper app, and I also realized that I should have probably recorded a few more sample points. So now, as a followup, I have devised a better testing methodology and run a full suite of tests. Unfortunately, with this new data in hand, I must now retract my original recommendation. The Master is still a good mouse for the average user, but its wireless performance is just too unreliable for precise gaming or Bluetooth use. </p>
+
+<p>If you’re looking for a great all-arounder, I would instead give my highest recommendation to the <a href="http://amzn.to/2uDAeF2">G403 Wireless</a>, which I’ve been happily using for several months with zero issues. While this mouse does require a dongle and only has a tenth of the Master’s battery life, its best-in-class performance, non-existent latency, svelte form factor, and incredible clicky side buttons more than make up for these downsides. Better yet, you can routinely find it on sale for $50 or lower on Amazon and at Best Buy. I’ll try to post a fuller account sometime in the near future.</p>
+
+<p>In the meantime, here are the new test results for the MX Master, G602, and MX 518.</p>
+
+ 
+        <a href="/2017/05/24/mx-master-continued-mouse-latency-measurements/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20170108an-even-better-travel-gaiwan" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2017/01/08/an-even-better-travel-gaiwan/">
-        <h1 class="post-title">An Even Better Travel Gaiwan</h1>
-        </a>
-        <p class="post-meta">Jan 8, 2017</p>
-      </header>
+    <li id="sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/" class="post-list-header-link"><h1 class="post-title category-reviews">(Almost) Winning the Wireless Mouse Game: Logitech MX Master</h1></a>
+            <h2 class="post-meta">May 22, 2017</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/klean-kanteen-gaiwan/front.jpg" /></p>
+        <article class="section-content">
+        <div class="full-width"><img src="/images/mx-master/master-top.jpg"></div>
 
- <a href="/2017/01/08/an-even-better-travel-gaiwan/">More inside...</a>
-      </article>
+
+
+<p>We all know that Bluetooth has an abundance of flaws, ranging from frustrating latency to arcane pairing rituals. By many measures, it still feels like a technology stuck in the early 90’s. And yet, once you’ve experienced the freedom of going wireless, it’s very hard to go back to the old ways. Reaching to unplug your headphones when leaving your desk, only to realize that you can simply walk away? Bliss!</p>
+
+<p>For several years, I’ve been on the lookout for a Bluetooth mouse that could also be used for non-casual gaming. At minimum, the mouse needed to be on par with my trusty <a href="http://amzn.to/2qbhqeY">MX 518</a> at 1600 DPI and have little to no latency. Unfortunately, the vast majority of reputable Bluetooth mice maxed out at around 1000 DPI and had a reputation for being a bit laggy. The <a href="http://amzn.to/2qbb8fi">Razer Orochi</a> was one of the few models that supported high DPI over Bluetooth, but it was a cramped little thing that felt rather unpleasant to use.</p>
+
+ 
+        <a href="/2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage/">
-        <h1 class="post-title">MusicMessages! Making a Collaborative Sequencer for iMessage</h1>
-        </a>
-        <p class="post-meta">Jan 3, 2017</p>
-      </header>
+    <li id="sel_20170108an-even-better-travel-gaiwan" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2017/01/08/an-even-better-travel-gaiwan/" class="post-list-header-link"><h1 class="post-title category-reviews">An Even Better Travel Gaiwan</h1></a>
+            <h2 class="post-meta">Jan 8, 2017</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/music-messages/banner.png" /></p>
+        <article class="section-content">
+        <p><img src="/images/klean-kanteen-gaiwan/front.jpg"></p>
 
- <a href="/2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage/">More inside...</a>
-      </article>
+<p>Previously, I wrote about the <a href="/2015/12/26/the-perfect-travel-gaiwan/">Asobu Travel Mug</a> as an excellent (if unintentional) travel gaiwan. Now, there’s a new leader in the not-a-gaiwan-but-almost-better-than-one category: the <a href="http://amzn.to/2j2ie1U">Klean Kanteen 8oz insulated tumbler</a>.</p>
+
+ 
+        <a href="/2017/01/08/an-even-better-travel-gaiwan/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/">
-        <h1 class="post-title">Cheap and Painless eGPU Thrills on a 2013 MacBook Pro</h1>
-        </a>
-        <p class="post-meta">Dec 31, 2016</p>
-      </header>
+    <li id="sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage/" class="post-list-header-link"><h1 class="post-title category-releases">MusicMessages! Making a Collaborative Sequencer for iMessage</h1></a>
+            <h2 class="post-meta">Jan 3, 2017</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/egpu/egpu.jpg" /></p>
+        <article class="section-content">
+        <p><img src="/images/music-messages/banner.png"></p>
 
- <a href="/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/">More inside...</a>
-      </article>
+<p>Last month, I released an unusual little app for iMessage. It’s called <a href="http://musicmessages.io">MusicMessages!</a>, and it’s a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it’s the only app of its kind in the iMessage App Store. (Probably for good reason!)</p>
+
+ 
+        <a href="/2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery/">
-        <h1 class="post-title">Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</h1>
-        </a>
-        <p class="post-meta">Sep 19, 2016</p>
-      </header>
+    <li id="sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/" class="post-list-header-link"><h1 class="post-title category-technology">Cheap and Painless eGPU Thrills on a 2013 MacBook Pro</h1></a>
+            <h2 class="post-meta">Dec 31, 2016</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/backgroundifier-gallery/title_2.jpg" /></p>
+        <article class="section-content">
+        <p><img src="/images/egpu/egpu.jpg"></p>
 
- <a href="/2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery/">More inside...</a>
-      </article>
+<p>My late-2013 15” MacBook Pro’s discrete GPU — an NVIDIA GeForce GT 750M — was pretty good for gaming during the first year of its life.  But around the time that the new generation of consoles dropped, AAA games on the PC started becoming unplayable, even at postage-stamp resolutions with the lowest possible settings. I lived on a strict diet of indie games from 2015 to 2016 — thank goodness for well-tuned titles like Overwatch and The Witness! — but the itch to try games like the new Mirror’s Edge and Deus Ex became too great. Initially, I thought it might be time to switch out my MacBook for the upcoming 2016 model, but the winter reveal wasn’t particularly tempting: CPU performance was about the same as mine and the GPU was — at best — 3 times as powerful. (Still need to see the benchmarks on that — educated guess.) Worth it for a few hundred bucks, but $2000? No way!</p>
+
+<p>Building a gaming PC wasn’t an option due to my mobile lifestyle, and in any case the kind of CPU I could buy for cheap would be comically underpowered compared to the i7 4850HQ I already had in front of me. So I started looking into the scary world of external Thunderbolt GPUs, colloquially known as eGPU. Modern Thunderbolt 3 (allegedly) supports external GPUs in an official capacity, but older Thunderbolt 2 can get the job done as well, even though it’s unsanctioned by Intel. I’m usually reluctant to pursue these sorts of under-the-radar hobbyist projects, but there was enough prior art to make it worth a shot!</p>
+
+ 
+        <a href="/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160830on-the-wonders-of-digital-journaling" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/08/30/on-the-wonders-of-digital-journaling/">
-        <h1 class="post-title">GoodNotes & The Joys of Digital Note-Taking</h1>
-        </a>
-        <p class="post-meta">Aug 30, 2016</p>
-      </header>
+    <li id="sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery/" class="post-list-header-link"><h1 class="post-title category-releases">Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</h1></a>
+            <h2 class="post-meta">Sep 19, 2016</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/goodnotes-review/header.jpg" /></p>
+        <article class="section-content">
+        <p><img src="/images/backgroundifier-gallery/title_2.jpg"></p>
 
- <a href="/2016/08/30/on-the-wonders-of-digital-journaling/">More inside...</a>
-      </article>
+<p>The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there’s (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we’ve already enjoyed?</p>
+
+ 
+        <a href="/2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160821tool-reliance" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/08/21/tool-reliance/">
-        <h1 class="post-title">Indie App Reliance</h1>
-        </a>
-        <p class="post-meta">Aug 21, 2016</p>
-      </header>
+    <li id="sel_20160830on-the-wonders-of-digital-journaling" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2016/08/30/on-the-wonders-of-digital-journaling/" class="post-list-header-link"><h1 class="post-title category-technology">GoodNotes & The Joys of Digital Note-Taking</h1></a>
+            <h2 class="post-meta">Aug 30, 2016</h2>
+        </header>
 
-      <article class="post-content">
-      <p>Today, <a href="https://twitter.com/brentsimmons/status/767461318538383360">with a single tweet</a>, the note-taking app <a href="http://vesperapp.co">Vesper</a> has officially been shuttered. At its release, Vesper was <a href="https://marco.org/2013/06/06/vesper">widely promoted</a> by the <a href="https://www.macstories.net/reviews/vesper-review-collect-your-thoughts/">Apple indie developer communtiy</a> as the hot new thing to try. More than anything else, it had an excellent pedigree, with influential blogger John Gruber of <a href="http://daringfireball.net">Daring Fireball</a> at the helm. Many hopeful users switched to it for their primary note-taking needs, expecting that features like Mac support would arrive in short order. If any app from this circle was destined to be a breakaway hit, it was this one. And now, with barely a mention, it’s all but swept away, years after langishing with barely an update.</p>
+        <article class="section-content">
+        <p><img src="/images/goodnotes-review/header.jpg"></p>
 
- <a href="/2016/08/21/tool-reliance/">More inside...</a>
-      </article>
+<p>I have to admit: I’m an analog kind of fellow. Much as I benefit from our growing roster of digital tools, I’m always on the lookout for software that reminds me of reality’s imperfect grit. Fake mechanical clock faces. <a href="http://fffff.at/noisy-typer-a-typewriter-for-your-laptop/">Typewriter sounds</a>. <a href="http://www.secretgeometry.com/apps/cathode/">Simulated CRT monitors</a>! Some might call them skeumorphic, clunky, or even fraudulent; but in a world increasingly bent on making things shiny and pristine, I enjoy having a reminder of which side of the screen is the more important one.</p>
+
+<p>The same even applies to my work notes. No doubt, there are immense benefits to limiting your note-taking to professional software like OneNote or Google Docs, starting with obvious features like copy &amp; paste and text search that we all rely on while taking completely for granted. But whenever I undertake a major project, any spare pieces of paper lying around (including napkins, envelopes, and candy wrappers) will inevitably become conscripted as scratch paper, despite the vast universe of affordances on the digital side of the divide. As much as I’ve tried to adopt my thinking to software, the cold, hard truth of digital type just doesn’t represent my thoughts very well. On paper, my ideas becomes non-linear: sometimes visually grouped with related bits of info, sometimes crawling up the sides, sometimes accompanied by quick sketches and diagrams.</p>
+
+ 
+        <a href="/2016/08/30/on-the-wonders-of-digital-journaling/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160716composers-sketchpad-adventures-in-icon-design" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/">
-        <h1 class="post-title">Composer's Sketchpad: Adventures in Icon Design</h1>
-        </a>
-        <p class="post-meta">Jul 16, 2016</p>
-      </header>
+    <li id="sel_20160821tool-reliance" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2016/08/21/tool-reliance/" class="post-list-header-link"><h1 class="post-title category-technology">Indie App Reliance</h1></a>
+            <h2 class="post-meta">Aug 21, 2016</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/composers-sketchpad-icon/banner.png" /></p>
+        <article class="section-content">
+        <p>Today, <a href="https://twitter.com/brentsimmons/status/767461318538383360">with a single tweet</a>, the note-taking app <a href="http://vesperapp.co">Vesper</a> has officially been shuttered. At its release, Vesper was <a href="https://marco.org/2013/06/06/vesper">widely promoted</a> by the <a href="https://www.macstories.net/reviews/vesper-review-collect-your-thoughts/">Apple indie developer communtiy</a> as the hot new thing to try. More than anything else, it had an excellent pedigree, with influential blogger John Gruber of <a href="http://daringfireball.net">Daring Fireball</a> at the helm. Many hopeful users switched to it for their primary note-taking needs, expecting that features like Mac support would arrive in short order. If any app from this circle was destined to be a breakaway hit, it was this one. And now, with barely a mention, it’s all but swept away, years after langishing with barely an update.</p>
 
- <a href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/">More inside...</a>
-      </article>
+ 
+        <a href="/2016/08/21/tool-reliance/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160621headphones" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/06/21/headphones/">
-        <h1 class="post-title">Headphone Jacks Are the New Power Plugs</h1>
-        </a>
-        <p class="post-meta">Jun 21, 2016</p>
-      </header>
+    <li id="sel_20160716composers-sketchpad-adventures-in-icon-design" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/" class="post-list-header-link"><h1 class="post-title category-design">Composer's Sketchpad: Adventures in Icon Design</h1></a>
+            <h2 class="post-meta">Jul 16, 2016</h2>
+        </header>
 
-      <article class="post-content">
-      <p>Blog comments are out, blog responses are in — and so I thought I’d respond to John Gruber’s recent article titled <a href="http://daringfireball.net/2016/06/headphone_jacks_are_the_new_floppy_drives">“Headphone Jacks Are the New Floppy Drives”</a>. Here’s why I think removing the headphone jack would be a bad idea at this moment in time:</p>
+        <article class="section-content">
+        <p><img src="/images/composers-sketchpad-icon/banner.png"></p>
 
- <a href="/2016/06/21/headphones/">More inside...</a>
-      </article>
+
+
+
+
+<p><a href="https://itunes.apple.com/us/app/composers-sketchpad/id978563657?mt=8">Composer’s Sketchpad 1.2 is out</a>! This is a major update with several new features, including audio export (via AAC), a new tool for shifting notes along the time axis, and a one-finger drawing mode. I figured this might be a good opportunity to write about something a bit more on the creative side: icon design!</p>
+
+ 
+        <a href="/2016/07/16/composers-sketchpad-adventures-in-icon-design/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">
-        <h1 class="post-title">Liberating Pitch and Taming MIDI in Composer's Sketchpad</h1>
-        </a>
-        <p class="post-meta">Mar 24, 2016</p>
-      </header>
+    <li id="sel_20160621headphones" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/2016/06/21/headphones/" class="post-list-header-link"><h1 class="post-title category-technology">Headphone Jacks Are the New Power Plugs</h1></a>
+            <h2 class="post-meta">Jun 21, 2016</h2>
+        </header>
 
-      <article class="post-content">
-      <p><img src="/images/composers-sketchpad-absolute-pitch/banner.png" alt="" /></p>
+        <article class="section-content">
+        <p>Blog comments are out, blog responses are in — and so I thought I’d respond to John Gruber’s recent article titled <a href="http://daringfireball.net/2016/06/headphone_jacks_are_the_new_floppy_drives">“Headphone Jacks Are the New Floppy Drives”</a>. Here’s why I think removing the headphone jack would be a bad idea at this moment in time:</p>
 
- <a href="/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">More inside...</a>
-      </article>
+<ul>
+  <li>Poor wireless options and standards. I use Bluetooth headphones and I love them, but they’re a world of compromises. Audio quality is far from lossless, and not just because of the codecs: with the sound off, you are likely to hear noise and static from the radio right next to your ear. (This does not bother me, but would drive many people crazy.) Switching between devices is a pain. Pairing is a pain. You have to remember to charge them. There is unbearable latency for games and occasionally even movies. Few audiophile-level headphone makers bother with Bluetooth headphones, leaving us with just the consumer brands. They can only be as powerful as the battery-powered driver. Might Apple introduce a new wireless codec that tackles all of these pain points? Sure. But then we get:</li>
+  <li>Vendor lock-in. Apple Wireless or Lighning headphones wouldn’t be compatible with much else. Not a problem for cheap earbuds, but definitely a big deal for high-quality, $400+ headphones. After years of freedom, audio would be siloed. As Gruber mentions, this is in Apple’s best interests; but among all our gadgets, headphones have always been among the most universal and independent. They are a true analog path between our disparate electronics — an intuitive and surprisingly error-free technology in a world where devices routinely refuse to talk to each other. You wouldn’t find yourself spending an hour helping your mom troubleshoot the headphone jack. This change would be a major pain point, especially when it comes to:</li>
+  <li>Loss of plug-and-play. I constantly plug my headphones from my phone to my laptop and back. Bluetooth can <em>sort of</em> do this, but it always takes me about a minute with my wireless headphones. With Lightning headphones, it wouldn’t even be a possibility. (Barring Lightning-endowed Macbooks, which would be utterly bizzarre. What else would that port be used for? How would it be differentiated from USB-C?) A once-flexible workflow would be completely subverted.</li>
+  <li>Needless complication. Headphones are a very simple thing: just a wire leading to drivers. Very few things can go wrong in this arrangement, as evidenced by the proven durability and versatility of headphones over the past few decades. Headphone makers have gotten really good at working with these few parameters to create truly world-class audio devices. Indeed, some of the most esteemed headphones in the low-end audiophile space (I’m thinking of Grados) are basically glued together by hand in a workshop. If we start shoving more electronics — Lightning circuitry or a DAC, most obviously — into headphones, we make this proven system far more brittle than it needs to be. Headphones will malfunction in frustrating ways. Noise will be introduced. Designs will become more bloated to accommodate the extra circuitry. Every headphone having its own DAC is like every monitor having its own video card: clearly putting technology on the wrong side of the divide.</li>
+</ul>
+
+<p>What is all this for? What do we gain in return?</p>
+
+ 
+        <a href="/2016/06/21/headphones/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
     </li>
-    
-    <li id="sel_20160227path-rendering-in-composers-sketchpad" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/02/27/path-rendering-in-composers-sketchpad/">
-        <h1 class="post-title">Path Rendering in Composer's Sketchpad</h1>
-        </a>
-        <p class="post-meta">Feb 27, 2016</p>
-      </header>
+</ul>
 
-      <article class="post-content">
-      <p><img src="/images/composers-sketchpad-rendering/rendering.png" alt="" /></p>
-
- <a href="/2016/02/27/path-rendering-in-composers-sketchpad/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20160205composers-sketchpad" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2016/02/05/composers-sketchpad/">
-        <h1 class="post-title">Rethinking Musical Notation with Composer's Sketchpad</h1>
-        </a>
-        <p class="post-meta">Feb 5, 2016</p>
-      </header>
-
-      <article class="post-content">
-      <p><img src="/images/composers-sketchpad/icon.png" alt="" /></p>
-
- <a href="/2016/02/05/composers-sketchpad/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20151226the-perfect-travel-gaiwan" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/12/26/the-perfect-travel-gaiwan/">
-        <h1 class="post-title">The Perfect Travel Gaiwan</h1>
-        </a>
-        <p class="post-meta">Dec 26, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p><img src="/images/mug_portrait.jpg" alt="" /></p>
-
- <a href="/2015/12/26/the-perfect-travel-gaiwan/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20151225the-stanley-64oz-classic-vacuum-growler" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/12/25/the-stanley-64oz-classic-vacuum-growler/">
-        <h1 class="post-title">The Stanley 64oz Classic Vacuum Growler</h1>
-        </a>
-        <p class="post-meta">Dec 25, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p><img src="/images/stanley_main.JPG" alt="" /></p>
-
- <a href="/2015/12/25/the-stanley-64oz-classic-vacuum-growler/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20151205ipad-pro-plus-pencil-slow-motion-bug" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/">
-        <h1 class="post-title">iPad Pro + Pencil Slow Motion Bug</h1>
-        </a>
-        <p class="post-meta">Dec 5, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p>I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you’re using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there’s some sort of interference between Pencil and gesture event processing. Notably, the framerate remains stable while this is happening.</p>
-
- <a href="/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20150929backgroundifier" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/09/29/backgroundifier/">
-        <h1 class="post-title">Backgroundifier</h1>
-        </a>
-        <p class="post-meta">Sep 29, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p>I made a Mac app! It’s called <a href="http://backgroundifier.archagon.net">Backgroundifier</a>, and it turns any image into a desktop background. (But it’s better for fine art and illustration.)</p>
-
- <a href="/2015/09/29/backgroundifier/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/">
-        <h1 class="post-title">The Klean Kanteen 32oz Insulated Stainless Steel Growler (With Swing Lok Cap)</h1>
-        </a>
-        <p class="post-meta">Sep 9, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p><img src="/images/Klean Kanteen Growler Train.jpg" alt="Great on the train! Now with pizza!" /></p>
-
- <a href="/2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20150308who-cares-about-the-apple-watch-edition" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/03/08/who-cares-about-the-apple-watch-edition/">
-        <h1 class="post-title">Who cares about the Apple Watch Edition?</h1>
-        </a>
-        <p class="post-meta">Mar 8, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p>It’s disappointing to see many of my <a href="http://daringfireball.net/2015/02/apple_watch_pricing">favorite</a> Apple <a href="http://www.marco.org/2015/03/04/boring-apple-watch-edition-pricing">bloggers</a> devote so much of their time to Apple Watch Edition gossip. How much of it is going to be solid gold? Will it be $5000, $10000, $15000? How much of them will Apple sell in their first quarter? Will they be a hit with the rich and powerful in China?</p>
-
- <a href="/2015/03/08/who-cares-about-the-apple-watch-edition/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20150201vancouver" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/02/01/vancouver/">
-        <h1 class="post-title">Vancouver</h1>
-        </a>
-        <p class="post-meta">Feb 1, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p>On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and headed up north in the direction of Vancouver. I couldn’t resist bringing along a small bag of produce and dairy that I’d been using to cook in the hostels, even though it added a few pounds of heft to my already-painful load. (This pattern will be shown to repeat itself throughout my travels.)</p>
-
- <a href="/2015/02/01/vancouver/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20150131state_of_the_union" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2015/01/31/state_of_the_union/">
-        <h1 class="post-title">State of the Union</h1>
-        </a>
-        <p class="post-meta">Jan 31, 2015</p>
-      </header>
-
-      <article class="post-content">
-      <p><img src="/images/portrait_with_silly_cat.jpg" width="500px" /></p>
-
- <a href="/2015/01/31/state_of_the_union/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20141119whats_up_with_google_maps_these_days" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2014/11/19/what's_up_with_google_maps_these_days/">
-        <h1 class="post-title">What's Up with Google Maps These Days?</h1>
-        </a>
-        <p class="post-meta">Nov 19, 2014</p>
-      </header>
-
-      <article class="post-content">
-      <p>When Apple replaced its Google-powered maps app with a complete in-house rewrite for iOS 6, most users had little good to say about it. It was inaccurate. It lacked public transit directions. The search was paltry, as was the iconography. At best, it could be described as <em>slick</em>, with the pixellated pop-in of previous generations replaced by crisp, swiftly scaling vector lines. But this was not enough to offset the lack of functionality compared to Google’s definitive mapping solution, and so <a href="https://www.apple.com/letter-from-tim-cook-on-maps/">Tim Cook apologized</a> and we all went on with our lives.</p>
-
- <a href="/2014/11/19/what's_up_with_google_maps_these_days/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/">
-        <h1 class="post-title">The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</h1>
-        </a>
-        <p class="post-meta">Nov 8, 2014</p>
-      </header>
-
-      <article class="post-content">
-      <p>I recently released my first commercial project: <a href="http://translit-keyboard.archagon.net">Translit Keyboard</a>, a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known <a href="https://developer.apple.com/library/Mac/documentation/Cocoa/Reference/InputMethodKitFrameworkRef/index.html">Input Method Kit</a>. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased<sup id="fnref:other_translit_techniques"><a href="#fn:other_translit_techniques" class="footnote">1</a></sup>. Sadly, iOS was off-limits: since 3rd party extensions weren’t even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.</p>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:other_translit_techniques">
-      <p>There were a number of other interesting ways to accomplish the same goal, including Quartz event taps and <code>.keylayout</code> files. You can check out the code, in various states of completion, in <a href="https://github.com/archagon/cyrillic-transliterator">my Github repo</a>. (Warning: gnarly code ahead!) <a href="#fnref:other_translit_techniques" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
- <a href="/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20140918old_iphone_tricks_gps_tracker" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2014/09/18/old_iphone_tricks_gps_tracker/">
-        <h1 class="post-title">Old iPhone Tricks: GPS Tracker</h1>
-        </a>
-        <p class="post-meta">Sep 18, 2014</p>
-      </header>
-
-      <article class="post-content">
-      <p>This is the time of year when a lot of people are upgrading their phones. If you are, don’t chuck your old phone just yet!</p>
-
- <a href="/2014/09/18/old_iphone_tricks_gps_tracker/">More inside...</a>
-      </article>
-    </li>
-    
-    <li id="sel_20130828gathering-the-goods-part-2" class="post post-content">
-      <header class="post-header">
-        <a class="post-link" href="/2013/08/28/gathering-the-goods-part-2/">
-        <h1 class="post-title">Gathering the Goods, Part 2</h1>
-        </a>
-        <p class="post-meta">Aug 28, 2013</p>
-      </header>
-
-      <article class="post-content">
-      <p><img src="/images/Cruise Balconies.jpeg" alt="Caption goes here." /></p>
-
- <a href="/2013/08/28/gathering-the-goods-part-2/">More inside...</a>
-      </article>
-    </li>
-    
-  </ul>
+<div class="pagination">
+<span class="pagination-previous">Previous</span>
+<span class="pagination-page-number">Page 1 of 4</span>
+<a href="/index/2/" class="pagination-next">Next</a>
 </div>
 
-      </div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img> <span>Tweet me up</span></a>
+            </div>
+        </div>
     </div>
-    <footer class="site-footer">
-  <div class="wrapper">
-    <ul class="background-overlay">
-      <!-- rss link -->
-      <li class="rss">
-        <a href="/feed.xml">
-          <div>
-            <img src="/images/RSS.svg" />
-            <span>Subscribe via RSS</span>
-          </div>
-        </a>
-      </li>
-
-      <!-- twitter link -->
-      <li class="twitter">
-        <a href="https://twitter.com/archagon">
-          <div>
-            <svg viewBox="0 0 16 16">
-              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-              c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-            </svg>
-            <span>Tweet me up</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  </a>
 </footer>
 
-    </div>
-  </body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
 </html>
-<script>
-var elems = document.querySelectorAll('.background-overlay');
-
-var setHeaderImageOffset = function() {
-  for (var i = 0; i < elems.length; i++) {
-    var elem = elems[i];
-    var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
-    elem.style['background-position'] = positionString;
-  }
-};
-
-setHeaderImageOffset();
-window.onresize = setHeaderImageOffset;
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-44612590-2', 'auto');
-  ga('send', 'pageview');
-
-</script>

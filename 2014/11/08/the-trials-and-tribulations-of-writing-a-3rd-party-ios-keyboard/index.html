@@ -1,233 +1,146 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</title>
-    <meta name="description" content="Archagon was here... or was he? Yes, he was. This is Alexei Baboulevitch's personal blog webspacehomepage, featuring writing on software development, travel, photography, and more.
+    <title>The Trials and Tribulations of Writing a 3rd Party iOS Keyboard — Archagon Was Here</title>
+    <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 ">
 
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    
     <link rel="canonical" href="http://beta-blog.archagon.net/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/">
+
+    <link rel="icon" href="/images/favicon/favicon-96x96.png">
 </head>
 
-  <style>
-  /* dynamically assigns category colors */
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170522finnicky-notes-on-the-mx-master-and-anywhere-2 .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
 
-#sel_20170108an-even-better-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170108an-even-better-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
 
-#sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20170103musicmessages-making-a-collaborative-sequencer-in-imessage .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
 
-#sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20161231cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
 
-#sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160919backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
 
-#sel_20160830on-the-wonders-of-digital-journaling {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160830on-the-wonders-of-digital-journaling .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
 
-#sel_20160821tool-reliance {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160821tool-reliance .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
 
-#sel_20160716composers-sketchpad-adventures-in-icon-design {
-  /*background-color: mix($category-design-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160716composers-sketchpad-adventures-in-icon-design .post-title {
-    /*color: mix($category-design-color, black, 60%);*/
-    background-color: #cce5fe; }
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
 
-#sel_20160621headphones {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160621headphones .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
 
-#sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160324liberating-pitch-and-taming-midi-in-composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
+</style>
 
-#sel_20160227path-rendering-in-composers-sketchpad {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160227path-rendering-in-composers-sketchpad .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
+<body class="body-background">
 
-#sel_20160205composers-sketchpad {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20160205composers-sketchpad .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151226the-perfect-travel-gaiwan {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151226the-perfect-travel-gaiwan .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151225the-stanley-64oz-classic-vacuum-growler {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151225the-stanley-64oz-classic-vacuum-growler .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20151205ipad-pro-plus-pencil-slow-motion-bug {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20151205ipad-pro-plus-pencil-slow-motion-bug .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20150929backgroundifier {
-  /*background-color: mix($category-releases-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150929backgroundifier .post-title {
-    /*color: mix($category-releases-color, black, 60%);*/
-    background-color: #e3f6ff; }
-
-#sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150909the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20150308who-cares-about-the-apple-watch-edition {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150308who-cares-about-the-apple-watch-edition .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20150201vancouver {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150201vancouver .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20150131state_of_the_union {
-  /*background-color: mix($category-default-color, white, 30%);*/
-  background-color: white; }
-  #sel_20150131state_of_the_union .post-title {
-    /*color: mix($category-default-color, black, 60%);*/
-    background-color: #d8d8cf; }
-
-#sel_20141119whats_up_with_google_maps_these_days {
-  /*background-color: mix($category-technology-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141119whats_up_with_google_maps_these_days .post-title {
-    /*color: mix($category-technology-color, black, 60%);*/
-    background-color: #ffc26b; }
-
-#sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard {
-  /*background-color: mix($category-programming-color, white, 30%);*/
-  background-color: white; }
-  #sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard .post-title {
-    /*color: mix($category-programming-color, black, 60%);*/
-    background-color: #e4b7b6; }
-
-#sel_20140918old_iphone_tricks_gps_tracker {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20140918old_iphone_tricks_gps_tracker .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-#sel_20130828gathering-the-goods-part-2 {
-  /*background-color: mix($category-travel-color, white, 30%);*/
-  background-color: white; }
-  #sel_20130828gathering-the-goods-part-2 .post-title {
-    /*color: mix($category-travel-color, black, 60%);*/
-    background-color: #fdfdab; }
-
-  </style>
-  <body>
-    <div class="body-wrapper">
-    <header class="site-header">
-    <div class="wrapper">
-        <div class="background-overlay">
-            <header class="site-title">
-                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div><div class="subtitle">Jekyll Test</div></a>
-            </header>
-
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></img></a>
+                <a href="/"><div class="title"><span class="name">Archagon</span> Was Here</div></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
             <nav class="site-nav">
-            <a class="page-link" href="/">Home</a>
-            
-                
-                <a class="page-link" href="/about/">About</a>
-                
-            
-                
-                <a class="page-link" href="/archive/">Archive</a>
-                
-            
-                
-            
-                
-            
-                
-            
-                
-                <a class="page-link" href="/timeline/">Travel Timeline</a>
-                
-            
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img></a></span></li>
+                </ul>
             </nav>
         </div>
     </div>
 </header>
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="post" id="sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard">
-  <header class="post-header">
-    <h1 class="post-title">The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</h1>
-    <!-- <p class="post-meta">Nov 8, 2014</p> -->
-  </header>
 
-  <article class="post-content">
-    <p>I recently released my first commercial project: <a href="http://translit-keyboard.archagon.net">Translit Keyboard</a>, a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known <a href="https://developer.apple.com/library/Mac/documentation/Cocoa/Reference/InputMethodKitFrameworkRef/index.html">Input Method Kit</a>. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased<sup id="fnref:other_translit_techniques"><a href="#fn:other_translit_techniques" class="footnote">1</a></sup>. Sadly, iOS was off-limits: since 3rd party extensions weren’t even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.</p>
+<div class="page-content">
+
+<div class="document-post category-programming" id="sel_20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</h1>
+    <h2 class="post-meta">Nov 8, 2014<span class="document-header-categories"> <span class="document-header-category category-programming">programming</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<p>I recently released my first commercial project: <a href="http://translit-keyboard.archagon.net">Translit Keyboard</a>, a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known <a href="https://developer.apple.com/library/Mac/documentation/Cocoa/Reference/InputMethodKitFrameworkRef/index.html">Input Method Kit</a>. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased<sup id="fnref:other_translit_techniques"><a href="#fn:other_translit_techniques" class="footnote">1</a></sup>. Sadly, iOS was off-limits: since 3rd party extensions weren’t even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.</p>
+
+<!--more-->
 
 <p>When iOS 8 was announced and unexpectedly blew open the doors on extensions, my interest was immediately piqued. Although, on initial glance, the keyboard APIs were rather crude — you were given a gray box at the bottom of the screen and practically nothing else — this gave me a roundabout “in” to making input methods work on iOS. What if I were to recreate the system keyboard from scratch? I could make it behave any way I wanted!</p>
 
@@ -275,7 +188,7 @@
 
 <p><em>Editor’s note: None of the problems below seem to happen anymore with Google’s recent Maps redesign. Still, the fact that they were happening at all is troubling, since there’s nothing an app should theoretically be able to do to influence keyboard behavior.</em></p>
 
-<p>In Google Maps, a number of strange behaviors happen with the search box. First, it’s one of the few text fields I’ve seen that have custom keyboards slide back in after they’ve been dismissed, rather than just popping in as described above. Why this particular text field and not others? I have no idea. Furthermore, if you track the <code>UIInputViewController</code> lifecycle during this process, you’ll see that even though <code>viewWillAppear</code> is called correctly when this happens, <code>viewDidAppear</code> is not. This is especially odd given that the keyboard still appears to go through <code>init</code>.</p>
+<p>In Google Maps, a number of strange behaviors happen with the search box. First, it’s one of the few text fields I’ve seen that have custom keyboards slide back in after they’ve been dismissed, rather than just popping in as described above. Why this particular text field and not others? I have no idea. Furthermore, if you track the <code class="highlighter-rouge">UIInputViewController</code> lifecycle during this process, you’ll see that even though <code class="highlighter-rouge">viewWillAppear</code> is called correctly when this happens, <code class="highlighter-rouge">viewDidAppear</code> is not. This is especially odd given that the keyboard still appears to go through <code class="highlighter-rouge">init</code>.</p>
 
 <p>Next, if you tap on the search field in portrait and then rotate to landscape, your keyboard will suddenly expand almost to the top of the screen.</p>
 
@@ -345,7 +258,7 @@
 
 <p>Apple specifies in the docs that you can change the height of your keyboard by adding an autolayout constraint with a constant value to the keyboard view. However, if you actually follow these instructions, you’ll find something like this in your log:</p>
 
-<pre><code>2014-11-08 17:17:09.741 Keyboard[8079:3155417] Unable to simultaneously satisfy constraints.
+<div class="highlighter-rouge"><pre class="highlight"><code>2014-11-08 17:17:09.741 Keyboard[8079:3155417] Unable to simultaneously satisfy constraints.
 	Probably at least one of the constraints in the following list is one you don't want. Try this: (1) look at each constraint and try to figure out which you don't expect; (2) find the code that added the unwanted constraint or constraints and fix it. (Note: If you're seeing NSAutoresizingMaskLayoutConstraints that you don't understand, refer to the documentation for the UIView property translatesAutoresizingMaskIntoConstraints) 
 (
     "&lt;NSLayoutConstraint:0x618000096350 'UIView-Encapsulated-Layout-Height' V:[UIInputView:0x7fe0be909690(216)]&gt;",
@@ -358,6 +271,7 @@ Will attempt to recover by breaking constraint
 Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
 The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in &lt;UIKit/UIView.h&gt; may also be helpful.
 </code></pre>
+</div>
 
 <p>Adding a constraint to the keyboard view doesn’t <em>set</em> the height; it rams against the existing autolayout height constraint created by the autoresizing mask, and overrides it in <em>most</em> cases. This is important: if you add the constraint before the view appears on the screen (this is specified in the docs), or in certain cases where your keyboard view doesn’t contain any subviews with autolayout constraints (this is not), your height constraint will lose and the keyboard will revert to the default height. That second case is particularly mystifying: at one point, I had to create an invisible kludge view with autolayout constraints and add it to my keyboard view in order for the height to set correctly!</p>
 
@@ -367,10 +281,11 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>Speaking of which: with a custom height constraint, on rotation, everything goes <em>nuts</em>. I don’t think I’m doing anything too crazy. This is what my rotation code looks like:</p>
 
-<pre><code>override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+<div class="highlighter-rouge"><pre class="highlight"><code>override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
     self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
 }
 </code></pre>
+</div>
 
 <p>…which simply sets the height constraint’s constant to the correct height.</p>
 
@@ -386,36 +301,37 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p><img src="/images/Glitch Landscape 2.png" width="568px" /></p>
 
-<p>In the process of trying to figure out what was causing this, I discovered that during certain points in this transition, the <code>bounds</code> of the keyboard view (or its superview, or its layers) were incorrect. For example, in the second screenshot, the <code>bounds</code> would be 320×216, even though they’re clearly 568×162 at that point.</p>
+<p>In the process of trying to figure out what was causing this, I discovered that during certain points in this transition, the <code class="highlighter-rouge">bounds</code> of the keyboard view (or its superview, or its layers) were incorrect. For example, in the second screenshot, the <code class="highlighter-rouge">bounds</code> would be 320×216, even though they’re clearly 568×162 at that point.</p>
 
 <p>I couldn’t find a way to work around this issue, and so I was freaking out for a few days until I discovered that it didn’t happen on device unless your performance was really slow. With that said, if you don’t add the Apple-sanctioned height constraint, none of this occurs.</p>
 
 <h3 id="straight-up-api-errors">Straight-Up API Errors</h3>
 
-<p>The <code>UIInputViewController</code> class, as an adherent to <code>UITextInputDelegate</code>, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: <code>selectionWillChange</code>, <code>selectionDidChange</code>, <code>textWillChange</code>, and <code>textDidChange</code>. In fact, <em>none of them actually do those things</em>. The <code>selection</code> methods never gets called at all, and the <code>text</code> methods only get called — get this — when the selection changes or the cursor is moved!</p>
+<p>The <code class="highlighter-rouge">UIInputViewController</code> class, as an adherent to <code class="highlighter-rouge">UITextInputDelegate</code>, receives several useful callbacks from the text field. You’ll notice that they’re named pretty clearly: <code class="highlighter-rouge">selectionWillChange</code>, <code class="highlighter-rouge">selectionDidChange</code>, <code class="highlighter-rouge">textWillChange</code>, and <code class="highlighter-rouge">textDidChange</code>. In fact, <em>none of them actually do those things</em>. The <code class="highlighter-rouge">selection</code> methods never gets called at all, and the <code class="highlighter-rouge">text</code> methods only get called — get this — when the selection changes or the cursor is moved!</p>
 
-<p>(Incidentally, the <code>UITextInput</code> object that you get back with these methods is crippled. Many of its methods don’t seem to do anything.)</p>
+<p>(Incidentally, the <code class="highlighter-rouge">UITextInput</code> object that you get back with these methods is crippled. Many of its methods don’t seem to do anything.)</p>
 
-<p><code>viewWillTransitionToSize</code> is another offender. As of iOS 8, if you use the old <code>willRotateToInterfaceOrientation</code> method, Xcode will tell you that it’s deprecated and that you should be using <code>viewWillTransitionToSize</code>. However, <code>viewWillTransitionToSize</code> never actually gets called! You’re forced to use a deprecated method in one of Apple’s newest UIKit additions.</p>
+<p><code class="highlighter-rouge">viewWillTransitionToSize</code> is another offender. As of iOS 8, if you use the old <code class="highlighter-rouge">willRotateToInterfaceOrientation</code> method, Xcode will tell you that it’s deprecated and that you should be using <code class="highlighter-rouge">viewWillTransitionToSize</code>. However, <code class="highlighter-rouge">viewWillTransitionToSize</code> never actually gets called! You’re forced to use a deprecated method in one of Apple’s newest UIKit additions.</p>
 
 <h3 id="uitextinputtraits-transgressions">UITextInputTraits Transgressions</h3>
 
-<p>Your <code>UIInputViewController</code> has a mysterious <code>NSObject</code> called <code>textDocumentProxy</code> that serves as the interface between the keyboard and the current text field via the <code>UITextDocumentProxy</code> protocol. (Why is it a nebulous <code>NSObject</code> instead of a <code>UITextDocumentProxy</code>?) Among other things, this protocol lets you access certain attributes of the text field.</p>
+<p>Your <code class="highlighter-rouge">UIInputViewController</code> has a mysterious <code class="highlighter-rouge">NSObject</code> called <code class="highlighter-rouge">textDocumentProxy</code> that serves as the interface between the keyboard and the current text field via the <code class="highlighter-rouge">UITextDocumentProxy</code> protocol. (Why is it a nebulous <code class="highlighter-rouge">NSObject</code> instead of a <code class="highlighter-rouge">UITextDocumentProxy</code>?) Among other things, this protocol lets you access certain attributes of the text field.</p>
 
-<p>Perhaps the most important of these is <code>keyboardAppearance</code>, which tells you if your keyboard should be using dark mode or not. One would expect this value to be correct on keyboard initialization, but no: you actually have to wait for the keyboard to appear on screen before this field populates with the correct value. I have not tested, but I have a hunch this applies to the other input traits as well. To my knowledge, this is not described in the documentation.</p>
+<p>Perhaps the most important of these is <code class="highlighter-rouge">keyboardAppearance</code>, which tells you if your keyboard should be using dark mode or not. One would expect this value to be correct on keyboard initialization, but no: you actually have to wait for the keyboard to appear on screen before this field populates with the correct value. I have not tested, but I have a hunch this applies to the other input traits as well. To my knowledge, this is not described in the documentation.</p>
 
-<p>The properties of <code>UITextInputTraits</code> may change while the keyboard is still open, if the user switches from one text field to another. This is pretty sensible, if uncommon. What’s <em>not</em> sensible is that the <code>textDocumentProxy</code> object is not KVO compliant, meaning that there’s no easy way for you to observe these changes! The only thing you can really do is <em>poll the object, 60 times a second</em>. (I’m not suggesting that there’s a performance penalty for this, but still… yuck.)</p>
+<p>The properties of <code class="highlighter-rouge">UITextInputTraits</code> may change while the keyboard is still open, if the user switches from one text field to another. This is pretty sensible, if uncommon. What’s <em>not</em> sensible is that the <code class="highlighter-rouge">textDocumentProxy</code> object is not KVO compliant, meaning that there’s no easy way for you to observe these changes! The only thing you can really do is <em>poll the object, 60 times a second</em>. (I’m not suggesting that there’s a performance penalty for this, but still… yuck.)</p>
 
 <h3 id="audio">Audio</h3>
 
-<p>As mentioned above, you need to enable full access to get any audio going. You would think, at least, that you could call the standard <code>AudioServicesPlaySystemSound</code> function to play the keyboard tock; but instead, you have to do this:</p>
+<p>As mentioned above, you need to enable full access to get any audio going. You would think, at least, that you could call the standard <code class="highlighter-rouge">AudioServicesPlaySystemSound</code> function to play the keyboard tock; but instead, you have to do this:</p>
 
-<pre><code>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+<div class="highlighter-rouge"><pre class="highlight"><code>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
     AudioServicesPlaySystemSound(1104)
 })
 </code></pre>
+</div>
 
-<p>And yes, that <code>dispatch_async</code> is necessary; otherwise, your keyboard will <em>simply stop working</em> if full access is disabled.</p>
+<p>And yes, that <code class="highlighter-rouge">dispatch_async</code> is necessary; otherwise, your keyboard will <em>simply stop working</em> if full access is disabled.</p>
 
 <h3 id="ipad-woes">iPad Woes</h3>
 
@@ -423,32 +339,33 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <h3 id="the-cruel-mockery-of-size-classes">The Cruel Mockery of Size Classes</h3>
 
-<p>Apple strongly encourages the use of size classes in iOS 8. Seems like such an elegant solution: why worry about device dimensions or even portrait vs. landscape when you can just read the size class and show the appropriate UI? Alas, in the case of keyboards, they’re useless. Aside from the 6+ in landscape, keyboards are all strictly <code>Compact</code>, even though the layout constants for landscape are very different from those of portrait. Even worse: like the 6+, the 6 has those handy side buttons for editing in landscape — but its size class is still <code>Compact</code>, while the 6+ is <code>Regular</code>! And what about the iPad? Its keyboard is sized <code>Regular</code> in both orientations, even though it has exactly nothing in common with the 6+ keyboard in landscape.</p>
+<p>Apple strongly encourages the use of size classes in iOS 8. Seems like such an elegant solution: why worry about device dimensions or even portrait vs. landscape when you can just read the size class and show the appropriate UI? Alas, in the case of keyboards, they’re useless. Aside from the 6+ in landscape, keyboards are all strictly <code class="highlighter-rouge">Compact</code>, even though the layout constants for landscape are very different from those of portrait. Even worse: like the 6+, the 6 has those handy side buttons for editing in landscape — but its size class is still <code class="highlighter-rouge">Compact</code>, while the 6+ is <code class="highlighter-rouge">Regular</code>! And what about the iPad? Its keyboard is sized <code class="highlighter-rouge">Regular</code> in both orientations, even though it has exactly nothing in common with the 6+ keyboard in landscape.</p>
 
 <h3 id="autolayout-yeah-right">Autolayout? Yeah, Right</h3>
 
 <p>This is kind of a digression, but I think it fits in here. When I was first implementing my keyboard, I tried to be a good platform citizen. I decided to use autolayout: Apple was strongly recommending it, and multiple screen sizes were coming in quick, so why not? Well… if you’re implementing a keyboard or anything remotely like it, <em>don’t use autolayout!</em></p>
 
-<p>In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in <code>constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:</code> initializers and spacer views<sup id="fnref:spacer_views"><a href="#fn:spacer_views" class="footnote">2</a></sup>, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.</p>
+<p>In learning this technology, I found several places where autolayout was very appropriate. For example, if you’re making a single-screen view with a limited number of static elements — preferably in Interface Builder — it’s a great idea to use autolayout. But if you’re creating something where lots of views are generated dynamically and/or need to be laid out in an orderly fashion, just forget about it. Aside from the fact that you’ll spend your days knee-deep in <code class="highlighter-rouge">constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:</code> initializers and spacer views<sup id="fnref:spacer_views"><a href="#fn:spacer_views" class="footnote">2</a></sup>, you’ll also have to battle bizarre autolayout warnings and auto-resolutions when you decide to make even the tiniest change to your layout. It gives you zero flexibility.</p>
 
-<p>Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: <code>|-(2)-[myView(30)]-(2)-|</code>. But every view in such a string must be named. For my implementation, this meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)</p>
+<p>Autolayout can optionally use something called the “visual format language” to create multiple constraints at once. A VFL string might look something like this: <code class="highlighter-rouge">|-(2)-[myView(30)]-(2)-|</code>. But every view in such a string must be named. For my implementation, this meant that all those anonymous keys and spacer views suddenly needed to have unique identifiers. It also meant that I couldn’t just write out these strings by hand, but instead had to use Swift’s string interpolation to put the correct names in place. I also had to dynamically combine multiple format substrings into one because I had no way of knowing how many keys my keyboard had ahead of time. In the end, it turned into a completely illegible, unmaintainable mess. Instead of making my life easier, all it did was increase my workload and pollute my codebase. (Again: if you have a single-screen view with just a handful of subviews, this works great. But it doesn’t scale.)</p>
 
-<p>On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few <em>seconds</em> longer than just laying everything out in <code>layoutSubviews</code>.</p>
+<p>On top of it all, autolayout incurs a significant performance penalty. With my setup, featuring on the order of a hundred views, autolayout took a few <em>seconds</em> longer than just laying everything out in <code class="highlighter-rouge">layoutSubviews</code>.</p>
 
-<p>In retrospect, settling on manual layout was certainly the right decision, and I’m not sure why I even spent so long trying to get autolayout working right. With <code>layoutSubviews</code>, there’s no worrying about priorities or inequalities, no seeking out conflicting constraints, no implicit calculations, no linear algebra. It was as if a fog had been lifted from my mind. My layout code shrunk to only a third of what it was before. And as extra validation, soon after I released my keyboard into alpha, somebody asked me if they could lay out their keys in an arc. This was the simplest of changes with <code>layoutSubviews</code>, but made me shudder to think of the horrible contortions that would have been required had I still been using autolayout!</p>
+<p>In retrospect, settling on manual layout was certainly the right decision, and I’m not sure why I even spent so long trying to get autolayout working right. With <code class="highlighter-rouge">layoutSubviews</code>, there’s no worrying about priorities or inequalities, no seeking out conflicting constraints, no implicit calculations, no linear algebra. It was as if a fog had been lifted from my mind. My layout code shrunk to only a third of what it was before. And as extra validation, soon after I released my keyboard into alpha, somebody asked me if they could lay out their keys in an arc. This was the simplest of changes with <code class="highlighter-rouge">layoutSubviews</code>, but made me shudder to think of the horrible contortions that would have been required had I still been using autolayout!</p>
 
 <p>As an aside, I recently encountered a project called <a href="https://github.com/Masonry/Masonry">Masonry</a> that intends to be a simplified autolayout syntax. Here is an example from their docs:</p>
 
-<pre><code>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+<div class="highlighter-rouge"><pre class="highlight"><code>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(superview).with.insets(padding);
 }];
 </code></pre>
+</div>
 
 <p>To me, that looks <em>marvelous</em>, and I wish Apple would adopt something similar. Right now, even though autolayout is very powerful, it is completely unsuited for many applications, including most programmatic interface designs.</p>
 
 <h3 id="the-what-under-the-hood">The What…? Under the Hood</h3>
 
-<p>If you examine at the view hierarchy of your keyboard, you’ll find it completely baffling. A <code>view</code>, which is the same as your <code>inputView</code>… added on top of a view… on top of another view… on top of another view… on top of the window, maybe? What are all these views even doing?</p>
+<p>If you examine at the view hierarchy of your keyboard, you’ll find it completely baffling. A <code class="highlighter-rouge">view</code>, which is the same as your <code class="highlighter-rouge">inputView</code>… added on top of a view… on top of another view… on top of another view… on top of the window, maybe? What are all these views even doing?</p>
 
 <p>User visput on Russian site Habrahabr illustrates this with the following screenshot from his <a href="http://habrahabr.ru/post/235917/">excellent article on iOS keyboard development</a>:</p>
 
@@ -496,77 +413,51 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 <div class="footnotes">
   <ol>
     <li id="fn:other_translit_techniques">
-      <p>There were a number of other interesting ways to accomplish the same goal, including Quartz event taps and <code>.keylayout</code> files. You can check out the code, in various states of completion, in <a href="https://github.com/archagon/cyrillic-transliterator">my Github repo</a>. (Warning: gnarly code ahead!) <a href="#fnref:other_translit_techniques" class="reversefootnote">&#8617;</a></p>
+      <p>There were a number of other interesting ways to accomplish the same goal, including Quartz event taps and <code class="highlighter-rouge">.keylayout</code> files. You can check out the code, in various states of completion, in <a href="https://github.com/archagon/cyrillic-transliterator">my Github repo</a>. (Warning: gnarly code ahead!) <a href="#fnref:other_translit_techniques" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:spacer_views">
       <p>If you want to have equal spacing between a set of views, you need to add an equally-sized set of “spacer” views between them. This is the technique recommended in the official documentation. <a href="#fnref:spacer_views" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-
-    <div class="signature">
+<div class="signature">
     <p>—<span class="signature-name">Archagon</span></p>
-    <p>November 8, 2014</p>
-</div>
-  </article>
+    <p class="signature-date">November 8, 2014</p>
 </div>
 
-      </div>
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></img> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></img> <span>Tweet me up</span></a>
+            </div>
+        </div>
     </div>
-    <footer class="site-footer">
-  <div class="wrapper">
-    <ul class="background-overlay">
-      <!-- rss link -->
-      <li class="rss">
-        <a href="/feed.xml">
-          <div>
-            <img src="/images/RSS.svg" />
-            <span>Subscribe via RSS</span>
-          </div>
-        </a>
-      </li>
-
-      <!-- twitter link -->
-      <li class="twitter">
-        <a href="https://twitter.com/archagon">
-          <div>
-            <svg viewBox="0 0 16 16">
-              <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
-              c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
-            </svg>
-            <span>Tweet me up</span>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  </a>
 </footer>
 
-    </div>
-  </body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
 </html>
-<script>
-var elems = document.querySelectorAll('.background-overlay');
-
-var setHeaderImageOffset = function() {
-  for (var i = 0; i < elems.length; i++) {
-    var elem = elems[i];
-    var positionString = '' + -elem.offsetLeft + 'px ' + -elem.offsetTop + 'px';
-    elem.style['background-position'] = positionString;
-  }
-};
-
-setHeaderImageOffset();
-window.onresize = setHeaderImageOffset;
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-44612590-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
