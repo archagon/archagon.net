@@ -200,13 +200,7 @@ body {
   background-color: white; }
 
 .site-title {
-  font-size: 4.2em;
-  font-weight: 800;
-  text-align: left;
-  line-height: 1; }
-  .site-title a:link, .site-title a:visited, .site-title a:hover, .site-title a:active {
-    text-decoration: none;
-    color: #424242; }
+  font-size: 4.2em; }
 
 .site-title-icon {
   display: block;
