@@ -12,10 +12,15 @@
     background: url("/images/congruent_pentagon.png") repeat center top scroll;
 }
 
-.bold-shadow {
+@mixin bold-shadow {
     box-shadow: 0px 0.5rem 1.5rem #888;
 }
+@mixin subtle-shadow {
+    box-shadow: -0.1rem 0.5rem 1.0rem 0 rgba(black, 0.15); // box-shadow: 0px 0.3rem 0.8rem #ccc;
+}
+.bold-shadow {
+    @include bold-shadow;
+}
 .subtle-shadow {
-    // box-shadow: 0px 0.3rem 0.8rem #ccc;
-    box-shadow: -0.1rem 0.5rem 1.0rem 0 rgba(black, 0.15);
+    @include subtle-shadow;
 }

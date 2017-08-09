@@ -3,6 +3,8 @@ layout: post
 title: "Airbnb Tip Fest 2000"
 date: 2014-5-31
 categories: travel
+redirect_from:
+  - /a-few-pointless-thoughts/2014/5/31/airbnb-tip-fest-2000
 ---
 
 <div class="caption">

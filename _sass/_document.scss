@@ -273,3 +273,23 @@ h2.post-meta { //we have to use h2 to override default header rules
         visibility: hidden;
     }
 }
+
+// TODO: move this to its own thing
+//////////////
+// Redirect //
+//////////////
+
+.redirect {
+    // center of screen
+    @include flex;
+    @include align-items-center;
+    text-align: center;
+
+    .section-content { 
+        font-size: 1.1em;
+        strong {
+            font-size: 1.05em; 
+            color: $brand-color;
+        }
+    }
+}

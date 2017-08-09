@@ -4,6 +4,8 @@ title: "State of the Union"
 date: 2015-02-01 01:00:00 +0000
 comments: true
 categories: personal
+redirect_from:
+  - /a-few-pointless-thoughts/2015/1/31/state-of-the-union
 ---
 <img src="{{ site.baseurl }}/images/portrait_with_silly_cat.jpg" width="500px">
 

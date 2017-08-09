@@ -1,7 +1,23 @@
+---
+layout: default
+---
+<!-- TODO: should really be its own document type, I guess -->
+<div class="document-page redirect">
+<div class="wrapper">
 
-<title>Redirecting…</title>
 <link rel="canonical" href="{{ page.redirect.to }}">
 <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
-<h1>Redirecting…</h1>
-<a href="{{ page.redirect.to }}">Click here if you are not redirected.</a>
+<meta name="robots" content="noindex">
+
+<header class="section-header">
+<h1>Redirecting...</h1>
+</header>
+
+<article class="section-content">
+<p>The page <strong>{{ page.redirect.from }}</strong> has moved! If you are not automatically redirected, <a href="{{ page.redirect.to }}">please click here</a>.</p>
+</article>
+
 <script>location="{{ page.redirect.to }}"</script>
+
+</div>
+</div>

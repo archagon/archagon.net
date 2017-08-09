@@ -72,6 +72,9 @@ $navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
         -webkit-transform: scale(1.3);
         transform: scale(1.3);
 
+        // prevents title from glitching out in Safari
+        white-space: nowrap;
+
         word-spacing: -0.114em;
         letter-spacing: -0.043em;
 

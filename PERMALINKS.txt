@@ -1,0 +1,19 @@
+blog permalinks
+
+http://www.archagon.net/a-few-pointless-thoughts/2013/6/8/on-hosting-a-blog
+http://www.archagon.net/a-few-pointless-thoughts/2013/6/9/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think
+http://www.archagon.net/a-few-pointless-thoughts/2013/6/16/robocopy-its-not-as-scary-as-it-looks
+http://www.archagon.net/a-few-pointless-thoughts/2013/7/28/graphing-my-way-across-the-usa
+http://www.archagon.net/a-few-pointless-thoughts/2013/8/28/gathering-the-goods
+http://www.archagon.net/a-few-pointless-thoughts/2013/9/1/24-hours-on-the-coast-starlight
+http://www.archagon.net/a-few-pointless-thoughts/2013/9/4/seattle-from-below
+http://www.archagon.net/a-few-pointless-thoughts/2013/10/14/seattle-of-lands-and-locals
+http://www.archagon.net/a-few-pointless-thoughts/2013/10/26/seattle-scenery
+http://www.archagon.net/a-few-pointless-thoughts/2013/12/5/seattle-youre-probably-tired-of-seattle-by-now
+http://www.archagon.net/a-few-pointless-thoughts/2013/12/19/late-2013-15-macbook-pro
+http://www.archagon.net/a-few-pointless-thoughts/2014/5/29/cruises-for-the-rest-of-us
+http://www.archagon.net/a-few-pointless-thoughts/2014/5/31/airbnb-tip-fest-2000
+http://www.archagon.net/a-few-pointless-thoughts/2014/6/15/gathering-the-goods-take-2
+http://www.archagon.net/a-few-pointless-thoughts/2014/6/17/boat
+http://www.archagon.net/a-few-pointless-thoughts/2015/1/31/state-of-the-union
+http://www.archagon.net/a-few-pointless-thoughts/2015/1/31/vancouver

@@ -6,7 +6,7 @@ class Generator < Jekyll::Generator
         baseurl = site.config['baseurl']
         image_dir = site.config['image_dir'] || 'images'
 
-        for post in site.posts
+        for post in site.posts.docs
             post.store_selector_id() # TODO: this definitely does not belong here
 
             if site.config['default_icon']

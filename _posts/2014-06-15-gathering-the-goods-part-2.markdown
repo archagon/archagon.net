@@ -7,6 +7,8 @@ categories: travel
 icon: "Cruise Balconies.jpeg"
 icon-center-x: 0.265
 icon-center-y: 0.325
+redirect_from:
+  - /a-few-pointless-thoughts/2014/6/15/gathering-the-goods-take-2
 ---
 
 <div class="caption">

@@ -35,6 +35,22 @@
     text-decoration: line-through;
 }
 
+.update {
+    color: green;
+
+    // green links
+    a {
+        color: mix(black, green, 20%);
+
+        &:visited {
+            color: mix(black, green, 40%);
+        }
+        &:hover {
+            color: mix(black, green, 0%);
+        }
+    }
+}
+
 // applied to div, not image
 .full-width {
     @extend %vertical-rhythm;
@@ -156,6 +172,8 @@
             color: mix(black, green, 0%);
         }
     }
+
+    @include subtle-shadow;
 }
 
 ////////////
@@ -199,14 +217,13 @@
 
     border-radius: 1.5em;
 
-    // TODO: questionable
-    // box-shadow: 0px 0.2rem 0.5rem #bbb;
-
     max-width: 55rem;
 
     ol {
         padding: 0;
     }
+
+    @include subtle-shadow;
 }
 
 .toc-header {

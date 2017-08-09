@@ -3,6 +3,8 @@ layout: post
 title: "Seattle: You're Probably Tired of Seattle By Now"
 date: 2013-12-5
 categories: travel
+redirect_from:
+  - /a-few-pointless-thoughts/2013/12/5/seattle-youre-probably-tired-of-seattle-by-now
 ---
 
 A week into my Seattle visit, I moved from the downtown City Hostel to the confusingly-named [Hotel Hotel Hostel](http://www.yelp.com/biz/hotel-hotel-seattle) in the Fremont neighborhood. (The very same neighborhood I had visited with my friends [a few days prior](http://www.archagon.net/a-few-pointless-thoughts/2013/10/14/seattle-of-lands-and-locals).) The streets were quiet and a little quirky, the nearby water gently lapped at the shoreline, and the [smell of chocolate](http://www.yelp.com/biz/theo-chocolate-seattle) followed you down the street. It felt a little like being on vacation. (Of course, having a [fantastic gastropub](http://www.yelp.com/biz/brouwers-cafe-seattle) down the street helped. Did I mention I hate the word "gastropub"? It sounds like somewhere you go to cleanse your body of toxins. But I digress...)

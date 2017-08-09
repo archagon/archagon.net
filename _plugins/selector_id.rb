@@ -1,5 +1,5 @@
 module Jekyll
-    class Post
+    class Document
         def store_selector_id
             self.data['selector_id'] = self.selector_id
         end

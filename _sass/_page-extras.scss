@@ -17,6 +17,11 @@
     }
 }
 
+.about-social-service {
+    // prevents 2-line glitch in Safari
+    white-space: nowrap;
+}
+
 .about-icon-container {
     @include inline-flex;
     @include align-items-baseline;

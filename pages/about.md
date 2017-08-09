@@ -7,6 +7,8 @@ permalink: /about/
 
 Hi! I'm Alexei, and I'm a frequently-on-the-go software developer working on creative tools, games, and other odds/ends. Born in the USSR, raised in California, educated at UC Berkeley with a BA in Computer Science and Music. (Go Bears!) Interested in visual art, animation, game design, musical composition, and cooperative living.
 
+I made [Composer's Sketchpad](http://composerssketchpad.com/), [MusicMessages!](http://musicmessages.io/), [Backgroundifier](http://backgroundifier.archagon.net/), [SensibleSideButtons](http://sensible-side-buttons.archagon.net/), and [some](http://translit-keyboard.archagon.net/) [iOS](http://keyboards.archagon.net/) [keyboards](https://github.com/archagon/tasty-imitation-keyboard). Full project page coming soon.
+
 This blog is built with Jekyll and hosted on Github Pages. Sections are still under heavy development, so you might spot an errant glitch or two. The repo can be found [here](https://github.com/archagon/archagon.net).
 
 Currently hanging out on: <span class="about-social">

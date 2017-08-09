@@ -3,6 +3,8 @@ layout: post
 title: "Seattle From Below: Day One at the Pike Place Market"
 date: 2013-09-04
 categories: travel
+redirect_from:
+  - /a-few-pointless-thoughts/2013/9/4/seattle-from-below
 ---
 
 It's hard to say enough good things about Seattle. You have the verdant scenery of the northwest; the familiar brick buildings and cobblestone streets; the twisting coastline of the Sound. There are the plentiful waterfront walks, the numerous indie eateries, the beautiful University of Washington campus, the hills and the hilltop views.  The people are nice and it's not too crowded, even when you head to the more touristy parts of town.  Everything seems to be within walking distance — or a short bus ride away, at worst. Beer and coffee are consumed in copious amounts. And all this before the backdrop of the magnificent Mount Reinier, head high in the clouds.

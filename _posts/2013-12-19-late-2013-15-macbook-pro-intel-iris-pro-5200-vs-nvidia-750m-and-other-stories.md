@@ -3,6 +3,8 @@ layout: post
 title: "Late 2013 15\" Macbook Pro: Intel Iris Pro 5200 vs. Nvidia 750m (And Other Stories)"
 date: 2013-12-19
 categories: technology
+redirect_from:
+  - /a-few-pointless-thoughts/2013/12/19/late-2013-15-macbook-pro
 ---
 
 I recently got a [high-end 15" Macbook Pro](http://www.amazon.com/gp/product/B0096VD85I/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B0096VD85I&linkCode=as2&tag=arcwasher-20). The 13" model I was using before had served me with faith and dignity over the years, but as my appetite for high-performance apps increased, the poor guy just couldn't keep up like it used to. In the past, I would have only considered upgrading to another 13" laptop, but a lot has changed over the years. Computers have slimmed down. I've slimmed up. A 15" device just didn't seem like the back-breaking monster it used to be.
