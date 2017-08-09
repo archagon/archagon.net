@@ -4,7 +4,7 @@ html_title: <div class="title"><span class="name">Archagon</span> Was Here</div>
 description: > # this means to ignore newlines until "baseurl:"
  Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 baseurl: "" # the subpath of your site, e.g. /blog/ TODO: double slash
-url: "http://beta-blog.archagon.net" # the base hostname & protocol for your site
+url: "http://archagon.net" # the base hostname & protocol for your site
 permalink: /:year/:month/:day/:title/
 timezone: America/Los_Angeles
 
