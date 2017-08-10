@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Old iPhone Tricks: GPS Tracker — Archagon Was Here</title>
+<title>Archagon Was Here</title>
 <meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 ">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
-<link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
 <link rel="stylesheet" href="/css/normalize.css">
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="canonical" href="http://archagon.net/2014/09/18/old_iphone_tricks_gps_tracker/">
+<link rel="canonical" href="http://localhost:4000/2014/09/18/old_iphone_tricks_gps_tracker/">
 
 <link rel="icon" href="/images/favicon/favicon-96x96.png">
 
@@ -129,77 +130,23 @@
 
 <div class="page-content">
 
-<div class="document-post category-technology" id="sel_20140918old_iphone_tricks_gps_tracker">
+<!-- TODO: should really be its own document type, I guess -->
+<div class="document-page redirect">
 <div class="wrapper">
 
+<link rel="canonical" href="http://localhost:4000/blog/2014/09/18/old-iphone-tricks-gps-tracker/">
+<meta http-equiv="refresh" content="0; url=http://localhost:4000/blog/2014/09/18/old-iphone-tricks-gps-tracker/">
+<meta name="robots" content="noindex">
+
 <header class="section-header">
-    <h1 class="post-title">Old iPhone Tricks: GPS Tracker</h1>
-    <h2 class="post-meta">Sep 18, 2014<span class="document-header-categories"> <span class="document-header-category category-technology">technology</span> <span class="document-header-category category-travel">travel</span></span></h2>
+<h1>Redirecting&hellip;</h1>
 </header>
 
 <article class="section-content">
-
-<p>This is the time of year when a lot of people are upgrading their phones. If you are, don’t chuck your old phone just yet!</p>
-
-<p>Here’s a thing you might not know about your iPhone<sup id="fnref:WhyNotAndroid"><a href="#fn:WhyNotAndroid" class="footnote">1</a></sup>: the GPS unit works even without a data connection. I was confused for a long time about what “assisted GPS” actually meant. My understanding was that it was impossible for an AGPS phone (which the iPhone is) to acquire a GPS signal without a data connection. Turns out it works fine — you just have to wait a bit longer for the phone to find a satellite.</p>
-
-<!--more-->
-
-<p>So here’s what I do with my old iPhone 4. Whenever I set out for a walk, I load up an app called <a href="http://itunes.apple.com/en/app/mytracks-the-gps-logger/id358697908?mt=8">myTracks</a> and hit the Record button. Then I chuck the phone in my bag and forget about it. At the end of the day, I retrieve the phone — more often than not with plenty of charge remaining — and stop the recording. Finally, I can connect my phone to my computer and export this data as a <code class="highlighter-rouge">kml</code> file (among several others) to use with Google Maps:</p>
-
-<p>
-<style type="text/css">
-    #google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml { width: 100%; height: 400px; margin: 0; padding: 0;}
-</style>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA">
-</script>
-<script type="text/javascript">
-    function initialize() {
-        var fullPath = 'http://archagon.net/assets/kml/newcastle_test.kml'
-        var mapOptions = {
-            // center: { lat: 54.966667, lng: -1.6 },
-            // zoom: 14,
-            // mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById('google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml'),
-            mapOptions);
-        var kmzLayer = new google.maps.KmlLayer(fullPath);
-        kmzLayer.setMap(map);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<div id="google-map-sel_20140918old_iphone_tricks_gps_tracker-newcastle_testkml"></div>
-<noscript></noscript>
-</p>
-
-<p>(Incidentally, setting this viewer up was surprisingly easy. First, I exported the <code class="highlighter-rouge">kml</code> data from the app — in this case, <a href="https://itunes.apple.com/us/app/easytrails-gps-lite/id325929832?mt=8">EasyTrailsLT</a>, which I’m also trying out. Next, I went and got a <a href="https://developers.google.com/maps/documentation/javascript/tutorial">Google Maps Javascript API key</a>. Finally, I wrote a quick Jekyll plugin to replace <code class="highlighter-rouge">kmlasset</code> tags with a bit of boilerplate Javascript code that calls Google Maps. End result: I can drop my <code class="highlighter-rouge">kml</code> in a folder, add a tag, and have the map show up magically in my blog post. This is just a small example of how Jekyll makes doing data-heavy blogging a lot more simple, which I’ll delve into in later posts!)</p>
-
-<p>Most of the GPS apps I’ve looked at still support iOS5, so your phone doesn’t even have to be a recent model. I’d still use my 3GS for this purpose if the battery was up to snuff.</p>
-
-<p>People always panic when Google or Apple slips up and caches a bit of your location data, but I feel the opposite. With an old iPhone and just a bit of dilligence, I can create a map of everywhere I’ve walked in the world!</p>
-
-<div class="new-jekyll-assets">
-
-  <h1 id="jekyll-assets-created-over-the-course-of-this-exercise">Jekyll assets created over the course of this exercise</h1>
-
-  <ul>
-    <li><a href="https://github.com/archagon/archagon.net/blob/master/_plugins/kmlasset_tag.rb"><span class="asset-name">kmlasset_tag.rb</span></a> — A Liquid tag that feeds a <code class="highlighter-rouge">kml</code> file url into a Google Maps applet.</li>
-  </ul>
-
-</div>
-<div class="footnotes">
-  <ol>
-    <li id="fn:WhyNotAndroid">
-      <p>Since I only have Apple hardware at the moment, I have no idea if this also applies to Android. Sorry! <a href="#fnref:WhyNotAndroid" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-<div class="signature">
-    <p>—<span class="signature-name">Archagon</span></p>
-    <p class="signature-date">September 18, 2014</p>
-</div>
-
+<p>The page <strong>/2014/09/18/old_iphone_tricks_gps_tracker/</strong> has moved! If you are not automatically redirected, <a href="http://localhost:4000/blog/2014/09/18/old-iphone-tricks-gps-tracker/">please click here</a>.</p>
 </article>
+
+<script>location="http://localhost:4000/blog/2014/09/18/old-iphone-tricks-gps-tracker/"</script>
 
 </div>
 </div>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Rethinking Musical Notation with Composer's Sketchpad — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://localhost:4000/blog/2016/02/05/rethinking-musical-notation-with-composers-sketchpad/">
+
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-releases" id="sel_blog20160205rethinking-musical-notation-with-composers-sketchpad">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Rethinking Musical Notation with Composer's Sketchpad</h1>
+    <h2 class="post-meta">Feb 5, 2016<span class="document-header-categories"> <span class="document-header-category category-releases">releases</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<div class="full-width"><img src="/images/composers-sketchpad/icon.png" /></div>
+
+<style>
+.toc.composers-sketchpad {
+  background-color: #c6eaff;
+  font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.95em;
+  font-weight: 500; }
+  .toc.composers-sketchpad .toc-header > p {
+    color: #444; }
+  .toc.composers-sketchpad .toc-links > ol li:nth-child(1) {
+    color: white;
+    border-radius: 0.5em;
+    background-color: #8aa3b2; }
+  .toc.composers-sketchpad .toc-links > ol li:nth-child(1) a {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+    color: inherit; }
+
+</style>
+
+<div class="toc composers-sketchpad">
+    <div class="toc-header">
+        <a href="http://www.composerssketchpad.com"><img src="/images/composers_sketchpad_icon.png" /></a>
+        <p>This blog post is part of a series on the development of <a href="http://www.composerssketchpad.com">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>
+    </div>
+
+    <div class="toc-links">
+        <ol>
+            <li><a href="/blog/2016/02/05/rethinking-musical-notation-with-composers-sketchpad/">Rethinking Musical Notation with Composer's Sketchpad</a></li>
+            <li><a href="/blog/2016/02/27/path-rendering-in-composers-sketchpad/">Path Rendering in Composer's Sketchpad</a></li>
+            <li><a href="/blog/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">Liberating Pitch and Taming MIDI in Composer's Sketchpad</a></li>
+            <li><a href="/blog/2016/07/16/composers-sketchpad-adventures-in-icon-design/">Composer's Sketchpad: Adventures in Icon Design</a></li>
+        </ol>
+    </div>
+</div>
+
+<p>Just last month, I released my first major project for the iPad: <a href="http://www.composerssketchpad.com">Composer’s Sketchpad</a>!</p>
+
+<p>Composer’s Sketchpad is an interactive, “doodle-y” take on music sequencing and notation. When you launch the app, you’re presented with a giant canvas that can be panned around with your finger. The canvas is covered with a grid, indicating time on the horizontal axis and pitch on the vertical. To draw musical notes, you hold down the canvas with one finger and draw with another. (You can also zoom using a similar gesture.) Unlike most sequencers, the app lets you start your notes at any time and bend them to any pitch, giving you the ability to sketch out twisted solos and complex rhythms with no extra effort. You can also snap to the gridlines if you wish.</p>
+
+<!--more-->
+
+<p><div class="youtube_4_3"><iframe src="https://www.youtube.com/embed/ypsLgTY8NXs?showinfo=0&amp;rel=0" frameborder="0" allowfullscreen=""></iframe></div></p>
+
+<p>In the coming months, I’m going to (try to) post a series of articles concerning the technical, design, and marketing aspects of the project. But for now, I’d like to write about the genesis of the idea.</p>
+
+<p>I made Composer’s Sketchpad for two reasons.</p>
+
+<p>The first was my inability to compose music using the tools I had at hand. Today, with the help of computers, creativity in practically all artistic mediums is blooming. Everything is digital, iterable, undoable: instead of having to buy messy paints or develop your film after every 30 shots, you can open your favorite graphics editor, grab your tablet, and tear through hundreds of sketches at a time. This reduction in creative friction must be an astounding source of growth for the arts!</p>
+
+<p>Unfortunately, I feel composition has not quite made the same magnitude of leap forward. While the studios of the past can now be entirely replaced by powerful tools running on our computers, most of them are dreadnoughts aimed at heavy production or performance use. The rhetorical art of composition — the process of taking musical notes and putting them in an order that sounds good and meaningful to our ears — has yet to see the equivalent of a Word or a Photoshop. To put it another way, there’s very little music software out there with a tight creative feedback loop specifically tuned to plonking down a few notes, playing them back, and repeating the process until you get something that sounds good. You could certainly use a DAW sequencer, Finale, or even a tracker for that purpose — many composers successfully do! — but I’ve found that the delay between editing and playback is still too high in those applications, to say nothing of the often immense UX hurdles. Worse yet, barely any of these tools are optimized for touch or stylus input — surely an ideal interface for composing at the piano (or under a tree)!</p>
+
+<div class="caption">
+<img src="/images/composers-sketchpad/flstudio.jpg" />
+<p>DAW interfaces tend to be aimed at production, not freehand composition.</p>
+</div>
+
+<p>Tooling aside, many musicians write music by simply improvising on their instrument and recording the results. Sadly, this is not a tenable approach for amateurs. Whenever I’m sitting at the piano and get the flicker of an interesting idea, I always lose the thread by the time I get around to actually playing or writing it down. I’d need many more years of practice to actually be able to compose anything interesting using this approach.</p>
+
+<p>It was clear that my musical life was missing a tool that allowed for the rapid entry and immediate playback of notes — a kind of interactive, audible sheet music. Whenever inspiration struck, I wanted the ability to pull out my tablet or phone and jot down my musical thoughts in a matter of seconds.</p>
+
+<p>Composer’s Sketchpad fulfills this demand by heavily prioritizing navigation and note entry above all else. There’s no mode for moving around the canvas: you simply swipe like in a mapping app. To make a note, you hold down the canvas with one finger and draw with another, as if applying pressure to a particularly slippery piece of paper. Undo/redo and erase are right there in the corners, and the playback controls are within easy reach at the bottom of the screen. (Your current viewport is also your playback position.) A piece is divided into several layers of notes — each with their own instrument or percussion set — and the active layer can be changed with a simple swipe of the instrument box at the top of the screen. Doing this brightens the active layer and dims any background layers, allowing you to edit the current layer exclusively while still having a sense of what all the other instruments are doing. In short, there’s barely any cognitive overhead: every tool you need to rapidly sketch out music is right there in front of you.</p>
+
+<div class="caption">
+<img src="/images/composers-sketchpad/ui.png" />
+<p>The UI in Composer's Sketchpad is carefully tuned to enable a tight creative feedback loop.</p>
+</div>
+
+<p>The other problem I wanted to tackle was the antiquated nature of sheet music.</p>
+
+<p>I love classical and popular music alike. Unfortunately, popular music differs enough from classical to make traditional notation simply the wrong tool for the job. For one, practically every piece of popular music uses syncopated rhythm. Most classical music is fairly on-the-beat, and notation is designed with that in mind. With syncopated music, you usually end up with a mess of rests, ties, and dotted notes that is hard to read and write. Modern music is also irreverent when it comes to duration and pitch. Solos are a great example: they’re fluid and expressive, and each note only lasts and remains on pitch as long as the performer wishes. Once again, notating them is an incredible pain.</p>
+
+<p>What about music from other cultures? The scales for many musical traditions differ vastly from our own. Simply put, their notes fit between our notes! Composers shouldn’t have to switch their system of notation just to play around with different kinds of music.</p>
+
+<p>What about our own (Western) myriad of different scales and tunings? We’re so used to Equal Temperament that we’ve completely forgotten the incredible polyculture of tunings in early music, to say nothing of the microtonal experimentation of the 20th century. Indeed, the <a href="http://www.huygens-fokker.org/scala/">Scala microtonal tuning archive</a> has over 4000 scales! All impossible to convey with traditional notation.</p>
+
+<div class="caption">
+<img src="/images/composers-sketchpad/solo.png" />
+<p>An excerpt from "Comfortably Numb". Solos are cumbersome to write out using traditional notation.</p>
+</div>
+
+<p>Instead of trying to shoehorn all music into a Western style of notation invented several centuries ago, it occurred to me that maybe an entirely new approach was needed. In fact, why encode the music at all? The barest, most obvious form of notation is a graph of time and pitch. This system would have been too difficult for musicians to read from and write to back in the day, but that’s not really an issue when the music can play itself and your musical canvas is tactile and effectively infinite. It seemed like the best shot at covering all bases.</p>
+
+<p>In Composer’s Sketchpad, each “note” is a simple array of times and pitches. Note names, measures, and time signatures still exist, but only as a grid or stencil over the absolute time/pitch graph — a feature of the tooling, not an intrinsic part of the piece. You use the current scale and meter grid to align and snap your notes, but you can also change them up for use in later sections without having to worry about your existing music. Under the hood, it’s all the same: scattered little point clouds of absolute time and pitch.</p>
+
+<p>As a result, writing out complicated and expressive sections of music in Composer’s Section no longer feels like caging a canary. The grid is your friend, not an oppressive bureaucrat. If you want to write more conventional music, snapping to time or pitch works just as it did with traditional notation. But turn snapping off and you can bend your notes or extend them out to the exact length of time needed. Because the shape of your notes corresponds exactly to their time and pitch, a quick glance at your music tells you exactly how it’s going to sound without having to decode a mess of symbols in your head. And you can edit any part of any section or overlap as many notes as you like without having to worry about fulfilling the “note quota” of a measure, as you constantly have to do in sheet music apps like Finale.</p>
+
+<div class="caption">
+<img src="/images/composers-sketchpad/melody.png" />
+<p>"Comfortably Numb" again in Composer's Sketchpad, transcribed by ear. This style of notation is great for conveying expressive melodic lines.</p>
+</div>
+
+<p>And now, a bit of a pretentious digression, as well as a few words about the future of the project!</p>
+
+<p>Most programmers today are very excited about building for the web. Each day, the front page of Hacker News is filled with stories of up-and-coming web-based startups as well as new Javascript frameworks and libraries. There’s also a lot of related talk about how pay-to-own software is going away, and about how subscriptions, in-app purchases, and advertising are going to replace them.</p>
+
+<p>Speaking strictly for myself, I can’t stand the idea of my software residing permanently on other people’s servers or relying on money from other people’s products. For every new and exciting startup that I read about, there’s a related story of yet another acquisition or shutdown flushing years of work down the drain. What were all those man-hours, well-intentioned ideas, and midnight flashes of inspiration good for in the end? No, that style of development is not for me. I don’t want to create services, networks, or support organizations; I want to create beautiful <em>objects</em>, little bits of clockwork that are both lovely and useful in their whole. Once they’re made, I want to be able to take my hands off them and let them live without my further involvement. I’m not interested in running servers or providing exciting new content patches week after week. You pay once — you get the object. There is certainly room for updates, but only in the interest of making the object better.</p>
+
+<p>I’m still far from that ideal — for example, in-app purchases might be tempting down the line — but that’s the direction I want to head with my current and future projects.</p>
+
+<p>Composer’s Sketchpad isn’t a profit-driven venture looking for a market or buyer. It’s one of those objects that didn’t exist in the world before I made it, and its reason for being is to help me be creative. I plan to add many new features over the years as my compositional needs develop, and I hope that eventually I’ll be able to port it to other platforms and release the source code for everyone to use. It’s a tool from my own personal toolbox that I’m happy to put out into the world.</p>
+
+<div class="caption">
+<img src="/images/composers-sketchpad/sketches.jpg" />
+<p>Some of the many design sketches made during development.</p>
+</div>
+
+<p>Using <code class="highlighter-rouge">cloc</code>, the project comes in at around 20,000 lines of code. This is a massive leap for me, and I’m incredibly excited to get started on the next 20,000!</p>
+
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">February 5, 2016</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://localhost:4000/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/">
+
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-releases" id="sel_blog20160919turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</h1>
+    <h2 class="post-meta">Sep 19, 2016<span class="document-header-categories"> <span class="document-header-category category-releases">releases</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<div class="full-width"><img src="/images/backgroundifier-gallery/title_2.jpg" /></div>
+
+<p>The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there’s (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we’ve already enjoyed?</p>
+
+<!--more-->
+
+<p>For several years, I wanted to create a sort of “digital museum” that would give me random, on-demand access to this very important side of the art world. The constraints weren’t complicated. All I needed was a large amount of art along with a mechanism that would randomly show me new works from this collection every fifteen minutes or so. But while acquiring the art was hardly a problem, there were relatively few areas in my life where I could idly display images. Screensavers? Showed up too infrequently and weren’t easily controllable. Wallpapers? Couldn’t deal with arbitrary aspect ratios. I thought I had my solution when I ran the <a href="http://www.google.com/culturalinstitute/beta/project/art-camera">Google Art Project</a> in a full-screen browser tab on a second monitor, but the selection turned out to be too limited and I could no longer rely on the luxury of having more than one display when I set out on my travels.</p>
+
+<p>(As an aside, Clay Bavor solved this exact problem in hardware by creating a <a href="http://www.claybavor.com/?p=407">digital photo frame that automatically compensated for ambient light</a>. Amazing solution! But I’m a software guy, so…)</p>
+
+<p>After discovering Chris Tomkins-Tinch’s <a href="https://itunes.apple.com/us/app/artful/id940324777?ls=1&amp;mt=12&amp;at=1000lqfI">Artful app</a> which turned your desktop wallpaper into a rotating collection of fine art, I realized that I had given the humble desktop too little consideration. With a simple Gaussian blur, a soft drop shadow, and a sprinkle of magic, it was in fact quite simple to create dynamic backgrounds for images at practically any aspect ratio. But Artful was designed to automatically pull images from proprietary sources, whereas I already had a sizable “inspiration” folder of collected art that I wanted to add to the mix. I also wished to keep my system as clean and simple as possible: Artful interfaced directly with your system preferences, but I much preferred to just keep a wallpaper folder that I’d occasionally drop new images into. And so a new app was born: <a href="https://itunes.apple.com/us/app/backgroundifier/id1040333206?mt=12&amp;at=1000lqfI">Backgroundifier</a>, a native converter droplet that let you easily turn arbitrary images into lovely desktop wallpapers.</p>
+
+<p><img src="/images/backgroundifier-gallery/sample.jpg" width="900px" /></p>
+
+<p>Just having this app around increased my consumption of art tremendously. But it wasn’t enough. I wanted to bridge the gap between finding an image on the web and having it appear in my desktop rotation, and I also wanted to be able to show new works of art on a whim. Fortunately, macOS is no slouch! Using Backgroundifier’s command-line mode, Automator, and the native power of Mission Control and Spaces, I’ve finally been able to create the digital museum experience I’ve always wanted.</p>
+
+<p>Naturally, the process begins with finding the art.</p>
+
+<h2 id="wheres-the-art">Where’s the Art?</h2>
+
+<p>Some people want their art carefully curated, and there are a number of existing apps and services for that. (See the aforementioned <a href="https://itunes.apple.com/us/app/artful/id940324777?ls=1&amp;mt=12&amp;at=1000lqfI">Artful</a> and the <a href="http://www.google.com/culturalinstitute/beta/project/art-camera">Google Art Project</a>.) Not me, though! I want everything in my wallpaper shuffle: the “great artists” of the past; modern digital and concept art; Russian textbook illustrations; architectural photography. Much of my daily discoveries come from Reddit, and though the site <em>is</em> an awful cesspool in many respects, subs like <a href="https://www.reddit.com/r/ImaginaryLandscapes/top/">r/imaginarylandscapes</a>, <a href="https://www.reddit.com/r/CozyPlaces/top/">r/cozyplaces</a>, <a href="https://www.reddit.com/r/SpecArt/top/">r/specart</a> — and even plain old <a href="https://www.reddit.com/r/Art/top/">/r/art</a> and <a href="https://www.reddit.com/r/photographs/top/">/r/photographs</a> — make it all worthwhile. Whenever I run into an interesting new sub specializing in visual art, I immediately sort by the top posts of all time and pull my favorite images from that list. (Fun tip: if you ever run into an Imgur gallery that you particularly like, you can find a link at the bottom to download the entire collection as a zip! I’ve done this with things like Miyazaki backgrounds.)</p>
+
+<p><img src="/images/backgroundifier-gallery/download.jpg" width="849px" /></p>
+
+<p>If you’re interested in scouring some of the <em>less savory</em> parts of the web, there are Russian torrent sites featuring comprehensive collections of art from practically any famous artist or museum you could think of. There’s nothing particularly unethical about this approach — a lot of older art is at this point public domain, after all — and it’s quite an experience to drop “The Best of the Louvre” into your background rotation for a week.</p>
+
+<p>Running every single file through Backgroundifier and plonking it in your wallpaper folder is bound to be a chore. Fortunately, this can be entirely automated using Backgroundifier’s command-line mode and macOS’s native Automator.</p>
+
+<h2 id="harnessing-the-command-line">Harnessing the Command Line</h2>
+
+<p>Although Backgroundifier presents a user-friendly GUI, it can also be accessed through the command line. (To see how one can make such a dual-mode app in Swift, you can examine my code <a href="https://github.com/archagon/backgroundifier-public/blob/master/Backgroundifier/main.swift">here</a>.) One way to do this is to navigate to your <code class="highlighter-rouge">Backgroundifier.app</code> bundle in Terminal and run the Backgroundifier executable found in the <code class="highlighter-rouge">Contents/MacOS</code> subdirectory. With the standard <code class="highlighter-rouge">--usage</code> flag, you can view all the options available to you. (Some of these aren’t even accessible through the GUI!)</p>
+
+<p>The simplest way to process a file is to run <code class="highlighter-rouge">Backgroundifier -i /path/to/input_image.jpg -o /path/to/output_image.jpg -w 1920 -h 1080</code>. Unfortunately, due to the fact that Backgroundifier is a sandboxed app, you can’t just do this for any random directory. Whereas a sandboxed GUI app can expand its sandbox to include any directories opened through the file picker or dropped directly onto it, command line apps (to my knowledge) have no such ability. You can therefore only process files located in your <code class="highlighter-rouge">~/Pictures</code> directory.</p>
+
+<p>Fortunately, there’s another way. In the Resources directory of <code class="highlighter-rouge">Backgroundifier.app</code> bundle, there’s a zip file containing a non-sandboxed, Developer ID signed version of the command line tool. Extract it and you can use it in any directory you please.</p>
+
+<p><img src="/images/backgroundifier-gallery/bgify.png" width="885px" /></p>
+
+<h2 id="magic-folders-with-automator">Magic Folders with Automator</h2>
+
+<p>Automator, macOS’s powerful visual scripting tool, can be used to create so-called “Folder Actions”, or workflows that run whenever the contents of a predetermined directory are changed. As you might expect, this is ideal for file conversion. Below is my Folder Action workflow for automatically “backgroundifying” images into a separate output directory:</p>
+
+<p><img src="/images/backgroundifier-gallery/workflow.png" width="629px" /></p>
+
+<p>Item 2 contains the path to the output directory and item 3 contains the path to the Backgroundifier command line utility. (They exist as separate items to make the paths easy to modify without having to resort to scripting.) Here’s the full text for the script in item 3:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># assign paths
+bgify=$1
+output=$2
+
+# remove path arguments
+shift 2
+
+# process images
+for var in "$@"
+do
+    filename=$(basename "$var")
+    full_output="$output/$filename"
+    echo "Processing $full_output ..."
+    "$bgify" -i "$var" -o "$full_output" -w 2560 -h 1600
+done
+</code></pre>
+</div>
+
+<p>Nothing too complicated! You can find the workflow file <a href="/images/backgroundifier-gallery/Backgroundify.workflow.zip">here</a>, and I assume you can just drop it into your <code class="highlighter-rouge">~/Library/Workflows/Applications/Folder Actions</code> directory. You can also pretty easily recreate it from scratch: just make a new Automator workflow with a Folder Action document type and copy the items.</p>
+
+<p>Whenever I find an interesting new image on Reddit, all I now have to do is drag-and-drop it straight from my browser into the designated Input directory on my desktop. macOS and Backgroundifier automatically take care of the rest.</p>
+
+<h2 id="dealing-with-the-desktop">Dealing with the Desktop</h2>
+
+<p>macOS’s desktop background settings allow us to pick a source directory and change the background to a random image at a set time interval (with 30 minutes being the default). All we really need to do here is drag the output directory from the previous step into our list, select it, check “Change picture” and “Random order”, and set our desired time interval.</p>
+
+<p><img src="/images/backgroundifier-gallery/wallpaper.jpg" width="668px" /></p>
+
+<p>It’s no fun to manually move every window out of the way whenever you want to peek at your wallpaper. Fortunately, there are several macOS-native shortcuts for showing the desktop. One is to use a four-finger trackpad pinch, selectable under <code class="highlighter-rouge">Trackpad → More Gestures → Show Desktop</code> in System Preferences. Personally, I prefer binding the action to a keyboard shortcut: <code class="highlighter-rouge">Command-Option-down</code>, to go with my assigned <code class="highlighter-rouge">Command-Option-left</code> and <code class="highlighter-rouge">right</code> shortcuts for switching spaces. You can do this under <code class="highlighter-rouge">Keyboard → Shortcuts</code>.</p>
+
+<p>Some of us are… more messy than others. The desktop can acquire quite a bit of cruft over time, blocking view of the beautiful art below. But why bother cleaning it up when you can just sweep the mess under a rug? If you’re lazy like me, you can toggle visibility for the icons on your desktop by running <a href="/images/backgroundifier-gallery/toggle_desktop.command.zip">this simple script</a>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="c"># Toggles desktop icons.</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>defaults <span class="nb">read </span>com.apple.finder CreateDesktop<span class="k">)</span> <span class="o">=</span> <span class="nb">false</span> <span class="o">]]</span>; <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Showing desktop icons."</span>
+    defaults write com.apple.finder CreateDesktop <span class="nb">true
+</span><span class="k">else
+    </span><span class="nb">echo</span> <span class="s2">"Hiding desktop icons."</span>
+    defaults write com.apple.finder CreateDesktop <span class="nb">false
+</span><span class="k">fi
+
+</span>killall Finder
+</code></pre>
+</div>
+
+<p>And voilà! Clutter-free art with hardly a fuss.</p>
+
+<h2 id="spaces--showing-new-art">Spaces &amp; Showing New Art</h2>
+
+<p>Here’s where it all comes together. One my favorite macOS features is Spaces, or virtual desktops. Spaces have an extra hidden benefit for our use case: whenever a new Space is created, its desktop background settings are taken from the previous space. This means that any new Space created in our configuration will automatically arrive with a fresh work of art in tow!</p>
+
+<p>Whenever you wish to see a new work of art, just pop open Mission Control (in my case, bound to <code class="highlighter-rouge">Command-Option-up</code>), create a few new Spaces, and keep switching Spaces to the right. It’s just like leafing through an art book!</p>
+
+<video controls="" width="800px" poster="/images/backgroundifier-gallery/demo.jpg">
+	<source src="/images/backgroundifier-gallery/demo.mp4" type="video/mp4" />
+	Your browser does not support the video tag.
+</video>
+
+<p>And that’s all it takes to create your own personal art gallery using <a href="https://itunes.apple.com/us/app/backgroundifier/id1040333206?mt=12&amp;at=1000lqfI">Backgroundifier</a>. No mysterious system overrides or hacks. No 3rd party tools of unknown provenance. Just a Unix-y converter, an Automator script, and a couple of native macOS features to tie it all together. </p>
+
+<p>It’s quite a thing knowing that a new, enriching artistic discovery — be it a Picasso, a Van Gogh, or even a Mike From Around The Web — is only a quick peek away!</p>
+
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">September 19, 2016</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

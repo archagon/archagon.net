@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Liberating Pitch and Taming MIDI in Composer's Sketchpad — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://localhost:4000/blog/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">
+
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-programming" id="sel_blog20160324liberating-pitch-and-taming-midi-in-composers-sketchpad">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Liberating Pitch and Taming MIDI in Composer's Sketchpad</h1>
+    <h2 class="post-meta">Mar 24, 2016<span class="document-header-categories"> <span class="document-header-category category-programming">programming</span></span></h2>
+</header>
+
+<article class="section-content">
+
+<p><img src="/images/composers-sketchpad-absolute-pitch/banner.png" alt="" /></p>
+
+<style>
+.toc.composers-sketchpad {
+  background-color: #c6eaff;
+  font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
+  font-size: 0.95em;
+  font-weight: 500; }
+  .toc.composers-sketchpad .toc-header > p {
+    color: #444; }
+  .toc.composers-sketchpad .toc-links > ol li:nth-child(3) {
+    color: white;
+    border-radius: 0.5em;
+    background-color: #8aa3b2; }
+  .toc.composers-sketchpad .toc-links > ol li:nth-child(3) a {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+    color: inherit; }
+
+</style>
+
+<div class="toc composers-sketchpad">
+    <div class="toc-header">
+        <a href="http://www.composerssketchpad.com"><img src="/images/composers_sketchpad_icon.png" /></a>
+        <p>This blog post is part of a series on the development of <a href="http://www.composerssketchpad.com">Composer's Sketchpad</a>, a new iPad app for making musical rough drafts and doodles.</p>
+    </div>
+
+    <div class="toc-links">
+        <ol>
+            <li><a href="/blog/2016/02/05/rethinking-musical-notation-with-composers-sketchpad/">Rethinking Musical Notation with Composer's Sketchpad</a></li>
+            <li><a href="/blog/2016/02/27/path-rendering-in-composers-sketchpad/">Path Rendering in Composer's Sketchpad</a></li>
+            <li><a href="/blog/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/">Liberating Pitch and Taming MIDI in Composer's Sketchpad</a></li>
+            <li><a href="/blog/2016/07/16/composers-sketchpad-adventures-in-icon-design/">Composer's Sketchpad: Adventures in Icon Design</a></li>
+        </ol>
+    </div>
+</div>
+
+<p>I wanted Composer’s Sketchpad to have the ability to represent musical notes at any pitch. In order to do this, I needed to solve two problems: representing arbitrary pitches internally and making them compatible with MIDI.</p>
+
+<!--more-->
+
+<p>Human perception of pitch follows a logarithmic curve, meaning that a frequency will sound an octave higher when multiplied by two. However, we tend to think of notes in a linear fashion: C4 is a fixed distance from C3 on the piano, just as C3 is from C2.</p>
+
+<p>The naive approach to representing pitch would be to simply store the frequency in hertz and be done with it. But this didn’t sit right with me: since my canvas depicted pitches linearly like on a piano keyboard, I’d have to be constantly taking the logarithm of my points and subsequently introducing possible floating point errors as we went up the ladder. The pitches would also have to be stored as irrational floating point numbers, making it impossible to tell whether a point is sitting precisely on a pitch gridline.</p>
+
+<p>So I decided to represent my pitches as <a href="https://en.wikipedia.org/wiki/Cent_(music)">cents</a>. Cents are the linear unit counterpart to frequency: C4 is 1200 cents from C3, and C3 is 1200 cents from C2. (Per equal temperament tuning, each piano key is 100 cents apart from the next.) This means that cents aren’t an absolute unit like pitch, but rather the function of two frequencies: in order to get the expected 1200 cents from C4 (261.6Hz) to C3 (130.8Hz) we take the base-2 logarithm of C4 divided by C3 and multiply by 1200. As convenient as these units were, I still needed to represent my points in an absolute way, and so I created an internal unit of “absolute cents”: simply the number of cents a pitch is from A440. If you peek inside a Composer’s Sketchpad JSON file, you’ll see that C4 has a value of -900, B4 a value of -1000, etc. Mathemtacially convenient and human-readable!</p>
+
+<div class="caption">
+<img src="/images/composers-sketchpad-absolute-pitch/cents.png" />
+<p>Different representations of pitch for the inflection points on a single note.</p>
+</div>
+
+<p>The second problem was a little trickier. Internally, the app was using the built-in MIDI functionality found on iOS, in the form of <a href="https://developer.apple.com/library/ios/documentation/AudioToolbox/Reference/MusicPlayerServices_Reference/index.html">MusicPlayer</a> and AUMIDISynth. Unfortunately, traditional MIDI — having been designed in the stone age of computing — didn’t support arbitrary pitch values. Instead, you were given a measly 128 MIDI notes, each corresponding to a note on a standard, equally-tempered (and slightly extended) piano. This was great for interfacing with hardware MIDI keyboards, but hardly appropriate for playing back arbitrary pitches.</p>
+
+<p>(To be clear: MIDI is simply a standard for sending instructions to a synthesizer. While the standard is very limited and fiddly, it does have the advantage of being supported ubiquitously. You can also save your MIDI packets to a file and use it with a wide variety of software. However, synthesizers themselves are usually much more robust. When interfacing with them directly, you may well be able to play arbitrary pitches and use other custom functionality. The thing you’d lose by going this route is compatibility with existing technology, which is frankly a very big hurdle.)</p>
+
+<p>There are several ways to alter the pitch of a MIDI note, some more widely supported than others. The most common is using the pitch-bend wheel. Another is using the <a href="https://en.wikipedia.org/wiki/MIDI_Tuning_Standard">MIDI Tuning “Standard”</a> (which is in fact hardly supported anywhere). Yet another is using polyphonic aftertouch, but only after setting up your synthesizer to correctly parse the signals. For its ubiquity and semantic correctness, I decided to go with the pitch-bending approach. To play back an arbitrary pitch, I’d simply play the closest MIDI note and then bend it up or down to the desired frequency. However, there were two issues with this approach. First, the pitch-bend wheel applied bending to the entire keyboard range, not just individual notes. This meant that with the naive implementation, you could only play a single arbitrary pitch at a time! Second, the default range for the entire pitch-bend wheel was a measly whole tone up or down, which was simply insufficient for arbitrary bends. (For wider bends, one might consider getting around this problem by bending to a note, stopping the first note, playing the second note, and continuing the bend. However, this sounds pretty poor due to the fact that most instruments have a distinctive-sounding “attack” that appears as soon as you play a note. This makes the bend sound discontinuous at MIDI note boundaries.)</p>
+
+<p>I’ll get into the specifics of my MIDI architecture in a later article, but in brief, I solved the first problem using MIDI channels and multiple MIDI instruments. A MIDI instrument can often have 16 so-called channels, which are sort of like presets. Each channel has its own setting for instrument, volume, vibrato, and — conveniently — pitch bend, among many other properties. Whenever you play a MIDI note, you assign it to a channel and it plays with the corresponding properties for that channel. For my use case, this meant that if I used each MIDI channel for playing just a single note at a time (as opposed to the usual approach of playing multiple notes per channel and assigning each channel to a unique instrument), I could have 16 notes simultaneously pitch-bending at once! I wanted more polyphonic notes than that, however, so I decided to simply create a new virtual MIDI synth for each instrumental layer in my app: 16 channels per instrument, with 10 maximum instruments at once (for now). Surprisingly, even 10 maxed-out MIDI synths playing simultaneously didn’t peg my iPad 3’s CPU too hard. Kudos to a great audio architecture!</p>
+
+<p>The second problem — limited pitch-bend range — was solved using a so-called <a href="http://www.blitter.com/~russtopia/MIDI/~jglatt/tech/midispec/rpn.htm">MIDI RPN</a>, or registered parameter number. These are special, widely-supported MIDI commands that let you configure certain properties of your synth, with one of the primary ones being the range of your pitch-bend wheel. (Note that I say <em>widely</em> supported, not universally. Only about half the software I’ve tried seems to understand the pitch-bend range RPN. Fortunately, Apple’s built-in synth does just fine.) Rather than having each tick on my virtual pitch-bend wheel correspond to 0.024 cents (as is the default), I sent an RPN command at the start of playback to make each tick equal to one cent. Completely impractical for a physical weel, but quite conveinent for our use case! (Incidentally, this makes the new pitch-bend range +/- almost 7 octaves. Except for the most esoteric use cases, it’s totally unnecessary to go any further than that, since even a pitch-bend of a single octave sounds pretty terrible on most synths.)</p>
+
+<p>All in all, it’s a messy, imperfect system, but it gets the job done. I can take a bunch of pitches stored as “absolute cents” in my JSON file, push them through a few conversion functions, retrieve a set of MIDI packets on the other end, send them to a bunch of virtual MIDI synths, and have them sound as the correct, precise audio frequencies through my speakers. Maybe someday a more modern standard like OSC will reign supreme and allow this sort of architecture to be radically simplified, but for now, we’re unfortunately a bit stuck in the 80’s.</p>
+
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">March 24, 2016</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

@@ -53,7 +53,7 @@ img.content {
   margin-right: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-weight: 400;
   color: #505050; }
 
@@ -216,7 +216,7 @@ body {
   transform: scale(1.27); }
 
 .site-nav {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   text-transform: uppercase;
   font-size: 2.2em;
   font-weight: 500;
@@ -237,7 +237,9 @@ body {
         position: absolute;
         top: 0;
         color: #ccccea;
-        left: -1.8rem; }
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        left: -1.5rem; }
 
 .site-nav-page-link-icons > a > img {
   margin: 0;
@@ -261,6 +263,7 @@ a.site-nav-page-link:hover {
   color: #000099; }
 
 .site-footer {
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-size: 1.7rem;
   text-align: center;
   color: white; }
@@ -283,6 +286,7 @@ a.site-nav-page-link:hover {
 
 .site-footer-credits {
   text-align: center;
+  font-weight: 300;
   margin-right: 1rem; }
   .site-footer-credits p {
     margin: 0; }
@@ -297,9 +301,7 @@ a.site-nav-page-link:hover {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  font-weight: 500;
-  font-size: 1.0em;
+  font-weight: 400;
   line-height: 1.4; }
   .site-footer-links a {
     display: -webkit-box;
@@ -418,7 +420,7 @@ h2.post-meta {
 
 .document-header-categories {
   margin-left: 1rem;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   color: white;
   font-weight: 100;
   font-size: 0.9em; }
@@ -437,7 +439,7 @@ h2.post-meta {
   justify-content: space-between;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-weight: 500;
   font-size: 1.1em;
   color: black;
@@ -667,7 +669,7 @@ ul.archive-legend {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-size: 1.05em;
   color: #828282;
   width: 80%;
@@ -743,7 +745,7 @@ ul.archive-legend {
 .caption > p {
   text-align: center;
   color: grey;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-size: 1.0em;
   font-style: italic;
   max-width: 90%;
@@ -793,8 +795,8 @@ ul.archive-legend {
   color: #111;
   text-align: center;
   font-size: 1.05em;
-  line-height: 1;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  line-height: 1.2;
+  font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-weight: 400;
   box-shadow: -0.1rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.15); }
   .notification strong {
@@ -833,7 +835,7 @@ ul.archive-legend {
 .toc {
   margin-top: 2em;
   margin-bottom: 2em;
-  padding: 1.5em;
+  padding: 1.25em;
   margin-left: auto;
   margin-right: auto;
   border-radius: 1.5em;
@@ -849,10 +851,10 @@ ul.archive-legend {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -ms-grid-row-align: center;
-  align-items: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -ms-grid-row-align: flex-start;
+  align-items: flex-start;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
