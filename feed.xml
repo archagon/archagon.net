@@ -4,10 +4,10 @@
     <title>Archagon Was Here</title>
     <description>Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Aug 2017 07:23:47 -0700</pubDate>
-    <lastBuildDate>Thu, 10 Aug 2017 07:23:47 -0700</lastBuildDate>
+    <link>http://archagon.net/</link>
+    <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 10 Aug 2017 07:30:14 -0700</pubDate>
+    <lastBuildDate>Thu, 10 Aug 2017 07:30:14 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
@@ -96,8 +96,8 @@
 
 </description>
         <pubDate>Wed, 24 May 2017 21:55:52 -0700</pubDate>
-        <link>http://localhost:4000/blog/2017/05/24/mx-master-continued-mouse-latency-measurements/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/05/24/mx-master-continued-mouse-latency-measurements/</guid>
+        <link>http://archagon.net/blog/2017/05/24/mx-master-continued-mouse-latency-measurements/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2017/05/24/mx-master-continued-mouse-latency-measurements/</guid>
         
         
         <category>reviews</category>
@@ -261,8 +261,8 @@ Your browser does not support the video tag.
 
 </description>
         <pubDate>Mon, 22 May 2017 13:14:48 -0700</pubDate>
-        <link>http://localhost:4000/blog/2017/05/22/almost-winning-the-wireless-mouse-game-logitech-mx-master/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/05/22/almost-winning-the-wireless-mouse-game-logitech-mx-master/</guid>
+        <link>http://archagon.net/blog/2017/05/22/almost-winning-the-wireless-mouse-game-logitech-mx-master/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2017/05/22/almost-winning-the-wireless-mouse-game-logitech-mx-master/</guid>
         
         
         <category>reviews</category>
@@ -297,8 +297,8 @@ Your browser does not support the video tag.
 
 </description>
         <pubDate>Sun, 08 Jan 2017 13:41:34 -0800</pubDate>
-        <link>http://localhost:4000/blog/2017/01/08/an-even-better-travel-gaiwan/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/08/an-even-better-travel-gaiwan/</guid>
+        <link>http://archagon.net/blog/2017/01/08/an-even-better-travel-gaiwan/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2017/01/08/an-even-better-travel-gaiwan/</guid>
         
         
         <category>reviews</category>
@@ -339,8 +339,8 @@ Your browser does not support the video tag.
 
 </description>
         <pubDate>Tue, 03 Jan 2017 15:09:01 -0800</pubDate>
-        <link>http://localhost:4000/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/</guid>
+        <link>http://archagon.net/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/</guid>
         
         
         <category>releases</category>
@@ -547,8 +547,8 @@ Your browser does not support the video tag.
 
 </description>
         <pubDate>Sat, 31 Dec 2016 18:18:54 -0800</pubDate>
-        <link>http://localhost:4000/blog/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/</guid>
+        <link>http://archagon.net/blog/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/</guid>
         
         
         <category>technology</category>
@@ -671,8 +671,8 @@ done
 
 </description>
         <pubDate>Mon, 19 Sep 2016 16:10:16 -0700</pubDate>
-        <link>http://localhost:4000/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/</guid>
+        <link>http://archagon.net/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/</guid>
         
         
         <category>releases</category>
@@ -717,8 +717,8 @@ done
 
 </description>
         <pubDate>Tue, 30 Aug 2016 13:26:53 -0700</pubDate>
-        <link>http://localhost:4000/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</guid>
+        <link>http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</guid>
         
         
         <category>technology</category>
@@ -746,8 +746,8 @@ done
 &lt;p&gt;Apps — products that encapsulate &lt;em&gt;years&lt;/em&gt; of people’s lives — should never outright disappear just because a developer can’t be bothered to support them anymore. If we don’t have that assurance, and if we can’t rely on our tools, all we’re doing is playing with toys.&lt;/p&gt;
 </description>
         <pubDate>Sun, 21 Aug 2016 17:01:19 -0700</pubDate>
-        <link>http://localhost:4000/blog/2016/08/21/indie-app-reliance/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2016/08/21/indie-app-reliance/</guid>
+        <link>http://archagon.net/blog/2016/08/21/indie-app-reliance/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2016/08/21/indie-app-reliance/</guid>
         
         
         <category>technology</category>
@@ -882,8 +882,8 @@ done
 
 </description>
         <pubDate>Sat, 16 Jul 2016 07:00:00 -0700</pubDate>
-        <link>http://localhost:4000/blog/2016/07/16/composers-sketchpad-adventures-in-icon-design/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2016/07/16/composers-sketchpad-adventures-in-icon-design/</guid>
+        <link>http://archagon.net/blog/2016/07/16/composers-sketchpad-adventures-in-icon-design/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2016/07/16/composers-sketchpad-adventures-in-icon-design/</guid>
         
         
         <category>design</category>
@@ -916,8 +916,8 @@ done
 &lt;p&gt;Good work, team?&lt;/p&gt;
 </description>
         <pubDate>Tue, 21 Jun 2016 18:49:04 -0700</pubDate>
-        <link>http://localhost:4000/blog/2016/06/21/headphone-jacks-are-the-new-power-plugs/</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2016/06/21/headphone-jacks-are-the-new-power-plugs/</guid>
+        <link>http://archagon.net/blog/2016/06/21/headphone-jacks-are-the-new-power-plugs/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2016/06/21/headphone-jacks-are-the-new-power-plugs/</guid>
         
         
         <category>technology</category>

@@ -556,11 +556,7 @@ span.pagination-previous {
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  -ms-grid-row-align: baseline;
-  align-items: baseline; }
+  flex-wrap: nowrap; }
   @media screen and (max-width: 600px) {
     .archive-month-element {
       -ms-flex-direction: column;
