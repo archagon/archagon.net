@@ -4,6 +4,9 @@ title: "What's Up with Google Maps These Days?"
 date: 2014-11-20 02:39:48 +0100
 comments: true
 categories: technology
+redirect_from:
+ - /11/20/what's_up_with_google_maps_these_days
+ - /2014/11/19/what's_up_with_google_maps_these_days/
 ---
 
 When Apple replaced its Google-powered maps app with a complete in-house rewrite for iOS 6, most users had little good to say about it. It was inaccurate. It lacked public transit directions. The search was paltry, as was the iconography. At best, it could be described as *slick*, with the pixellated pop-in of previous generations replaced by crisp, swiftly scaling vector lines. But this was not enough to offset the lack of functionality compared to Google's definitive mapping solution, and so [Tim Cook apologized](https://www.apple.com/letter-from-tim-cook-on-maps/) and we all went on with our lives.

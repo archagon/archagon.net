@@ -4,6 +4,8 @@ title: "The Stanley 64oz Classic Vacuum Growler"
 date: 2015-12-25 00:58:32 -0800
 comments: true
 categories: reviews
+redirect_from:
+  - /2015/12/25/the-stanley-64oz-classic-vacuum-growler
 ---
 
 ![]({{ site.baseurl }}/images/stanley_main.JPG)

@@ -138,7 +138,11 @@ $navbar-bullet-color: mix(darken(blue, 20%), white, 20%);
                 position: absolute;
                 top: 0;
                 color: $navbar-bullet-color;
-                left: -1.8rem; //guess the extra 0.3 accounts for the size of the bullet? dunno
+                
+                // ensures the bullet is centered between elements
+                -webkit-transform: translate(-50%, 0);
+                transform: translate(-50%, 0); 
+                left: -1.5rem;
             }
         }
     }

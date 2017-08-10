@@ -4,6 +4,8 @@ title: "Who cares about the Apple Watch Edition?"
 date: 2015-03-08 19:00:55 +0000
 comments: true
 categories: technology
+redirect_from:
+  - /2015/03/08/who-cares-about-the-apple-watch-edition
 ---
 It's disappointing to see many of my [favorite](http://daringfireball.net/2015/02/apple_watch_pricing) Apple [bloggers](http://www.marco.org/2015/03/04/boring-apple-watch-edition-pricing) devote so much of their time to Apple Watch Edition gossip. How much of it is going to be solid gold? Will it be $5000, $10000, $15000? How much of them will Apple sell in their first quarter? Will they be a hit with the rich and powerful in China?
 

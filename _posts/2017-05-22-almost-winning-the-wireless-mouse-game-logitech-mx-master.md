@@ -4,6 +4,8 @@ title: "(Almost) Winning the Wireless Mouse Game: Logitech MX Master"
 date: 2017-05-22 13:14:48 -0700
 comments: true
 categories: reviews
+redirect_from:
+  - /2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2
 ---
 
 <div class="full-width"><img src="{{ site.baseurl }}/images/mx-master/master-top.jpg" /></div>
@@ -175,4 +177,4 @@ If you decide to get this mouse, I recommend grabbing a [Hermitshell case][case]
 [case]: http://amzn.to/2qJl3LO
 [stuckwheelfixed]: https://toemat.com/logitech-mx-master-fix/#comment-3138781165
 [gamereceiver]: https://www.reddit.com/r/LogitechG/comments/2vz5ie/can_i_use_the_same_usb_reciever_with_the_g602/cookz42/
-[tests]: /2017/05/24/mx-master-continued-mouse-latency-measurements/
+[tests]: {% post_url 2017-05-24-mx-master-continued-mouse-latency-measurements %}

@@ -4,6 +4,8 @@ title: "Liberating Pitch and Taming MIDI in Composer's Sketchpad"
 date: 2016-03-24 01:18:04 -0700
 comments: true
 categories: programming
+redirect_from:
+  - /2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad
 ---
 
 ![]( {{ site.baseurl }}/images/composers-sketchpad-absolute-pitch/banner.png )

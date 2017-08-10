@@ -88,7 +88,7 @@ As a last-ditch stop in my mousing hunt, I visited my local Best Buy to take a g
 
 The Master is 80% of the way to being an ideal all-arounder, but sadly, it's killed for power users by inconsistent performance.
 
-[masterarticle]: /2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/
+[masterarticle]: {% post_url 2017-05-22-almost-winning-the-wireless-mouse-game-logitech-mx-master %}
 [mx518]: http://amzn.to/2qbhqeY
 [g602]: http://amzn.to/2rb0idv
 [g403]: http://amzn.to/2uDAeF2

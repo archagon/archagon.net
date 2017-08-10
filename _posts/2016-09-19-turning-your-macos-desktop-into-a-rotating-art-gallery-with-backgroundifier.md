@@ -4,9 +4,11 @@ title: "Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundif
 date: 2016-09-19 16:10:16 -0700
 comments: true
 categories: releases
+redirect_from:
+  - /2016/09/19/backgroundifier-turning-your-macos-desktop-into-a-rotating-art-gallery
 ---
 
-<img src="{{ site.baseurl }}/images/backgroundifier-gallery/title_2.jpg" />
+<div class="full-width"><img src="{{ site.baseurl }}/images/backgroundifier-gallery/title_2.jpg" /></div>
 
 The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there's (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we've already enjoyed?
 

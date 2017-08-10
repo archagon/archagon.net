@@ -4,6 +4,8 @@ title: "The Perfect Travel Gaiwan"
 date: 2015-12-26 02:18:44 -0800
 comments: true
 categories: reviews
+redirect_from:
+  - /2015/12/26/the-perfect-travel-gaiwan
 ---
 
 ![]( {{ site.baseurl }}/images/mug_portrait.jpg )

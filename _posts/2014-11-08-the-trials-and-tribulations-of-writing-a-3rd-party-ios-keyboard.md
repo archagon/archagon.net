@@ -4,6 +4,8 @@ title: "The Trials and Tribulations of Writing a 3rd Party iOS Keyboard"
 date: 2014-11-08 21:26:54 +0100
 comments: true
 categories: programming
+redirect_from:
+  - /2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard
 ---
 I recently released my first commercial project: [Translit Keyboard][], a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known [Input Method Kit][]. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased[^other_translit_techniques]. Sadly, iOS was off-limits: since 3rd party extensions weren't even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.
 

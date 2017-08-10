@@ -4,9 +4,11 @@ title: "MusicMessages! Making a Collaborative Sequencer for iMessage"
 date: 2017-01-03 15:09:01 -0800
 comments: true
 categories: releases
+redirect_from:
+  - /2017/01/03/musicmessages-making-a-collaborative-sequencer-in-imessage
 ---
 
-<img src="{{ site.baseurl }}/images/music-messages/banner.png" />
+<div class="full-width"><img src="{{ site.baseurl }}/images/music-messages/banner.png" /></div>
 
 Last month, I released an unusual little app for iMessage. It's called [MusicMessages!][musicmessages], and it's a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it's the only app of its kind in the iMessage App Store. (Probably for good reason!)
 

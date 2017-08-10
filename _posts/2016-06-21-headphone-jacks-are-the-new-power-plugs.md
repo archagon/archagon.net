@@ -4,6 +4,8 @@ title: "Headphone Jacks Are the New Power Plugs"
 date: 2016-06-21 18:49:04 -0700
 comments: true
 categories: technology
+redirect_from:
+  - /2016/06/21/headphones
 ---
 Blog comments are out, blog responses are in — and so I thought I'd respond to John Gruber's recent article titled ["Headphone Jacks Are the New Floppy Drives"](http://daringfireball.net/2016/06/headphone_jacks_are_the_new_floppy_drives). Here's why I think removing the headphone jack would be a bad idea at this moment in time:
 

@@ -6,6 +6,7 @@ comments: true
 categories: personal
 redirect_from:
   - /a-few-pointless-thoughts/2015/1/31/state-of-the-union
+  - /2015/01/31/state_of_the_union
 ---
 <img src="{{ site.baseurl }}/images/portrait_with_silly_cat.jpg" width="500px">
 
