@@ -65,7 +65,8 @@
     }
 
     // ensures that month label and first post are aligned
-    @include align-items-baseline;
+    // TODO: why does this not work under Edge?
+    // @include align-items-baseline;
 }
 
 // the month
