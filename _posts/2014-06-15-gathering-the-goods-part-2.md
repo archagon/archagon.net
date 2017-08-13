@@ -8,8 +8,8 @@ icon: "Cruise Balconies.jpeg"
 icon-center-x: 0.265
 icon-center-y: 0.325
 redirect_from:
-  - /a-few-pointless-thoughts/2014/6/15/gathering-the-goods-take-2
-  - /2013/08/28/gathering-the-goods-part-2
+  - /a-few-pointless-thoughts/2014/6/15/gathering-the-goods-take-2/
+  - /2013/08/28/gathering-the-goods-part-2/
 ---
 
 <div class="caption">
