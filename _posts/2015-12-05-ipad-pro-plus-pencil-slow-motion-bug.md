@@ -5,7 +5,7 @@ date: 2015-12-05 16:50:30 -0800
 comments: true
 categories: programming
 redirect_from:
-  - /2015/12/05/ipad-pro-plus-pencil-slow-motion-bug
+  - /2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/
 ---
 I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you're using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there's some sort of interference between Pencil and gesture event processing. Notably, the framerate remains stable while this is happening.
 

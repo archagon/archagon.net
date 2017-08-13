@@ -5,7 +5,7 @@ date: 2016-07-16 07:00:00 -0700
 comments: true
 categories: design
 redirect_from:
-  - /2016/07/16/composers-sketchpad-adventures-in-icon-design
+  - /2016/07/16/composers-sketchpad-adventures-in-icon-design/
 ---
 
 <img src="{{ site.baseurl }}/images/composers-sketchpad-icon/banner.png" />

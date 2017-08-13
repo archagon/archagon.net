@@ -4,7 +4,7 @@ title: "24 Hours on the Coast Starlight"
 date: 2013-09-01
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2013/9/1/24-hours-on-the-coast-starlight
+  - /a-few-pointless-thoughts/2013/9/1/24-hours-on-the-coast-starlight/
 ---
 
 Sunday the 11th, 8:23pm — the day of my first departure. Having decided that Portland probably wasn't worth a detour, I booked the Coast Starlight to Seattle, 24 hours by rail, along with another train from Vancouver to Toronto on the 23rd. (More on that later.) My station of departure was the San Jose Diridon. The train arrived a bit early, so I spent about an hour exploring the different cars and waving goodbye to my family. 

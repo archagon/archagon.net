@@ -4,7 +4,7 @@ title: "Cruises for the Rest of Us"
 date: 2014-5-29
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2014/5/29/cruises-for-the-rest-of-us
+  - /a-few-pointless-thoughts/2014/5/29/cruises-for-the-rest-of-us/
 ---
 
 <div class="caption">

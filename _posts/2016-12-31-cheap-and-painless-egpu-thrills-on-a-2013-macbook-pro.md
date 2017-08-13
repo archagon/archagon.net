@@ -5,7 +5,7 @@ date: 2016-12-31 18:18:54 -0800
 comments: true
 categories: ["technology", "reviews"]
 redirect_from:
-  - /2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro
+  - /2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/
 ---
 
 <img src="{{ site.baseurl }}/images/egpu/egpu.jpg" />

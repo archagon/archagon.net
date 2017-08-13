@@ -4,7 +4,7 @@ title: "Late 2013 15\" Macbook Pro: Intel Iris Pro 5200 vs. Nvidia 750m (And Oth
 date: 2013-12-19
 categories: technology
 redirect_from:
-  - /a-few-pointless-thoughts/2013/12/19/late-2013-15-macbook-pro
+  - /a-few-pointless-thoughts/2013/12/19/late-2013-15-macbook-pro/
 ---
 
 I recently got a [high-end 15" Macbook Pro](http://www.amazon.com/gp/product/B0096VD85I/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B0096VD85I&linkCode=as2&tag=arcwasher-20). The 13" model I was using before had served me with faith and dignity over the years, but as my appetite for high-performance apps increased, the poor guy just couldn't keep up like it used to. In the past, I would have only considered upgrading to another 13" laptop, but a lot has changed over the years. Computers have slimmed down. I've slimmed up. A 15" device just didn't seem like the back-breaking monster it used to be.
@@ -677,7 +677,7 @@ Finally, a quick note on the day-to-day performance of this machine. Holy matchs
 
 I realize this is one of the most expensive machines on the market, but if you want something that can develop OSX/iOS apps *and* run Windows *and* play all your games *and* be compact enough to travel with for long periods of time *and* have enough screen estate to do serious work... [deep breath]... *and* have a beautiful and sturdy design that will last you many years, this laptop truly has no equals. Price is a tough pill to swallow, though.
 
-##Other References
+## Other References
 
 * Notebookcheck's benchmarks for the [Iris Pro 5200](http://www.notebookcheck.net/Intel-Iris-Pro-Graphics-5200.90965.0.html) and the [750m](http://www.notebookcheck.net/NVIDIA-GeForce-GT-750M.90245.0.html). Their measured gains are a lot more modest than mine, but the benchmarks also older and done on different machines.
 * [A set of benchmarks for the previous generation of integrated/discrete chips.](https://www.youtube.com/watch?v=ATKDuQOQw9k)

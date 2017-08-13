@@ -5,7 +5,7 @@ date: 2014-11-20 02:39:48 +0100
 comments: true
 categories: technology
 redirect_from:
- - /11/20/what's_up_with_google_maps_these_days
+ - /11/20/what's_up_with_google_maps_these_days/
  - /2014/11/19/what's_up_with_google_maps_these_days/
 ---
 

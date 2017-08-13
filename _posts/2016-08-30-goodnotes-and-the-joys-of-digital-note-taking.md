@@ -5,10 +5,10 @@ date: 2016-08-30 13:26:53 -0700
 comments: true
 categories: technology
 redirect_from:
-  - /2016/08/30/on-the-wonders-of-digital-journaling
+  - /2016/08/30/on-the-wonders-of-digital-journaling/
 ---
 
-<div class="full-width"><img src="{{ site.baseurl }}/images/goodnotes-review/header.jpg" /></div>
+<img src="{{ site.baseurl }}/images/goodnotes-review/header.jpg">
 
 I have to admit: I'm an analog kind of fellow. Much as I benefit from our growing roster of digital tools, I'm always on the lookout for software that reminds me of reality's imperfect grit. Fake mechanical clock faces. [Typewriter sounds](http://fffff.at/noisy-typer-a-typewriter-for-your-laptop/). [Simulated CRT monitors](http://www.secretgeometry.com/apps/cathode/)! Some might call them skeumorphic, clunky, or even fraudulent; but in a world increasingly bent on making things shiny and pristine, I enjoy having a reminder of which side of the screen is the more important one.
 

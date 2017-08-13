@@ -5,7 +5,7 @@ date: 2017-01-08 13:41:34 -0800
 comments: true
 categories: reviews
 redirect_from:
-  - /2017/01/08/an-even-better-travel-gaiwan
+  - /2017/01/08/an-even-better-travel-gaiwan/
 ---
 
 <img src="{{ site.baseurl }}/images/klean-kanteen-gaiwan/front.jpg" />

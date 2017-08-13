@@ -5,10 +5,10 @@ date: 2017-05-22 13:14:48 -0700
 comments: true
 categories: reviews
 redirect_from:
-  - /2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2
+  - /2017/05/22/finnicky-notes-on-the-mx-master-and-anywhere-2/
 ---
 
-<div class="full-width"><img src="{{ site.baseurl }}/images/mx-master/master-top.jpg" /></div>
+<div><img src="{{ site.baseurl }}/images/mx-master/master-top.jpg" /></div>
 
 <div class="notification"><span markdown="1">**Update:** I added a [companion article][tests] with latency graphs for all three of my mice. I have also revised my conclusion to no longer recommend the MX Master for Bluetooth use or use cases sensitive to latency.</span></div>
 

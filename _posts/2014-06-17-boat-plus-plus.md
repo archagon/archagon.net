@@ -5,7 +5,7 @@ date: 2014-6-17
 comments: true
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2014/6/17/boat
+  - /a-few-pointless-thoughts/2014/6/17/boat/
 ---
 
 <img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/53a0d143e4b0514810c144d0/1403048267125/Cruise+Desk.jpg?format=1000w" />

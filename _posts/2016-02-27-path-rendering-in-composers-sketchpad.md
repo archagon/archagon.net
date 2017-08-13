@@ -5,7 +5,7 @@ date: 2016-02-27 15:33:37 -0800
 comments: true
 categories: programming
 redirect_from:
-  - /2016/02/27/path-rendering-in-composers-sketchpad
+  - /2016/02/27/path-rendering-in-composers-sketchpad/
 ---
 
 ![]( {{ site.baseurl }}/images/composers-sketchpad-rendering/rendering.png )

@@ -5,7 +5,7 @@ date: 2015-09-09 23:12:18 -0700
 comments: true
 categories: reviews
 redirect_from:
-  - /2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap
+  - /2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/
 ---
 
 ![Great on the train! Now with pizza!]({{ site.baseurl }}/images/Klean Kanteen Growler Train.jpg)

@@ -4,7 +4,7 @@ title: "Seattle Scenery"
 date: 2013-10-26
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2013/10/26/seattle-scenery
+  - /a-few-pointless-thoughts/2013/10/26/seattle-scenery/
 ---
 
 There are many places you can work while travelling. You can stay at your hostel. You can go to a café. But let it be known that none of them will have the grandeur of the Seattle Public Library.

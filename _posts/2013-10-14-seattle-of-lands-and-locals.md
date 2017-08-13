@@ -4,7 +4,7 @@ title: "Seattle: Of Lands and Locals"
 date: 2013-10-14
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2013/10/14/seattle-of-lands-and-locals
+  - /a-few-pointless-thoughts/2013/10/14/seattle-of-lands-and-locals/
 ---
 
 I spent a couple of wonderful days in Seattle hanging out with an old friend, a new friend, and a baby. 

@@ -4,7 +4,7 @@ title: "E-book PDFs from a buncha scans: easier than you might think!"
 date: 2013-06-09
 categories: programming
 redirect_from:
-  - /a-few-pointless-thoughts/2013/6/9/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think
+  - /a-few-pointless-thoughts/2013/6/9/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think/
 ---
 
 <img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/51be6219e4b020693fe234d6/1371431449877/iTextImage.png?format=750w" />

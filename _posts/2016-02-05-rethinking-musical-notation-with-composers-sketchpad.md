@@ -5,10 +5,10 @@ date: 2016-02-05 23:35:12 -0800
 comments: true
 categories: releases
 redirect_from:
-  - /2016/02/05/composers-sketchpad
+  - /2016/02/05/composers-sketchpad/
 ---
 
-<div class="full-width"><img src="{{ site.baseurl }}/images/composers-sketchpad/icon.png"></div>
+<div><img src="{{ site.baseurl }}/images/composers-sketchpad/icon.png"></div>
 
 {% include composers_sketchpad_toc.html index="1" %}
 

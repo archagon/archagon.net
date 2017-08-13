@@ -5,7 +5,7 @@ date: 2016-08-21 17:01:19 -0700
 comments: true
 categories: technology
 redirect_from:
-  - /2016/08/21/tool-reliance
+  - /2016/08/21/tool-reliance/
 ---
 
 Today, [with a single tweet](https://twitter.com/brentsimmons/status/767461318538383360), the note-taking app [Vesper](http://vesperapp.co) has officially been shuttered. At its release, Vesper was [widely promoted](https://marco.org/2013/06/06/vesper) by the [Apple indie developer communtiy](https://www.macstories.net/reviews/vesper-review-collect-your-thoughts/) as the hot new thing to try. More than anything else, it had an excellent pedigree, with influential blogger John Gruber of [Daring Fireball](http://daringfireball.net) at the helm. Many hopeful users switched to it for their primary note-taking needs, expecting that features like Mac support would arrive in short order. If any app from this circle was destined to be a breakaway hit, it was this one. And now, with barely a mention, it's all but swept away, years after langishing with barely an update.

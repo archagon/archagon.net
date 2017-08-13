@@ -5,8 +5,8 @@ date: 2015-02-01
 comments: true
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2015/1/31/vancouver
-  - /2015/02/01/vancouver
+  - /a-few-pointless-thoughts/2015/1/31/vancouver/
+  - /2015/02/01/vancouver/
 ---
 On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and headed up north in the direction of Vancouver. I couldn't resist bringing along a small bag of produce and dairy that I'd been using to cook in the hostels, even though it added a few pounds of heft to my already-painful load. (This pattern will be shown to repeat itself throughout my travels.)
 

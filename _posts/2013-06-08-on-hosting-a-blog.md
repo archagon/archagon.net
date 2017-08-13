@@ -4,7 +4,7 @@ title: "On Hosting a Blog"
 date: 2013-06-08
 categories: personal
 redirect_from:
-  - /a-few-pointless-thoughts/2013/6/8/on-hosting-a-blog
+  - /a-few-pointless-thoughts/2013/6/8/on-hosting-a-blog/
 ---
 
 I've had a (rarely-updated) development blog at [abstractrose.net](http://www.abstractrose.net) for about a year now. It runs on a self-hosted Wordpress installation over at [NearlyFreeSpeech](https://www.nearlyfreespeech.net/) and pulls images from Amazon Web Services. Thanks to the maturity of the Wordpress codebase, managing it has been a snap. But the stress of learning about security, finding the right plugins, dealing with spam, worrying about SEO, and other fiddly factors is still significant. And even though NearlyFreeSpeech hosts their own Apache, PHP, and MySQL services, it still took a couple of full days to get everything up and running. (Guilty: I'm a web development newbie.)

@@ -5,7 +5,7 @@ date: 2015-09-29 17:36:37 -0700
 comments: true
 categories: releases
 redirect_from:
-  - /2015/09/29/backgroundifier
+  - /2015/09/29/backgroundifier/
 ---
 
 I made a Mac app! It's called [Backgroundifier](http://backgroundifier.archagon.net), and it turns any image into a desktop background. (But it's better for fine art and illustration.)

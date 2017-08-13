@@ -4,7 +4,7 @@ title: "Graphing my way across the USA!"
 date: 2013-07-28
 categories: travel
 redirect_from:
-  - /a-few-pointless-thoughts/2013/7/28/graphing-my-way-across-the-usa
+  - /a-few-pointless-thoughts/2013/7/28/graphing-my-way-across-the-usa/
 ---
 
 I've been planning a trip around the United States for the past few weeks. I've got my bag, my clothes, my documents and even my [portable bucket](http://www.seatosummit.com/products/display/72). Now all I need is... an itinerary? Rats!
