@@ -157,6 +157,7 @@ pre, code {
     border: 1px solid lightgray;
     border-radius: 0.3em;
     background-color: #eef;
+    // background-color: pink;
 }
 code {
     padding: 0.05em 0.3em; //0.05 to capture underlines
@@ -164,8 +165,11 @@ code {
 pre {
     padding: 0.4em 0.6em;
     overflow-x: auto;
+    display: block;
+    // TODO: .highlight background color -- should be white or not?
 
     > code {
+        background-color: inherit;
         border: 0;
         padding: 0;
     }
