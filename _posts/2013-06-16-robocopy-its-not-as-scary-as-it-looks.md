@@ -7,7 +7,7 @@ redirect_from:
   - /a-few-pointless-thoughts/2013/6/16/robocopy-its-not-as-scary-as-it-looks/
 ---
 
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/51be7beae4b090c42fe54e4d/1371438059771/Robocopy.gif?format=750w" />
+<img src="{{ site.baseurl }}/images/blog/robocopy/robocopy.gif" />
 
 (OK, so I know a true sysadmin would be talking about the wonders of rsync in this post, but please bear with me. This was a Windows problem and I wanted to use the right Windows tool for the job.)
 

@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 <div class="caption">
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5387c7bfe4b09ebc9e39adcf/1401407428449/?format=1500w" />
+<img src="{{ site.baseurl }}/images/blog/cruises-rest-of-us/ship.jpg">
 <p>Santa Cruz de Tenerife.</p>
 </div>
 
@@ -61,11 +61,11 @@ This was a bit surprising to me. When I saw the price of an oceanview room on a 
 I was interested in the long-term behavior of these prices, so I picked 5 cruises out of the ones I was considering and tracked their cheapest inside and outside cabin prices over the course of about a month. Here are the results, adjusted for the single supplement. ($0 means sold out.)
 
 <div class="image-series">
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5387c808e4b0914d54b41d54/1401407496946/?format=750w" />
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5387c818e4b08c5a2ebed66f/1401407512447/?format=750w" />
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5387c824e4b0914d54b41d87/1401407524501/?format=750w" />
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5387c830e4b08c5a2ebed69b/1401407537780/?format=750w" />
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5387c83ae4b0914d54b41da2/1401407547568/?format=750w" />
+<img src="{{ site.baseurl }}/images/blog/cruises-rest-of-us/royal-april-26.png">
+<img src="{{ site.baseurl }}/images/blog/cruises-rest-of-us/norwegian-april-27.png">
+<img src="{{ site.baseurl }}/images/blog/cruises-rest-of-us/celebrity-april-29.png">
+<img src="{{ site.baseurl }}/images/blog/cruises-rest-of-us/royal-may-1.png">
+<img src="{{ site.baseurl }}/images/blog/cruises-rest-of-us/royal-may-4.png">
 </div>
 
 As you can see, pricing behavior varied wildly between the three companies. Norwegian barely changed their prices. Celebrity changed their prices occasionally. Royal's indoor cabin prices remained mostly stable, but their outdoor cabins fluctated wildly and unpredictably, almost to the very last day. (And even with their indoor cabins, you could save a hundred bucks just by waiting a day.) As we got closer to the sailing date, prices rose all around. Cabins were selling out on a whim, then coming back a few days later.

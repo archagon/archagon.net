@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 <div class="caption">
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/538a7186e4b0cfc7f0c5a808/1401581964937/?format=1000w" />
+<img src="{{ site.baseurl }}/images/blog/airbnb-tip-fest/laptop.jpg">
 <p>A quiet day on the fifth floor of Sants, Barcelona.</p>
 </div>
 

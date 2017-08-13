@@ -14,7 +14,7 @@ After living in a dark, enclosed space for a few years, I've decided to stretch 
 (I'm going to try to update this blog pretty regularly, photos and everything. It's a bit difficult right now because I have a backlog of over 1000 photos, but I'll try to get the first few travel posts done within the week. If you'd like to stay updated, you can follow me on Twitter ([@archagon](https://twitter.com/archagon)) or subscribe to the RSS feed if you're feeling nerdy.)
 
 <div class="caption">
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/521e4aebe4b0fd87fc8f2765/1432941236076/?format=1500w" />
+<img src="{{ site.baseurl }}/images/blog/gathering-the-goods/bag.jpg" />
 <p>The MEI Silver Streak.</p>
 </div>
 
@@ -49,7 +49,7 @@ If you take a lot of photos (and especially if your camera supports RAW), plea
 A note on online retailers: Amazon is great for most items, but I've found two specialized retailers that are even better for a few specific things. [Basegear.com](http://basegear.com/) has fantastic prices, excellent supply (colors and sizes), and quick shipping for many travel items (especially Sea to Summit), while [SocksAddict.com](http://socksaddict.com/) is great for mixing and matching different kinds of socks, especially merino. Do be sure to check them out if you're planning a long trip.
 
 <div class="caption">
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/521e522be4b0e61556c5c175/1432941235317/?format=1500w" />
+<img src="{{ site.baseurl }}/images/blog/gathering-the-goods/inventory.jpg" />
 <p>Can you believe all this stuff fits into such a tiny bag?</p>
 </div>
 
@@ -217,6 +217,6 @@ http://www.amazon.com/gp/product/B0027W6X3W/ref=as_li_ss_tl?ie=UTF8&camp=1789&cr
 </div>
 
 <div class="caption">
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/5220076ae4b0583f35e696b1/1377830765842/IMG_6027.jpg?format=1000w" />
+<img src="{{ site.baseurl }}/images/blog/gathering-the-goods/me.jpg" />
 <p>Thumbs up for the road!</p>
 </div>

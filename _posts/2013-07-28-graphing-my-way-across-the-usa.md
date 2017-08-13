@@ -15,7 +15,7 @@ I drew up my initial plan a few hours ago. Seeing as how I didn't want to meticu
 
 Here's the semi-finished map (click for larger):
 
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/51f5e11be4b083675be46292/1375068443487/USA+2013+Trip+Planning.png" />
+<img src="{{ site.baseurl }}/images/blog/graphing-across-usa/map.jpg" />
 
 <!--more-->
 

@@ -7,7 +7,7 @@ redirect_from:
   - /a-few-pointless-thoughts/2013/6/9/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think/
 ---
 
-<img src="https://static1.squarespace.com/static/51b3f330e4b062dc340fa8fd/t/51be6219e4b020693fe234d6/1371431449877/iTextImage.png?format=750w" />
+<img src="{{ site.baseurl }}/images/blog/ebook-pdfs/arrow.png" />
 
 I've been doing some serious hardcore scanning lately, and now I'd like to enjoy the fruits of my labor on my iPad. What to do? Obviously, reading image by image is a crappy option. A typical e-book format like .epub might be OK, but in its current incarnation it's really more optimized for text than image-heavy content. So PDF is clearly the way to go. (Well, I suppose you could also use a comic book format like .cbr and .cbz, but there's no way your average reader would be able to use it.)
 
