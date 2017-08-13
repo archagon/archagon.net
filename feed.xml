@@ -6,8 +6,8 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Aug 2017 07:48:14 -0700</pubDate>
-    <lastBuildDate>Thu, 10 Aug 2017 07:48:14 -0700</lastBuildDate>
+    <pubDate>Sun, 13 Aug 2017 10:00:35 -0700</pubDate>
+    <lastBuildDate>Sun, 13 Aug 2017 10:00:35 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
@@ -106,7 +106,7 @@
     
       <item>
         <title>(Almost) Winning the Wireless Mouse Game: Logitech MX Master</title>
-        <description>&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;/images/mx-master/master-top.jpg&quot; /&gt;&lt;/div&gt;
+        <description>&lt;div&gt;&lt;img src=&quot;/images/mx-master/master-top.jpg&quot; /&gt;&lt;/div&gt;
 
 &lt;div class=&quot;notification&quot;&gt;&lt;span&gt;&lt;strong&gt;Update:&lt;/strong&gt; I added a &lt;a href=&quot;/blog/2017/05/24/mx-master-continued-mouse-latency-measurements/&quot;&gt;companion article&lt;/a&gt; with latency graphs for all three of my mice. I have also revised my conclusion to no longer recommend the MX Master for Bluetooth use or use cases sensitive to latency.&lt;/span&gt;&lt;/div&gt;
 
@@ -307,7 +307,7 @@ Your browser does not support the video tag.
     
       <item>
         <title>MusicMessages! Making a Collaborative Sequencer for iMessage</title>
-        <description>&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;/images/music-messages/banner.png&quot; /&gt;&lt;/div&gt;
+        <description>&lt;div&gt;&lt;img src=&quot;/images/music-messages/banner.png&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;Last month, I released an unusual little app for iMessage. It’s called &lt;a href=&quot;http://musicmessages.io&quot;&gt;MusicMessages!&lt;/a&gt;, and it’s a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it’s the only app of its kind in the iMessage App Store. (Probably for good reason!)&lt;/p&gt;
 
@@ -559,7 +559,7 @@ Your browser does not support the video tag.
     
       <item>
         <title>Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</title>
-        <description>&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;/images/backgroundifier-gallery/title_2.jpg&quot; /&gt;&lt;/div&gt;
+        <description>&lt;div&gt;&lt;img src=&quot;/images/backgroundifier-gallery/title_2.jpg&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there’s (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we’ve already enjoyed?&lt;/p&gt;
 
@@ -681,7 +681,7 @@ done
     
       <item>
         <title>GoodNotes &amp; The Joys of Digital Note-Taking</title>
-        <description>&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;/images/goodnotes-review/header.jpg&quot; /&gt;&lt;/div&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/header.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;I have to admit: I’m an analog kind of fellow. Much as I benefit from our growing roster of digital tools, I’m always on the lookout for software that reminds me of reality’s imperfect grit. Fake mechanical clock faces. &lt;a href=&quot;http://fffff.at/noisy-typer-a-typewriter-for-your-laptop/&quot;&gt;Typewriter sounds&lt;/a&gt;. &lt;a href=&quot;http://www.secretgeometry.com/apps/cathode/&quot;&gt;Simulated CRT monitors&lt;/a&gt;! Some might call them skeumorphic, clunky, or even fraudulent; but in a world increasingly bent on making things shiny and pristine, I enjoy having a reminder of which side of the screen is the more important one.&lt;/p&gt;
 

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>programming — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://archagon.net/blog/categories/programming/">
+
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="wrapper">
+
+<ul class="post-list">
+    <li id="sel_blog20160324liberating-pitch-and-taming-midi-in-composers-sketchpad" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/" class="post-list-header-link"><h1 class="post-title category-programming">Liberating Pitch and Taming MIDI in Composer's Sketchpad</h1></a>
+            <h2 class="post-meta">Mar 24, 2016</h2>
+        </header>
+
+        <article class="section-content">
+        <p><img src="/images/composers-sketchpad-absolute-pitch/banner.png" alt=""></p>
+
+
+
+
+
+<p>I wanted Composer’s Sketchpad to have the ability to represent musical notes at any pitch. In order to do this, I needed to solve two problems: representing arbitrary pitches internally and making them compatible with MIDI.</p>
+
+ 
+        <a href="/blog/2016/03/24/liberating-pitch-and-taming-midi-in-composers-sketchpad/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
+    <li id="sel_blog20160227path-rendering-in-composers-sketchpad" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2016/02/27/path-rendering-in-composers-sketchpad/" class="post-list-header-link"><h1 class="post-title category-programming">Path Rendering in Composer's Sketchpad</h1></a>
+            <h2 class="post-meta">Feb 27, 2016</h2>
+        </header>
+
+        <article class="section-content">
+        <p><img src="/images/composers-sketchpad-rendering/rendering.png" alt=""></p>
+
+
+
+
+
+<p>Before starting any work on Composer’s Sketchpad, I had to ask myself: was the app as I envisioned it even possible to make? My initial goals were as follows:</p>
+
+<p>
+</p><div class="important-list">
+    <ol>
+      <li>Have an (effectively) infinite canvas with a large number of notes visible at once.</li>
+      <li>Allow the canvas to zoom and pan with without any lag.</li>
+      <li>Allow the canvas to zoom without the notes losing any sharpness.</li>
+      <li>Have notes belonging to the current layer blur or fade when the layer switches.</li>
+      <li>Allow the notes to stretch and skew when the grid scale changes without distorting their appearance. (I ended up dropping this for the release version.)</li>
+      <li>Have the whole thing run at 60fps on my iPad 3.</li>
+    </ol>
+  </div>
+
+
+<p>I had barely done any graphics programming up to this point, so I had to feel out the limits of OpenGL as I blindly barged ahead — always a painful way to develop a project.</p>
+
+ 
+        <a href="/blog/2016/02/27/path-rendering-in-composers-sketchpad/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
+    <li id="sel_blog20151205ipad-pro-plus-pencil-slow-motion-bug" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/" class="post-list-header-link"><h1 class="post-title category-programming">iPad Pro + Pencil Slow Motion Bug</h1></a>
+            <h2 class="post-meta">Dec 5, 2015</h2>
+        </header>
+
+        <article class="section-content">
+        <p>I noticed an interesting problem with the Apple Pencil while developing my app. It seems that if you’re using the Pencil while simultaneously using a gesture recognizer (as, for instance, in a scroll view), touch processing goes into slow motion. (Approximately half-speed, according to some quick measurements.) Seems there’s some sort of interference between Pencil and gesture event processing. Notably, the framerate remains stable while this is happening.</p>
+
+ 
+        <a href="/blog/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
+    <li id="sel_blog20141108the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/" class="post-list-header-link"><h1 class="post-title category-programming">The Trials and Tribulations of Writing a 3rd Party iOS Keyboard</h1></a>
+            <h2 class="post-meta">Nov 8, 2014</h2>
+        </header>
+
+        <article class="section-content">
+        <p>I recently released my first commercial project: <a href="http://translit-keyboard.archagon.net">Translit Keyboard</a>, a 3rd party keyboard for iPhone that lets you transliterate Latin characters into Cyrillic and some other alphabets. When I was first investigating this problem, around the time that iOS 7 came out, I discovered that I could implement an elegant solution in OSX using the lesser-known <a href="https://developer.apple.com/library/Mac/documentation/Cocoa/Reference/InputMethodKitFrameworkRef/index.html">Input Method Kit</a>. My program sat between the keyboard and text field; the framework provided me with each raw character as it was entered, and I could either pass it along with the default behavior, or instead take control of the output and send off whatever I pleased<sup id="fnref:other_translit_techniques"></sup>. Sadly, iOS was off-limits: since 3rd party extensions weren’t even on the radar at the time, there was nothing anyone could do to enable this sort of behavior system-wide. The only solution was to make a nice app with a special text field that you could copy and paste from — too clunky for rapid-pace tasks like messaging.</p>
+
+
+ 
+        <a href="/blog/2014/11/08/the-trials-and-tribulations-of-writing-a-3rd-party-ios-keyboard/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
+    <li id="sel_blog20140621that-magical-model-window" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2014/06/21/that-magical-model-window/" class="post-list-header-link"><h1 class="post-title category-programming">That Magical Model Window</h1></a>
+            <h2 class="post-meta">Jun 21, 2014</h2>
+        </header>
+
+        <article class="section-content">
+        <p>I recently ran into the following issue in my Objective-C code. Let’s say you have a model class<sup id="fnref:1"></sup> that has (among other things) an <code class="highlighter-rouge">NSMutableArray</code> of other model classes. How do you let outside objects modify this collection? One obvious solution is to add your own custom accessors: <code class="highlighter-rouge">addObject:</code>, <code class="highlighter-rouge">removeObject:</code>, and so forth. But that’s a little sad, since it’s essentially a simplified, non-standard duplicate of the <code class="highlighter-rouge">NSMutableArray</code> interface. The other obvious choice is to expose the array directly. But oh boy! If you do any pre- or post-processing on add or delete, there’s a world of pain waiting for you. It’s just not wise to let users mess around with the internals of your model like that. Maybe if <code class="highlighter-rouge">NSMutableArray</code> had a delegate, we could expose the array and then let the model object (as the delegate) have the final say on any changes, but sadly, to my knowledge, it does not. (<code class="highlighter-rouge">NSArrayController</code> on OSX and <code class="highlighter-rouge">CFArray</code> might have that functionality, but that’s just too much work for too little gain.) Finally, there’s the issue of key-value observation. How do we observe changes to the array? If we simply observe the array property, we’ll only get notifications when it’s set. Do we observe the array’s <code class="highlighter-rouge">count</code> property? (Doesn’t work, and wouldn’t handle replacement even if it did.) Do we add manual KVO calls to our custom accessors? Do we set a property somewhere whenever the array is modified?</p>
+
+<p>It turns out there’s a solution to all these problems, and it involves something called key-value coding of collections.</p>
+
+<p>Let’s backtrack a bit. You might know that when you declare (and optionally synthesize) a property, you automatically get a “key” to access that property — basically, the name of the property as a string. This means that any outside class can access and observe your property by using key path notation. (If <code class="highlighter-rouge">object1</code> contains <code class="highlighter-rouge">object2</code>, and <code class="highlighter-rouge">object2</code> contains <code class="highlighter-rouge">myProperty</code>, you can access <code class="highlighter-rouge">myProperty</code> from <code class="highlighter-rouge">object1</code> by using the  “object2.myProperty” key path in a <code class="highlighter-rouge">valueForKeyPath:</code> call on <code class="highlighter-rouge">object1</code>.) As it turns out, this automatic property coding is not the only type of key-value coding available. There are also special kinds of key-value coding for ordered and unordered collections, and these do <em>not</em> get generated automatically, even for properties that are arrays or sets. (This is what Apple means when they talk about “to-many relationships” in their KVC documentation. When discussing model objects, a “to-many relationship” is simply an array or set property that contains other model objects. It seems that Apple prefers to think of the model object graph as a series of relationships instead of objects with array or set properties, which explains the slightly odd terminology.)</p>
+
+<p>KVC is based heavily on naming conventions. You enable KVC for an array or set property by simply adding a small set of methods in the containing class with the corresponding property name in the selector. For example, if you have an <code class="highlighter-rouge">NSMutableArray</code> called <code class="highlighter-rouge">names</code> in your model object, all you have to do is (at minimum) implement the following methods<sup id="fnref:2"></sup> in the class containing the array:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">countOfNames</code></li>
+  <li><code class="highlighter-rouge">objectInNamesAtIndex:</code></li>
+  <li><code class="highlighter-rouge">insertObject:inNamesAtIndex:</code></li>
+  <li><code class="highlighter-rouge">removeObjectFromNamesAtIndex:</code></li>
+</ul>
+
+<p>…and voilà! Not only can you now access the array members using key path notation, but you also get KVO of insertions, removals, and replacements (along with the affected indices) for free. The <code class="highlighter-rouge">NSMutableArray</code> interface already contains all these methods, so you can simply forward the calls to <code class="highlighter-rouge">names</code>, along with any pre- or post-processing as needed. Now you can declare these methods as the public interface to your array and feel good that you’re using a documented standard. (You can read about a few optional methods you can implement, as well as the corresponding methods for sets, in Apple’s <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html">“Key-Value Coding Programming Guide”</a>.)</p>
+
+<p>But here’s the best part. Once you’ve implemented these passthrough methods, you get access to <code class="highlighter-rouge">mutableArrayValueForKey:</code>. This method returns an object that looks and acts like an <code class="highlighter-rouge">NSMutableArray</code>, but instead of modifying your array directly, it proxies all its calls through the KVC methods you implemented earlier. This means that you can <em>safely</em> present this faux-<code class="highlighter-rouge">NSMutableArray</code> as the interface to your collection, allowing users to exploit the full power of <code class="highlighter-rouge">NSMutableArray</code>‘s interface while still maintaining direct control over how the data gets added and removed!</p>
+
+<p>Here’s a sample implementation that I particularly like. (Pardon the lack of ARC-ness, I’m still getting on that train.) Public header:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="c1">// MyModelClass.h
+</span>
+<span class="k">@interface</span> <span class="nc">MyModelClass</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">namesProxy</span><span class="p">)</span> <span class="n">NSMutableArray</span><span class="o">*</span> <span class="n">names</span><span class="p">;</span>
+
+<span class="c1">// optional declarations to make your public interface explicit
+</span><span class="k">-</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">countOfNames</span><span class="p">;</span>
+<span class="k">-</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="nf">objectInNamesAtIndex</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">index</span><span class="p">;</span>
+<span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">insertObject</span><span class="p">:(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">object</span> <span class="nf">inNamesAtIndex</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">index</span><span class="p">;</span>
+<span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">removeObjectFromNamesAtIndex</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">index</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+
+<p>Private header<sup id="fnref:3"></sup>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="c1">// MyModelClass_.h
+</span>
+<span class="cp">#import "MyModelClass.h"
+</span>
+<span class="k">@interface</span> <span class="nc">MyModelClass</span> <span class="p">()</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">NSMutableArray</span><span class="o">*</span> <span class="n">namesMutable</span><span class="p">;</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+
+<p>Implementation:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="c1">// MyModelClass.m
+</span>
+<span class="cp">#import "MyModelClass_.h"
+</span>
+<span class="k">@implementation</span> <span class="nc">MyModelClass</span>
+
+<span class="k">@dynamic</span> <span class="n">names</span><span class="p">;</span>
+
+<span class="k">-</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">init</span>
+<span class="p">{</span>
+    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">array</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span><span class="p">(</span><span class="n">NSMutableArray</span><span class="o">*</span><span class="p">)</span> <span class="n">namesProxy</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="nf">mutableArrayValueForKey</span><span class="p">:</span><span class="s">@"names"</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">countOfNames</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">count</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="n">objectInNamesAtIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">index</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">insertObject</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">object</span> <span class="n">inNamesAtIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">index</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">insertObject</span><span class="p">:</span><span class="n">object</span> <span class="nf">atIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">removeObjectFromNamesAtIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">index</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">removeObjectAtIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre>
+</div>
+
+<p>With this design, you can observe <code class="highlighter-rouge">names</code> and get notifications whenever the <code class="highlighter-rouge">namesMutable</code> array is modified, <em>even though there’s no actual property named <code class="highlighter-rouge">names</code>!</em> You can also retrieve the <code class="highlighter-rouge">names</code> property directly from the object (which creates the proxy array) and modify it to your liking. (The getter is called <code class="highlighter-rouge">namesProxy</code> to avoid confusing the <code class="highlighter-rouge">mutableArrayValueForKey:</code> call.) Nobody without the private header has access to the internal <code class="highlighter-rouge">namesMutable</code> array; everything is instead handled either through the standard KVC collection methods or through the proxy array.</p>
+
+<p>With this pattern, we can have it all: a standard interface to mutate our model’s collections while still giving the model final authority, the ability to leverage the full power of <code class="highlighter-rouge">NSArray</code> and <code class="highlighter-rouge">NSSet</code> for these mutations without having to write a ton of custom code, and the ability to key-value observe collections in detail. Pretty useful!<sup id="fnref:4"></sup></p>
+
+<p>For a detailed look at KVO and KVC, <a href="http://www.objc.io/issue-7/key-value-coding-and-observing.html">read this excellent article on objc.io</a>. They cover a similar pattern in the last section of the article, but my implementation is superior <a href="https://github.com/objcio/issue-7-contact-editor/blob/master/Contact%20Editor/ContactList.mm#L51">to their sample code</a> in that it allows you to both access <code class="highlighter-rouge">names</code> directly <em>and</em> observe it. Their “Primes” example also does not work.</p>
+
+<p><strong>Post-script.</strong> In my case, I had one additional complication: my array had to always be sorted. This left me with a bit of a dilemma. If I sorted the proxy array right in the <code class="highlighter-rouge">insertObject:in&lt;Key&gt;AtIndex:</code>, my receivers would get two KVO calls: one for the initial insert, and one for the re-insert from the sort. This meant that if my observers always expected my data to be sorted, the first call would give them bad data. On the other hand, if I sorted my real array instead of the proxy array, there would be no KVO notifications for the changes from the sort, and so the index passed to my observers would be wrong. I tried implementing the interface as an unordered collection (while leaving my data as an array) and everything worked correctly, but the interface mismatch irked me. Finally, I found the one true solution: if you implement the class method <code class="highlighter-rouge">automaticallyNotifiesObserversOf&lt;Key&gt;</code> and return a big fat <code class="highlighter-rouge">NO</code>, you can implement your own notifications for all the passthrough calls, meaning that you can sort on insert and only send a single notification. This required a bit more boilerplate code, but it was a small price to pay for a perfect implementation!</p>
+
+
+ 
+        <a href="/blog/2014/06/21/that-magical-model-window/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
+    <li id="sel_blog20130609e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2013/06/09/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think/" class="post-list-header-link"><h1 class="post-title category-programming">E-book PDFs from a buncha scans: easier than you might think!</h1></a>
+            <h2 class="post-meta">Jun 9, 2013</h2>
+        </header>
+
+        <article class="section-content">
+        <p><img src="/images/blog/ebook-pdfs/arrow.png"></p>
+
+<p>I’ve been doing some serious hardcore scanning lately, and now I’d like to enjoy the fruits of my labor on my iPad. What to do? Obviously, reading image by image is a crappy option. A typical e-book format like .epub might be OK, but in its current incarnation it’s really more optimized for text than image-heavy content. So PDF is clearly the way to go. (Well, I suppose you could also use a comic book format like .cbr and .cbz, but there’s no way your average reader would be able to use it.)</p>
+
+<p>And how exactly does one create a PDF? If you’re starting from scratch, you might use something like Adobe Acrobat. But this isn’t really a good choice for lumping a bunch of images together, since it costs $$$ and also applies all sorts of nasty behind-the-scenes transformations that you probably don’t want. Ideal would be a simple tool that lets you combine images, one or two per page, at their native resolution, with no additional compression. And it should require as little fiddling as possible.</p>
+
+<p>Fortunately, there are PDF frameworks out there that can be controlled entirely through code. I’ve done some looking, and it seems that <a href="http://itextpdf.com">iText</a> for Java is really the gold standard. (I’d prefer to use a scripting language, but setting up IntelliJ and adding the framework is hardly a hassle. The whole thing took me about 20 minutes to install and fully configure, though I admittedly already had Java installed.)</p>
+
+ 
+        <a href="/blog/2013/06/09/e-book-pdfs-from-a-buncha-scans-easier-than-you-might-think/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
+</ul>
+
+<div class="pagination">
+<span class="pagination-previous">Newer</span>
+<span class="pagination-page-number">Page 1 of 1</span>
+<span class="pagination-next ">Older</span>
+</div>
+
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>
