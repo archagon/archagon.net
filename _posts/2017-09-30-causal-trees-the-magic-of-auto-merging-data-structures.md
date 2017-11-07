@@ -10,9 +10,9 @@ categories: programming
 
 (This is going to be a bit long but hopefully not too boring! Please bear with me because there are a lot of fundamentals to cover before getting to the good stuff. I'll try to keep it brief, but if you want to get to the meat of this article, [click here][sec-ct]. And be sure to check out the [demo section][sec-demo].)
 
-Embarrassingly, my app dev endeavors have mostly been confined to local devices. Programmers like to gloat about the stupendous mental castles they build of their circutous, multi-level architectures, but not me. In truth, networks leave me quite perplexed. I start thinking about data serializing to bits, servers performing their secret handshakes, distant operations forming into an ordered history, merge conflicts pushing into userspace and starting the whole process over again — and it all just turns to mush in my head. For peace of mind, my code needs to be *locally provable*, and this means things like idempotent functions, immediate mode rendering, contiguous structures in memory, and dependency injection. Networks, unfortunately, throw a giant wrench in the works.
+Embarrassingly, my app dev endeavors have mostly been confined to local devices. Programmers like to gloat about the stupendous mental castles they build of their circutous, multi-level architectures, but not me. In truth, networks leave me quite perplexed. I start thinking about data serializing to bits, servers performing their secret handshakes, distant operations forming into an ordered history, merge conflicts pushing into userspace and starting the whole process over again — and it all just turns to mush in my head. For peace of mind, my code needs to be *locally provable*, and this means things like idempotent functions, immediate mode rendering, contiguous structures in memory, dependency injection. Networks, unfortunately, throw a giant wrench in the works.
 
-About month ago, after realizing that most of my ideas for future document-based apps would probably require CloudKit sync and collaboration, I decided to take a stab at solving this problem in my own special way. There were tons of frameworks that purported to do the hard work for me, but I didn't want to black-box my data model. It simply *couldn't* be the case that this sort of thing was solely in the domain of mega-corporations and sequestered network gurus. My gut told me that there had to be some arcane bit of foundational knowledge — some *gold nugget of truth* — that would allow me to network my documents in a more functional way. Instead of downloading a Github framework and [smacking the build button](http://amzn.to/2iigBOI), I wanted to develop a base set of skills that would allow me to easily network *any* document-based app in the future.
+About month ago, after realizing that most of my ideas for future document-based apps would probably require CloudKit sync and collaboration, I decided to take a stab at solving this problem in my own special way. There were tons of frameworks that purported to do the hard work for me, but I didn't want to black-box my data model. It simply *couldn't* be the case that this sort of thing was solely in the domain of mega-corporations and sequestered network gurus. My gut told me that there had to be some arcane bit of foundational knowledge — some *gold nugget of truth* — that would allow me to network my documents using a more functional approach. Instead of downloading a Github framework and [smacking the build button](http://amzn.to/2iigBOI), I wanted to develop a base set of skills that would allow me to easily network *any* document-based app in the future.
 
 <!--more-->
 
@@ -25,11 +25,11 @@ Pondering, I layed out the wishlist for my hypothetical architecture:
 * Secondary data structures and state should be minimized. Most of the extra information required for sync should be stored in the same place as the document, and moving the document to a new device should not break sync. (No irreplacable caches!)
 * Network back-and-forth should be condensed down to the bare minimum, and rollbacks and re-syncs should practically never happen. 
 * If at all humanly possible, the system should require no extra servers. CloudKit was free and required no management on my part — great! — but it could only function as a simple database. If I could make do with just that, I'd save boatloads of money, effort, and stress.
-* To top it all off, my chosen technique had to pass the **PhD Test**. That is to say, one shouldn't need a PhD to understand and implement the chosen approach for arbitrary data models.
+* To top it all off, my chosen technique had to pass the **PhD Test**. That is to say, one shouldn't need a PhD to understand and implement the chosen approach for custom data models.
 
-It occurred to me at this point that the network problems I was dealing with — document cloud sync, document editing across multiple devices, collaborative editing, and reconciliation of distant or conflicting revisions — were all really different facets the same problem. Namely: how do we design a system such that any two revisions of the same document can merge deterministically and without user intervention, 100% of the time? It goes without saying that this wishlist was an enormously high bar, but I didn't actually expect to hit all those points. They were merely my compass for the algorithmic adventure I was embarking on.
+It occurred to me at this point that the network problems I was dealing with — document cloud sync, document editing across multiple devices, collaborative editing, and reconciliation of distant or conflicting revisions — were all really different facets the same problem. Namely: how do we design a system such that any two revisions of the same document could merge deterministically and without user intervention, 100% of the time? It goes without saying that this wishlist was an enormously high bar, but I didn't actually expect to hit all those points. They were merely my compass for the algorithmic adventure I was embarking on.
 
-I started by looking into the proven leader in the field, Google Docs. Venturing down the deep rabbit hole of [real-time collaborative editing](https://en.wikipedia.org/wiki/Collaborative_real-time_editor) techniques, I was delighted to learn that to varying degrees, many of the above problems fell under the umbrella of [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency). Unlike the usual strong consistency model, where all clients receive changes in the same order and must thus rely on locking to some degree, eventual consistency allows clients to individually diverge and then arrive at a final, consistent result when everyone's updates have arrived. (Or, in a word, when the network is "quiescent".) There were several tantalizing techniques to investigate in this field. The main questions I kept in mind going in were: "Could these techniques be generalized to arbitrary data models?" and "Did this pass the PhD Test?"
+I started by looking into the proven leader in the field, Google Docs. Venturing down the deep rabbit hole of [real-time collaborative editing](https://en.wikipedia.org/wiki/Collaborative_real-time_editor) techniques, I was delighted to learn that to varying degrees, many of the above problems fell under the umbrella of [eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency). Unlike the usual strong consistency model, where all clients receive changes in the same order and must rely on locking to some degree, eventual consistency allows clients to individually diverge and then arrive at a final, consistent result when everyone's updates have arrived. (Or, in a word, when the network is "quiescent".) There were several tantalizing techniques to investigate in this field. The main questions I kept in mind going in were: "Could these techniques be generalized to arbitrary data models?" and "Did this pass the PhD Test?"
 
 <div class="toc">
 
@@ -91,13 +91,13 @@ I started by looking into the proven leader in the field, Google Docs. Venturing
 
 # Convergence Techniques: A High-Level Overview
 
-There are a few basic terms that are critical to understanding eventual consistency. The first is **causality**. An operation is *caused* by another operation when it directly modifies or otherwise involves the results of that operation. However, we can't always determine strict causality, so often algorithms assume a causal link between operations if the site generating the newer operation is aware of the older operation on creation. This "soft" causality can be determined using a variety of schemes. The simplest is a [Lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamps), which requires that every new operation have a higher Lamport timestamp than the last seen operation, including any remote operations received. Although there are eventual consistency schemes which can receive operations in any order, most algorithms rely on operations arriving in their **causal order** (e.g. "Insert A" necessarily arriving before "Delete A"). If two operations are not causal — for instance, if they were created simultaneously on different sites without knowledge of each other — they are said to be **concurrent**. (An operation log in causal order can be described as having a **partial order**, since concurrent operations could be in different positions on different clients. If the log is guaranteed to be identical on all clients, it has a **total order**.) Most of the hard work in eventual consistency land involves giving a consistent and meaningful order these concurrent operations. Generally speaking, concurrent operations have to be made to **commute**, or behave the same in any order. This can be done in a vareity of ways, the most flexible of which will be discussed in detail below.
+There are a few basic terms that are critical to understanding eventual consistency. The first is **causality**. An operation is *caused* by another operation when it directly modifies or otherwise involves the results of that operation. However, we can't always determine strict causality, so often algorithms assume a causal link between operations if the site generating the newer operation is aware of the older operation on creation. This "soft" causality can be determined using a variety of schemes. The simplest is a [Lamport timestamp](https://en.wikipedia.org/wiki/Lamport_timestamps), which requires that every new operation have a higher Lamport timestamp than every other locally-available operation, including any remote operations received. Although there are eventual consistency schemes which can receive operations in any order, most algorithms rely on operations arriving in their **causal order** (e.g. "Insert A" necessarily arriving before "Delete A"). This doesn't really have much to do with convergence schemes and can be "dumbly" solved on the network transport layer — though it's also possible to design a convergence scheme (with some difficulty) in which even causal order is not necessary. If two operations are not causal — for instance, if they were created simultaneously on different sites without knowledge of each other — they are said to be **concurrent**. (An operation log in causal order can be described as having a **partial order**, since concurrent operations could be in different positions on different clients. If the log is guaranteed to be identical on all clients, it has a **total order**.) Most of the hard work in eventual consistency land involves giving a consistent and meaningful order these concurrent operations. Generally speaking, concurrent operations have to be made to **commute**, or behave the same in any order. This can be done in a vareity of ways, the most flexible of which will be discussed in detail below.
 
 Now, there are two competing approaches in eventual consistency state-of–the-art, both tagged with rather unappetizing initialisms: [Operational Transformation][ot] (OT) and [Conflict-Free Replicated Data Types][crdt] (CRDTs). Fundamentally, these approaches tackle the same problem: given an object that has been edited by an arbitrary number of connected devices, how do we coalesce and apply their patches in a consistent way, even when those patches might be concurrent or arrive out of creation order? And, moreover, what do we do if a user goes offline for a long time, or if the network is unstable, or even if we're in a peer-to-peer environment with no single source of truth?
 
 ## Operational Transformation (OT)
 
-[Operational Transformation][ot] is the proven leader in the field, notably used by Google Docs and (now Apache) Wave as well as Etherpad. Unfortunately, it is only proven insofar as you have a company with billions of dollars and hundreds of PhDs at hand, as the problem is *hard*. With OT, each user has their own copy of the data, and each atomic mutation to that data is considered an **operation**. (For example, "Insert A at Index 2" or "Delete Index 3".) Whenever a user mutates their data, they send their new operation to all their peers, often in practice through a central server. OT makes the assumption that the data is a black box — that incoming oprations will be applied on top without the possibility of a rebase operation. Consequently, the only way to ensure that concurrent operations will commute is to **transform** them, ensuring the commutativity of their effect.
+[Operational Transformation][ot] is the proven leader in the field, notably used by Google Docs and (now Apache) Wave as well as Etherpad and ShareJS. Unfortunately, it is only proven insofar as you have a company with billions of dollars and hundreds of PhDs at hand, as the problem is *hard*. With OT, each user has their own copy of the data, and each atomic mutation to that data is considered an **operation**. (For example, "Insert A at Index 2" or "Delete Index 3".) Whenever a user mutates their data, they send their new operation to all their peers, often in practice through a central server. OT makes the assumption that the data is a black box — that incoming oprations will be applied on top without the possibility of a rebase operation. Consequently, the only way to ensure that concurrent operations will commute is to **transform** them, ensuring the commutativity of their effect.
 
 Let's say Peer A inserts a character in a string at position 3, while Peer B simultaneously deletes a character at position 2. If Peer C, who has the original state of the string, receives A's edit before B's, everything is peachy keen. If B's edit arrives first, however, A's insertion will be in the wrong spot. A's insertion position will therefore have to be transformed by subtracting the length of B's edit. This is fine for the simple case of two switched edits, but gets a whole lot more complicated when you start dealing with more than a single pair of concurrent changes. (An algorithm that deals with this case — and thus, [provably][cp2], with any conceivable case — is said to be have the "CP2/TP2" property rather than the pairwise "CP1/TP1" property. Yikes, where are professional namers when you need them?) In fact, the majority of published algorithms for string OT actually have subtle bugs in certain edge cases (such as the so-called ["dOPT puzzle"][dopt]), meaning that they aren't strictly convergent without occasional futzing and re-syncing by way of a central server. And while the idea that you can treat your model objects strictly in terms of operations is elegant in its premise, the fact that adding a new operation to the model requires figuring out its interactions with *every existing operation* is nearly impossible to grapple with.
 
@@ -144,49 +144,69 @@ Next, I sifted through a bunch of academic papers on CRDTs. There was a group of
 
 Reading the literature was highly educational, and I now had a good intuition about the behavior of convergent sequence CRDTs. But I just couldn't find very much in common between the approaches. Each one had its own proofs, methods, optimizations, conflict resolution methods, garbage collection schemes. Many of the papers blurred the line between theory and implementation, making it even harder to suss out any underlying principles. I felt confident using these algorithms for convergent arrays, but I wasn't quite sure how to build my own convergent data structures using the same principles.
 
-Then I discovered the key CRDT that would blow the doors wide open.
+Then I discovered the key CRDT that finally made me see the code in the matrix.
 
 # Causal Trees (CT)
 
 Let's backtrack a bit. Say you're designing a convergent sequence CvRDT (state-based CRDT) from scratch. But instead of picking an existing sequence CRDT, you've been wickedly tempted by the operational approach of OT! You start wondering if it's possible to have a state-based CRDT that's expressed strictly in terms of immutable operations, allowing you to have the best of both worlds: the mythical "golden file" as well as all the flexibility and expressiveness of OT.
 
-Here's an example string mutation, just to have some data to work with.
+Here's an example concurrent string mutation, just to have some data to work with.
 
-<img src="{{ site.baseurl }}/images/blog/causal-trees/array-to-ct-text.png">
+<img src="../images/blog/causal-trees/network-chart.svg" width="500">
+
+The small numbers over the letters are Lamport timestamps. Site 1 types "CMD", syncs with Site 2 and Site 3, then resumes its editing.
 
 First idea: just take the standard set of array operations ("Insert 'A' at Index 0", "Delete Index 3"), stick them in an array in their arrival order, and read them back to reconstruct the full array as needed. This won't be convergent by default: the operations also need some way to establish a single, total order between peers. This can simply be done by giving each operation a globally-unique ID in the form of an owner UUID plus a Lamport timestamp. (With this scheme, no two operations can ever have the same ID: operations for the same owner will have a monotonically increasing timestamp, and operations for different users will have different UUIDs. Additionally, using a Lamport timestamp automatically places operations in global causal order.) To keep things simple, we might define the total order as the operation log sorted first by the timestamp, then by UUID in case of a tie. Now, when a new operation arrives from a remote peer, it simply needs to be inserted in the correct spot, and the array regenerated from the log.
 
-<img src="{{ site.baseurl }}/images/blog/causal-trees/array-to-ct-ops-indexed.png">
+<img src="../images/blog/causal-trees/indexed.svg">
 
-Success: it's an operation-based, fully-convergent CvRDT! Well, sort of. There are two obvious issues here. First, reconstructing the array by reading the full operation log has **O(N<sup>2</sup>)** complexity, and it has to happen on every key press to boot. Completely untenable. Second, intent is clobbered. Just because a data structure converges doesn't mean it makes a lick of sense. As demonstrated earlier, a concurrent delete-index operation may change the indices of any concurrent insert-at-index operations, depending on the order. (Recall: this is the problem that OT tries to solve, but our operations are immutable.) This is because the operations are *specified* incorrectly. They rely on the effects of operations that came before them, even when causal order is assured. In other words, they are commutative in their execution, but not their intent.
+Success: it's an operation-based, fully-convergent CvRDT! Well, sort of. There are two obvious issues here. First, reconstructing the array by reading the full operation log has **O(N<sup>2</sup>)** complexity, and it has to happen on every key press to boot. Completely untenable. Second, intent is completely clobbered. Reading the operations back, we get something along the lines of "CTRLDATLEL" (assuming some creative leeway when it comes to inserts past the array bounds). Just because a data structure converges doesn't mean it makes a lick of sense. As demonstrated earlier, a concurrent delete-index operation may change the indices of any concurrent insert-at-index operations, depending on the order. (Recall: this is the problem that OT tries to solve, but our operations are immutable.) This is because the operations are *specified* incorrectly. They rely on the effects of operations that came before them, even when causal order is assured. In other words, they are commutative in their execution, but not their intent.
 
 OK, so the first step is to fix the intent problem. Fundamentally, "Insert 'A' at Index 0" isn't *really* what the user wants to do. People don't think in terms of indices. They want to insert a character at the cursor position, and the cursor position is perceived as being in between two letters — or more simply, to the immediate right of a single letter. Therefore, we can change our operations to the format "Insert 'A' After 'B'" (assuming that letters are uniquely identified). Given causal order and assuming that deleted characters persist as tombstones, the intent of the operations is now commutative: there will only ever be the one single 'B' in the array, allowing us to position 'A' just as the user intended.
 
 So how do we identify a particular letter? Just 'A' and 'B' are ambiguous, after all. We could generate a new ID for each inserted letter, but this isn't necessary: we already have unique identifiers for all our operations. Why not just use operation identifiers as proxies for their output? In other words, an "Insert 'A'" operation can stand for that particular letter 'A' when referenced by other operations, since it is immutable and uniquely identified. Now, no extra data is required, and everything is still defined in terms of basic, atomic, immutable operations.
 
-<img>
+<img src="../images/blog/causal-trees/causal.svg">
 
-This is significantly better than before! For the most part, intent is now preserved. We still have a problem with concurrent ranges of text interleaving, but let's deal with performance first.
+This is significantly better than before! For the most part, intent is now preserved. But performance is still an issue. As it stands, this array would still take <em>O(N<sup>2</sup>)</em> to reconstruct.
 
 The main issue with performance is that array insertions and deletions tend to be **O(N)** operations, and we need to re-read the operation log whenever a new operation comes in. (Barring some complex mapping between the operation log and its output array. But we're trying to keep things generic and understandable.) Array *appends*, on the other hand, are only **O(1)** amortized. What if instead of sorting our operation log by timestamp/UUID, we gave it the skeletal order of the array it was going to produce anyway?
-
-<img src="{{ site.baseurl }}/images/blog/causal-trees/array-to-ct-ops-causal.png">
 
 With this new order, an inbound operation can no longer just append itself to the operation log. It has to first find its referenced (parent) operation, then sort itself into the correct spot in timestamp/UUID order. This takes **O(N)** instead of **O(1)**, but producing the output array is only **O(N)** since we can just read the operation log and push/pop elements as we go along. Note that throughout all of this, we have not added any extra data or information to our basic operation datum. We have simply rearranged our operations to get them closer to a stricter causal order rather than the "soft" causal order espoused by a simple Lamport timestamp. In other words, we know from our data model that "Insert 'A' After 'B'" ought to be executed immediately after the original "Insert 'B'", even if the "Insert 'A'" has a substantially higher Lamport timestamp. (The Lamport timestamp is merely an upper bound on causality.)
 
 Finally, we can tackle the problem of interleaved text. This is quite simple. If we pull away from our linear operation log and look at the relationships between operations, we can see that what we've in fact constructed is an operation *tree*:
 
-<img src="{{ site.baseurl }}/images/blog/causal-trees/array-to-ct-tree.png" width="300">
+<img src="../images/blog/causal-trees/tree.svg" width="400">
 
 Performing an in-order DFS traversal on this tree will output a string in which runs of text are nicely separated. All we need to do is order each node's children, which is possible by way of a simple UUID/timestamp comparison. (Though perhaps the node with the highest timestamp ought to be the frontmost child instead of the last.) Now we simply store this operation tree in its traversal order... and we're done! We have a convergent, intent-preserving, and purely operational sequence CvRDT. As with the previous scheme, it's possible to insert new oprations in **O(N)** and reconstruct the array in **O(N)**. There are no messy bits, extra state, or even caches required. You can pretty much run array queries directly on the ordered operation log. In a sense, the operations *are* the data.
 
-<img>
+<img src="../images/blog/causal-trees/causal-ordered.svg">
 
 This is the underlying premise of the [Causal Tree][ct].
 
-In contrast to all the other CRDT research I'd examined, the design presented in Victor Grishchenko's brilliantly written (yet largely uncited) paper was simultaneously clean, performant, and consequential. Instead of dense layers of theory and complex data structures, everything was centered around one pivotal concept: immutable, globally unique mini-operations. From this, entire classes of features followed.
+In contrast to all the other CRDT research I'd examined, the design presented in Victor Grishchenko's brilliantly written (yet largely uncited) paper was simultaneously clean, performant, and consequential. Instead of dense layers of theory and complex data structures, everything was centered around one pivotal concept: immutable, globally unique, and atomic operations. From this, entire classes of features followed.
 
 In the paper, the operations that make up the tree are called **atoms**. Each atom has a unique **identifier** comprised of a **site**, an **index**, and a **timestamp**[^awareness]. (The index is simply the order of creation for that operation on the corresponding site. It's not necessary, but makes it easier to pull up arbitrary atoms. The timestamp can serve the same role, but it can't index directly into an array.) At the heart of an atom is its **value**, which is a single character or delete token in the case of strings. An atom also has a **cause**, or parent, which is another atom identifier that the current atom is said to "follow". (Here, this causal link simply represents a character to the left of the current character.) Assuming that the site is stored in 2 bytes, the index in 4 bytes, and the timestamp in 4 bytes, each character in a basic Causal Tree string is, at minimum, 12x the size of an ordinary C-string character.
+
+In the case of string Causal Trees, there are two kinds of atom values: inserts, which feature the character to be added as data, and deletes, which have no extra data. Deletes are immutable just like any other atoms and are parented to the atoms they're meant to remove. On reading the CT to produce a C-string, characters that are immediately followed by delete atoms in the weave are simply popped from the string-under-construction. (Note that this is a bit different from the idea of tombstones in RGA and the like, since no atoms are actually modified.) In code, an atom might look someting like this:
+
+```swift
+struct Id: Codable, Hashable
+{
+	let site: UInt16
+	let index: UInt32
+  	let timestamp: UInt32
+}
+
+struct Atom<T: Codable>: Codable
+{
+	let id: Id
+  	let cause: Id
+	let value: T
+}
+
+typealias StringAtom = Atom<UInt16>
+```
 
 [^awareness]: In the original paper, atoms are compared by their **awareness** rather than Lamport timestamp. An awareness is a **weft** (or vector clock) that includes all the atoms a particular atom would have known about at the time of its creation. This value is derived by recursively combining the awareness of the atom's parent with the awareness of the previous atom in its yarn. While this is gives us more info than a simple Lamport timestamp, it is also **O(N)** slow to derive and makes some operations (such as verification and merge) substantially more complex. The 4 extra bytes per atom for the timestamp is thus a worthwhile tradeoff, and one which the author of the paper has used in subsequent work.
 
@@ -232,37 +252,39 @@ My CT implementation isn't quite production ready yet (though I'll keep working 
 
 # The Gold Nugget of Truth: Operation-Based CRDTs
 
-But CTs are just the beginning. Having gotten to this point, we are in fact standing at the precipice of a fundamental, unifying theory of operational CRDTs. Very recent research, including Victor Grishchenko's latest project [Replicated Object Notation (RON)][ron] and the academic paper [*Pure Operation-Based Replicated Data Types*][pure-op], have successfully demulsified the building blocks of CRDTs into a simple, layered pipeline that strictly deals with immutable, uniquely identified operations  — same as the ones used in the Causal Tree. With this new understanding, CmRDTs and CvRDTs become one and the same and supercede OT in practically every respect. Moreover, many existing CRDTs (such as RGA) are able to be expressed in terms of this approach, making it a superset of CRDTs as well.
+But CTs are just the beginning. Having gotten to this point, we are in fact standing at the precipice of a fundamental, unifying theory of operational CRDTs. Very recent research, including Victor Grishchenko's latest project [Replicated Object Notation (RON)][ron] and the academic paper [*Pure Operation-Based Replicated Data Types*][pure-op], have successfully demulsified the building blocks of CRDTs into a simple, layered pipeline that strictly deals with immutable, uniquely identified operations  — same as the ones used in the Causal Tree. With this new understanding, CmRDTs and CvRDTs become one and the same and supercede OT in practically every respect. Moreover, many existing CRDTs (such as RGA) are able to be expressed in terms of this approach, making it a kind of superset of CRDTs as well.
 
 <img pipeline>
 
-The pipeline begins with a list of operations, each bestowed with an ID in the form of a UUID + Lamport timestamp (plus a site index if you wish), a causing operation ID, and a value. As in the Causal Tree, an operation is intended to represent a single, atomic unit of change: local in effect and directly dependant on one other operation at most. (This is a loose requirement, though, and only meant to nail down the intent of the operation. Recall the problems we had with convergent but useless index-based operations when deriving the Causal Tree earlier.) These operations are then fed into a **reducer**. In Replicated Object Notation, a reducer is a pure function that fiddles with the operations and gives them order. This arrangement of operations forms the skeleton of your CRDT — or Replicated Data Type (RDT), in RON parlance.
+The pipeline begins with a list of operations, each bestowed with an ID in the form of a UUID + Lamport timestamp (plus a site index if you wish), a causing operation ID, and a value. As in the Causal Tree, an operation is intended to represent a single, atomic unit of change: local in effect and directly dependant on one other operation at most. (This is a loose requirement, though, and only meant to nail down the intent of the operation. Recall the problems we had with convergent but useless index-based operations when deriving the Causal Tree earlier.) These operations are then fed into a **reducer**. In Replicated Object Notation, a reducer is a pure function that simplifies the operations and gives them order. This arrangement of operations forms the skeleton of your CRDT — or Replicated Data Type (RDT), in RON parlance.
 
 <img — reducer>
 
-What is this "fiddling", you might ask? Aren't the operations meant to be immutable? Generally, yes; but in some RDTs, certain operations can definitively supercede previous operations. Take a simple last-writer-wins RDT. An operation with a higher UUID/timestamp than the previous operation will always overwrite it. By this logic, there's simply no point in keeping the older operations around anymore.
+What is this "simplifying", you might ask? Aren't the operations meant to be immutable? Generally, yes; but in some RDTs, certain operations can definitively supercede previous operations. Take a simple last-writer-wins RDT. An operation with a higher UUID/timestamp than the previous operation will always overwrite it. By this logic, there's simply no point in keeping the older operations around anymore. Another mutating reduction step is the stripping of UUID, timestamp, and location data. In many RDTs, some of that information becomes unnecessary once the operations are in their proper order.
 
 <img — lww>
 
-Personally, I disagree. Older operations might not be useful for convergence, but they're still necessary for some of the more exciting features of this approach, such as arbitrary revision lookup, change-granular blame lookups, and incremental garbage collection. (Discussed more below.) Therefore, I believe that the reducer should be changed into a **rearranger**. This would perform the same reordering step, but wouldn't remove or modify any of the operations. Everything would still be there, just arranged in a stricter causal order than the "soft" causality allowed by simple Lamport comparisons.
+Personally, I think this step could be improved when it comes to document-based applications. Older operations might not be useful for convergence, but they're still necessary for some of the more exciting features of this approach, such as arbitrary revision lookup, change-granular blame queries, and incremental garbage collection. (More on that below.) Therefore, I believe that instead of a reducer, we should have a **arranger** step. This would perform the same kind of reordering as the RON reducer, but wouldn't remove or modify any of the operations. Everything would still be there, just arranged in a stricter causal order than the "soft" causality allowed by simple Lamport comparisons. The reducer step could still be performed during garbage collection for example, but would not be necessary every time a new operation is added. To avoid confusion, the output of an arranger will be called a **structured log** from now on. (As in: structured operation log, as opposed to the usual causal order or even unordered operation log that the arranger consumes.)
 
 <img — rearranger>
 
-The final step in this pipeline is the **mapper**, or alternatively **evaluator**. This is what makes sense of your reduced operation log. It can either be something that produces a new data structure from your operations, or alternatively just a function that can run queries against the reduced log directly. (This latter case is the optimal choice, since we don't need an **O(N)** parse of all operations. But it's not always possible.) For example, in the case of Causal Trees, the mapper can either be a function that produces a C-string sans deleted characters in **O(N)** time, or an interface that lets you run usual string queries like `characterAt:` and `substring` directly against the weave (at a slightly higher cost than in an ordinary string).
+The final step in this pipeline is the **mapper**, or alternatively **evaluator**. This is what makes sense of your structured log. It can either be something that produces a new data structure from your operations, or alternatively just a function that can run queries against the structured log directly. (This latter case is the optimal choice, since we don't need to do an **O(N)** parse of all operations.) For example, in the case of Causal Trees, the mapper can either be a function that produces a C-string sans deleted characters in **O(N)** time, or an interface that lets you run usual string queries such as `characterAt:` and `substring` directly against the weave (at a slightly higher cost than in an ordinary string due to delete operations).
 
 <img — mapper>
 
-The reducer/rearranger and mapper/evaluator together form the implemenation of the CRDT — one dealing with data, the other with interface. The reduction of the CRDT needs to be implemented in such a way that the mapping step is efficient. If the reduced operations kind of look like the data structure you're trying to produce (e.g. a CT's weave ⇄ array), you're probably on the right track. In effect, the operations should *become* the data.
+The reducer/rearranger and mapper/evaluator together form the implemenation of the CRDT — one side dealing with data, the other with interface. The reduction/arrangement of the operations needs to be implemented in such a way that the mapping step is efficient. If the structured log kind of looks like the data structure you're trying to produce (e.g. a CT's weave ⇄ array), you're probably on the right track. In effect, the operations should *become* the data.
 
-In RON, the reducer simply outputs an ordered collection of operations and is able to merge in any other permutation of operations of the same type — be it a single operation, another fully-reduced set of operations, or a patch. In other words, full RDTs, single operations, and portions of RDTs are all unified under the same interface, making the approach truly functional and equivalent to both CmRDTs and CvRDTs. Personally, I'd prefer to do things a little differently. Instead of treating the output of a reducer as simply an ordering of operations, I'd prefer to think of the output as a different object, with its own data structures, filled with all those operations:
+<ron — reducer>
 
-<img — reducer>
+In RON, the reducer is purely functional and simply outputs an ordered collection of operations. In other words, full structured logs, single operations, and patches are all unified under the same interface. Personally, I prefer to do things a little differently. Instead of treating the output of my arranger as simply an ordering of operations, I'd prefer to think of it as a special, type-tailored object, carrying its own data structures and caches and distributing the operations between them:
 
-The reasoning is simple. If you allow for different kinds of data structures to hold your operations, you can optimize the performance of your reduction to more closely approximate the convergent data structure you're designing. For example, a reduction of a sequence (like CT or RGA) could be stored in a rope instead of an array, and a reduction of a dictionary could be stored as separate key/bucket data structures. You could also integrate caches and other bits of state to improve performance even further.
+<img — arranger>
+
+The reasoning is simple. If you allow for different kinds of data structures to hold your operations, you can optimize the performance of your structured log to more closely resemble the convergent data structure you're designing. For example, the structured log of a sequence (such as the CT's weave) could be stored in a rope instead of an array, and a structured log of a dictionary could be divided between separate key/bucket data structures. You could also integrate caches and other bits of state to improve performance even further.
 
 <img — caches>
 
-Using this framework, it becomes easy to create complex convergent documents. Consider this: a collection of CvRDTs is itself a CvRDT. Therefore, we can create composite CvRDTs by keeping them under the same interface. In Swift, the interface might look like this:
+With this conception of CvRDTs as special data structures that contain operations, it becomes easy to create complex convergent document formats. Consider that a collection of CvRDTs is itself a CvRDT. If we unify our structured logs under a single interface, combining multiple CvRDTs under the same roof becomes fairly straight-forward.
 
 ```swift
 public protocol CvRDT: Codable, Hashable
@@ -273,193 +295,95 @@ public protocol CvRDT: Codable, Hashable
     // for avoiding needless merging; should be efficient
     func superset(_ v: inout Self) -> Bool
     
-    // ensures that our algorithm-based invariants are correct, for debugging and merge sanity checking
+    // ensures that our invariants are correct, for debugging and merge sanity checking
     func validate() throws -> Bool
 }
 ```
 
-If each of those sub-CRDTs shares the same Lamport clock, we have an additional feature.
+Now all a "meta-CvRDT" has to do is forward the relevant calls to its inner CvRDTs when needed. It doesn't even matter how they work under the hood as long as they implement the same interface. Moreover: if each of these CvRDTs shares the same Lamport clock, we have some juicy additional functionality available to us.
 
 ```swift
 public protocol OperationalCvRDT: CvRDT
 {
   	var lamportClock: CRDTCounter<Int32> { get }
   
-  	func baseline() -> Weft
-    mutating func garbageCollect(_ w: Weft)   
+  	func baseline() -> Weft // the point beyond which the CvRDT is compacted or reduced
+    mutating func garbageCollect(_ w: Weft) // sets the baseline
+ 
+  	// make the CvRDT behave like a read-only previous revision
+  	func revision() -> Weft?
+    mutating func setRevision(_ r: Weft?) throws
   
-    mutating func setRevision(_ r: Weft?)
+    mutating func blame(_ a: AtomId) -> SiteIndex?
 }
 ```
 
+With every operation inside a CvRDT following the same causality timeline, we can perform so-called **weft operations**[^weft]. A weft can uniquely identify a CvRDT at any point in time. If we have the weft of a CvRDT at a point when we knew the CvRDT was valid (not every weft necessarily represents a consistent CvRDT), we can easily offer a view of the CvRDT in read-only mode for that moment in time. (How do we get a list of valid wefts? One simple way is to store the current weft somewhere right before remote changes are integrated.) We can also use this interface to garbage collect in a more generic way. When a site has determined that their copy of the CvRDT is getting a bit too large, they can set a new basline, which is essentially a LWW weft register. (Wefts are vector clocks, so they have their own ordering — no need to bring the usual UUID/timestamp into this.) When a new baseline is set, every operation prior to that baseline can be reduced in the RON sense by deleting tombstones that have no descendants, removing LWW values that have been superceded, etc. (Each RDT has its own reduction scheme.) [two kinds of garbage] If another site has concurrent operations that depend on deleted or modified operations beyond the baseline, then they might have to drop them once they receive the new baseline, unless a scheme can be invented to put that data somewhere deterministically. For this reason, garbage collection shouldn't be done very frequently, since a misbehaving site could force all other sites to keep dropping their changes.
 
+[^weft]: "Weft" is a carryover from the Causal Tree knitting nomenclature, which was invented to harmonize with "weave" and "patch". I still think it sounds better and carries more meaning than just "vector clock", so I'll keep using it.
 
-weft transforms; vector clock operations
+<img — cvrdt>
 
+I intend to write a separate article walking through a specific example, but designing custom data types[^custom] within this conceptual framework should be fairly straight-forward, though not necessarily simple. Fortunately, most of the difficulty comes from designing and structuring operations such that they convey intent on concurrent changes while remaining performant, not from battling with complicated consistency proofs. It's fun design work, not impenetrable math!
 
+Some key points:
 
-Since operations can always be ordered by UUID and timestamp, designing new RDTs using this framework of understanding is pretty straight-forward. What follows is a rough sketch of my thinking in designing a new RDT. Say we're building a replicated bitmap structure. We want to store our data in a lightning-fast wxh array, but we also want to make it possible to lasso and move the pixels around in a convergent way. (That is to say: if somebody is moving an area of pixels at the same time that someone else is drawing in it, the newly-drawn pixels should also move on sync.) On a high level, I'd probably organize it something like this:
+* Your atomic operations *are* the data. Design your operations and organize your data structures such that you can query the RDT directly instead of having to process it first.
+* Within the structured log, you can distribute your operations among any basic data structures (arrays, dictionaries, etc.) as you wish. But you must ensure that each operation exists in one and only one place at a time. On occasion, caches of operations might be required for maximal performance. (Yarns in the CT are a good example. They're not required but give us **O(1)** atom lookups by ID.) If you have caches, make absolutely, 100% sure that they're consistent following all operations, that they're never serialized, and that they can be efficiently recreated on deserialization! Caches are probably the easiest way to corrupt your data.
+* Keep operations ordered in each of your data structures at all times, and don't move an operation once it's been added to a data structure. Rather than thinking of your structured log as mutable, think of it as a granular way of organizing certain subsets of your operations. For the most part, the structured log should be a mathematical construct. Only the caches may have state instead of order, and they need to be treated *very carefully*. Think about it this way: if the user decides to view a past revision of the CRDT, will your structured log continue to operate seamlessly when the newer operations are dropped and the invariants (sorting, tree balancing, etc.) are restored?
+* As much as possible, avoid operations that have non-local effects, have multiple causal operations, or might affect multiple operations in the future. (Good operation: "Insert Letter After Letter". Bad operation: "Capitalize All Existing Letters".) As much as possible, avoid ever having to replay your history. Every such operation is a multiplicative performance downgrade.
+* The key performance chokepoints are: mapper operations, merge, serialization and deserialization, and weft operations. Ensure that the mapper operations are as fast as possible, that merge is about **O(N)**, and that serialization/deserialization and weft transforms are no more than **O(Nlog(N))**.
 
-<img bmp>
+It's not possible to make every conceivable data type convergent with this approach — structures that change their state very frequently will not be able to handle the load, for instance — but you can do a whole lot more over just combining CRDT arrays and dictionaries. And I think it passes the PhD Test, since most of the formal proofy stuff is contained in the UUID/timestamp ordering of operations.
 
-The key ideas here are this:
+[^custom]: When would you need custom data types, rather than just a collection of existing CvRDTs such as sequences and dictionaries? One use case is when you're coding for performance. If you want to make a convergent bitmap, for example, you can't just have a dictionary of coordinates to pixel values. That would be way too slow!
 
-* The atomic operations *are* the data. Design your data structure so that you can query the RDT directly instead of having to process it first. With a bitmap RDT, what you don't want is to process the RDT to produce a bitmap. You want something that already functions as a bitmap.
-* You can store your operations in any data structures you wish, but as much as possible, ensure that each operation exists in one and only one place at a time. Exception: sometimes, caches of operations might be required for maximal performance. (Yarns in the CT are a good example.) If you have caches, make absolutely, 100% sure that they're consistent following all operations, that they're never serialized, and that they can be recreated on deserialization! Caches are probably the easiest way to corrupt your data.
-* As much as possible, avoid operations that rely on multiple previous operations, that have non-local effects, or that might affect multiple simultaneous operations in the future. As much as possible, avoid ever having to replay your history. Every such operation is a multiplicative performance downgrade.
-* The key performance chokepoints are: mapper operations, merge, serialization and deserialization, and weft transforms. Ensure that the mapper operations are as fast as possible, that merge is about **O(N)**, and that serialization/deserialization and weft transforms are no more than **O(Nlog(N))**.
-* Once positioned and sorted, operations are not to be moved. Removing operations from the past 
+One more thing to note. As mentioned in *Pure Operation-Based Replicated Data Types*, there are certain kinds of CRDTs that don't require each operation to carry around a site UUID and timestamp. They are commutative by default. One example is an increment-only counter: as long as each "increment" operation is accounted for, the result is the same on all sites. There's no order to the operations — only a sum. Another example is insert-only sets. These CRDTs are called "pure operation-based CRDTs" in the paper and tend to be of the simpler variety. Note that if you wish to use weft operations on these RDTs, keeping those UUIDs and timestamps around for each operation is still required. You may use the reducer during garbage collection to strip that information.
 
-
-
-For simplicity, each pixel would essentially be a LWW register, which would simply be the operations sorted first by timestamp, then by UUID for tiebreaking. (It could also be organized as a miniature causal tree, but the benefits would be minimal.) We want to keep the main data in a wxh 2D array for efficiency and ability to directly use with graphics APIs, but we can't keep the LWW "tails" of overwritten pixels in the same structure. Therefore, we can store them separately. We want writes to the bitmap to be on the order of **O(1)**. Since bitmaps contain lots of data and change rapidly, we also want to to make it easy to clip off old values when garbage collecting — **O(N)** at worst. But since we're dealing with so many pixels, it would also be unwise to simply malloc wxh vectors and store the LWW runoff in those. A reasonable solution would be to use a simple, append-only hash table:
-
-<img hash>
-
-The LLWs for each pixel would effectively be stored as interleaved linked lists, with the last element aways getting sent to the back of the array. Deletion of operations is not a concern since our operations are, for the most part, immutable. The only time when operations are deleted is during a garbage collect, which would simply entail going through the array in order, popping off elements that aren't contained by the new baseline weft, and updating some pointers. This scheme is pretty close to optimal, since it only takes up **O(wxh)** for the hash key array and **O(total operations)** for the buckets — all in contiguous memory. Setting a pixel is still **O(1)**, since the LWWs don't need to be sorted in local operation. [not even on merge] Sorting is only really required when looking at a past revision
-
-As for the lasso, 
-
-
-
-
-
-lattice
-
-point out diff between CmRDTs and operation-based CRDTs
-
-local commutativity vs. remote
-
-dependency graph
-
-
-
-One more item of note. As mentioned in the *Pure Operation-Based Replicated Data Types* paper, there are certain kinds of CRDTs that don't require each operation to carry a site UUID and timestamp. They are commutative by default. One example is an increment-only counter: as long as each "increment" operation is accounted for, the result is the same on all sites. There's no order to the operations — only a sum. These CRDTs are called "pure operation-based CRDTs" and tend to be of the simpler variety. Still, if one wishes to use weft transforms on this data, keeping those UUIDs and timestamps around would be prudent regardless.
-
-This elegant idea of reduced immutable, unique, ordered, causal, atomic-change operations is that golden nugget of truth I was desparately hoping to find. It is essentially at the center of all replicated data types and opens up worlds of possibilities.
+In summary, practically any CRDT can be viewed as a lattice of atomic operations, each sporting a UUID and Lamport timestamp. These operations are arranged into structured logs and can be treated as data by a mapper. If they share the same Lamport clock, you can even perform weft operations on them, retrieving past revisions and garbage collecting in a consistent way. It's an incredibly powerful and intuitive framework of understanding.
 
 # Causal Trees In Depth
 
-When designing a convergent document format, it might be tempting to dive straight into some sort of constructive combination of maps and sequences, or maybe design some custom convergent data types altogether. But I would argue that the humble Causal Tree, though demonstrated mostly for string use, is in fact one of the most flexible and generic RDTs/CRDTs available. Here's my thinking. The operational CRDT approach described above *fundamentally* takes the form of a tree. Causal relationships naturally form operations into trees, since there's no way for a parent node to be caused by a child. Therefore, the Causal Tree is the most natural RDT possible within this system. To use a buzzword, it synergizes with the design. There's barely anything extra to add!
+When designing a convergent document format, it might be tempting to dive straight into some sort of constructive combination of maps and sequences, or maybe design a custom convergent data type altogether. But I'd like to posit that the humble Causal Tree, though designed for string use, is in fact one of the most flexible and generic RDTs/CRDTs out there. This is because it is, in fact, a full-on convergent tree. Trees can represent sequences, as we've already seen. Trees can also simulate registers, maps, and many other data types. And finally, trees are composed of subtrees. With just a bit of extra work, we therefore have a data structure that can contain a wide variety of other data structures nestled within its branches, letting us use it as a sort of quick-and-dirty convergent struct.
 
-Consequently, Causal Trees can be remarkably useful for creating quick-and-dirty convergent structures — in essence, convergent structs rather than full-blown convergent documents. Most other RDTs can be expressed within the semantics of a tree, including LWWs, sequences, and dictionaries. And as a bonus, merge []
+One of the most expressive feature we can add to such a tree is a priority flag. If an atom has priority, it gets sorted ahead of all its siblings in the parent's causal block, even if it has a lower timestamp. Priority atoms get sorted against one another, followed by non-priority siblings. This gives us a lot of structural control, ensuring that, for instance, delete atoms hug their corresponding insert atoms and never find themselves in some other part of the weave during a merge of concurrent operations.
 
-At this point, we're treating Causal Trees as full-on convergent trees rather than a meta-structure for sequences. To make them maximally useful in this regard, there are a few features that would be useful to add.
+<img — priority>
 
-
-
-**A dual data structure.** You can interpret a CT either as a tree of related operations, or as a series of ordered operation logs (one for each site). Most other CRDTs are eager to merge inbound changes right into their model, only using timestamps and other causality information to ensure consistency at the time of the merge. With CTs, remote changes are are not immediately swallowed up. You can always view a CT in either the "space" domain or the time domain, allowing for efficiency in most operations while only requiring `O(2W)` space.
-
-RGA etc. muddle the difference
-
-**Storage of atoms as an in-order DFS traversal.** As long as your data can be reconstructed 
-based on cause gives us `O(W)` data reconstruction in the simple case. (In other words, deletes aside, string CTs can be simply read linearly.)
-
-**Powerful data processing through simple weave operations.** Together, the [] give us a git-level view into our data. Every single change has an author, a timestamp, and full awareness of the context in which it was created, meaning that you could accurately reconstruct the history of your document, change by change, from the beginning of time.
-
-**Use of awareness for ordering atoms.** Sorting atoms by 
-
-Rather than just sticking to a simple vector clock (yarn awareness), we can always recover an atom’s full context at the time of its creation. This conflict resolution approach is very accurate, intuitive, and leads to fewer conflicts than with other techniques. 
-
-**Immutable operations**
-
-**Related changes are chained together.** Less conflicts, easy merge
-
-**Unique identifiers for each atom**
-
-**Change locality**
-
-[immutability of atoms and indifference to array output -- "weave" is byproduct of tree traversal, not the end result which is mutated
-[tree traversal order]
-
-The sections below discuss some of the lower-level aspects of CTs, including a few details omitted in the summary, implementation of non-string data types, performance characteristics, and caveats along with some possible future improvements.
-
-## Problems & Solutions
-
-There are a couple of subtle implementation details I left out in the summary above. With the core concepts of CT in place, we can now cover them.
-
-First: site identifiers. In order to grant each site's atom a unique ID, its site identifier has to be globally unique. Site identifiers are 16-bit integers. However, that's not enough for any reasonable UUID, which would start at 128 bits, and otherwise generating unique IDs without centralized control is impossible. On the other hand, storing the full 128-bit UUIDs — once for the atom's own site and once for its cause — would balloon each atom to 3x its original size, so it would be best to find an alternate approach.
-
-I solve this problem with the help of a sibling CRDT: a simple set of known UUIDs for a CT. (I call this the **site mapping**.) The site identifier for a UUID as included in the CT is simply its index in lexicographic order. Notably, this means that our CT's site identifiers are not global: if a new UUID is added on another site and then merged into ours, our existing UUID lexicographic indexing (and, thus, site identifiers) might very well change. When this occurs on merge, I traverse the entire weave and remap any trashed site identifiers to their new values — a basic `O(weave)` operation.
-
-<img>
-
-We're doing `O(weave)` operations when receiving remote data *anyway*, so performance of this approach is not a huge factor. However, I saw an opportunity to make an additional optimization and just couldn't pass it up. In the site mapping, along with each UUID key, I store the wall clock time at which it was created. The keys are then sorted first by their clock time and only *then* by their UUID. Assuming that modern connected devices tend to have relatively accurate clocks (but not relying on this fact for correctness), we can ensure that new sites always get appended to the end of the list and thus avoid shifting any of the existing UUIDs out of their previous lexicographic order, unless multiple sites happen to be added concurrently and/or the wall clock on a site is significantly off.
-
-Second, being able to derive the absolute order of our atoms is actually not a guarantee of consistency if we're also aiming for speed. Consider the following fact about storing atoms as a weave: we can reproduce the full tree in `O(weave)` time, but we do *not* have constant-time access to any arbitrary atom's causal children. That information has to be derived through an expensive `O(weave)` query. This means that when we insert a new atom into our weave, it would be unwise to first find the existing children of its parent (`O(weave)`), derive the awarenesses for each one (`O(weave)` times the number of children), and then place our new atom in its correct spot (`O(weave)` once more). In the worst case, this would be an untenable Instead, we want to use our knowledge of the data structure to insert our data in the correct spot without doing any redundant checks — preferably in `O(weave)` time, the minimum for array insertions.
-
-I mentioned in the summary above that we always insert new atoms immediately to the right of their parent atoms in the weave. This makes perfect sense: since we're (tautologically) "aware" of every atom in the CT, we ought to have a higher awareness weft than any existing children and thus belong in the frontmost spot, eliminating the need to order ourselves among the other children. Right? Unfortunately, not quite. Awareness needs to be *proven*. It's a derivable property of the atom and its relationship to the graph, not some extra bit of state that each site holds on to. Thus, we need to demonstrate to remote clients with 100% certainty that our new atom is aware of each and every child of its causing atom. Without this proof, it's entirely possible for another child to have more (derivable) awareness through its yarn connections than our new atom, thus making our ordering inconsistent between local and remote sites.
-
-Deletions are another edge case. Usually, CRDTs handle deletes by replacing deleted items with tombstones. In CTs, however, atoms are never modified, so we delete them by inserting a special "delete" atom next to them. (These atoms are childless — nothing can be caused by them.) This is usually fine, but what if two sites simultaneously delete and append a character to the same character? It's possible that our weave would look like this...
-
-...and thus, the wrong character would be deleted when the weave is parsed to produce the string output. To solve this, the original paper special-cases delete atoms. I generalize this property by adding an optional **priority** type to atom values. If an atom has the priority tag, it hugs its parent in the weave, floating to the start of its causal block and sorting along with any other priority atoms. This complicates certain parts of the algorithm, but it's great for property atoms that apply to specific atoms. In effect, the full atom struct for strings now looks like this:
+The value in our string-type Causal Tree atoms might now look something like this:
 
 ```swift
-struct Id
-{
-	let site: UInt16
-	let index: UInt32
-  	let timestamp: UInt32
-}
+protocol CausalTreePrioritizable { var priority: Bool { get } }
 
-enum StringValue
+enum StringValue: Codable, CausalTreePrioritizable
 {
     case null
     case insert(char: UInt16)
     case delete
   
   	func priority() -> Bool
+  	{
+		if case .delete = self
+		{
+			return true
+		}
+      	else
+		{
+			return false
+        }
+	}
+  
+	// insert Codable boilerplate here
 }
 
-struct StringAtom
-{
-	let id: Id
-  	let cause: Id
-	let value: StringValue
-}
+typealias StringAtom = Atom<StringValue>
 ```
 
-(The original paper also has undelete atoms, but I didn't need them for my use case so I didn't include them in my implementation at all. From a cursory look, however, I believe they would be trivial to implement as similar priority atoms.)
-
-show case
-
-One possible issue with CTs is that the low-level implementation has to be *rock-solid*. The in-order DFS order of the weave must absolutely be preserved every step of the way, and any deviation from this — accidental or intentional — will badly damage the data. In order to at least guard the CT from malicious peers, I’ve implemented a `validate` method. This method goes through the weave and checks as many preconditions as possible, including child ordering, atom type preconditions, priority atom behavior, and others.
-
-* references 
-
-## Performance
-
-With all the basic components in place, we can talk about performance. CT and CRDT papers are quick to point out that humans detect latency in their text editors at around 50ms. Therefore, every action we might want to perform on CRDTs, including merge, has to fall within this marigin. Except for trivial cases, this precludes <code>O(N<sup>2</sup>)</code> or higher operations: a 10,000 word article at 0.01ms per character would take 8 hours to process! We have to somehow make do with `O(N×log(N))` at the very worst.
-
-Below, `O(W)` means `O(number of atoms in weave)`.
-
-As I mentioned earlier, there are two different classes of CRDTs: operation-based (CmRDTs) and state-based (CvRDTs). With operation-based CRDTs, you only have to send your diffs to your peers; with state-based CRDTs, the entire object. (Note, however, that one can always be provably expressed in terms of the other.) Most academic papers describe operation-based CRDTs because they're lighter on the network, but they also require finnicky communication protocols that preserve causality (among other properties). However, in my pursuit of an ideal convergent data type, what I wanted above all else was conceptual simplicity, and nothing could be simpler than only dealing with whole, smushable, convergent objects and abstracting out network communication altogether. (State-based CRDTs work just as well over central-server architectures, inconsistent peer-to-peer networks, or USB sticks tied to poultry.) Even as stated, I don't think this is any cause for worry, since the files we're dealing with are typically on the order of kilobytes; but it should also be noted that the network layer could be designed to intelligently send the diff of your data without the app logic having to know anything about it. Perhaps this solution would be the best of both worlds.
-
-Anyway, performance. Atoms are stored in a weave, which is a contiguous array representing the CT. Modifying the tree — i.e. performing any operation — is thus is an `O(W)` process.
-
-In my implementation, I cache the yarns explicitly. (Alternatively, they could be derived from the weave when needed, but this is `O(W×log(W))` per invocation since it's isomorphic to sorting the weave, and yarn iteration comes up fairly frequently.) Whenever the weave is modified, the yarns cache has to be updated in `O(W)` time; and when we receive raw weave data from another site, we have to first generate its yarns in `O(W×log(W))` time before merging it in. I store the yarns as a contiguous array, featuring the full atoms and not just indices into the weave. (That way, I can iterate through the weave and the yarns with identical performance and benefit from spatial locality.)
-
-Caching the yarns gives us `O(1)` atom lookup based on identifier. (Look up the yarn by site identifier, then return the atom at the index for that yarn.) Finding an atom's weave index is still an `O(W)` operation, but this isn’t a big deal because weave indices are mostly used for mutating the weave which is `O(W)` anyway. (note, maybe storing weave indices is better after all?)
-
-Deriving an atom’s causal block is `O(W)`, since all we need to do is iterate the weave until we hit an atom with a parent that the root atom is aware of, but isn’t the atom itself. (This is proven by lemma [] in the paper.) With Lamport clocks, this is equivalent to finding an atom whose parent has a lower Lamport clock than the root atom. (I'm too lazy to write the proof down, but it's pretty basic.)
-
-Integrating remote changes is almost always `O(W×log(W))`. This mostly involves iterating the two weaves together, constructing a new interwoven weave, and then regenerating the yarns cache at the end. On occasion, a priority atom merge []
-
-Weave validation, though expensive-sounding, is actually just `O(W)`. All we have to do is look at each atom and keep track of a few counters to ensure that sibling order is correct and that causality is not violated.
-
-Finally, it's important to note that by storing our weave and yarns as contiguous arrays, we get a massive performance boost from memory locality. (By itself, this factor might outweigh many others! See this analysis: heap allocation only [] at around.) And not only that, but we're also able to perform very quick copies with this property, meaning that expensive text processing can happen in a background thread without having to lock the document. Even better: since a CT has a unique ID for every atom, a text processing operation can produce non-indexed results []
-
-On first glance, it might seem that `O(W)` performance for any and all mutable operations might be an issue in some cases. However, some optimizations could be made to alleviate this. For instance, instead of merging new changes into our CT straight away, we could keep separate layers of changes, [just like Atom does][atom-buffers]. CT is naturally suited to this since related changes tend to form contiguous chains. We don't even need to create any new data structures to make this work — just a few tweaks to make the patch chains mutable, and a few spots (such as sync) to merge the changes back into the main weave. In general, though, I think `O(W)` is a pretty fair price to pay for the tremendous benefits provided.
-
-In summary, almost every operatin on a CT is `O(W)`, with the exception of yarns cache generation which is `O(W×log(W))` and can be done on a second thread during merge.
-
-benefit from (relatively) infrequent commits, i.e. once every word rather than once a character: can benefit from one-off O(N) merge rather than multiple small O(N) merges
-
-[atom-buffers]: http://blog.atom.io/2017/10/12/atoms-new-buffer-implementation.html
+What's great about this representation is that Swift automatically compresses enums with associated values to their smallest possible bit size, i.e. the size of the largest associated value tuple plus a bit for the case, or even less if Swift can determine that value types have some extra bits available. Better yet, we can use this same pattern to design trees that describe unique classes of objects.
 
 ## Representing Non-String Objects
 
-Most CRDT algorithms are only useful within the context of sequence editing. Woot, RGA, and Logoot all apply the results of incoming operations directly to their strings, often losing operation history in the process. CTs, on the other hand, hold on to every atom's ordering information and can thus be generalized beyond the string implementation. A CT, at heart, is an ordered tree of operations, while its weave is merely a view of this tree and a convenient form of storage — not the "definitive" data structure. If your model object can be assembled by reading a CT's operations through a DFS in-order traversal, then your heaviest operations will only ever be `O(W×log(W))`.
+NEXT: Most CRDT algorithms are only useful within the context of sequence editing. Woot, RGA, and Logoot all apply the results of incoming operations directly to their strings, often losing operation history in the process. CTs, on the other hand, hold on to every atom's ordering information and can thus be generalized beyond the string implementation. A CT, at heart, is an ordered tree of operations, while its weave is merely a view of this tree and a convenient form of storage — not the "definitive" data structure. If your model object can be assembled by reading a CT's operations through a DFS in-order traversal, then your heaviest operations will only ever be `O(W×log(W))`.
 
 Strings get this by default. When building up a string from a CT, the result of the default atom operation — "insert character after the causing atom" — is already reflected in the weave. The only asterisk is deletion atoms, but as priority atoms, they hug their character insertion atoms immediately to the right and thus only require a constant-time lookahead for each character.
 
@@ -468,7 +392,7 @@ To implement a custom data type as a CT, you have to first "atomize" it, or deco
 In the demo section above, I demo a CT designed for Bézier drawing. Each atom of a string CT holds a UTF8 character as its value since insertion is the only value-based operation. But since my Bézier drawing atoms can do a whole lot more, they contain the following enum as their value:
 
 ```swift
-enum DrawDatum
+enum DrawDatum, CausalTreePrioritizable
 {    
     case null
     case shape
@@ -478,7 +402,37 @@ enum DrawDatum
     case opTranslate(delta: NSPoint)
     case attrColor(ColorTuple)
     case attrRound(Bool)
+	case delete
+  
+    var priority: Bool
+    {
+        switch self
+        {
+        case .null:
+            return true
+        case .shape:
+            return false
+        case .point:
+            return false
+        case .pointSentinelStart:
+            return false
+        case .pointSentinelEnd:
+            return false
+        case .opTranslate:
+            return true
+        case .attrColor:
+            return true
+        case .attrRound:
+            return true
+        case .delete:
+            return true
+        }
+    }
+  
+	// insert Codable boilerplate here
 }
+
+typealias DrawAtom = Atom<DrawDatum>
 ```
 
 Swift is kind enough to compress this down to about 17 bytes: the maximum size of an associated data type (NSPoint = 2×Float64 = 16 bytes), plus a bit for specifying the case. For the following example document...
@@ -502,6 +456,63 @@ Generating the visuals is very simple. Traverse the weave. If you hit a shape at
 A pressing question might be: how, specifically, are merge conflicts handled? The answer is that collisions are handled on an atomic level. A collision results in an atom having several children of the same type and should be dealt with on a case-by-case basis. Where things are sequentially ordered, we don't need to do anything extra: shapes and points will still have a consistent drawing order. With attributes, we only need the last item in the weave so concurrency won't have any effect. Where we have to be careful is operations. Let's say three different sites move the same point in the same direction at the same time. By default, the CT would produce a weave with three consecutive translation operations in the same direction. This would be consistent, but it would essentially triple the translation and satisfy none of the clients. Instead, when parsing an operation chain, we can detect when an operation atom has multiple children instead of the expected one and then simply average out the children's translation. Now, the result is that the translation is close to each of the original values, and all three sites are satisfied. (Note that this is done on a higher level of abstraction than the CT. The CT will be consistent regardless; it's all about how we interpret the data when parsing it.)
 
 Finally, my implementation includes a new, stateless layer on top of the CT in order to provide a more model-appropriate API. Since the Bézier tree has more constraints on its structure than the underlying CT, there's an extra `validate` method that verifies all the preconditions whenever the CT is itself validated. Other helper functions ensure that the consistency of the tree is not compromised when new points, shapes, or attributes are added. From the outside, callers can safely use methods like `addShape(atX, y)` or `updateAttributes(rounded, forPoint)` on the wrapper without having to worry about the CT at all. It looks just like any other model object. (Incidentally, this approach to layering CRDTs is described by [this paper][layering], although the technique is pretty common in other domains.)
+
+**Storage of atoms as an in-order DFS traversal.** As long as your data can be reconstructed 
+based on cause gives us `O(W)` data reconstruction in the simple case. (In other words, deletes aside, string CTs can be simply read linearly.)
+
+## Implementation Minutiae
+
+There are a couple of subtle implementation details I left out in the summary. With the core concepts of CT in place, we can now cover them.
+
+First: site identifiers. In order to grant each site's atom a unique ID, its site identifier has to be globally unique. Site identifiers are 16-bit integers. However, that's not enough for any reasonable UUID, which would start at 128 bits, and otherwise generating unique IDs without centralized control is impossible. On the other hand, storing the full 128-bit UUIDs — once for the atom's own site and once for its cause — would balloon each atom to 3x its original size, so it would be best to find an alternate approach.
+
+I solve this problem with the help of a sibling CRDT: a simple set of known UUIDs for a CT. (I call this the **site mapping**.) The site identifier for a UUID as included in the CT is simply its index in lexicographic order. Notably, this means that our CT's site identifiers are not global: if a new UUID is added on another site and then merged into ours, our existing UUID lexicographic indexing (and, thus, site identifiers) might very well change. When this occurs on merge, I traverse the entire weave and remap any trashed site identifiers to their new values — a basic `O(weave)` operation.
+
+<img>
+
+We're doing `O(weave)` operations when receiving remote data *anyway*, so performance of this approach is not a huge factor. However, I saw an opportunity to make an additional optimization and just couldn't pass it up. In the site mapping, along with each UUID key, I store the wall clock time at which it was created. The keys are then sorted first by their clock time and only *then* by their UUID. Assuming that modern connected devices tend to have relatively accurate clocks (but not relying on this fact for correctness), we can ensure that new sites always get appended to the end of the list and thus avoid shifting any of the existing UUIDs out of their previous lexicographic order, unless multiple sites happen to be added concurrently and/or the wall clock on a site is significantly off.
+
+Second, being able to derive the absolute order of our atoms is actually not a guarantee of consistency if we're also aiming for speed. Consider the following fact about storing atoms as a weave: we can reproduce the full tree in `O(weave)` time, but we do *not* have constant-time access to any arbitrary atom's causal children. That information has to be derived through an expensive `O(weave)` query. This means that when we insert a new atom into our weave, it would be unwise to first find the existing children of its parent (`O(weave)`), derive the awarenesses for each one (`O(weave)` times the number of children), and then place our new atom in its correct spot (`O(weave)` once more). In the worst case, this would be an untenable Instead, we want to use our knowledge of the data structure to insert our data in the correct spot without doing any redundant checks — preferably in `O(weave)` time, the minimum for array insertions.
+
+I mentioned in the summary above that we always insert new atoms immediately to the right of their parent atoms in the weave. This makes perfect sense: since we're (tautologically) "aware" of every atom in the CT, we ought to have a higher awareness weft than any existing children and thus belong in the frontmost spot, eliminating the need to order ourselves among the other children. Right? Unfortunately, not quite. Awareness needs to be *proven*. It's a derivable property of the atom and its relationship to the graph, not some extra bit of state that each site holds on to. Thus, we need to demonstrate to remote clients with 100% certainty that our new atom is aware of each and every child of its causing atom. Without this proof, it's entirely possible for another child to have more (derivable) awareness through its yarn connections than our new atom, thus making our ordering inconsistent between local and remote sites.
+
+
+
+show case
+
+One possible issue with CTs is that the low-level implementation has to be *rock-solid*. The in-order DFS order of the weave must absolutely be preserved every step of the way, and any deviation from this — accidental or intentional — will badly damage the data. In order to at least guard the CT from malicious peers, I’ve implemented a `validate` method. This method goes through the weave and checks as many preconditions as possible, including child ordering, atom type preconditions, priority atom behavior, and others.
+
+* references 
+
+## Performance
+
+With all the basic components in place, we can talk about performance. OT and CRDT papers are quick to point out that humans detect latency in their text editors at around 50ms. Therefore, every action we might want to perform on CRDTs, including merge, has to fall within this marigin. Except for trivial cases, this precludes <code>O(N<sup>2</sup>)</code> or higher operations: a 10,000 word article at 0.01ms per character would take 8 hours to process! We have to somehow make do with `O(N×log(N))` at the very worst.
+
+Below, `O(N)` means `O(number of atoms in weave)`.
+
+As I mentioned earlier, there are two different classes of CRDTs: operation-based (CmRDTs) and state-based (CvRDTs). With operation-based CRDTs, you only have to send your diffs to your peers; with state-based CRDTs, the entire object. (Note, however, that one can always be provably expressed in terms of the other.) Most academic papers describe operation-based CRDTs because they're lighter on the network, but they also require finnicky communication protocols that preserve causality (among other properties). However, in my pursuit of an ideal convergent data type, what I wanted above all else was conceptual simplicity, and nothing could be simpler than only dealing with whole, smushable, convergent objects and abstracting out network communication altogether. (State-based CRDTs work just as well over central-server architectures, inconsistent peer-to-peer networks, or USB sticks tied to poultry.) Even as stated, I don't think this is any cause for worry, since the files we're dealing with are typically on the order of kilobytes; but it should also be noted that the network layer could be designed to intelligently send the diff of your data without the app logic having to know anything about it. Perhaps this solution would be the best of both worlds.
+
+Anyway, performance. Atoms are stored in a weave, which is a contiguous array representing the CT. Modifying the tree — i.e. performing any operation — is thus is an `O(W)` process.
+
+In my implementation, I cache the yarns explicitly. (Alternatively, they could be derived from the weave when needed, but this is `O(W×log(W))` per invocation since it's isomorphic to sorting the weave, and yarn iteration comes up fairly frequently.) Whenever the weave is modified, the yarns cache has to be updated in `O(W)` time; and when we receive raw weave data from another site, we have to first generate its yarns in `O(W×log(W))` time before merging it in. I store the yarns as a contiguous array, featuring the full atoms and not just indices into the weave. (That way, I can iterate through the weave and the yarns with identical performance and benefit from spatial locality.)
+
+Caching the yarns gives us `O(1)` atom lookup based on identifier. (Look up the yarn by site identifier, then return the atom at the index for that yarn.) Finding an atom's weave index is still an `O(W)` operation, but this isn’t a big deal because weave indices are mostly used for mutating the weave which is `O(W)` anyway. (note, maybe storing weave indices is better after all?)
+
+Deriving an atom’s causal block is `O(W)`, since all we need to do is iterate the weave until we hit an atom with a parent that the root atom is aware of, but isn’t the atom itself. (This is proven by lemma [] in the paper.) With Lamport clocks, this is equivalent to finding an atom whose parent has a lower Lamport clock than the root atom. (I'm too lazy to write the proof down, but it's pretty basic.)
+
+Integrating remote changes is almost always `O(W×log(W))`. This mostly involves iterating the two weaves together, constructing a new interwoven weave, and then regenerating the yarns cache at the end. On occasion, a priority atom conflict might technically merge in []
+
+Weave validation, though expensive-sounding, is actually just `O(W)`. All we have to do is look at each atom and keep track of a few counters to ensure that sibling order is correct and that causality is not violated.
+
+Finally, it's important to note that by storing our weave and yarns as contiguous arrays, we get a massive performance boost from memory locality. (By itself, this factor might outweigh many others! See this analysis: heap allocation only [] at around.) And not only that, but we're also able to perform very quick copies with this property, meaning that expensive text processing can happen in a background thread without having to lock the document. Even better: since a CT has a unique ID for every atom, a text processing operation can produce non-indexed results []
+
+On first glance, it might seem that `O(W)` performance for any and all mutable operations might be an issue in some cases. However, some optimizations could be made to alleviate this. For instance, instead of merging new changes into our CT straight away, we could keep separate layers of changes, [just like Atom does][atom-buffers]. CT is naturally suited to this since related changes tend to form contiguous chains. We don't even need to create any new data structures to make this work — just a few tweaks to make the patch chains mutable, and a few spots (such as sync) to merge the changes back into the main weave. In general, though, I think `O(W)` is a pretty fair price to pay for the tremendous benefits provided.
+
+In summary, almost every operatin on a CT is `O(W)`, with the exception of yarns cache generation which is `O(W×log(W))` and can be done on a second thread during merge.
+
+benefit from (relatively) infrequent commits, i.e. once every word rather than once a character: can benefit from one-off O(N) merge rather than multiple small O(N) merges
+
+[atom-buffers]: http://blog.atom.io/2017/10/12/atoms-new-buffer-implementation.html
 
 ## Caveats, Concerns, and Future Improvements
 
@@ -562,6 +573,8 @@ explicit grouping?
 [benchmarks]: https://www.mikeash.com/pyblog/friday-qa-2016-04-15-performance-comparisons-of-common-operations-2016-edition.html
 
 # Conclusion
+
+This elegant idea of reduced immutable, unique, ordered, causal, atomic-change operations is that golden nugget of truth I was desparately hoping to find. It is essentially at the center of all replicated data types and opens up worlds of possibilities.
 
 The Causal Tree sits at the perfect saddle point between Operational Transformation and CRDTs. As a CRDT itself, it has all the expected conveniences of the format, including ease of comprehension, offline-first support, and resiliance under arbitrary network topologies. But it also lets you think of your data as a layered sequence of atomic operations, and this gives you the foundation to build up arbitrary, convergent data types. Many awesome features, including a git-like history and potential garbage collection, are enabled by storing the entire operational history []. And you get all this for a complexity price of `O(W×log(W))` in the worst case.
 
