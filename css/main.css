@@ -30,7 +30,9 @@ body {
   min-height: inherit; }
 
 a {
-  color: #2a7ae2; }
+  color: #2a7ae2;
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip: ink; }
   a:visited {
     color: #153d71; }
   a:hover {
