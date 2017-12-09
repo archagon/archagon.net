@@ -3,6 +3,8 @@ layout: post
 title: "That Magical Model Window"
 date: 2014-06-21
 categories: programming
+redirect_from:
+ - /that-magical-model-window/
 ---
 I recently ran into the following issue in my Objective-C code. Let’s say you have a model class[^1] that has (among other things) an `NSMutableArray` of other model classes. How do you let outside objects modify this collection? One obvious solution is to add your own custom accessors: `addObject:`, `removeObject:`, and so forth. But that’s a little sad, since it’s essentially a simplified, non-standard duplicate of the `NSMutableArray` interface. The other obvious choice is to expose the array directly. But oh boy! If you do any pre- or post-processing on add or delete, there’s a world of pain waiting for you. It’s just not wise to let users mess around with the internals of your model like that. Maybe if `NSMutableArray` had a delegate, we could expose the array and then let the model object (as the delegate) have the final say on any changes, but sadly, to my knowledge, it does not. (`NSArrayController` on OSX and `CFArray` might have that functionality, but that’s just too much work for too little gain.) Finally, there’s the issue of key-value observation. How do we observe changes to the array? If we simply observe the array property, we’ll only get notifications when it’s set. Do we observe the array’s `count` property? (Doesn’t work, and wouldn’t handle replacement even if it did.) Do we add manual KVO calls to our custom accessors? Do we set a property somewhere whenever the array is modified?
 

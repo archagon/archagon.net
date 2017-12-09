@@ -88,6 +88,9 @@ a {
         color: mix(black, $brand-color, 50%);
         //text-decoration: underline;
     }
+
+    -webkit-text-decoration-skip: ink;
+    text-decoration-skip: ink;
 }
 h1, h2, h3, h4, h5, h6 {
     a {
