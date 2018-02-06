@@ -8,8 +8,6 @@ categories: programming
 
 **WARNING: VERY ROUGH DRAFT! Please do not publish anywhere.**
 
-If you find value in this article, please consider buying something through my Amazon affiliate link. (Might I suggest a nice [Roost stand](http://amzn.to/2EKIHx6) for your café-working needs?) Either way, thank you for reading! 😊
-
 # Introduction
 
 (Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the [demo section][sec-demo] which will get to the point faster than anything else.)
@@ -675,6 +673,10 @@ But in exchange for a totally peer-to-peer computing future? A world full of sys
 
 I'd say: it's surely worth it!
 
+---
+
+If you find value in this article, please consider buying something through my Amazon affiliate link. (Might I suggest a nice [Roost stand](http://amzn.to/2EKIHx6) for your café-working needs?) Either way, thank you for reading! 😊
+
 # References
 
 OT Algorithm Papers
@@ -742,5 +744,4 @@ Articles
 [lseq]: http://about:blank
 [yjs]: http://about:blank
 [ron]: https://github.com/gritzko/ron
-
 [rope]: https://en.wikipedia.org/wiki/Rope_(data_structure)
