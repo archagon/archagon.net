@@ -6,5 +6,5 @@
 /_sass/compass
 /temp
 /_site
-/_drafts
+#/_drafts
 /generated
