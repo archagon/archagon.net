@@ -6,21 +6,9 @@ comments: true
 categories: programming
 ---
 
-<style>
+**WARNING: VERY ROUGH DRAFT! Please do not publish anywhere.**
 
-body {
-
-font-family: Helvetica, Arial, sans-serif;
-
-font-size: 9.5px;
-
-}
-
-</style>
-
-<div class="notification" style="background: red;"><span markdown="1">WARNING: VERY ROUGH DRAFT! Please do not publish anywhere.</span></div>
-
-<div class="notification"><span markdown="1">If you find value in this article, please consider buying something through my Amazon affiliate link. (Might I suggest a nice [Roost stand](http://amzn.to/2EKIHx6) for your café-working needs?) Either way, thank you for reading! 😊</span></div>
+If you find value in this article, please consider buying something through my Amazon affiliate link. (Might I suggest a nice [Roost stand](http://amzn.to/2EKIHx6) for your café-working needs?) Either way, thank you for reading! 😊
 
 # Introduction
 
@@ -186,7 +174,7 @@ Say you're designing a convergent sequence CvRDT from scratch. Instead of pickin
 
 Here's an example concurrent string mutation, just to have some data to work with.
 
-<img src="../../../../../images/blog/causal-trees/network-chart.svg" width="500">
+<img src="../images/blog/causal-trees/network-chart.svg" width="500">
 
 The small numbers over the letters are [Lamport timestamps][lamport]. Site 1 types "CMD", sends its changes to Site 2 and Site 3, then resumes its editing. Sites 2 and 3 then make their own changes and send them back to Site 1 for the final merge. The result, "CTRLALTDEL", is the most intuitive merge we might expect: insertions and deletions all persist, runs of characters don't split up, and most recent changes come first.
 
