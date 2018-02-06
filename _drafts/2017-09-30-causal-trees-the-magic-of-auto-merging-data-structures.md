@@ -154,11 +154,11 @@ Begrudgingly, I had to abandon the elegance of Differential Sync and decide betw
 
 With CRDTs on my mind, I saw before me the promise of a mythical "golden file". With a document format based on CRDTs, issues of network synchronization and coordination fell completely out of the way. The system would be completely functional. It would work without quirks in offline mode. On syncing, it would always be able to merge with other revisions. It would be topology-agnostic to such a degree that one could use it in a completely decentralized peer-to-peer environment; between phone and laptop via Bluetooth or ad-hoc Wi-Fi; between two applications simultaneously editing the same local file; or plain old syncing with a central database. All at the same time! I just needed to figure out if I could use these things in a performant and space-efficient way for arbitrary data models — all while passing that dastardly PhD Test.
 
-<img -- merge tree>
+<fig — semilattice of files diagram>
 
 My next step was to sift through the academic literature on CRDTs. There was a group of usual suspects for the hard case of sequence (text) CRDTs: [WOOT][woot], [Treedoc][treedoc], [Logoot][logoot]/[LSEQ][lseq], and [RGA][rga]. WOOT is the progenitor of the genre and makes each character in a string reference its adjacent neighbors on both sides. Recent analysis has shown this to be inefficient compared to newer approaches. Treedoc has a similar early-adoptor performance penalty and additionally requires coordination for its garbage collection — a no-go for true decentralization. Logoot (which is optimized further by LSEQ) curiously avoids tombstones by treating each sequence item as a unique point along a dense (infinitely-divisible) number line, and in exchange adopts item identifiers (similar to bignums) which have unbounded growth. Unfortunately, it has a problem with [interleaved text on concurrent edits](https://stackoverflow.com/questions/45722742/logoot-crdt-interleaving-of-data-on-concurrent-edits-to-the-same-spot). RGA makes each character implicitly reference its intended neighbor to the left and uses a hash table to make character lookup efficient. It also features an additional update operation alongside the usual insert and delete. This approach often comes out ahead in benchmark comparisons though the paper is annoyingly dense in theory. I also found a couple of recent, non-academic CRDT designs such as [Y.js][yjs] and the [Xi CRDT][xi], both of which brought something new to the table but felt rather convoluted in comparison to RGA. In almost all these cases, conflicts between concurrent changes were resolved by way of a creator UUID plus a logical timestamp per character. Sometimes, they were discarded when an operation was applied; sometimes, they were persisted for each character.
 
-<img -- crdt visual overview>
+<fig — different crdt types>
 
 Reading the literature was highly educational, and I now had a good intuition about the behavior of convergent sequence CRDTs. But I just couldn't find very much in common between the disparate approaches. Each one brought its own proofs, methods, optimizations, conflict resolution methods, and garbage collection schemes to the table. Many of the papers blurred the line between theory and implementation, making it even harder to suss out underlying principles. I felt confident using these algorithms for convergent arrays, but I wasn't quite sure how to build my own custom, convergent data structures using the same principles.
 
@@ -256,7 +256,7 @@ typealias StringAtom = Atom<StringValue>
 
 For convenience, a CT begins with a "zero" root atom, and the ancestry of each subsequent atom can ultimately be traced back to it. The depth-first, in-order traversal of our operational tree is called a **weave**, equivalent to the operational array discussed earlier. Instead of representing our tree as an inefficient tangle of pointers, we store it in memory as this weave array. Additionally, since we know the creation order of every atom on each site by way of its index (or timestamp), and since a CT by definition is not allowed to contain any causal gaps, we can always derive a given site's exact sequence of operations from the beginning of time. This sequence of site-specific atoms in creation order is called a **yarn**. While yarns are more of a cache than a primary data structure in a CT, I keep them around together with the weave to enable *O*(1) atom lookups. To pull up an atom based on its identifier, all you have to do is grab the site's yarn array and read out the atom at the identifier's index.
 
-<img — yarns>
+<fig — yarns>
 
 Storing the tree as an array means we have to be careful when modifying it — otherwise, our invariants will be invalidated and the whole thing will fall apart. When a local atom is created and parented to another atom, it is inserted immediately to the right of its parent in the weave. This preserves the sort order since the new atom necessarily has a higher Lamport timestamp than any other atom in the weave and therefore belongs in the spot closest to the parent. On merge, we have to be a bit more clever if we want to keep things *O*(*n*). The naive solution — iterating through the incoming weave and independently sorting each new atom into our local weave — would be *O*(*n*<sup>2</sup>). If we had an easy way to compare any two atoms, we could perform a simple and efficient merge sort. Unfortunately, the order of two atoms is non-binary since it involves ancestry in addition to the timestamp+UUID. In other words, you can't write a simple comparator function for two atoms in isolation.
 
@@ -274,23 +274,23 @@ A weft is *consistent* when the tree it describes is fully-connected (or *closed
 
 To prove that the Causal Tree is a useful and effective data structure in the real world, [I've implemented a general version in Swift together with a demo app][crdt-playground]. Please note that this is strictly an educational codebase, not a production-quality library! My goal with this project was to dig for knowledge, not create another framework du jour. It's messy, it's slow, and it's surely broken in some places — but it serves its purpose.
 
-<img -- top level text demo -- do a bit of everything>
+<vid — top level text demo — do a bit of everything>
 
 The first part of the demo is a macOS P2P simulator. Every window you see here represents a site. Each site has its own version of the CT forked at some point from another site, and each site can connect to any of its known peers. When connected to a peer, a site sends over its CT about once a second, and the remote site merges the incoming CT on receipt. Individual connections between sites can be toggled as needed. This is all done locally to simulate a partitioned, unreliable P2P network. The text view uses the CT directly as its backing store by way of an [`NSMutableString` wrapper][string-wrapper] plugged into a bare-bones [`NSTextStorage` subclass][container-wrapper].
 
-<img — yarns>
+<vid — yarns display>
 
 You can open up a yarn view that resembles the diagram in the paper, though this is only really legible for simple cases. In this view, you can select individual atoms with the right mouse button to list their details and print their causal blocks.
 
-<img — bezier>
+<vid — bezier>
 
 Also included is an example of a CT-backed data type for working with simple vector graphics. Using the editing view, you can create shapes, select and insert points, move points and shapes around, change the colors, and change the contours. Just as before, everything is synchronized with any combination of connected peers, even after numerous concurrent and offline edits. (To get a sense of how to use CTs with general non-string data types, read on!)
 
-<img — revisions>
+<vid — revisions>
 
 Each site can display previously-synced, read-only revisions of its document via the dropdown list. This feature is just one of many emergent properties of CTs. On account of the immutable, atomic, and ordered nature of the format, you get this functionality effectively for free!
 
-<img — ios>
+<vid — ios>
 
 The second part of the demo is a very simple CloudKit-based text editing app for iOS. Much of it is wonky and unpolished, but the important part is that real-time collaboration (including remote cursors) works correctly and efficiently, whether syncing to the same user account, collaborating with others via CloudKit Sharing, or just working locally for long periods of time. No extra coordinating servers are required: the dumb CloudKit database works perfectly fine.
 
@@ -310,29 +310,29 @@ As in the CT, each operation is meant to represent an atomic unit of change to t
 
 New operations along with the existing structured log are first fed into a **reducer** (RON) or **effect** (PORDT) step. These take the form of pure functions that sort the operations into a structured log, then simplify or remove any redundant operations as needed.
 
-<figure — operation stream + reducer>
+<fig — operation stream + reducer>
 
 What is this "simplifying", you might ask? Aren't the operations meant to be immutable? Generally, yes; but in some RDTs, new operations might definitively supersede previous operations. Take a last-writer-wins register, for example. In this very basic RDT, the value of an operation with the highest timestamp+UUID supplants any previous operation's value. Since merge only needs to compare a new operation against the previous highest operation, it stands to reason there's simply no point in keeping the older operations around. (PORDT defines these stale operations in terms of **redundancy relations**, which are unique to each RDT and are applied as part of the effect step.) Another possible reduction step is the stripping of ID or location data. In some RDTs, this information becomes unnecessary for later convergence once operations are placed in their proper sorted order. In the RON implementation of RGA, the location (parent) data of an operation is stripped by the reducer once the operation is properly situated in the structured log. (The original RGA paper features a very similar cleanup step. RON and PORDT simply generalize this to other RDTs.)
 
-<figure — lww/reducer, rga>
+<fig — lww/reducer, rga>
 
 Here, I have to diverge from my sources. In my opinion, the reducer/effect step ought to be split in two. Even though some RDT operations might be redundant for convergence, retaining every operation in full allows us to know the exact state of our RDT at any point in its history. Without this ability, relatively "free" features such as garbage collection and past revision viewing become much harder (if not impossible) to implement. Ergo, I posit that at this point in the pipeline, we ought to have a simpler **arranger** step. This function would perform the same kind of merge as the reducer/effect functions, but it wouldn't actually remove or modify any of the operations. Instead of happening implicitly, the previous simplification steps would be triggered in a more consistent and general way when space actually needs to be reclaimed. (More on that below.)
 
-<figure — arragner>
+<fig — arragner>
 
 The final bit of the pipeline is the **mapper** (RON) or **eval** (PORDT) step. This is the code that finally makes sense of the structured log. It can either be a function that produces an output data structure by reading the operations in order, or alternatively a collection of functions that directly interface with the structured log itself. In the case of string RDTs, the mapper might simply emit a native string object, or it might be an interface that lets you call methods such as `lenth`, `characterAtIndex:`, or even `replaceCharactersInRange:withString:` directly on the contents of the structured log.
 
-<figure — mapper>
+<fig — mapper>
 
 The arranger/reducer/effect and the mapper/eval functions together form the two halves of the RDT: one dealing with the low-level organization of data, the other with its user-facing interpretation. The data half, embodied in the organization of the structured log, needs to be structured in such a way that the interface half remains performant. If the structured log for an RDT ends up kind of looking like the abstract data type it's meant to represent (e.g. a CT's weave ⇄ array), the design is probably on the right track. In effect, the operations should *become the data*.
 
 So how is the structured log stored, anyway? This is another point where I have to diverge from my source material. In RON, the reducer is a pure function that simply spits out a dumb, ordered sequence of operations called a **frame**. This frame is a generic blob of data that has no RDT-specific code. Everything custom about a particular data type is handled in the reducer and mapper functions. (PORDT does things very similarly, though I don't believe the precise storage mechanism for operations is clearly defined.) In my view — the CvRDT-centric view — the structured log ought to be more intelligent than that. Rather than treating the log and all its associated functions as separate entities, I prefer to conceptualize the whole thing as a persistent, type-tailored object, distributing operations among various internal data structures and exposing merge and data access through an OO interface. In other words, the structured log, arranger, and parts of the mapper would combine to form one giant object.
 
-<figure — object log>
+<fig — object-based log>
 
 The reasoning behind this approach is simple. RDTs are meant to fill in for ordinary data structures, so sticking operations into some homogenous frame might lead to poor performance depending on the use case. For instance, many text editors now prefer to use the [rope data type][rope] instead of simple arrays. With a RON-style frame, this transition would be impossible. But with an object-based RDT, we could almost trivially switch out our internal data structure for a rope and be on our merry way. (Only the merge function would require some extra care.) And this is just the beginning: more complex RDTs might require numerous associated data types and caches to ensure optimal performance. The OO approach would ensure that all these secondary structures stayed together, remained consistent during merge, and offered a unified interface for data access. (More below.)
 
-<figure — rope>
+<fig — rope>
 
 With all the pieces in place, it becomes trivial to reinterpret our Causal Tree in terms of this operational approach. The structured log is the weave array together with any yarn caches. The arranger is the merge function. The mapper is the `NSMutableString` wrapper around the CT. All the parts are already there with slightly different names.
 
@@ -358,7 +358,7 @@ Unfortunately, garbage collection might be the one subsystem where a bit of coor
 
 Take baseline selection, for instance. In an [available and partition-tolerant system][cap] system, is it possible to devise a selection scheme that always garbage collects without orphaning any operations? Logically speaking, no: if some site copies the RDT from storage and then works on it in isolation, there's no way the other sites will be able to take it into account when picking their baseline. However, if we require our system to only permit forks via request to an existing site, and also that any forked sites ACK back to their origin site on successful initialization, then we would have enough constraints to make selection work. Each site could hold a map of every site's ID to its last known version vector. When a fork happens, the origin site would add the new site ID to its map and seed it with its own timestamp. This map would be sent along with every operation or state snapshot between sites and merged at the receiver. (In essence, this would be a distributed overview of the network.) Now, any site with enough information about the others would be free to independently set a baseline that a) is causally consistent, b) is consistent by the rules of the RDT, c) includes only those removable operations that have been received by every site in the network, and d) also includes every operation affected by the removal of those operations. With these preconditions, you can prove that concurrent updates of the baseline across different sites will converge, even if the selected baselines happen to be concurrent.
 
-<figure — forking strategy>
+<fig — forking strategy>
 
 But questions still remain. For instance: what do we do if a site simply stops editing and never returns to the network? It would at that point be impossible to set the baseline anywhere in the network past the last seen version vector from that site. Now some sort of timeout scheme has to be introduced, and I'm not sure this is possible in a truly partitioned system. There's just no way to tell if a site has left forever or if it's simply editing away in its own parallel partition. So we have to add some sort of mandated communication between sites, or perhaps some central authority to validate connectivity, and now the system is constrained even more! In addition, as an *O*(*s*<sup>2</sup>) space complexity data structure, the site-to-timestamp map could get unwieldily depending on the number of peers.
 
