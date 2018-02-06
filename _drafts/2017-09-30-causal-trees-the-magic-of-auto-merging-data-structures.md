@@ -182,7 +182,7 @@ First idea: just take the standard set of array operations ("Insert 'A' at Index
 
 [^uuid]: Note that UUIDs with the right bit-length don't really need coordination to ensure uniqueness. If your UUID is long enough — 128 bits, let's say — randomly finding two UUIDs that collide would require generating a billion UUIDs every second for decades. Most applications probably don't need to worry about this possibility. If they do, UUIDs might need to be generated and agreed upon out-of-band.
 
-<img src="../../../../../images/blog/causal-trees/indexed.svg">
+<img src="../images/blog/causal-trees/indexed.svg">
 
 Success: it's an operation-based, fully-convergent CvRDT! Well, sort of. There are two major issues here. First, reconstructing the original array by processing the full operational array has *O*(*n*<sup>2</sup>) complexity[^complexity], and it has to happen on every key press to boot. Completely untenable! Second, intent is completely clobbered. Reading the operations back, we get something along the lines of "CTRLDATLEL" (with a bit of handwaving when it comes to inserts past the array bounds). Just because a data structure converges doesn't mean it makes a lick of sense! As shown in the earlier OT section, concurrent index-based operations can be made to miss their intended characters depending on the order. (Recall that this is the problem OT solves by transforming the operations, but here our operations are immutable.) In a sense, this is because the operations are specified incorrectly. They make an assumption that doesn't get encoded in the operations themselves — that an index can always uniquely identify a character — and thus lose the commutativity of their intent when this turns out not to be the case. 
 
@@ -192,13 +192,13 @@ OK, so the first step is to fix the intent problem. Fundamentally, "Insert A at 
 
 So how do we identify a particular letter? Just 'A' and 'B' are ambiguous, after all. We could generate a new ID for each inserted letter, but this isn't necessary: we already have unique UUID/timestamp identifiers for all our operations. Why not just use operation identifiers as proxies for their output? In other words, an "Insert 'A'" operation can stand for that particular letter 'A' when referenced by other operations since it is already immutable and uniquely identified. Now, no extra data is required, and everything is still defined in terms of atomic, immutable operations.
 
-<img src="../../../../../images/blog/causal-trees/causal.svg">
+<img src="../images/blog/causal-trees/causal.svg">
 
 This is significantly better than before! We now get "CTRLALTDEL", correctly ordered and even preserving character runs as expected. But performance is still an issue. As it stands, the output array would still take *O*(*n*<sup>2</sup>) to reconstruct. The main roadblock is that array insertions and deletions tend to be *O*(*n*) operations, and we need to replay our entire history whenever remote changes come in or when we're recreating the output array from scratch. Array *push* and *pop*, on the other hand, are only *O*(1) amortized. What if instead of sorting our entire operational array by timestamp+UUID, we positioned operations in the order of their output? This could be done by placing each operation to the right of its causal operation (parent), then sorting it in reverse timestamp+UUID order among the remaining operations[^rga]. In effect, this would cause the operational array to mirror the structure of the output array. The result would be exactly the same as with the previous approach, but the speed of execution would be substantially improved.
 
 [^rga]: In fact, this is also how the RGA algorithm does its ordering, though it's not described in terms of explicit operations and uses a different format for the metadata.
 
-<img src="../../../../../images/blog/causal-trees/causal-ordered.svg">
+<img src="../images/blog/causal-trees/causal-ordered.svg">
 
 With this new order, local operations require a bit of extra processing when added to the operational array. Instead of simply appending to the back, they have to first locate their parent, then find their spot among the remaining operations. This takes *O*(*n*) time instead of *O*(1). In return, producing the output array is now only *O*(*n*), since we can read the operations in order and (mostly) push/pop elements in the output array as we go along[^deleteref]. In fact, we can treat this operational array *as if it were the string itself*, even using it as a backing store for a fully-functional `NSMutableString` subclass with some performance caveats. The operations are no longer just instructions for generating a string: they effectively *become* the data!
 
@@ -208,7 +208,7 @@ Note that throughout all this, we have not added any extra data to our operation
 
 Pulled out of its containing array, we can see that what we've designed is, in fact, an operational *tree* — one which happens to be implicitly stored as a depth-first, in-order traversal in contiguous memory. Concurrent edits are sibling branches. Subtrees are runs of characters. By the nature of reverse timestamp+UUID sort, sibling subtrees are sorted in the order of their head operations.
 
-<img src="../../../../../images/blog/causal-trees/tree.svg" width="400">
+<img src="../images/blog/causal-trees/tree.svg" width="400">
 
 This is the underlying premise of the [Causal Tree][ct] CRDT.
 
@@ -268,7 +268,7 @@ Fortunately, we can use our knowledge of the underlying tree structure to keep t
 
 One more data structure to note is a collection of site/timestamp pairs called a **weft**. In essence, a weft is a version vector. You can think of it as a filter on the tree by way of a cut across yarns: only the atoms with indices less than or equal to the given timestamp for their site are included. Wefts are very useful for dealing with things like document revisions and garbage collection, since they can uniquely address the document at any point in its mutation timeline.
 
-<img src="../../../../../images/blog/causal-trees/yarns.svg" width="600">
+<img src="../images/blog/causal-trees/yarns.svg" width="600">
 
 A weft is *consistent* when the tree it describes is fully-connected (or *closed* in the parlance of the paper) and is also able to produce a complete, consistent data structure from its operations. (All closed wefts are consistent in the case of string CTs, but not necessarily if the CT is used for other types of data. More on that below.) In the given example, the weft describes the string "CDADE", providing a hypothetical view of the distributed data structure in the middle of all three edits. This weft uses Lamport timestamps, but if you were using indices, it would be "1:4/2:2/3:1". The two representations are equivalent, though as mentioned earlier, the indexed representation lends itself to efficient atom lookups in yarns.
 
@@ -346,7 +346,7 @@ And now, we can use this thinking to devise all sorts of new RDTs!
 
 Garbage collection has been a sticking point in CRDT research, and I believe that operation-based CRDTs offer an excellent foundation for exploring this problem. A garbage-collected RDT can be thought of as a data structure in two parts: the "live" part and the compacted part. As we saw earlier, a CT can be split into two segments by way of a version vector (or weft in CT parlance). The same applies to any operational RDT. In a garbage-collected RDT, we can simply store a **baseline** weft alongside the main data structure to serve as the dividing line between the live and compact parts. Then, any site that receives the new baseline would be obliged to compact the operations falling under that weft, and to drop or orphan any operations that are not included in the weft but have a direct causal connection to any of the removed operations. The baseline can be thought of as just another operation in the RDT: one that requires all prior operations to pass through the RDT's particular garbage collection routine. The trick is making this operation commutative.
 
-<img src="../../../../../images/blog/causal-trees/baseline.svg" width="600">
+<img src="../images/blog/causal-trees/baseline.svg" width="600">
 
 So what exactly does it mean to compact an RDT? There are really two mechanisms in play here. First, there's "lossless" compaction, which is simply dropping operations that are no longer necessary for future convergence. (In PORDT, this property of operations is called *causal redundancy*, and the cleanup is performed in the effect function. Remember, we split this off from our arranger.) In essence, lossless compaction is strictly a local issue, since the only thing it affects is the ability for a client to rewind the RDT and work with past revisions. As such, we don't even have to store it in a replicated variable: sites can just perform this cleanup step at their discretion. However, only simpler RDTs (such as last-writer-wins registers) tend to have operations with this property.
 
@@ -370,7 +370,7 @@ Alternatively, we might relax rule c) and allow the baseline to potentially orph
 
 But even here we run into problems with coordination. If this scheme worked as written, we would be a-OK, so long as sites were triggering garbage collection relatively infrequently and only during quiescent moments (as determined to the best of a site's ability). But we have a bit of an issue when it comes to picking strictly higher baselines. What happens if two peers concurrently pick new baselines that orphan each others' operations?
 
-<img src="../../../../../images/blog/causal-trees/garbage.svg" width="250">
+<img src="../images/blog/causal-trees/garbage.svg" width="250">
 
 Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3/2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3/3:7, leaving operations "ABE". Meanwhile, Site 1 — which has received both Site 2 and 3's changes — decides to garbage collect with baseline 1:3/2:6/3:7, leaving operations "AED". So what do we do when Sites 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. So we're kind of stuck.
 
@@ -467,7 +467,7 @@ Next: UUIDs. So far, I've been describing my site identifiers as 16-bit integers
 
 I've solved this with the help of a secondary CRDT that is stored and transferred along with the CT: an ordered, insert-only array of known UUIDs called the **site map**. The 16-bit site identifier corresponding to a UUID is simply its index in this array.
 
-<img src="../../../../../images/blog/causal-trees/site-map.png" width="800">
+<img src="../images/blog/causal-trees/site-map.png" width="800">
 
 When two CTs merge, their site maps merge as well. This means that our site identifiers are only unique locally, not globally: if a new UUID gets added at another site and then merged into ours, the sorted order of the existing UUIDs in the site map might change. When this happens, I traverse each CT and remap any outdated site identifiers to their new values — a simple *O*(*n*) operation. This is facilitated by the following interface:
 
@@ -604,11 +604,11 @@ Note that `trTranslate` has an atom ID as an associated value. Since atom IDs ar
 
 Anyway, back to shapes. For the following sample document...
 
-<img src="../../../../../images/blog/causal-trees/shape-example.png" width="400">
+<img src="../images/blog/causal-trees/shape-example.png" width="400">
 
 ...we might end up with a tree shaped like this. (For completeness, I've added a few extra transformation and attribute operations that aren't directly visible in the user-facing data.)
 
-<img src="../../../../../images/blog/causal-trees/draw-tree.svg" width="700">
+<img src="../images/blog/causal-trees/draw-tree.svg" width="700">
 
 Just a few simple rules define the higher-level structures that represent shapes, points, and properties in this tree. A `shape` atom can only be parented to other `shape` atoms or to the root starting atom. Each `shape` has a null atom as its only child, acting as the root node for all property subtrees relevant to that shape. This atom can contain three child subtrees at most: a chain of transformations, a chain of attributes, and a chain of points. Transformation and attribute chains hug their parent in the weave via the priority flag while points go last. Any new transformations and attributes are parented to the last member of their corresponding chain. The value for a chain of operations (currently only `trTranslate`) is cumulative, while the value for a chain of attributes (`attrColor` or `attrRound`) is just the last atom in the chain. Point chains act more like traditional sequences. A point chain is seeded with a start and end sentinel to cleanly delineate it from its neighbors, and the traversal order corresponds to the order of the points in the eventual output `NSBezierPath`. Like shapes, points can have child transformation and attribute chains. Points can also have child delete atoms. (Shapes aren't currently deletable: you can individually remove all the points anyway and I got lazy.)
 
@@ -616,7 +616,7 @@ In essence, this CT consists of a bunch of superimposed operational CRDTs: seque
 
 Here is the weave we get from reading the tree in DFS order:
 
-<img src="../../../../../images/blog/causal-trees/shape-example-weave.png">
+<img src="../images/blog/causal-trees/shape-example-weave.png">
 
 The rules for generating the output image from this weave are very simple. If you hit a shape atom, you're in a shape block until you run into another shape atom or the end of the weave. The shape's operation and attribute chains are traversed first on account of their priority flag, and the results are cached for use in the next step. An `NSBezierPath` is created once you start reading points. Each point block has to read forward a bit to parse its operation and attribute chains (if any). If a delete atom is found, you can simply move on to the next point. Otherwise, the point's position is determined by combining its origin and transform (if any) with the parent shape's transform (if any). The point is added to the `NSBezierPath` either as as a line or as a Bézier curve if it has the rounded attribute. Then, once the next shape block or the end of weave is reached, the path is drawn and stroked.
 
