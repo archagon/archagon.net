@@ -184,7 +184,7 @@ First idea: just take the standard set of array operations ("Insert 'A' at Index
 
 Success: it's an operation-based, fully-convergent CvRDT! Well, sort of. There are two major issues here. First, reconstructing the original array by processing the full operational array has *O*(*n*<sup>2</sup>) complexity[^complexity], and it has to happen on every key press to boot. Completely untenable! Second, intent is completely clobbered. Reading the operations back, we get something along the lines of "CTRLDATLEL" (with a bit of handwaving when it comes to inserts past the array bounds). Just because a data structure converges doesn't mean it makes a lick of sense! As shown in the earlier OT section, concurrent index-based operations can be made to miss their intended characters depending on the order. (Recall that this is the problem OT solves by transforming the operations, but here our operations are immutable.) In a sense, this is because the operations are specified incorrectly. They make an assumption that doesn't get encoded in the operations themselves — that an index can always uniquely identify a character — and thus lose the commutativity of their intent when this turns out not to be the case. 
 
-[^complexity]: Throughout the rest of this article, the *n* will generally refer to the total number of operations in a data structure.
+[^complexity]: Throughout the rest of this article, the *n* will generally refer to the total number of operations in a data structure, while *s* will refer to the total number of sites.
 
 OK, so the first step is to fix the intent problem. Fundamentally, "Insert A at Index 0" isn't *really* what the user wants to do. People don't think in terms of indices. They want to insert a character at the cursor position, which is perceived as being between two letters — or more simply, to the immediate right of a single letter. We can encode this by switching our operations to the format "Insert A<sup>id</sup> After B<sup>id</sup>", where each letter in the array is uniquely identified. Given causal order and assuming that deleted characters persist as tombstones, the intent of the operations is now commutative: there will only ever be that one specific 'B' in the array, allowing us to always position 'A' just as the user intended.
 
@@ -266,9 +266,17 @@ Fortunately, we can use our knowledge of the underlying tree structure to keep t
 
 One more data structure to note is a collection of site/timestamp pairs called a **weft**. In essence, a weft is a version vector. You can think of it as a filter on the tree by way of a cut across yarns: only the atoms with indices less than or equal to the given timestamp for their site are included. Wefts are very useful for dealing with things like document revisions and garbage collection, since they can uniquely address the document at any point in its mutation timeline.
 
-<img src="../images/blog/causal-trees/yarns.svg" width="600">
+<p>
 
-A weft is *consistent* when the tree it describes is fully-connected (or *closed* in the parlance of the paper) and is also able to produce a complete, consistent data structure from its operations. (All closed wefts are consistent in the case of string CTs, but not necessarily if the CT is used for other types of data. More on that below.) In the given example, the weft describes the string "CDADE", providing a hypothetical view of the distributed data structure in the middle of all three edits. This weft uses Lamport timestamps, but if you were using indices, it would be "1:4/2:2/3:1". The two representations are equivalent, though as mentioned earlier, the indexed representation lends itself to efficient atom lookups in yarns.
+<figure>
+
+<img src="../images/blog/causal-trees/yarns.svg" width="600">
+<figcaption><i>The dotted line represents weft 1:6–2:7–3:7 in Lamport timestamp format, or weft 1:3–2:1–3:0 in index format. The two representations are equivalent.</i></figcaption>
+</figure>
+
+</p>
+
+A weft is *consistent* when the tree it describes is fully-connected (or *closed* in the parlance of the paper) and is also able to produce a complete, consistent data structure from its operations. (All closed wefts are consistent in the case of string CTs, but not necessarily if the CT is used for other types of data. More on that below.) In the given example, the weft describes the string "CDADE", providing a hypothetical view of the distributed data structure in the middle of all three edits.
 
 # Demo
 
@@ -372,7 +380,7 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 
 <img src="../images/blog/causal-trees/garbage-collection.gif" width="800">
 
-<figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–4:9), making it a candidate for the new baseline.</i></figcaption>
+<figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3 — all with state AB. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–2:X–3:X–4:9), making it a candidate for the new baseline.</i></figcaption>
 
 </figure>
 
@@ -388,7 +396,7 @@ But even here we run into problems with coordination. If this scheme worked as w
 
 <img src="../images/blog/causal-trees/garbage.svg" width="250">
 
-Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3/2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3/3:7, leaving operations "ABE". Meanwhile, Site 1 — which has received both Site 2 and 3's changes — decides to garbage collect with baseline 1:3/2:6/3:7, leaving operations "AED". So what do we do when Sites 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. So we're kind of stuck.
+Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3–2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3–3:7, leaving operations "ABE". Meanwhile, Site 1 — which has received both Site 2 and 3's changes — decides to garbage collect with baseline 1:3–2:6–3:7, leaving operations "AED". So what do we do when Sites 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. So we're kind of stuck.
 
 In this toy example, it may still be possible to converge by drawing inferences about the missing operations from the baseline version vector of each site. But that trick won't work with more devious examples featuring multiple sites deleting each others' operations and deletions spanning multiple adjacent operations. *Maybe* there exists some clever scheme which can bring us back to the correct state with any combination of partial compactions, but my hunch is that this situation is provably impossible to resolve in a local way without accruing ancestry metadata — at which point you're left with the same space complexity as the non-compacted case anyway.
 
@@ -420,7 +428,17 @@ Consider a hypothetical replicated bitmap as a thought experiment. Perhaps in th
 
 My feeling is that RON's general approach would falter here. The pipeline simply couldn't be tuned to fix these performance hot spots, and millions of pixel operations would grind it to a halt. With the object-based approach, you could store store the bitmap as a specialized k-d tree of buffers. The pixel values would be the operations themselves, and each buffer would represent a particular area of pixels , subdivided when needed to store a pixel's past operations. Since the buffers would be stored in contiguous chunks of memory, subdivision and rebalancing would be very fast. Garbage collection could be as simple as un-subdividing any buffer with too many subdivisions. Assuming that the RGBA value for each operation was formatted correctly and that a stride could be passed along to the graphics framework, nodes could be blitted as-is into another buffer, making it trivial to only update the dirty parts of a user's rendered image. In short, it seems that performance could end up being very close to that of an *actual* bitmap. It wouldn't even surprise me if /r/place itself — with its 16 million changes and 1 million unique sites — could be reproduced with this kind of object!
 
-<fig — bitmap idea>
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/bitmap.svg" width="600">
+
+<figcaption><i>A mockup of what an object-based bitmap RDT might look like under the hood. Each colored square is a pixel operation. Grid coordinates with subdivisions represent pixels with a change history. Each section of the grid is stored in its own contiguous block of memory.</i></figcaption>
+
+</figure>
+
+</p>
 
 Finally, a few nascent thoughts on designing new RDTs:
 
