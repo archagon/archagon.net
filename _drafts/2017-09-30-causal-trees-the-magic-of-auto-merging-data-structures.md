@@ -344,11 +344,15 @@ And now, we can use this thinking to devise all sorts of new RDTs!
 
 Garbage collection has been a sticking point in CRDT research, and I believe that operation-based CRDTs offer an excellent foundation for exploring this problem. A garbage-collected RDT can be thought of as a data structure in two parts: the "live" part and the compacted part. As we saw earlier, a CT can be split into two segments by way of a version vector (or weft in CT parlance). The same applies to any operational RDT. In a garbage-collected RDT, we can simply store a **baseline** weft alongside the main data structure to serve as the dividing line between the live and compact parts. Then, any site that receives the new baseline would be obliged to compact the operations falling under that weft, and to drop or orphan any operations that are not included in the weft but have a direct causal connection to any of the removed operations. The baseline can be thought of as just another operation in the RDT: one that requires all prior operations to pass through the RDT's particular garbage collection routine. The trick is making this operation commutative.
 
+<p>
+
 <figure>
 
 <img src="../images/blog/causal-trees/baseline.svg" width="600">
 <figcaption><i>The dotted line represents baseline 1:6–2:7–3:7. In practice, S1@T2 may not necessarily be removed in order to preserve S1@T3's ancestral ordering information.</i></figcaption>
 </figure>
+
+</p>
 
 So what exactly does it mean to compact an RDT? There are really two mechanisms in play here. First, there's "lossless" compaction, which is simply dropping operations that are no longer necessary for future convergence. (In PORDT, this property of operations is called *causal redundancy*, and the cleanup is performed in the effect function. Remember, we split this off from our arranger.) In essence, lossless compaction is strictly a local issue, since the only thing it affects is the ability for a client to rewind the RDT and work with past revisions. As such, we don't even have to store it in a replicated variable: sites can just perform this cleanup step at their discretion. However, only simpler RDTs (such as last-writer-wins registers) tend to have operations with this property.
 
@@ -362,6 +366,8 @@ Unfortunately, garbage collection might be the one subsystem where a bit of coor
 
 Take baseline selection, for instance. In an [available and partition-tolerant system][cap] system, is it possible to devise a selection scheme that always garbage collects without orphaning any operations? Logically speaking, no: if some site copies the RDT from storage and then works on it in isolation, there's no way the other sites will be able to take it into account when picking their baseline. However, if we require our system to only permit forks via request to an existing site, and also that any forked sites ACK back to their origin site on successful initialization, then we would have enough constraints to make selection work. Each site could hold a map of every site's ID to its last known version vector. When a fork happens, the origin site would add the new site ID to its map and seed it with its own timestamp. This map would be sent along with every operation or state snapshot between sites and merged at the receiver. (In essence, it would act as a distributed overview of the network.) Now, any site with enough information about the others would be free to independently set a baseline that a) is causally consistent, b) is consistent by the rules of the RDT, c) includes only those removable operations that have been received by every site in the network, and d) also includes every operation affected by the removal of those operations. With these preconditions, you can prove that even concurrent updates of the baseline across different sites will converge.
 
+<p>
+
 <figure>
 
 <img src="../images/blog/causal-trees/garbage-collection.gif" width="800">
@@ -369,6 +375,8 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 <figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–4:9), making it a candidate for the new baseline.</i></figcaption>
 
 </figure>
+
+</p>
 
 But questions still remain. For instance: what do we do if a site simply stops editing and never returns to the network? It would at that point be impossible to set the baseline anywhere in the network past the last seen version vector from that site. Now some sort of timeout scheme has to be introduced, and I'm not sure this is possible in a truly partitioned system. There's just no way to tell if a site has left forever or if it's simply editing away in its own parallel partition. So we have to add some sort of mandated communication between sites, or perhaps some central authority to validate connectivity, and now the system is constrained even more! In addition, as an *O*(*s*<sup>2</sup>) space complexity data structure, the site-to-timestamp map could get unwieldily depending on the number of peers.
 
