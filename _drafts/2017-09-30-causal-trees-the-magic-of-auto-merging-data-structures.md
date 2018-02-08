@@ -347,7 +347,7 @@ Garbage collection has been a sticking point in CRDT research, and I believe tha
 <figure>
 
 <img src="../images/blog/causal-trees/baseline.svg" width="600">
-<figcaption><blockquote>The dotted line represents baseline 1:6–2:7–3:7. In practice, S1@T2 may not necessarily be removed in order to preserve S1@T3's ancestral ordering information.</blockquote></figcaption>
+<figcaption><i>The dotted line represents baseline 1:6–2:7–3:7. In practice, S1@T2 may not necessarily be removed in order to preserve S1@T3's ancestral ordering information.</i></figcaption>
 </figure>
 
 So what exactly does it mean to compact an RDT? There are really two mechanisms in play here. First, there's "lossless" compaction, which is simply dropping operations that are no longer necessary for future convergence. (In PORDT, this property of operations is called *causal redundancy*, and the cleanup is performed in the effect function. Remember, we split this off from our arranger.) In essence, lossless compaction is strictly a local issue, since the only thing it affects is the ability for a client to rewind the RDT and work with past revisions. As such, we don't even have to store it in a replicated variable: sites can just perform this cleanup step at their discretion. However, only simpler RDTs (such as last-writer-wins registers) tend to have operations with this property.
@@ -366,7 +366,7 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 
 <img src="../images/blog/causal-trees/garbage-collection.gif" width="800">
 
-<figcaption><blockquote>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–4:9), making it a candidate for the new baseline.</blockquote></figcaption>
+<figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–4:9), making it a candidate for the new baseline.</i></figcaption>
 
 </figure>
 
@@ -680,6 +680,8 @@ I didn't even think such a thing was possible, but CRDTs have proven to be that 
 But even more remarkable is the discovery of Causal Trees and operation-based CRDTs. With this formulation of CRDTs, there's finally a way to understand, design, and implement arbitrary replicated data types. By breaking up conventional data types into atomic operations and arranging them in an efficient order, CRDTs can be made out of practically anything. Operations can be used as-is or condensed into state snapshots, combining all the benefits of CmRDTs, CvRDTs, and even OT. Version vectors can be used to perform garbage collection and past revision viewing in an almost trivial way, while uniquely-identified operations can be used to diff and blame any arbitrary change in a document's history. Even conflict resolution can be precisely tailored to fit the needs of the app.
 
 Sure, you have some tradeoffs compared to server-based sync techniques. For instance, CRDT data is always "live", even while offline. A user could accidentally edit their document on two offline devices, then find that they've merged into a mess on reconnection without any way to revert. For good and ill, users will never see the familiar version conflict dialog box. The lack of a guaranteed server also gives malicious users a whole lot more power, since they can irrevocably screw up a document without any possibility of a rollback. Servers can better manage resources by sending partial updates or by only giving a user the data they actually need. You'd also be hard-pressed to avoid servers whenever large amounts of data are concerned, such as in screen sharing or video editing.
+
+<and in any case, crdts may well be used as a "technique" moreso than a network syncing approach>
 
 But in exchange for a totally peer-to-peer computing future? A world full of systems finally able to freely collaborate with one another? Data-centeric code that's entirely free from network concerns?
 
