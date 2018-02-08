@@ -368,7 +368,7 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 
 <img src="../images/blog/causal-trees/garbage-collection.gif" width="800">
 
-<figcaption><i><small>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–4:9), making it a candidate for the new baseline.</small></i></figcaption>
+<figcaption><blockquote>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–4:9), making it a candidate for the new baseline.</blockquote></figcaption>
 
 </figure>
 
