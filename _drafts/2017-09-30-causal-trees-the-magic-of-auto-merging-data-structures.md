@@ -154,7 +154,15 @@ Begrudgingly, I had to abandon the elegance of Differential Sync and decide betw
 
 With CRDTs on my mind, I saw before me the promise of a mythical "golden file". With a document format based on CRDTs, issues of network synchronization and coordination fell completely out of the way. The system would be completely functional. It would work without quirks in offline mode. On syncing, it would always be able to merge with other revisions. It would be topology-agnostic to such a degree that one could use it in a completely decentralized peer-to-peer environment; between phone and laptop via Bluetooth or ad-hoc Wi-Fi; between two applications simultaneously editing the same local file; or plain old syncing with a central database. All at the same time! I just needed to figure out if I could use these things in a performant and space-efficient way for arbitrary data models — all while passing that dastardly PhD Test.
 
-<fig — semilattice of files diagram>
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/semilattice.svg" width="300">
+<figcaption><i>The mythical, eminently-mergable golden file in its adventures through the semilattice.</i></figcaption>
+</figure>
+
+</p>
 
 My next step was to sift through the academic literature on CRDTs. There was a group of usual suspects for the hard case of sequence (text) CRDTs: [WOOT][woot], [Treedoc][treedoc], [Logoot][logoot]/[LSEQ][lseq], and [RGA][rga]. WOOT is the progenitor of the genre and makes each character in a string reference its adjacent neighbors on both sides. Recent analysis has shown this to be inefficient compared to newer approaches. Treedoc has a similar early-adoptor performance penalty and additionally requires coordination for its garbage collection — a no-go for true decentralization. Logoot (which is optimized further by LSEQ) curiously avoids tombstones by treating each sequence item as a unique point along a dense (infinitely-divisible) number line, and in exchange adopts item identifiers (similar to bignums) which have unbounded growth. Unfortunately, it has a problem with [interleaved text on concurrent edits](https://stackoverflow.com/questions/45722742/logoot-crdt-interleaving-of-data-on-concurrent-edits-to-the-same-spot). RGA makes each character implicitly reference its intended neighbor to the left and uses a hash table to make character lookup efficient. It also features an additional update operation alongside the usual insert and delete. This approach often comes out ahead in benchmark comparisons though the paper is annoyingly dense in theory. I also found a couple of recent, non-academic CRDT designs such as [Y.js][yjs] and the [Xi CRDT][xi], both of which brought something new to the table but felt rather convoluted in comparison to RGA. In almost all these cases, conflicts between concurrent changes were resolved by way of a creator UUID plus a logical timestamp per character. Sometimes, they were discarded when an operation was applied; sometimes, they were persisted for each character.
 
@@ -761,18 +769,17 @@ Articles
 [crdt]: https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
 [ct]: https://ai2-s2-pdfs.s3.amazonaws.com/6534/c371ef78979d7ed84b6dc19f4fd529caab43.pdf
 [diffsync]: https://neil.fraser.name/writing/sync/
-[cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;rep=rep1&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;type=pdf
+[cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&type=pdf
+
 [woot]: https://hal.archives-ouvertes.fr/inria-00108523/document
 [rga]: https://pdfs.semanticscholar.org/8470/ae40470235604f40382aea4747275a6f6eef.pdf
 [layering]: https://arxiv.org/pdf/1212.2338.pdf
 [easy-collab]: http://digitalfreepen.com/2017/10/06/simple-real-time-collaborative-text-editor.html
 [xi]: https://github.com/google/xi-editor/blob/master/doc/crdt-details.md
 [xi-rope]: asdf
-
-[ttf]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.2679&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;rep=rep1&amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;type=pdf
+[ttf]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.2679&type=pdf
 [pure-op]: https://arxiv.org/pdf/1710.04469.pdf
 [lamport]: https://en.wikipedia.org/wiki/Lamport_timestamps
-
 [crdt-playground]: https://github.com/archagon/crdt-playground
 
 [string-wrapper]: https://github.com/archagon/crdt-playground/blob/master/CloudKitRealTimeCollabTest/Model/CausalTreeStringWrapper.swift
