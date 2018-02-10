@@ -324,31 +324,57 @@ In the same vein as the Causal Tree, an RDT is essentially an ordered set of ope
 
 As in the CT, each operation is meant to represent an atomic unit of change to the data structure, local in effect and directly dependent on one other operation at most. (In practice, operations can be designed to do pretty much anything with the data, but non-atomic or multi-causal operations create bubbles in the pipeline and may severely affect performance, simplicity, and intent.) Operations are meant to be immutable and globally unique.
 
-New operations along with the existing structured log are first fed into a **reducer** (RON) or **effect** (PORDT) step. These take the form of pure functions that sort the operations into a structured log, then simplify or remove any redundant operations as needed.
+<p>
 
-<fig — operation stream + reducer>
+<figure>
+
+<img src="../images/blog/causal-trees/pipeline.svg" width="800">
+
+<figcaption><i>The operational pipeline. Both the reducer/effect and mapper/eval steps use pure function tailored to the given RDT. Location information has been stripped for each operation to simplify the diagram.</i></figcaption>
+
+</figure>
+
+</p>
+
+New operations along with the existing structured log are first fed into a **reducer** (RON) or **effect** (PORDT) step. These take the form of pure functions that sort the operations into a structured log, then simplify or remove any redundant operations as needed.
 
 What is this "simplifying", you might ask? Aren't the operations meant to be immutable? Generally, yes; but in some RDTs, new operations might definitively supersede previous operations. Take a last-writer-wins register, for example. In this very basic RDT, the value of an operation with the highest timestamp+UUID supplants any previous operation's value. Since merge only needs to compare a new operation against the previous highest operation, it stands to reason there's simply no point in keeping the older operations around. (PORDT defines these stale operations in terms of **redundancy relations**, which are unique to each RDT and are applied as part of the effect step.) Another possible reduction step is the stripping of ID or location data. In some RDTs, this information becomes unnecessary for later convergence once operations are placed in their proper sorted order. In the RON implementation of RGA, the location (parent) data of an operation is stripped by the reducer once the operation is properly situated in the structured log. (The original RGA paper features a very similar cleanup step. RON and PORDT simply generalize this to other RDTs.)
 
-<fig — lww/reducer, rga>
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/cleanup.svg" width="600">
+
+<figcaption><i>Cleaning up redundant operations in a simple multi-LWW map RDT. Both produce the same result and incorporate new operations in the same way.</i></figcaption>
+
+</figure>
+
+</p>
 
 Here, I have to diverge from my sources. In my opinion, the reducer/effect step ought to be split in two. Even though some RDT operations might be redundant for convergence, retaining every operation in full allows us to know the exact state of our RDT at any point in its history. Without this ability, relatively "free" features such as garbage collection and past revision viewing become much harder (if not impossible) to implement. Ergo, I posit that at this point in the pipeline, we ought to have a simpler **arranger** step. This function would perform the same kind of merge as the reducer/effect functions, but it wouldn't actually remove or modify any of the operations. Instead of happening implicitly, the previous simplification steps would be triggered in a more consistent and general way when space actually needs to be reclaimed. (More on that below.)
 
-<fig — arragner>
-
 The final bit of the pipeline is the **mapper** (RON) or **eval** (PORDT) step. This is the code that finally makes sense of the structured log. It can either be a function that produces an output data structure by reading the operations in order, or alternatively a collection of functions that directly interface with the structured log itself. In the case of string RDTs, the mapper might simply emit a native string object, or it might be an interface that lets you call methods such as `lenth`, `characterAtIndex:`, or even `replaceCharactersInRange:withString:` directly on the contents of the structured log.
 
-<fig — mapper>
+<fig — mapper x 2>
 
 The arranger/reducer/effect and the mapper/eval functions together form the two halves of the RDT: one dealing with the low-level organization of data, the other with its user-facing interpretation. The data half, embodied in the organization of the structured log, needs to be structured in such a way that the interface half remains performant. If the structured log for an RDT ends up kind of looking like the abstract data type it's meant to represent (e.g. a CT's weave ⇄ array), the design is probably on the right track. In effect, the operations should *become the data*.
 
 So how is the structured log stored, anyway? This is another point where I have to diverge from my source material. In RON, the reducer is a pure function that simply spits out a dumb, ordered sequence of operations called a **frame**. This frame is a generic blob of data that has no RDT-specific code. Everything custom about a particular data type is handled in the reducer and mapper functions. (PORDT does things very similarly, though I don't believe the precise storage mechanism for operations is clearly defined.) In my view — the CvRDT-centric view — the structured log ought to be more intelligent than that. Rather than treating the log and all its associated functions as separate entities, I prefer to conceptualize the whole thing as a persistent, type-tailored object, distributing operations among various internal data structures and exposing merge and data access through an OO interface. In other words, the structured log, arranger, and parts of the mapper would combine to form one giant object.
 
-<fig — object-based log>
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/object-log.svg" width="700">
+
+<figcaption><i>An example object-based log for a string RDT. The first cache is for "yarns", the second for ranges of visible characters. With these two caches, we can use the operations as a direct backing store for a native string object.</i></figcaption>
+
+</figure>
+
+</p>
 
 The reasoning behind this approach is simple. RDTs are meant to fill in for ordinary data structures, so sticking operations into some homogenous frame might lead to poor performance depending on the use case. For instance, many text editors now prefer to use the [rope data type][rope] instead of simple arrays. With a RON-style frame, this transition would be impossible. But with an object-based RDT, we could almost trivially switch out our internal data structure for a rope and be on our merry way. (Only the merge function would require some extra care.) And this is just the beginning: more complex RDTs might require numerous associated data types and caches to ensure optimal performance. The OO approach would ensure that all these secondary structures stayed together, remained consistent during merge, and offered a unified interface for data access. (More below.)
-
-<fig — rope>
 
 With all the pieces in place, it becomes trivial to reinterpret our Causal Tree in terms of this operational approach. The structured log is the weave array together with any yarn caches. The arranger is the merge function. The mapper is the `NSMutableString` wrapper around the CT. All the parts are already there with slightly different names.
 
@@ -396,13 +422,14 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 
 But questions still remain. For instance: what do we do if a site simply stops editing and never returns to the network? It would at that point be impossible to set the baseline anywhere in the network past the last seen version vector from that site. Now some sort of timeout scheme has to be introduced, and I'm not sure this is possible in a truly partitioned system. There's just no way to tell if a site has left forever or if it's simply editing away in its own parallel partition. So we have to add some sort of mandated communication between sites, or perhaps some central authority to validate connectivity, and now the system is constrained even more! In addition, as an *O*(*s*<sup>2</sup>) space complexity data structure, the site-to-timestamp map could get unwieldily depending on the number of peers.
 
-Alternatively, we might relax rule c) and allow the baseline to potentially orphan remote operations. In this scheme, any site would be free to pick a new baseline that was higher than (not concurrent to!) the previous baseline, taking care to pick one that had the highest chance of preserving operations on other sites[^preservation]. Upon receiving and executing this baseline, any site that had operations causally dependent on the newly-removed operations but not included in the baseline would be obliged to either drop them or to add them to some sort of secondary "orphanage" RDT.
+Alternatively, we might relax rule c) and allow the baseline to potentially orphan remote operations. In this scheme, we would have a sequence of baselines associated with our RDT. Any site would be free to pick a new baseline that was higher than (not concurrent to!) the previous baseline, taking care to pick one that had the highest chance of preserving operations on other sites[^preservation]. Then, any site receiving new baselines in the sequence would be required to apply them in order[^baselines]. Upon receiving and executing a baseline, a site that had operations causally dependent on the newly-removed operations but not included in the baseline would be obliged to either drop them or to add them to some sort of secondary "orphanage" RDT.
 
 [^preservation]: If we still had access to our site-to-version-vector map, we could pick a baseline common to every reasonably active site. This heuristic could be further improved by upgrading our Lamport timestamp to a [hybrid logical clock][hlc]. (A Lamport timestamp is allowed to be arbitrarily higher than the previous timestamp, not just +1 higher, so we can combine it with a physical timestamp and correction data to get the approximate wall clock time for each operation.)
+[^baselines]: We have to use a sequence of baselines and not just a baseline register because all sites, per CRDT rules, must end up with the same data after seeing the same set of operations. With a register, if a site happens to miss a few baselines, it could end up retaining some meant-to-be-orphaned operations if a new baseline gets far enough to cover them. Now some sites would have the orphans and others wouldn't. Inconsistency!
 
 But even here we run into problems with coordination. If this scheme worked as written, we would be a-OK, so long as sites were triggering garbage collection relatively infrequently and only during quiescent moments (as determined to the best of a site's ability). But we have a bit of an issue when it comes to picking strictly higher baselines. What happens if two peers concurrently pick new baselines that orphan each others' operations?
 
-<img src="../images/blog/causal-trees/garbage.svg" width="250">
+<img src="../images/blog/causal-trees/garbage.svg" width="200">
 
 Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3–2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3–3:7, leaving operations "ABE". Meanwhile, Site 1 — which has received both Site 2 and 3's changes — decides to garbage collect with baseline 1:3–2:6–3:7, leaving operations "AED". So what do we do when Sites 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. So we're kind of stuck.
 
