@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Operational Thinking: Mergeable, Historied, and Coordination-Free CvRDT Documents"
+title: "Operational Thinking: Mergeable, Historied, Coordination-Free CvRDT Data Structures"
 date: 2017-09-30 18:02:53 +0300
 comments: true
 categories: programming
@@ -180,7 +180,7 @@ Say you're designing a convergent sequence CvRDT from scratch. Instead of pickin
 
 Here's an example concurrent string mutation, just to have some data to work with.
 
-<img src="../images/blog/causal-trees/network-chart.svg" width="500">
+<img src="../images/blog/causal-trees/network-chart.svg" width="400">
 
 The small numbers over the letters are [Lamport timestamps][lamport]. Site 1 types "CMD", sends its changes to Site 2 and Site 3, then resumes its editing. Sites 2 and 3 then make their own changes and send them back to Site 1 for the final merge. The result, "CTRLALTDEL", is the most intuitive merge we might expect: insertions and deletions all persist, runs of characters don't split up, and most recent changes come first.
 
@@ -322,7 +322,7 @@ Very recent research, including Victor Grishchenko's latest project [Replicated 
 
 In the same vein as the Causal Tree, an RDT is essentially an ordered set of operation atoms, and new operations (local and remote) are incorporated into this set through a series of functions. (For clarity, I'm going to be referring to this ordered set of operations as the **structured log** of the RDT.) The pipeline begins with an incoming stream of remote operations. For a CvRDT-equivalent RDT, this would be a state snapshot in the form of another structured log; for a CmRDT, any subset of causally-ordered operations, and often just a single one. Each operation is bestowed, at minimum, with an ID in the form of a site UUID and a Lamport timestamp, a location identifier (which is generally the ID of another operation), and a value.
 
-As in the CT, each operation is meant to represent an atomic unit of change to the data structure, local in effect and directly dependent on one other operation at most. (In practice, operations can be designed to do pretty much anything with the data, but non-atomic or multi-causal operations create bubbles in the pipeline and may severely affect performance, simplicity, and intent.) Operations are meant to be immutable and globally unique.
+As in the CT, each operation is meant to represent an atomic unit of change to the data structure, local in effect and directly dependent on one other operation at most. (In practice, operations can be designed to do pretty much anything with the data, but non-atomic or multi-causal operations create bubbles in the pipeline <what pipeline?> and may severely affect performance, simplicity, and intent.) Operations are meant to be immutable and globally unique.
 
 <p>
 
@@ -330,7 +330,7 @@ As in the CT, each operation is meant to represent an atomic unit of change to t
 
 <img src="../images/blog/causal-trees/pipeline.svg" width="800">
 
-<figcaption><i>The operational pipeline. Both the reducer/effect and mapper/eval steps use pure function tailored to the given RDT. Location information has been stripped for each operation to simplify the diagram.</i></figcaption>
+<figcaption><i>The operational pipeline. Both the reducer/effect and mapper/eval steps use pure functions tailored to the given RDT. Location information has been stripped for each operation to simplify the diagram.</i></figcaption>
 
 </figure>
 
@@ -538,7 +538,15 @@ Next: UUIDs. So far, I've been describing my site identifiers as 16-bit integers
 
 I've solved this with the help of a secondary CRDT that is stored and transferred along with the CT: an ordered, insert-only array of known UUIDs called the **site map**. The 16-bit site identifier corresponding to a UUID is simply its index in this array.
 
-<img src="../images/blog/causal-trees/site-map.png" width="800">
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/site-map.svg" width="700">
+
+</figure>
+
+</p>
 
 When two CTs merge, their site maps merge as well. This means that our site identifiers are only unique locally, not globally: if a new UUID gets added at another site and then merged into ours, the sorted order of the existing UUIDs in the site map might change. When this happens, I traverse each CT and remap any outdated site identifiers to their new values — a simple *O*(*n*) operation. This is facilitated by the following interface:
 
@@ -675,11 +683,29 @@ Note that `trTranslate` has an atom ID as an associated value. Since atom IDs ar
 
 Anyway, back to shapes. For the following sample document...
 
-<img src="../images/blog/causal-trees/shape-example.png" width="400">
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/draw-shapes.svg" width="400">
+
+</figure>
+
+</p>
 
 ...we might end up with a tree shaped like this. (For completeness, I've added a few extra transformation and attribute operations that aren't directly visible in the user-facing data.)
 
+<p>
+
+<figure>
+
 <img src="../images/blog/causal-trees/draw-tree.svg" width="700">
+
+<figcaption><i>The pink operations have the priority flag and sort ahead of their sibling subtrees.</i></figcaption>
+
+</figure>
+
+</p>
 
 Just a few simple rules define the higher-level structures that represent shapes, points, and properties in this tree. A `shape` atom can only be parented to other `shape` atoms or to the root starting atom. Each `shape` has a null atom as its only child, acting as the root node for all property subtrees relevant to that shape. This atom can contain three child subtrees at most: a chain of transformations, a chain of attributes, and a chain of points. Transformation and attribute chains hug their parent in the weave via the priority flag while points go last. Any new transformations and attributes are parented to the last member of their corresponding chain. The value for a chain of operations (currently only `trTranslate`) is cumulative, while the value for a chain of attributes (`attrColor` or `attrRound`) is just the last atom in the chain. Point chains act more like traditional sequences. A point chain is seeded with a start and end sentinel to cleanly delineate it from its neighbors, and the traversal order corresponds to the order of the points in the eventual output `NSBezierPath`. Like shapes, points can have child transformation and attribute chains. Points can also have child delete atoms. (Shapes aren't currently deletable: you can individually remove all the points anyway and I got lazy.)
 
@@ -687,7 +713,17 @@ In essence, this CT consists of a bunch of superimposed operational CRDTs: seque
 
 Here is the weave we get from reading the tree in DFS order:
 
-<img src="../images/blog/causal-trees/shape-example-weave.png">
+<p>
+
+<figure>
+
+<img src="../images/blog/causal-trees/draw-weave.svg" width="800">
+
+<figcaption><i>The green brackets are shape blocks, blue brackets are point blocks, and red brackets are attribute blocks.</i></figcaption>
+
+</figure>
+
+</p>
 
 The rules for generating the output image from this weave are very simple. If you hit a shape atom, you're in a shape block until you run into another shape atom or the end of the weave. The shape's operation and attribute chains are traversed first on account of their priority flag, and the results are cached for use in the next step. An `NSBezierPath` is created once you start reading points. Each point block has to read forward a bit to parse its operation and attribute chains (if any). If a delete atom is found, you can simply move on to the next point. Otherwise, the point's position is determined by combining its origin and transform (if any) with the parent shape's transform (if any). The point is added to the `NSBezierPath` either as as a line or as a Bézier curve if it has the rounded attribute. Then, once the next shape block or the end of weave is reached, the path is drawn and stroked.
 
