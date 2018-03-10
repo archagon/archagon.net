@@ -1,14 +1,12 @@
 ---
 layout: post
-title: "Operational Thinking: Mergeable, Historied, Coordination-Free CvRDT Data Structures"
-date: 2017-09-30 18:02:53 +0300
+title: "Operational Data Structures: Mergeable, Historied, Coordination-Free CRDTs"
+date: 2018-03-07
 comments: true
 categories: programming
 ---
 
-**WARNING: VERY ROUGH DRAFT! Please do not publish anywhere.**
-
-# Introduction
+<div class="donations notification">Hello! This article took a while to cobble together. If you find it useful, please consider leaving a donation via <a class="about-icon-container" href="https://donorbox.org/crdt-article"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/donorbox.png" /> <span class="about-social-service">DonorBox</span></a>, <a class="about-icon-container" href="https://www.buymeacoffee.com/archagon"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/bmac.svg" /> <span class="about-social-service">BuyMeACoffee</span></a>, or <a class="about-icon-container" href="ethereum:0x0d5dd8a8Cca8Bf7d0122F7A1Cc76c6b0666fCC56"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/ether.png" /> <span class="about-social-service">Ethereum</span></a>. (Thought I'd try something new!) Or, just buy yourself a nice Roost through my <a class="about-icon-container" href="http://amzn.to/2D7uYxz"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/amaz.png" /> <span class="about-social-service">Amazon affiliate link</span></a>. Donation or no, thank you for reading! 😊</div>
 
 (Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the [demo section][sec-demo] which will get to the point faster than anything else.)
 
@@ -73,7 +71,7 @@ I realized that this was my prize to be won — that this issue and my problem d
 
 <li><a href="#demo">Demo</a></li>
 
-<li><a href="#the-gold-nugget-of-truth-operation-based-crdts">The Gold Nugget of Truth: Operation-Base CRDTs</a>
+<li><a href="#the-gold-nugget-of-truth-operation-based-crdts">The Gold Nugget of Truth: Operation-Based CRDTs</a>
 
 <ul>
 
@@ -115,7 +113,9 @@ I realized that this was my prize to be won — that this issue and my problem d
 
 # Convergence Techniques: A High-Level Overview
 
-There are a few basic terms that are critical to understanding eventual consistency. The first is **causality**. An operation is *caused* by another operation when it directly modifies or otherwise involves the results of that operation. (In other words, when executed, the causing operation must always come first.) However, we can't always determine direct causality in a general way, so algorithms often assume a causal link between operations if the site generating the newer operation has seen the older operation on creation. This "soft" causality can be determined using a variety of schemes. The simplest is a [Lamport timestamp][lamport], which requires that every new operation have a higher Lamport timestamp than every other known operation, including any remote operations received. (Note that this approach is stateless. As long as each operation retains its Lamport timestamp, you don't need any extra data in the system to determine causality.) Although there are eventual consistency schemes that can receive operations in any order, most algorithms rely on operations arriving at each site in their **causal order** (e.g. "Insert A" necessarily arriving before "Delete A"). When discussing convergence schemes, we can often assume causal order since it can be enforced on the transport layer. If two operations are not causal — if they were created simultaneously on different sites without knowledge of each other — they are said to be **concurrent**. An operation log in causal order can be described as having a **partial order**, since concurrent operations might be in different positions on different clients. If the log is guaranteed to be identical on all clients, it has a **total order**. Most of the hard work in eventual consistency involves reconciling and ordering these concurrent operations. Generally speaking, concurrent operations have to be made to **commute**, or have the same effect on the data regardless of their order of arrival. This can be done in a variety of ways: defining the operations to be commutative in the first place, transforming operations depending on their order of arrival, reordering operations and replaying history, and more.
+There are a few basic terms that are critical to understanding eventual consistency. The first is **causality**. An operation is *caused* by another operation when it directly modifies or otherwise involves the results of that operation. (In other words, when executed, the causing operation must always come first.) However, we can't always determine direct causality in a general way, so algorithms often assume a causal link between operations if the site generating the newer operation has seen the older operation on creation. This "soft" causality can be determined using a variety of schemes. The simplest is a [Lamport timestamp][lamport], which requires that every new operation have a higher Lamport timestamp than every other known operation, including any remote operations received. (Note that this approach is stateless. As long as each operation retains its Lamport timestamp, you don't need any extra data in the system to determine causality.) Although there are eventual consistency schemes that can receive operations in any order, most algorithms rely on operations arriving at each site in their **causal order** (e.g. "Insert A" necessarily arriving before "Delete A"). When discussing convergence schemes, we can often assume causal order since it can be enforced on the transport layer. If two operations are not causal — if they were created simultaneously on different sites without knowledge of each other — they are said to be **concurrent**. An operation log in causal order can be described as having a **partial order**, since concurrent operations might be in different positions on different clients. If the log is guaranteed to be identical on all clients, it has a **total order**. Most of the hard work in eventual consistency involves reconciling and ordering these concurrent operations. Generally speaking, concurrent operations have to be made to **commute**, or have the same effect on the data regardless of their order of arrival. This can be done in a variety of ways[^commutes].
+
+[^commutes]: Although it's most intuitive to think of individual operations as commuting (or not), commutativity is actually a property of the entire system as a whole and can be enforced in many places. For example, a data structure might be entirely composed of operations that are naturally commutative (e.g. only addition), in which case nothing more needs to be done. Or: the system might be designed such that every event is uniquely timestamped, identified, and placed in a totally-ordered event log, which can then be re-parsed whenever remote (concurrent) changes are inserted before the endpoint. Or: the system might still be event-based, but instead of keeping around an event log, incoming concurrent operations might be altered in order to make their effect on the data structure identical regardless of their order of arrival. So even if two operations might not be *naturally* commutative, they could still be made to commute *in effect* by a variety of methods. The trick is making sure that these "commutativity transformations" produce sensible results in the data.
 
 Now, there are two competing approaches in eventual consistency state-of–the-art, both tagged with rather unappetizing initialisms: [Operational Transformation][ot] (OT) and [Conflict-Free Replicated Data Types][crdt] (CRDTs). Fundamentally, these approaches tackle the same problem. Given an object that has been edited by an arbitrary number of connected devices, how do we coalesce and apply their changes in a consistent way, even when those changes might be concurrent or arrive out of creation order? And, moreover, what do we do if a user goes offline for a long time, or if the network is unstable, or even if we're in a peer-to-peer environment with no single source of truth?
 
@@ -288,27 +288,81 @@ A weft is *consistent* when the tree it describes is fully-connected (or *closed
 
 # Demo
 
-To prove that the Causal Tree is a useful and effective data structure in the real world, [I've implemented a general version in Swift together with a demo app][crdt-playground]. Please note that this is strictly an educational codebase, not a production-quality library! My goal with this project was to dig for knowledge, not create another framework du jour. It's messy, it's slow, and it's surely broken in some places — but it serves its purpose.
+To prove that the Causal Tree is a useful and effective data structure in the real world, [I've implemented a generic version in Swift together with a demo app][crdt-playground]. Please note that this is strictly an educational codebase, not a production-quality library! My goal with this project was to dig for knowledge, not create another framework du jour. I apologize that there's no well-documented codebase or Javascript demonstration. It's messy, it's slow, and it's surely broken in some places — but it serves its purpose.
 
-<vid — top level text demo — do a bit of everything>
+<div class="caption">
+
+<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-main.png">
+
+<source src="../images/blog/causal-trees/demo/mac-main.mp4" type="video/mp4">
+
+Your browser does not support the video tag.
+
+</video>
+
+<p>Note that sites start out disconnected and have to connect to a peer in order to announce themselves. In the middle of the demo, sites 1–3 are connected in a loop, site 4 is connected to 5, and site 5 is not sending to anyone.</p>
+
+</div>
 
 The first part of the demo is a macOS P2P simulator. Every window you see here represents a site. Each site has its own version of the CT forked at some point from another site, and each site can connect to any of its known peers. When connected to a peer, a site sends over its CT about once a second, and the remote site merges the incoming CT on receipt. Individual connections between sites can be toggled as needed. This is all done locally to simulate a partitioned, unreliable P2P network. The text view uses the CT directly as its backing store by way of an [`NSMutableString` wrapper][string-wrapper] plugged into a bare-bones [`NSTextStorage` subclass][container-wrapper].
 
-<vid — yarns display>
+<div class="caption">
 
-You can open up a yarn view that resembles the diagram in the paper, though this is only really legible for simple cases. In this view, you can select individual atoms with the right mouse button to list their details and print their causal blocks.
+<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-yarns.png">
 
-<vid — bezier>
+<source src="../images/blog/causal-trees/demo/mac-yarns.mp4" type="video/mp4">
+
+Your browser does not support the video tag.
+
+</video>
+
+</div>
+
+You can open up a yarn view that resembles the diagram in the paper, though this is only really legible for simple cases. In this view, you can select individual atoms with the right mouse button to list their details.
+
+<div class="caption">
+
+<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-shapes.png">
+
+<source src="../images/blog/causal-trees/demo/mac-shapes.mp4" type="video/mp4">
+
+Your browser does not support the video tag.
+
+</video>
+
+</div>
 
 Also included is an example of a CT-backed data type for working with simple vector graphics. Using the editing view, you can create shapes, select and insert points, move points and shapes around, change the colors, and change the contours. Just as before, everything is synchronized with any combination of connected peers, even after numerous concurrent and offline edits. (To get a sense of how to use CTs with general non-string data types, read on!)
 
-<vid — revisions>
+<div class="caption">
+
+<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-revisions.png">
+
+<source src="../images/blog/causal-trees/demo/mac-revisions.mp4" type="video/mp4">
+
+Your browser does not support the video tag.
+
+</video>
+
+</div>
 
 Each site can display previously-synced, read-only revisions of its document via the dropdown list. This feature is just one of many emergent properties of CTs. On account of the immutable, atomic, and ordered nature of the format, you get this functionality effectively for free!
 
-<vid — ios>
+<div class="caption">
 
-The second part of the demo is a very simple CloudKit-based text editing app for iOS. Much of it is wonky and unpolished, but the important part is that real-time collaboration (including remote cursors) works correctly and efficiently, whether syncing to the same user account, collaborating with others via CloudKit Sharing, or just working locally for long periods of time. No extra coordinating servers are required: the dumb CloudKit database works perfectly fine.
+<video controls width="100%" poster="../images/blog/causal-trees/demo/iphone.png">
+
+<source src="../images/blog/causal-trees/demo/iphone.mp4" type="video/mp4">
+
+Your browser does not support the video tag.
+
+</video>
+
+<p>The phone on the left shares an iCloud account with the phone in the middle, while the phone on the right is logged in to a different iCloud account. Both approaches work exactly the same. Apologies for the occasional delays: iCloud is slow and my network code is a mess!</p>
+
+</div>
+
+The second part of the demo is a very simple CloudKit-based text editing app for iOS. Much of it is wonky and unpolished (since I'm very much a CloudKit newbie), but the important part is that real-time collaboration (including remote cursors) works correctly and efficiently, whether syncing to the same user account, collaborating with others via CloudKit Sharing, or just working locally for long periods of time. No extra coordinating servers are required: the dumb CloudKit database works perfectly fine.
 
 My CT implementation isn't quite production ready yet (though I'll keep hammering away for use in my own commercial projects), but I think it's convincing proof that the technique is sound and practical for use with collaborative document-based applications.
 
@@ -414,7 +468,7 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 
 <img src="../images/blog/causal-trees/garbage-collection.gif" width="800">
 
-<figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3 — all with state AB. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. At the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–2:X–3:X–4:9), making it a candidate for the new baseline.</i></figcaption>
+<figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3 — all with state AB. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. In the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–2:X–3:X–4:9), making it a candidate for the new baseline.</i></figcaption>
 
 </figure>
 
@@ -422,7 +476,7 @@ Take baseline selection, for instance. In an [available and partition-tolerant s
 
 But questions still remain. For instance: what do we do if a site simply stops editing and never returns to the network? It would at that point be impossible to set the baseline anywhere in the network past the last seen version vector from that site. Now some sort of timeout scheme has to be introduced, and I'm not sure this is possible in a truly partitioned system. There's just no way to tell if a site has left forever or if it's simply editing away in its own parallel partition. So we have to add some sort of mandated communication between sites, or perhaps some central authority to validate connectivity, and now the system is constrained even more! In addition, as an *O*(*s*<sup>2</sup>) space complexity data structure, the site-to-timestamp map could get unwieldily depending on the number of peers.
 
-Alternatively, we might relax rule c) and allow the baseline to potentially orphan remote operations. In this scheme, we would have a sequence of baselines associated with our RDT. Any site would be free to pick a new baseline that was higher than (not concurrent to!) the previous baseline, taking care to pick one that had the highest chance of preserving operations on other sites[^preservation]. Then, any site receiving new baselines in the sequence would be required to apply them in order[^baselines]. Upon receiving and executing a baseline, a site that had operations causally dependent on the newly-removed operations but not included in the baseline would be obliged to either drop them or to add them to some sort of secondary "orphanage" RDT.
+Alternatively, we might relax rule c) and allow the baseline to potentially orphan remote operations. In this scheme, we would have a sequence of baselines associated with our RDT. Any site would be free to pick a new baseline that was explicitly higher than (not concurrent to!) the previous baseline, taking care to pick one that had the highest chance of preserving operations on other sites[^preservation]. Then, any site receiving new baselines in the sequence would be required to apply them in order[^baselines]. Upon receiving and executing a baseline, a site that had operations causally dependent on the newly-removed operations but not included in the baseline would be obliged to either drop them or to add them to some sort of secondary "orphanage" RDT.
 
 [^preservation]: If we still had access to our site-to-version-vector map, we could pick a baseline common to every reasonably active site. This heuristic could be further improved by upgrading our Lamport timestamp to a [hybrid logical clock][hlc]. (A Lamport timestamp is allowed to be arbitrarily higher than the previous timestamp, not just +1 higher, so we can combine it with a physical timestamp and correction data to get the approximate wall clock time for each operation.)
 [^baselines]: We have to use a sequence of baselines and not just a baseline register because all sites, per CRDT rules, must end up with the same data after seeing the same set of operations. With a register, if a site happens to miss a few baselines, it could end up retaining some meant-to-be-orphaned operations if a new baseline gets far enough to cover them. Now some sites would have the orphans and others wouldn't. Inconsistency!
@@ -445,7 +499,7 @@ Therefore — just as with the non-destructive baseline strategy — it seems th
 
 In summary: while baseline operations are not commutative for every possible value, they can be made commutative with just a sprinkle of coordination. Either you ensure that a baseline *does not leave orphaned operations* (which requires some degree of knowledge about every site on the network), or you ensure that *each new baseline is higher than the last* (which requires a common point of synchronization). Fortunately, the messy business of coordination is localized to the problem of picking the data for a single operation, not to the functioning of the operation itself or any other part of the RDT. There's nothing special or unique about the baseline operation with respect to the rules of CRDTs, and so it can be treated, transferred, and processed just like any other operation. And if the baseline fails to get updated due to network conditions, nothing bad actually happens, and sites are still free to work on their documents. The scheme degrades very gracefully.
 
-As one last idea, if the RDT propagation mechanism is restricted to state snapshots (as in a CvRDT), you could allow any site to arbitrarily set the baseline, but then replace any removed operations during a merge if the incoming state snapshot happens to include causal dependents of those removed operations. (This is possible because every state snapshot is a consistent version of the RDT, so the missing operations can be revived without having to make any additional requests.) Personally, I'm not too comfortable with this approach. My feeling is that it breaks CRDT monotonicity by allowing state to be restored, though it's not clear to me where this inconsistency might rear its head. It's much more correct for baselines to follow the rules of every other operation and move the CRDT forward through the monotonic semilattice. But I concede that this could possibly be the one perfect, coordination-free garbage collection approach — just as long as strictly CvRDT use was OK.
+For one last idea, if the RDT propagation mechanism is restricted to state snapshots (as in a CvRDT), you could allow any site to arbitrarily set the baseline, but then replace any removed operations during a merge if the incoming state snapshot happens to include causal dependents of those removed operations. (This is possible because every state snapshot is a consistent version of the RDT, so the missing operations can be revived without having to make any additional requests.) Personally, I'm not too comfortable with this approach. My feeling is that it breaks CRDT monotonicity by allowing state to be restored, though it's not clear to me where this inconsistency might rear its head. It's much more correct for baselines to follow the rules of every other operation and move the CRDT forward through the monotonic semilattice. But I concede that this could possibly be the one perfect, coordination-free garbage collection approach — just as long as strictly CvRDT use was OK.
 
 Finally, remember that in many cases, "don't worry about garbage collection" is also a viable option! Most collaborative documents aren't meant to be edited in perpetuity, and assuming good faith on the part of all collaborators, it would be surprising if the amount of deleted content (and thus, garbage) in a typical document was more than 2 or 3 times its visible length.
 
@@ -488,7 +542,7 @@ All that being said, the need to design a new RDT should be relatively rare. Mos
 
 # Causal Trees In Depth
 
-But now, let's get back to our favorite data structure.
+But now, let's get back to our initial, awesome data structure!
 
 I'd like to posit that the humble Causal Tree, though intended for string use, is in fact one of the most versatile and general CRDTs out there. The first reason is that a CT is, in fact, a full-on convergent tree. As we've already seen, trees can represent sequences very well. But trees are also flexible enough to simulate registers, maps, and many other data types. Trees are also composed of subtrees, which provides a natural mechanism for data segmentation. The second reason is that CTs are stored in a single range of contiguous memory. This makes *O*(*n*) operations lightning-fast due to spatial locality, enabling various optimizations and even making it possible to eschew copy-on-write or locking schemes in favor of straight copies when dealing with multiple threads.
 
@@ -599,7 +653,7 @@ With the priority flag in tow, the value enum for our CT string atoms now looks 
 ```swift
 protocol CausalTreePrioritizable { var priority: Bool { get } }
 
-enum StringValue: IndexRemappable, Codable
+enum StringValue: IndexRemappable, Codable, CausalTreePrioritizable
 {
     case null
     case insert(char: UInt16)
@@ -616,6 +670,8 @@ enum StringValue: IndexRemappable, Codable
             return false
         }
     }
+    
+    mutating func remapIndices(_ map: [SiteId:SiteId]) {}
   
     // insert Codable boilerplate here
 }
@@ -632,7 +688,7 @@ In order to implement a custom data type as a CT, you first have to "atomize" it
 In the demo section, I presented a CT designed for Bézier drawing. Here's how I coded the value enum for each atom:
 
 ```swift
-enum DrawDatum: Codable, CausalTreePrioritizable
+enum DrawDatum: IndexRemappable, Codable, CausalTreePrioritizable
 {    
     case null // no-op for grouping other atoms
     case shape
@@ -668,6 +724,20 @@ enum DrawDatum: Codable, CausalTreePrioritizable
             return true
         }
     }
+    
+    mutating func remapIndices(_ map: [SiteId:SiteId])
+    {
+        switch self
+        {
+        case .trTranslate(let delta, let ref):
+            if let newSite = map[ref.site]
+            {
+                self = .trTranslate(delta: delta, ref: AtomId(site: newSite, index: ref.index))
+            }
+        default:
+            break
+        }
+    }
   
     // insert Codable boilerplate here
 }
@@ -675,7 +745,7 @@ enum DrawDatum: Codable, CausalTreePrioritizable
 typealias DrawAtom = Atom<DrawDatum>
 ```
 
-Swift is kind enough to compress this down to about 23 bytes: the maximum size of an associated value tuple (opTranslate, which has a 16-byte `NSPoint` and a 6 byte `AtomId`) plus a byte for the case.
+Swift is kind enough to compress this down to about 23 bytes: the maximum size of an associated value tuple (opTranslate, which has a 16-byte `NSPoint` and a 6 byte `AtomId`) plus a byte for the case. Note that `IndexRemappable` actually needs to do something in this case since we might be carrying around an `AtomId` reference.
 
 Note that `trTranslate` has an atom ID as an associated value. Since atom IDs are unique, you can reference them from other atoms without issue[^causalpast]. It's a great way to represent ranged operations: just pick an atom that represents the outer position of your range, add the ID to the operation's value, and handle it in your mapping/evaluation code. (This should especially come in handy when dealing with text formatting in rich text editors.) The only caveat is that the atom has to update this value in the `IndexRemappable` implementation. (Incidentally, I still need to port this functionality to my string CT's delete operation: ranged deletes are so much more performant than deleting each character individually!)
 
@@ -729,7 +799,7 @@ The rules for generating the output image from this weave are very simple. If yo
 
 When I first started reading up on CRDTs, it was unclear to me how conflict resolution was formalized. Every CRDT seemed to do something a bit different — often laden with dense theory — and it was rare to find an approach that the developer could tweak depending on their needs. In CTs, the answer is refreshingly simple: conflicts occur when an atom has more children than expected, and the presentation of this fact is delegated to a higher layer. (My understanding is that the MV-Register CRDT behaves in a similar way.) Translation operations in the Bézier CT are a good example. Let's say three different sites concurrently move the same point in the same direction. By default, the CT would produce a weave with three consecutive translations. Applying them in order would be consistent, but it would also triple the magnitude of the translation and match none of the sites' intended actions. Instead, we can detect when a translation atom has multiple children and then simply average out those values. This would cause the final translation to reasonably approximate each of the original values and hopefully leave all three sites satisfied. If some user still finds this merge offensive, they can manually adjust the translation and implicitly "commit" the change with their new operation.
 
-This is only one possible approach, however, and the developer is free to do anything when a conflict is detected: present a selection to the user, pick the value with the lowest timestamp, use some special function for combining the values. The underlying CT will *always* remain consistent under concurrency; doing something with this information is entirely up to the app.
+This is only one possible approach, however, and the developer is free to do anything when a conflict is detected: present a selection to the user, pick the value with the lowest timestamp, use some special function for combining the values. The underlying CT will *always* remain consistent under concurrency; figuring out what to do with this information is entirely up to the app.
 
 Finally, my implementation includes a [new, stateless layer](https://github.com/archagon/crdt-playground/blob/master/CRDTPlayground/TestingExtras/Data%20Interfaces/CausalTreeBezierWrapper.swift) on top of the CT that provides a more model-appropriate API and sanity checking. Since the Bézier tree has more constraints on its structure than the underlying CT, there's an additional, higher-level `validate` method that verifies all the new preconditions after the CT is itself validated. Other helper functions ensure that the consistency of the tree is not compromised when new points, shapes, or attributes are added. From the outside, callers can safely use methods like `addShape` or `updateAttributes` on the wrapper without having to worry about the CT at all. It looks just like any other model object. (Incidentally, this approach to layering CRDTs is discussed in [this paper][layering], though the technique isn't exactly novel.)
 
@@ -784,10 +854,6 @@ But in exchange for a totally peer-to-peer computing future? A world full of sys
 
 I'd say: it's surely worth it!
 
----
-
-If you find value in this article, please consider buying something through my Amazon affiliate link. (Might I suggest a nice [Roost stand](http://amzn.to/2EKIHx6) for your café-working needs?) Either way, thank you for reading! 😊
-
 # References
 
 OT Algorithm Papers
@@ -830,7 +896,8 @@ Articles
 [convergence]: https://medium.com/@raphlinus/towards-a-unified-theory-of-operational-transformation-and-crdt-70485876f72f
 [ot]: https://en.wikipedia.org/wiki/Operational_transformation
 [crdt]: https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
-[ct]: https://ai2-s2-pdfs.s3.amazonaws.com/6534/c371ef78979d7ed84b6dc19f4fd529caab43.pdf
+[ct]: http://www.ds.ewi.tudelft.nl/~victor/articles/ctre.pdf
+
 [diffsync]: https://neil.fraser.name/writing/sync/
 [cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&type=pdf
 
