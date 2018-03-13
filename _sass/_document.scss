@@ -92,6 +92,41 @@ $post-list-spacing-unit-small: 1.5rem;
     }
 }
 
+// content header spacing
+.document-post {
+    .section-content {
+        h1 {
+            $size: 2.0;
+            $adj-spacing: ($spacing-unit / $size);
+            margin-top: #{ $size / 2 }em;
+            //margin-bottom: -$adj-spacing / 2;
+            margin-bottom: 0;
+        }
+        h2 {
+            $size: 1.5;
+            $adj-spacing: ($spacing-unit / $size);
+            margin-top: #{ $size / 2 }em;
+            margin-bottom: -$adj-spacing / 2;
+        }
+        h3 {
+            $size: 1.2;
+            $adj-spacing: ($spacing-unit / $size);
+            margin-top: #{ $size / 2 }em;
+            margin-bottom: -$adj-spacing / 2;
+        }
+
+        hr + h1 {
+            margin-top: 0.67em; //from normalize
+        }
+        hr + h2 {
+            margin-top: 0.67em; //from normalize
+        }
+        hr + h3 {
+            margin-top: 0.67em; //from normalize
+        }
+    }
+}
+
 .post-list {
     .document-post, .document-page {
         padding-left: $document-padding;
