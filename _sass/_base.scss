@@ -211,7 +211,12 @@ pre {
 
 body {
     font-family: $base-font-family;
+    font-weight: normal;
 }
+// AB: this is for testing new fonts that are sized a bit differently
+// p {
+//     font-size: 90% !important;
+// }
 
 // encompasses the center bit -- everything except the header and footer
 .page-content {
