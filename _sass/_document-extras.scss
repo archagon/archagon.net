@@ -52,9 +52,17 @@
 }
 
 // applied to div, not image
-.full-width {
+%full-width {
     @extend %vertical-rhythm;
     display: block;
+
+    img {
+        max-width: 100%;
+        min-width: 100%;
+    }
+}
+.full-width {
+    @extend %full-width;
 
     width: calc(100% + #{ $document-padding * 2 });
     margin-left: -$document-padding;
@@ -62,10 +70,17 @@
         width: calc(100% + #{ $document-padding-small * 2 });
         margin-left: -$document-padding-small;
     }
+}
+.mostly-full-width {
+    $side-gap: 0.2rem;
 
-    img {
-        max-width: 100%;
-        min-width: 100%;
+    @extend %full-width;
+
+    width: calc(100% + #{ $document-padding * 2 } - #{ $side-gap * 2 });
+    margin-left: calc(#{ -$document-padding } + #{ $side-gap });
+    @include media-query($on-palm) {
+        width: calc(100% + #{ $document-padding-small * 2 } - #{ $side-gap * 2 });
+        margin-left: calc(#{ -$document-padding-small } + #{ $side-gap });
     }
 }
 
