@@ -73,13 +73,14 @@ $post-list-spacing-unit-small: 1.5rem;
 .document-post {
     .section-content {
         // top-level, secondary post headers should have decoration
-        & > h2 {
+        & > h1 {
             position: relative;
 
+            // AB: OK symbols -- "▸⦙ ❪❪ ❡"
             &::before {
                 content: "❡";
                 position: absolute;
-                left: -1.0em;
+                left: -0.8em;
                 color: lightgray;
 
                 // margins too small for this to work on compact sizes
