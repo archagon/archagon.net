@@ -119,8 +119,9 @@ img.content {
 h1, h2, h3, h4, h5, h6 {
     font-family: $header-font-family;
     font-weight: 400;
+    line-height: 1.2;
 
-    color: rgb(80, 80, 80); 
+    color: #222; 
 }
 
 //~1.09x multiplier
