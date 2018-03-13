@@ -12,9 +12,9 @@ $header-font-family: 'Gill Sans', 'Gill Sans MT', 'Lato', Calibri, sans-serif;
 // $header-font-family: 'Cabin', 'Gill Sans', 'Gill Sans MT', 'Lato', Calibri, sans-serif;
 $alert-font-family: $header-font-family;
 
-$base-font-size:   0.9em;
+$base-font-size:   0.95em;
 $small-font-size:  7px;
-$base-line-height: 1.5;
+$base-line-height: 1.4em;
 
 // TODO: figure out how to untangle these
 $spacing-unit: 1em; //spacing between text elements: p, etc.
@@ -30,7 +30,7 @@ $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 
 $on-palm:          600px;
-$content-width:    80rem;
+$content-width:    75rem;
 
 @import
         "base",
