@@ -10,6 +10,9 @@ $base-font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiq
 $header-font-family: 'Gill Sans', 'Gill Sans MT', 'Lato', Calibri, sans-serif;
 // $header-font-family: 'Cabin', 'Gill Sans', 'Gill Sans MT', 'Lato', Calibri, sans-serif;
 
+$mono-font-family: 'Source Code Pro', monospace;
+// $mono-font-family: Monaco, Consolas, monospace; //Lucida just isn't good
+
 $alert-font-family: $header-font-family;
 
 $base-font-size:   0.95em;
