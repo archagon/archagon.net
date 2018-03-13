@@ -93,19 +93,15 @@
     @extend %vertical-rhythm;
     display: block;
 }
-.caption > p {
+.caption > p, figcaption {
     text-align: center;
     color: #888;
-
-    // font-size: 1.05em;
-    // font-style: italic;
 
     font-family: $alert-font-family;
     font-size: 1.0em;
     font-weight: 50;
     font-style: italic;
 
-    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1em;
