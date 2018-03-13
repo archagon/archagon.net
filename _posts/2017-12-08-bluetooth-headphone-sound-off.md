@@ -140,7 +140,7 @@ I think I'll have to spend a few more hours listening to each set before I make 
 
 ---
 
-# Update 2017-12-29
+### Update 2017-12-29
 
 After a few more weeks (!) of deliberation, I've decided to go with the Crossfade as my headphone of choice.
 
