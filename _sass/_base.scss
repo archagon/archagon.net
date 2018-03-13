@@ -72,6 +72,14 @@ html {
     min-height: inherit;
 }
 
+/////////////////////
+// Default Spacing //
+/////////////////////
+
+p {
+    @extend %vertical-rhythm;
+}
+
 /////////////////////////////
 // Default Element Styling //
 /////////////////////////////
