@@ -156,25 +156,33 @@ blockquote {
 }
 
 pre, code {
-    font-size: 0.92em;
-    border: 1px solid lightgray;
-    border-radius: 0.3em;
-    background-color: #eef;
-    // background-color: pink;
+    font-size: 0.9em;
+    line-height: 1.15;
 }
 code {
     padding: 0.05em 0.3em; //0.05 to capture underlines
+    border-radius: 0.3em;
+    background-color: mix(green, white, 15%);
 }
 pre {
-    padding: 0.4em 0.6em;
-    overflow-x: auto;
     display: block;
-    // TODO: .highlight background color -- should be white or not?
+    overflow-x: auto;
+
+    padding: 0.6em 0.8em;
+    border-radius: 0.5em;
+    background-color: #fafafa !important;
+    border: mix(green, white, 20%) 1px solid;
+    border-left: mix(green, white, 30%) 0.8rem solid;
 
     > code {
-        background-color: inherit;
+        background-color: transparent;
         border: 0;
         padding: 0;
+
+        // AB: this is to remove bold from the syntax highlighting
+        * {
+            //font-weight: 10 !important;
+        }
     }
 }
 
