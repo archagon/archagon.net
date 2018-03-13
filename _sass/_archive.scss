@@ -153,6 +153,12 @@ ul.archive-month-list {
     text-align: left;
 }
 
+.archive-month-element {
+    h3 {
+        font-size: 140%;
+    }
+}
+
 .archive-post-list {
     // allows for title cropping with ellipses
     white-space: nowrap;
@@ -176,6 +182,9 @@ ul.archive-month-list {
 
 .archive-post {
     h4 {
+        font-size: 130%;
+        line-height: 1.4;
+
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -211,6 +220,7 @@ ul.archive-legend {
 
     font-family: $alert-font-family;
     font-size: 1.05em; // TODO: center text, make squares size according to em
+    font-weight: 50;
     // font-weight: 400;
     color: $grey-color;
 
