@@ -6,7 +6,15 @@ comments: true
 categories: programming
 ---
 
+
+
+<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/header.png"></div>
+
+
+
 <div class="donations notification">Hello! This article took a while to cobble together. If you find it useful, please consider leaving a donation via <a class="about-icon-container" href="https://donorbox.org/crdt-article"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/donorbox.png" /> <span class="about-social-service">DonorBox</span></a>, <a class="about-icon-container" href="https://www.buymeacoffee.com/archagon"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/bmac.svg" /> <span class="about-social-service">BuyMeACoffee</span></a>, or <a class="about-icon-container" href="ethereum:0x0d5dd8a8Cca8Bf7d0122F7A1Cc76c6b0666fCC56"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/ether.png" /> <span class="about-social-service">Ethereum</span></a>. (Thought I'd try something new!) Or, just buy yourself a nice Roost through my <a class="about-icon-container" href="http://amzn.to/2D7uYxz"><img class="about-social-icon" src="{{ site.baseurl }}/images/donation-icons/amaz.png" /> <span class="about-social-service">Amazon affiliate link</span></a>. Donation or no, thank you for reading! 😊</div>
+
+
 
 (Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the [demo section][sec-demo] which will get to the point faster than anything else.)
 
@@ -39,11 +47,15 @@ My guess was that CloudKit Sharing forced the issue of real-time collaboration o
 
 I realized that this was my prize to be won — that this issue and my problem domain were quite synergetic. If I could figure out a way to develop auto-merging documents, I'd be able to implement real-time collaboration over CloudKit and reap the benefits of free service and low-level OS support. So this was my ultimate research goal: a collaborative text editor demo syncing entirely over Apple's servers. (And here's a spoiler: [it worked!][sec-demo]) 
 
+
+
+<center>
+
 <div class="toc">
 
 <div class="toc-header">
 
-<p>Table of Contents</p>
+<h1>Table of Contents</h1>
 
 </div>
 
@@ -111,6 +123,10 @@ I realized that this was my prize to be won — that this issue and my problem d
 
 </div>
 
+</center>
+
+
+
 # Convergence Techniques: A High-Level Overview
 
 There are a few basic terms that are critical to understanding eventual consistency. The first is **causality**. An operation is *caused* by another operation when it directly modifies or otherwise involves the results of that operation. (In other words, when executed, the causing operation must always come first.) However, we can't always determine direct causality in a general way, so algorithms often assume a causal link between operations if the site generating the newer operation has seen the older operation on creation. This "soft" causality can be determined using a variety of schemes. The simplest is a [Lamport timestamp][lamport], which requires that every new operation have a higher Lamport timestamp than every other known operation, including any remote operations received. (Note that this approach is stateless. As long as each operation retains its Lamport timestamp, you don't need any extra data in the system to determine causality.) Although there are eventual consistency schemes that can receive operations in any order, most algorithms rely on operations arriving at each site in their **causal order** (e.g. "Insert A" necessarily arriving before "Delete A"). When discussing convergence schemes, we can often assume causal order since it can be enforced on the transport layer. If two operations are not causal — if they were created simultaneously on different sites without knowledge of each other — they are said to be **concurrent**. An operation log in causal order can be described as having a **partial order**, since concurrent operations might be in different positions on different clients. If the log is guaranteed to be identical on all clients, it has a **total order**. Most of the hard work in eventual consistency involves reconciling and ordering these concurrent operations. Generally speaking, concurrent operations have to be made to **commute**, or have the same effect on the data regardless of their order of arrival. This can be done in a variety of ways[^commutes].
@@ -154,15 +170,11 @@ Begrudgingly, I had to abandon the elegance of Differential Sync and decide betw
 
 With CRDTs on my mind, I saw before me the promise of a mythical "golden file". With a document format based on CRDTs, issues of network synchronization and coordination fell completely out of the way. The system would be completely functional. It would work without quirks in offline mode. On syncing, it would always be able to merge with other revisions. It would be topology-agnostic to such a degree that one could use it in a completely decentralized peer-to-peer environment; between phone and laptop via Bluetooth or ad-hoc Wi-Fi; between two applications simultaneously editing the same local file; or plain old syncing with a central database. All at the same time! I just needed to figure out if I could use these things in a performant and space-efficient way for arbitrary data models — all while passing that dastardly PhD Test.
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/semilattice.svg" width="300">
-<figcaption><i>The mythical, eminently-mergable golden file in its adventures through the semilattice.</i></figcaption>
+<img src="{{ site.baseurl }}/images/blog/causal-trees/semilattice.svg" style="width:30rem">
+<figcaption>The mythical, eminently-mergable golden file in its adventures through the semilattice.</figcaption>
 </figure>
-
-</p>
 
 My next step was to sift through the academic literature on CRDTs. There was a group of usual suspects for the hard case of sequence (text) CRDTs: [WOOT][woot], [Treedoc][treedoc], [Logoot][logoot]/[LSEQ][lseq], and [RGA][rga]. WOOT is the progenitor of the genre and makes each character in a string reference its adjacent neighbors on both sides. Recent analysis has shown this to be inefficient compared to newer approaches. Treedoc has a similar early-adoptor performance penalty and additionally requires coordination for its garbage collection — a no-go for true decentralization. Logoot (which is optimized further by LSEQ) curiously avoids tombstones by treating each sequence item as a unique point along a dense (infinitely-divisible) number line, and in exchange adopts item identifiers (similar to bignums) which have unbounded growth. Unfortunately, it has a problem with [interleaved text on concurrent edits](https://stackoverflow.com/questions/45722742/logoot-crdt-interleaving-of-data-on-concurrent-edits-to-the-same-spot). RGA makes each character implicitly reference its intended neighbor to the left and uses a hash table to make character lookup efficient. It also features an additional update operation alongside the usual insert and delete. This approach often comes out ahead in benchmark comparisons though the paper is annoyingly dense in theory. I also found a couple of recent, non-academic CRDT designs such as [Y.js][yjs] and the [Xi CRDT][xi], both of which brought something new to the table but felt rather convoluted in comparison to RGA. In almost all these cases, conflicts between concurrent changes were resolved by way of a creator UUID plus a logical timestamp per character. Sometimes, they were discarded when an operation was applied; sometimes, they were persisted for each character.
 
@@ -180,7 +192,7 @@ Say you're designing a convergent sequence CvRDT from scratch. Instead of pickin
 
 Here's an example concurrent string mutation, just to have some data to work with.
 
-<img src="../images/blog/causal-trees/network-chart.svg" width="400">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/network-chart.svg" style="width:47rem">
 
 The small numbers over the letters are [Lamport timestamps][lamport]. Site 1 types "CMD", sends its changes to Site 2 and Site 3, then resumes its editing. Sites 2 and 3 then make their own changes and send them back to Site 1 for the final merge. The result, "CTRLALTDEL", is the most intuitive merge we might expect: insertions and deletions all persist, runs of characters don't split up, and most recent changes come first.
 
@@ -188,7 +200,7 @@ First idea: just take the standard set of array operations ("Insert 'A' at Index
 
 [^uuid]: Note that UUIDs with the right bit-length don't really need coordination to ensure uniqueness. If your UUID is long enough — 128 bits, let's say — randomly finding two UUIDs that collide would require generating a billion UUIDs every second for decades. Most applications probably don't need to worry about this possibility. If they do, UUIDs might need to be generated and agreed upon out-of-band.
 
-<img src="../images/blog/causal-trees/indexed.svg">
+<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/indexed.svg"></div>
 
 Success: it's an operation-based, fully-convergent CvRDT! Well, sort of. There are two major issues here. First, reconstructing the original array by processing the full operational array has *O*(*n*<sup>2</sup>) complexity[^complexity], and it has to happen on every key press to boot. Completely untenable! Second, intent is completely clobbered. Reading the operations back, we get something along the lines of "CTRLDATLEL" (with a bit of handwaving when it comes to inserts past the array bounds). Just because a data structure converges doesn't mean it makes a lick of sense! As shown in the earlier OT section, concurrent index-based operations can be made to miss their intended characters depending on the order. (Recall that this is the problem OT solves by transforming the operations, but here our operations are immutable.) In a sense, this is because the operations are specified incorrectly. They make an assumption that doesn't get encoded in the operations themselves — that an index can always uniquely identify a character — and thus lose the commutativity of their intent when this turns out not to be the case. 
 
@@ -198,13 +210,13 @@ OK, so the first step is to fix the intent problem. Fundamentally, "Insert A at 
 
 So how do we identify a particular letter? Just 'A' and 'B' are ambiguous, after all. We could generate a new ID for each inserted letter, but this isn't necessary: we already have unique UUID/timestamp identifiers for all our operations. Why not just use operation identifiers as proxies for their output? In other words, an "Insert 'A'" operation can stand for that particular letter 'A' when referenced by other operations since it is already immutable and uniquely identified. Now, no extra data is required, and everything is still defined in terms of atomic, immutable operations.
 
-<img src="../images/blog/causal-trees/causal.svg">
+<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/causal.svg"></div>
 
 This is significantly better than before! We now get "CTRLALTDEL", correctly ordered and even preserving character runs as expected. But performance is still an issue. As it stands, the output array would still take *O*(*n*<sup>2</sup>) to reconstruct. The main roadblock is that array insertions and deletions tend to be *O*(*n*) operations, and we need to replay our entire history whenever remote changes come in or when we're recreating the output array from scratch. Array *push* and *pop*, on the other hand, are only *O*(1) amortized. What if instead of sorting our entire operational array by timestamp+UUID, we positioned operations in the order of their output? This could be done by placing each operation to the right of its causal operation (parent), then sorting it in reverse timestamp+UUID order among the remaining operations[^rga]. In effect, this would cause the operational array to mirror the structure of the output array. The result would be exactly the same as with the previous approach, but the speed of execution would be substantially improved.
 
 [^rga]: In fact, this is also how the RGA algorithm does its ordering, though it's not described in terms of explicit operations and uses a different format for the metadata.
 
-<img src="../images/blog/causal-trees/causal-ordered.svg">
+<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/causal-ordered.svg"></div>
 
 With this new order, local operations require a bit of extra processing when added to the operational array. Instead of simply appending to the back, they have to first locate their parent, then find their spot among the remaining operations. This takes *O*(*n*) time instead of *O*(1). In return, producing the output array is now only *O*(*n*), since we can read the operations in order and (mostly) push/pop elements in the output array as we go along[^deleteref]. In fact, we can treat this operational array *as if it were the string itself*, even using it as a backing store for a fully-functional `NSMutableString` subclass with some performance caveats. The operations are no longer just instructions for generating a string: they effectively *become* the data!
 
@@ -214,7 +226,7 @@ Note that throughout all this, we have not added any extra data to our operation
 
 Pulled out of its containing array, we can see that what we've designed is, in fact, an operational *tree* — one which happens to be implicitly stored as a depth-first, in-order traversal in contiguous memory. Concurrent edits are sibling branches. Subtrees are runs of characters. By the nature of reverse timestamp+UUID sort, sibling subtrees are sorted in the order of their head operations.
 
-<img src="../images/blog/causal-trees/tree.svg" width="400">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/tree.svg" style="width:40rem">
 
 This is the underlying premise of the [Causal Tree][ct] CRDT.
 
@@ -232,16 +244,16 @@ In Swift code, an atom might look something like this:
 ```swift
 struct Id: Codable, Hashable
 {
-	let site: UInt16
-	let index: UInt32
-  	let timestamp: UInt32
+    let site: UInt16
+    let index: UInt32
+    let timestamp: UInt32
 }
 
 struct Atom<T: Codable>: Codable
 {
-	let id: Id
-  	let cause: Id
-	let value: T
+    let id: Id
+    let cause: Id
+    let value: T
 }
 ```
 
@@ -264,7 +276,11 @@ typealias StringAtom = Atom<StringValue>
 
 For convenience, a CT begins with a "zero" root atom, and the ancestry of each subsequent atom can ultimately be traced back to it. The depth-first, in-order traversal of our operational tree is called a **weave**, equivalent to the operational array discussed earlier. Instead of representing our tree as an inefficient tangle of pointers, we store it in memory as this weave array. Additionally, since we know the creation order of every atom on each site by way of its index (or timestamp), and since a CT by definition is not allowed to contain any causal gaps, we can always derive a given site's exact sequence of operations from the beginning of time. This sequence of site-specific atoms in creation order is called a **yarn**. While yarns are more of a cache than a primary data structure in a CT, I keep them around together with the weave to enable *O*(1) atom lookups. To pull up an atom based on its identifier, all you have to do is grab the site's yarn array and read out the atom at the identifier's index.
 
-<fig — yarns>
+<figure>
+
+<img src="{{ site.baseurl }}/images/blog/causal-trees/yarns.svg" style="width:53rem">
+<figcaption>Each row, or yarn, represents the contiguous sequence of operations for a site in the tree.</figcaption>
+</figure>
 
 Storing the tree as an array means we have to be careful when modifying it — otherwise, our invariants will be invalidated and the whole thing will fall apart. When a local atom is created and parented to another atom, it is inserted immediately to the right of its parent in the weave. This preserves the sort order since the new atom necessarily has a higher Lamport timestamp than any other atom in the weave and therefore belongs in the spot closest to the parent. On merge, we have to be a bit more clever if we want to keep things *O*(*n*). The naive solution — iterating through the incoming weave and independently sorting each new atom into our local weave — would be *O*(*n*<sup>2</sup>). If we had an easy way to compare any two atoms, we could perform a simple and efficient merge sort. Unfortunately, the order of two atoms is non-binary since it involves ancestry in addition to the timestamp+UUID. In other words, you can't write a simple comparator function for two atoms in isolation.
 
@@ -274,15 +290,11 @@ Fortunately, we can use our knowledge of the underlying tree structure to keep t
 
 One more data structure to note is a collection of site/timestamp pairs called a **weft**. In essence, a weft is a version vector. You can think of it as a filter on the tree by way of a cut across yarns: only the atoms with indices less than or equal to the given timestamp for their site are included. Wefts are very useful for dealing with things like document revisions and garbage collection, since they can uniquely address the document at any point in its mutation timeline.
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/yarns.svg" width="600">
-<figcaption><i>The dotted line represents weft 1:6–2:7–3:7 in Lamport timestamp format, or weft 1:3–2:1–3:0 in index format. The two representations are equivalent.</i></figcaption>
+<img src="{{ site.baseurl }}/images/blog/causal-trees/weft.svg" style="width:53rem">
+<figcaption>The dotted line represents weft 1:6–2:7–3:7 in Lamport timestamp format, or weft 1:3–2:1–3:0 in index format. The two representations are equivalent.</figcaption>
 </figure>
-
-</p>
 
 A weft is *consistent* when the tree it describes is fully-connected (or *closed* in the parlance of the paper) and is also able to produce a complete, consistent data structure from its operations. (All closed wefts are consistent in the case of string CTs, but not necessarily if the CT is used for other types of data. More on that below.) In the given example, the weft describes the string "CDADE", providing a hypothetical view of the distributed data structure in the middle of all three edits.
 
@@ -290,11 +302,11 @@ A weft is *consistent* when the tree it describes is fully-connected (or *closed
 
 To prove that the Causal Tree is a useful and effective data structure in the real world, [I've implemented a generic version in Swift together with a demo app][crdt-playground]. Please note that this is strictly an educational codebase, not a production-quality library! My goal with this project was to dig for knowledge, not create another framework du jour. I apologize that there's no well-documented codebase or Javascript demonstration. It's messy, it's slow, and it's surely broken in some places — but it serves its purpose.
 
-<div class="caption">
+<div class="caption full-width">
 
-<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-main.png">
+<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-main.png">
 
-<source src="../images/blog/causal-trees/demo/mac-main.mp4" type="video/mp4">
+<source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-main.mp4" type="video/mp4">
 
 Your browser does not support the video tag.
 
@@ -306,11 +318,11 @@ Your browser does not support the video tag.
 
 The first part of the demo is a macOS P2P simulator. Every window you see here represents a site. Each site has its own version of the CT forked at some point from another site, and each site can connect to any of its known peers. When connected to a peer, a site sends over its CT about once a second, and the remote site merges the incoming CT on receipt. Individual connections between sites can be toggled as needed. This is all done locally to simulate a partitioned, unreliable P2P network. The text view uses the CT directly as its backing store by way of an [`NSMutableString` wrapper][string-wrapper] plugged into a bare-bones [`NSTextStorage` subclass][container-wrapper].
 
-<div class="caption">
+<div class="caption full-width">
 
-<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-yarns.png">
+<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-yarns.png">
 
-<source src="../images/blog/causal-trees/demo/mac-yarns.mp4" type="video/mp4">
+<source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-yarns.mp4" type="video/mp4">
 
 Your browser does not support the video tag.
 
@@ -320,11 +332,11 @@ Your browser does not support the video tag.
 
 You can open up a yarn view that resembles the diagram in the paper, though this is only really legible for simple cases. In this view, you can select individual atoms with the right mouse button to list their details.
 
-<div class="caption">
+<div class="caption full-width">
 
-<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-shapes.png">
+<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-shapes.png">
 
-<source src="../images/blog/causal-trees/demo/mac-shapes.mp4" type="video/mp4">
+<source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-shapes.mp4" type="video/mp4">
 
 Your browser does not support the video tag.
 
@@ -334,11 +346,11 @@ Your browser does not support the video tag.
 
 Also included is an example of a CT-backed data type for working with simple vector graphics. Using the editing view, you can create shapes, select and insert points, move points and shapes around, change the colors, and change the contours. Just as before, everything is synchronized with any combination of connected peers, even after numerous concurrent and offline edits. (To get a sense of how to use CTs with general non-string data types, read on!)
 
-<div class="caption">
+<div class="caption full-width">
 
-<video controls width="100%" poster="../images/blog/causal-trees/demo/mac-revisions.png">
+<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-revisions.png">
 
-<source src="../images/blog/causal-trees/demo/mac-revisions.mp4" type="video/mp4">
+<source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-revisions.mp4" type="video/mp4">
 
 Your browser does not support the video tag.
 
@@ -348,11 +360,11 @@ Your browser does not support the video tag.
 
 Each site can display previously-synced, read-only revisions of its document via the dropdown list. This feature is just one of many emergent properties of CTs. On account of the immutable, atomic, and ordered nature of the format, you get this functionality effectively for free!
 
-<div class="caption">
+<div class="caption full-width">
 
-<video controls width="100%" poster="../images/blog/causal-trees/demo/iphone.png">
+<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/iphone.png">
 
-<source src="../images/blog/causal-trees/demo/iphone.mp4" type="video/mp4">
+<source src="{{ site.baseurl }}/images/blog/causal-trees/demo/iphone.mp4" type="video/mp4">
 
 Your browser does not support the video tag.
 
@@ -378,33 +390,25 @@ In the same vein as the Causal Tree, an RDT is essentially an ordered set of ope
 
 As in the CT, each operation is meant to represent an atomic unit of change to the data structure, local in effect and directly dependent on one other operation at most. (In practice, operations can be designed to do pretty much anything with the data, but non-atomic or multi-causal operations create bubbles in the pipeline <what pipeline?> and may severely affect performance, simplicity, and intent.) Operations are meant to be immutable and globally unique.
 
-<p>
+<figure class="full-width">
 
-<figure>
+<img src="{{ site.baseurl }}/images/blog/causal-trees/pipeline.svg">
 
-<img src="../images/blog/causal-trees/pipeline.svg" width="800">
-
-<figcaption><i>The operational pipeline. Both the reducer/effect and mapper/eval steps use pure functions tailored to the given RDT. Location information has been stripped for each operation to simplify the diagram.</i></figcaption>
+<figcaption>The operational pipeline. Both the reducer/effect and mapper/eval steps use pure functions tailored to the given RDT. Location information has been stripped for each operation to simplify the diagram.</figcaption>
 
 </figure>
-
-</p>
 
 New operations along with the existing structured log are first fed into a **reducer** (RON) or **effect** (PORDT) step. These take the form of pure functions that sort the operations into a structured log, then simplify or remove any redundant operations as needed.
 
 What is this "simplifying", you might ask? Aren't the operations meant to be immutable? Generally, yes; but in some RDTs, new operations might definitively supersede previous operations. Take a last-writer-wins register, for example. In this very basic RDT, the value of an operation with the highest timestamp+UUID supplants any previous operation's value. Since merge only needs to compare a new operation against the previous highest operation, it stands to reason there's simply no point in keeping the older operations around. (PORDT defines these stale operations in terms of **redundancy relations**, which are unique to each RDT and are applied as part of the effect step.) Another possible reduction step is the stripping of ID or location data. In some RDTs, this information becomes unnecessary for later convergence once operations are placed in their proper sorted order. In the RON implementation of RGA, the location (parent) data of an operation is stripped by the reducer once the operation is properly situated in the structured log. (The original RGA paper features a very similar cleanup step. RON and PORDT simply generalize this to other RDTs.)
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/cleanup.svg" width="600">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/cleanup.svg" style="width:72rem">
 
-<figcaption><i>Cleaning up redundant operations in a simple multi-LWW map RDT. Both produce the same result and incorporate new operations in the same way.</i></figcaption>
+<figcaption>Cleaning up redundant operations in a simple multi-LWW map RDT. Both produce the same result and incorporate new operations in the same way.</figcaption>
 
 </figure>
-
-</p>
 
 Here, I have to diverge from my sources. In my opinion, the reducer/effect step ought to be split in two. Even though some RDT operations might be redundant for convergence, retaining every operation in full allows us to know the exact state of our RDT at any point in its history. Without this ability, relatively "free" features such as garbage collection and past revision viewing become much harder (if not impossible) to implement. Ergo, I posit that at this point in the pipeline, we ought to have a simpler **arranger** step. This function would perform the same kind of merge as the reducer/effect functions, but it wouldn't actually remove or modify any of the operations. Instead of happening implicitly, the previous simplification steps would be triggered in a more consistent and general way when space actually needs to be reclaimed. (More on that below.)
 
@@ -416,17 +420,13 @@ The arranger/reducer/effect and the mapper/eval functions together form the two 
 
 So how is the structured log stored, anyway? This is another point where I have to diverge from my source material. In RON, the reducer is a pure function that simply spits out a dumb, ordered sequence of operations called a **frame**. This frame is a generic blob of data that has no RDT-specific code. Everything custom about a particular data type is handled in the reducer and mapper functions. (PORDT does things very similarly, though I don't believe the precise storage mechanism for operations is clearly defined.) In my view — the CvRDT-centric view — the structured log ought to be more intelligent than that. Rather than treating the log and all its associated functions as separate entities, I prefer to conceptualize the whole thing as a persistent, type-tailored object, distributing operations among various internal data structures and exposing merge and data access through an OO interface. In other words, the structured log, arranger, and parts of the mapper would combine to form one giant object.
 
-<p>
+<figure class="full-width">
 
-<figure>
+<img src="{{ site.baseurl }}/images/blog/causal-trees/object-log.svg">
 
-<img src="../images/blog/causal-trees/object-log.svg" width="700">
-
-<figcaption><i>An example object-based log for a string RDT. The first cache is for "yarns", the second for ranges of visible characters. With these two caches, we can use the operations as a direct backing store for a native string object.</i></figcaption>
+<figcaption>An example object-based log for a string RDT. The first cache is for "yarns", the second for ranges of visible characters. With these two caches, we can use the operations as a direct backing store for a native string object.</figcaption>
 
 </figure>
-
-</p>
 
 The reasoning behind this approach is simple. RDTs are meant to fill in for ordinary data structures, so sticking operations into some homogenous frame might lead to poor performance depending on the use case. For instance, many text editors now prefer to use the [rope data type][rope] instead of simple arrays. With a RON-style frame, this transition would be impossible. But with an object-based RDT, we could almost trivially switch out our internal data structure for a rope and be on our merry way. (Only the merge function would require some extra care.) And this is just the beginning: more complex RDTs might require numerous associated data types and caches to ensure optimal performance. The OO approach would ensure that all these secondary structures stayed together, remained consistent during merge, and offered a unified interface for data access. (More below.)
 
@@ -440,15 +440,11 @@ And now, we can use this thinking to devise all sorts of new RDTs!
 
 Garbage collection has been a sticking point in CRDT research, and I believe that operation-based CRDTs offer an excellent foundation for exploring this problem. A garbage-collected RDT can be thought of as a data structure in two parts: the "live" part and the compacted part. As we saw earlier, a CT can be split into two segments by way of a version vector (or weft in CT parlance). The same applies to any operational RDT. In a garbage-collected RDT, we can simply store a **baseline** weft alongside the main data structure to serve as the dividing line between the live and compact parts. Then, any site that receives the new baseline would be obliged to compact the operations falling under that weft, and to drop or orphan any operations that are not included in the weft but have a direct causal connection to any of the removed operations. The baseline can be thought of as just another operation in the RDT: one that requires all prior operations to pass through the RDT's particular garbage collection routine. The trick is making this operation commutative.
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/baseline.svg" width="600">
-<figcaption><i>The dotted line represents baseline 1:6–2:7–3:7. In practice, S1@T2 may not necessarily be removed in order to preserve S1@T3's ancestral ordering information.</i></figcaption>
+<img src="{{ site.baseurl }}/images/blog/causal-trees/baseline.svg" style="width:53rem">
+<figcaption>The dotted line represents baseline 1:6–2:7–3:7. In practice, S1@T2 may not necessarily be removed in order to preserve S1@T3's ancestral ordering information.</figcaption>
 </figure>
-
-</p>
 
 So what exactly does it mean to compact an RDT? There are really two mechanisms in play here. First, there's "lossless" compaction, which is simply dropping operations that are no longer necessary for future convergence. (In PORDT, this property of operations is called *causal redundancy*, and the cleanup is performed in the effect function. Remember, we split this off from our arranger.) In essence, lossless compaction is strictly a local issue, since the only thing it affects is the ability for a client to rewind the RDT and work with past revisions. As such, we don't even have to store it in a replicated variable: sites can just perform this cleanup step at their discretion. However, only simpler RDTs (such as last-writer-wins registers) tend to have operations with this property.
 
@@ -462,17 +458,13 @@ Unfortunately, garbage collection might be the one subsystem where a bit of coor
 
 Take baseline selection, for instance. In an [available and partition-tolerant system][cap] system, is it possible to devise a selection scheme that always garbage collects without orphaning any operations? Logically speaking, no: if some site copies the RDT from storage and then works on it in isolation, there's no way the other sites will be able to take it into account when picking their baseline. However, if we require our system to only permit forks via request to an existing site, and also that any forked sites ACK back to their origin site on successful initialization, then we would have enough constraints to make selection work. Each site could hold a map of every site's ID to its last known version vector. When a fork happens, the origin site would add the new site ID to its map and seed it with its own timestamp. This map would be sent along with every operation or state snapshot between sites and merged at the receiver. (In essence, it would act as a distributed overview of the network.) Now, any site with enough information about the others would be free to independently set a baseline that a) is causally consistent, b) is consistent by the rules of the RDT, c) includes only those removable operations that have been received by every site in the network, and d) also includes every operation affected by the removal of those operations. With these preconditions, you can prove that even concurrent updates of the baseline across different sites will converge.
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/garbage-collection.gif" width="800">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/garbage-collection.gif">
 
-<figcaption><i>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3 — all with state AB. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. In the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–2:X–3:X–4:9), making it a candidate for the new baseline.</i></figcaption>
+<figcaption>An example of network knowledge propagation. Site 2 is forked from 1, Site 3 from 2, and Site 4 from 3 — all with state AB. At the start, Site 1's C has been received by Site 2, but not Site 3. Maps are updated on receipt, not on send. In the end, Site 1 knows that every site has at least moved past ABE (or weft 1:2–2:X–3:X–4:9), making it a candidate for the new baseline.</figcaption>
 
 </figure>
-
-</p>
 
 But questions still remain. For instance: what do we do if a site simply stops editing and never returns to the network? It would at that point be impossible to set the baseline anywhere in the network past the last seen version vector from that site. Now some sort of timeout scheme has to be introduced, and I'm not sure this is possible in a truly partitioned system. There's just no way to tell if a site has left forever or if it's simply editing away in its own parallel partition. So we have to add some sort of mandated communication between sites, or perhaps some central authority to validate connectivity, and now the system is constrained even more! In addition, as an *O*(*s*<sup>2</sup>) space complexity data structure, the site-to-timestamp map could get unwieldily depending on the number of peers.
 
@@ -483,7 +475,7 @@ Alternatively, we might relax rule c) and allow the baseline to potentially orph
 
 But even here we run into problems with coordination. If this scheme worked as written, we would be a-OK, so long as sites were triggering garbage collection relatively infrequently and only during quiescent moments (as determined to the best of a site's ability). But we have a bit of an issue when it comes to picking strictly higher baselines. What happens if two peers concurrently pick new baselines that orphan each others' operations?
 
-<img src="../images/blog/causal-trees/garbage.svg" width="200">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/garbage.svg" style="width:19rem">
 
 Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3–2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3–3:7, leaving operations "ABE". Meanwhile, Site 1 — which has received both Site 2 and 3's changes — decides to garbage collect with baseline 1:3–2:6–3:7, leaving operations "AED". So what do we do when Sites 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. So we're kind of stuck.
 
@@ -517,17 +509,13 @@ Consider a hypothetical replicated bitmap as a thought experiment. Perhaps in th
 
 My feeling is that RON's general approach would falter here. The pipeline simply couldn't be tuned to fix these performance hot spots, and millions of pixel operations would grind it to a halt. With the object-based approach, you could store store the bitmap as a specialized k-d tree of buffers. The pixel values would be the operations themselves, and each buffer would represent a particular area of pixels , subdivided when needed to store a pixel's past operations. Since the buffers would be stored in contiguous chunks of memory, subdivision and rebalancing would be very fast. Garbage collection could be as simple as un-subdividing any buffer with too many subdivisions. Assuming that the RGBA value for each operation was formatted correctly and that a stride could be passed along to the graphics framework, nodes could be blitted as-is into another buffer, making it trivial to only update the dirty parts of a user's rendered image. In short, it seems that performance could end up being very close to that of an *actual* bitmap. It wouldn't even surprise me if /r/place itself — with its 16 million changes and 1 million unique sites — could be reproduced with this kind of object!
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/bitmap.svg" width="600">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/bitmap.svg" style="width:60rem">
 
-<figcaption><i>A mockup of what an object-based bitmap RDT might look like under the hood. Each colored square is a pixel operation. Grid coordinates with subdivisions represent pixels with a change history. Each section of the grid is stored in its own contiguous block of memory.</i></figcaption>
+<figcaption>A mockup of what an object-based bitmap RDT might look like under the hood. Each colored square is a pixel operation. Grid coordinates with subdivisions represent pixels with a change history. Each section of the grid is stored in its own contiguous block of memory.</figcaption>
 
 </figure>
-
-</p>
 
 Finally, a few nascent thoughts on designing new RDTs:
 
@@ -592,15 +580,11 @@ Next: UUIDs. So far, I've been describing my site identifiers as 16-bit integers
 
 I've solved this with the help of a secondary CRDT that is stored and transferred along with the CT: an ordered, insert-only array of known UUIDs called the **site map**. The 16-bit site identifier corresponding to a UUID is simply its index in this array.
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/site-map.svg" width="700">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/site-map.svg" style="width:62rem">
 
 </figure>
-
-</p>
 
 When two CTs merge, their site maps merge as well. This means that our site identifiers are only unique locally, not globally: if a new UUID gets added at another site and then merged into ours, the sorted order of the existing UUIDs in the site map might change. When this happens, I traverse each CT and remap any outdated site identifiers to their new values — a simple *O*(*n*) operation. This is facilitated by the following interface:
 
@@ -753,29 +737,21 @@ Note that `trTranslate` has an atom ID as an associated value. Since atom IDs ar
 
 Anyway, back to shapes. For the following sample document...
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/draw-shapes.svg" width="400">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/draw-shapes.svg" style="width:40rem">
 
 </figure>
-
-</p>
 
 ...we might end up with a tree shaped like this. (For completeness, I've added a few extra transformation and attribute operations that aren't directly visible in the user-facing data.)
 
-<p>
-
 <figure>
 
-<img src="../images/blog/causal-trees/draw-tree.svg" width="700">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/draw-tree.svg">
 
-<figcaption><i>The pink operations have the priority flag and sort ahead of their sibling subtrees.</i></figcaption>
+<figcaption>The pink operations have the priority flag and sort ahead of their sibling subtrees.</figcaption>
 
 </figure>
-
-</p>
 
 Just a few simple rules define the higher-level structures that represent shapes, points, and properties in this tree. A `shape` atom can only be parented to other `shape` atoms or to the root starting atom. Each `shape` has a null atom as its only child, acting as the root node for all property subtrees relevant to that shape. This atom can contain three child subtrees at most: a chain of transformations, a chain of attributes, and a chain of points. Transformation and attribute chains hug their parent in the weave via the priority flag while points go last. Any new transformations and attributes are parented to the last member of their corresponding chain. The value for a chain of operations (currently only `trTranslate`) is cumulative, while the value for a chain of attributes (`attrColor` or `attrRound`) is just the last atom in the chain. Point chains act more like traditional sequences. A point chain is seeded with a start and end sentinel to cleanly delineate it from its neighbors, and the traversal order corresponds to the order of the points in the eventual output `NSBezierPath`. Like shapes, points can have child transformation and attribute chains. Points can also have child delete atoms. (Shapes aren't currently deletable: you can individually remove all the points anyway and I got lazy.)
 
@@ -783,17 +759,13 @@ In essence, this CT consists of a bunch of superimposed operational CRDTs: seque
 
 Here is the weave we get from reading the tree in DFS order:
 
-<p>
+<figure class="full-width">
 
-<figure>
+<img src="{{ site.baseurl }}/images/blog/causal-trees/draw-weave.svg">
 
-<img src="../images/blog/causal-trees/draw-weave.svg" width="800">
-
-<figcaption><i>The green brackets are shape blocks, blue brackets are point blocks, and red brackets are attribute blocks.</i></figcaption>
+<figcaption>The green brackets are shape blocks, blue brackets are point blocks, and red brackets are attribute blocks.</figcaption>
 
 </figure>
-
-</p>
 
 The rules for generating the output image from this weave are very simple. If you hit a shape atom, you're in a shape block until you run into another shape atom or the end of the weave. The shape's operation and attribute chains are traversed first on account of their priority flag, and the results are cached for use in the next step. An `NSBezierPath` is created once you start reading points. Each point block has to read forward a bit to parse its operation and attribute chains (if any). If a delete atom is found, you can simply move on to the next point. Otherwise, the point's position is determined by combining its origin and transform (if any) with the parent shape's transform (if any). The point is added to the `NSBezierPath` either as as a line or as a Bézier curve if it has the rounded attribute. Then, once the next shape block or the end of weave is reached, the path is drawn and stroked.
 
@@ -899,7 +871,7 @@ Articles
 [ct]: http://www.ds.ewi.tudelft.nl/~victor/articles/ctre.pdf
 
 [diffsync]: https://neil.fraser.name/writing/sync/
-[cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&type=pdf
+[cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&amp;amp;amp;amp;type=pdf
 
 [woot]: https://hal.archives-ouvertes.fr/inria-00108523/document
 [rga]: https://pdfs.semanticscholar.org/8470/ae40470235604f40382aea4747275a6f6eef.pdf
@@ -907,7 +879,7 @@ Articles
 [easy-collab]: http://digitalfreepen.com/2017/10/06/simple-real-time-collaborative-text-editor.html
 [xi]: https://github.com/google/xi-editor/blob/master/doc/crdt-details.md
 [xi-rope]: asdf
-[ttf]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.2679&type=pdf
+[ttf]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.2679&amp;amp;amp;amp;type=pdf
 [pure-op]: https://arxiv.org/pdf/1710.04469.pdf
 [lamport]: https://en.wikipedia.org/wiki/Lamport_timestamps
 [crdt-playground]: https://github.com/archagon/crdt-playground
