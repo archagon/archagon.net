@@ -11,6 +11,7 @@
     text-align: right;
 
     p {
+        text-align: inherit; //overrides justified p text elsewhere, if present
         margin: 0;
     }
 

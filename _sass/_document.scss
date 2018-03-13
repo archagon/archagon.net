@@ -70,6 +70,16 @@ $post-list-spacing-unit-small: 1.5rem;
     }
 }
 
+// justified text is more to my taste
+.document-post, .document-page {
+    p {
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
 .document-post {
     .section-content {
         // top-level, secondary post headers should have decoration
@@ -207,7 +217,7 @@ $post-list-spacing-unit-small: 1.5rem;
 }
 h2.post-meta { //we have to use h2 to override default header rules
     margin-top: 0.5rem;
-    font-size: 1.0em;
+    font-size: 1.1em;
 }
 
 // TODO: NEXT: ids
