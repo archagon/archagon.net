@@ -49,7 +49,7 @@ I realized that this was my prize to be won — that this issue and my problem d
 
 
 
-<center>
+<div class="toc-wrapper">
 
 <div class="toc">
 
@@ -123,7 +123,7 @@ I realized that this was my prize to be won — that this issue and my problem d
 
 </div>
 
-</center>
+</div>
 
 
 
