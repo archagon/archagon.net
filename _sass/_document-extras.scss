@@ -225,15 +225,14 @@
 // TOC Widget //
 ////////////////
 
-$toc-theme-color: mix(#2a7ae2, white, 20%);
-$toc-border-color: $toc-theme-color;
+$toc-theme-color: #efefef;
 $toc-link-color: #2A7AE2;
-$toc-bullet-color: $toc-theme-color;
+$toc-bullet-color: darkgray;
 $toc-side-padding: 2.2em;
 
 .toc-wrapper {
     display: block;
-    text-align: left;
+    text-align: center;
 
     // only way to collapse margins with inline-block toc
     margin-top: 1.8em;
@@ -250,18 +249,16 @@ $toc-side-padding: 2.2em;
 
     max-width: 60rem;
 
-    background-color: #efefef;
-
-    border: solid 0.2rem lightgray;
+    background-color: $toc-theme-color;
+    // border: solid 0.2rem lightgray;
 }
 
 .toc-header {
     text-align: center;
 
-    margin: 0.4em $toc-side-padding;
-    margin-top: 1.2em;
-    margin-bottom: 0;
-    padding: 0;
+    // padding is in header and links so header bar can go across full width
+    padding: 0 $toc-side-padding;
+    padding-top: 1.2em; //imprecise vertical padding, but it just looks better
 
     h1 {
         margin: 0 !important;
@@ -274,9 +271,9 @@ $toc-side-padding: 2.2em;
 }
 
 .toc-links {
-    // this is here so that the header bar can go across the full TOC
-    margin: 1.6em $toc-side-padding;
-    margin-top: 0.8em;
+    padding: 0 $toc-side-padding;
+    padding-bottom: 1.6em;
+    padding-top: 0.8em;
 
     ul, ol {
         margin: 0;
@@ -299,7 +296,7 @@ $toc-side-padding: 2.2em;
                 &:before {
                     position: relative;
                     content: "•";
-                    color: darkgray;
+                    color: $toc-bullet-color;
                     left: -0.6em;
                 }
             }
@@ -440,9 +437,9 @@ $toc-side-padding: 2.2em;
         @include align-items-flex-start;
         @include flex-direction-row;
 
-        margin: $margin;
-        margin-bottom: $spacing;
-        padding: 0;
+        margin: 0;
+        padding-bottom: $spacing;
+        padding: $margin;
         
         & > * {
             margin-top: 0;
@@ -467,9 +464,9 @@ $toc-side-padding: 2.2em;
     }
 
     .toc-links {
-        margin: $margin;
-        margin-top: $spacing;
-        padding: 0;
+        margin: 0;
+        padding: $margin;
+        padding-top: 0;
 
         & > ol {
             list-style-position: inside;
