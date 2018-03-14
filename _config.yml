@@ -29,6 +29,10 @@ plugins:
   - jekyll-paginate
   - jekyll-paginate-category
 
+# Kramdown settings
+kramdown:
+    footnote_backlink: "&#8617;&#xfe0e;"
+
 # Extra directories
 image_dir: images
 assets_dir: assets

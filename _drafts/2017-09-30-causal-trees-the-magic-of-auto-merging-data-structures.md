@@ -133,7 +133,7 @@ There are a few basic terms that are critical to understanding eventual consiste
 
 [^commutes]: Although it's most intuitive to think of individual operations as commuting (or not), commutativity is actually a property of the entire system as a whole and can be enforced in many places. For example, a data structure might be entirely composed of operations that are naturally commutative (e.g. only addition), in which case nothing more needs to be done. Or: the system might be designed such that every event is uniquely timestamped, identified, and placed in a totally-ordered event log, which can then be re-parsed whenever remote (concurrent) changes are inserted before the endpoint. Or: the system might still be event-based, but instead of keeping around an event log, incoming concurrent operations might be altered in order to make their effect on the data structure identical regardless of their order of arrival. So even if two operations might not be *naturally* commutative, they could still be made to commute *in effect* by a variety of methods. The trick is making sure that these "commutativity transformations" produce sensible results in the data.
 
-Now, there are two competing approaches in eventual consistency state-of–the-art, both tagged with rather unappetizing initialisms: [Operational Transformation][ot] (OT) and [Conflict-Free Replicated Data Types][crdt] (CRDTs). Fundamentally, these approaches tackle the same problem. Given an object that has been edited by an arbitrary number of connected devices, how do we coalesce and apply their changes in a consistent way, even when those changes might be concurrent or arrive out of creation order? And, moreover, what do we do if a user goes offline for a long time, or if the network is unstable, or even if we're in a peer-to-peer environment with no single source of truth?
+Now, there are two competing approaches in eventual consistency state-of-the-art, both tagged with rather unappetizing initialisms: [Operational Transformation][ot] (OT) and [Conflict-Free Replicated Data Types][crdt] (CRDTs). Fundamentally, these approaches tackle the same problem. Given an object that has been edited by an arbitrary number of connected devices, how do we coalesce and apply their changes in a consistent way, even when those changes might be concurrent or arrive out of creation order? And, moreover, what do we do if a user goes offline for a long time, or if the network is unstable, or even if we're in a peer-to-peer environment with no single source of truth?
 
 ## Operational Transformation (OT)
 
@@ -172,7 +172,7 @@ With CRDTs on my mind, I saw before me the promise of a mythical "golden file". 
 
 <figure>
 
-<img src="{{ site.baseurl }}/images/blog/causal-trees/semilattice.svg" style="width:30rem">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/semilattice.svg" style="width:27rem">
 <figcaption>The mythical, eminently-mergable golden file in its adventures through the semilattice.</figcaption>
 </figure>
 
@@ -200,7 +200,7 @@ First idea: just take the standard set of array operations ("Insert 'A' at Index
 
 [^uuid]: Note that UUIDs with the right bit-length don't really need coordination to ensure uniqueness. If your UUID is long enough — 128 bits, let's say — randomly finding two UUIDs that collide would require generating a billion UUIDs every second for decades. Most applications probably don't need to worry about this possibility. If they do, UUIDs might need to be generated and agreed upon out-of-band.
 
-<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/indexed.svg"></div>
+<div class="mostly-full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/indexed.svg"></div>
 
 Success: it's an operation-based, fully-convergent CvRDT! Well, sort of. There are two major issues here. First, reconstructing the original array by processing the full operational array has *O*(*n*<sup>2</sup>) complexity[^complexity], and it has to happen on every key press to boot. Completely untenable! Second, intent is completely clobbered. Reading the operations back, we get something along the lines of "CTRLDATLEL" (with a bit of handwaving when it comes to inserts past the array bounds). Just because a data structure converges doesn't mean it makes a lick of sense! As shown in the earlier OT section, concurrent index-based operations can be made to miss their intended characters depending on the order. (Recall that this is the problem OT solves by transforming the operations, but here our operations are immutable.) In a sense, this is because the operations are specified incorrectly. They make an assumption that doesn't get encoded in the operations themselves — that an index can always uniquely identify a character — and thus lose the commutativity of their intent when this turns out not to be the case. 
 
@@ -210,13 +210,13 @@ OK, so the first step is to fix the intent problem. Fundamentally, "Insert A at 
 
 So how do we identify a particular letter? Just 'A' and 'B' are ambiguous, after all. We could generate a new ID for each inserted letter, but this isn't necessary: we already have unique UUID/timestamp identifiers for all our operations. Why not just use operation identifiers as proxies for their output? In other words, an "Insert 'A'" operation can stand for that particular letter 'A' when referenced by other operations since it is already immutable and uniquely identified. Now, no extra data is required, and everything is still defined in terms of atomic, immutable operations.
 
-<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/causal.svg"></div>
+<div class="mostly-full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/causal.svg"></div>
 
 This is significantly better than before! We now get "CTRLALTDEL", correctly ordered and even preserving character runs as expected. But performance is still an issue. As it stands, the output array would still take *O*(*n*<sup>2</sup>) to reconstruct. The main roadblock is that array insertions and deletions tend to be *O*(*n*) operations, and we need to replay our entire history whenever remote changes come in or when we're recreating the output array from scratch. Array *push* and *pop*, on the other hand, are only *O*(1) amortized. What if instead of sorting our entire operational array by timestamp+UUID, we positioned operations in the order of their output? This could be done by placing each operation to the right of its causal operation (parent), then sorting it in reverse timestamp+UUID order among the remaining operations[^rga]. In effect, this would cause the operational array to mirror the structure of the output array. The result would be exactly the same as with the previous approach, but the speed of execution would be substantially improved.
 
 [^rga]: In fact, this is also how the RGA algorithm does its ordering, though it's not described in terms of explicit operations and uses a different format for the metadata.
 
-<div class="full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/causal-ordered.svg"></div>
+<div class="mostly-full-width"><img src="{{ site.baseurl }}/images/blog/causal-trees/causal-ordered.svg"></div>
 
 With this new order, local operations require a bit of extra processing when added to the operational array. Instead of simply appending to the back, they have to first locate their parent, then find their spot among the remaining operations. This takes *O*(*n*) time instead of *O*(1). In return, producing the output array is now only *O*(*n*), since we can read the operations in order and (mostly) push/pop elements in the output array as we go along[^deleteref]. In fact, we can treat this operational array *as if it were the string itself*, even using it as a backing store for a fully-functional `NSMutableString` subclass with some performance caveats. The operations are no longer just instructions for generating a string: they effectively *become* the data!
 
@@ -304,7 +304,7 @@ To prove that the Causal Tree is a useful and effective data structure in the re
 
 <div class="caption full-width">
 
-<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-main.png">
+<video controls muted preload="none" width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-main.jpg">
 
 <source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-main.mp4" type="video/mp4">
 
@@ -316,11 +316,11 @@ Your browser does not support the video tag.
 
 </div>
 
-The first part of the demo is a macOS P2P simulator. Every window you see here represents a site. Each site has its own version of the CT forked at some point from another site, and each site can connect to any of its known peers. When connected to a peer, a site sends over its CT about once a second, and the remote site merges the incoming CT on receipt. Individual connections between sites can be toggled as needed. This is all done locally to simulate a partitioned, unreliable P2P network. The text view uses the CT directly as its backing store by way of an [`NSMutableString` wrapper][string-wrapper] plugged into a bare-bones [`NSTextStorage` subclass][container-wrapper].
+The first part of the demo is a macOS P2P simulator. Every window you see here represents a site. Each site has its own version of the CT forked at some point from another site, and each site can connect to any of its known peers. When connected to a peer, a site sends over its CT about once a second, and the remote site merges the incoming CT on receipt. Individual connections between sites can be toggled as needed. This is all done locally to simulate a partitioned, unreliable P2P network. The text view uses the CT directly as its backing store by way of an `NSMutableString` [wrapper][string-wrapper] plugged into a bare-bones `NSTextStorage` [subclass][container-wrapper].
 
 <div class="caption full-width">
 
-<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-yarns.png">
+<video controls muted preload="none" width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-yarns.jpg">
 
 <source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-yarns.mp4" type="video/mp4">
 
@@ -334,7 +334,7 @@ You can open up a yarn view that resembles the diagram in the paper, though this
 
 <div class="caption full-width">
 
-<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-shapes.png">
+<video controls muted preload="none" width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-shapes.jpg">
 
 <source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-shapes.mp4" type="video/mp4">
 
@@ -348,7 +348,7 @@ Also included is an example of a CT-backed data type for working with simple vec
 
 <div class="caption full-width">
 
-<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-revisions.png">
+<video controls muted preload="none" width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-revisions.jpg">
 
 <source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-revisions.mp4" type="video/mp4">
 
@@ -362,7 +362,7 @@ Each site can display previously-synced, read-only revisions of its document via
 
 <div class="caption full-width">
 
-<video controls width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/iphone.png">
+<video controls muted preload="none" width="100%" poster="{{ site.baseurl }}/images/blog/causal-trees/demo/iphone.jpg">
 
 <source src="{{ site.baseurl }}/images/blog/causal-trees/demo/iphone.mp4" type="video/mp4">
 
@@ -390,7 +390,7 @@ In the same vein as the Causal Tree, an RDT is essentially an ordered set of ope
 
 As in the CT, each operation is meant to represent an atomic unit of change to the data structure, local in effect and directly dependent on one other operation at most. (In practice, operations can be designed to do pretty much anything with the data, but non-atomic or multi-causal operations create bubbles in the pipeline <what pipeline?> and may severely affect performance, simplicity, and intent.) Operations are meant to be immutable and globally unique.
 
-<figure class="full-width">
+<figure class="mostly-full-width">
 
 <img src="{{ site.baseurl }}/images/blog/causal-trees/pipeline.svg">
 
@@ -412,7 +412,7 @@ What is this "simplifying", you might ask? Aren't the operations meant to be imm
 
 Here, I have to diverge from my sources. In my opinion, the reducer/effect step ought to be split in two. Even though some RDT operations might be redundant for convergence, retaining every operation in full allows us to know the exact state of our RDT at any point in its history. Without this ability, relatively "free" features such as garbage collection and past revision viewing become much harder (if not impossible) to implement. Ergo, I posit that at this point in the pipeline, we ought to have a simpler **arranger** step. This function would perform the same kind of merge as the reducer/effect functions, but it wouldn't actually remove or modify any of the operations. Instead of happening implicitly, the previous simplification steps would be triggered in a more consistent and general way when space actually needs to be reclaimed. (More on that below.)
 
-The final bit of the pipeline is the **mapper** (RON) or **eval** (PORDT) step. This is the code that finally makes sense of the structured log. It can either be a function that produces an output data structure by reading the operations in order, or alternatively a collection of functions that directly interface with the structured log itself. In the case of string RDTs, the mapper might simply emit a native string object, or it might be an interface that lets you call methods such as `lenth`, `characterAtIndex:`, or even `replaceCharactersInRange:withString:` directly on the contents of the structured log.
+The final bit of the pipeline is the **mapper** (RON) or **eval** (PORDT) step. This is the code that finally makes sense of the structured log. It can either be a function that produces an output data structure by reading the operations in order, or alternatively a collection of functions that directly interface with the structured log itself. In the case of string RDTs, the mapper might simply emit a native string object, or it might be an interface that lets you call methods such as `length`, `characterAtIndex:`, or even `replaceCharactersInRange:withString:` directly on the contents of the structured log.
 
 <fig — mapper x 2>
 
@@ -420,7 +420,7 @@ The arranger/reducer/effect and the mapper/eval functions together form the two 
 
 So how is the structured log stored, anyway? This is another point where I have to diverge from my source material. In RON, the reducer is a pure function that simply spits out a dumb, ordered sequence of operations called a **frame**. This frame is a generic blob of data that has no RDT-specific code. Everything custom about a particular data type is handled in the reducer and mapper functions. (PORDT does things very similarly, though I don't believe the precise storage mechanism for operations is clearly defined.) In my view — the CvRDT-centric view — the structured log ought to be more intelligent than that. Rather than treating the log and all its associated functions as separate entities, I prefer to conceptualize the whole thing as a persistent, type-tailored object, distributing operations among various internal data structures and exposing merge and data access through an OO interface. In other words, the structured log, arranger, and parts of the mapper would combine to form one giant object.
 
-<figure class="full-width">
+<figure class="mostly-full-width">
 
 <img src="{{ site.baseurl }}/images/blog/causal-trees/object-log.svg">
 
@@ -759,7 +759,7 @@ In essence, this CT consists of a bunch of superimposed operational CRDTs: seque
 
 Here is the weave we get from reading the tree in DFS order:
 
-<figure class="full-width">
+<figure class="mostly-full-width">
 
 <img src="{{ site.baseurl }}/images/blog/causal-trees/draw-weave.svg">
 
