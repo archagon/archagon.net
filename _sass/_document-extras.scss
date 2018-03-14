@@ -43,11 +43,11 @@
     a {
         color: mix(black, green, 20%);
 
-        &:visited {
-            color: mix(black, green, 40%);
-        }
+        // &:visited {
+        //     color: mix(black, green, 40%);
+        // }
         &:hover {
-            color: mix(black, green, 0%);
+            color: mix(white, mix(black, green, 20%), 30%);
         }
     }
 }
@@ -183,11 +183,11 @@
     a {
         color: mix(black, green, 20%);
 
-        &:visited {
-            color: mix(black, green, 40%);
-        }
+        // &:visited {
+        //     color: mix(black, green, 40%);
+        // }
         &:hover {
-            color: mix(black, green, 0%);
+            color: mix(white, mix(black, green, 20%), 30%);
         }
     }
 
