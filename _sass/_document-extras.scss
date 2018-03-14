@@ -37,7 +37,7 @@
 }
 
 .update {
-    color: green;
+    color: lighten(green, 10%);
 
     // green links
     a {
