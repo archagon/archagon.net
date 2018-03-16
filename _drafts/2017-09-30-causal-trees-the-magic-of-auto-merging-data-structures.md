@@ -128,7 +128,7 @@ With CRDTs on my mind, I saw before me the promise of a mythical "golden file". 
 <figcaption>The mythical, eminently-mergable golden file in its adventures through the semilattice.</figcaption>
 </figure>
 
-My next step was to sift through the academic literature on CRDTs. There was a group of usual suspects for the hard case of sequence (text) CRDTs: [WOOT][woot], [Treedoc][treedoc], [Logoot][logoot]/[LSEQ][lseq], and [RGA][rga]. WOOT is the progenitor of the genre and makes each character in a string reference its adjacent neighbors on both sides. Recent analysis has shown this to be inefficient compared to newer approaches. Treedoc has a similar early-adoptor performance penalty and additionally requires coordination for its garbage collection—a no-go for true decentralization. Logoot (which is optimized further by LSEQ) curiously avoids tombstones by treating each sequence item as a unique point along a dense (infinitely-divisible) number line, and in exchange adopts item identifiers (similar to bignums) which have unbounded growth. Unfortunately, it has a problem with [interleaved text on concurrent edits](https://stackoverflow.com/questions/45722742/logoot-crdt-interleaving-of-data-on-concurrent-edits-to-the-same-spot). RGA makes each character implicitly reference its intended neighbor to the left and uses a hash table to make character lookup efficient. It also features an additional update operation alongside the usual insert and delete. This approach often comes out ahead in benchmark comparisons though the paper is annoyingly dense in theory. I also found a couple of recent, non-academic CRDT designs such as [Y.js][yjs] and the [Xi CRDT][xi], both of which brought something new to the table but felt rather convoluted in comparison to RGA. In almost all these cases, conflicts between concurrent changes were resolved by way of a creator UUID plus a logical timestamp per character. Sometimes, they were discarded when an operation was applied; sometimes, they were persisted for each character.
+My next step was to sift through the academic literature on CRDTs. There was a group of usual suspects for the hard case of sequence (text) CRDTs: [WOOT][woot], [Treedoc][treedoc], [Logoot][logoot]/[LSEQ][lseq], and [RGA][rga]. WOOT is the progenitor of the genre and makes each character in a string reference its adjacent neighbors on both sides. Recent analysis has shown this to be inefficient compared to newer approaches. Treedoc has a similar early-adoptor performance penalty and additionally requires coordination for its garbage collection—a no-go for true decentralization. Logoot (which is optimized further by LSEQ) curiously avoids tombstones by treating each sequence item as a unique point along a dense (infinitely-divisible) number line, and in exchange adopts item identifiers (similar to bignums) which have unbounded growth. Unfortunately, it has a problem with [interleaved text on concurrent edits](https://stackoverflow.com/questions/45722742/logoot-crdt-interleaving-of-data-on-concurrent-edits-to-the-same-spot). RGA makes each character implicitly reference its intended neighbor to the left and uses a hash table to make character lookup efficient. It also features an additional update operation alongside the usual insert and delete. This approach often comes out ahead in benchmark comparisons though the paper is annoyingly dense in theory. I also found a couple of recent, non-academic CRDT designs such as [Y.js][yjs] and [xi][xi], both of which brought something new to the table but felt rather convoluted in comparison to RGA. In almost all these cases, conflicts between concurrent changes were resolved by way of a creator UUID plus a logical timestamp per character. Sometimes, they were discarded when an operation was applied; sometimes, they were persisted for each character.
 
 Reading the literature was highly educational, and I now had a good intuition about the behavior of convergent sequence CRDTs. But I just couldn't find very much in common between the disparate approaches. Each one brought its own proofs, methods, optimizations, conflict resolution methods, and garbage collection schemes to the table. Many of the papers blurred the line between theory and implementation, making it even harder to suss out underlying principles. I felt confident using these algorithms for convergent arrays, but I wasn't quite sure how to build my own custom, convergent data structures using the same principles.
 
@@ -142,7 +142,7 @@ Say you're designing a convergent sequence CvRDT from scratch. Instead of pickin
 
 Here's an example concurrent string mutation, just to have some data to work with.
 
-<img src="{{ site.baseurl }}/images/blog/causal-trees/network-chart.svg" style="width:47rem">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/network-chart.svg" style="width:40rem">
 
 The small numbers over the letters are [Lamport timestamps][lamport]. Site 1 types "CMD", sends its changes to Site 2 and Site 3, then resumes its editing. Sites 2 and 3 then make their own changes and send them back to Site 1 for the final merge. The result, "CTRLALTDEL", is the most intuitive merge we might expect: insertions and deletions all persist, runs of characters don't split up, and most recent changes come first.
 
@@ -182,7 +182,7 @@ This is the underlying premise of the [Causal Tree][ct] CRDT.
 
 In contrast to all the other CRDTs I'd been looking into, the design presented in Victor Grishchenko's [brilliant paper][ct] was simultaneously clean, performant, and consequential. Instead of dense layers of theory and complex data structures, everything was centered around the idea of atomic, immutable, and globally unique operations, stored in low-level data structures and directly usable as the data they represented. From this, entire classes of features effortlessly followed.
 
-The rest of the paper will be describing [my own CT implementation in Swift](https://github.com/archagon/crdt-playground/tree/master/CRDTFramework), incorporating most of the concepts in the original paper but with tweaks to certain details based on further research.
+The rest of the paper will be describing [my own CT implementation in Swift](https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CRDTFramework), incorporating most of the concepts in the original paper but with tweaks to certain details based on further research.
 
 In CT parlance, the operation structs that make up the tree are called **atoms**. Each atom has a unique **identifier** comprised of a **site** UUID, **index**, and Lamport **timestamp**[^awareness]. The index and timestamp serve the same role of logical clock, and the data structure could be made to work with one or the other in isolation. The reason to have both is to enable certain optimizations: the index for *O*(1) atom lookups by identifier, and the timestamp for *O*(1) causality queries between atoms. The heart of an atom is its **value**, which defines the given operation and stores any extra data. For an insert operation, this would be the new character to place, while delete operations contain no extra data. An atom also has a **cause** (or parent), which is another atom identifier that the current atom is said to "follow". As explained earlier, this causal link simply represents the character to the left of an insertion or the target of a deletion. Assuming that the site is stored in 2 bytes[^uuid2], the index in 4 bytes, and the timestamp in 4 bytes, each character in a basic Causal Tree string is, at minimum, 12× the size of an ordinary C-string character.
 
@@ -381,7 +381,8 @@ But questions still remain. For instance: what do we do if a site simply stops e
 Alternatively, we might relax rule c) and allow the baseline to potentially orphan remote operations. In this scheme, we would have a sequence of baselines associated with our RDT. Any site would be free to pick a new baseline that was explicitly higher than (not concurrent to!) the previous baseline, taking care to pick one that had the highest chance of preserving operations on other sites[^preservation]. Then, any site receiving new baselines in the sequence would be required to apply them in order[^baselines]. Upon receiving and executing a baseline, a site that had operations causally dependent on the newly-removed operations but not included in the baseline would be obliged to either drop them or to add them to some sort of secondary "orphanage" RDT.
 
 [^preservation]: If we still had access to our site-to-version-vector map, we could pick a baseline common to every reasonably active site. This heuristic could be further improved by upgrading our Lamport timestamp to a [hybrid logical clock][hlc]. (A Lamport timestamp is allowed to be arbitrarily higher than the previous timestamp, not just +1 higher, so we can combine it with a physical timestamp and correction data to get the approximate wall clock time for each operation.)
-[^baselines]: We have to use a sequence of baselines and not just a baseline register because all sites, per CRDT rules, must end up with the same data after seeing the same set of operations. With a register, if a site happens to miss a few baselines, it could end up retaining some meant-to-be-orphaned operations if a new baseline gets far enough to cover them. Now some sites would have the orphans and others wouldn't. Inconsistency!
+
+[^baselines]: We have to use a sequence of baselines and not just a baseline register because all sites, per CRDT rules, must end up with the same data after seeing the same set of operations. With a register, if a site happens to miss a few baselines, it could end up retaining some meant-to-be-orphaned operations if a new baseline gets far enough to include them. Now some sites would have the orphans and others wouldn't. Inconsistency!
 
 But even here we run into problems with coordination. If this scheme worked as written, we would be a-OK, so long as sites were triggering garbage collection relatively infrequently and only during quiescent moments (as determined to the best of a site's ability). But we have a bit of an issue when it comes to picking strictly higher baselines. What happens if two peers concurrently pick new baselines that orphan each others' operations?
 
@@ -671,7 +672,7 @@ When I first started reading up on CRDTs, it was unclear to me how conflict reso
 
 This is only one possible approach, however, and the developer is free to do anything when a conflict is detected: present a selection to the user, pick the value with the lowest timestamp, use some special function for combining the values. The underlying CT will *always* remain consistent under concurrency; figuring out what to do with this information is entirely up to the app.
 
-Finally, my implementation includes a [new, stateless layer](https://github.com/archagon/crdt-playground/blob/master/CRDTPlayground/TestingExtras/Data%20Interfaces/CausalTreeBezierWrapper.swift) on top of the CT that provides a more model-appropriate API and sanity checking. Since the Bézier tree has more constraints on its structure than the underlying CT, there's an additional, higher-level `validate` method that verifies all the new preconditions after the CT is itself validated. Other helper functions ensure that the consistency of the tree is not compromised when new points, shapes, or attributes are added. From the outside, callers can safely use methods like `addShape` or `updateAttributes` on the wrapper without having to worry about the CT at all. It looks just like any other model object. (Incidentally, this approach to layering CRDTs is discussed in [this paper][layering], though the technique isn't exactly novel.)
+Finally, my implementation includes a [new, stateless layer](https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CRDTPlayground/TestingExtras/Data%20Interfaces/CausalTreeBezierWrapper.swift) on top of the CT that provides a more model-appropriate API and sanity checking. Since the Bézier tree has more constraints on its structure than the underlying CT, there's an additional, higher-level `validate` method that verifies all the new preconditions after the CT is itself validated. Other helper functions ensure that the consistency of the tree is not compromised when new points, shapes, or attributes are added. From the outside, callers can safely use methods like `addShape` or `updateAttributes` on the wrapper without having to worry about the CT at all. It looks just like any other model object. (Incidentally, this approach to layering CRDTs is discussed in [this paper][layering], though the technique isn't exactly novel.)
 
 It's possible that the use case of representing custom data types as CTs is a bit esoteric. Certainly, I wouldn't use a CT for something like a PSD or DOC file. But just as with structs versus objects, I can imagine a number of scenarios where a small, custom CT might make the code so much cleaner and more performant than a higher-level collection of array, map, and register CRDTs. Quick, versatile, and simple data structures often turn out to be very practical tools!
 
@@ -756,11 +757,16 @@ I'd say: it's surely worth it!
 * [Towards a Unified Theory of Operational Transformation and CRDT][convergence] (foundation for the CRDT used in xi)
 * [Convergence Versus Consensus: CRDTs and the Quest for Distributed Consistency](https://speakerdeck.com/ept/convergence-versus-consensus-crdts-and-the-quest-for-distributed-consistency) (great illustrated overview by the Automerge folks)
 
-**Modern CRDT Implementations and Frameworks**
+**Operational CRDT Code**
 
 * [Replicated Object Notation][ron] (the [rdt folder](https://github.com/gritzko/ron/tree/master/rdt) contains the CRDT definitions)
+ 
+**Non-Operational CRDT Code**
+
+* [xi][xi]
 * [Automerge][automerge]
-* [Xi Editor][xi]
+* [Atom Teletype][atom]
+* [Y.js][yjs]
 
 **Other Materials**
 
@@ -786,8 +792,8 @@ I'd say: it's surely worth it!
 [pure-op]: https://arxiv.org/pdf/1710.04469.pdf
 [lamport]: https://en.wikipedia.org/wiki/Lamport_timestamps
 [crdt-playground]: https://github.com/archagon/crdt-playground
-[string-wrapper]: https://github.com/archagon/crdt-playground/blob/master/CloudKitRealTimeCollabTest/Model/CausalTreeStringWrapper.swift
-[container-wrapper]: https://github.com/archagon/crdt-playground/blob/master/CloudKitRealTimeCollabTest/Model/CausalTreeCloudKitTextStorage.swift
+[string-wrapper]: https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CRDTFramework/StringRepresentation/CausalTreeStringWrapper.swift
+[container-wrapper]: https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CloudKitRealTimeCollabTest/Model/CausalTreeCloudKitTextStorage.swift
 [cap]: https://en.wikipedia.org/wiki/CAP_theorem
 [hlc]: http://sergeiturukin.com/2017/06/26/hybrid-logical-clocks.html
 [treedoc]: https://hal.inria.fr/inria-00397981/document
@@ -795,3 +801,6 @@ I'd say: it's surely worth it!
 [lseq]: https://hal.archives-ouvertes.fr/hal-00921633/document
 [ron]: https://github.com/gritzko/ron
 [rope]: https://en.wikipedia.org/wiki/Rope_(data_structure)
+[yjs]: https://github.com/y-js/yjs
+[atom]: https://github.com/atom/teletype-crdt
+[orbitdb]: https://github.com/orbitdb/crdts
