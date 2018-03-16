@@ -3,7 +3,9 @@
 ---
 @charset "utf-8";
 
-$base-font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+// Palatino Linotype has better spacing with e.g. "/r/place", but only comes with MS stuff, alas
+$base-font-family: "Palatino Linotype", "Palatino LT STD", Palatino, "Book Antiqua", Georgia, serif;
+
 // $base-font-family: 'Vollkorn', serif;
 // $base-font-family: 'Merriweather', serif;
 //$base-font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;

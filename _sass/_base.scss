@@ -41,9 +41,9 @@
 
 // annoying mobile auto-resizing
 html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
 }
 
 // reset for em and rem
@@ -182,6 +182,10 @@ code {
     padding: 0.05em 0.3em; //0.05 to capture underlines
     border-radius: 0.3em;
     background-color: mix(green, white, 15%);
+
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
 }
 pre {
     display: block;
