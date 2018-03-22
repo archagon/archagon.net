@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Data Laced with History: Causal Trees & Operational CRDTs"
-date: 2018-03-07
+date: 2018-03-23
 comments: true
 categories: programming
 ---
@@ -811,7 +811,7 @@ I'd say: it's surely worth it!
 [crdt]: https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
 [ct]: http://www.ds.ewi.tudelft.nl/~victor/articles/ctre.pdf
 [diffsync]: https://neil.fraser.name/writing/sync/
-[cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&rep=rep1&type=pdf
+[cp2]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.933&amp;rep=rep1&amp;type=pdf
 [woot]: https://hal.archives-ouvertes.fr/inria-00108523/document
 [rga]: https://pdfs.semanticscholar.org/8470/ae40470235604f40382aea4747275a6f6eef.pdf
 [layering]: https://arxiv.org/pdf/1212.2338.pdf
