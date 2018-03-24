@@ -11,8 +11,13 @@
 ">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&amp;subset=latin-ext">
+
+<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=Vollkorn:400,400i,600,600i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+
 <link rel="stylesheet" href="/css/normalize.css">
 <link rel="stylesheet" href="/css/main.css">
 
@@ -256,7 +261,7 @@
 
 <p><img src="/images/Popup.png" width="320px" /></p>
 
-<p>In the early betas, you couldn’t do much at all. Your best option was to either draw sideways popups or just do nothing. Closer to release, we got the ability to expand the height of the keyboard view. Sadly, the implementation feels like an afterthought. </p>
+<p>In the early betas, you couldn’t do much at all. Your best option was to either draw sideways popups or just do nothing. Closer to release, we got the ability to expand the height of the keyboard view. Sadly, the implementation feels like an afterthought.</p>
 
 <p>Apple specifies in the docs that you can change the height of your keyboard by adding an autolayout constraint with a constant value to the keyboard view. However, if you actually follow these instructions, you’ll find something like this in your log:</p>
 
@@ -415,10 +420,10 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 <div class="footnotes">
   <ol>
     <li id="fn:other_translit_techniques">
-      <p>There were a number of other interesting ways to accomplish the same goal, including Quartz event taps and <code class="highlighter-rouge">.keylayout</code> files. You can check out the code, in various states of completion, in <a href="https://github.com/archagon/cyrillic-transliterator">my Github repo</a>. (Warning: gnarly code ahead!) <a href="#fnref:other_translit_techniques" class="reversefootnote">&#8617;</a></p>
+      <p>There were a number of other interesting ways to accomplish the same goal, including Quartz event taps and <code class="highlighter-rouge">.keylayout</code> files. You can check out the code, in various states of completion, in <a href="https://github.com/archagon/cyrillic-transliterator">my Github repo</a>. (Warning: gnarly code ahead!) <a href="#fnref:other_translit_techniques" class="reversefootnote">&#8617;&#xfe0e;</a></p>
     </li>
     <li id="fn:spacer_views">
-      <p>If you want to have equal spacing between a set of views, you need to add an equally-sized set of “spacer” views between them. This is the technique recommended in the official documentation. <a href="#fnref:spacer_views" class="reversefootnote">&#8617;</a></p>
+      <p>If you want to have equal spacing between a set of views, you need to add an equally-sized set of “spacer” views between them. This is the technique recommended in the official documentation. <a href="#fnref:spacer_views" class="reversefootnote">&#8617;&#xfe0e;</a></p>
     </li>
   </ol>
 </div>

@@ -6,8 +6,8 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 29 Dec 2017 16:37:32 -0800</pubDate>
-    <lastBuildDate>Fri, 29 Dec 2017 16:37:32 -0800</lastBuildDate>
+    <pubDate>Fri, 23 Mar 2018 18:17:16 -0700</pubDate>
+    <lastBuildDate>Fri, 23 Mar 2018 18:17:16 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
@@ -144,7 +144,7 @@
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;update-2017-12-29&quot;&gt;Update 2017-12-29&lt;/h1&gt;
+&lt;h3 id=&quot;update-2017-12-29&quot;&gt;Update 2017-12-29&lt;/h3&gt;
 
 &lt;p&gt;After a few more weeks (!) of deliberation, I’ve decided to go with the Crossfade as my headphone of choice.&lt;/p&gt;
 
@@ -160,15 +160,15 @@
 
 &lt;p&gt;I think what I’ve learned from this arduous journey is that there really is no perfect headphone. Much as we like to pretend otherwise, neutrality is not the be-all, end-all of audio. Some music, especially modern music, simply deflates when the tuning is flat. If you’re a genre omnivore, this is a problem when it comes to picking a single pair of headphones and sticking to them faithfully until your next big purchase. Perhaps this is the first step towards having one of those crazy-person headphone walls!&lt;/p&gt;
 
-&lt;p&gt;On the Bluetooth horizon, we have the Beyerdynamic Aventho, the NAD HP70, and the PSB M4U 8. In a year, I’d love to give these new contenders a listen and revisit my choice. The PX really is a great headphone, but it feels like it needs quite a bit more work and polish in order to excel as a Bluetooth all-arounder.&lt;/p&gt;
+&lt;p&gt;On the Bluetooth horizon, we have the Beyerdynamic Aventho and Amiron Wireless, the NAD HP70, the PSB M4U 8, and the Audio-Technica ANC700BT. In a year, I’d love to give these new contenders a listen and revisit my choice. The PX really is a great headphone, but it feels like it needs quite a bit more work and polish in order to excel as a Bluetooth all-arounder.&lt;/p&gt;
 
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;I even wrote an open source iOS app to help me with this: &lt;a href=&quot;https://github.com/archagon/ios-bluetooth-headphone-unsleeper&quot;&gt;ios-bluetooth-headphone-unsleeper&lt;/a&gt;. All it does is play a near-silent audio stream when you hit the switch, forcing the MDR-1RBT to stay on while the app is running. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;I even wrote an open source iOS app to help me with this: &lt;a href=&quot;https://github.com/archagon/ios-bluetooth-headphone-unsleeper&quot;&gt;ios-bluetooth-headphone-unsleeper&lt;/a&gt;. All it does is play a near-silent audio stream when you hit the switch, forcing the MDR-1RBT to stay on while the app is running. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
     &lt;li id=&quot;fn:2&quot;&gt;
-      &lt;p&gt;Incidentally, the rose gold model costs $20 more than the others and happens to be the only one that supports the high resolution aptX codec. Why? I have no idea! &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;Incidentally, the rose gold model costs $20 more than the others and happens to be the only one that supports the high resolution aptX codec. Why? I have no idea! &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;
@@ -184,7 +184,7 @@
     
       <item>
         <title>MX Master Continued: Mouse Latency Measurements</title>
-        <description>&lt;p&gt;In the course of doing latency testing for &lt;a href=&quot;/blog/2017/05/22/almost-winning-the-wireless-mouse-game-logitech-mx-master/&quot;&gt;my previous article&lt;/a&gt; on the Logitech MX Master, I discovered a couple of flaws in my helper app, and I also realized that I should have probably recorded a few more sample points. So now, as a followup, I have devised a better testing methodology and run a full suite of tests. Unfortunately, with this new data in hand, I must now retract my original recommendation. The Master is still a good mouse for the average user, but its wireless performance is just too unreliable for precise gaming or Bluetooth use. &lt;/p&gt;
+        <description>&lt;p&gt;In the course of doing latency testing for &lt;a href=&quot;/blog/2017/05/22/almost-winning-the-wireless-mouse-game-logitech-mx-master/&quot;&gt;my previous article&lt;/a&gt; on the Logitech MX Master, I discovered a couple of flaws in my helper app, and I also realized that I should have probably recorded a few more sample points. So now, as a followup, I have devised a better testing methodology and run a full suite of tests. Unfortunately, with this new data in hand, I must now retract my original recommendation. The Master is still a good mouse for the average user, but its wireless performance is just too unreliable for precise gaming or Bluetooth use.&lt;/p&gt;
 
 &lt;p&gt;If you’re looking for a great all-arounder, I would instead give my highest recommendation to the &lt;a href=&quot;http://amzn.to/2uDAeF2&quot;&gt;G403 Wireless&lt;/a&gt;, which I’ve been happily using for several months with zero issues. While this mouse does require a dongle and only has a tenth of the Master’s battery life, its best-in-class performance, non-existent latency, svelte form factor, and incredible clicky side buttons more than make up for these downsides. Better yet, you can routinely find it on sale for $50 or lower on Amazon and at Best Buy. I’ll try to post a fuller account sometime in the near future.&lt;/p&gt;
 
@@ -298,9 +298,9 @@
 
 &lt;p&gt;Below is a discussion of several aspects of these mice that haven’t been covered in most reviews, including handfeel, clickiness, gaming use, and latency measurements.&lt;/p&gt;
 
-&lt;h2 id=&quot;mx-anywhere-2anywhere&quot;&gt;&lt;a href=&quot;http://amzn.to/2rb6SRe&quot;&gt;MX Anywhere 2&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;mx-anywhere-2&quot;&gt;&lt;a href=&quot;http://amzn.to/2rb6SRe&quot;&gt;MX Anywhere 2&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;The MX Anywhere 2 is a cute little mouse. Some reviewers have been comfortable switching to it as their primary work mouse, but in my testing, I found it just a bit too small. This is definitely a travel mouse in form and function. The weight, however, is great for usability, as it’s just hefty enough to stick a little to the mousepad without losing its high mobility. &lt;/p&gt;
+&lt;p&gt;The MX Anywhere 2 is a cute little mouse. Some reviewers have been comfortable switching to it as their primary work mouse, but in my testing, I found it just a bit too small. This is definitely a travel mouse in form and function. The weight, however, is great for usability, as it’s just hefty enough to stick a little to the mousepad without losing its high mobility.&lt;/p&gt;
 
 &lt;p&gt;Click-wise, the two main buttons feel pretty good while the rest aren’t particularly notable. I was happy that the side navigation buttons were fairly normal sized compared to the scrunched side buttons on the Master. The coating feels grippy but maybe a tiny bit less premium than I’d hoped.&lt;/p&gt;
 
@@ -326,7 +326,7 @@ Your browser does not support the video tag.
 
 &lt;p&gt;For a while, I tried rebinding the square button and sideways-click buttons to middle click. It felt OK… in the sense that I could probably get used to it over time. But I knew I’d never be happy with this compromise, and it’s what ultimately pushed me to give the Master a try.&lt;/p&gt;
 
-&lt;h2 id=&quot;mx-mastermaster&quot;&gt;&lt;a href=&quot;http://amzn.to/2qbiPSM&quot;&gt;MX Master&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;mx-master&quot;&gt;&lt;a href=&quot;http://amzn.to/2qbiPSM&quot;&gt;MX Master&lt;/a&gt;&lt;/h2&gt;
 
 &lt;p&gt;I’m delighted that tech companies have started to inject fashion into even their most pragmatic products. Both MX models come in black, navy, and white (“stone”). I liked the idea of white in honor of my old favorite &lt;a href=&quot;http://amzn.to/2rKpWCQ&quot;&gt;Microsoft Intellimouse&lt;/a&gt;, and it’s the color I chose for my initial Anywhere purchase. But seeing it in person didn’t impress me as much as I had hoped. It was attractive but a little business casual, and in any case, it didn’t mesh with my recent black &lt;a href=&quot;http://amzn.to/2rbgpb0&quot;&gt;Logitech K380&lt;/a&gt; keyboard purchase. (Peripheral matching, whaddaboutit?) So I decided to seek a different color with the MX Master.&lt;/p&gt;
 
@@ -384,7 +384,7 @@ Your browser does not support the video tag.
 
 &lt;p&gt;I ended up writing a small, single-window Mac application to help me along. On the left side, the window has a running millisecond timer, refreshing at the exact frequency of the display. This gave me the precise timestamp of each display cycle. (Well — with a possible delta of 1 frame or ~17ms, depending on how the labels spaced out their updates under the hood. But I was only interested in relative latencies between the mice, not the absolute latency, so the only important detail was that this offset was consistent.) The app also captured the timestamp for the precise moment mouse movement was first detected. This was displayed in a label on the right side. Both timestamps were generated using the same time function, &lt;code class=&quot;highlighter-rouge&quot;&gt;CACurrentMediaTime&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Next, I placed a mousepad next to my display along with a small box to evenly and consistently push the mouse along. I set up my phone to show both the laptop display (with the timer app running) and a side view of the mouse and box contact point. I filmed three trials each of the MX 518, MX Master with the USB adaptor, and MX Master in Bluetooth mode, resetting the righthand timer between each trial. &lt;/p&gt;
+&lt;p&gt;Next, I placed a mousepad next to my display along with a small box to evenly and consistently push the mouse along. I set up my phone to show both the laptop display (with the timer app running) and a side view of the mouse and box contact point. I filmed three trials each of the MX 518, MX Master with the USB adaptor, and MX Master in Bluetooth mode, resetting the righthand timer between each trial.&lt;/p&gt;
 
 &lt;p&gt;Finally, I went through the videos frame-by-frame in VLC. (The ‘e’ key: highly convenient!) The left timestamp was used to determine the exact moment when the mouse started moving. If the movement occurred between two timestamps, I could simply interpolate the precise value based on which intermediary frame out of four I landed on. After that, I noted the righthand (“mouse was detected”) timestamp and did a bit of math to arrive at the latency value. Perhaps not a perfect system, but as accurate as I could manage with the tools I had at hand!&lt;/p&gt;
 
@@ -709,11 +709,11 @@ Your browser does not support the video tag.
   &lt;li&gt;&lt;a href=&quot;http://amzn.to/2iQUoWJ&quot;&gt;A 120W 12V/10A power adaptor with a 5.5×2.5mm plug and center positive polarity&lt;/a&gt; ($35 — though buy it from a seller with Prime in case it’s the wrong one! This listing used to have a Prime seller, but I don’t see them anymore. Also, HN has pointed out that &lt;a href=&quot;http://www.mini-box.com/12v-10A-AC-DC-Power-Adapter&quot;&gt;this&lt;/a&gt; may be a far better adaptor, even if it’s not sold on Amazon.)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;…you can assemble a painless, hack-less eGPU build and use it with your late-2013 15” dGPU MacBook as a relatively inexpensive graphics upgrade compared to building a PC from scratch or buying a console. (Cheaper still if you wait for rebates or use an older/weaker X50 card.) &lt;strong&gt;Caveat emptor:&lt;/strong&gt; the same build might not work so well — or at all! — on other MacBook models or even with a different driver version. In other words, &lt;strong&gt;what worked for me might not work for you!&lt;/strong&gt; Remember that eGPU on TB2 is not officially supported and mostly works by accident, though clearly it can work very well. &lt;/p&gt;
+&lt;p&gt;…you can assemble a painless, hack-less eGPU build and use it with your late-2013 15” dGPU MacBook as a relatively inexpensive graphics upgrade compared to building a PC from scratch or buying a console. (Cheaper still if you wait for rebates or use an older/weaker X50 card.) &lt;strong&gt;Caveat emptor:&lt;/strong&gt; the same build might not work so well — or at all! — on other MacBook models or even with a different driver version. In other words, &lt;strong&gt;what worked for me might not work for you!&lt;/strong&gt; Remember that eGPU on TB2 is not officially supported and mostly works by accident, though clearly it can work very well.&lt;/p&gt;
 
 &lt;p&gt;(Also, there’s some great information in the &lt;a href=&quot;https://news.ycombinator.com/item?id=13303912&quot;&gt;HN thread for this post&lt;/a&gt; about new and upcoming TB3 enclosures. If you can get one working with a TB3-to-TB2 adaptor, it might be the best option of all for upgradability, reliability, and future-proofing. On the other hand, you’ll probably spend more money and the case will be a lot bigger. Do your research!)&lt;/p&gt;
 
-&lt;p&gt;In time, I hope somebody releases a Thunderbolt 3 eGPU the size of one of those Square credit card readers — maybe sporting a GTX 980M caliber chip? — that plugs into a USB-C port and works seamlessly with the internal display. But for now, this lovely little eGPU will do just fine. I’m confident that my trusty MacBook can now serve me for another few years, especially if NVIDIA continues to release excellent and inexpensive PCI-powered cards on the regular. &lt;/p&gt;
+&lt;p&gt;In time, I hope somebody releases a Thunderbolt 3 eGPU the size of one of those Square credit card readers — maybe sporting a GTX 980M caliber chip? — that plugs into a USB-C port and works seamlessly with the internal display. But for now, this lovely little eGPU will do just fine. I’m confident that my trusty MacBook can now serve me for another few years, especially if NVIDIA continues to release excellent and inexpensive PCI-powered cards on the regular.&lt;/p&gt;
 
 &lt;p&gt;Let’s hope that the eGPU revolution is just beginning!&lt;/p&gt;
 
@@ -837,7 +837,7 @@ done
 	Your browser does not support the video tag.
 &lt;/video&gt;
 
-&lt;p&gt;And that’s all it takes to create your own personal art gallery using &lt;a href=&quot;https://itunes.apple.com/us/app/backgroundifier/id1040333206?mt=12&amp;amp;at=1000lqfI&quot;&gt;Backgroundifier&lt;/a&gt;. No mysterious system overrides or hacks. No 3rd party tools of unknown provenance. Just a Unix-y converter, an Automator script, and a couple of native macOS features to tie it all together. &lt;/p&gt;
+&lt;p&gt;And that’s all it takes to create your own personal art gallery using &lt;a href=&quot;https://itunes.apple.com/us/app/backgroundifier/id1040333206?mt=12&amp;amp;at=1000lqfI&quot;&gt;Backgroundifier&lt;/a&gt;. No mysterious system overrides or hacks. No 3rd party tools of unknown provenance. Just a Unix-y converter, an Automator script, and a couple of native macOS features to tie it all together.&lt;/p&gt;
 
 &lt;p&gt;It’s quite a thing knowing that a new, enriching artistic discovery — be it a Picasso, a Van Gogh, or even a Mike From Around The Web — is only a quick peek away!&lt;/p&gt;
 
@@ -932,12 +932,7 @@ done
 
 &lt;style&gt;
 .toc.composers-sketchpad {
-  background-color: #c6eaff;
-  font-family: 'Avenir Next', 'Helvetica', 'Arial', sans-serif;
-  font-size: 0.95em;
-  font-weight: 500; }
-  .toc.composers-sketchpad .toc-header &gt; p {
-    color: #444; }
+  background-color: #c6eaff; }
   .toc.composers-sketchpad .toc-links &gt; ol li:nth-child(4) {
     color: white;
     border-radius: 0.5em;
