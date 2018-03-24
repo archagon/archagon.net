@@ -500,26 +500,6 @@ public protocol CvRDT: Codable, Hashable
 
 CvRDTs are especially vulnerable to bad input since there's no guarantee of a central server to fix mistakes. In order to minimally safeguard against malicious and misbehaving peers, I’ve added a validation method to this interface. In the CT case, the `validate` method goes through the weave and checks as many preconditions as possible, including child ordering, atom type, priority atom behavior, and several others.
 
-Next, if a CvRDT is an ORDT as described in the previous section, we can expose even more functionality through the interface:
-
-```swift
-public protocol OperationalCvRDT: CvRDT
-{
-    var lamportClock: CRDTCounter<Int32> { get }
-  
-    func baseline() -> Weft // the point beyond which the CvRDT is compacted or reduced
-    mutating func garbageCollect(_ w: Weft) // sets the baseline
- 
-    // make the CvRDT behave like an older (read-only) revision
-    func revision() -> Weft?
-    mutating func setRevision(_ r: Weft?) throws
-  
-    mutating func blame(_ a: AtomId) -> SiteIndex?
-}
-```
-
-The methods for viewing past revisions aren't necessary, but they're potentially very useful to the end user and almost trivial to implement in operational CRDTs. If you know that a particular weft is consistent, getting a read-only view of the object at that point in time is as simple as filtering out operations older than the given weft and maybe regenerating the caches. (My string CT does this through the use of array slices.) As for getting a list of consistent wefts, one simple way to do this is to store the current weft right before any remote changes are integrated.
-
 Next: UUIDs. So far, I've been describing my site identifiers as 16-bit integers since it's unlikely that any document would have more than 65,000 collaborators. (And frankly, in most cases 8 or even 4 bits would do.) However, this is not enough for any reasonable definition of a UUID. Without coordination, you'll need a minimum of 128 bits to generate a truly unique value, but storing two full 128-bit UUIDs in each atom—one for its own site and one for its cause—would balloon it to 3× its original size!
 
 I've solved this with the help of a secondary CRDT that is stored and transferred along with the CT: an ordered, insert-only array of known UUIDs called the **site map**. The 16-bit site identifier corresponding to a UUID is simply its index in this array.
@@ -539,7 +519,7 @@ public protocol IndexRemappable
 
 Any CRDT that makes use of the site map needs to implement this protocol. Whenever a merge that would cause some of the site IDs to change is invoked, the `remapIndices` method gets called on the CRDT before the merge is actually executed. We're running *O*(*n*) operations when receiving remote data anyway, so performance is not a huge factor. Nonetheless, I made one additional tweak to ensure that remapping only happens very rarely. Instead of storing just the UUID in the site map, I also store the wall clock time at which the UUID was added. In the site map, these tuples are sorted first by time, then by UUID. Assuming that modern connected devices tend to have relatively accurate clocks (but not relying on this fact for correctness), we can ensure that new sites almost always get appended to the end of the ordered array and thus avoid shifting any of the existing UUIDs out of their previous spots. The only exception is when multiple sites happen to be added concurrently or when the wall clock on a site is significantly off.
 
-In summary, the final interface to our CT ends up looking something like this:
+The skeleton for our CT interface ends up looking something like this:
 
 ```swift
 public protocol CausalTreeSiteUUIDT: Hashable, Comparable, Codable {}
@@ -554,16 +534,14 @@ public final class SiteIndex
 
 public final class Weave
     <S: CausalTreeSiteUUIDT, V: CausalTreeValueT> :
-    OperationalCvRDT, IndexRemappable, NSCopying
-{
-    public private(set) var lamportTimestamp: CRDTCounter<Int32>
-  
+    CvRDT, IndexRemappable, NSCopying
+{ 
     // etc.
 }
 
 public final class CausalTree
     <S: CausalTreeSiteUUIDT, V: CausalTreeValueT> :
-    OperationalCvRDT, IndexRemappable, NSCopying
+    CvRDT, IndexRemappable, NSCopying
 {
     public private(set) var siteIndex: SiteIndex<S>
     public private(set) var weave: Weave<S, V>
@@ -571,6 +549,10 @@ public final class CausalTree
     // etc., with CvRDT interface calls forwarded to the site index and weave
 }
 ```
+
+In order to support viewing past revisions, my CT exposes its operation array to the outside world through a [specialized collection struct][slice]. By passing in a consistent weft to the accessor function, you can read a historic version of the CT through the exact same interface as the current version, substantially simplifying any wrappers that use the CT as their backing store. To get a list of consistent wefts, all you need to do is store the current weft right before any remote changes are integrated.
+
+[slice]: https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CRDTFramework/CRDTCausalTreesWeave.swift#L723
 
 One last feature specific to CTs is the priority flag for atoms. If an atom has priority, that atom and all its descendants get sorted ahead of any sibling subtrees in the parent's causal block, even if it has a lower Lamport timestamp. (Put another way, a priority flag is simply another variable to be used in the sorting comparator, i.e. timestamp+UUID+priority.) This property gives us a lot of structural control, ensuring that, for instance, delete atoms hug their target atoms and never find themselves lost in the weave if some concurrent insert operations appear at the same spot. It does require some special casing during weave mutation and merge, however.
 
@@ -750,15 +732,15 @@ My CT is only a dumb data structure, and as such, has no provisions for dealing 
 
 Whew, that was a bit more than I intended to write!
 
-I didn't even think such a thing was possible, but CRDTs have proven to be that mythical, all-encompassing convergent data type I set out to find. You can use them in practically any computing environment and they will happily merge. They work offline just as well as online. They're relatively easy to understand without having to write a dissertation. They're composable with each other. You can use them for real-time collaboration, cloud sync, or local file sharing—all without requiring any network coordination.
+I didn't even think such a thing was possible, but CRDTs have proven to be that perfect convergent data type I set out to discover. You can use them in practically any computing environment and they will happily merge. They work offline just as well as online. They're relatively easy to understand without having to write a dissertation. They're composable with each other. You can use them for real-time collaboration, cloud sync, or local file sharing—all without requiring any network coordination.
 
-But even more remarkable is the discovery of Causal Trees and operation-based CRDTs. With this formulation of CRDTs, there's finally a way to understand, design, and implement arbitrary replicated data types. By breaking up conventional data types into atomic operations and arranging them in an efficient order, CRDTs can be made out of practically anything. Operations can be used as-is or condensed into state snapshots, combining all the benefits of CmRDTs, CvRDTs, and even OT. Version vectors can be used to perform garbage collection and past revision viewing in an almost trivial way, while uniquely-identified operations can be used to diff and blame any arbitrary change in a document's history, as well as to deeply link data structures to each other. Even conflict resolution can be precisely tailored to fit the needs of the app. And all this can be done while *simplifying* your architecture, since the paradigm is almost entirely functional!
+But even more remarkable is the discovery of Causal Trees and operation-based CRDTs. With this reformulation of CRDTs, there's finally a consistent way to understand, design, and implement arbitrary replicated data types. By breaking up conventional data structures into globally-unique atomic operations and giving them an order, you can construct efficient CRDTs out of practically anything. Operations can be sent around as-is or condensed into dense state snapshots, combining all the benefits of CmRDTs, CvRDTs, and even OT. Version vectors can be used to perform garbage collection, view past revisions, and otherwise divide up the document in an almost trivial way. Conflict resolution can be precisely tailored to fit the needs of the app and data type. Individual, atomic changes can be sourced to individual contributors and even linked to between ORDTs. Even simple objects can be made convergent with this approach, allowing coordination on the level of individual threads or processes. And all this can be done while *simplifying* the architecture, not mucking it up, since the paradigm is almost entirely functional!
 
-Sure, you have some tradeoffs compared to server-based sync techniques. For instance, CRDT data is always "live", even while offline. A user could accidentally edit their document on two offline devices, then find that they've merged into a mess on reconnection without any way to revert. For good and ill, users will never see the familiar version conflict dialog box. The lack of a guaranteed server also gives malicious users a whole lot more power, since they can irrevocably screw up a document without any possibility of a rollback. Servers can better manage resources by sending partial updates or by only giving a user the data they actually need. You'd also be hard-pressed to avoid servers whenever large amounts of data are concerned, such as in screen sharing or video editing. Finally, CRDTs are fairly rigid structures that require pre-design and future proofing, and can't necessarily be layered on top of existing systems without significant refactoring.
+Sure, there are tradeoffs compared to conventional, centralized sync techniques. For instance, CRDT data is always "live", even while you're offline. A user could accidentally edit their document on two offline devices, then find that they've automatically merged into a mess on reconnection. The lack of an authoritative server gives malicious users a lot of power since they can irrevocably screw up a document without any possibility of a rollback. CRDTs have to maintain tons of extra data for convergence and require their peers to be smart and performant: server-based architectures are naturally more resource-efficient, and you'd also be hard-pressed to avoid them for data-heavy uses such as screen sharing or video editing. CRDTs are fairly rigid structures that require substantial pre-design and future-proofing. You can't necessarily layer them on top of existing systems without significant refactoring.
 
-A CT certainly won't be as fast or as bandwidth-efficient as Google Docs, for such is the power of centralization. But in exchange for a totally peer-to-peer computing future? A world full of systems finally able to freely collaborate with one another? Data-centeric code that's entirely free from network concerns?
+A CRDT will never be as fast or bandwidth-efficient as Google Docs, for such is the power of centralization. But in exchange for a completely peer-to-peer computing future? A world full of systems able to own their data and freely collaborate with one another? Data-centeric code that's entirely free from network concerns?
 
-I'd say: it's surely worth it!
+I'd say: it's surely worth a try!
 
 # References
 
