@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Data Laced with History: Causal Trees & Operational CRDTs"
-date: 2018-03-23
+date: 2018-03-24
 comments: true
 categories: programming
 ---
