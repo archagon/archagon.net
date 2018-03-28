@@ -106,6 +106,7 @@ code {
 pre {
   display: block;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 0.6em 0.8em;
   border-radius: 0.5em;
   background-color: #fafafa !important;
