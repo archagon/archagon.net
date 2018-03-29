@@ -151,7 +151,7 @@ Let's build a sequence CvRDT with this in mind. To have some data to work with, 
 <figcaption><span markdown="1">The small numbers over the letters are [Lamport timestamps][lamport].</span></figcaption>
 </figure>
 
-Site 1 types "CMD", sends its changes to Site 2 and Site 3, then resumes its editing. Sites 2 and 3 then make their own changes and send them back to Site 1 for the final merge. The result, "CTRLALTDEL", is the most intuitive merge we could expect: insertions and deletions all persist, runs of characters don't split up, and most recent changes come first.
+Site 1 types "CMD", sends its changes to Site 2 and Site 3, then resumes its editing. Site 2 and 3 then make their own changes and send them back to Site 1 for the final merge. The result, "CTRLALTDEL", is the most intuitive merge we could expect: insertions and deletions all persist, runs of characters don't split up, and most recent changes come first.
 
 First idea: just take the standard set of array operations (`insert A at index 0`, `delete index 3`, etc.), turn each operation into an immutable struct, stick the structs into a new array in their creation order, and read them back to reconstruct the original array as needed. (In other words, the CvRDT would simply function as an event log.) This won't be convergent by default since these operations don't have an inherent total order, but it's easy to fix this by giving each operation a globally-unique ID in the form of an owner UUID[^uuid] along with a Lamport timestamp. With this scheme, no two operations can have the same ID: operations from the same owner will have different timestamps, while operations from different owners will have different UUIDs. In other words, the Lamport timestamps will put the operations in causal order, with the UUID used for tiebreaking when concurrent operations happen to have the same timestamp. Now, when a new operational array arrives from a remote peer, the merge is as simple as iterating through both arrays and shifting any new operations to their proper spots: an elementary merge sort.
 
@@ -191,11 +191,9 @@ In contrast to all the other CRDTs I'd been looking into, the design presented i
 
 (The rest of the paper will be describing [my own CT implementation in Swift](https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CRDTFramework), incorporating most of the concepts in the original paper but sporting tweaks based on further research.)
 
-In CT parlance, the operation structs that make up the tree are called **atoms**. Each atom has a unique **identifier** comprised of a **site** UUID, **index**, and Lamport **timestamp**[^awareness]. The index and timestamp serve the same role of logical clock, and the data structure could be made to work with one or the other in isolation. (The reason to have both is to enable certain optimizations: the index for *O*(1) atom lookups by identifier, and the timestamp for *O*(1) causality queries between atoms.) The heart of an atom is its **value**, which defines the behavior of the operation and stores any relevant data. (Insert operations store the new character to place, while delete operations contain no extra data.) An atom also stores the identifier of its **cause**, or parent, atom. Generally speaking, this is an atom whose effect on the data structure is a prerequisite for the proper functioning of its child atom. (As explained earlier, in a string CT, this causal link simply represents the character to the left of an insertion or the target of a deletion.) Assuming that the site is stored in 2 bytes[^uuid2], the index in 4 bytes, and the timestamp in 4 bytes, each character in a basic Causal Tree string is, at minimum, 12× the size of an ordinary C-string character.
+In CT parlance, the operation structs that make up the tree are called **atoms**. Each atom has a unique **identifier** comprised of a **site** UUID, **index**, and Lamport **timestamp**[^awareness]. The index and timestamp serve the same role of logical clock, and the data structure could be made to work with one or the other in isolation. (The reason to have both is to enable certain optimizations: the index for *O*(1) atom lookups by identifier, and the timestamp for *O*(1) causality queries between atoms.) The heart of an atom is its **value**, which defines the behavior of the operation and stores any relevant data. (Insert operations store the new character to place, while delete operations contain no extra data.) An atom also stores the identifier of its **cause**, or parent, atom. Generally speaking, this is an atom whose effect on the data structure is a prerequisite for the proper functioning of its child atom. (As explained earlier, in a string CT, this causal link simply represents the character to the left of an insertion or the target of a deletion.)
 
 [^awareness]: In the original paper, atoms don't have Lamport timestamps, only indices, and atoms are compared by their **awareness** instead of by timestamp. An atom's awareness is a [version vector][versionvector] (called a **weft**) that encompasses all the previous atoms its site would have known about at the time of its creation. This value is derived by recursively combining the awareness of the atom's parent with the awareness of the previous atom in its **yarn** (or ordered sequence of atoms for a given site) and requires special no-op "commit" atoms to occasionally be inserted. Though awareness gives us more information than a simple Lamport timestamp, it is also *O*(*n*)-slow to derive and makes certain functions (such as validation and merge) substantially more complex. The 4 extra bytes per atom for the Lamport timestamp are therefore a worthwhile tradeoff, and also one which the author of the paper has adopted in [subsequent work][ron].
-
-[^uuid2]: I mentioned earlier that UUIDs should use on the order of 128 bits to ensure uniqueness. However, having two 128-bit UUIDs per character is simply untenable. The compression scheme I devised for this problem is described in a later section.
 
 In Swift code, an atom might look something like this:
 
@@ -230,7 +228,7 @@ enum StringValue: Codable
 typealias StringAtom = Atom<StringValue>
 ```
 
-What's great about this representation is that Swift automatically compresses enums with associated values to their smallest possible byte size, i.e. the size of the largest associated value plus a byte for the case, or even less if Swift can determine that a value type has some extra bits available. Here, the size would be 3 bytes.
+What's great about this representation is that Swift automatically compresses enums with associated values to their smallest possible byte size, i.e. the size of the largest associated value plus a byte for the case, or even less if Swift can determine that a value type has some extra bits available. Here, the size would be 3 bytes. In case you're wondering about the 16-bit "UUID" for the site, I've devised a mapping scheme from 16-bit IDs to full 128-bit UUIDs that I'll explain in a later section.
 
 For convenience, a CT begins with a "zero" root atom, and the ancestry of each subsequent atom can ultimately be traced back to it. The depth-first, in-order traversal of our operational tree is called a **weave**, equivalent to the operational array discussed earlier. Instead of representing the tree as an inefficient tangle of pointers, we store it in memory as this weave array. Additionally, since we know the creation order of each atom on every site by way of its timestamp (and since a CT, as specified, is not allowed to contain any causal gaps), we can always derive a particular site's exact sequence of operations from the beginning of time. This sequence of site-specific atoms in creation order is called a **yarn**. Yarns are more of a cache than a primary data structure in a CT, but I keep them around together with the weave to enable *O*(1) atom lookups. To pull up an atom based on its identifier, all you have to do is grab its site's yarn array and read out the atom at the identifier's index.
 
@@ -263,7 +261,7 @@ Words, words, words! To prove that the Causal Tree is a useful and effective dat
 <source src="{{ site.baseurl }}/images/blog/causal-trees/demo/mac-main.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
-<p>From 0:00–0:23, sites 1–3 are created and connect to each other in a ring. From 0:23–0:34, sites 4 and 5 are forked from 1, establish a two-way connection to 1 to exchange peer info, then go back offline. At 0:38, site 4 connects to 5, which is still not sending data to anyone. At 0:42, site 5 connects to 1 and site 1 connects to 4, finally completing the network. At 0:48, all the sites go offline, then return online at 1:06.</p>
+<p>From 0:00–0:23, sites 1–3 are created and connect to each other in a ring. From 0:23–0:34, Site 4 and 5 are forked from 1, establish a two-way connection to 1 to exchange peer info, then go back offline. At 0:38, Site 4 connects to 5, which is still not sending data to anyone. At 0:42, Site 5 connects to 1 and Site 1 connects to 4, finally completing the network. At 0:48, all the sites go offline, then return online at 1:06.</p>
 </div>
 
 The first part of the demo is a macOS mesh network simulator. Each window represents an independent site that has a unique UUID and holds its own copy of the CT. The CTs are edited locally through the type-tailored editing view. New sites must be forked from existing sites, copying over the current state of the CT in the process. Sites can go "online" and establish one-way connections to one or more known peers, which sends over their CT and known peer list about once a second. On receipt, a site will merge the inbound CT into their own. Not every site knows about every peer, and forked sites will be invisible to the rest of the network until they go online and connect to one of their known peers. All of this is done locally to simulate a partitioned, unreliable network with a high degree of flexibility: practically any kind of topology or partition can be set up using these windows. For string editing, the text view uses the CT directly as its backing store by way of an `NSMutableString` [wrapper][string-wrapper] plugged into a bare-bones `NSTextStorage` [subclass][container-wrapper].
@@ -433,9 +431,9 @@ Alternatively, we might relax rules c) and d) and allow the baseline to potentia
 
 But even here we run into problems with coordination. If this scheme worked as written, we would be a-OK, so long as sites were triggering garbage collection relatively infrequently and only during quiescent moments (as determined to the best of a site's ability). But we have a bit of an issue when it comes to picking monotonically higher baselines. What happens if two sites concurrently pick new baselines that orphan each others' operations?
 
-<img src="{{ site.baseurl }}/images/blog/causal-trees/garbage.svg" style="width:19rem">
+<img src="{{ site.baseurl }}/images/blog/causal-trees/garbage.svg" style="width:26rem">
 
-Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3–2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3–3:7, leaving operations "ABE". Meanwhile, Site 1—which has received both Site 2 and 3's changes—decides to garbage collect with baseline 1:3–2:6–3:7, leaving operations "AED". So what do we do when Sites 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. We're kind of stuck.
+Assume that at this point in time, Site 2 and Site 3 don't know about each other and haven't received each other's operations yet. The system starts with a blank garbage collection baseline. Site 2 decides to garbage collect with baseline 1:3–2:6, leaving behind operations "ACD". Site 3 garbage collects with baseline 1:3–3:7, leaving operations "ABE". Meanwhile, Site 1—which has received both Site 2 and 3's changes—decides to garbage collect with baseline 1:3–2:6–3:7, leaving operations "AED". So what do we do when Site 2 and 3 exchange messages? How do we merge "ACD" and "ABE" to result in the correct answer of "AED"? In fact, too much information has been lost: 2 doesn't know to delete C and 3 doesn't know to delete B. We're kind of stuck.
 
 (I have to stress that baseline operations *must* behave like ordinary ORDT operations, in the sense that they have to converge to the same result regardless of their order of arrival. If they don't, our CRDT invariants break and eventual consistency falls out of reach!)
 
@@ -583,7 +581,7 @@ With the priority flag in tow, the value enum for our CT string atoms now looks 
 ```swift
 protocol CausalTreePrioritizable { var priority: Bool { get } }
 
-enum StringValue: IndexRemappable, Codable, CausalTreePrioritizable
+enum StringValue: CausalTreeValueT, CausalTreePrioritizable
 {
     case null
     case insert(char: UInt16)
@@ -618,7 +616,7 @@ To implement a custom data type as a CT, you first have to "atomize" it, or deco
 In the demo section, I presented a CT designed for Bézier drawing. Here's how I coded the value enum for each atom:
 
 ```swift
-enum DrawDatum: IndexRemappable, Codable, CausalTreePrioritizable
+enum DrawDatum: CausalTreeValueT, CausalTreePrioritizable
 {    
     case null // no-op for grouping other atoms
     case shape
@@ -717,7 +715,7 @@ It's possible that the use case of representing custom data types via CTs is a b
 
 ## Performance
 
-OT and CRDT papers often cite 50ms[^latency] as the threshold at which people start to notice latency in their text editors. Therefore, any code we might want to run on a CT—including merge, initialization, and serialization/deserialization—has to fall within this range. Except for trivial cases, this precludes *O*(*n*<sup>2</sup>) or slower complexity: a 10,000 word article at 0.01ms per character would take 8 hours to process! The essential CT functions have to be *O*(*n*log*n*) at the very worst.
+OT and CRDT papers often cite 50ms[^latency] as the threshold at which people start to notice latency in their text editors. Therefore, any code we might want to run on a CT—including merge, initialization, and serialization/deserialization—has to fall within this range. Except for trivial cases, this precludes *O*(*n*<sup>2</sup>) or slower complexity: a 10,000 word article at 0.01ms per character would take 7 hours to process! The essential CT functions have to be *O*(*n*log*n*) at the very worst.
 
 [^latency]: This is a number pulled from several CRDT papers, but in principle, I'm more inclined to agree with Atom Xray's [8ms target](https://github.com/atom/xray#high-performance). Regardless, the conclusions don't change very much: *O*(*n*log*n*) remains sufficient even for very large files, and there are alternate solutions for the bulky edge cases.
 
@@ -729,7 +727,7 @@ Merging with another CT is almost always *O*(*n*log*n*). This involves iterating
 
 Weave validation is only *O*(*n*). All we have to do is look at each atom and keep track of a few counters to ensure that sibling order is correct and that causality is not violated. This is usually invoked on deserialization.
 
-CTs as implemented have a large memory footprint, both on account of the operation size and accumulated garbage. Assuming that a document is unlikely to contain more than 30% deletions, a 20,000 word article (like this one!) would eat up about 2.5MB versus 125KB as a simple C-string. While perhaps egregious in principle, I don't think this is really that big of a deal in practice. First, even a 400,000-word, novel-length document would "only" take up 50MB of memory in the absolute worst case, which is easily digestible by modern devices. If keeping such large data structures in memory isn't acceptable, and if random atom access isn't essential to the task at hand, a [RON-style compression strategy][ronlang] may be pursued.
+CTs as implemented have a large memory footprint, both on account of the operation size and accumulated garbage. Assuming that a document is unlikely to contain more than 30% deletions, a 20,000 word article (like this one!) would eat up about 3MB versus 125KB as a simple C-string. While perhaps egregious in principle, I don't think this is really that big of a deal in practice. First, even a 400,000-word, novel-length document would "only" take up 60MB of memory in the absolute worst case, which is easily digestible by modern devices. If keeping such large data structures in memory isn't acceptable, and if random atom access isn't essential to the task at hand, a [RON-style compression strategy][ronlang] may be pursued.
 
 Additionally, the eminently-compressible CT format may be shrunk to a fraction of its full size on network transmission and storage. As a quick test, I saved a 125,000-atom, book-length CT to disk. Uncompressed, it took up 3.3MB; compressed via zip, a mere 570KB, or ≈6× the size of the equivalent C-string. For many use cases, this might be good enough!
 
