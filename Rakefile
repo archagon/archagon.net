@@ -56,7 +56,7 @@ end
 desc "Serve jekyll site"
 task :serve do
   puts "## Serving Site with Jekyll"
-  system "jekyll serve --baseurl=\"\" --host=0.0.0.0 --drafts --future"
+  system "jekyll serve --baseurl=\"\" --host=0.0.0.0 --drafts --future --incremental"
 end
 
 # desc "Watch the site and regenerate when it changes"
