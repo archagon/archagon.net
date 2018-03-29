@@ -717,7 +717,7 @@ ul.archive-legend {
   justify-content: center;
   font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-size: 1.05em;
-  font-weight: 50;
+  font-weight: 100;
   color: #828282;
   width: 80%;
   margin-left: auto;
@@ -806,7 +806,7 @@ ul.archive-legend {
   color: #888;
   font-family: "Gill Sans", "Gill Sans MT", "Lato", Calibri, sans-serif;
   font-size: 1.0em;
-  font-weight: 50;
+  font-weight: 100;
   font-style: italic;
   margin-left: auto;
   margin-right: auto;
