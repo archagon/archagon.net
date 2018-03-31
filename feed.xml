@@ -6,13 +6,14 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Mar 2018 20:52:32 -0700</pubDate>
-    <lastBuildDate>Fri, 30 Mar 2018 20:52:32 -0700</lastBuildDate>
+    <pubDate>Sat, 31 Mar 2018 14:36:24 -0700</pubDate>
+    <lastBuildDate>Sat, 31 Mar 2018 14:36:24 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
         <title>Data Laced with History: Causal Trees &amp; Operational CRDTs</title>
-        <description>&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;/images/blog/causal-trees/header.jpg&quot;&gt;&lt;/div&gt;
+        <description>
+&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;http://archagon.net/images/blog/causal-trees/header.jpg&quot;&gt;&lt;/div&gt;
 
 
 
