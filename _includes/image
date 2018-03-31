@@ -1,0 +1,8 @@
+{% if include.caption %}
+<figure{% if include.wide %} class="{% if include.margins %}mostly-{% endif %}full-width"{% endif %}>
+<img src="{% include imagepath name=include.name abs=include.abs %}"{% if include.alt %} alt="{{ include.alt }}" {% endif %}{% if include.width %} style="width:{{ include.width }}"{% endif %}/>
+<figcaption markdown="span">{{ include.caption }}</figcaption>
+</figure>
+{% else %}
+{% if include.wide %}<div class="{% if include.margins %}mostly-{% endif %}full-width">{% endif %}<img src="{% include imagepath name=include.name abs=include.abs %}"{% if include.alt %} alt="{{ include.alt }}"{% endif %}{% if include.width %} style="width:{{ include.width }}"{% endif %}/>{% if include.wide %}</div>{% endif %}
+{% endif %}
