@@ -54,9 +54,21 @@ task :build do
 end
 
 desc "Serve jekyll site"
-task :serve do
+task :serve do |t, args|
+  extra_args = ""
+
+  if args.extras.include?("drafts")
+    extra_args += " --drafts"
+  end
+  if args.extras.include?("future")
+    extra_args += " --future"
+  end
+  if args.extras.include?("incremental")
+    extra_args += " --incremental"
+  end
+
   puts "## Serving Site with Jekyll"
-  system "jekyll serve --baseurl=\"\" --host=0.0.0.0 --drafts --future --incremental"
+  system "jekyll serve --baseurl=\"\" --host=0.0.0.0" + extra_args
 end
 
 # desc "Watch the site and regenerate when it changes"
