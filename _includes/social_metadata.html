@@ -1,0 +1,19 @@
+{% if page.image_header %}
+<!-- generic content metadata -->
+<link rel="image_src" href="{% include imagepath name=page.image_header abs=true %}" />
+{% endif %}
+<!-- opengraph content metadata -->
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:type" content="article"> <!-- TODO: other types? -->
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+{% if page.image_header %}<meta property="og:image" content="{% include imagepath name=page.image_header abs=true %}">
+{% endif %}<!-- <meta property="og:image" content="{% include imagepath base='' name='favicon/favicon-96x96.png' abs=true %}"> -->
+<!-- <meta property="og:description" content=""> --> <!-- TODO: first paragraph excerpt -->
+
+<!-- twitter content metadata -->
+<meta name="twitter:card" content="summary" />
+{% if site.twitter %}<meta name="twitter:site" content="@{{ site.twitter }}" />
+{% endif %}<meta name="twitter:title" content="{{ page.title }}" />
+{% if page.image_header %}<meta name="twitter:image" content="{% include imagepath name=page.image_header abs=true %}" />
+{% endif %}<!-- <meta name="twitter:description" content="View the album on Flickr." /> --> <!-- TODO: first paragraph excerpt -->

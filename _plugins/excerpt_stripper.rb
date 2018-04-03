@@ -1,4 +1,7 @@
 # thanks, http://penguindreams.org/blog/removing-footnotes-from-excerpts-in-jekyll/
+# TODO: extend document and excerpt to customize behavior: 
+#     * https://github.com/jekyll/jekyll/blob/e45997fb5b0454c129211a24f8b4428b1f16fc5d/lib/jekyll/document.rb#L502
+#     * https://github.com/jekyll/jekyll/blob/bc2c0c4f80e34b78ed1d83b05710e770ffccf728/lib/jekyll/excerpt.rb
 # TODO: data-driven filter
 require 'nokogiri'
 

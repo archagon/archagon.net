@@ -4,9 +4,10 @@ title: "Data Laced with History: Causal Trees & Operational CRDTs"
 date: 2018-03-24
 comments: true
 categories: programming
+image_header: "header.jpg"
 image_path: /blog/causal-trees/
 ---
-{% include image name="header.jpg" wide=true abs=true %}
+{% include imageheader wide=true %}
 
 <div class="donations notification">Hello! This article took a while to cobble together. If you find it useful, please consider leaving a donation via <a class="about-icon-container" href="https://donorbox.org/crdt-article"><img class="about-social-icon" src="{{ "/images/donation-icons/donorbox.png" | prepend: site.baseurl }}" /> <span class="about-social-service">DonorBox</span></a>, <a class="about-icon-container" href="https://www.buymeacoffee.com/archagon"><img class="about-social-icon" src="{{ "/images/donation-icons/bmac.svg" | prepend: site.baseurl }}" /> <span class="about-social-service">BuyMeACoffee</span></a>, or <a class="about-icon-container" href="ethereum:0x0d5dd8a8Cca8Bf7d0122F7A1Cc76c6b0666fCC56"><img class="about-social-icon" src="{{ "/images/donation-icons/ether.png" | prepend: site.baseurl }}" /> <span class="about-social-service">Ethereum</span></a>. (Thought I'd try something new!) Or, just buy yourself a nice Roost through my <a class="about-icon-container" href="http://amzn.to/2D7uYxz"><img class="about-social-icon" src="{{ "/images/donation-icons/amaz.png" | prepend: site.baseurl }}" /> <span class="about-social-service">Amazon affiliate link</span></a>. Donation or not, thank you for reading! 😊</div>
 

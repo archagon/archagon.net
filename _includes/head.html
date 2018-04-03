@@ -5,7 +5,8 @@
 
 <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
 <meta name="description" content="{{ site.description }}">
-
+{% if page.title %}{% include social_metadata.html %}
+{% endif %}
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&amp;subset=latin-ext">
 
@@ -16,10 +17,10 @@
 
 <link rel="stylesheet" href="{{ "/css/normalize.css" | prepend: site.baseurl }}">
 <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-{% if page.extra_css %}{% for css in page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}.css">{% endfor %}{% endif %}
+{% if page.extra_css %}{% for css in page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}/css/{{ css }}.css">
+{% endfor %}{% endif %}
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-
-<link rel="icon" href="{{ site.baseurl }}/images/favicon/favicon-96x96.png">
+<link rel="icon" href="{% include imagepath base='/' name='favicon/favicon-96x96.png' abs=false %}">
 
 <!-- inline category colors -->
 <style>

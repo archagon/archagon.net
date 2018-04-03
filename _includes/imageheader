@@ -1,0 +1,1 @@
+{% if page.image_header %}{% include image name=page.image_header wide=include.wide abs=true %}{% endif %}
