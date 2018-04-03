@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Data Laced with History: Causal Trees & Operational CRDTs"
+summary: "An in-depth exploration of a new class of expressive, performant, and intuitive CRDTs, together with macOS and iOS sample code of real-time collaboration on text and vector graphics without any server logic."
 date: 2018-03-24
 comments: true
 categories: programming

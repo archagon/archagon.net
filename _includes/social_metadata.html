@@ -8,12 +8,12 @@
 <meta property="og:type" content="article"> <!-- TODO: other types? -->
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 {% if page.image_header %}<meta property="og:image" content="{% include imagepath name=page.image_header abs=true %}">
-{% endif %}<!-- <meta property="og:image" content="{% include imagepath base='' name='favicon/favicon-96x96.png' abs=true %}"> -->
-<!-- <meta property="og:description" content=""> --> <!-- TODO: first paragraph excerpt -->
-
+{% endif %}{% if page.summary %}<meta property="og:description" content="{{ page.summary }}">
+{% endif %}
 <!-- twitter content metadata -->
 <meta name="twitter:card" content="summary" />
 {% if site.twitter %}<meta name="twitter:site" content="@{{ site.twitter }}" />
 {% endif %}<meta name="twitter:title" content="{{ page.title }}" />
 {% if page.image_header %}<meta name="twitter:image" content="{% include imagepath name=page.image_header abs=true %}" />
-{% endif %}<!-- <meta name="twitter:description" content="View the album on Flickr." /> --> <!-- TODO: first paragraph excerpt -->
+{% endif %}{% if page.summary %}<meta name="twitter:description" content="{{ page.summary }}" />
+{% endif %}
