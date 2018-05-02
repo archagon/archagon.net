@@ -102,7 +102,7 @@ Let's say Peer A inserts a character in a string at position 3, while Peer B sim
 
 ## Conflict-Free Replicated Data Types
 
-[Conflict-Free Replicated Data Types][crdt] are the new hotness in the field. In contrast to OT, the CRDT approach considers sync in terms of the underlying data structure, not the sequence of operations. A CRDT, at a high level, is a type of object that can be merged with any objects of the same type, in arbitrary order, to produce an identical union object. CRDT merge must be associative, commutative, and idempotent, and the resulting CRDT of each mutation or merge must be "greater" than than all its inputs. (Mathematically, this flow is said to form a *monotonic semilattice*.) As long as each connected peer eventually receives the updates of every other peer, the results will provably converge—even if one peer happens to be a month behind. This might sound like a tall order, but you're already aware of several simple CRDTs. For example, no matter how you permute the merge order of any number of insert-only sets, you'll still end up with the same union set in the end. Really, the concept is quite intuitive!
+[Conflict-Free Replicated Data Types][crdt] are the new hotness in the field. In contrast to OT, the CRDT approach considers sync in terms of the underlying data structure, not the sequence of operations. A CRDT, at a high level, is a type of object that can be merged with any objects of the same type, in arbitrary order, to produce an identical union object. CRDT merge must be associative, commutative, and idempotent, and the resulting CRDT of each mutation or merge must be "greater" than than all its inputs. (Mathematically, this flow is said to form a *monotonic semilattice*. For more info and some diagrams, take a look at John Mumm's [excellent primer][crdt-primer].) As long as each connected peer eventually receives the updates of every other peer, the results will provably converge—even if one peer happens to be a month behind. This might sound like a tall order, but you're already aware of several simple CRDTs. For example, no matter how you permute the merge order of any number of insert-only sets, you'll still end up with the same union set in the end. Really, the concept is quite intuitive!
 
 Of course, simple sets aren't enough to represent arbitrary data, and much of CRDT research is dedicated to finding new and improved ways of implementing sequence CRDTs, often under the guise of string editing. Algorithms vary, but this is generally accomplished by giving each individual letter its own unique identifier, then giving each letter a reference to its intended neighbor instead of dealing with indices. On deletion, letters are usually replaced with **tombstones** (placeholders), allowing two sites to concurrently reference and delete a character at the same time while still being able to merge correctly. This does tend to mean that sequence CRDTs perpetually grow in proportion to the number of deleted characters in a document, though there are various ways of dealing with this accumulated garbage.
 
@@ -747,6 +747,7 @@ I'd say: it's surely worth a try!
 
 **Non-Academic CRDT Writing**
 
+* [A CRDT Primer][crdt-primer] (excellent illustrated primer on order, joins, sets, vector clocks, and other core CRDT concepts)
 * [Towards a Unified Theory of Operational Transformation and CRDT][convergence] (foundational research for the CRDT later used in [xi][xi])
 * [Convergence Versus Consensus: CRDTs and the Quest for Distributed Consistency](https://speakerdeck.com/ept/convergence-versus-consensus-crdts-and-the-quest-for-distributed-consistency) (great illustrated overview by the Automerge folks)
 * [Clear in the iCloud][clear] (an event-based, garbage-collected CvRDT in everything but name; highly recommended reading to get a second perspective on many topics covered in this article)
@@ -802,3 +803,4 @@ I'd say: it's surely worth a try!
 [versionvector]: https://en.wikipedia.org/wiki/Version_vector
 [ronlang]: https://github.com/gritzko/ron#wire-format-base64
 [clear]: https://blog.helftone.com/clear-in-the-icloud/
+[crdt-primer]: http://jtfmumm.com/blog/2015/11/17/crdt-primer-1-defanging-order-theory/
