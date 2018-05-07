@@ -5,29 +5,30 @@ summary: "Backgroundifier, together with the Buddy companion app, lets you use y
 date: 2018-05-2
 comments: true
 categories: releases
-//image_header: "header.jpg"
+image_header: "header.jpg"
 image_path: /blog/bgbuddy/
 ---
-{% include imageheader %}
+{% include imageheader wide=true %}
 
 The challenge: fit a rotating art gallery somewhere into my life.
 
-I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the rare excursion. Instagram helps, but it only lets you see content from artists you follow. There's still the 99% of art history beyond that sliver!
+I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the occasional excursion. Instagram helps, but it only lets you see content from artists you follow. There's still the 99% of art history beyond that sliver!
 
-Sourcing art wasn't the problem. For years, I had been keeping a fairly large folder of inspiring images from places such as Imgur albums, [RuTracker museum collections][ru], and [/r/ImaginaryNetwork][sub]. But leafing through them wasn't enough: I needed to put them into a random rotation somehwere that was just out of eyeshot, but wasn't an overt distraction.
+Sourcing art wasn't the problem. For years, I had been keeping a fairly large folder of inspiring images from places such as Imgur albums, [RuTracker museum collections][ru], [/r/ImaginaryNetwork][sub], and [/r/museum][mus]. But leafing through them wasn't enough: I needed to put them into a regular and random rotation in a place that was just out of eyeshot, but without becoming an overt distraction.
 
 [ru]: https://rutracker.org/forum/viewforum.php?f=1643
 [sub]: https://www.reddit.com/r/ImaginaryNetwork/
+[mus]: https://www.reddit.com/r/museum/
 
 In 2015, I finally solved the problem by building an app called [Backgroundifier][bg], which converted arbitrary-size images into wallpapers by superimposing them onto attractive, blurred backgrounds. By pairing an [Automator Folder Action with the native wallpaper cycling functionality of macOS][previous], I could now drop arbitrary images into a directory on my desktop and have them automatically show up in my wallpaper rotation. Peeking at an image was as simple as invoking the Show Desktop shortcut, and if I wanted to see something new, all I had to do was switch to a new Space.
 
-For the past few years, this scheme has been working fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.
+For the past few years, this scheme had been working fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.
 
 Finally, I decided to build a menu bar app that would solve all my problems through a unified interface: [BackgroundifierBuddy][release].
 
 <!--more-->
 
-<div class="caption full-width">
+<div class="caption">
 <video controls muted preload="none" width="100%" poster="{% include imagepath name="screenshot.jpg" %}">
 <source src="{% include imagepath name="demo.mp4" %}" type="video/mp4">
 Your browser does not support the video tag.
@@ -40,13 +41,13 @@ To start with, right-clicking on the menu bar icon shows your desktop, and right
 
 With automatic conversion enabled, images dropped into the Source directory are immediately converted into wallpapers in the Output directory, just so long as the app is running. This means that obscure Folder Actions are no longer necessary for automatic conversion to work.
 
-{% include image name="preferences.png" width="55.8rem" %}
-
 If the current wallpaper is based in the Output directory, and if it has a counterpart in the Source directory, a number of maintenance tasks become available. If you've grown tired of an image in your rotation, you can click Delete to trash it together with its source image. If you want to save it for later, or if find that it needs some tweaking, you can click Archive to delete the wallpaper image and move the source image into the Archive directory. (Holding `Option` allows you to archive the image while still keeping it in rotation.) Clicking Favorite adds a custom Finder tag to the source image, making it easier to locate later.
 
-Finally, Refresh Wallpaper Cache restarts the Dock (which seems to sometimes be necessary to update the wallpaper rotaiton with new images), while Toggle Desktop Icons shows and hides the icons on your desktop for better image visibility.
+Finally, Refresh Wallpaper Cache restarts the Dock (which seems to sometimes be necessary to update the wallpaper rotation with new images), while Toggle Desktop Icons shows and hides the icons on your desktop for better image visibility.
 
-I was going for simplicity with my solution, and this is just about as simple as it gets: your bog-standard OS wallpaper cycling functionality, together with a helper app that builds on basic file system commands. No complexity, no hassles, and everything just works!
+{% include image name="ui.png" width="87rem" %}
+
+I was going for simplicity with my solution, and this is just about as simple as it gets: your bog-standard OS wallpaper cycling functionality and a helper app that builds on basic file system commands. No complexity, no hassles, and everything just works!
 
 [Backgroundifier][bg] still costs a buck on the App Store, but BackgroundifierBuddy is [free and open source][github]. You can find the latest release [here][release]. Enjoy!
 
