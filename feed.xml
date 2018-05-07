@@ -6,9 +6,36 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 03 Apr 2018 22:44:01 -0700</pubDate>
-    <lastBuildDate>Tue, 03 Apr 2018 22:44:01 -0700</lastBuildDate>
+    <pubDate>Mon, 07 May 2018 12:46:36 -0700</pubDate>
+    <lastBuildDate>Mon, 07 May 2018 12:46:36 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
+    
+      <item>
+        <title>A Native Art Gallery for Your Mac (Take 2)</title>
+        <description>
+&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;http://archagon.net/images/blog/bgbuddy/header.jpg&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;The challenge: fit a rotating art gallery somewhere into my life.&lt;/p&gt;
+
+&lt;p&gt;I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the occasional excursion. Instagram helps, but it only lets you see content from artists you follow. There’s still the 99% of art history beyond that sliver!&lt;/p&gt;
+
+&lt;p&gt;Sourcing art wasn’t the problem. For years, I had been keeping a fairly large folder of inspiring images from places such as Imgur albums, &lt;a href=&quot;https://rutracker.org/forum/viewforum.php?f=1643&quot;&gt;RuTracker museum collections&lt;/a&gt;, &lt;a href=&quot;https://www.reddit.com/r/ImaginaryNetwork/&quot;&gt;/r/ImaginaryNetwork&lt;/a&gt;, and &lt;a href=&quot;https://www.reddit.com/r/museum/&quot;&gt;/r/museum&lt;/a&gt;. But leafing through them wasn’t enough: I needed to put them into a regular and random rotation in a place that was just out of eyeshot, but without becoming an overt distraction.&lt;/p&gt;
+
+&lt;p&gt;In 2015, I finally solved the problem by building an app called &lt;a href=&quot;http://backgroundifier.archagon.net&quot;&gt;Backgroundifier&lt;/a&gt;, which converted arbitrary-size images into wallpapers by superimposing them onto attractive, blurred backgrounds. By pairing an &lt;a href=&quot;/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/&quot;&gt;Automator Folder Action with the native wallpaper cycling functionality of macOS&lt;/a&gt;, I could now drop arbitrary images into a directory on my desktop and have them automatically show up in my wallpaper rotation. Peeking at an image was as simple as invoking the Show Desktop shortcut, and if I wanted to see something new, all I had to do was switch to a new Space.&lt;/p&gt;
+
+&lt;p&gt;For the past few years, this scheme had been working fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.&lt;/p&gt;
+
+&lt;p&gt;Finally, I decided to build a menu bar app that would solve all my problems through a unified interface: &lt;a href=&quot;https://github.com/archagon/backgroundifier-buddy/releases&quot;&gt;BackgroundifierBuddy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;a href=&quot;http://archagon.net/blog/2018/05/02/a-native-art-gallery-for-your-mac/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
+        <pubDate>Wed, 02 May 2018 00:00:00 -0700</pubDate>
+        <link>http://archagon.net/blog/2018/05/02/a-native-art-gallery-for-your-mac/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2018/05/02/a-native-art-gallery-for-your-mac/</guid>
+        
+        
+        <category>releases</category>
+        
+      </item>
     
       <item>
         <title>Data Laced with History: Causal Trees &amp; Operational CRDTs</title>
@@ -169,20 +196,6 @@
         <pubDate>Tue, 30 Aug 2016 13:26:53 -0700</pubDate>
         <link>http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</link>
         <guid isPermaLink="true">http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</guid>
-        
-        
-        <category>technology</category>
-        
-      </item>
-    
-      <item>
-        <title>Indie App Reliance</title>
-        <description>&lt;p&gt;Today, &lt;a href=&quot;https://twitter.com/brentsimmons/status/767461318538383360&quot;&gt;with a single tweet&lt;/a&gt;, the note-taking app &lt;a href=&quot;http://vesperapp.co&quot;&gt;Vesper&lt;/a&gt; has officially been shuttered. At its release, Vesper was &lt;a href=&quot;https://marco.org/2013/06/06/vesper&quot;&gt;widely promoted&lt;/a&gt; by the &lt;a href=&quot;https://www.macstories.net/reviews/vesper-review-collect-your-thoughts/&quot;&gt;Apple indie developer communtiy&lt;/a&gt; as the hot new thing to try. More than anything else, it had an excellent pedigree, with influential blogger John Gruber of &lt;a href=&quot;http://daringfireball.net&quot;&gt;Daring Fireball&lt;/a&gt; at the helm. Many hopeful users switched to it for their primary note-taking needs, expecting that features like Mac support would arrive in short order. If any app from this circle was destined to be a breakaway hit, it was this one. And now, with barely a mention, it’s all but swept away, years after langishing with barely an update.&lt;/p&gt;
-
-&lt;a href=&quot;http://archagon.net/blog/2016/08/21/indie-app-reliance/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
-        <pubDate>Sun, 21 Aug 2016 17:01:19 -0700</pubDate>
-        <link>http://archagon.net/blog/2016/08/21/indie-app-reliance/</link>
-        <guid isPermaLink="true">http://archagon.net/blog/2016/08/21/indie-app-reliance/</guid>
         
         
         <category>technology</category>
