@@ -167,13 +167,13 @@
 
 <p>The challenge: fit a rotating art gallery somewhere into my life.</p>
 
-<p>I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the occasional excursion. Instagram helps, but it only lets you see content from artists you follow. There’s still the 99% of art history beyond that sliver!</p>
+<p>I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the rare trip. Instagram helps, but it only lets you see content from artists you follow. There’s still the 99% of art history beyond that sliver!</p>
 
 <p>Sourcing art wasn’t the problem. For years, I had been keeping a fairly large folder of inspiring images from places such as Imgur albums, <a href="https://rutracker.org/forum/viewforum.php?f=1643">RuTracker museum collections</a>, <a href="https://www.reddit.com/r/ImaginaryNetwork/">/r/ImaginaryNetwork</a>, and <a href="https://www.reddit.com/r/museum/">/r/museum</a>. But leafing through them wasn’t enough: I needed to put them into a regular and random rotation in a place that was just out of eyeshot, but without becoming an overt distraction.</p>
 
 <p>In 2015, I finally solved the problem by building an app called <a href="http://backgroundifier.archagon.net">Backgroundifier</a>, which converted arbitrary-size images into wallpapers by superimposing them onto attractive, blurred backgrounds. By pairing an <a href="/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/">Automator Folder Action with the native wallpaper cycling functionality of macOS</a>, I could now drop arbitrary images into a directory on my desktop and have them automatically show up in my wallpaper rotation. Peeking at an image was as simple as invoking the Show Desktop shortcut, and if I wanted to see something new, all I had to do was switch to a new Space.</p>
 
-<p>For the past few years, this scheme had been working fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.</p>
+<p>For several years, this scheme worked perfectly fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.</p>
 
 <p>Finally, I decided to build a menu bar app that would solve all my problems through a unified interface: <a href="https://github.com/archagon/backgroundifier-buddy/releases">BackgroundifierBuddy</a>.</p>
 
@@ -188,7 +188,7 @@ Your browser does not support the video tag.
 
 <p>BackgroundifierBuddy expects your images to be organized into two directories: one containing your source images, and the other containing their converted, Backgroundified counterparts. This latter directory should be the directory selected for your wallpaper rotation in System Preferences.</p>
 
-<p>To start with, right-clicking on the menu bar icon shows your desktop, and right-clicking again moves onward to the next image. Moving the cursor away from the icon hides the desktop again.</p>
+<p>To start with, right-clicking on the menu bar icon shows your desktop, and right-clicking again moves onward to the next image. Moving the cursor away from the icon hides the desktop.</p>
 
 <p>With automatic conversion enabled, images dropped into the Source directory are immediately converted into wallpapers in the Output directory, just so long as the app is running. This means that obscure Folder Actions are no longer necessary for automatic conversion to work.</p>
 
@@ -218,6 +218,7 @@ Your browser does not support the video tag.
 
 <p><img src="/images/blog/bgbuddy/bgify.png" style="width:81.9rem" /></p>
 
+<p>You can find a discussion of this article on <a class="about-icon-container" href="https://news.ycombinator.com/item?id=17033574"><img class="about-social-icon" src="/images/social-icons/hackernews.png" /> <span class="about-social-service">HackerNews</span></a>.</p>
 <div class="signature">
     <p>—<span class="signature-name">Archagon</span></p>
     <p class="signature-date">May 2, 2018</p>
@@ -236,7 +237,7 @@ Your browser does not support the video tag.
         <!-- centered padded section -->
         <div class="site-footer-container wrapper">
             <div class="site-footer-credits">
-                <p>Copyright &copy; 2017 Alexei Baboulevitch. ("It's copylicious!")</p>
+                <p>Copyright &copy; 2018 Alexei Baboulevitch. ("It's copylicious!")</p>
             </div>
             <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
                 <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
