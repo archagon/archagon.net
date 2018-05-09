@@ -12,7 +12,7 @@ image_path: /blog/bgbuddy/
 
 The challenge: fit a rotating art gallery somewhere into my life.
 
-I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the occasional excursion. Instagram helps, but it only lets you see content from artists you follow. There's still the 99% of art history beyond that sliver!
+I love visual art and find it hugely inspiring. Unfortunately, reading art books is too much of a context switch to be a regular distraction, while museums are only appropriate for the rare trip. Instagram helps, but it only lets you see content from artists you follow. There's still the 99% of art history beyond that sliver!
 
 Sourcing art wasn't the problem. For years, I had been keeping a fairly large folder of inspiring images from places such as Imgur albums, [RuTracker museum collections][ru], [/r/ImaginaryNetwork][sub], and [/r/museum][mus]. But leafing through them wasn't enough: I needed to put them into a regular and random rotation in a place that was just out of eyeshot, but without becoming an overt distraction.
 
@@ -22,7 +22,7 @@ Sourcing art wasn't the problem. For years, I had been keeping a fairly large fo
 
 In 2015, I finally solved the problem by building an app called [Backgroundifier][bg], which converted arbitrary-size images into wallpapers by superimposing them onto attractive, blurred backgrounds. By pairing an [Automator Folder Action with the native wallpaper cycling functionality of macOS][previous], I could now drop arbitrary images into a directory on my desktop and have them automatically show up in my wallpaper rotation. Peeking at an image was as simple as invoking the Show Desktop shortcut, and if I wanted to see something new, all I had to do was switch to a new Space.
 
-For the past few years, this scheme had been working fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.
+For several years, this scheme worked perfectly fine. But recently, my collection had grown to over 500 images, and I found myself bumping into some slight annoyances. For example, I had no way to retrieve the filename of the current wallpaper, to remove an image from rotation, or to mark it as a favorite. Every maintenance task had to be performed manually.
 
 Finally, I decided to build a menu bar app that would solve all my problems through a unified interface: [BackgroundifierBuddy][release].
 
@@ -37,7 +37,7 @@ Your browser does not support the video tag.
 
 BackgroundifierBuddy expects your images to be organized into two directories: one containing your source images, and the other containing their converted, Backgroundified counterparts. This latter directory should be the directory selected for your wallpaper rotation in System Preferences.
 
-To start with, right-clicking on the menu bar icon shows your desktop, and right-clicking again moves onward to the next image. Moving the cursor away from the icon hides the desktop again.
+To start with, right-clicking on the menu bar icon shows your desktop, and right-clicking again moves onward to the next image. Moving the cursor away from the icon hides the desktop.
 
 With automatic conversion enabled, images dropped into the Source directory are immediately converted into wallpapers in the Output directory, just so long as the app is running. This means that obscure Folder Actions are no longer necessary for automatic conversion to work.
 
@@ -78,3 +78,5 @@ Caveat emptor: all this stuff might break in a future macOS release. Fortunately
 Note that sandboxing restrictions only allow command line calls to Backgroundifier to process images in the user's Pictures directory and subdirectories. I haven't yet found a way to expand an app's sandbox when called from a non-sandboxed app, so this restriction carries over to the selection of Source and Output directories. (Let me know if you know a way to expand an app's sandbox from another app!) If this poses a problem, you'll be able to find a non-sandboxed, command-line version of the Backgroundifier executable in a zip file in the Resources subdirectory of the Backgroundifier.app bundle. Point to it in the BackgroundifierBuddy preferences and you should be good to go for arbitrary Source and Output directories.
 
 {% include image name="bgify.png" width="81.9rem" %}
+
+You can find a discussion of this article on <a class="about-icon-container" href="https://news.ycombinator.com/item?id=17033574"><img class="about-social-icon" src="{{ "/images/social-icons/hackernews.png" | prepend: site.baseurl }}" /> <span class="about-social-service">HackerNews</span></a>.
