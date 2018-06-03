@@ -88,10 +88,10 @@
 .category-releases.category-swatch {
   background-color: #5cacfc; }
 .category-releases.document-header-category {
-  background-color: #2992fc; }
+  background-color: #2993fc; }
 .category-releases.post-title {
   background-color: #5cacfc;
-  text-shadow: 0px 2px #2992fc; }
+  text-shadow: 0px 2px #2993fc; }
 
 .category-reviews.category-swatch {
   background-color: #38c04f; }
@@ -109,6 +109,55 @@
   background-color: #899fbc;
   text-shadow: 0px 2px #6885aa; }
 
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
 </style>
 </head>
 
@@ -275,7 +324,7 @@
 
 <p>Apple specifies in the docs that you can change the height of your keyboard by adding an autolayout constraint with a constant value to the keyboard view. However, if you actually follow these instructions, you’ll find something like this in your log:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>2014-11-08 17:17:09.741 Keyboard[8079:3155417] Unable to simultaneously satisfy constraints.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2014-11-08 17:17:09.741 Keyboard[8079:3155417] Unable to simultaneously satisfy constraints.
 	Probably at least one of the constraints in the following list is one you don't want. Try this: (1) look at each constraint and try to figure out which you don't expect; (2) find the code that added the unwanted constraint or constraints and fix it. (Note: If you're seeing NSAutoresizingMaskLayoutConstraints that you don't understand, refer to the documentation for the UIView property translatesAutoresizingMaskIntoConstraints) 
 (
     "&lt;NSLayoutConstraint:0x618000096350 'UIView-Encapsulated-Layout-Height' V:[UIInputView:0x7fe0be909690(216)]&gt;",
@@ -287,8 +336,7 @@ Will attempt to recover by breaking constraint
 
 Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
 The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in &lt;UIKit/UIView.h&gt; may also be helpful.
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Adding a constraint to the keyboard view doesn’t <em>set</em> the height; it rams against the existing autolayout height constraint created by the autoresizing mask, and overrides it in <em>most</em> cases. This is important: if you add the constraint before the view appears on the screen (this is specified in the docs), or in certain cases where your keyboard view doesn’t contain any subviews with autolayout constraints (this is not), your height constraint will lose and the keyboard will revert to the default height. That second case is particularly mystifying: at one point, I had to create an invisible kludge view with autolayout constraints and add it to my keyboard view in order for the height to set correctly!</p>
 
@@ -298,11 +346,10 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>Speaking of which: with a custom height constraint, on rotation, everything goes <em>nuts</em>. I don’t think I’m doing anything too crazy. This is what my rotation code looks like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
     self.keyboardHeight = self.heightForOrientation(toInterfaceOrientation, withTopBanner: true)
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>…which simply sets the height constraint’s constant to the correct height.</p>
 
@@ -342,11 +389,10 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>As mentioned above, you need to enable full access to get any audio going. You would think, at least, that you could call the standard <code class="highlighter-rouge">AudioServicesPlaySystemSound</code> function to play the keyboard tock; but instead, you have to do this:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
     AudioServicesPlaySystemSound(1104)
 })
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And yes, that <code class="highlighter-rouge">dispatch_async</code> is necessary; otherwise, your keyboard will <em>simply stop working</em> if full access is disabled.</p>
 
@@ -372,11 +418,10 @@ The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in
 
 <p>As an aside, I recently encountered a project called <a href="https://github.com/Masonry/Masonry">Masonry</a> that intends to be a simplified autolayout syntax. Here is an example from their docs:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[view1 mas_makeConstraints:^(MASConstraintMaker *make) {
     make.edges.equalTo(superview).with.insets(padding);
 }];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To me, that looks <em>marvelous</em>, and I wish Apple would adopt something similar. Right now, even though autolayout is very powerful, it is completely unsuited for many applications, including most programmatic interface designs.</p>
 

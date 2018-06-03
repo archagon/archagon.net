@@ -88,10 +88,10 @@
 .category-releases.category-swatch {
   background-color: #5cacfc; }
 .category-releases.document-header-category {
-  background-color: #2992fc; }
+  background-color: #2993fc; }
 .category-releases.post-title {
   background-color: #5cacfc;
-  text-shadow: 0px 2px #2992fc; }
+  text-shadow: 0px 2px #2993fc; }
 
 .category-reviews.category-swatch {
   background-color: #38c04f; }
@@ -109,6 +109,55 @@
   background-color: #899fbc;
   text-shadow: 0px 2px #6885aa; }
 
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
 </style>
 </head>
 
@@ -163,7 +212,7 @@
   .toc.composers-sketchpad .toc-links > ol li:nth-child(3) {
     color: white;
     border-radius: 0.5em;
-    background-color: #8aa3b2; }
+    background-color: #8ba4b3; }
   .toc.composers-sketchpad .toc-links > ol li:nth-child(3) a {
     text-decoration: none;
     pointer-events: none;

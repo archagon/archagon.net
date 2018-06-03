@@ -88,10 +88,10 @@
 .category-releases.category-swatch {
   background-color: #5cacfc; }
 .category-releases.document-header-category {
-  background-color: #2992fc; }
+  background-color: #2993fc; }
 .category-releases.post-title {
   background-color: #5cacfc;
-  text-shadow: 0px 2px #2992fc; }
+  text-shadow: 0px 2px #2993fc; }
 
 .category-reviews.category-swatch {
   background-color: #38c04f; }
@@ -109,6 +109,55 @@
   background-color: #899fbc;
   text-shadow: 0px 2px #6885aa; }
 
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
 </style>
 </head>
 
@@ -178,84 +227,81 @@
 
 <p>Here’s a sample implementation that I particularly like. (Pardon the lack of ARC-ness, I’m still getting on that train.) Public header:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// MyModelClass.h
-</span>
-<span class="k">@interface</span> <span class="nc">MyModelClass</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// MyModelClass.h
 
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">getter</span><span class="o">=</span><span class="n">namesProxy</span><span class="p">)</span> <span class="n">NSMutableArray</span><span class="o">*</span> <span class="n">names</span><span class="p">;</span>
+@interface MyModelClass : NSObject
 
-<span class="c1">// optional declarations to make your public interface explicit
-</span><span class="k">-</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">countOfNames</span><span class="p">;</span>
-<span class="k">-</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="nf">objectInNamesAtIndex</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">index</span><span class="p">;</span>
-<span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">insertObject</span><span class="p">:(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">object</span> <span class="nf">inNamesAtIndex</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">index</span><span class="p">;</span>
-<span class="k">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">removeObjectFromNamesAtIndex</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">index</span><span class="p">;</span>
+@property (nonatomic, readonly, getter=namesProxy) NSMutableArray* names;
 
-<span class="k">@end</span>
-</code></pre>
-</div>
+// optional declarations to make your public interface explicit
+-(NSUInteger) countOfNames;
+-(NSString*) objectInNamesAtIndex:(NSUInteger)index;
+-(void) insertObject:(NSString*)object inNamesAtIndex:(NSUInteger)index;
+-(void) removeObjectFromNamesAtIndex:(NSUInteger)index;
+
+@end
+</code></pre></div></div>
 
 <p>Private header<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// MyModelClass_.h
-</span>
-<span class="cp">#import "MyModelClass.h"
-</span>
-<span class="k">@interface</span> <span class="nc">MyModelClass</span> <span class="p">()</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// MyModelClass_.h
 
-<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">retain</span><span class="p">)</span> <span class="n">NSMutableArray</span><span class="o">*</span> <span class="n">namesMutable</span><span class="p">;</span>
+#import "MyModelClass.h"
 
-<span class="k">@end</span>
-</code></pre>
-</div>
+@interface MyModelClass ()
+
+@property (nonatomic, retain) NSMutableArray* namesMutable;
+
+@end
+</code></pre></div></div>
 
 <p>Implementation:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// MyModelClass.m
-</span>
-<span class="cp">#import "MyModelClass_.h"
-</span>
-<span class="k">@implementation</span> <span class="nc">MyModelClass</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// MyModelClass.m
 
-<span class="k">@dynamic</span> <span class="n">names</span><span class="p">;</span>
+#import "MyModelClass_.h"
 
-<span class="k">-</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="n">init</span>
-<span class="p">{</span>
-    <span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">init</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">self</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="nf">array</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
-<span class="p">}</span>
+@implementation MyModelClass
 
-<span class="o">-</span><span class="p">(</span><span class="n">NSMutableArray</span><span class="o">*</span><span class="p">)</span> <span class="n">namesProxy</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="nf">mutableArrayValueForKey</span><span class="p">:</span><span class="s">@"names"</span><span class="p">];</span>
-<span class="p">}</span>
+@dynamic names;
 
-<span class="o">-</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span> <span class="n">countOfNames</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">count</span><span class="p">];</span>
-<span class="p">}</span>
+-(id) init
+{
+    self = [super init];
+    if (self)
+    {
+        self.namesMutable = [NSMutableArray array];
+    }
+    return self;
+}
 
-<span class="o">-</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span> <span class="n">objectInNamesAtIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">index</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">objectAtIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
-<span class="p">}</span>
+-(NSMutableArray*) namesProxy
+{
+    return [self mutableArrayValueForKey:@"names"];
+}
 
-<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">insertObject</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">object</span> <span class="n">inNamesAtIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">index</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">insertObject</span><span class="p">:</span><span class="n">object</span> <span class="nf">atIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
-<span class="p">}</span>
+-(NSUInteger) countOfNames
+{
+    return [self.namesMutable count];
+}
 
-<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">removeObjectFromNamesAtIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="n">index</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">namesMutable</span> <span class="nf">removeObjectAtIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
-<span class="p">}</span>
+-(NSString*) objectInNamesAtIndex:(NSUInteger)index
+{
+    return [self.namesMutable objectAtIndex:index];
+}
 
-<span class="k">@end</span>
-</code></pre>
-</div>
+-(void) insertObject:(NSString*)object inNamesAtIndex:(NSUInteger)index
+{
+    return [self.namesMutable insertObject:object atIndex:index];
+}
+
+-(void) removeObjectFromNamesAtIndex:(NSUInteger)index
+{
+    return [self.namesMutable removeObjectAtIndex:index];
+}
+
+@end
+</code></pre></div></div>
 
 <p>With this design, you can observe <code class="highlighter-rouge">names</code> and get notifications whenever the <code class="highlighter-rouge">namesMutable</code> array is modified, <em>even though there’s no actual property named <code class="highlighter-rouge">names</code>!</em> You can also retrieve the <code class="highlighter-rouge">names</code> property directly from the object (which creates the proxy array) and modify it to your liking. (The getter is called <code class="highlighter-rouge">namesProxy</code> to avoid confusing the <code class="highlighter-rouge">mutableArrayValueForKey:</code> call.) Nobody without the private header has access to the internal <code class="highlighter-rouge">namesMutable</code> array; everything is instead handled either through the standard KVC collection methods or through the proxy array.</p>
 

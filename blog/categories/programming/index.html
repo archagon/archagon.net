@@ -88,10 +88,10 @@
 .category-releases.category-swatch {
   background-color: #5cacfc; }
 .category-releases.document-header-category {
-  background-color: #2992fc; }
+  background-color: #2993fc; }
 .category-releases.post-title {
   background-color: #5cacfc;
-  text-shadow: 0px 2px #2992fc; }
+  text-shadow: 0px 2px #2993fc; }
 
 .category-reviews.category-swatch {
   background-color: #38c04f; }
@@ -109,6 +109,55 @@
   background-color: #899fbc;
   text-shadow: 0px 2px #6885aa; }
 
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
 </style>
 </head>
 
@@ -160,11 +209,11 @@
 
 
 
-<p>(Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the <a href="#demo-concurrent-editing-in-macos-and-ios">demo section</a> which will get to the point faster than anything else.)</p>
+<p>(Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the <a href="#demo-concurrent-editing-in-macos-and-ios">demo section</a> to get a sense of what this article is about.)</p>
 
-<p>Embarrassingly, most of my app development to date has been confined to local devices. Programmers like to gloat about the stupendous mental castles they build of their circuitous, multi-level architectures, but not me. In truth, networks leave me quite perplexed. I start thinking about data serializing to bits, servers performing secret handshakes and negotiating history, merge conflicts pushing into app-space and starting the whole process over again—and it all just turns to mush in my head. For peace of mind, my code needs to be <em>locally provable</em>, and this means things like idempotent functions, immediate mode rendering, contiguous data structures, immutable objects. Networks, unfortunately, throw a giant wrench in the works.</p>
+<p>Embarrassingly, most of my app development to date has been confined to local devices. Programmers like to gloat about the stupendous mental castles they build of their circuitous, multi-level architectures, but not me. In truth, networks leave me quite perplexed. I start thinking about data serializing to bits, servers performing their arcane handshakes and voting rituals, merge conflicts pushing into app-space and starting the whole process over again—and it all just turns to mush in my head. For peace of mind, my code needs to be <em>locally provable</em>, and this means things like idempotent functions, decoupled modules, contiguous data structures, immutable objects. Networks, unfortunately, throw a giant wrench in the works.</p>
 
-<p>Sometime last year, after realizing that most of my ideas for document-based apps would probably require CloudKit for sync and collaboration, I decided to finally take a stab at the problem. Granted, there were tons of frameworks that promised to do the hard work of data model replication for me, but I didn’t want to black-box the most important part of my code. My gut told me that there had to be some arcane bit of foundational knowledge that would allow me to network my documents in a more refined and functional way, without the stateful spaghetti of conventional network architectures. Instead of downloading a Github framework and <a href="http://amzn.to/2iigBOI">smacking the build button</a>, I wanted to develop a base set of skills that would allow me to easily network <em>any</em> document-based app in the future, even if I was starting from scratch.</p>
+<p>Sometime last year, after realizing that most of my document-based apps would probably need to support sync and collaboration in the future, I decided to finally take a stab at the problem. Granted, there were tons of frameworks that promised to do the hard work of data model replication for me, but I didn’t want to black-box the most important part of my code. My gut told me that there had to be some arcane bit of foundational knowledge that would allow me to sync my documents in a refined and functional way, decoupled from the stateful spaghetti of the underlying network layer. Instead of downloading a Github framework and <a href="http://amzn.to/2iigBOI">smacking the build button</a>, I wanted to develop a base set of skills that would allow me to easily network <em>any</em> document-based app in the future, even if I was starting from scratch.</p>
 
  
         <a href="/blog/2018/03/24/data-laced-with-history/"><span class="more-inside">Continue Reading...</span></a>

@@ -6,9 +6,9 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 09 May 2018 16:47:52 -0700</pubDate>
-    <lastBuildDate>Wed, 09 May 2018 16:47:52 -0700</lastBuildDate>
-    <generator>Jekyll v3.5.1</generator>
+    <pubDate>Sun, 03 Jun 2018 12:10:41 -0700</pubDate>
+    <lastBuildDate>Sun, 03 Jun 2018 12:10:41 -0700</lastBuildDate>
+    <generator>Jekyll v3.8.2</generator>
     
       <item>
         <title>A Native Art Gallery for Your Mac (Take 2)</title>
@@ -44,11 +44,11 @@
 
 
 
-&lt;p&gt;(Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the &lt;a href=&quot;#demo-concurrent-editing-in-macos-and-ios&quot;&gt;demo section&lt;/a&gt; which will get to the point faster than anything else.)&lt;/p&gt;
+&lt;p&gt;(Sorry about the length! At some point in the distant past, this was supposed to be a short blog post. If you like, you can skip straight to the &lt;a href=&quot;#demo-concurrent-editing-in-macos-and-ios&quot;&gt;demo section&lt;/a&gt; to get a sense of what this article is about.)&lt;/p&gt;
 
-&lt;p&gt;Embarrassingly, most of my app development to date has been confined to local devices. Programmers like to gloat about the stupendous mental castles they build of their circuitous, multi-level architectures, but not me. In truth, networks leave me quite perplexed. I start thinking about data serializing to bits, servers performing secret handshakes and negotiating history, merge conflicts pushing into app-space and starting the whole process over again—and it all just turns to mush in my head. For peace of mind, my code needs to be &lt;em&gt;locally provable&lt;/em&gt;, and this means things like idempotent functions, immediate mode rendering, contiguous data structures, immutable objects. Networks, unfortunately, throw a giant wrench in the works.&lt;/p&gt;
+&lt;p&gt;Embarrassingly, most of my app development to date has been confined to local devices. Programmers like to gloat about the stupendous mental castles they build of their circuitous, multi-level architectures, but not me. In truth, networks leave me quite perplexed. I start thinking about data serializing to bits, servers performing their arcane handshakes and voting rituals, merge conflicts pushing into app-space and starting the whole process over again—and it all just turns to mush in my head. For peace of mind, my code needs to be &lt;em&gt;locally provable&lt;/em&gt;, and this means things like idempotent functions, decoupled modules, contiguous data structures, immutable objects. Networks, unfortunately, throw a giant wrench in the works.&lt;/p&gt;
 
-&lt;p&gt;Sometime last year, after realizing that most of my ideas for document-based apps would probably require CloudKit for sync and collaboration, I decided to finally take a stab at the problem. Granted, there were tons of frameworks that promised to do the hard work of data model replication for me, but I didn’t want to black-box the most important part of my code. My gut told me that there had to be some arcane bit of foundational knowledge that would allow me to network my documents in a more refined and functional way, without the stateful spaghetti of conventional network architectures. Instead of downloading a Github framework and &lt;a href=&quot;http://amzn.to/2iigBOI&quot;&gt;smacking the build button&lt;/a&gt;, I wanted to develop a base set of skills that would allow me to easily network &lt;em&gt;any&lt;/em&gt; document-based app in the future, even if I was starting from scratch.&lt;/p&gt;
+&lt;p&gt;Sometime last year, after realizing that most of my document-based apps would probably need to support sync and collaboration in the future, I decided to finally take a stab at the problem. Granted, there were tons of frameworks that promised to do the hard work of data model replication for me, but I didn’t want to black-box the most important part of my code. My gut told me that there had to be some arcane bit of foundational knowledge that would allow me to sync my documents in a refined and functional way, decoupled from the stateful spaghetti of the underlying network layer. Instead of downloading a Github framework and &lt;a href=&quot;http://amzn.to/2iigBOI&quot;&gt;smacking the build button&lt;/a&gt;, I wanted to develop a base set of skills that would allow me to easily network &lt;em&gt;any&lt;/em&gt; document-based app in the future, even if I was starting from scratch.&lt;/p&gt;
 
 &lt;a href=&quot;http://archagon.net/blog/2018/03/24/data-laced-with-history/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
         <pubDate>Sat, 24 Mar 2018 00:00:00 -0700</pubDate>
