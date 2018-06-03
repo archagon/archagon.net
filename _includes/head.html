@@ -40,4 +40,53 @@
 {% endfor %}
 {% endfilterize %}
 </style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="{{ '/js/bigfoot-number.css' | prepend: site.baseurl }}">
+<!-- <link rel="stylesheet" href="{{ '/js/bigfoot-default.css' | prepend: site.baseurl }}"> -->
+<script type="text/javascript" src="{{ '/js/jquery.min.js' | prepend: site.baseurl }}" defer></script>
+<script type="text/javascript" src="{{ '/js/bigfoot.min.js' | prepend: site.baseurl }}" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"{{SUP:data-footnote-backlink-ref}}\" " +
+            //         "data-footnote-identifier=\"{{FOOTNOTEID}}\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote {{FOOTNOTEID}}\" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"{{FOOTNOTECONTENT}}\">" +
+            //             "{{FOOTNOTENUM}}" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
+</style>
 </head>
