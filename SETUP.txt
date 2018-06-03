@@ -6,17 +6,21 @@
 0. prerequisites
     * homebrew
     * rbenv
-    * ruby-build (needed for rbenv intstall)
-1. rbenv install 2.2.0 (or whatever)
+    * ruby-build (possibly needed for rbenv intstall)
+    * Xcode (needed for rbenv install)
+1. rbenv install 2.2.0 (or whatever) (new jekyll requires 2.2.5... maybe 2.5.1?)
 2. rbenv local 2.2.0
-3. brew install imagemagick
+2a. check ruby --version, troubleshoot here: https://stackoverflow.com/a/12150580
+3. brew install imagemagick (need to do some crazy stuff for rmagick: https://stackoverflow.com/a/43035892)
 3. gem install jekyll
 4. gem install stringex
 5. gem install nokogiri
 6. gem install imgkit
 7. gem install rmagick
 8. gem install jekyll-redirect-from
-9. install wkhtmltoimage (I had to use an installer)
+9. gem install jekyll-paginate and jekyll-paginate-category
+
+10. (optionally?) install wkhtmltoimage (I had to use an installer)
 
 sudo `which imgkit` --install-wkhtmltoimage
         rvmsudo imgkit --install-wkhtmltoimage
