@@ -79,4 +79,4 @@ Note that sandboxing restrictions only allow command line calls to Backgroundifi
 
 {% include image name="bgify.png" width="81.9rem" %}
 
-You can find a discussion of this article on <a class="about-icon-container" href="https://news.ycombinator.com/item?id=17033574"><img class="about-social-icon" src="{{ "/images/social-icons/hackernews.png" | prepend: site.baseurl }}" /> <span class="about-social-service">HackerNews</span></a>.
+*You can find a discussion of this article on* <a class="about-icon-container" href="https://news.ycombinator.com/item?id=17033574"><img class="about-social-icon" src="{{ "/images/social-icons/hackernews.png" | prepend: site.baseurl }}" /> <span class="about-social-service">Hacker News</span></a>*.*
