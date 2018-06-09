@@ -95,10 +95,10 @@
 .category-releases.category-swatch {
   background-color: #5cacfc; }
 .category-releases.document-header-category {
-  background-color: #2993fc; }
+  background-color: #2992fc; }
 .category-releases.post-title {
   background-color: #5cacfc;
-  text-shadow: 0px 2px #2993fc; }
+  text-shadow: 0px 2px #2992fc; }
 
 .category-reviews.category-swatch {
   background-color: #38c04f; }
@@ -347,7 +347,7 @@
 
 <h1 id="causal-trees">Causal Trees</h1>
 
-<p>A a state-based CvRDT, on a high level, can be viewed as a data blob along with a commutative, associative, and idempotent merge function that can always generate a monotonically further-ahead blob from any two. An operation-based CmRDT, meanwhile, can be viewed as a data blob that is mutated and pushed monotonically forward by a stream of commutative-in-effect (and maybe causally-ordered and deduplicated) events. If the CvRDT data blob was simply defined as an ordered collection of operations, could these two techniques be combined? We’d then have the best of both worlds: an eminently-mergeable data structure, together with the ability to define our data model in terms of domain-specific actions!</p>
+<p>A state-based CvRDT, on a high level, can be viewed as a data blob along with a commutative, associative, and idempotent merge function that can always generate a monotonically further-ahead blob from any two. An operation-based CmRDT, meanwhile, can be viewed as a data blob that is mutated and pushed monotonically forward by a stream of commutative-in-effect (and maybe causally-ordered and deduplicated) events. If the CvRDT data blob was simply defined as an ordered collection of operations, could these two techniques be combined? We’d then have the best of both worlds: an eminently-mergeable data structure, together with the ability to define our data model in terms of domain-specific actions!</p>
 
 <p>Let’s build a sequence CvRDT with this in mind. To have some data to work with, here’s an example of a concurrent string mutation.</p>
 
@@ -392,7 +392,7 @@
 
 <p>In Swift code, an atom might look something like this:</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Id</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Hashable</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Id</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Hashable</span>
 <span class="p">{</span>
     <span class="k">let</span> <span class="nv">site</span><span class="p">:</span> <span class="kt">UInt16</span>
     <span class="k">let</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">UInt32</span>
@@ -405,11 +405,12 @@
     <span class="k">let</span> <span class="nv">cause</span><span class="p">:</span> <span class="kt">Id</span>
     <span class="k">let</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">T</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>While a string value might look like this:</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">StringValue</span><span class="p">:</span> <span class="kt">Codable</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">StringValue</span><span class="p">:</span> <span class="kt">Codable</span>
 <span class="p">{</span>
     <span class="k">case</span> <span class="n">null</span>
     <span class="k">case</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">char</span><span class="p">:</span> <span class="kt">UInt16</span><span class="p">)</span>
@@ -419,7 +420,8 @@
 <span class="p">}</span>
 
 <span class="kd">typealias</span> <span class="kt">StringAtom</span> <span class="o">=</span> <span class="kt">Atom</span><span class="o">&lt;</span><span class="kt">StringValue</span><span class="o">&gt;</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>What’s great about this representation is that Swift automatically compresses enums with associated values to their smallest possible byte size, i.e. the size of the largest associated value plus a byte for the case, or even less if Swift can determine that a value type has some extra bits available. Here, the size would be 3 bytes. (In case you’re wondering about the 16-bit “UUID” for the site, I’ve devised a mapping scheme from 16-bit IDs to full 128-bit UUIDs that I’ll explain in a later section.)</p>
 
@@ -686,7 +688,7 @@ Your browser does not support the video tag.
 
 <p>Before even touching the CT code, it makes sense to define a general CvRDT protocol. Among other reasons, this would make CvRDTs composable by allowing container CvRDTs  to forward all relevant calls to their child CvRDTs.</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CvRDT</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Hashable</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CvRDT</span><span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Hashable</span>
 <span class="p">{</span>
     <span class="c1">// must obey CvRDT convergence properties</span>
     <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">_</span> <span class="nv">v</span><span class="p">:</span> <span class="k">inout</span> <span class="k">Self</span><span class="p">)</span>
@@ -697,7 +699,8 @@ Your browser does not support the video tag.
     <span class="c1">// ensures that our invariants are correct, for debugging and sanity checking</span>
     <span class="kd">func</span> <span class="nf">validate</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>CvRDTs are especially vulnerable to bad input since there’s no guarantee of a central server to fix mistakes. In order to minimally safeguard against malicious and misbehaving peers, I’ve added a validation method to this interface. In the CT case, the <code class="highlighter-rouge">validate</code> method goes through the weave and checks as many preconditions as possible, including child ordering, atom type, and several others.</p>
 
@@ -709,11 +712,12 @@ Your browser does not support the video tag.
 
 <p>When two CTs merge, their site maps merge as well. The downside is that our site identifiers are only unique locally, not globally: if a new UUID gets added at a remote site and is then inserted into our local site map, the sorted order of our local UUIDs might change. When this happens, I traverse the full CT and remap any outdated site identifiers to their new values. This is facilitated by the following interface:</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IndexRemappable</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IndexRemappable</span>
 <span class="p">{</span>
     <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">remapIndices</span><span class="p">(</span><span class="n">_</span> <span class="nv">map</span><span class="p">:</span> <span class="p">[</span><span class="kt">SiteId</span><span class="p">:</span><span class="kt">SiteId</span><span class="p">])</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Any CRDT that makes use of the site map needs to implement this protocol. Whenever a merge that would cause some of the site IDs to change is initiated, the <code class="highlighter-rouge">remapIndices</code> method gets called on the CRDT before the merge is actually executed. We’re running <em>O</em>(<em>n</em>) operations when receiving remote data anyway, so performance is not a huge factor. Nonetheless, I made one additional tweak to ensure that remapping only happens very rarely. Instead of storing just the UUID in the site map, I also store the wall clock time at which the UUID was added. In the site map, these tuples are sorted first by time, then by UUID. Assuming that modern connected devices tend to have relatively accurate clocks (but not relying on this fact for correctness), we can ensure that new sites almost always get appended to the end of the ordered array and thus avoid shifting any of the existing UUIDs out of their previous spots. The only exception is when multiple sites happen to be added concurrently or when the wall clock on a site is significantly off.</p>
 
@@ -721,7 +725,7 @@ Your browser does not support the video tag.
 
 <p>The skeleton for our CT interface ends up looking something like this:</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CausalTreeSiteUUIDT</span><span class="p">:</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">Comparable</span><span class="p">,</span> <span class="kt">Codable</span> <span class="p">{}</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CausalTreeSiteUUIDT</span><span class="p">:</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">Comparable</span><span class="p">,</span> <span class="kt">Codable</span> <span class="p">{}</span>
 <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CausalTreeValueT</span><span class="p">:</span> <span class="kt">IndexRemappable</span><span class="p">,</span> <span class="kt">Codable</span> <span class="p">{}</span>
 
 <span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">SiteIndex</span>
@@ -747,7 +751,8 @@ Your browser does not support the video tag.
 
     <span class="c1">// etc., with CvRDT interface calls forwarded to the site index and weave</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>My CT exposes its array of operations to the outside world through an <a href="https://github.com/archagon/crdt-playground/blob/269784032d01dc12bd46d43caa5b7047465de5ae/CRDTFramework/CRDTCausalTreesWeave.swift#L723">array view</a>. By passing a consistent weft into the accessor function, you can read a historic version of the CT through the same interface, substantially simplifying any wrappers that use the CT as their backing store and making past revision viewing very simple to implement. (To accumulate a list of consistent wefts, all you need to do is store the current weft right before any remote changes get integrated.)</p>
 
@@ -755,7 +760,7 @@ Your browser does not support the video tag.
 
 <p>With the priority flag in tow, the value enum for our CT string atoms now looks something like this:</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">CausalTreePrioritizable</span> <span class="p">{</span> <span class="k">var</span> <span class="nv">priority</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> <span class="p">}</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">CausalTreePrioritizable</span> <span class="p">{</span> <span class="k">var</span> <span class="nv">priority</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span> <span class="p">}</span>
 
 <span class="kd">enum</span> <span class="kt">StringValue</span><span class="p">:</span> <span class="kt">CausalTreeValueT</span><span class="p">,</span> <span class="kt">CausalTreePrioritizable</span>
 <span class="p">{</span>
@@ -781,7 +786,8 @@ Your browser does not support the video tag.
 <span class="p">}</span>
 
 <span class="kd">typealias</span> <span class="kt">StringAtom</span> <span class="o">=</span> <span class="kt">Atom</span><span class="o">&lt;</span><span class="kt">StringValue</span><span class="o">&gt;</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>And that’s all we really need to start implementing custom data types!</p>
 
@@ -791,7 +797,7 @@ Your browser does not support the video tag.
 
 <p>In the demo section, I presented a CT designed for Bézier drawing. Here’s how I coded the value enum for each atom:</p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">DrawDatum</span><span class="p">:</span> <span class="kt">CausalTreeValueT</span><span class="p">,</span> <span class="kt">CausalTreePrioritizable</span>
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">DrawDatum</span><span class="p">:</span> <span class="kt">CausalTreeValueT</span><span class="p">,</span> <span class="kt">CausalTreePrioritizable</span>
 <span class="p">{</span>    
     <span class="k">case</span> <span class="n">null</span> <span class="c1">// no-op for grouping other atoms</span>
     <span class="k">case</span> <span class="n">shape</span>
@@ -846,7 +852,8 @@ Your browser does not support the video tag.
 <span class="p">}</span>
 
 <span class="kd">typealias</span> <span class="kt">DrawAtom</span> <span class="o">=</span> <span class="kt">Atom</span><span class="o">&lt;</span><span class="kt">DrawDatum</span><span class="o">&gt;</span>
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Swift is kind enough to compress this down to about 23 bytes: the maximum size of an associated value tuple (<code class="highlighter-rouge">trTranslate</code>, which has a 16-byte <code class="highlighter-rouge">NSPoint</code> and a 6 byte <code class="highlighter-rouge">AtomId</code>) plus a byte for the case.</p>
 

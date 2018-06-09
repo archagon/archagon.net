@@ -88,10 +88,10 @@
 .category-releases.category-swatch {
   background-color: #5cacfc; }
 .category-releases.document-header-category {
-  background-color: #2993fc; }
+  background-color: #2992fc; }
 .category-releases.post-title {
   background-color: #5cacfc;
-  text-shadow: 0px 2px #2993fc; }
+  text-shadow: 0px 2px #2992fc; }
 
 .category-reviews.category-swatch {
   background-color: #38c04f; }
@@ -250,7 +250,7 @@
 
 <p>Item 2 contains the path to the output directory and item 3 contains the path to the Backgroundifier command line utility. (They exist as separate items to make the paths easy to modify without having to resort to scripting.) Here’s the full text for the script in item 3:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># assign paths
+<div class="highlighter-rouge"><pre class="highlight"><code># assign paths
 bgify=$1
 output=$2
 
@@ -265,7 +265,8 @@ do
     echo "Processing $full_output ..."
     "$bgify" -i "$var" -o "$full_output" -w 2560 -h 1600
 done
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>Nothing too complicated! You can find the workflow file <a href="/images/backgroundifier-gallery/Backgroundify.workflow.zip">here</a>, and I assume you can just drop it into your <code class="highlighter-rouge">~/Library/Workflows/Applications/Folder Actions</code> directory. You can also pretty easily recreate it from scratch: just make a new Automator workflow with a Folder Action document type and copy the items.</p>
 
@@ -281,10 +282,10 @@ done
 
 <p>Some of us are… more messy than others. The desktop can acquire quite a bit of cruft over time, blocking view of the beautiful art below. But why bother cleaning it up when you can just sweep the mess under a rug? If you’re lazy like me, you can toggle visibility for the icons on your desktop by running <a href="/images/backgroundifier-gallery/toggle_desktop.command.zip">this simple script</a>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 <span class="c"># Toggles desktop icons.</span>
 
-<span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>defaults <span class="nb">read </span>com.apple.finder CreateDesktop<span class="k">)</span> <span class="o">=</span> <span class="nb">false</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+<span class="k">if</span> <span class="o">[[</span> <span class="k">$(</span>defaults <span class="nb">read </span>com.apple.finder CreateDesktop<span class="k">)</span> <span class="o">=</span> <span class="nb">false</span> <span class="o">]]</span>; <span class="k">then
     </span><span class="nb">echo</span> <span class="s2">"Showing desktop icons."</span>
     defaults write com.apple.finder CreateDesktop <span class="nb">true
 </span><span class="k">else
@@ -293,7 +294,8 @@ done
 </span><span class="k">fi
 
 </span>killall Finder
-</code></pre></div></div>
+</code></pre>
+</div>
 
 <p>And voilà! Clutter-free art with hardly a fuss.</p>
 
