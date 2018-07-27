@@ -6,9 +6,32 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 15 Jun 2018 15:15:03 -0700</pubDate>
-    <lastBuildDate>Fri, 15 Jun 2018 15:15:03 -0700</lastBuildDate>
+    <pubDate>Fri, 27 Jul 2018 15:05:56 -0700</pubDate>
+    <lastBuildDate>Fri, 27 Jul 2018 15:05:56 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
+    
+      <item>
+        <title>eGPU Redux: Sticking a GTX 1080 in an AKiTiO Thunder2</title>
+        <description>
+&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;http://archagon.net/images/blog/egpu-2/header2.jpg&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s been a year and a half since I wrote my article on &lt;a href=&quot;/blog/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/&quot;&gt;building a hassle-free Thunderbolt 2 eGPU&lt;/a&gt; for my late-2013 15” Macbook Pro. In all this time—with the caveat that I was exclusively using an external monitor through Bootcamp—I’ve had essentially zero issues with the setup. Booting would occasionally require one or two attempts to hear the Mac chime, but once you were in, performance was flawless. The GTX 1050 Ti was quite an excellent little card.&lt;/p&gt;
+
+&lt;p&gt;However, my power requirements recently changed. When the Oculus Rift went on sale for $350, I just couldn’t resist picking one up. VR was new to me and I wasn’t sure if this was something that would stick, but my first experience with &lt;a href=&quot;https://www.youtube.com/watch?v=MPxd1tD8tuc&quot;&gt;Beat Saber&lt;/a&gt; and &lt;a href=&quot;https://www.youtube.com/watch?v=7EtQh2keQbY&quot;&gt;The Climb&lt;/a&gt; left me in awe. This was, very clearly, &lt;em&gt;a new category of human experience&lt;/em&gt; that was being offered for just a few hundred bucks! Unfortunately, latecy was now an issue with some of the higher-caliber games such as Batman: Arkham VR, and 60–90fps was essentially a hard requirement for VR immersion. Together with the fact that many newer titles were starting to see poor performance even at lower settings and resolutions, I decided to explore upgrade options.&lt;/p&gt;
+
+&lt;p&gt;Until recently, I had my eye on the single-fan EVGA &lt;a href=&quot;https://amzn.to/2mOFMv9&quot;&gt;GTX 1060 SC&lt;/a&gt; to eventually replace my 1050 Ti, since the dimensions were very similar. But in doing this round of research, I was surprised to discover that Gigabyte offered an actual, full-fledged &lt;a href=&quot;https://amzn.to/2NFE0HO&quot;&gt;GTX 1080&lt;/a&gt; in &lt;em&gt;almost&lt;/em&gt; the same form factor! Though slightly too tall to fit, the card was just the right length for my AKiTiO case, meaning that I could simply take the top off and stick it in without having to do any &lt;a href=&quot;https://imgur.com/a/4nL8e&quot;&gt;metal-bending&lt;/a&gt;.&lt;/p&gt;
+
+&lt;a href=&quot;http://archagon.net/blog/2018/07/25/egpu-redux/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
+        <pubDate>Wed, 25 Jul 2018 03:32:38 -0700</pubDate>
+        <link>http://archagon.net/blog/2018/07/25/egpu-redux/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2018/07/25/egpu-redux/</guid>
+        
+        
+        <category>technology</category>
+        
+        <category>reviews</category>
+        
+      </item>
     
       <item>
         <title>A Native Art Gallery for Your Mac (Take 2)</title>
@@ -181,24 +204,6 @@
         
         
         <category>releases</category>
-        
-      </item>
-    
-      <item>
-        <title>GoodNotes &amp; The Joys of Digital Note-Taking</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/images/goodnotes-review/header.jpg&quot;&gt;&lt;/p&gt;
-
-&lt;p&gt;I have to admit: I’m an analog kind of fellow. Much as I benefit from our growing roster of digital tools, I’m always on the lookout for software that reminds me of reality’s imperfect grit. Fake mechanical clock faces. &lt;a href=&quot;http://fffff.at/noisy-typer-a-typewriter-for-your-laptop/&quot;&gt;Typewriter sounds&lt;/a&gt;. &lt;a href=&quot;http://www.secretgeometry.com/apps/cathode/&quot;&gt;Simulated CRT monitors&lt;/a&gt;! Some might call them skeumorphic, clunky, or even fraudulent; but in a world increasingly bent on making things shiny and pristine, I enjoy having a reminder of which side of the screen is the more important one.&lt;/p&gt;
-
-&lt;p&gt;The same even applies to my work notes. No doubt, there are immense benefits to limiting your note-taking to professional software like OneNote or Google Docs, starting with obvious features like copy &amp;amp; paste and text search that we all rely on while taking completely for granted. But whenever I undertake a major project, any spare pieces of paper lying around (including napkins, envelopes, and candy wrappers) will inevitably become conscripted as scratch paper, despite the vast universe of affordances on the digital side of the divide. As much as I’ve tried to adopt my thinking to software, the cold, hard truth of digital type just doesn’t represent my thoughts very well. On paper, my ideas becomes non-linear: sometimes visually grouped with related bits of info, sometimes crawling up the sides, sometimes accompanied by quick sketches and diagrams.&lt;/p&gt;
-
-&lt;a href=&quot;http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
-        <pubDate>Tue, 30 Aug 2016 13:26:53 -0700</pubDate>
-        <link>http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</link>
-        <guid isPermaLink="true">http://archagon.net/blog/2016/08/30/goodnotes-and-the-joys-of-digital-note-taking/</guid>
-        
-        
-        <category>technology</category>
         
       </item>
     

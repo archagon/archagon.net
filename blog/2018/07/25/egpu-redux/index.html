@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>eGPU Redux: Sticking a GTX 1080 in an AKiTiO Thunder2 — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<!-- generic content metadata -->
+<link rel="image_src" href="http://archagon.net/images/blog/egpu-2/header2.jpg" />
+
+<!-- opengraph content metadata -->
+<meta property="og:title" content="eGPU Redux: Sticking a GTX 1080 in an AKiTiO Thunder2">
+<meta property="og:site_name" content="Archagon Was Here">
+<meta property="og:type" content="article"> <!-- TODO: other types? -->
+<meta property="og:url" content="http://archagon.net/blog/2018/07/25/egpu-redux/">
+<meta property="og:image" content="http://archagon.net/images/blog/egpu-2/header2.jpg">
+
+<!-- twitter content metadata -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@archagon" />
+<meta name="twitter:title" content="eGPU Redux: Sticking a GTX 1080 in an AKiTiO Thunder2" />
+<meta name="twitter:image" content="http://archagon.net/images/blog/egpu-2/header2.jpg" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&amp;subset=latin-ext">
+
+<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=Vollkorn:400,400i,600,600i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://archagon.net/blog/2018/07/25/egpu-redux/">
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-technology" id="sel_blog20180725egpu-redux">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">eGPU Redux: Sticking a GTX 1080 in an AKiTiO Thunder2</h1>
+    <h2 class="post-meta">Jul 25, 2018<span class="document-header-categories"> <span class="document-header-category category-technology">technology</span> <span class="document-header-category category-reviews">reviews</span></span></h2>
+</header>
+
+<article class="section-content">
+
+
+<div class="full-width"><img src="http://archagon.net/images/blog/egpu-2/header2.jpg" /></div>
+
+<p>It’s been a year and a half since I wrote my article on <a href="/blog/2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/">building a hassle-free Thunderbolt 2 eGPU</a> for my late-2013 15” Macbook Pro. In all this time—with the caveat that I was exclusively using an external monitor through Bootcamp—I’ve had essentially zero issues with the setup. Booting would occasionally require one or two attempts to hear the Mac chime, but once you were in, performance was flawless. The GTX 1050 Ti was quite an excellent little card.</p>
+
+<p>However, my power requirements recently changed. When the Oculus Rift went on sale for $350, I just couldn’t resist picking one up. VR was new to me and I wasn’t sure if this was something that would stick, but my first experience with <a href="https://www.youtube.com/watch?v=MPxd1tD8tuc">Beat Saber</a> and <a href="https://www.youtube.com/watch?v=7EtQh2keQbY">The Climb</a> left me in awe. This was, very clearly, <em>a new category of human experience</em> that was being offered for just a few hundred bucks! Unfortunately, latecy was now an issue with some of the higher-caliber games such as Batman: Arkham VR, and 60–90fps was essentially a hard requirement for VR immersion. Together with the fact that many newer titles were starting to see poor performance even at lower settings and resolutions, I decided to explore upgrade options.</p>
+
+<p>Until recently, I had my eye on the single-fan EVGA <a href="https://amzn.to/2mOFMv9">GTX 1060 SC</a> to eventually replace my 1050 Ti, since the dimensions were very similar. But in doing this round of research, I was surprised to discover that Gigabyte offered an actual, full-fledged <a href="https://amzn.to/2NFE0HO">GTX 1080</a> in <em>almost</em> the same form factor! Though slightly too tall to fit, the card was just the right length for my AKiTiO case, meaning that I could simply take the top off and stick it in without having to do any <a href="https://imgur.com/a/4nL8e">metal-bending</a>.</p>
+
+<!--more-->
+
+<p>Power-wise, things weren’t as simple this time around. The 1050 Ti, as a 60W card, remained the most powerful GPU that could run entirely on bus power. Meanwhile, the 1080 pulled <a href="/images/blog/egpu-2/power_peak.png">a full 184W on load</a>! The AKiTiO’s circuitry wasn’t up to the task: the power needed to be supplemented.</p>
+
+<p>Previously, the eGPU community settled on the 220W Dell DA-2 adapter for this task. In effect, this was a portable PSU. All you had to do was <a href="https://egpu.io/forums/thunderbolt-enclosures/akitio-thunder2-and-thunder3-gpu-size-to-close-the-akitio/">add a chain of adapters to the 8-pin connector</a> (bridging two particular pins) and you could power both the enclosure and card at once. (It was important to power both from the same source to avoid electrical issues.) Recently, a new contender in the form of a 242W Mean Well adapter emerged on the scene. This was a better solution since you had a bit more power to work with and the bridge was no longer necessary. However, both adapters were quite beefy, coming in at 197×95×40mm (749cm<sup>2</sup>) for the DA-2 and 220×95×46mm (961cm<sup>2</sup>) for the Mean Well. Meanwhile, my current CD120100A adapter was only 165×63×38mm (395cm<sup>2</sup>), or around half the volume of the newer adapters!</p>
+
+<p>Instead of rushing into any purchases, I decided to go for another well-tested approach for the time being, and simply hijack one of my desktop PSUs. Though this required a bit more elbow grease, the process was quite simple on a high level.</p>
+
+<p>First, I needed to add a jumper to the 24-pin ATX connector in order to allow the PSU to turn on without a motherboard. The tired and true way was to bridge the PS_ON pin and a ground pins with a paperclip, but I decided to buy a <a href="https://amzn.to/2mHnJH5">pre-assembled jumper attachment</a> instead. I was hoping the build quality would be a bit more professional, but it ended up basically being a $5 coated paperclip stuck on a cheap plastic part. Oh well—at least it was easy to take on and off.</p>
+
+<p><img src="/images/blog/egpu-2/jumper.jpg" style="width:100%" /></p>
+
+<p>Next, I needed to run a cable from the PSU to the power port on the AKiTiO. Using a <a href="https://amzn.to/2AdgNew">5.5x2.5mm barrel plug to screw terminal connector</a> together with a <a href="https://amzn.to/2LFhD86">4-pin ATX extension cable</a>, the job was quite simple: <a href="https://imgur.com/gallery/bC7pr">cut the extension cable in half, strip the wires, and screw them into the connector</a>. This only took a few minutes. I even checked the voltage with a multimeter as described in <a href="https://youtu.be/uSnIJQ7n2C4?t=251">this video</a> to ensure that the poles weren’t switched.</p>
+
+<div class="image-gallery">
+<div class="image-gallery-two-column">
+<div style="max-width: 40rem; margin: 0.3rem">
+<img src="/images/blog/egpu-2/plug.jpg" />
+</div>
+<div style="max-width: 40rem; margin: 0.3rem">
+<img src="/images/blog/egpu-2/voltage.jpg" />
+</div>
+</div>
+</div>
+
+<p>At this point, it was time to install the new card. Out with the old, in with the new! Of course, I knew ahead of time that the 1080 was too tall for my case. This was fine for the time being, but I figured that in the future, I might attempt to 3D print a brand new top case that was appropriately taller, had some side vents, and featured an outside-facing slot for the 8-pin PCIe connector. (Hopefully, I’ll be able to do it with enough granularity to replicate the attachment grooves in the original.) In the meantime, this setup was better for cooling anyway.</p>
+
+<div class="image-gallery">
+<div class="image-gallery-two-column">
+<div style="max-width: 40rem; margin: 0.3rem">
+<img src="/images/blog/egpu-2/old.jpg" />
+</div>
+<div style="max-width: 40rem; margin: 0.3rem">
+<img src="/images/blog/egpu-2/new.jpg" />
+</div>
+</div>
+</div>
+
+<p>The final step was to connect the 8-pin PCIe connector from the PSU to the card. But, oops! At the last second, I realized my PSU was too old to actually offer this cable. After doing some reading, I discovered (and verified via multimeter) that the 6-pin connectors on most good PSUs provided <a href="http://www.playtool.com/pages/psuconnectors/connectors.html#pciexpress">12V on all three yellow pins</a> and were therefore 100% eletrically compatible with 8-pin connectors<sup id="fnref:wattage"><a href="#fn:wattage" class="footnote">1</a></sup>. I purchased an <a href="https://amzn.to/2A8uueq">adapter</a> the next day, finally completing the initial setup.</p>
+
+<p>The result of all this hackery was a terrifying sea-slug of a setup. No sane person would look at this contraption and expect it to work. Indeed, it seemed at first that this build would be trouble: I flipped the PSU switch and booted my computer just like before, but the fans in the AKiTiO and card wouldn’t spin up like they were supposed to. Then, I switched the TB2 port on the AKiTiO from top to bottom, and everything started to function exactly as it would with my 1050 Ti. I’d plug in the TB2 cable; turn on my computer; listen for the Mac startup chime; and hold Option to get into Bootcamp. As before, it would sometimes take 2-3 tries to get the thing to chime, but once it did, there were no further hassles.</p>
+
+<figure>
+<img src="/images/blog/egpu-2/fan.jpg" style="width:100%" />
+<figcaption>It’s alive!</figcaption>
+</figure>
+
+<p>On first boot, I didn’t get any signal to my external monitor. This is exactly what happened last time, so I went immediately to Device Manager and saw the driverless 1080 as expected. This time, the drivers installed automatically shortly after boot (since I already had them from the 1050) and then promted me to restart. Following this, my monitor lit up and everything started working perfectly.</p>
+
+<p>Here are the new benchmarks, with comparisons to the Thunder2’s previous occupant. (Note that I’m only listing the graphics score, not the total score.)</p>
+
+<p>
+<div class="tablecontainer">
+<div class="tablepadding">
+<table>
+
+<colgroup>
+<col class="ch" />
+<col span="3" class="data" />
+</colgroup>
+
+<tbody>
+
+<tr class="rh">
+<td class="corner"></td>
+<th>GTX 1080</th>
+<th>GTX 1050 Ti SC</th>
+<th>Improvement</th>
+</tr>
+
+<tr>
+<th colspan="4">3DMark Fire Strike</th>
+</tr>
+
+<tr>
+<th class="th1">Graphics Score</th>
+<td>17109</td>
+<td>6993</td>
+<td>2.45×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 1</th>
+<td>81.86</td>
+<td>32.28</td>
+<td>2.54×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 2</th>
+<td>68.17</td>
+<td>28.74</td>
+<td>2.37×</td>
+</tr>
+
+<tr>
+<th colspan="4">3DMark Time Spy</th>
+</tr>
+
+<tr>
+<th class="th1">Graphics Score</th>
+<td>6343</td>
+<td>2040</td>
+<td>3.10×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 1</th>
+<td>41.61</td>
+<td>13.67</td>
+<td>3.04×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 2</th>
+<td>36.17</td>
+<td>11.43</td>
+<td>3.16×</td>
+</tr>
+
+<tr>
+<th colspan="4">3DMark Sky Dive</th>
+</tr>
+
+<tr>
+<th class="th1">Graphics Score</th>
+<td>55760</td>
+<td>22564</td>
+<td>2.47×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 1</th>
+<td>233.78</td>
+<td>102.25</td>
+<td>2.29×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 2</th>
+<td>279.52</td>
+<td>103.83</td>
+<td>2.69×</td>
+</tr>
+
+<tr>
+<th colspan="4">3DMark11 Free</th>
+</tr>
+
+<tr>
+<th class="th1">Graphics Score</th>
+<td>21363</td>
+<td>8802</td>
+<td>2.43×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 1</th>
+<td>104.98</td>
+<td>42.83</td>
+<td>2.45×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 2</th>
+<td>116.34</td>
+<td>42.18</td>
+<td>2.76×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 3</th>
+<td>131.99</td>
+<td>54.32</td>
+<td>2.43×</td>
+</tr>
+
+<tr>
+<th class="th1">Graphics FPS 4</th>
+<td>57.58</td>
+<td>25.13</td>
+<td>2.29×</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div>
+</p>
+
+<p><a href="http://gpu.userbenchmark.com/Compare/Nvidia-GTX-1080-vs-Nvidia-GTX-1050-Ti/3603vs3649">Outside benchmarks</a> pointed to an expected 2.5–3.0× improvement over the 1050 Ti, and my own benchmarks bore this out. (Thus making this system an order of magnitude faster than using the internal dGPU!) And compared to review benchmarks for the same card, there was an approximate 20% TB2 performance penalty, just like last time.</p>
+
+<p>More practically, games were running a <em>whole</em> lot faster. I could barely play Far Cry 4 on low settings with the 1050, and now I was running on Ultra at a fairly steady 60fps. As for VR, there was no longer any lag or jittering in games like The Climb or Batman: Arkham VR—though I’ll still need to buy contact lenses to witness the full improvement. (Despite the fact that everything is blurry, VR is <em>way</em> more immersive without glasses, and you don’t run the risk of scratching the hard-to-replace headset lenses.)</p>
+
+<p>To summarize, these were the new parts I required:</p>
+<ul>
+  <li><a href="https://amzn.to/2NFE0HO">Gigabyte GeForce GTX 1080 Mini ITX</a> ($530)</li>
+  <li><a href="https://amzn.to/2AdgNew">5.5x2.5mm barrel plug to screw terminal connector</a> ($8)</li>
+  <li><a href="https://amzn.to/2mHnJH5">24-pin ATX jumper</a> ($6) (but you could just as easily do it yourself)</li>
+  <li><a href="https://amzn.to/2LFhD86">4-pin ATX extension cable</a> ($8)</li>
+  <li><a href="https://amzn.to/2A8uueq">6-pin PCIe to 8-pin PCIe adapter</a> ($7) (but you won’t need this if you have a relatively recent PSU)</li>
+</ul>
+
+<p>And finally, as a more permanent solution to power, I’ve been considering getting a <a href="https://amzn.to/2JWA9nt">Silverstone Flex SUG 300W PSU</a> ($65), since this is pretty much the smallest available PSU form factor and comes in at a mere 170×81.5×40.5mm (561,127), or 1.4× the volume of my previous adaptor and 0.75× the volume of the Mean Well. It’s also (hackably) modular. (But I need to do a bit more research first.)</p>
+
+<p>Admittedly, this is a <em>ton</em> of money to spend on hardware. You’re also paying a premium (and perhaps a small performance penalty) for the form factor. However, I think I’m able to justify this purchase. First, VR requires beefy hardware, and though my 1050 Ti gets the job done to an extent, it’s clear that some games can barely chug along. Especially for VR development (which I’m very keen on exploring), this level of hardware is almost mandatory. Second, the 1080 is one of the most powerful cards on the market. I’ll certainly need it to play upcoming power-hungry titles like Cyberpunk 2077 and Metro Exodus. It’ll be sure to last at least a couple of years. I might even get a small performance boost if I upgrade to a TB3 laptop at some point in the future! And third, the 1050 Ti not only hasn’t deprecated in the year and a half that I’ve owned it, but actually <em>increased</em> in MSRP from the $150 I bought it for to nearly $180! This means that the resale value is very close to the original selling price. It’s probably a sound financial idea to sell this card before the 1150/2050 upgrade comes along within the next few months.</p>
+
+<p>Just like last time, I’m publishing this with the caveat that <strong>this setup might not work for you</strong>, since none of it is officially supported—especially over TB2. Fortunately for me, it seems that the late-2013 15” dGPU Macbook Pro is very well-behaved in this regard: I didn’t have to use apple_set_os.efi, set restore points, solve “error 12”, or perform any of the incantations listed in this <a href="https://egpu.io/bootcamp-setup-guide-tb3-macbook-pro/">handy Bootcamp guide</a>—with the qualifier that I’m perfectly content running everything in Windows over an external monitor. But <em>you</em> might have to do some hacking if, for example, you have a newer Mac with TB3, or if your Mac doesn’t come with a dGPU, or if your dGPU is AMD and not NVIDIA. (These are inferences from what I’ve been reading, not statements of fact.)</p>
+
+<p>So why not just build a gaming PC instead of dealing with this mess? For people living minimalist or travel-heavy lives, modern laptops are good at pretty much everything, but lack the GPU performance required for modern gaming or compute. eGPUs solve this problem in an elegant way, and the Thunder2 1080 remains small enough that you could keep it on your desk or chuck it into a suitcase without much inconvenience. (With the caveat that it needs a new top case and a smaller PSU.) In my opinion, this is the clear future of performance computing for the vast majority of users, and it feels nice to be on that vanguard!</p>
+
+<p>Finally, I should note that the <a href="https://amzn.to/2JXWr8B">Gigabyte Aorus GTX 1080 Gaming Box</a> appears to use the same hardware and runs over TB3. (One review suggests that Apple’s <a href="https://www.apple.com/shop/product/MMEL2AM/A/thunderbolt-3-usb-c-to-thunderbolt-2-adapter">TB3 to TB2 adaptor</a> makes it work with older Macs.) It’s also quite small, coming in at 1.25× the size of the base Thunder2 and Thunder3 without requiring a hefty power brick. Not sure if the card is replaceable in this particular model: I’ve heard it both ways, and it looks like <a href="/images/blog/egpu-2/inner.jpg">custom hardware</a> compared to the basic card in the 1070 Gaming Box. (So probably less resale value for just the card.) This box might be an excellent option to investigate if you’re starting from scratch with a newer laptop.</p>
+
+<figure>
+<img src="/images/blog/egpu-2/desk.jpg" style="width:100%" />
+<figcaption>This setup is hooked up to a monitor on a separate desk. I had little interest in running crazy scripts to get the internal display working.</figcaption>
+</figure>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:wattage">
+      <p>The linked reference page offers some caveats about wattage, but most people seem to not run into this problem. <a href="#fnref:wattage" class="reversefootnote">&#8617;&#xfe0e;</a></p>
+    </li>
+  </ol>
+</div>
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">July 25, 2018</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2018 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>
