@@ -218,15 +218,15 @@
 
 <p>However, my power requirements recently changed. When the Oculus Rift went on sale for $350, I just couldn’t resist picking one up. VR was new to me and I wasn’t sure if this was something that would stick, but my first experience with <a href="https://www.youtube.com/watch?v=MPxd1tD8tuc">Beat Saber</a> and <a href="https://www.youtube.com/watch?v=7EtQh2keQbY">The Climb</a> left me in awe. This was, very clearly, <em>a new category of human experience</em> that was being offered for just a few hundred bucks! Unfortunately, latecy was now an issue with some of the higher-caliber games such as Batman: Arkham VR, and 60–90fps was essentially a hard requirement for VR immersion. Together with the fact that many newer titles were starting to see poor performance even at lower settings and resolutions, I decided to explore upgrade options.</p>
 
-<p>Until recently, I had my eye on the single-fan EVGA <a href="https://amzn.to/2mOFMv9">GTX 1060 SC</a> to eventually replace my 1050 Ti, since the dimensions were very similar. But in doing this round of research, I was surprised to discover that Gigabyte offered an actual, full-fledged <a href="https://amzn.to/2NFE0HO">GTX 1080</a> in <em>almost</em> the same form factor! Though slightly too tall to fit, the card was just the right length for my AKiTiO case, meaning that I could simply take the top off and stick it in without having to do any <a href="https://imgur.com/a/4nL8e">metal-bending</a>.</p>
+<p>Until recently, I had my eye on the single-fan EVGA <a href="https://amzn.to/2mOFMv9">GTX 1060 SC</a> to eventually replace my 1050 Ti, since the dimensions were very similar. But in doing this round of research, I was surprised to discover that Gigabyte offered an actual, full-fledged <a href="https://amzn.to/2NFE0HO">GTX 1080</a> in <em>almost</em> the same form factor! Though slightly too tall to fit, the card was just the right length for my AKiTiO case, meaning that I could simply take the top off and pop it in without having to do any <a href="https://imgur.com/a/4nL8e">metal-bending</a>.</p>
 
 <!--more-->
 
-<p>Power-wise, things weren’t as simple this time around. The 1050 Ti, as a 60W card, remained the most powerful GPU that could run entirely on bus power. Meanwhile, the 1080 pulled <a href="/images/blog/egpu-2/power_peak.png">a full 184W on load</a>! The AKiTiO’s circuitry wasn’t up to the task: the power needed to be supplemented.</p>
+<p>Power-wise, things weren’t as simple this time around. The 1050 Ti, as a 60W card, remained the most powerful GPU that could run entirely on bus power. Meanwhile, the 1080 pulled <a href="/images/blog/egpu-2/power_peak.png">a full 184W under load</a>! The AKiTiO’s circuitry wasn’t up to the task: the power needed to be supplemented.</p>
 
 <p>Previously, the eGPU community settled on the 220W Dell DA-2 adapter for this task. In effect, this was a portable PSU. All you had to do was <a href="https://egpu.io/forums/thunderbolt-enclosures/akitio-thunder2-and-thunder3-gpu-size-to-close-the-akitio/">add a chain of adapters to the 8-pin connector</a> (bridging two particular pins) and you could power both the enclosure and card at once. (It was important to power both from the same source to avoid electrical issues.) Recently, a new contender in the form of a 242W Mean Well adapter emerged on the scene. This was a better solution since you had a bit more power to work with and the bridge was no longer necessary. However, both adapters were quite beefy, coming in at 197×95×40mm (749cm<sup>2</sup>) for the DA-2 and 220×95×46mm (961cm<sup>2</sup>) for the Mean Well. Meanwhile, my current CD120100A adapter was only 165×63×38mm (395cm<sup>2</sup>), or around half the volume of the newer adapters!</p>
 
-<p>Instead of rushing into any purchases, I decided to go for another well-tested approach for the time being, and simply hijack one of my desktop PSUs. Though this required a bit more elbow grease, the process was quite simple on a high level.</p>
+<p>Instead of rushing into any purchases, I decided to go for another well-tested approach for the time being: simply hijack one of my desktop PSUs. Though this required a bit more elbow grease, the process was quite simple on a high level.</p>
 
 <p>First, I needed to add a jumper to the 24-pin ATX connector in order to allow the PSU to turn on without a motherboard. The tired and true way was to bridge the PS_ON pin and a ground pins with a paperclip, but I decided to buy a <a href="https://amzn.to/2mHnJH5">pre-assembled jumper attachment</a> instead. I was hoping the build quality would be a bit more professional, but it ended up basically being a $5 coated paperclip stuck on a cheap plastic part. Oh well—at least it was easy to take on and off.</p>
 
@@ -267,7 +267,7 @@
 <figcaption>It’s alive!</figcaption>
 </figure>
 
-<p>On first boot, I didn’t get any signal to my external monitor. This is exactly what happened last time, so I went immediately to Device Manager and saw the driverless 1080 as expected. This time, the drivers installed automatically shortly after boot (since I already had them from the 1050) and then promted me to restart. Following this, my monitor lit up and everything started working.</p>
+<p>On first boot, I didn’t get any signal to my external monitor. This is exactly what happened last time, so I went immediately to Device Manager and saw the driverless 1080 as expected. This time, Windows automatically installed the drivers shortly after boot (since I already had them from the 1050) and then promted me to restart. Following this, my monitor lit up and everything started working.</p>
 
 <p>Here are the new benchmarks, with comparisons to the Thunder2’s previous occupant. (Note that I’m only listing the graphics score, not the total score.)</p>
 
@@ -411,7 +411,7 @@
 </div>
 </p>
 
-<p><a href="http://gpu.userbenchmark.com/Compare/Nvidia-GTX-1080-vs-Nvidia-GTX-1050-Ti/3603vs3649">Outside benchmarks</a> pointed to an expected 2.5–3.0× improvement over the 1050 Ti, and my own benchmarks bore this out. (Thus making this system an order of magnitude faster than using the internal dGPU!) And compared to review benchmarks for the same card, there was an approximate 20% TB2 performance penalty, just like last time.</p>
+<p><a href="http://gpu.userbenchmark.com/Compare/Nvidia-GTX-1080-vs-Nvidia-GTX-1050-Ti/3603vs3649">Outside benchmarks</a> pointed to an expected 2.5–3.0× improvement over the 1050 Ti, and my own benchmarks bore this out. (Thus making this system an order of magnitude faster than using the integrated dGPU!) And compared to review benchmarks for the same card, there was an approximate 20% TB2 performance penalty, just like last time.</p>
 
 <p>More practically, games were running a <em>whole</em> lot faster. I could barely play Far Cry 4 on low settings with the 1050, and now I was running on Ultra at a fairly steady 60fps. As for VR, there was no longer any lag or jittering in games like The Climb or Batman: Arkham VR—though I’ll still need to buy contact lenses to witness the full improvement. (Despite the fact that everything is blurry, VR is <em>way</em> more immersive without glasses, and you don’t run the risk of scratching the hard-to-replace headset lenses.)</p>
 
