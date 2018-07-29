@@ -421,7 +421,7 @@
   <li><a href="https://amzn.to/2AdgNew">5.5x2.5mm barrel plug to screw terminal connector</a> ($8)</li>
   <li><a href="https://amzn.to/2mHnJH5">24-pin ATX jumper</a> ($6) (but you could just as easily do it yourself)</li>
   <li><a href="https://amzn.to/2LFhD86">4-pin ATX extension cable</a> ($8)</li>
-  <li><a href="https://amzn.to/2A8uueq">6-pin PCIe to 8-pin PCIe adapter</a> ($7) (but you won’t need this if you have a relatively recent PSU)</li>
+  <li><a href="https://amzn.to/2A8uueq">6-pin to 8-pin PCIe adapter</a> ($7) (but you won’t need this if you have a relatively recent PSU)</li>
 </ul>
 
 <p>And finally, as a more permanent solution to power, I’ve been considering getting a <a href="https://amzn.to/2JWA9nt">Silverstone Flex SUG 300W PSU</a> ($65), since this is pretty much the smallest available PSU form factor and comes in at a mere 170×81.5×40.5mm (561cm<sup>2</sup>), or 1.4× the volume of my previous adapter and 0.75× the volume of the Mean Well. It’s also (hackably) modular. But I need to do a bit more research first.</p>
@@ -438,6 +438,28 @@
 <img src="/images/blog/egpu-2/desk.jpg" style="width:100%" />
 <figcaption>This setup is hooked up to a monitor on a separate desk. I had little interest in running crazy scripts to get the internal display working.</figcaption>
 </figure>
+
+<hr />
+
+<h3 id="update-2018-7-28">Update 2018-7-28</h3>
+
+<p>One possible alternative to the 1080 for this level of performance is the upcoming <a href="https://www.powercolor.com/product?id=1527477130">PowerColor RX VEGA 56 NANO Edition</a>, which was supposed to be released this month.</p>
+
+<p>Pros:</p>
+<ul>
+  <li>The card would likely fit in the Thunder2 and Thunder3 cases without any mods. (Though the rear fan may have to go.)</li>
+  <li>The card would cost 15% less than the Gigabyte 1080.</li>
+  <li>Apple seems to currently <a href="https://support.apple.com/en-us/HT208544">only support AMD cards</a> for their native High Sierra eGPU functionality. This means that the card would likely work without hacks in macOS on TB3 Macbooks.</li>
+  <li>The card would likely work over a TB3 to TB2 adapter on Macbooks with Nvidia dGPUs.</li>
+</ul>
+
+<p>Cons:</p>
+<ul>
+  <li>Benchmarks indicate that the 56 is 70–90% as fast as the 1080, and is really more of a competitor to the 1070.</li>
+  <li>The power consumption may be as high as 1.5× the 1080’s. The card also requires two 8-pin PCIe connectors.</li>
+</ul>
+
+<p>Although compelling in terms of size and cost, I’m very concerned about the heat and power usage of this card. Whereas the 1080 is firmly capped at 180W by design, the 56 appears to have much looser power requirements. Together with the second 8-pin PCIe connector, this means that a Flex ATX PSU may no longer be an option for powering this thing, and that the case may be too small for safe thermal operation.</p>
 
 <div class="footnotes">
   <ol>
