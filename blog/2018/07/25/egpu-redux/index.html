@@ -411,9 +411,9 @@
 </div>
 </p>
 
-<p><a href="http://gpu.userbenchmark.com/Compare/Nvidia-GTX-1080-vs-Nvidia-GTX-1050-Ti/3603vs3649">Outside benchmarks</a> pointed to an expected 2.5–3.0× improvement over the 1050 Ti, and my own benchmarks bore this out. (Thus making this system an order of magnitude faster than using the integrated dGPU!) And compared to review benchmarks for the same card, there was an approximate 20% TB2 performance penalty, just like last time.</p>
+<p><a href="http://gpu.userbenchmark.com/Compare/Nvidia-GTX-1080-vs-Nvidia-GTX-1050-Ti/3603vs3649">Outside benchmarks</a> pointed to an expected 2.5–3.0× improvement over the 1050 Ti, and my own benchmarks bear this out. (Thus making this system an order of magnitude faster than using the integrated dGPU!) And compared to review benchmarks for the same card, there’s an approximate 20% TB2 performance penalty, just like last time.</p>
 
-<p>More practically, games were running a <em>whole</em> lot faster. I could barely play Far Cry 4 on low settings with the 1050, and now I was running on Ultra at a fairly steady 60fps. As for VR, there was no longer any lag or jittering in games like The Climb or Batman: Arkham VR—though I’ll still need to buy contact lenses to witness the full improvement. (Despite the fact that everything is blurry, VR is <em>way</em> more immersive without glasses, and you don’t run the risk of scratching the hard-to-replace headset lenses.)</p>
+<p>More practically, games are running a <em>whole</em> lot faster. I could barely play Far Cry 4 and PUBG on low settings with the 1050, and now I’m running on Ultra at a fairly steady 60fps. As for VR, there’s no longer any lag or jittering in games like The Climb or Batman: Arkham VR—though I’ll still need to buy contact lenses to witness the full improvement. (Despite the fact that everything is blurry, VR is <em>way</em> more immersive without glasses, and you don’t run the risk of scratching the hard-to-replace headset lenses.)</p>
 
 <p>To summarize, these were the new parts I required:</p>
 <ul>
@@ -433,6 +433,8 @@
 <p>So why not just build a gaming PC instead of dealing with this mess? For people living minimalist or travel-heavy lives, modern laptops are good at pretty much everything, but lack the GPU performance required for modern gaming or compute. eGPUs solve this problem in an elegant way, and the Thunder2 1080 remains small enough that you could keep it on your desk or chuck it into a suitcase without much inconvenience. (With the caveat that it needs a new top case and a smaller PSU.) In my opinion, this is the clear future of performance computing for the vast majority of users, and it feels nice to be on that vanguard!</p>
 
 <p>Finally, I should note that the <a href="https://amzn.to/2JXWr8B">Gigabyte Aorus GTX 1080 Gaming Box</a> appears to use the same hardware and runs over TB3. It’s also quite small, coming in at 1.25× the size of the base Thunder2 and Thunder3 without requiring a hefty power brick. One Amazon review suggests that Apple’s <a href="https://www.apple.com/shop/product/MMEL2AM/A/thunderbolt-3-usb-c-to-thunderbolt-2-adapter">TB3 to TB2 adapter</a> makes it work with older Macs, but <a href="https://egpu.io/forums/pc-setup/help-macbook-pro-2013-late-750m-with-akitio-nodetb3-tb2/#post-22966">other comments</a> indicate that my particular model of Mac would not support this configuration. Not sure if the card is replaceable in this particular model: I’ve heard it both ways, and it looks like <a href="/images/blog/egpu-2/inner.jpg">custom hardware</a> compared to the basic card in the 1070 Gaming Box. (So probably less resale value for just the card.) Nonetheless, this box might be an excellent option to investigate if you’re starting from scratch with a newer laptop.</p>
+
+<p><em>You can find a discussion of this article on</em> <a class="about-icon-container" href="https://news.ycombinator.com/item?id=17629855"><img class="about-social-icon" src="/images/social-icons/hackernews.png" /> <span class="about-social-service">Hacker News</span></a><em>.</em></p>
 
 <figure>
 <img src="/images/blog/egpu-2/desk.jpg" style="width:100%" />
@@ -457,6 +459,7 @@
 <ul>
   <li>Benchmarks indicate that the 56 is 70–90% as fast as the 1080, and is really more of a competitor to the 1070.</li>
   <li>The power consumption may be as high as 1.5× the 1080’s. The card also requires two 8-pin PCIe connectors.</li>
+  <li>It seems that higher end AMD cards are more likely to trigger the nefarious “error 12” in Windows than Nvidia cards. (Fixing this requires manually disabling devices in Device Manager.)</li>
 </ul>
 
 <p>Although compelling in terms of size and cost, I’m very concerned about the heat and power usage of this card. Whereas the 1080 is firmly capped at 180W by design, the 56 appears to have much looser power requirements. Together with the second 8-pin PCIe connector, this means that a Flex ATX PSU may no longer be an option for powering this thing, and that the AKiTiO cases may be too small for safe thermal operation.</p>
