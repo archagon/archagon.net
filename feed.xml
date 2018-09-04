@@ -6,20 +6,20 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 04 Sep 2018 01:36:45 -0700</pubDate>
-    <lastBuildDate>Tue, 04 Sep 2018 01:36:45 -0700</lastBuildDate>
+    <pubDate>Tue, 04 Sep 2018 06:51:00 -0700</pubDate>
+    <lastBuildDate>Tue, 04 Sep 2018 06:51:00 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
     
       <item>
-        <title>Good Spirits: Persisting Data Statelessly</title>
+        <title>Good Spirits: Syncing Data Statelessly</title>
         <description>
 &lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;http://archagon.net/images/blog/goodspirits/header.jpg&quot;&gt;&lt;/div&gt;
 
-&lt;p&gt;I just released a drink-tracking app called &lt;a href=&quot;https://itunes.apple.com/us/app/good-spirits/id1434237439?mt=8&amp;amp;ref=blog&quot;&gt;Good Spirits&lt;/a&gt;. &lt;a href=&quot;https://github.com/archagon/good-spirits&quot;&gt;The code&lt;/a&gt; is available under the GPL.&lt;/p&gt;
+&lt;p&gt;I just released a drink-tracking app called &lt;a href=&quot;https://itunes.apple.com/us/app/good-spirits/id1434237439?mt=8&amp;amp;ref=blog&quot;&gt;Good Spirits&lt;/a&gt;. The code is &lt;a href=&quot;https://github.com/archagon/good-spirits&quot;&gt;available under the GPL&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Following my &lt;a href=&quot;/blog/2018/03/24/data-laced-with-history/&quot;&gt;CRDT explorations&lt;/a&gt; earlier this year, I wanted to build an app on top of a persistent store that adopted the same kinds of resilient sync mechanisms, even if it didn’t use the actual low-level “ORDT” data structures described in the article. Having used a spreadsheet to track my drinking over the past few years, a dedicated drink tracking app seemed like the perfect little project.&lt;/p&gt;
+&lt;p&gt;Following my &lt;a href=&quot;/blog/2018/03/24/data-laced-with-history/&quot;&gt;CRDT explorations&lt;/a&gt; earlier this year, I wanted to build an app on top of a persistence layer that adopted the same kinds of resilient sync patterns, even if it didn’t use the actual low-level “ORDT” data structures described in the article. Having used a spreadsheet to track my drinking over the past few years, a dedicated drink tracking app seemed like the perfect little project.&lt;/p&gt;
 
-&lt;p&gt;The main problem I was aiming to solve was architectural. Many apps establish rather unclear relationships between the main app, the persistent store, and the cloud. Does the local database or the cloud count as the primary store? When a change comes down from the UI layer, how does it eventually get synced to the local database and to other devices, and what code keeps track of all this state? Which system does the cloud talk to? How is offline mode dealt with? How do critical errors percolate through this pipework? And what does the in-memory cache have to say about all of this? One common resolution is that the data layer becomes a monstrous thing that deals with persistence, sync, caching, reachability changes, UI notifications, and many other systems, all at once.&lt;/p&gt;
+&lt;p&gt;The main problem I was aiming to solve was architectural. Many apps establish rather unclear relationships between the main app, the persistent store, and the cloud. Does the local database or the cloud count as the primary store? When a change comes down from the UI layer, how does it eventually get synced to the local database and to other devices, and what code keeps track of all this state? Which system does the cloud talk to? How is offline mode dealt with? How do critical errors percolate through this pipework? And what does the in-memory cache have to say about all of this? A common result is that the data layer becomes a monstrous thing that deals with persistence, sync, caching, reachability changes, UI notifications, and many other systems, all at once.&lt;/p&gt;
 
 &lt;p&gt;The reason for this mess, in my mind, is state. Sync often relies on systems catching every change and remembering their exact place in the whole process. If an update falls through the cracks, the data has a high chance of desyncing. Naturally, this leads to monoliths that try to claim ownership over every last bit of data.&lt;/p&gt;
 
