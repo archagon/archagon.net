@@ -6,9 +6,34 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 30 Jul 2018 14:01:09 -0700</pubDate>
-    <lastBuildDate>Mon, 30 Jul 2018 14:01:09 -0700</lastBuildDate>
+    <pubDate>Tue, 04 Sep 2018 01:36:45 -0700</pubDate>
+    <lastBuildDate>Tue, 04 Sep 2018 01:36:45 -0700</lastBuildDate>
     <generator>Jekyll v3.5.1</generator>
+    
+      <item>
+        <title>Good Spirits: Persisting Data Statelessly</title>
+        <description>
+&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;http://archagon.net/images/blog/goodspirits/header.jpg&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;I just released a drink-tracking app called &lt;a href=&quot;https://itunes.apple.com/us/app/good-spirits/id1434237439?mt=8&amp;amp;ref=blog&quot;&gt;Good Spirits&lt;/a&gt;. &lt;a href=&quot;https://github.com/archagon/good-spirits&quot;&gt;The code&lt;/a&gt; is available under the GPL.&lt;/p&gt;
+
+&lt;p&gt;Following my &lt;a href=&quot;/blog/2018/03/24/data-laced-with-history/&quot;&gt;CRDT explorations&lt;/a&gt; earlier this year, I wanted to build an app on top of a persistent store that adopted the same kinds of resilient sync mechanisms, even if it didn’t use the actual low-level “ORDT” data structures described in the article. Having used a spreadsheet to track my drinking over the past few years, a dedicated drink tracking app seemed like the perfect little project.&lt;/p&gt;
+
+&lt;p&gt;The main problem I was aiming to solve was architectural. Many apps establish rather unclear relationships between the main app, the persistent store, and the cloud. Does the local database or the cloud count as the primary store? When a change comes down from the UI layer, how does it eventually get synced to the local database and to other devices, and what code keeps track of all this state? Which system does the cloud talk to? How is offline mode dealt with? How do critical errors percolate through this pipework? And what does the in-memory cache have to say about all of this? One common resolution is that the data layer becomes a monstrous thing that deals with persistence, sync, caching, reachability changes, UI notifications, and many other systems, all at once.&lt;/p&gt;
+
+&lt;p&gt;The reason for this mess, in my mind, is state. Sync often relies on systems catching every change and remembering their exact place in the whole process. If an update falls through the cracks, the data has a high chance of desyncing. Naturally, this leads to monoliths that try to claim ownership over every last bit of data.&lt;/p&gt;
+
+&lt;p&gt;Ergo, my goal was to get rid of as much state as possible.&lt;/p&gt;
+
+&lt;a href=&quot;http://archagon.net/blog/2018/09/03/good-spirits-persisting-data-statelessly/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
+        <pubDate>Mon, 03 Sep 2018 14:56:58 -0700</pubDate>
+        <link>http://archagon.net/blog/2018/09/03/good-spirits-persisting-data-statelessly/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2018/09/03/good-spirits-persisting-data-statelessly/</guid>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>eGPU Redux: Sticking a GTX 1080 in an AKiTiO Thunder2</title>
@@ -190,22 +215,6 @@
         <category>technology</category>
         
         <category>reviews</category>
-        
-      </item>
-    
-      <item>
-        <title>Turning Your macOS Desktop into a Rotating Art Gallery with Backgroundifier</title>
-        <description>&lt;div&gt;&lt;img src=&quot;/images/backgroundifier-gallery/title_2.jpg&quot;&gt;&lt;/div&gt;
-
-&lt;p&gt;The category of static visual art is in a bit of an awkward phase right now. Entertainment in the 21st century has evolved to actively engage our minds and senses, to the point where movies, music, games, and even audiobooks require little more than putting on a pair of headphones or fixing our vision to the nearest screen. Where does the immense body of work from genres such as fine art, photography, and illustration fit into this world? Museums — physical beasts that they are — can hardly be visited on a whim, and as of yet there’s (sadly) no Spotify for visual art. Meanwhile, hundreds of amazing works are posted daily on Instagram, DeviantArt, and Reddit. How do we find the time to fit them into our content-saturated lives? And how do we return to view the works we’ve already enjoyed?&lt;/p&gt;
-
-&lt;a href=&quot;http://archagon.net/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
-        <pubDate>Mon, 19 Sep 2016 16:10:16 -0700</pubDate>
-        <link>http://archagon.net/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/</link>
-        <guid isPermaLink="true">http://archagon.net/blog/2016/09/19/turning-your-macos-desktop-into-a-rotating-art-gallery-with-backgroundifier/</guid>
-        
-        
-        <category>releases</category>
         
       </item>
     

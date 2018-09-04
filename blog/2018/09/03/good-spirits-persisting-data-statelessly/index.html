@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Good Spirits: Persisting Data Statelessly — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<!-- generic content metadata -->
+<link rel="image_src" href="http://archagon.net/images/blog/goodspirits/header.jpg" />
+
+<!-- opengraph content metadata -->
+<meta property="og:title" content="Good Spirits: Persisting Data Statelessly">
+<meta property="og:site_name" content="Archagon Was Here">
+<meta property="og:type" content="article"> <!-- TODO: other types? -->
+<meta property="og:url" content="http://archagon.net/blog/2018/09/03/good-spirits-persisting-data-statelessly/">
+<meta property="og:image" content="http://archagon.net/images/blog/goodspirits/header.jpg">
+<meta property="og:description" content="Isolating cloud sync and persistent storage in an app architecture.">
+
+<!-- twitter content metadata -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@archagon" />
+<meta name="twitter:title" content="Good Spirits: Persisting Data Statelessly" />
+<meta name="twitter:image" content="http://archagon.net/images/blog/goodspirits/header.jpg" />
+<meta name="twitter:description" content="Isolating cloud sync and persistent storage in an app architecture." />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&amp;subset=latin-ext">
+
+<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=Vollkorn:400,400i,600,600i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://archagon.net/blog/2018/09/03/good-spirits-persisting-data-statelessly/">
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-programming" id="sel_blog20180903good-spirits-persisting-data-statelessly">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">Good Spirits: Persisting Data Statelessly</h1>
+    <h2 class="post-meta">Sep 3, 2018<span class="document-header-categories"> <span class="document-header-category category-programming">programming</span></span></h2>
+</header>
+
+<article class="section-content">
+
+
+<div class="full-width"><img src="http://archagon.net/images/blog/goodspirits/header.jpg" /></div>
+
+<p>I just released a drink-tracking app called <a href="https://itunes.apple.com/us/app/good-spirits/id1434237439?mt=8&amp;ref=blog">Good Spirits</a>. <a href="https://github.com/archagon/good-spirits">The code</a> is available under the GPL.</p>
+
+<p>Following my <a href="/blog/2018/03/24/data-laced-with-history/">CRDT explorations</a> earlier this year, I wanted to build an app on top of a persistent store that adopted the same kinds of resilient sync mechanisms, even if it didn’t use the actual low-level “ORDT” data structures described in the article. Having used a spreadsheet to track my drinking over the past few years, a dedicated drink tracking app seemed like the perfect little project.</p>
+
+<p>The main problem I was aiming to solve was architectural. Many apps establish rather unclear relationships between the main app, the persistent store, and the cloud. Does the local database or the cloud count as the primary store? When a change comes down from the UI layer, how does it eventually get synced to the local database and to other devices, and what code keeps track of all this state? Which system does the cloud talk to? How is offline mode dealt with? How do critical errors percolate through this pipework? And what does the in-memory cache have to say about all of this? One common resolution is that the data layer becomes a monstrous thing that deals with persistence, sync, caching, reachability changes, UI notifications, and many other systems, all at once.</p>
+
+<p>The reason for this mess, in my mind, is state. Sync often relies on systems catching every change and remembering their exact place in the whole process. If an update falls through the cracks, the data has a high chance of desyncing. Naturally, this leads to monoliths that try to claim ownership over every last bit of data.</p>
+
+<p>Ergo, my goal was to get rid of as much state as possible.</p>
+
+<!--more-->
+
+<p>For the app-facing data layer, I decided to build a fairly generic interface that could encapsulate any sort of persistent store. The commands and queries were unique to my app, but the interface could be implemented by databases, in-memory stores, JSON, CloudKit, and others. For sync purposes, I wanted to be able to treat my local database and cloud storage as one and the same.</p>
+
+<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataAccessProtocol</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">_</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">?)</span><span class="o">-&gt;</span><span class="kt">Void</span><span class="p">)</span>
+    <span class="kd">func</span> <span class="nf">readTransaction</span><span class="p">(</span><span class="n">_</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">DataProtocol</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">readWriteTransaction</span><span class="p">(</span><span class="n">_</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">DataWriteProtocol</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataAccessProtocolImmediate</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">initialize</span><span class="p">()</span> <span class="k">throws</span>
+    <span class="kd">func</span> <span class="n">readTransaction</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">DataProtocolImmediate</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">)</span> <span class="k">rethrows</span> <span class="o">-&gt;</span> <span class="kt">T</span>
+    <span class="kd">func</span> <span class="n">readWriteTransaction</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">DataWriteProtocolImmediate</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">T</span><span class="p">)</span> <span class="k">rethrows</span> <span class="o">-&gt;</span> <span class="kt">T</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataProtocol</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">lamportTimestamp</span><span class="p">(</span><span class="n">withCompletionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="kt">DataLayer</span><span class="o">.</span><span class="kt">Time</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">vectorTimestamp</span><span class="p">(</span><span class="n">withCompletionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="kt">VectorClock</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">operationLog</span><span class="p">(</span><span class="n">afterTimestamp</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">VectorClock</span><span class="p">,</span> <span class="n">withCompletionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="kt">DataLayer</span><span class="o">.</span><span class="kt">OperationLog</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">nextOperationIndex</span><span class="p">(</span><span class="n">forSite</span> <span class="nv">site</span><span class="p">:</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">SiteID</span><span class="p">,</span> <span class="n">withCompletionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="kt">DataLayer</span><span class="o">.</span><span class="kt">Index</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">forID</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">GlobalID</span><span class="p">,</span> <span class="n">withCompletionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="kt">DataModel</span><span class="p">?</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">fromIncludingDate</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="n">toExcludingDate</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">afterTimestamp</span><span class="p">:</span> <span class="kt">VectorClock</span><span class="p">?,</span> <span class="n">withCompletionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="p">([</span><span class="kt">DataModel</span><span class="p">],</span><span class="kt">VectorClock</span><span class="p">)</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="c1">// plus some others</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataProtocolImmediate</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">lamportTimestamp</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">Time</span>
+    <span class="kd">func</span> <span class="nf">vectorTimestamp</span><span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">VectorClock</span>
+    <span class="kd">func</span> <span class="nf">operationLog</span><span class="p">(</span><span class="n">afterTimestamp</span> <span class="nv">timestamp</span><span class="p">:</span> <span class="kt">VectorClock</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">OperationLog</span>
+    <span class="kd">func</span> <span class="nf">nextOperationIndex</span><span class="p">(</span><span class="n">forSite</span> <span class="nv">site</span><span class="p">:</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">SiteID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">Index</span>
+    <span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">forID</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">GlobalID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">DataModel</span><span class="p">?</span>
+    <span class="kd">func</span> <span class="nf">data</span><span class="p">(</span><span class="n">fromIncludingDate</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="n">toExcludingDate</span> <span class="nv">to</span><span class="p">:</span> <span class="kt">Date</span><span class="p">,</span> <span class="nv">afterTimestamp</span><span class="p">:</span> <span class="kt">VectorClock</span><span class="p">?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">([</span><span class="kt">DataModel</span><span class="p">],</span><span class="kt">VectorClock</span><span class="p">)</span>
+    <span class="c1">// plus some others</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataWriteProtocol</span><span class="p">:</span> <span class="kt">DataProtocol</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">commit</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt">DataModel</span><span class="p">],</span> <span class="nv">withSite</span><span class="p">:</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">SiteID</span><span class="p">,</span> <span class="n">completionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">MaybeError</span><span class="o">&lt;</span><span class="p">[</span><span class="kt">GlobalID</span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">DataModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">withOperationLog</span><span class="p">:</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">OperationLog</span><span class="p">,</span> <span class="n">completionBlock</span> <span class="nv">block</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">?)</span><span class="o">-&gt;</span><span class="p">())</span>
+    <span class="c1">// plus some others</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataWriteProtocolImmediate</span><span class="p">:</span> <span class="kt">DataProtocolImmediate</span>
+<span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">commit</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt">DataModel</span><span class="p">],</span> <span class="nv">withSite</span><span class="p">:</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">SiteID</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">GlobalID</span><span class="p">]</span>
+    <span class="kd">func</span> <span class="nf">sync</span><span class="p">(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">DataModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">withOperationLog</span><span class="p">:</span> <span class="kt">DataLayer</span><span class="o">.</span><span class="kt">OperationLog</span><span class="p">)</span> <span class="k">throws</span>
+    <span class="c1">// plus some others</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>GRDB inspired the synchronous <code class="highlighter-rouge">try</code> calls in the <code class="highlighter-rouge">Immediate</code> variants, but cloud services (and some database calls) still demanded asynchronous support. Fortunately, you didn’t need to implement both at once: if you had one, you could fill in the other <a href="https://github.com/archagon/good-spirits/blob/22983beed78844972e219d4f5c20e9b97a804843/Modules/DBComparison/DataLayer/Data_Default.swift">by way of protocol extensions</a>.</p>
+
+<p>For the actual database framework, I looked into Realm, YapDatabase, FMDB (and FCModel), SQLite.swift, CoreData, and GRDB. By far, GRDB was the best of the bunch. It took the best bits of YapDatabase and FCModel, pared them down into a simple library, made the whole thing very Swifty, and wrapped it all up in an incredibly intuitive interface. Working with this framework was a complete delight, even given that I was writing SQLite commands by hand in many places. It’s exactly the way SQLite ought to work in a modern language.</p>
+
+<p>My data needs were very simple. The only user-generated unit of data was the check-in, which was just a bunch of basic drink properties such as ABV, volume, price, and so on, as well as a bit of metadata. (There were no relationships between check-ins.) Consequently, I decided on a two-table approach. The first table contained the check-ins themselves. Each check-in had a GUID in the form of a site-specific UUID together with an operation index<sup id="fnref:opindex"><a href="#fn:opindex" class="footnote">1</a></sup>. (This pair became the primary key for the table.) Most of the rest of the properties came in pairs: an actual value and a Lamport timestamp. Each row additionally sported a “deleted” flag in lieu of native SQLite deletions. This would ordinarily require garbage collection to deal with, but drink check-ins rarely needed to be deleted and had an upper bound of about 100,000 over the course of several years (based on to top Untappd users) so I didn’t bother.</p>
+
+<p>The second table contained a simple log of events. Each row was identified by a site-specific UUID together with an operation index, and contained a foreign key reference to a check-in GUID from the data table. No further information about the event was provided. An entry in the event table could indicate a check-in creation, deletion, or mutation, and a new row was added to this table at the same time as any check-in edit. This table was ordered first by site UUID, then by operation index.</p>
+
+<p>The point of this schema was to enable conflict-free merging and delta-updates. The former feature was guaranteed by the Lamport timestamps stored with each property. On check-in creation, each property was initialized with the Lamport timestamp of its origin site, provided by taking the max of every Lamport column. On merge, if an inbound property had a higher Lamport timestamp than that of the incumbent property, then the new value replaced the old value. (In other words: last-writer-wins CRDT logic.) The latter feature, meanwhile, was granted by the operation log. Given a <a href="https://en.wikipedia.org/wiki/Version_vector">version vector</a> in the form of one or more site UUIDs and operation index pairs, the log table could efficiently return a GUID set of every check-in touched after that particular timestamp. In a conventional event sourcing system, you’d need to do some reassembly work after this point to actually get the data you want. Here, every check-in was conflict-free mergeable and stored whole, so nothing more needed to be done!</p>
+
+<p>(Incidentally, this scheme happened to be a perfect fit for SQL, since I could validate many of my constraints within the database itself, as well as efficiently run queries for Lamport timestamps, version vectors, and changesets using table indexes.)</p>
+
+<p>I intended for all this to lead to easy, stateless CloudKit sync. Instead of enforcing tight coupling between the persistence and cloud layers, I would have a “sync whenever” system that was guaranteed to succeed whenever it happened to run. Both the local SQLite database and CloudKit would keep around the same data and log tables. On sync, the local store would pull the version vector from the CloudKit database. Based on this timestamp, the local store would know which local check-ins needed to be sent to the cloud, and also which check-ins needed to be pulled from the cloud to complete the local database. Merge between check-ins was eventually consistent and conflict-free, and nothing was ever deleted, so you’d never need to do anything more complicated than send sets of check-ins and event log entries around. Sync would become completely stateless!</p>
+
+<p>Unfortunately, I didn’t actually get around to implementing CloudKit. The logic was sound, and I even built some unit tests for inter-database sync, but there was just too much to do before my release deadline. Nonetheless, I quickly found that this architecture was a boon even for strictly local development.</p>
+
+<p>In many app architectures, the data layer has to communicate directly with the view controllers. If there’s a change in the database, the precise changeset has to be sent to any interested parties, whether by notification, delegate callback, KVO or something else. Alternatively, the view controller has to re-initialize its views and caches from scratch whenever a change happens. In my architecture, any view controller or subsystem that relies on the persistent need only keep around a version vector (hereafter “token”) from its last refresh. The data layer doesn’t need to know which updates to send where: it simply dispatches a global, generic “something changed” notification on any alteration. Upon receiving this notification, the controllers ask the data layer for any check-ins that have been touched following their last token, then update their caches and store the new token sent along with those updates.</p>
+
+<p>The result of all this is that the data layer exists in complete, wonderful isolation from both the UI and network layers. It doesn’t have any plug-ins, extensions, or hooks into the rest of the system. Instead, it deals entirely with its own problem domain—persistence—and vends out just enough data to allow interested parties to keep <em>themselves</em> in sync. As with CvRDTs, the work of sync is left to the edges, ensuring the robustness of the system.</p>
+
+<p>Untappd integration turned out to be a cinch with this approach. (Untappd is a very popular beer social network that also features check-ins, and I wanted Untappd check-ins to automatically appear in the app once a user’s account was linked. Upon receiving an Untappd check-in, the user would either fill it out with volume and price information and approve it, or reject it.) Still thinking in terms of CloudKit, I was worried at first about the problem of different, disconnected devices receiving the same check-in from Untappd and creating duplicate entries in the database. How would these conflicts be resolved? Moreover, how could we prevent the same check-in from appearing on one device after being dismissed by another?</p>
+
+<p>Fortunately, after thinking about it for a bit, I realized that all my Untappd functionality would overlay perfectly on top of my existing check-in logic. Each Untappd check-in had its own integer GUID provided by the server, so I simply defined a local Untappd check-in in my database to be one that had an arbitrary, pre-determined UUID for the site ID and the Untappd GUID for the operation index. This scheme ensured that local Untappd check-ins had the same GUID on every device. (While this approach didn’t strictly follow the rules of operation indices, since there could be gaps between operation indices in the operation log, it didn’t interfere with any of my logic and could be special cased if needed.) Upon receiving a new check-in from Untappd, a row in the local database and an event log entry were immediately created. An extra <code class="highlighter-rouge">untapd_approved</code> column was added to my check-in schema which, when set on an Untappd row, indicated that the row was promoted to a regular check-in. Rejections, meanwhile, were simply mapped to existing deletes.</p>
+
+<p>In effect, Untappd check-ins were treated as though they were created by a foreign user, then updated by the local user. This allowed the Untappd subsystem to operate completely independently from the data layer, without having to worry about sync at all. Everything was still guaranteed to converge.</p>
+
+<p>I was also able to implement HealthKit very easily with this architecture, though this feature, unfortunately, didn’t make it into the final release. The <code class="highlighter-rouge">HKMetadataKeySyncIdentifier</code> and <code class="highlighter-rouge">HKMetadataKeySyncVersion</code> keys could be used to automatically keep HealthKit entries updated, so I simply populated them with the GUIDs and Lamport timestamps of the associated rows. Just like in my view controllers, the current HealthKit baseline was stored as a version vector token. On a sync pass, any operations following this token were pulled from the database and sent off to HealthKit (or deleted). The process was entirely idempotent.</p>
+
+<p>Although I didn’t have a lot of time to refine this system, I believe I succeeded in my architectural goals. My persistent store exists in perfect isolation from the rest of the app. You could tear out the database, replace it with a JSON serializer/deserializer, and still have everything work just fine. If I had a cloud component, I could schedule its sync based on network conditions, user activity, or any other attributes, without ever having to worry about piling-up state, merge conflicts, or staleness. The data structure tying all this together is the version vector token. Any subsystem that relies on sending or receiving exact sets of changes following a certain point in time only needs to keep around a simple token, then pass along that token to any database calls. There are no volatile changeset notifications that break the system if missed; a dropped “something changed” notification does not break the system, but only delays eventual consistency. And of course, the whole thing works perfectly offline.</p>
+
+<p>Not an architecture for every app, but a great architecture for this particular one!</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:opindex">
+      <p>An operation index is simply a counter that increases by one with every new operation performed by a site. Each site’s index starts at zero. There must be no gaps. <a href="#fnref:opindex" class="reversefootnote">&#8617;&#xfe0e;</a></p>
+    </li>
+  </ol>
+</div>
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">September 3, 2018</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2018 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>
