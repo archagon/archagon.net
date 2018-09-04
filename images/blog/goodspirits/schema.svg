@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 509 434" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-miterlimit:10;">
+    <g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <rect x="230" y="32" width="259" height="381" style="fill:rgb(255,255,204);"/>
+            <rect x="230" y="32" width="259" height="381" style="fill:none;stroke:rgb(128,128,128);stroke-width:1px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,354.5,60.5684)">
+            <text x="0px" y="0px" style="font-family:'LucidaGrande-Bold', 'Lucida Grande', sans-serif;font-weight:600;font-size:13px;">data</text>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <clipPath id="_clip1">
+                <rect x="-20" y="-20" width="509" height="434"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <path d="M231,57L488,57" style="fill:none;stroke:rgb(128,128,128);stroke-width:1px;"/>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <g transform="matrix(1,0,0,1,240,71.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">metadata_id_uuid</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,71.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">TEXT</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,87.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">metadata_id_index</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,87.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,103.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">metadata_deleted_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,103.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">BOOLEAN</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,119.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">metadata_deleted_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,119.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,135.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">metadata_creation_time</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,135.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">DOUBLE</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,151.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">checkin_untappd_id_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,151.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,167.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_untappd_id_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,167.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,183.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_untappd_approved_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,183.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">BOOLEAN</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,199.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_untappd_approved_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,199.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,215.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_time_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,215.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">DOUBLE</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,231.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_time_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,231.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,247.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">checkin_drink_name_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,247.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">TEXT</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,263.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_name_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,263.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,279.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_style_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,279.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">TEXT</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,295.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_style_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,295.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,311.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_abv_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,311.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">DOUBLE</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,327.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_abv_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,327.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,343.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">checkin_drink_price_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,343.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">DOUBLE</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,359.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_price_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,359.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,375.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_volume_value_value</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,375.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">DOUBLE</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,391.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_volume_value_unit</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,391.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">TEXT</text>
+            </g>
+            <g transform="matrix(1,0,0,1,240,407.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">checkin_drink_volume_lamport</text>
+            </g>
+            <g transform="matrix(1,0,0,1,425,407.011)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <rect x="0" y="0" width="170" height="93" style="fill:rgb(255,255,204);"/>
+            <rect x="0" y="0" width="170" height="93" style="fill:none;stroke:rgb(128,128,128);stroke-width:1px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,84.5,28.5684)">
+            <text x="0px" y="0px" style="font-family:'LucidaGrande-Bold', 'Lucida Grande', sans-serif;font-weight:600;font-size:13px;">log</text>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <path d="M1,25L169,25" style="fill:none;stroke:rgb(128,128,128);stroke-width:1px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <g transform="matrix(1,0,0,1,10,39.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">action_uuid</text>
+            </g>
+            <g transform="matrix(1,0,0,1,95,39.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">TEXT</text>
+            </g>
+            <g transform="matrix(1,0,0,1,10,55.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">action_index</text>
+            </g>
+            <g transform="matrix(1,0,0,1,95,55.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+            </g>
+            <g transform="matrix(1,0,0,1,10,71.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">operation_uuid</text>
+            </g>
+            <g transform="matrix(1,0,0,1,95,71.0107)">
+                <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">TEXT</text>
+            </g>
+        </g>
+        <g transform="matrix(0.5,0,0,0.5,158,70.3105)">
+            <clipPath id="_clip2">
+                <rect x="-316" y="-140.621" width="128" height="128"/>
+            </clipPath>
+            <g clip-path="url(#_clip2)">
+                <clipPath id="_clip3">
+                    <path d="M0,0C0,0 0,0 0,0Z"/>
+                </clipPath>
+                <g clip-path="url(#_clip3)">
+                    <g transform="matrix(2,-0,-0,2,-316,-140.621)">
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,20,97.0107)">
+            <text x="0px" y="0px" style="font-family:'Helvetica-Bold', 'Helvetica';font-weight:700;font-size:10px;">operation_index</text>
+        </g>
+        <g transform="matrix(1,0,0,1,105,97.0107)">
+            <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;">INTEGER</text>
+        </g>
+        <g transform="matrix(0.5,0,0,0.5,158,86.3105)">
+            <clipPath id="_clip4">
+                <rect x="-316" y="-172.621" width="128" height="128"/>
+            </clipPath>
+            <g clip-path="url(#_clip4)">
+                <clipPath id="_clip5">
+                    <path d="M0,0C0,0 0,0 0,0Z"/>
+                </clipPath>
+                <g clip-path="url(#_clip5)">
+                    <g transform="matrix(2,-0,-0,2,-316,-172.621)">
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <path d="M170.029,67.311L221.971,67.311" style="fill:none;stroke:rgb(128,128,128);stroke-width:1px;stroke-linecap:butt;stroke-miterlimit:1.45;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,10,10)">
+            <path d="M229.971,67.311L217.971,62.31L220.971,67.311L217.971,72.311L229.971,67.311Z" style="fill:rgb(128,128,128);fill-rule:nonzero;"/>
+            <path d="M170.029,83.311L221.971,83.311" style="fill:none;stroke:rgb(128,128,128);stroke-width:1px;stroke-linecap:butt;stroke-miterlimit:1.45;"/>
+            <path d="M229.971,83.311L217.971,78.311L220.971,83.311L217.971,88.311L229.971,83.311Z" style="fill:rgb(128,128,128);fill-rule:nonzero;"/>
+        </g>
+    </g>
+</svg>
