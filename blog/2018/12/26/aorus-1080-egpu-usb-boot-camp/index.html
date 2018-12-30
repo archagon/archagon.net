@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>AORUS 1080 eGPU + USB Boot Camp on a 2018 13" MacBook Pro — Archagon Was Here</title>
+<meta name="description" content="Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+">
+
+<!-- generic content metadata -->
+<link rel="image_src" href="http://archagon.net/images/blog/egpu-aorus/header.jpg" />
+
+<!-- opengraph content metadata -->
+<meta property="og:title" content="AORUS 1080 eGPU + USB Boot Camp on a 2018 13" MacBook Pro">
+<meta property="og:site_name" content="Archagon Was Here">
+<meta property="og:type" content="article"> <!-- TODO: other types? -->
+<meta property="og:url" content="http://archagon.net/blog/2018/12/26/aorus-1080-egpu-usb-boot-camp/">
+<meta property="og:image" content="http://archagon.net/images/blog/egpu-aorus/header.jpg">
+
+<!-- twitter content metadata -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@archagon" />
+<meta name="twitter:title" content="AORUS 1080 eGPU + USB Boot Camp on a 2018 13" MacBook Pro" />
+<meta name="twitter:image" content="http://archagon.net/images/blog/egpu-aorus/header.jpg" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&amp;subset=latin-ext">
+
+<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext"> -->
+<!-- <link href="//fonts.googleapis.com/css?family=Vollkorn:400,400i,600,600i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Muli:700,800,900" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700" rel="stylesheet"> -->
+
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="canonical" href="http://archagon.net/blog/2018/12/26/aorus-1080-egpu-usb-boot-camp/">
+<link rel="icon" href="/images/favicon/favicon-96x96.png">
+
+<!-- inline category colors -->
+<style>
+.category-default.category-swatch {
+  background-color: #a1a18c; }
+.category-default.document-header-category {
+  background-color: #8a8a70; }
+.category-default.post-title {
+  background-color: #a1a18c;
+  text-shadow: 0px 2px #8a8a70; }
+
+.category-jekyll.category-swatch {
+  background-color: #9e6948; }
+.category-jekyll.document-header-category {
+  background-color: #7b5138; }
+.category-jekyll.post-title {
+  background-color: #9e6948;
+  text-shadow: 0px 2px #7b5138; }
+
+.category-travel.category-swatch {
+  background-color: #957dc3; }
+.category-travel.document-header-category {
+  background-color: #795bb2; }
+.category-travel.post-title {
+  background-color: #957dc3;
+  text-shadow: 0px 2px #795bb2; }
+
+.category-programming.category-swatch {
+  background-color: #f87495; }
+.category-programming.document-header-category {
+  background-color: #f64370; }
+.category-programming.post-title {
+  background-color: #f87495;
+  text-shadow: 0px 2px #f64370; }
+
+.category-technology.category-swatch {
+  background-color: #fb9635; }
+.category-technology.document-header-category {
+  background-color: #f87c05; }
+.category-technology.post-title {
+  background-color: #fb9635;
+  text-shadow: 0px 2px #f87c05; }
+
+.category-design.category-swatch {
+  background-color: #6ebab3; }
+.category-design.document-header-category {
+  background-color: #4fa69e; }
+.category-design.post-title {
+  background-color: #6ebab3;
+  text-shadow: 0px 2px #4fa69e; }
+
+.category-releases.category-swatch {
+  background-color: #5cacfc; }
+.category-releases.document-header-category {
+  background-color: #2992fc; }
+.category-releases.post-title {
+  background-color: #5cacfc;
+  text-shadow: 0px 2px #2992fc; }
+
+.category-reviews.category-swatch {
+  background-color: #38c04f; }
+.category-reviews.document-header-category {
+  background-color: #2c993f; }
+.category-reviews.post-title {
+  background-color: #38c04f;
+  text-shadow: 0px 2px #2c993f; }
+
+.category-personal.category-swatch {
+  background-color: #899fbc; }
+.category-personal.document-header-category {
+  background-color: #6885aa; }
+.category-personal.post-title {
+  background-color: #899fbc;
+  text-shadow: 0px 2px #6885aa; }
+
+</style>
+
+<!-- footnotes -->
+<link rel="stylesheet" href="/js/bigfoot-number.css">
+<!-- <link rel="stylesheet" href="/js/bigfoot-default.css"> -->
+<script type="text/javascript" src="/js/jquery.min.js" defer></script>
+<script type="text/javascript" src="/js/bigfoot.min.js" defer></script>
+<script type="text/javascript">
+    // defer does not work for inline scripts
+    window.addEventListener('DOMContentLoaded', function() {
+        $.bigfoot({
+            actionOriginalFN: "ignore",
+            //// TODO: style like this: https://marco.org/2018/03/13/overcast41
+            // numberResetSelector: "article",
+            // buttonMarkup: (
+            //     "<a href=\"#\" class=\"footnote-button\" " +
+            //         "id=\"\" " +
+            //         "data-footnote-identifier=\"\" " +
+            //         "data-footnote-style=\"default\"" +
+            //         "alt=\"See Footnote \" " +
+            //         "rel=\"footnote\"" +
+            //         "data-footnote-content=\"\">" +
+            //             "" +
+            //     "</a>"
+            // )
+        });
+    });
+</script>
+<style>
+.bigfoot-footnote__button:after
+{
+    color: #777;
+}
+.bigfoot-footnote__button
+{
+    width: 1.2em;
+    height: 0.8em;
+    /*padding: 0.5em;*/
+    border-radius: 0.3em;
+    font-size: 1.1em;
+}
+.bigfoot-footnote p
+{
+    font-size: 0.9em;
+    /*text-align: left;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;*/
+}
+</style>
+</head>
+
+<body class="body-background">
+
+<header class="site-header">
+    <!-- full-width background container -->
+    <div class="site-header-title-background">
+        <!-- centered padded section -->
+        <div class="site-header-title-container wrapper">
+            <div class="site-title">
+                <a href="/"><img src="/images/avatar2.jpg" class="site-title-icon"></a>
+                <a href="/"><img src="/images/graphics/title.svg" class="site-title-title"></a>
+            </div>
+        </div>
+    </div>
+    <!-- full-width background container -->
+    <div class="site-header-nav-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-nav-container wrapper">
+            <nav class="site-nav">
+                <ul>
+                    <li><a class="site-nav-page-link" href="/">Blog</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/timeline/">Travel</a></li> -->
+                    <li><a class="site-nav-page-link" href="/archive/">Archive</a></li>
+                    <!-- <li><a class="site-nav-page-link" href="/projects/">Projects</a></li> -->
+                    <li><a class="site-nav-page-link" href="/about/">About</a></li>
+                    <li><span class="site-nav-page-link site-nav-page-link-icons"><a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"></a>/<a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"></a></span></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="page-content">
+
+<div class="document-post category-technology" id="sel_blog20181226aorus-1080-egpu-usb-boot-camp">
+<div class="wrapper">
+
+<header class="section-header">
+    <h1 class="post-title">AORUS 1080 eGPU + USB Boot Camp on a 2018 13" MacBook Pro</h1>
+    <h2 class="post-meta">Dec 26, 2018<span class="document-header-categories"> <span class="document-header-category category-technology">technology</span> <span class="document-header-category category-reviews">reviews</span></span></h2>
+</header>
+
+<article class="section-content">
+
+
+<div class="full-width"><img src="http://archagon.net/images/blog/egpu-aorus/header.jpg" /></div>
+
+<p><a href="/blog/2018/07/25/egpu-redux/">Previously in my eGPU saga</a>, I stuck an Nvidia 1080 in an AKiTiO Thunder2 enclosure, hooked it up to an old PC PSU, and got the contraption working on a late 2013 15” MacBook Pro. In fact, the end of the article wasn’t quite the end of the story: I ended up returning the stock 1080 and purchasing a fully-fledged <a href="https://amzn.to/2CDdoET">AORUS GTX 1080 Gaming Box</a> on sale. The price after rebates was, ridiculously, cheaper than the 1080 by itself, and the card was easily removable and absolutely identical to the retail 1080 <a href="https://egpu.io/gigabyte-AORUS-gtx-1080-gaming-box-review-pocket-rocket/">modulo fan size</a> (I ran benchmarks to confirm this), so it would have been foolish not to swap. My specific MacBook model <a href="https://egpu.io/forums/pc-setup/help-MacBook-pro-2013-late-750m-with-akitio-nodetb3-tb2/#post-22966">couldn’t support a TB3 eGPU</a> even with a TB2–TB3 adapter, so I popped out the AORUS card, stuck it in my Thunder2, and left the enclosure for another day.</p>
+
+<p>Well, that day is today! Having recently gotten my hands on a late 2018 13” MacBook Pro, I figured I’d give the AORUS a shot. Would it be just as easy to get working? How would this slightly-more-supported TB3 setup differ from my I-can’t-believe-it’s-actually-running TB2 tangle?</p>
+
+<!--more-->
+
+<h2 id="windows-on-a-usb-drive">Windows on a USB Drive</h2>
+
+<p>My first priority, though, was to avoid creating a Boot Camp partition on this new machine if I could help it, since I didn’t want to permanently mess around with the disk layout. Could I install Windows on my handy <a href="https://amzn.to/2SoWdwb">500GB solid-state USB drive</a> instead?</p>
+
+<p>At first, I figured I’d just clone my existing Boot Camp partition and call it a day. Doing so in Disk Utility was a breeze: simply wipe the drive, create a new partition using the default settings, right-click on the name, click “Restore”, and pick the Boot Camp drive. Sadly, this clone failed to materialize in the hold-Option-on-boot Startup Manager: a simple copy didn’t transfer the requisite (MBR?) metadata.</p>
+
+<p>Next, I downloaded a tool that promised to make an easy, bootable clone of the Boot Camp partition: <a href="https://twocanoes.com/products/mac/winclone/">Winclone</a>. The trial was limited, so I bought the full version in hopes of resolving my issue quickly. Cloning Boot Camp was indeed a breeze, and a new option named “EFI Boot” did in fact show up in the boot menu. (This was confusing at first, but I later learned that there was seemingly no way to rename this partition.) Sadly, even though the Windows logo did appear after selecting this option, I was invariably smacked with a “INACCESSIBLE_BOOT_DEVICE” BSOD a few seconds afterwards. Apparently, this was a driver issue: Windows couldn’t find the necessary Boot Camp drivers to fully load the OS from a USB drive (or something along those lines). Winclone offered some <a href="https://twocanoes.com/knowledge-base/resolving-inaccessible_boot_device-error-after-restoring-winclone-image/">helpful advice</a> for fixing this, but nothing I tried seemed to work. Also, several others had the <a href="http://community.twocanoes.com/t/yet-another-inaccessible-boot-device/1856">same problem</a> with seemingly no resolution. Fortunately, the company offered a generous refund policy and I quickly got my $40 back. (I should note that the software seemed featureful and well-engineered, but my use case was probably esoteric enough to fall through the cracks.)</p>
+
+<p>I decided to give up on cloning my existing partition and settled on creating a fresh Windows install instead. This came with its own challenges. Although there was a version of Windows called “Windows To Go” that was designed for external drives, it was limited to Education or Enterprise versions of the OS. Fortunately, third-party Windows apps were available for creating a To Go installer from a regular Windows ISO, which was downloadable <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">directly from Microsoft</a>. One of these apps was called <a href="https://www.easyuefi.com/wintousb/">WinToUSB</a> and proprietary; the other was <a href="https://rufus.ie/">Rufus</a> and open source. I ultimately went with WinToUSB since it was mentioned most often in guides. (When I gave Rufus a quick try, it appeared to work just as well, but there were some minor quirks such as the USB drive not being selectable under Startup Disk in macOS System Preferences.)</p>
+
+<p>Setting up Windows using these tools <a href="https://9to5mac.com/2017/08/31/how-windows-10-mac-boot-camp-external-drive-video/">seemed daunting from guides</a> (38 steps!!), but most of the difficulty was centered around finding an existing Windows installation to run WinToUSB or Rufus from, which I already had. First, you partition your USB drive with the default settings in macOS. While you’re in macOS, use Boot Camp Assistant to download all the necessary Windows drivers from the Action menu. (These arrive as a 2GB WindowsSupport directory in Downloads.) Next, find a Windows machine, virtualized or otherwise. Use Disk Management to delete your USB drive’s new HFS+ partition and replace it with an NTFS partition. Then, run either WinToUSB or Rufus with the official Windows 10 image from the Microsoft site as the ISO. Move the previously-downloaded WindowsSupport folder to the root of your USB drive. (This is solely for ease of Apple driver installation after installing Windows. The installer doesn’t itself use these files.) Reboot while holding Option and you should see a new “EFI Boot” option. Select this and you should be able to install Windows To Go!</p>
+
+<p>In theory, anyway. In practice, I ran into a few more problems. First, kudos to the WinToUSB and Rufus teams: the software was dead-simple to use and performed exactly as advertised. However, I kept crashing with a new “DRIVER_UNLOADED_WITHOUT_CANCELLING_PENDING_OPERATIONS” BSOD before the Windows installer got anywhere. Scouring the web for advice, I found a <a href="https://www.reddit.com/r/bootcamp/comments/9x1hzo/driver_unloaded_without_cancelling_pending/">Reddit thread</a> suggesting that Windows 10, version 1809 had a bug that failed on UASP drives, which mine apparently was. The Microsoft site also offered version 1803 for download, so I went through the WinToUSB dance once again with the new ISO. This made it finally possible to complete the installation.</p>
+
+<p>After getting into Windows, I found that my keyboard and trackpad weren’t functional. I had seen somebody mention that Touch Bar MacBooks experienced this issue without official drivers, so I plugged in an external keyboard and mouse and was able to log in. I then ran the installer in the BootCamp folder under the previously-transposed WindowsSupport folder at the root of the drive. The installer seemed to hang at 100%, but I thought nothing of it and rebooted. That last 0% must have been important, though, because while my keyboard and trackpad were now producing output, using them invariably caused a new type of BSOD to appear several seconds down the line. I ran the driver installer again; it completed successfully this time, and there were no more input-related crashes on reboot. Just to be sure, I checked Device Manager for anything odd and discovered a couple of Intel chipsetty things with missing drivers. These I fixed by right-clicking each one, selecting “Update Driver”, and pointing to the BootCamp folder. There was one last question-mark-laden “Unknown device” under the “Other devices” category that I couldn’t find drivers for in the BootCamp folder or even through Windows Update, but discussions on the web seemed to indicate that it was a harmless artifact of the T2 chip and didn’t belong in Device Manager anyway.</p>
+
+<p>At this point, my machine state was on par with that of a legit, internal Boot Camp setup. Hooray: Windows was actually running on an external drive!</p>
+
+<h2 id="setting-up-the-egpu">Setting Up the eGPU</h2>
+
+<p>Next, it was time to get the AORUS box working.</p>
+
+<p>My first attempt was to boot into Windows and just plug it in. First issue: I got a suspicious error notification saying that “Thunderbolt device functionality might be limited”. After poking around in Device Manager and seeing the eGPU listed in the USB section, I realized that I was using a non-TB3 USB-C cable. The real one looked almost identical, but had little lightning icons on the plugs. Oops!</p>
+
+<p>After switching cables, I tried repeating the experiment. Something strange happened this time: the “plugged in” chime sounded, and notification animations continued to play, but all my inputs simply stopped working (both internal and external). With my old TB2 setup, hot-plugging would either do nothing or cause a freeze (don’t recall which), so this was at least a step in the right direction.</p>
+
+<p>Next, I tried plugging in the eGPU with the computer off, then booting. Everything started out fine, but the boot process seemed to hang on the Windows logo. Notably, the eGPU seemed to power cycle several times during this process based on the fan noise, so I figured it was some sort of driver loading issue.</p>
+
+<p>After flailing around for a bit, I consulted egpu.io’s <a href="https://egpu.io/bootcamp-setup-guide-tb3-MacBook-pro/">Boot Camp guide</a> and decided to try out <a href="https://egpu.io/forums/pc-setup/how-to-keep-mbps-irisiris-pro-activated-when-booting-into-windows-boot-camp/">apple_set_os.efi</a>. (In brief: if you put a bunch of special EFI-related files on a USB drive, you’ll see a new “EFI Boot” option in Startup Manager. Selecting this option will boot you into the default OS while tricking the computer into thinking you’re booting into macOS. The primary benefit is forcing the Intel iGPU to still work with the eGPU plugged in, allowing you to continue using the internal display.) Since I was already booting from an external USB drive, all I had to do was shrink my new Windows partition in Disk Management (from my existing Boot Camp installation), then add a 200MB FAT partition after it. I was worried that maybe this partition wouldn’t appear in Startup Manager on account of MBR shenanigans, but the second “EFI Boot” option appeared just fine.</p>
+
+<p>After setting my default OS to the USB Boot Camp partition in Startup Disk, I rebooted, plugged in the eGPU, and selected the new startup option. At first, nothing happened: I just kept booting right back into macOS. After a few tries, I realized that I had to shut down successfully from Windows in order for this trick to trigger, whereas I was continuously hard-resetting in the middle of Windows boot on account of the eGPU still being plugged in. I unplugged my eGPU, booted and rebooted Windows, and tried the second EFI partition once again. This time I got Windows, and instead of freezing on the Windows logo, I actually managed to get to the login screen. Various animations and sounds were playing and notifications were popping up, but my inputs remained disabled.</p>
+
+<figure>
+<img src="/images/blog/egpu-aorus/efi.jpg" />
+<figcaption>Startup Manager with both EFI partitions (plugged in on my old Mac).</figcaption>
+</figure>
+
+<p>Based on a hunch, I decided to shelve the apple_set_os.efi approach, boot the standard way, and plug in the eGPU just as soon as the spinner appeared in the Windows boot sequence. To my delight, this actually worked! I was able to log in and saw an unknown device under “Display adapters” in Device Manager, just as I had with my original TB2 eGPU. At this point, I knew that once I installed Nvidia drivers, everything would be peachy keen.</p>
+
+<p>(A bit of an aside, but OH MY GOODNESS: is Windows pushy with its updates or what? You normally can’t turn them off at all, and the only postponement options you get are to prevent installation for up to 35 days, inhibit feature updates for up to a year, and avoid force-restarts on installation during active hours—so long as they’re no longer than 18 hours. Microsoft, do you think this is your own personal machine to futz with as you please? Was there any thought put into this at all? What if I’m running Windows from a personal hotspot with high data limits, or trying to avoid frustrating my housemates with multi-gigabyte downloads at arbitrary times? Lay off or I’m going to lay waste to your registry, group policies, host file, and anything else required to make this insidious behavior go away. Sigh…)</p>
+
+<p>Anyway, I was confused at first why the Nvidia installer was giving me lip for trying to run concurrently with another installer. Turns out this was just Windows Update doing nefarious deeds behind my back. After my updates were complete, I could install the Nvidia drivers sans difficulties, and I could then reboot with the eGPU plugged in without any special incantations. With apple_set_os.efi disabled, my laptop screen would still freeze on the Windows logo, but my external display would light up with the login screen. Going through apple_set_os.efi allowed both screens to function independently. In both cases, my input devices were now working fine. Like in my TB2 setup, I disabled the laptop screen in Display Settings to guarantee that I was getting hardware acceleration from the eGPU and not the iGPU. (This time, though, I didn’t check if it was strictly necessary.)</p>
+
+<p>But lo, a new problem! While running my standard 3DMark benchmarks, I discovered that the tests were performing at the expected FPS, but freezing for seconds-long stretches several times a minute. After changing a bunch of local settings to no avail, I discovered that the AORUS ENGINE eGPU control software I had incidentally installed was (for whatever reason) causing these weird lag spikes. Disabling this app on login fixed the problem. (Opening it after login, however, seemed to work without issue.) The benchmarks turned out to be nearly identical to that of my TB2 setup, showing that TB2 wasn’t a limiting factor at all with the 1080. The 20% penalty still applied.</p>
+
+<p>The next day, I ran into several new issues. After plugging in the eGPU and booting the regular way, I found myself stuck on the Windows logo once more. Eventually, I realized that you had to use the same TB3 port you started with for your eGPU, or else you’d have to install your Nvidia drivers all over again. I also discovered that booting from the apple_set_os.efi partition didn’t always work as expected: sometimes, the card would go into “leaf blower mode” (max fan speed) and only the internal display would turn on. You could usually fix this by waiting to plug in the eGPU until Startup Manager appeared. (No leaf blower = probably good to go.) Fortunately, booting the regular way seemed to work pretty much every time.</p>
+
+<p>Several guides issued warnings about running Boot Camp from an external drive when using an eGPU, citing potential driver priority problems. Fortunately, I experienced no such difficulties here.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In keeping with the theme of “simple over featureful”, my AORUS setup requires no fiddly system hacks or scripts to work, but is only usable from Boot Camp, not macOS. However, it’s also a substantial step up from my old TB2 setup. For one, there’s no longer any need for constant vigilance on boot: simply plug the box in and hit the power button. Better yet, you can actually accelerate the internal display with no extra effort! In lieu of Optimus, the latest Windows 10 has a new feature called “Hybrid Graphics” that lets you pick the GPU that any app will run on. All you have to do is right-click your game and select the eGPU under <a href="/images/blog/egpu-aorus/hybrid.png">“Run with graphics processor”</a>. (If you’re running through Steam, it may be sufficient to run the Steam app itself using the eGPU, but I’m not 100% sure.) The only prerequisite is booting from the apple_set_os.efi partition in order to light up the internal display.</p>
+
+<p>I hear that MacBooks with integrated AMD graphics might require additional steps to get everything working, so YMMV. Luckily for me, after stumbling through the installation, this particular setup was almost entirely problem-free. Error 12 did not crop up even when stressing the hardware to its limits (full Oculus Rift setup and all four TB3 ports occupied). I did find, however, that my headphone volume was substantially and irrecoverably lower than it needed to be, which forced me to invest in Apple’s new <a href="https://www.apple.com/shop/product/MU7E2AM/A/usb-c-to-35-mm-headphone-jack-adapter">USB-C-to-3.5mm adapter</a> as a workaround. (Word of warning: it seems that Windows freezes if you try to hot-plug this adapter while an eGPU is attached!)</p>
+
+<p>Hardware-wise, the AORUS is an excellent eGPU. In terms of size, it’s almost certainly the smallest box you can get for a card this powerful. The PSU is internal, so power is entirely provided by a standard C13 cable. (No unwieldy bricks here.) The USB-C connection conveniently powers your Mac, opening up a spare port on the machine. There are also several USB-A ports on the box itself, though I did find that plugging in an external drive caused power cycles on several occasions. (Probably best to use these ports for simple accessories.) To top it all off, it comes with a cute, lunch-box-sized carrying case!</p>
+
+<p>If you’re sporting a late 2018 13” MacBook Pro and are mostly interested in Windows gaming, I highly recommend investigating the <a href="https://amzn.to/2CDdoET">AORUS GTX 1080 Gaming Box</a> as an easy and affordable eGPU option!</p>
+
+<p><img src="/images/blog/egpu-aorus/setup.jpg" /></p>
+
+<div class="signature">
+    <p>—<span class="signature-name">Archagon</span></p>
+    <p class="signature-date">December 26, 2018</p>
+</div>
+
+</article>
+
+</div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+    <!-- full-width background container -->
+    <div class="site-footer-background header-footer-background">
+        <!-- centered padded section -->
+        <div class="site-footer-container wrapper">
+            <div class="site-footer-credits">
+                <p>Copyright &copy; 2018 Alexei Baboulevitch. ("It's copylicious!")</p>
+            </div>
+            <div class="site-footer-links"> <!-- not really a list, so I don't feel bad about using div -->
+                <a href="/feed.xml"><img src="/images/feed-icon.png" class="header-footer-icon"> <span>Subscribe via RSS</span></a>
+                <a href="https://twitter.com/archagon"><img src="/images/twitter-icon.png" class="header-footer-icon"> <span>Tweet me up</span></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44612590-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>

@@ -186,6 +186,21 @@
 <div class="wrapper">
 
 <ul class="post-list">
+    <li id="sel_blog20151225the-stanley-64oz-classic-vacuum-growler" class="document-post subtle-shadow">
+        <header class="section-header">
+            <a href="/blog/2015/12/25/the-stanley-64oz-classic-vacuum-growler/" class="post-list-header-link"><h1 class="post-title category-reviews">The Stanley 64oz Classic Vacuum Growler</h1></a>
+            <h2 class="post-meta">Dec 25, 2015</h2>
+        </header>
+
+        <article class="section-content">
+        <p><img src="/images/stanley_main.JPG" alt=""></p>
+
+<p>Shortly after I posted my <a href="/2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/">Klean Kanteen review</a>, Stanely offered to send me one of their own bottles to play around with: the <a href="http://amzn.to/1ItRmn0">64oz Classic Vacuum Growler</a>. I was quite happy with the build quality of the Stanleys I saw at REI, so at risk of becoming a professional growler reviewer, I figured I’d give this bottle an equally thorough look.</p>
+
+ 
+        <a href="/blog/2015/12/25/the-stanley-64oz-classic-vacuum-growler/"><span class="more-inside">Continue Reading...</span></a>
+        </article>
+    </li>
     <li id="sel_blog20151205ipad-pro-plus-pencil-slow-motion-bug" class="document-post subtle-shadow">
         <header class="section-header">
             <a href="/blog/2015/12/05/ipad-pro-plus-pencil-slow-motion-bug/" class="post-list-header-link"><h1 class="post-title category-programming">iPad Pro + Pencil Slow Motion Bug</h1></a>
@@ -313,22 +328,6 @@
 
  
         <a href="/blog/2014/09/18/old-iphone-tricks-gps-tracker/"><span class="more-inside">Continue Reading...</span></a>
-        </article>
-    </li>
-    <li id="sel_blog20140621that-magical-model-window" class="document-post subtle-shadow">
-        <header class="section-header">
-            <a href="/blog/2014/06/21/that-magical-model-window/" class="post-list-header-link"><h1 class="post-title category-programming">That Magical Model Window</h1></a>
-            <h2 class="post-meta">Jun 21, 2014</h2>
-        </header>
-
-        <article class="section-content">
-        <p>I recently ran into the following issue in my Objective-C code. Let’s say you have a model class<sup id="fnref:1"></sup> that has (among other things) an <code class="highlighter-rouge">NSMutableArray</code> of other model classes. How do you let outside objects modify this collection? One obvious solution is to add your own custom accessors: <code class="highlighter-rouge">addObject:</code>, <code class="highlighter-rouge">removeObject:</code>, and so forth. But that’s a little sad, since it’s essentially a simplified, non-standard duplicate of the <code class="highlighter-rouge">NSMutableArray</code> interface. The other obvious choice is to expose the array directly. But oh boy! If you do any pre- or post-processing on add or delete, there’s a world of pain waiting for you. It’s just not wise to let users mess around with the internals of your model like that. Maybe if <code class="highlighter-rouge">NSMutableArray</code> had a delegate, we could expose the array and then let the model object (as the delegate) have the final say on any changes, but sadly, to my knowledge, it does not. (<code class="highlighter-rouge">NSArrayController</code> on OSX and <code class="highlighter-rouge">CFArray</code> might have that functionality, but that’s just too much work for too little gain.) Finally, there’s the issue of key-value observation. How do we observe changes to the array? If we simply observe the array property, we’ll only get notifications when it’s set. Do we observe the array’s <code class="highlighter-rouge">count</code> property? (Doesn’t work, and wouldn’t handle replacement even if it did.) Do we add manual KVO calls to our custom accessors? Do we set a property somewhere whenever the array is modified?</p>
-
-<p>It turns out there’s a solution to all these problems, and it involves something called key-value coding of collections.</p>
-
-
- 
-        <a href="/blog/2014/06/21/that-magical-model-window/"><span class="more-inside">Continue Reading...</span></a>
         </article>
     </li>
 </ul>
