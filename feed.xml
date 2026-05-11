@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Archagon Was Here</title>
-    <description>Alexei's pile o'stuff, featuring writing on software development, travel, photography, and more.
+    <description>Alexei&apos;s pile o&apos;stuff, featuring writing on software development, travel, photography, and more.
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 30 Dec 2018 16:23:31 -0800</pubDate>
-    <lastBuildDate>Sun, 30 Dec 2018 16:23:31 -0800</lastBuildDate>
-    <generator>Jekyll v3.5.1</generator>
+    <pubDate>Mon, 11 May 2026 16:48:41 -0700</pubDate>
+    <lastBuildDate>Mon, 11 May 2026 16:48:41 -0700</lastBuildDate>
+    <generator>Jekyll v4.4.1</generator>
     
       <item>
         <title>AORUS 1080 eGPU + USB Boot Camp on a 2018 13&quot; MacBook Pro</title>
