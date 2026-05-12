@@ -40,4 +40,29 @@ assets_dir: assets
 # Extra files
 default_icon: icon_default.png
 
-exclude: [ blog.sublime-project, blog.sublime-workspace, Gemfile, Gemfile.lock, Rakefile, SETUP.txt, TOC.txt, TODO.txt, QUIRKS.txt, SNIPPETS.txt, PERMALINKS.txt, CUSTOMTAGS.txt, temp, raw, old_blog_data, images/old-patterns, images/possible-patterns ]
+exclude: 
+  - blog.sublime-project
+  - blog.sublime-workspace
+  - Gemfile, Gemfile.lock
+  - Rakefile
+  - SETUP.txt
+  - TOC.txt
+  - TODO.txt
+  - QUIRKS.txt
+  - SNIPPETS.txt
+  - PERMALINKS.txt
+  - CUSTOMTAGS.txt
+  - temp
+  - raw
+  - old_blog_data
+  - images/old-patterns
+  - images/possible-patterns
+
+# TODO: fix these deprecations
+sass:
+  silence_deprecations:
+    - color-functions
+    - global-builtin
+    - import
+    - if-function
+    - slash-div

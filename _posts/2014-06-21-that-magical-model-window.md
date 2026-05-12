@@ -27,78 +27,84 @@ But here’s the best part. Once you’ve implemented these passthrough methods,
 
 Here’s a sample implementation that I particularly like. (Pardon the lack of ARC-ness, I’m still getting on that train.) Public header:
 
-    // MyModelClass.h
+```objc
+// MyModelClass.h
 
-    @interface MyModelClass : NSObject
+@interface MyModelClass : NSObject
 
-    @property (nonatomic, readonly, getter=namesProxy) NSMutableArray* names;
+@property (nonatomic, readonly, getter=namesProxy) NSMutableArray* names;
 
-    // optional declarations to make your public interface explicit
-    -(NSUInteger) countOfNames;
-    -(NSString*) objectInNamesAtIndex:(NSUInteger)index;
-    -(void) insertObject:(NSString*)object inNamesAtIndex:(NSUInteger)index;
-    -(void) removeObjectFromNamesAtIndex:(NSUInteger)index;
+// optional declarations to make your public interface explicit
+-(NSUInteger) countOfNames;
+-(NSString*) objectInNamesAtIndex:(NSUInteger)index;
+-(void) insertObject:(NSString*)object inNamesAtIndex:(NSUInteger)index;
+-(void) removeObjectFromNamesAtIndex:(NSUInteger)index;
 
-    @end
+@end
+```
 
 Private header[^3]:
 
-    // MyModelClass_.h
+```objc
+// MyModelClass_.h
 
-    #import "MyModelClass.h"
+#import "MyModelClass.h"
 
-    @interface MyModelClass ()
+@interface MyModelClass ()
 
-    @property (nonatomic, retain) NSMutableArray* namesMutable;
+@property (nonatomic, retain) NSMutableArray* namesMutable;
 
-    @end
+@end
+```
 
 Implementation:
 
-    // MyModelClass.m
+```objc
+// MyModelClass.m
 
-    #import "MyModelClass_.h"
+#import "MyModelClass_.h"
 
-    @implementation MyModelClass
+@implementation MyModelClass
 
-    @dynamic names;
+@dynamic names;
 
-    -(id) init
+-(id) init
+{
+    self = [super init];
+    if (self)
     {
-        self = [super init];
-        if (self)
-        {
-            self.namesMutable = [NSMutableArray array];
-        }
-        return self;
+        self.namesMutable = [NSMutableArray array];
     }
+    return self;
+}
 
-    -(NSMutableArray*) namesProxy
-    {
-        return [self mutableArrayValueForKey:@"names"];
-    }
+-(NSMutableArray*) namesProxy
+{
+    return [self mutableArrayValueForKey:@"names"];
+}
 
-    -(NSUInteger) countOfNames
-    {
-        return [self.namesMutable count];
-    }
+-(NSUInteger) countOfNames
+{
+    return [self.namesMutable count];
+}
 
-    -(NSString*) objectInNamesAtIndex:(NSUInteger)index
-    {
-        return [self.namesMutable objectAtIndex:index];
-    }
+-(NSString*) objectInNamesAtIndex:(NSUInteger)index
+{
+    return [self.namesMutable objectAtIndex:index];
+}
 
-    -(void) insertObject:(NSString*)object inNamesAtIndex:(NSUInteger)index
-    {
-        return [self.namesMutable insertObject:object atIndex:index];
-    }
+-(void) insertObject:(NSString*)object inNamesAtIndex:(NSUInteger)index
+{
+    return [self.namesMutable insertObject:object atIndex:index];
+}
 
-    -(void) removeObjectFromNamesAtIndex:(NSUInteger)index
-    {
-        return [self.namesMutable removeObjectAtIndex:index];
-    }
+-(void) removeObjectFromNamesAtIndex:(NSUInteger)index
+{
+    return [self.namesMutable removeObjectAtIndex:index];
+}
 
-    @end
+@end
+```
 
 With this design, you can observe `names` and get notifications whenever the `namesMutable` array is modified, *even though there’s no actual property named `names`!* You can also retrieve the `names` property directly from the object (which creates the proxy array) and modify it to your liking. (The getter is called `namesProxy` to avoid confusing the `mutableArrayValueForKey:` call.) Nobody without the private header has access to the internal `namesMutable` array; everything is instead handled either through the standard KVC collection methods or through the proxy array.
 

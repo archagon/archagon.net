@@ -54,21 +54,23 @@ Automator, macOS's powerful visual scripting tool, can be used to create so-call
 
 Item 2 contains the path to the output directory and item 3 contains the path to the Backgroundifier command line utility. (They exist as separate items to make the paths easy to modify without having to resort to scripting.) Here's the full text for the script in item 3:
 
-    # assign paths
-    bgify=$1
-    output=$2
-    
-    # remove path arguments
-    shift 2
-    
-    # process images
-    for var in "$@"
-    do
-        filename=$(basename "$var")
-        full_output="$output/$filename"
-        echo "Processing $full_output ..."
-        "$bgify" -i "$var" -o "$full_output" -w 2560 -h 1600
-    done
+```bash
+# assign paths
+bgify=$1
+output=$2
+
+# remove path arguments
+shift 2
+
+# process images
+for var in "$@"
+do
+    filename=$(basename "$var")
+    full_output="$output/$filename"
+    echo "Processing $full_output ..."
+    "$bgify" -i "$var" -o "$full_output" -w 2560 -h 1600
+done
+```
 
 Nothing too complicated! You can find the workflow file [here]({{ site.baseurl }}/images/backgroundifier-gallery/Backgroundify.workflow.zip), and I assume you can just drop it into your `~/Library/Workflows/Applications/Folder Actions` directory. You can also pretty easily recreate it from scratch: just make a new Automator workflow with a Folder Action document type and copy the items.
 
@@ -84,18 +86,20 @@ It's no fun to manually move every window out of the way whenever you want to pe
 
 Some of us are... more messy than others. The desktop can acquire quite a bit of cruft over time, blocking view of the beautiful art below. But why bother cleaning it up when you can just sweep the mess under a rug? If you're lazy like me, you can toggle visibility for the icons on your desktop by running [this simple script]({{ site.baseurl }}/images/backgroundifier-gallery/toggle_desktop.command.zip):
 
-    #!/bin/sh
-    # Toggles desktop icons.
+```bash
+#!/bin/sh
+# Toggles desktop icons.
 
-    if [[ $(defaults read com.apple.finder CreateDesktop) = false ]]; then
-        echo "Showing desktop icons."
-        defaults write com.apple.finder CreateDesktop true
-    else
-        echo "Hiding desktop icons."
-        defaults write com.apple.finder CreateDesktop false
-    fi
+if [[ $(defaults read com.apple.finder CreateDesktop) = false ]]; then
+    echo "Showing desktop icons."
+    defaults write com.apple.finder CreateDesktop true
+else
+    echo "Hiding desktop icons."
+    defaults write com.apple.finder CreateDesktop false
+fi
 
-    killall Finder
+killall Finder
+```
 
 And voilà! Clutter-free art with hardly a fuss.
 
