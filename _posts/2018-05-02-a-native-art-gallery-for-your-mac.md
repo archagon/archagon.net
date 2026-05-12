@@ -29,8 +29,8 @@ Finally, I decided to build a menu bar app that would solve all my problems thro
 <!--more-->
 
 <div class="caption">
-<video controls muted preload="none" width="100%" poster="{% include imagepath name="screenshot.jpg" %}">
-<source src="{% include imagepath name="demo.mp4" %}" type="video/mp4">
+<video controls muted preload="none" width="100%" poster="{% include imagepath name='screenshot.jpg' %}">
+<source src="{% include imagepath name='demo.mp4' %}" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 </div>
