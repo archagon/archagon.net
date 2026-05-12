@@ -164,6 +164,7 @@ body {
 
 .header-footer-icon {
   width: 1.8rem;
+  filter: invert(100%);
 }
 
 .body-background {
