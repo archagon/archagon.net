@@ -6,8 +6,8 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 11 May 2026 22:37:25 -0700</pubDate>
-    <lastBuildDate>Mon, 11 May 2026 22:37:25 -0700</lastBuildDate>
+    <pubDate>Mon, 11 May 2026 22:46:01 -0700</pubDate>
+    <lastBuildDate>Mon, 11 May 2026 22:46:01 -0700</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
     
       <item>
@@ -205,7 +205,9 @@
         <title>MusicMessages! Making a Collaborative Sequencer for iMessage</title>
         <description>&lt;div&gt;&lt;img src=&quot;/images/music-messages/banner.png&quot;&gt;&lt;/div&gt;
 
-&lt;p&gt;Last month, I released an unusual little app for iMessage. It’s called &lt;a href=&quot;http://musicmessages.io&quot;&gt;MusicMessages!&lt;/a&gt;, and it’s a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it’s the only app of its kind in the iMessage App Store. (Probably for good reason!)&lt;/p&gt;
+
+
+&lt;p&gt;Last month, I released an unusual little app for iMessage. It’s called MusicMessages!, and it’s a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it’s the only app of its kind in the iMessage App Store. (Probably for good reason!)&lt;/p&gt;
 
 &lt;a href=&quot;http://archagon.net/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
         <pubDate>Tue, 03 Jan 2017 15:09:01 -0800</pubDate>
