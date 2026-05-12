@@ -17,12 +17,15 @@
 9. `gem install nokogiri`
 10. `gem install imgkit`
 11. `gem install rmagick`
-12. `gem install jekyll-redirect-from`
-13. `gem install jekyll-paginate`
-14. `gem install jekyll-paginate-category`
-15. (optionally?) install wkhtmltoimage (I had to use an installer)
+12. `gem install jekyll-compose`
+13. `gem install jekyll-redirect-from`
+14. `gem install jekyll-paginate`
+15. `gem install jekyll-paginate-category`
+16. (optionally?) install wkhtmltoimage (I had to use an installer)
 
-Build site with `rake build` and locally host site with `rake serve`.
+Build site with `rake build` or `jekyll build`, and locally host site with `rake serve` or `jekyll serve`.
+
+Create a new post using `jekyll compose "post name"`
 
 ## Other Stuff
 
