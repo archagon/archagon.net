@@ -10,7 +10,9 @@ redirect_from:
 
 <div><img src="{{ site.baseurl }}/images/music-messages/banner.png" /></div>
 
-Last month, I released an unusual little app for iMessage. It's called [MusicMessages!][musicmessages], and it's a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it's the only app of its kind in the iMessage App Store. (Probably for good reason!)
+<div class="notification"><span markdown="1">**Update:** I think I allowed the product domain <u>musicmessages.io</u> to lapse since nobody ever used the app, and now it's some sort of Vietnamese spam site. But I'll resurrect the app someday! It was kind of neat.</span></div>
+
+Last month, I released an unusual little app for iMessage. It's called MusicMessages!, and it's a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it's the only app of its kind in the iMessage App Store. (Probably for good reason!)
 
 <!--more-->
 
@@ -39,5 +41,4 @@ MusicMessages! was an attempt at a speed project, so there's many stones left un
 One more thing. There's a good chance I'll be releasing a standalone, file-based version of the app in the future (with MIDI, IAA, Audiobus and all that good stuff). If you'd be interested in using such an app, do let me know!
 
 [composerssketchpad]: http://composerssketchpad.com
-[musicmessages]: http://musicmessages.io
 [receigen]: https://geo.itunes.apple.com/us/app/receigen/id452840086?mt=12&at=1000lqfl
