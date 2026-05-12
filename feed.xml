@@ -6,9 +6,28 @@
 </description>
     <link>http://archagon.net/</link>
     <atom:link href="http://archagon.net/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 12 May 2026 00:06:45 -0700</pubDate>
-    <lastBuildDate>Tue, 12 May 2026 00:06:45 -0700</lastBuildDate>
+    <pubDate>Tue, 12 May 2026 12:33:28 -0700</pubDate>
+    <lastBuildDate>Tue, 12 May 2026 12:33:28 -0700</lastBuildDate>
     <generator>Jekyll v4.4.1</generator>
+    
+      <item>
+        <title>Checkpoint!</title>
+        <description>
+&lt;div class=&quot;full-width&quot;&gt;&lt;img src=&quot;http://archagon.net/images/blog/checkpoint/apple.jpg&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;Hello! It appears I’ve neglected to write anything (other than angry internet comments) over the last 7+ years or so. Since my last post, I worked at Apple for about 5½ years, then left to go do other stuff. In practice, “other stuff” mostly involved moving to San Francisco and living a decadent life of park-walking and pastry-eating.&lt;/p&gt;
+
+&lt;p&gt;Well, it’s high time to get out of that delicious pit! I have quite a backlog of articles to get through. First order of business…&lt;/p&gt;
+
+&lt;a href=&quot;http://archagon.net/blog/2026/05/12/checkpoint/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
+        <pubDate>Tue, 12 May 2026 11:24:00 -0700</pubDate>
+        <link>http://archagon.net/blog/2026/05/12/checkpoint/</link>
+        <guid isPermaLink="true">http://archagon.net/blog/2026/05/12/checkpoint/</guid>
+        
+        
+        <category>personal</category>
+        
+      </item>
     
       <item>
         <title>AORUS 1080 eGPU + USB Boot Camp on a 2018 13&quot; MacBook Pro</title>
@@ -198,24 +217,6 @@
         
         
         <category>reviews</category>
-        
-      </item>
-    
-      <item>
-        <title>MusicMessages! Making a Collaborative Sequencer for iMessage</title>
-        <description>&lt;div&gt;&lt;img src=&quot;/images/music-messages/banner.png&quot;&gt;&lt;/div&gt;
-
-
-
-&lt;p&gt;Last month, I released an unusual little app for iMessage. It’s called MusicMessages!, and it’s a collaborative step sequencer that lets you work on short pieces of music together with your friends. As far as I can tell, it’s the only app of its kind in the iMessage App Store. (Probably for good reason!)&lt;/p&gt;
-
-&lt;a href=&quot;http://archagon.net/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/&quot;&gt;&lt;span class=&quot;more-inside&quot;&gt;Continue Reading...&lt;/span&gt;&lt;/a&gt;</description>
-        <pubDate>Tue, 03 Jan 2017 15:09:01 -0800</pubDate>
-        <link>http://archagon.net/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/</link>
-        <guid isPermaLink="true">http://archagon.net/blog/2017/01/03/musicmessages-making-a-collaborative-sequencer-for-imessage/</guid>
-        
-        
-        <category>releases</category>
         
       </item>
     
