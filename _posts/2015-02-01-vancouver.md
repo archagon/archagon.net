@@ -8,9 +8,13 @@ redirect_from:
   - /a-few-pointless-thoughts/2015/1/31/vancouver/
   - /2015/02/01/vancouver/
 ---
+
+<div class="notification"><span markdown="1">**Update:** I can't be bothered to fix my Google Maps embed since they got grubby with the API, so I'll just leave the bare URL for posterity. Use the power of your imagination!</span></div>
+
 On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and headed up north in the direction of Vancouver. I couldn't resist bringing along a small bag of produce and dairy that I'd been using to cook in the hostels, even though it added a few pounds of heft to my already-painful load. (This pattern will be shown to repeat itself throughout my travels.)
 
-<img src="https://maps.googleapis.com/maps/api/staticmap?
+```
+https://maps.googleapis.com/maps/api/staticmap?
 &center=Victoria, BC
 &size=1000x400
 &scale=2
@@ -18,7 +22,7 @@ On August 23rd, 2013, my Seattle friends and I boarded the Amtrak Cascades and h
 &markers=color:red%7CPacific Central Station, Vancouver, BC
 &path=color:blue%7CAmtrak Station, San Jose, CA|King Street Station, Seattle, WA
 &path=color:red%7CKing Street Station, Seattle, WA|Pacific Central Station, Vancouver, BC
-&key=AIzaSyCVe3O2OawYpG6wixMFLsdbmnLBsJgSuNA" width="1000px"/>
+```
 
 <!--more-->
 
