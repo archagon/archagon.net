@@ -5,9 +5,9 @@ permalink: /about/
 ---
 <img src="/images/portrait.jpg" class="about-photo bold-shadow" />
 
-Hi! I'm Alexei. I've worked as a software engineer and independent app developer for the past decade, and now I'm sort of heading in the direction of music, game design, and other creatively meaningful works. Hope to end up somewhere interesting!
+Hello! I'm Alexei, a San Francisco fellow. I've worked as a software engineer and independent app developer for the past decade, and now I'm sort of heading in the direction of music, game design, and other creatively meaningful works. Hope to end up somewhere interesting!
 
-I started out by making [Composer's Sketchpad](http://composerssketchpad.com/), [MusicMessages!]({% post_url 2017-01-03-musicmessages-making-a-collaborative-sequencer-for-imessage %}), [Backgroundifier](http://backgroundifier.archagon.net/), [SensibleSideButtons](http://sensible-side-buttons.archagon.net/), and [some](http://translit-keyboard.archagon.net/) [iOS](http://keyboards.archagon.net/) [keyboards](https://github.com/archagon/tasty-imitation-keyboard). Then I wrote a [long research article on CRDTs]({% post_url 2018-03-24-data-laced-with-history %}). Then I worked at Apple for a few years. Now I'm solo again. Full project page coming s<s>oon</s>omeday.
+I started out by making [Composer's Sketchpad](http://composerssketchpad.com/), [MusicMessages!]({% post_url 2017-01-03-musicmessages-making-a-collaborative-sequencer-for-imessage %}), [Backgroundifier](http://backgroundifier.archagon.net/), [SensibleSideButtons](http://sensible-side-buttons.archagon.net/), [Good Spirits]({% post_url 2018-09-03-good-spirits-persisting-data-statelessly %}), and [some](http://translit-keyboard.archagon.net/) [iOS](http://keyboards.archagon.net/) [keyboards](https://github.com/archagon/tasty-imitation-keyboard). Then I wrote a [long research article on CRDTs]({% post_url 2018-03-24-data-laced-with-history %}). Then I worked at Apple for a few years. Now I'm solo again. Full project page coming s<s>oon</s>omeday.
 
 This blog is built with Jekyll and hosted on Github Pages (until I find something better). Everything is always under construction; reach out if you see any glitches. The repo is [here](https://github.com/archagon/archagon.net) for those morbidly curious.
 
