@@ -45,7 +45,7 @@ exclude:
   - blog.sublime-workspace
   - Gemfile, Gemfile.lock
   - Rakefile
-  - SETUP.txt
+  - SETUP.md
   - TOC.txt
   - TODO.txt
   - QUIRKS.txt
