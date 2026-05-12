@@ -159,22 +159,22 @@ If you decide to get this mouse, I recommend grabbing a [Hermitshell case][case]
 
 <div class="full-width"><img src="{{ site.baseurl }}/images/mx-master/master-keyboard.jpg" /></div>
 
-[orochi]: http://amzn.to/2qbb8fi
-[mx518]: http://amzn.to/2qbhqeY
-[g602]: http://amzn.to/2rb0idv
-[master]: http://amzn.to/2qbiPSM
-[master2s]: http://amzn.to/2vlQkFe
-[anywhere]: http://amzn.to/2rb6SRe
-[intellimouse]: http://amzn.to/2rKpWCQ
-[k380]: http://amzn.to/2rbgpb0
+[orochi]: https://www.amazon.com/Razer-Orochi-Wireless-Bluetooth-Travel/dp/B014W1ZUQG/
+[mx518]: https://camelcamelcamel.com/Logitech-Gaming%252dGrade-Optical-Mouse-9313520403/product/B0007Z1M50
+[g602]: https://www.amazon.com/Logitech-Gaming-Wireless-Mouse-Battery/dp/B00E4MQODC/
+[master]: https://www.amazon.com/Logitech-Master-Wireless-Mouse-Computer/dp/B00TZR3WRM/
+[master2s]: https://www.amazon.com/Logitech-Wireless-Cross-Computer-Control-Sharing/dp/B071YZJ1G1/
+[anywhere]: https://www.amazon.com/Logitech-Anywhere-Wireless-Mobile-Mouse/dp/B00Y09IWGQ/
+[intellimouse]: https://www.amazon.com/Microsoft-D58-00026-Intellimouse-Optical-Mouse/dp/B00005TQ08/
+[k380]: https://www.amazon.com/Logitech-Multi-Device-Bluetooth-Keyboard-920-007558/dp/B0148NPH9I/
 [stuckwheel]: https://toemat.com/logitech-mx-master-fix/
-[egpu]: /2016/12/31/cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro/
+[egpu]: {% post_url 2016-12-31-cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro %}
 [mousemyths]: http://www.pcgamer.com/gaming-mouse-myths-busted/
-[g900]: http://amzn.to/2rvezS9
+[g900]: https://www.amazon.com/Logitech-Spectrum-Professional-Wireless-Ambidextrous/dp/B01CEFEMFW/
 [lancehead]: https://www.razerzone.com/gaming-mice/razer-lancehead
-[g403]: http://amzn.to/2uDAeF2
-[m720]: http://amzn.to/2qOQogz
-[case]: http://amzn.to/2qJl3LO
+[g403]: https://www.amazon.com/Logitech-Wireless-Gaming-Performance-Sensor/dp/B01KUAMCWI/
+[m720]: https://www.amazon.com/Logitech-Triathalon-Multi-Device-Wireless-910-004790/dp/B01LF37K80/
+[case]: https://www.amazon.com/gp/product/B018I5Q1SI/
 [stuckwheelfixed]: https://toemat.com/logitech-mx-master-fix/#comment-3138781165
 [gamereceiver]: https://www.reddit.com/r/LogitechG/comments/2vz5ie/can_i_use_the_same_usb_reciever_with_the_g602/cookz42/
 [tests]: {% post_url 2017-05-24-mx-master-continued-mouse-latency-measurements %}

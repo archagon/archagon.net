@@ -10,6 +10,8 @@ redirect_from:
 
 ![Great on the train! Now with pizza!]({{ site.baseurl }}/images/Klean Kanteen Growler Train.jpg)
 
+<div class="notification"><span markdown="1">**Update:** Alas, Klean Kanteen no longer makes the Swing Lok cap. I still think there's nothing better out there for preserving fizzy drinks!</span></div>
+
 One vital lesson I've been recently learning in regards to the pleasures of rampant materialism is that it's incredibly important to surround yourself with objects that not only work well, but *feel* good. Quality finishes; smooth hinges; great materials and top-shelf workmanship. It's not about pretension or an abstract desire for "good design". Rather, the aim is to get the objects in your life to radiate just a little warmth your way by virtue of their excellence. Here's an example of what I mean. A few months ago, I needed to buy a new paper notebook. I was all set to pick up the cheapest one at the grocery like I always do, but this time I decided to peek into a stationary store just to see if something could tempt me away from the budget option. There, I discovered a [stunningly beautiful notebook][notebook] with a textured, gently undulating cover and perfect pearly pages. I immediately fell in love with it. The sticker price was a shocking $15, and while I berated myself at the time for spending so much money on basically paper, I've noticed over the past year that I always feel a little burst of joy whenever I leaf through its pages or run my hands over its cover. Point being, if you surround yourself with enough of these kinds of things, you'll find yourself smiling when doing something as simple as picking up your favorite pen or putting a pot of water on the stove.
 
 <!--more-->
@@ -190,12 +192,12 @@ To get to the bottom of this, I am currently experimenting with filling my 3 sta
 
 [notebook]: http://www.jennibick.com/products/paper-oh-notebook-yuko-ori
 
-[kanteen-20]: http://www.amazon.com/gp/product/B0093ISEPI/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B0093ISEPI&linkCode=as2&tag=arcwasher-20&linkId=BBTYUOK7EVCHHBZD
+[kanteen-20]: https://www.amazon.com/gp/product/B0093ISEPI
 
-[kanteen-32]: http://www.amazon.com/gp/product/B00SA2VRFW/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00SA2VRFW&linkCode=as2&tag=arcwasher-20&linkId=SYQ6LFSFDLH4CFQW
+[kanteen-32]: https://www.amazon.com/gp/product/B00SA2VRFW
 
-[hydroflask]: http://www.amazon.com/gp/product/B00KFTG9ZG/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00KFTG9ZG&linkCode=as2&tag=arcwasher-20&linkId=NH57AFZPKAG7U7OD
+[hydroflask]: https://camelcamelcamel.com/product/B00KFTG9ZG
 
-[stanley]: http://www.amazon.com/gp/product/B000FZX93K/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000FZX93K&linkCode=as2&tag=arcwasher-20&linkId=U6ITGGSYRO5FKKKM
+[stanley]: https://www.amazon.com/Stanley-Classic-Growler-Hammertone-Green/dp/B00YPISRR6
 
-[miir]: http://www.amazon.com/gp/product/B013KZN10W/ref=as_li_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B013KZN10W&linkCode=as2&tag=arcwasher-20&linkId=PONW7ZJALVGTHYH5
+[miir]: https://www.amazon.com/gp/product/B013KZN10W

@@ -147,8 +147,8 @@ I'm very concerned about the durability of the plastic latch, but overall, this 
 
 (Better yet: at the time I wrote this review, Stanley didn't offer a growler in 32oz size, but it looks like they do now! Definitely worth checking out.)
 
-[klean_kanteen_review]: {{ site.baseurl }}/2015/09/09/the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap/
-[stanley_growler]: http://amzn.to/1ItRmn0
+[klean_kanteen_review]: {% post_url 2015-09-09-the-klean-kanteen-32oz-insulated-stainless-steel-growler-with-swing-lok-cap %}
+[stanley_growler]: https://www.amazon.com/Stanley-Classic-Growler-Hammertone-Green/dp/B00YPISRR6
 [plastic_ring]: {{ site.baseurl }}/images/stanley_top.jpg
 [cap_parallel]: {{ site.baseurl }}/images/stanley_cap.jpg
 [bottom_hinge]: {{ site.baseurl }}/images/stanley_lower_hinge.jpg

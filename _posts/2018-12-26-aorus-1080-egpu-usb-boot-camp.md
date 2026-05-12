@@ -12,7 +12,7 @@ image_path: /blog/egpu-aorus/
 [Previously in my eGPU saga][prev], I stuck an Nvidia 1080 in an AKiTiO Thunder2 enclosure, hooked it up to an old PC PSU, and got the contraption working on a late 2013 15" MacBook Pro. In fact, the end of the article wasn't quite the end of the story: I ended up returning the stock 1080 and purchasing a fully-fledged [AORUS GTX 1080 Gaming Box][AORUS] on sale. The price after rebates was, ridiculously, cheaper than the 1080 by itself, and the card was easily removable and absolutely identical to the retail 1080 [modulo fan size][fan] (I ran benchmarks to confirm this), so it would have been foolish not to swap. My specific MacBook model [couldn't support a TB3 eGPU][unsupported] even with a TB2–TB3 adapter, so I popped out the AORUS card, stuck it in my Thunder2, and left the enclosure for another day.
 
 [prev]: {% post_url 2018-07-25-egpu-redux %} 
-[AORUS]: https://amzn.to/2CDdoET
+[AORUS]: https://www.amazon.com/Gigabyte-Aorus-Gaming-Graphic-GV-N1080IXEB-8GD/dp/B076PZ6PRK/
 [fan]: https://egpu.io/gigabyte-AORUS-gtx-1080-gaming-box-review-pocket-rocket/
 [unsupported]: https://egpu.io/forums/pc-setup/help-MacBook-pro-2013-late-750m-with-akitio-nodetb3-tb2/#post-22966
 
@@ -24,7 +24,7 @@ Well, that day is today! Having recently gotten my hands on a late 2018 13" MacB
 
 My first priority, though, was to avoid creating a Boot Camp partition on this new machine if I could help it, since I didn't want to permanently mess around with the disk layout. Could I install Windows on my handy [500GB solid-state USB drive][ssd] instead?
 
-[ssd]: https://amzn.to/2SoWdwb
+[ssd]: https://www.amazon.com/Samsung-T5-Portable-SSD-MU-PA500B/dp/B073GZBT36/
 
 At first, I figured I'd just clone my existing Boot Camp partition and call it a day. Doing so in Disk Utility was a breeze: simply wipe the drive, create a new partition using the default settings, right-click on the name, click "Restore", and pick the Boot Camp drive. Sadly, this clone failed to materialize in the hold-Option-on-boot Startup Manager: a simple copy didn't transfer the requisite (MBR?) metadata.
 
@@ -98,4 +98,4 @@ If you're sporting a late 2018 13" MacBook Pro and are mostly interested in Wind
 
 *You can find a discussion of this article on* <a class="about-icon-container" href="https://news.ycombinator.com/item?id=18792081"><img class="about-social-icon" src="{{ "/images/social-icons/hackernews.png" | prepend: site.baseurl }}" /> <span class="about-social-service">Hacker News</span></a>*.*
 
-[AORUS]: https://amzn.to/2CDdoET
+[AORUS]: https://www.amazon.com/Gigabyte-Aorus-Gaming-Graphic-GV-N1080IXEB-8GD/dp/B076PZ6PRK/

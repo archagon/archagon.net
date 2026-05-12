@@ -89,10 +89,10 @@ As a last-ditch stop in my mousing hunt, I visited my local Best Buy to take a g
 The Master is 80% of the way to being an ideal all-arounder, but sadly, it's killed for power users by inconsistent performance.
 
 [masterarticle]: {% post_url 2017-05-22-almost-winning-the-wireless-mouse-game-logitech-mx-master %}
-[mx518]: http://amzn.to/2qbhqeY
-[g602]: http://amzn.to/2rb0idv
-[g403]: http://amzn.to/2uDAeF2
-[g900]: http://amzn.to/2hHjvj4
-[master]: http://amzn.to/2qbiPSM
+[mx518]: https://camelcamelcamel.com/Logitech-Gaming%252dGrade-Optical-Mouse-9313520403/product/B0007Z1M50
+[g602]: https://www.amazon.com/Logitech-Gaming-Wireless-Mouse-Battery/dp/B00E4MQODC/
+[g403]: https://www.amazon.com/Logitech-Wireless-Gaming-Performance-Sensor/dp/B01KUAMCWI/
+[g900]: https://www.amazon.com/Logitech-Spectrum-Professional-Wireless-Ambidextrous/dp/B01CEFEMFW/
+[master]: https://www.amazon.com/Logitech-Master-Wireless-Mouse-Computer/dp/B00TZR3WRM/
 [mousetester]: http://www.overclock.net/t/1535687/mousetester-software
-[case]: http://amzn.to/2qJl3LO
+[case]: https://www.amazon.com/gp/product/B018I5Q1SI/

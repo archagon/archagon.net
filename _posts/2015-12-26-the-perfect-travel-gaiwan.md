@@ -30,4 +30,4 @@ There are a few issues worth mentioning. The shape is far blobbier than it looks
 
 ![]( {{ site.baseurl }}/images/mug_result.jpg )
 
-[amazon]: http://amzn.to/1ShqqsP
+[amazon]: https://www.amazon.com/gp/product/B00J90CI98

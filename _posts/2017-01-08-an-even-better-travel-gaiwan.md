@@ -32,5 +32,5 @@ Of course, it's great that you can just throw this mug into your backpack or sui
 
 [The Klean Kanteen 8oz insulated tumbler][kleankanteen]: highly recommended as a surrogate travel gaiwan!
 
-[asobu]: /2015/12/26/the-perfect-travel-gaiwan/
-[kleankanteen]: http://amzn.to/2j2ie1U
+[asobu]: {% post_url 2015-12-26-the-perfect-travel-gaiwan %}
+[kleankanteen]: https://www.amazon.com/Klean-Kanteen-Insulated-Tumbler-Stainless/dp/B01ENNLQNE/

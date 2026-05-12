@@ -205,8 +205,8 @@ In time, I hope somebody releases a Thunderbolt 3 eGPU the size of one of those 
 Let's hope that the eGPU revolution is just beginning!
 
 [power]: https://www.akitio.com/faq/270-thunder2-pcie-box-what-s-the-maximum-power-output-through-the-pcie-slot
-[akitio]: http://amzn.to/2itWCP9
-[evga]: http://amzn.to/2itNpGC
-[adaptor]: http://amzn.to/2iQUoWJ
+[akitio]: https://www.amazon.com/Akitio-AMZ-T2PC-TIA-AKTU-Thunder2-PCIe/dp/B00LTAUTHE/
+[evga]: https://www.amazon.com/EVGA-GeForce-GAMING-Support-04G-P4-6253-KR/dp/B01MF7EQJZ/
+[adaptor]: https://camelcamelcamel.com/Switching-Supply-110-240vAC-PicoPSU-Compatible/product/B007XVE11S
 [germanadaptor]: https://www.amazon.de/Netzteil-Laufwerke-Lichtschläuche-LED-Strips-geeignet/dp/B006Z9TQE6
 [hdmi]: https://www.amazon.com/CompuLab-fit-Headless-Display-Emulator/dp/B00FLZXGJ6

@@ -243,17 +243,16 @@ Cons:
 Although compelling in terms of size and cost, I'm very concerned about the heat and power usage of this card. Whereas the 1080 is firmly capped at 180W by design, the 56 appears to have much looser power requirements. Together with the second 8-pin PCIe connector, this means that a Flex ATX PSU may no longer be an option for powering this thing, and that the AKiTiO cases may be too small for safe thermal operation.
 
 [prev]: {% post_url 2016-12-31-cheap-and-painless-egpu-thrills-on-a-2013-macbook-pro %}
-[1060]: https://amzn.to/2mOFMv9
-[card]: https://amzn.to/2NFE0HO
-[jumper]: https://amzn.to/2mHnJH5
-[barrel]: https://amzn.to/2AdgNew
-[extension]: https://amzn.to/2LFhD86
-[pcie]: https://amzn.to/2A8uueq
-[psu]: https://amzn.to/2JWA9nt
+[1060]: https://www.amazon.com/EVGA-GeForce-GAMING-Support-06G-P4-6163-KR/dp/B01IPVSLTC/
+[card]: https://www.amazon.com/gp/product/B076MRH446/
+[jumper]: https://www.amazon.com/gp/product/B0756WFMNF/
+[barrel]: https://www.amazon.com/2-5mm-5-5mm-Female-Terminal-Single/dp/B018RE44DY/
+[extension]: https://www.amazon.com/gp/product/B01DV1Z36A/
+[pcie]: https://www.amazon.com/gp/product/B01DV1Z32Y/
+[psu]: https://www.amazon.com/SEASONIC-SSP-300SUB-Bronze-Supply-Modular/dp/B06XW7FVJ2/
 [egpu-guide]: https://egpu.io/bootcamp-setup-guide-tb3-macbook-pro/
-[psu-cable-reading]: asdf
 [outside-benchmarks]: http://gpu.userbenchmark.com/Compare/Nvidia-GTX-1080-vs-Nvidia-GTX-1050-Ti/3603vs3649
-[aorus]: https://amzn.to/2JXWr8B
+[aorus]: https://www.amazon.com/Gigabyte-Aorus-Gaming-Graphic-GV-N1080IXEB-8GD/dp/B076PZ6PRK/
 [psu-cables]: http://www.playtool.com/pages/psuconnectors/connectors.html#pciexpress
 [power]: {% include imagepath name="power_peak.png" %}
 [assembly]: https://imgur.com/gallery/bC7pr
