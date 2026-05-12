@@ -57,6 +57,8 @@ exclude:
   - old_blog_data
   - images/old-patterns
   - images/possible-patterns
+  - pages/timeline.md
+  - pages/projects.html
 
 # TODO: fix these deprecations
 sass:
