@@ -11,13 +11,10 @@ I made [Composer's Sketchpad](http://composerssketchpad.com/), [MusicMessages!](
 
 This blog is built with Jekyll and hosted on Github Pages. Sections are still under heavy development, so you might spot an errant glitch or two. The repo can be found [here](https://github.com/archagon/archagon.net).
 
-Currently hanging out on: <span class="about-social">
-<a class="about-icon-container" href="mailto:{{ site.email }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/email.svg" /><span class="about-social-service">E-mail</span></a>
-<a class="about-icon-container" href="https://twitter.com/{{ site.twitter }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/twitter.svg" /><span class="about-social-service">Twitter</span></a>
-<a class="about-icon-container" href="https://news.ycombinator.com/user?id={{ site.hackernews }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/hackernews.png" /><span class="about-social-service">Hacker News</span></a>
-<!-- <a class="about-icon-container" href="https://www.reddit.com/user/{{ site.reddit }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/reddit.png" /><span class="about-social-service">Reddit</span></a> -->
-<a class="about-icon-container" href="https://instagram.com/{{ site.instagram }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/instagram.svg" /><span class="about-social-service">Instagram</span></a>
-<a class="about-icon-container" href="https://github.com/{{ site.github }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/github.svg" /><span class="about-social-service">Github</span></a>
-<a class="about-icon-container" href="https://www.goodreads.com/user/show/{{ site.goodreads }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/goodreads_icon_100x100.png" /><span class="about-social-service">Goodreads</span></a>
+You can find me at: <span class="about-social">
+<a class="about-icon-container" href="mailto:{{ site.email }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/email.svg" /><span class="about-social-service">E-mail</span></a> <a class="about-icon-container" href="https://mastodon.social/@{{ site.mastodon }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/mastodon.svg" /><span class="about-social-service">Mastodon</span></a> <a class="about-icon-container" href="https://bsky.app/profile/{{ site.bluesky }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/bluesky.svg" /><span class="about-social-service">Bluesky</span></a> <a class="about-icon-container" href="https://pixelfed.social/{{ site.pixelfed }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/pixelfed.svg" /><span class="about-social-service">Pixelfed</span></a>
 </span>
-    
+
+And still reluctantly using: <span class="about-social">
+<a class="about-icon-container" href="https://www.reddit.com/user/{{ site.reddit }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/reddit.webp" /><span class="about-social-service">Reddit</span></a> <a class="about-icon-container" href="https://news.ycombinator.com/user?id={{ site.hackernews }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/hackernews.png" /><span class="about-social-service">Hacker News</span></a> <a class="about-icon-container" href="https://instagram.com/{{ site.instagram }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/instagram.svg" /><span class="about-social-service">Instagram</span></a> <a class="about-icon-container" href="https://github.com/{{ site.github }}"><img class="about-social-icon" src="{{ site.baseurl }}/images/social-icons/github.svg" /><span class="about-social-service">Github</span></a>
+</span>

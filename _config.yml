@@ -10,9 +10,11 @@ timezone: America/Los_Angeles
 
 # Social
 email: archagon@archagon.net
-twitter: archagon
+mastodon: archagon
+bluesky: archagon.net
 github:  archagon
 instagram: archagon
+pixelfed: archagon
 goodreads: 2196584-archagon
 reddit: archagon
 hackernews: archagon

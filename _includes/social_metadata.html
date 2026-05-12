@@ -10,10 +10,11 @@
 {% if page.image_header %}<meta property="og:image" content="{% include imagepath name=page.image_header abs=true %}">
 {% endif %}{% if page.summary %}<meta property="og:description" content="{{ page.summary }}">
 {% endif %}
+{% if site.twitter %}
 <!-- twitter content metadata -->
 <meta name="twitter:card" content="summary" />
-{% if site.twitter %}<meta name="twitter:site" content="@{{ site.twitter }}" />
-{% endif %}<meta name="twitter:title" content="{{ page.title }}" />
-{% if page.image_header %}<meta name="twitter:image" content="{% include imagepath name=page.image_header abs=true %}" />
-{% endif %}{% if page.summary %}<meta name="twitter:description" content="{{ page.summary }}" />
+<meta name="twitter:site" content="@{{ site.twitter }}" />
+<meta name="twitter:title" content="{{ page.title }}" />
+{% if page.image_header %}<meta name="twitter:image" content="{% include imagepath name=page.image_header abs=true %}" />{% endif %}
+{% if page.summary %}<meta name="twitter:description" content="{{ page.summary }}" />{% endif %}
 {% endif %}
