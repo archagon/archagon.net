@@ -1287,6 +1287,7 @@ ul.archive-legend {
 .about-photo {
   width: 25rem;
   margin-bottom: 1.5em;
+  border-radius: 1.5rem;
 }
 
 img.about-social-icon {
