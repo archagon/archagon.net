@@ -1,16 +1,25 @@
 // TODO: is this file needed?
 
+.body-background {
+    background-image: url("/images/congruent_pentagon.png");
+    background-position: center top;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: 14rem;
+}
+
 .header-footer-background {
-    background: url("/images/congruent_pentagon_blurred.png") repeat center top scroll;
+    //background-image: url("/images/congruent_pentagon.png");
+    background-image: url("/images/congruent_pentagon_blurred.png");
+    background-position: center top -3rem;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: 14rem;
 }
 
 .header-footer-icon {
     width: 1.8rem;
     filter: brightness(0) invert(1); // svg black->white
-}
-
-.body-background {
-    background: url("/images/congruent_pentagon.png") repeat center top scroll;
 }
 
 @mixin bold-shadow {
