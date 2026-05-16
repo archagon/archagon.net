@@ -385,11 +385,14 @@ $toc-side-padding: 2.2em;
 // Footnotes //
 ///////////////
 
+// These are footnote links in the body text, but the JS footnote code replaces them.
+// This is only relevant when Javascript is turned off.
 .footnote {
     font-size: 1.1em;
-    // &:link, &:hover, &:active, &:visited {
+    
+    //&:link, &:hover, &:active, &:visited {
     //     color: red;    
-    // }
+    //}
 }
 
 .footnotes {
