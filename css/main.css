@@ -158,17 +158,25 @@ body {
   color: #000;
 }
 
+.body-background {
+  background-image: url("/images/congruent_pentagon.png");
+  background-position: center top;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: 14rem;
+}
+
 .header-footer-background {
-  background: url("/images/congruent_pentagon_blurred.png") repeat center top scroll;
+  background-image: url("/images/congruent_pentagon_blurred.png");
+  background-position: center top -3rem;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: 14rem;
 }
 
 .header-footer-icon {
   width: 1.8rem;
   filter: brightness(0) invert(1);
-}
-
-.body-background {
-  background: url("/images/congruent_pentagon.png") repeat center top scroll;
 }
 
 .bold-shadow {
@@ -1198,6 +1206,10 @@ ul.archive-legend {
 }
 .new-jekyll-assets .asset-name {
   font-weight: bold;
+}
+
+.footnote {
+  font-size: 1.1em;
 }
 
 .footnotes {
